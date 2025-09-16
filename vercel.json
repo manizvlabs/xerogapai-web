@@ -1,0 +1,20 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "env": {
+    "NEXT_PUBLIC_DOMAIN": "zerodigital.ai",
+    "NEXT_PUBLIC_SITE_NAME": "Zero Digital",
+    "NEXT_PUBLIC_SITE_TAGLINE": "AI-Powered Digital Transformation",
+    "NEXT_PUBLIC_DEFAULT_THEME": "light",
+    "NEXT_PUBLIC_ENABLE_THEME_SWITCHER": "true",
+    "NEXT_PUBLIC_BUSINESS_TYPE": "all",
+    "NEXT_PUBLIC_LOCATION": "Hyderabad, India",
+    "NEXT_PUBLIC_PHONE": "+919876543210",
+    "NEXT_PUBLIC_EMAIL": "info@zerodigital.ai",
+    "NEXT_PUBLIC_LINKEDIN_URL": "https://linkedin.com/company/zerodigital",
+    "NEXT_PUBLIC_TWITTER_URL": "https://twitter.com/zerodigital",
+    "NEXT_PUBLIC_INSTAGRAM_URL": "https://instagram.com/zerodigital"
+  }
+}
