@@ -2,7 +2,7 @@ import { siteConfig } from '@/config/site';
 
 interface StructuredDataProps {
   type?: 'website' | 'organization' | 'article';
-  pageData?: any;
+  pageData?: Record<string, unknown>;
 }
 
 export default function StructuredData({ type = 'website', pageData }: StructuredDataProps) {

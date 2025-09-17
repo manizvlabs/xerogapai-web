@@ -36,7 +36,7 @@ export default function Portfolio() {
               Our Portfolio
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Explore our successful projects and see how we've helped businesses transform through technology.
+              Explore our successful projects and see how we&apos;ve helped businesses transform through technology.
             </p>
           </div>
         </div>

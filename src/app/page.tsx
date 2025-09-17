@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRightIcon, SparklesIcon, DevicePhoneMobileIcon, ChartBarIcon, CpuChipIcon } from '@heroicons/react/24/outline';
+import { SparklesIcon, DevicePhoneMobileIcon, ChartBarIcon, CpuChipIcon } from '@heroicons/react/24/outline';
 
 export default function Home() {
   const services = [
@@ -89,7 +89,7 @@ export default function Home() {
               Solutions for Every Business Size
             </p>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              Whether you're a startup, small business, or enterprise in Hyderabad, we provide AI-powered
+              Whether you&apos;re a startup, small business, or enterprise in Hyderabad, we provide AI-powered
               digital solutions that scale with your growth and maximize your ROI.
             </p>
           </div>
