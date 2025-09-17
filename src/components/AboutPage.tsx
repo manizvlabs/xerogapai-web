@@ -7,11 +7,11 @@ export default function AboutPage() {
 
   if (loading) {
     return (
-      <div className="bg-white">
+      <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600">Loading about page content...</p>
+            <p className="text-lg text-gray-600 dark:text-gray-300 dark:text-gray-300">Loading about page content...</p>
           </div>
         </div>
       </div>
@@ -20,11 +20,11 @@ export default function AboutPage() {
 
   if (error) {
     return (
-      <div className="bg-white">
+      <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
-            <div className="bg-red-50 border border-red-200 rounded-lg p-8">
-              <p className="text-red-800">Error loading content: {error}</p>
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-8">
+              <p className="text-red-800 dark:text-red-200">Error loading content: {error}</p>
             </div>
           </div>
         </div>
@@ -132,15 +132,15 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <div className="bg-gray-50">
+      <div className="bg-gray-50 dark:bg-gray-800 dark:bg-gray-800">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white dark:text-white sm:text-6xl">
               {pageContent.hero.title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300 dark:text-gray-300">
               {pageContent.hero.subtitle}
             </p>
           </div>
@@ -153,23 +153,23 @@ export default function AboutPage() {
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white dark:text-white sm:text-4xl">
                   {pageContent.mission.title}
                 </h2>
-                <p className="mt-6 text-lg leading-8 text-gray-600">
+                <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
                   {pageContent.mission.description}
                 </p>
-                <p className="mt-6 text-lg leading-8 text-gray-600">
+                <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
                   {pageContent.mission.additionalDescription}
                 </p>
               </div>
-              <div className="bg-gray-50 rounded-2xl p-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{pageContent.whyChooseUs.title}</h3>
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{pageContent.whyChooseUs.title}</h3>
                 <ul className="space-y-4">
                   {pageContent.whyChooseUs.features && Array.isArray(pageContent.whyChooseUs.features) && pageContent.whyChooseUs.features.map((feature: string, index: number) => (
                     <li key={`feature-${index}-${feature.slice(0, 20)}`} className="flex items-start gap-x-3">
                       <CheckIcon className="h-6 w-6 flex-none text-blue-600 mt-0.5" />
-                      <span className="text-gray-600">{feature}</span>
+                      <span className="text-gray-600 dark:text-gray-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -180,13 +180,13 @@ export default function AboutPage() {
       </div>
 
       {/* Values Section */}
-      <div className="bg-gray-50 py-24 sm:py-32">
+      <div className="bg-gray-50 dark:bg-gray-800 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {pageContent.values.title}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               {pageContent.values.subtitle}
             </p>
           </div>
@@ -194,10 +194,10 @@ export default function AboutPage() {
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
               {pageContent.values.items && Array.isArray(pageContent.values.items) && pageContent.values.items.map((value: { name: string; description: string }, index: number) => (
                 <div key={`value-${index}-${value.name}`} className="flex flex-col">
-                  <dt className="text-base font-semibold leading-7 text-gray-900">
+                  <dt className="text-base font-semibold leading-7 text-gray-900 dark:text-white">
                     {value.name}
                   </dt>
-                  <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                  <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                     <p className="flex-auto">{value.description}</p>
                   </dd>
                 </div>
@@ -211,10 +211,10 @@ export default function AboutPage() {
       <div className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {pageContent.team.title}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               {pageContent.team.subtitle}
             </p>
           </div>
@@ -223,11 +223,11 @@ export default function AboutPage() {
               {pageContent.team.members && Array.isArray(pageContent.team.members) && pageContent.team.members.map((person: { initials: string; name: string; title: string; description: string }, index: number) => (
                 <div key={`member-${index}-${person.name}`} className="flex flex-col items-center text-center">
                   <div className="h-32 w-32 rounded-full bg-gray-200 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-gray-600">{person.initials}</span>
+                    <span className="text-2xl font-bold text-gray-600 dark:text-gray-300">{person.initials}</span>
                   </div>
-                  <h3 className="mt-6 text-lg font-semibold text-gray-900">{person.name}</h3>
+                  <h3 className="mt-6 text-lg font-semibold text-gray-900 dark:text-white">{person.name}</h3>
                   <p className="mt-2 text-base text-blue-600">{person.title}</p>
-                  <p className="mt-4 text-base text-gray-600 max-w-md">{person.description}</p>
+                  <p className="mt-4 text-base text-gray-600 dark:text-gray-300 max-w-md">{person.description}</p>
                 </div>
               ))}
             </div>
@@ -263,10 +263,10 @@ export default function AboutPage() {
       <div className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {pageContent.cta.title}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               {pageContent.cta.description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -276,7 +276,7 @@ export default function AboutPage() {
               >
                 {pageContent.cta.primaryButton}
               </a>
-              <a href="/services" className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors">
+              <a href="/services" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-blue-600 transition-colors">
                 {pageContent.cta.secondaryButton} <span aria-hidden="true">→</span>
               </a>
             </div>

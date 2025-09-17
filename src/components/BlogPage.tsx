@@ -7,11 +7,11 @@ export default function BlogPage() {
 
   if (loading) {
     return (
-      <div className="bg-white">
+      <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600">Loading blog page content...</p>
+            <p className="text-lg text-gray-600 dark:text-gray-300">Loading blog page content...</p>
           </div>
         </div>
       </div>
@@ -20,7 +20,7 @@ export default function BlogPage() {
 
   if (error) {
     return (
-      <div className="bg-white">
+      <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="bg-red-50 border border-red-200 rounded-lg p-8">
@@ -85,15 +85,15 @@ export default function BlogPage() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <div className="bg-gray-50">
+      <div className="bg-gray-50 dark:bg-gray-800">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               {pageContent.hero.title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               {pageContent.hero.subtitle}
             </p>
           </div>
@@ -126,7 +126,7 @@ export default function BlogPage() {
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               {pageContent.posts.map((post: { title: string; category: string; date: string; readTime: string; excerpt: string; author: string }) => (
-                <article key={post.title} className="flex flex-col rounded-2xl bg-gray-50 ring-1 ring-gray-200">
+                <article key={post.title} className="flex flex-col rounded-2xl bg-gray-50 dark:bg-gray-800 ring-1 ring-gray-200">
                   <div className="p-8">
                     <div className="flex items-center gap-x-4 text-xs">
                       <span className="relative z-10 rounded-full bg-blue-600 px-3 py-1.5 font-medium text-white">
@@ -137,24 +137,24 @@ export default function BlogPage() {
                       <span className="text-gray-500">{post.readTime}</span>
                     </div>
                     <div className="group relative">
-                      <h3 className="mt-4 text-lg font-semibold leading-6 text-gray-900 group-hover:text-blue-600">
+                      <h3 className="mt-4 text-lg font-semibold leading-6 text-gray-900 dark:text-white group-hover:text-blue-600">
                         <a href={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}>
                           <span className="absolute inset-0" />
                           {post.title}
                         </a>
                       </h3>
-                      <p className="mt-4 text-sm leading-6 text-gray-600">
+                      <p className="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-300">
                         {post.excerpt}
                       </p>
                     </div>
                     <div className="mt-6 flex items-center">
                       <div className="flex items-center gap-x-4">
                         <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
-                          <span className="text-xs font-medium text-gray-600">MK</span>
+                          <span className="text-xs font-medium text-gray-600 dark:text-gray-300">MK</span>
                         </div>
                         <div className="text-sm">
-                          <p className="font-semibold text-gray-900">Manish Kumar</p>
-                          <p className="text-gray-600">Founder, Zero Digital</p>
+                          <p className="font-semibold text-gray-900 dark:text-white">Manish Kumar</p>
+                          <p className="text-gray-600 dark:text-gray-300">Founder, Zero Digital</p>
                         </div>
                       </div>
                     </div>
@@ -186,12 +186,12 @@ export default function BlogPage() {
                 type="email"
                 autoComplete="email"
                 required
-                className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-white/70 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
+                className="min-w-0 flex-auto rounded-md border-0 bg-white dark:bg-gray-900/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-white/70 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
                 placeholder={pageContent.newsletter.placeholder}
               />
               <button
                 type="submit"
-                className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
+                className="flex-none rounded-md bg-white dark:bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 dark:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
               >
                 {pageContent.newsletter.buttonText}
               </button>

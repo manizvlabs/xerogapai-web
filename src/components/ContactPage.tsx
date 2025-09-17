@@ -9,11 +9,11 @@ export default function ContactPage() {
 
   if (loading) {
     return (
-      <div className="bg-white">
+      <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600">Loading contact page content...</p>
+            <p className="text-lg text-gray-600 dark:text-gray-300">Loading contact page content...</p>
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@ export default function ContactPage() {
 
   if (error) {
     return (
-      <div className="bg-white">
+      <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="bg-red-50 border border-red-200 rounded-lg p-8">
@@ -93,15 +93,15 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <div className="bg-gray-50">
+      <div className="bg-gray-50 dark:bg-gray-800">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               {pageContent.hero.title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               {pageContent.hero.subtitle}
             </p>
           </div>
@@ -119,11 +119,11 @@ export default function ContactPage() {
 
               {/* Contact Information */}
               <div className="lg:pl-16">
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900">{pageContent.contactInfo.title}</h2>
-                <p className="mt-4 text-base leading-7 text-gray-600">
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{pageContent.contactInfo.title}</h2>
+                <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
                   {pageContent.contactInfo.description}
                 </p>
-                <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600">
+                <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600 dark:text-gray-300">
                   {pageContent.contactInfo.details && Array.isArray(pageContent.contactInfo.details) && pageContent.contactInfo.details.map((detail: { icon: string; label: string; value: string; link?: string }) => {
                     const IconComponent = iconMap[detail.icon as keyof typeof iconMap] || MapPinIcon;
                     return (
@@ -134,7 +134,7 @@ export default function ContactPage() {
                         </dt>
                         <dd>
                           {detail.link ? (
-                            <a className="hover:text-gray-900" href={detail.link}>
+                            <a className="hover:text-gray-900 dark:text-white" href={detail.link}>
                               {detail.value.split('\n').map((line, lineIndex) => (
                                 <React.Fragment key={line}>
                                   {line}
@@ -157,15 +157,15 @@ export default function ContactPage() {
                 </dl>
 
                 <div className="mt-16">
-                  <h3 className="text-lg font-semibold leading-7 text-gray-900">{pageContent.responseTime.title}</h3>
-                  <p className="mt-4 text-base leading-7 text-gray-600">
+                  <h3 className="text-lg font-semibold leading-7 text-gray-900 dark:text-white">{pageContent.responseTime.title}</h3>
+                  <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
                     {pageContent.responseTime.description}
                   </p>
                 </div>
 
                 <div className="mt-8">
-                  <h3 className="text-lg font-semibold leading-7 text-gray-900">{pageContent.consultation.title}</h3>
-                  <p className="mt-4 text-base leading-7 text-gray-600">
+                  <h3 className="text-lg font-semibold leading-7 text-gray-900 dark:text-white">{pageContent.consultation.title}</h3>
+                  <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
                     {pageContent.consultation.description}
                   </p>
                   <button className="mt-4 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors">

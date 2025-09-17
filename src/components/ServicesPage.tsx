@@ -7,11 +7,11 @@ export default function ServicesPage() {
 
   if (loading) {
     return (
-      <div className="bg-white">
+      <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600">Loading services page content...</p>
+            <p className="text-lg text-gray-600 dark:text-gray-300">Loading services page content...</p>
           </div>
         </div>
       </div>
@@ -20,11 +20,11 @@ export default function ServicesPage() {
 
   if (error) {
     return (
-      <div className="bg-white">
+      <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
-            <div className="bg-red-50 border border-red-200 rounded-lg p-8">
-              <p className="text-red-800">Error loading content: {error}</p>
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-8">
+              <p className="text-red-800 dark:text-red-200">Error loading content: {error}</p>
             </div>
           </div>
         </div>
@@ -174,15 +174,15 @@ export default function ServicesPage() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <div className="bg-gray-50">
+      <div className="bg-gray-50 dark:bg-gray-800">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               {pageContent.hero.title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               {pageContent.hero.subtitle}
             </p>
           </div>
@@ -197,21 +197,21 @@ export default function ServicesPage() {
               {pageContent.services.map((service: { name: string; description: string; icon: string; price: string; features: string[]; deliverables: string[] }) => {
                 const IconComponent = iconMap[service.icon as keyof typeof iconMap] || SparklesIcon;
                 return (
-                  <div key={service.name} className="flex flex-col justify-between rounded-2xl bg-gray-50 p-8 ring-1 ring-gray-200">
+                  <div key={service.name} className="flex flex-col justify-between rounded-2xl bg-gray-50 dark:bg-gray-800 p-8 ring-1 ring-gray-200 dark:ring-gray-700">
                     <div>
                       <div className="flex items-center gap-x-4">
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
                           <IconComponent className="h-6 w-6 text-white" aria-hidden="true" />
                         </div>
-                        <h3 className="text-xl font-semibold leading-8 text-gray-900">{service.name}</h3>
+                        <h3 className="text-xl font-semibold leading-8 text-gray-900 dark:text-white">{service.name}</h3>
                       </div>
-                      <p className="mt-4 text-base leading-7 text-gray-600">{service.description}</p>
+                      <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">{service.description}</p>
                       
                       <div className="mt-6">
-                        <h4 className="text-sm font-semibold leading-6 text-gray-900">What&apos;s included:</h4>
+                        <h4 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">What&apos;s included:</h4>
                         <ul className="mt-3 space-y-2">
                       {service.features?.map((feature) => (
-                        <li key={feature} className="flex items-center gap-x-3 text-sm text-gray-600">
+                        <li key={feature} className="flex items-center gap-x-3 text-sm text-gray-600 dark:text-gray-300">
                               <CheckIcon className="h-4 w-4 flex-none text-blue-600" />
                               {feature}
                             </li>
@@ -220,10 +220,10 @@ export default function ServicesPage() {
                       </div>
 
                       <div className="mt-6">
-                        <h4 className="text-sm font-semibold leading-6 text-gray-900">Deliverables:</h4>
+                        <h4 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Deliverables:</h4>
                         <ul className="mt-3 space-y-2">
                         {service.deliverables?.map((deliverable) => (
-                          <li key={deliverable} className="flex items-center gap-x-3 text-sm text-gray-600">
+                          <li key={deliverable} className="flex items-center gap-x-3 text-sm text-gray-600 dark:text-gray-300">
                               <div className="h-1.5 w-1.5 flex-none rounded-full bg-blue-600" />
                               {deliverable}
                             </li>
@@ -247,13 +247,13 @@ export default function ServicesPage() {
       </div>
 
       {/* Process Section */}
-      <div className="bg-gray-50 py-24 sm:py-32">
+      <div className="bg-gray-50 dark:bg-gray-800 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {pageContent.process.title}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               {pageContent.process.subtitle}
             </p>
           </div>
@@ -261,13 +261,13 @@ export default function ServicesPage() {
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
               {pageContent.process.steps.map((item: { step: number; title: string; description: string }) => (
                 <div key={item.step} className="flex flex-col">
-                  <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
+                  <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
                       <span className="text-sm font-bold text-white">{item.step}</span>
                     </div>
                     {item.title}
                   </dt>
-                  <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                  <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                     <p className="flex-auto">{item.description}</p>
                   </dd>
                 </div>
@@ -288,7 +288,7 @@ export default function ServicesPage() {
               {pageContent.cta.description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <button className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors">
+              <button className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors">
                 {pageContent.cta.primaryButton}
               </button>
               <button className="text-sm font-semibold leading-6 text-white hover:text-blue-100 transition-colors">
