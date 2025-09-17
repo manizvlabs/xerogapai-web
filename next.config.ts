@@ -66,41 +66,8 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['@heroicons/react'],
   },
 
-  // Turbopack configuration
-  turbopack: {
-    rules: {
-      '*.svg': {
-        loaders: ['@svgr/webpack'],
-        as: '*.js',
-      },
-    },
-  },
-
-  // Webpack optimization
-  webpack: (config, { dev, isServer }) => {
-    // Basic optimizations for production
-    if (!dev && !isServer) {
-      config.optimization = {
-        ...config.optimization,
-        splitChunks: {
-          chunks: 'all',
-          cacheGroups: {
-            default: {
-              minChunks: 2,
-              priority: -20,
-              reuseExistingChunk: true,
-            },
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
-              priority: -10,
-              chunks: 'all',
-            },
-          },
-        },
-      };
-    }
-
+  // Webpack optimization (simplified for Vercel compatibility)
+  webpack: (config) => {
     return config;
   },
 };
