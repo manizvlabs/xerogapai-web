@@ -1,6 +1,13 @@
 import { sql } from '@vercel/postgres';
 import { contactStoreFallback } from './contact-storage-fallback';
 
+// Global flag to track if we're using fallback
+let usingFallback = true; // Default to fallback since no DB is configured
+let initialized = false;
+
+// Check if we have database environment variables
+const hasDbConfig = process.env.POSTGRES_URL || process.env.DATABASE_URL;
+
 export interface ContactSubmission {
   id: string;
   firstName: string;
@@ -32,6 +39,18 @@ export interface ContactResponse {
 
 // Initialize the database schema
 export async function initializeDatabase() {
+  if (initialized) {
+    return usingFallback ? false : true;
+  }
+  
+  // If no database config, use fallback immediately
+  if (!hasDbConfig) {
+    console.log('🔄 No database configuration found, using in-memory storage');
+    usingFallback = true;
+    initialized = true;
+    return false;
+  }
+  
   try {
     // Create contacts table
     await sql`
@@ -64,10 +83,14 @@ export async function initializeDatabase() {
     `;
 
     console.log('✅ Database initialized successfully');
+    usingFallback = false;
+    initialized = true;
     return true;
   } catch (error) {
     console.error('❌ Database initialization failed:', error);
     console.log('🔄 Falling back to in-memory storage for development');
+    usingFallback = true;
+    initialized = true;
     return false;
   }
 }
@@ -76,6 +99,10 @@ export async function initializeDatabase() {
 export class ContactDatabase {
   // Create a new contact submission
   static async createContact(data: Omit<ContactSubmission, 'id' | 'submittedAt'>): Promise<ContactSubmission> {
+    if (usingFallback) {
+      return contactStoreFallback.createContact(data);
+    }
+    
     try {
       const result = await sql`
         INSERT INTO contacts (
@@ -105,6 +132,7 @@ export class ContactDatabase {
       };
     } catch (error) {
       console.error('Database error, falling back to in-memory storage:', error);
+      usingFallback = true;
       return contactStoreFallback.createContact(data);
     }
   }
@@ -117,6 +145,10 @@ export class ContactDatabase {
     endDate?: string;
     search?: string;
   } = {}): Promise<ContactResponse> {
+    if (usingFallback) {
+      return contactStoreFallback.getContacts(options);
+    }
+    
     try {
       const {
         page = 1,
@@ -206,12 +238,17 @@ export class ContactDatabase {
       };
     } catch (error) {
       console.error('Database error, falling back to in-memory storage:', error);
+      usingFallback = true;
       return contactStoreFallback.getContacts(options);
     }
   }
 
   // Get a single contact by ID
   static async getContactById(id: string): Promise<ContactSubmission | null> {
+    if (usingFallback) {
+      return contactStoreFallback.getContactById(id);
+    }
+    
     try {
       const result = await sql`
         SELECT id, first_name, last_name, email, phone, company, service, message, 
@@ -240,12 +277,17 @@ export class ContactDatabase {
       };
     } catch (error) {
       console.error('Database error, falling back to in-memory storage:', error);
+      usingFallback = true;
       return contactStoreFallback.getContactById(id);
     }
   }
 
   // Delete a contact
   static async deleteContact(id: string): Promise<boolean> {
+    if (usingFallback) {
+      return contactStoreFallback.deleteContact(id);
+    }
+    
     try {
       const result = await sql`
         DELETE FROM contacts WHERE id = ${parseInt(id)}
@@ -253,12 +295,17 @@ export class ContactDatabase {
       return result.rowCount > 0;
     } catch (error) {
       console.error('Database error, falling back to in-memory storage:', error);
+      usingFallback = true;
       return contactStoreFallback.deleteContact(id);
     }
   }
 
   // Get contact statistics
   static async getStats(): Promise<ContactStats> {
+    if (usingFallback) {
+      return contactStoreFallback.getStats();
+    }
+    
     try {
       const now = new Date();
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -280,6 +327,7 @@ export class ContactDatabase {
       };
     } catch (error) {
       console.error('Database error, falling back to in-memory storage:', error);
+      usingFallback = true;
       return contactStoreFallback.getStats();
     }
   }

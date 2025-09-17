@@ -130,6 +130,7 @@ class ContactStoreFallback {
     const weekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
     const monthAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
 
+
     return {
       total: this.contacts.length,
       today: this.contacts.filter(contact => 
