@@ -111,13 +111,13 @@ export default function HomePage() {
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-              {content.services && content.services.length > 0 ? content.services.map((service) => {
+              {content.services && content.services.length > 0 ? content.services.map((service, index) => {
                 const IconComponent = iconMap[service.icon as keyof typeof iconMap];
                 return (
-                  <div key={service.title} className="flex flex-col">
+                  <div key={`service-${index}-${service.name}`} className="flex flex-col">
                     <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
                       <IconComponent className="h-5 w-5 flex-none text-blue-600 dark:text-blue-400" aria-hidden="true" />
-                      {service.title}
+                      {service.name}
                     </dt>
                     <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                       <p className="flex-auto">{service.description}</p>

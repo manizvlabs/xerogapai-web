@@ -17,7 +17,7 @@ interface HomepageContent {
     value: string;
   }>;
   services: Array<{
-    title: string;
+    name: string;
     description: string;
     icon: string;
   }>;
