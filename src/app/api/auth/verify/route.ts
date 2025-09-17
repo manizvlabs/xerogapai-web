@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyToken, requireAuth } from '@/lib/auth-simple';
+import { requireAuth } from '@/lib/auth-jwt';
 import { applySecurityHeaders } from '@/lib/security';
 
 export async function GET(request: NextRequest): Promise<Response> {
@@ -16,9 +16,9 @@ export async function GET(request: NextRequest): Promise<Response> {
     }
 
     // Verify token
-    const user = requireAuth(token);
+    const payload = requireAuth(token);
 
-    if (!user) {
+    if (!payload) {
       return NextResponse.json(
         { error: 'Invalid token' },
         { status: 401 }
@@ -29,10 +29,10 @@ export async function GET(request: NextRequest): Promise<Response> {
     const response = NextResponse.json({
       success: true,
       user: {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        role: user.role
+        id: payload.userId,
+        username: payload.username,
+        email: payload.email,
+        role: payload.role
       }
     });
 

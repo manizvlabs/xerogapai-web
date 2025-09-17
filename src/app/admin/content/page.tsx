@@ -1,13 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
-import { contentConfig } from '@/config/content';
-import { CheckIcon, PencilIcon, EyeIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import ProtectedAdminLayout from '@/components/ProtectedAdminLayout';
+import { useContent } from '@/hooks/useContent';
+import { CheckIcon, PencilIcon, EyeIcon, UsersIcon, CogIcon } from '@heroicons/react/24/outline';
 
 export default function ContentManagementPage() {
   const [selectedSection, setSelectedSection] = useState<string>('');
-  const [content, setContent] = useState<any>(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [editContent, setEditContent] = useState<any>(null);
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'success' | 'error'>('idle');
+  
+  const { content, loading, error, updateContent } = useContent();
 
   const sections = [
     { key: 'homepage', name: 'Homepage', description: 'Hero section, stats, services, CTA' },
@@ -20,36 +25,154 @@ export default function ContentManagementPage() {
 
   const handleSectionSelect = (sectionKey: string) => {
     setSelectedSection(sectionKey);
-    setContent(contentConfig[sectionKey as keyof typeof contentConfig]);
+    if (content?.[sectionKey]) {
+      setEditContent(content[sectionKey]);
+    }
     setIsEditing(false);
+    setSaveStatus('idle');
   };
 
   const handleEdit = () => {
     setIsEditing(true);
+    setEditContent(content[selectedSection]);
   };
 
-  const handleSave = (newContent: any) => {
-    setContent(newContent);
-    setIsEditing(false);
-    // In a real implementation, this would save to a file or database
-    console.log('Content saved:', newContent);
+  const handleSave = async () => {
+    if (!selectedSection || !editContent) return;
+    
+    setSaveStatus('saving');
+    const result = await updateContent(selectedSection, editContent);
+    
+    if (result.success) {
+      setSaveStatus('success');
+      setIsEditing(false);
+      setTimeout(() => setSaveStatus('idle'), 3000);
+    } else {
+      setSaveStatus('error');
+      setTimeout(() => setSaveStatus('idle'), 5000);
+    }
   };
 
   const handleCancel = () => {
     setIsEditing(false);
-    setContent(contentConfig[selectedSection as keyof typeof contentConfig]);
+    setEditContent(content[selectedSection]);
+    setSaveStatus('idle');
+  };
+
+  const renderContentArea = () => {
+    if (loading) {
+      return (
+        <div className="flex items-center justify-center py-8">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          <span className="ml-2 text-gray-600 dark:text-gray-300">Loading content...</span>
+        </div>
+      );
+    }
+    
+    if (error) {
+      return (
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+          <p className="text-red-800 dark:text-red-200">Error: {error}</p>
+        </div>
+      );
+    }
+    
+    if (isEditing) {
+      return (
+        <div className="space-y-4">
+          <div>
+            <label htmlFor="content-json" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Content (JSON)
+            </label>
+            <div className="relative">
+              <textarea
+                id="content-json"
+                value={JSON.stringify(editContent, null, 2)}
+                onChange={(e) => {
+                  try {
+                    setEditContent(JSON.parse(e.target.value));
+                  } catch (error) {
+                    // Invalid JSON, keep the text as is
+                    console.warn('Invalid JSON input:', error);
+                  }
+                }}
+                className="w-full h-80 max-h-80 p-3 border border-gray-300 dark:border-gray-600 rounded-md font-mono text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white resize-none overflow-y-auto"
+                placeholder="Enter content as JSON..."
+                style={{ minHeight: '320px', maxHeight: '320px' }}
+              />
+            </div>
+          </div>
+          <div className="sticky bottom-0 bg-white dark:bg-gray-800 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex gap-2 items-center flex-wrap">
+              <button
+                onClick={handleSave}
+                disabled={saveStatus === 'saving'}
+                className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <CheckIcon className="h-4 w-4" />
+                {saveStatus === 'saving' ? 'Saving...' : 'Save Changes'}
+              </button>
+              <button
+                onClick={handleCancel}
+                disabled={saveStatus === 'saving'}
+                className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Cancel
+              </button>
+              {saveStatus === 'success' && (
+                <span className="text-green-600 dark:text-green-400 text-sm">
+                  ✓ Changes saved successfully!
+                </span>
+              )}
+              {saveStatus === 'error' && (
+                <span className="text-red-600 dark:text-red-400 text-sm">
+                  ✗ Failed to save changes
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    }
+    
+    return (
+      <div className="space-y-4">
+        <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg h-80 max-h-80 overflow-y-auto">
+          <pre className="text-sm text-gray-900 dark:text-white whitespace-pre-wrap">
+            {JSON.stringify(editContent, null, 2)}
+          </pre>
+        </div>
+        <div className="text-sm text-gray-500 dark:text-gray-400">
+          Click "Edit" to modify this content. Changes will be saved immediately and reflected on the live site.
+        </div>
+      </div>
+    );
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
+    <ProtectedAdminLayout>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Content Management
-          </h1>
-          <p className="mt-2 text-gray-600 dark:text-gray-300">
-            Safely edit your website content without breaking the build
-          </p>
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                Admin Dashboard
+              </h1>
+              <p className="mt-2 text-gray-600 dark:text-gray-300">
+                Manage your website content and settings
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <Link href="/admin/users" className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                <UsersIcon className="h-5 w-5" />
+                User Management
+              </Link>
+              <Link href="/admin/content" className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                <CogIcon className="h-5 w-5" />
+                Content Management
+              </Link>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -104,60 +227,15 @@ export default function ContentManagementPage() {
                     </div>
                   </div>
 
-                  {isEditing ? (
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                          Content (JSON)
-                        </label>
-                        <textarea
-                          value={JSON.stringify(content, null, 2)}
-                          onChange={(e) => {
-                            try {
-                              setContent(JSON.parse(e.target.value));
-                            } catch (error) {
-                              // Invalid JSON, keep the text as is
-                            }
-                          }}
-                          className="w-full h-96 p-3 border border-gray-300 dark:border-gray-600 rounded-md font-mono text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white"
-                          placeholder="Enter content as JSON..."
-                        />
-                      </div>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => handleSave(content)}
-                          className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
-                        >
-                          <CheckIcon className="h-4 w-4" />
-                          Save Changes
-                        </button>
-                        <button
-                          onClick={handleCancel}
-                          className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors"
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="space-y-4">
-                      <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
-                        <pre className="text-sm text-gray-900 dark:text-white overflow-x-auto">
-                          {JSON.stringify(content, null, 2)}
-                        </pre>
-                      </div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">
-                        Click "Edit" to modify this content. Changes will be saved to the content configuration file.
-                      </div>
-                    </div>
-                  )}
+                  {renderContentArea()}
                 </div>
               </div>
             ) : (
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
                 <div className="text-center text-gray-500 dark:text-gray-400">
-                  <EyeIcon className="h-12 w-12 mx-auto mb-4" />
-                  <p>Select a content section to view and edit</p>
+                  <EyeIcon className="h-12 w-12 mx-auto mb-4 text-gray-400" />
+                  <h3 className="text-lg font-medium mb-2">Select a Content Section</h3>
+                  <p>Choose a section from the left panel to view and edit its content.</p>
                 </div>
               </div>
             )}
@@ -166,13 +244,13 @@ export default function ContentManagementPage() {
 
         {/* Instructions */}
         <div className="mt-8 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-2">
+          <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-4">
             How to Edit Content Safely
           </h3>
-          <div className="text-blue-800 dark:text-blue-200 space-y-2">
+          <div className="space-y-2 text-blue-800 dark:text-blue-200">
             <p>1. <strong>Select a section</strong> from the left panel</p>
             <p>2. <strong>Click "Edit"</strong> to modify the content</p>
-            <p>3. <strong>Edit the JSON</strong> directly in the text area</p>
+            <p>3. <strong>Edit the JSON directly</strong> in the text area</p>
             <p>4. <strong>Click "Save Changes"</strong> to update the content</p>
             <p>5. <strong>Test locally</strong> with <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">npm run dev</code></p>
             <p>6. <strong>Commit and push</strong> to feature/v2 branch</p>
@@ -180,6 +258,6 @@ export default function ContentManagementPage() {
           </div>
         </div>
       </div>
-    </div>
+    </ProtectedAdminLayout>
   );
 }

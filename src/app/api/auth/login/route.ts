@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { authenticateUser } from '@/lib/auth-simple';
+import { authenticateUser } from '@/lib/auth-jwt';
 import { withRateLimit } from '@/lib/rate-limit';
 import { applySecurityHeaders, sanitizeInput, logSecurityEvent } from '@/lib/security';
 
@@ -42,7 +42,7 @@ async function loginHandler(request: NextRequest): Promise<Response> {
       userId: authResult.user?.id
     }, request);
 
-    // Create response with token
+    // Create response with tokens
     const response = NextResponse.json({
       success: true,
       user: {
@@ -51,15 +51,23 @@ async function loginHandler(request: NextRequest): Promise<Response> {
         email: authResult.user?.email,
         role: authResult.user?.role
       },
-      token: authResult.token
+      token: authResult.token,
+      refreshToken: authResult.refreshToken
     });
 
-    // Set HTTP-only cookie for token
+    // Set HTTP-only cookies for tokens
     response.cookies.set('auth-token', authResult.token!, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
-      maxAge: 24 * 60 * 60 // 24 hours
+      maxAge: 15 * 60 // 15 minutes
+    });
+
+    response.cookies.set('refresh-token', authResult.refreshToken!, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 7 * 24 * 60 * 60 // 7 days
     });
 
     return applySecurityHeaders(response, true);

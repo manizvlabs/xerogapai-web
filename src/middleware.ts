@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyToken, requireAuth, isAdmin } from '@/lib/auth-simple';
 import { 
   blockSensitiveContent, 
   applySecurityHeaders, 
-  isProtectedRoute,
   logSecurityEvent 
 } from '@/lib/security';
 import { checkRateLimit, isIPBlocked } from '@/lib/rate-limit';
@@ -12,7 +10,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Allow admin routes and auth API routes without sensitive content blocking
-  if (pathname.startsWith('/admin') || pathname.startsWith('/api/auth')) {
+  if (pathname.startsWith('/admin') || pathname.startsWith('/api/auth') || pathname.startsWith('/api/admin')) {
     // Admin routes and auth API routes are handled separately below
   } else {
     // Block sensitive content for other routes
@@ -62,38 +60,60 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  // Protect admin routes (except login page)
+  // Protect admin pages (except login page)
   if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
     const token = request.cookies.get('auth-token')?.value;
     
     if (!token) {
+      logSecurityEvent('admin_page_access_denied', {
+        pathname,
+        reason: 'No token provided'
+      }, request);
       // Redirect to login page
       const loginUrl = new URL('/admin/login', request.url);
       const response = NextResponse.redirect(loginUrl);
       return applySecurityHeaders(response, true);
     }
 
-    const user = requireAuth(token);
-    
-    if (!user || !isAdmin(user)) {
-      logSecurityEvent('unauthorized_admin_access', {
-        pathname,
-        userId: user?.id,
-        reason: 'Invalid or insufficient permissions'
-      }, request);
+    // Simple token check (just verify it exists and is not expired)
+    try {
+      const parts = token.split('.');
+      if (parts.length !== 3) {
+        throw new Error('Invalid token format');
+      }
+
+      // Decode base64url (JWT uses base64url, not base64)
+      const base64Url = parts[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const padded = base64.padEnd(base64.length + (4 - base64.length % 4) % 4, '=');
+      const payload = JSON.parse(atob(padded));
       
-      // Redirect to login page instead of 403
+      // Check if token is expired
+      if (payload.exp && payload.exp < Date.now() / 1000) {
+        throw new Error('Token expired');
+      }
+
+      // Check if user is admin
+      if (payload.role !== 'admin') {
+        throw new Error('Insufficient permissions');
+      }
+
+      // Log admin page access
+      logSecurityEvent('admin_page_access', {
+        pathname,
+        userId: payload.userId,
+        username: payload.username
+      }, request);
+    } catch (error) {
+      logSecurityEvent('admin_page_access_denied', {
+        pathname,
+        reason: 'Invalid token or insufficient permissions'
+      }, request);
+      // Redirect to login page
       const loginUrl = new URL('/admin/login', request.url);
       const response = NextResponse.redirect(loginUrl);
       return applySecurityHeaders(response, true);
     }
-
-    // Log admin access
-    logSecurityEvent('admin_access', {
-      pathname,
-      userId: user.id,
-      username: user.username
-    }, request);
   }
 
   // Apply security headers to all responses
