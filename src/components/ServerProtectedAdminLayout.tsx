@@ -1,3 +1,4 @@
+import React from 'react';
 import { NextRequest } from 'next/server';
 import { redirect } from 'next/navigation';
 import { getServerUser } from '@/lib/auth-server';

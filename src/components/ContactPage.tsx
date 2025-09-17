@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import { useContent } from '@/hooks/useContent';
 import ContactForm from '../app/contact/ContactForm';
