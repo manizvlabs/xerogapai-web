@@ -11,20 +11,19 @@ import { checkRateLimit, isIPBlocked } from '@/lib/rate-limit';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Allow admin login page without any checks
-  if (pathname === '/admin/login') {
-    const response = NextResponse.next();
-    return applySecurityHeaders(response, true);
-  }
-
-  // Block sensitive content
-  const blockedResponse = blockSensitiveContent(request);
-  if (blockedResponse) {
-    logSecurityEvent('blocked_sensitive_content', {
-      pathname,
-      reason: 'Sensitive content access attempt'
-    }, request);
-    return blockedResponse;
+  // Allow admin routes without sensitive content blocking
+  if (pathname.startsWith('/admin')) {
+    // Admin routes are handled separately below
+  } else {
+    // Block sensitive content for non-admin routes
+    const blockedResponse = blockSensitiveContent(request);
+    if (blockedResponse) {
+      logSecurityEvent('blocked_sensitive_content', {
+        pathname,
+        reason: 'Sensitive content access attempt'
+      }, request);
+      return blockedResponse;
+    }
   }
 
   // Check if IP is blocked
