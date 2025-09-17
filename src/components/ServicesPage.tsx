@@ -158,7 +158,13 @@ export default function ServicesPage() {
     }
   };
 
-  const pageContent = content || defaultContent;
+  const pageContent = {
+    hero: content?.hero || defaultContent.hero,
+    services: content?.services || defaultContent.services,
+    process: content?.process || defaultContent.process,
+    pricing: content?.pricing || defaultContent.pricing,
+    cta: content?.cta || defaultContent.cta
+  };
 
   // Icon mapping
   const iconMap = {

@@ -73,7 +73,12 @@ export default function ContactPage() {
     }
   };
 
-  const pageContent = content || defaultContent;
+  const pageContent = {
+    hero: content?.hero || defaultContent.hero,
+    contactInfo: content?.contactInfo || content?.info || defaultContent.contactInfo,
+    responseTime: content?.responseTime || defaultContent.responseTime,
+    consultation: content?.consultation || defaultContent.consultation
+  };
 
   // Icon mapping
   const iconMap = {

@@ -105,7 +105,14 @@ export default function AboutPage() {
     }
   };
 
-  const pageContent = content || defaultContent;
+  const pageContent = {
+    hero: content?.hero || defaultContent.hero,
+    mission: content?.mission || defaultContent.mission,
+    whyChooseUs: content?.whyChooseUs || defaultContent.whyChooseUs,
+    team: content?.team || defaultContent.team,
+    values: content?.values || defaultContent.values,
+    cta: content?.cta || defaultContent.cta
+  };
 
   return (
     <div className="bg-white">
