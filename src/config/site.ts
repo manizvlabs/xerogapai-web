@@ -10,6 +10,8 @@ export const siteConfig = {
   businessType: process.env.NEXT_PUBLIC_BUSINESS_TYPE || 'all',
   enableThemeSwitcher: process.env.NEXT_PUBLIC_ENABLE_THEME_SWITCHER === 'true',
   defaultTheme: process.env.NEXT_PUBLIC_DEFAULT_THEME || 'light',
+  version: process.env.NEXT_PUBLIC_APP_VERSION || '1.0.0-09172025',
+  copyrightYear: process.env.NEXT_PUBLIC_COPYRIGHT_YEAR || new Date().getFullYear().toString(),
   social: {
     linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL || 'https://linkedin.com/company/zerodigital',
     twitter: process.env.NEXT_PUBLIC_TWITTER_URL || 'https://twitter.com/zerodigital',
