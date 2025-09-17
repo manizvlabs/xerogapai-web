@@ -1,4 +1,10 @@
 import React from 'react';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog - Zero Digital",
+  description: "Insights, tips, and strategies for digital transformation, AI automation, and business growth. Stay updated with the latest trends and best practices.",
+};
 
 export default function Blog() {
   const posts = [

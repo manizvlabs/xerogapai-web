@@ -1,4 +1,10 @@
 import { SparklesIcon, DevicePhoneMobileIcon, ChartBarIcon, CpuChipIcon, CheckIcon } from '@heroicons/react/24/outline';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Services - Zero Digital",
+  description: "Comprehensive digital transformation solutions including AI automation, mobile app development, digital marketing, and AI agent development.",
+};
 
 export default function Services() {
   const services = [

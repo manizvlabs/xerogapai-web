@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Portfolio - Zero Digital",
+  description: "Explore Zero Digital's successful projects including mobile apps, AI automation systems, and digital marketing solutions. See our proven track record.",
+};
+
 export default function Portfolio() {
   const projects = [
     {

@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { siteConfig } from "@/config/site";
 import StructuredData from "@/components/StructuredData";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import DarkModeTest from "@/components/DarkModeTest";
 import { Suspense } from "react";
 
 const inter = Inter({
@@ -82,6 +83,7 @@ export default function RootLayout({
           <Suspense fallback={null}>
             <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
           </Suspense>
+          <DarkModeTest />
           <Header />
           <main className="min-h-screen">
             {children}

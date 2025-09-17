@@ -12,7 +12,7 @@
   --color-text-secondary: #6b7280;
 }
 
-[data-theme="dark"] {
+.dark {
   --background: #0a0a0a;
   --foreground: #ededed;
   --color-primary: #3b82f6;
@@ -22,6 +22,51 @@
   --color-surface: #1e293b;
   --color-text: #f1f5f9;
   --color-text-secondary: #94a3b8;
+}
+
+/* Manual dark mode styles to ensure Tailwind dark mode classes work */
+.dark .dark\:bg-gray-900 {
+  background-color: rgb(17, 24, 39) !important;
+}
+
+.dark .dark\:bg-gray-800 {
+  background-color: rgb(31, 41, 55) !important;
+}
+
+.dark .dark\:bg-gray-700 {
+  background-color: rgb(55, 65, 81) !important;
+}
+
+.dark .dark\:text-white {
+  color: rgb(255, 255, 255) !important;
+}
+
+.dark .dark\:text-gray-100 {
+  color: rgb(243, 244, 246) !important;
+}
+
+.dark .dark\:text-gray-300 {
+  color: rgb(209, 213, 219) !important;
+}
+
+.dark .dark\:text-gray-900 {
+  color: rgb(17, 24, 39) !important;
+}
+
+.dark .dark\:border-gray-700 {
+  border-color: rgb(55, 65, 81) !important;
+}
+
+.dark .dark\:border-gray-600 {
+  border-color: rgb(75, 85, 99) !important;
+}
+
+.dark .dark\:hover\:bg-gray-700:hover {
+  background-color: rgb(55, 65, 81) !important;
+}
+
+.dark .dark\:hover\:bg-gray-600:hover {
+  background-color: rgb(75, 85, 99) !important;
 }
 
 @theme inline {
