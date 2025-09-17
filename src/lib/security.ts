@@ -53,7 +53,6 @@ export const adminSecurityHeaders = {
 // Content protection rules
 export const protectedRoutes = [
   '/api/admin',
-  '/api/auth',
   '/_next/static',
   '/.env',
   '/.env.local',
