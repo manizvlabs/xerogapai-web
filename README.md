@@ -1,9 +1,12 @@
 # Zero Digital - AI-Powered Digital Transformation
 
-![Zero Digital](https://img.shields.io/badge/Zero%20Digital-AI%20Transformation-blue)
-![Next.js](https://img.shields.io/badge/Next.js-15.5.3-black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-blue)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/manizvlabs/zero-digital-website)
+[![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://zero-digital.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.5.3-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-blue)](https://tailwindcss.com/)
+
+**🌐 Live Website:** [https://zero-digital.vercel.app/](https://zero-digital.vercel.app/)
 
 Transform your business with cutting-edge AI automation, custom mobile apps, and digital marketing solutions. Built for Hyderabad businesses and beyond.
 
@@ -26,6 +29,15 @@ Transform your business with cutting-edge AI automation, custom mobile apps, and
 - Node.js 18+
 - npm or yarn
 - Git
+
+### 🌐 Live Deployment
+
+The website is automatically deployed to Vercel on every push to the `main` branch:
+
+- **Production URL:** [https://zero-digital.vercel.app/](https://zero-digital.vercel.app/)
+- **CI/CD:** GitHub Actions with automated testing and deployment
+- **Performance:** Optimized with Vercel's CDN and edge functions
+- **Security:** HTTPS enabled with security headers
 
 ### Installation
 
