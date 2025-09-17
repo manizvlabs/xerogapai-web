@@ -47,7 +47,7 @@ export function useHomepageContent() {
       
       // Fallback to default content
       console.log('Using default content from config');
-      setContent(contentConfig.homepage as HomepageContent);
+      setContent(contentConfig.homepage as unknown as HomepageContent);
       setLoading(false);
     };
 

@@ -292,7 +292,7 @@ export class ContactDatabase {
       const result = await sql`
         DELETE FROM contacts WHERE id = ${parseInt(id)}
       `;
-      return result.rowCount > 0;
+      return (result.rowCount || 0) > 0;
     } catch (error) {
       console.error('Database error, falling back to file storage:', error);
       usingFallback = true;

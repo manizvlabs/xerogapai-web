@@ -5,8 +5,9 @@ import { applySecurityHeaders, logSecurityEvent } from '@/lib/security';
 // GET /api/contacts/[id] - Get a single contact by ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
+  const params = await context.params;
   try {
     // Initialize database if needed
     await initializeDatabase();
@@ -41,8 +42,9 @@ export async function GET(
 // DELETE /api/contacts/[id] - Delete a contact by ID
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
+  const params = await context.params;
   try {
     // Initialize database if needed
     await initializeDatabase();

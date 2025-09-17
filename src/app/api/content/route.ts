@@ -3,7 +3,7 @@ import { contentConfig } from '@/config/content';
 import { applySecurityHeaders } from '@/lib/security';
 
 // In-memory content store (in production, use a database)
-let contentStore = { ...contentConfig };
+const contentStore = { ...contentConfig };
 
 export async function GET(request: NextRequest) {
   try {

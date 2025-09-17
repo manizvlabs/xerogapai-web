@@ -104,7 +104,7 @@ export default function BlogPage() {
       <div className="py-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-4">
-            {pageContent.categories.map((category) => (
+            {pageContent.categories.map((category: string) => (
               <button
                 key={category}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
@@ -125,7 +125,7 @@ export default function BlogPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-              {pageContent.posts.map((post) => (
+              {pageContent.posts.map((post: { title: string; category: string; date: string; readTime: string; excerpt: string; author: string }) => (
                 <article key={post.title} className="flex flex-col rounded-2xl bg-gray-50 ring-1 ring-gray-200">
                   <div className="p-8">
                     <div className="flex items-center gap-x-4 text-xs">

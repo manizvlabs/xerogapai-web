@@ -114,10 +114,10 @@ export default function HomePage() {
               {content.services && content.services.length > 0 ? content.services.map((service) => {
                 const IconComponent = iconMap[service.icon as keyof typeof iconMap];
                 return (
-                  <div key={service.name} className="flex flex-col">
+                  <div key={service.title} className="flex flex-col">
                     <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
                       <IconComponent className="h-5 w-5 flex-none text-blue-600 dark:text-blue-400" aria-hidden="true" />
-                      {service.name}
+                      {service.title}
                     </dt>
                     <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                       <p className="flex-auto">{service.description}</p>
@@ -139,20 +139,20 @@ export default function HomePage() {
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              {content.cta?.title || "Ready to transform your business?"}
+              Ready to transform your business?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
-              {content.cta?.subtitle || "Get started with our AI-powered solutions today and see the difference automation can make."}
+              Get started with our AI-powered solutions today and see the difference automation can make.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/contact"
                 className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                {content.cta?.cta?.primary || "Get started"}
+                Get started
               </Link>
               <Link href="/about" className="text-sm font-semibold leading-6 text-white">
-                {content.cta?.cta?.secondary || "Learn more"} <span aria-hidden="true">→</span>
+                Learn more <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>

@@ -166,8 +166,8 @@ export default function AboutPage() {
               <div className="bg-gray-50 rounded-2xl p-8">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">{pageContent.whyChooseUs.title}</h3>
                 <ul className="space-y-4">
-                  {pageContent.whyChooseUs.features && Array.isArray(pageContent.whyChooseUs.features) && pageContent.whyChooseUs.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-x-3">
+                  {pageContent.whyChooseUs.features && Array.isArray(pageContent.whyChooseUs.features) && pageContent.whyChooseUs.features.map((feature: string, index: number) => (
+                    <li key={`feature-${index}-${feature.slice(0, 20)}`} className="flex items-start gap-x-3">
                       <CheckIcon className="h-6 w-6 flex-none text-blue-600 mt-0.5" />
                       <span className="text-gray-600">{feature}</span>
                     </li>
@@ -192,8 +192,8 @@ export default function AboutPage() {
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
-              {pageContent.values.items && Array.isArray(pageContent.values.items) && pageContent.values.items.map((value, index) => (
-                <div key={index} className="flex flex-col">
+              {pageContent.values.items && Array.isArray(pageContent.values.items) && pageContent.values.items.map((value: { name: string; description: string }, index: number) => (
+                <div key={`value-${index}-${value.name}`} className="flex flex-col">
                   <dt className="text-base font-semibold leading-7 text-gray-900">
                     {value.name}
                   </dt>
@@ -220,8 +220,8 @@ export default function AboutPage() {
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-1">
-              {pageContent.team.members && Array.isArray(pageContent.team.members) && pageContent.team.members.map((person, index) => (
-                <div key={index} className="flex flex-col items-center text-center">
+              {pageContent.team.members && Array.isArray(pageContent.team.members) && pageContent.team.members.map((person: { initials: string; name: string; title: string; description: string }, index: number) => (
+                <div key={`member-${index}-${person.name}`} className="flex flex-col items-center text-center">
                   <div className="h-32 w-32 rounded-full bg-gray-200 flex items-center justify-center">
                     <span className="text-2xl font-bold text-gray-600">{person.initials}</span>
                   </div>
@@ -248,8 +248,8 @@ export default function AboutPage() {
               </p>
             </div>
             <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
-              {pageContent.stats.items && Array.isArray(pageContent.stats.items) && pageContent.stats.items.map((stat, index) => (
-                <div key={index} className="flex flex-col-reverse">
+              {pageContent.stats.items && Array.isArray(pageContent.stats.items) && pageContent.stats.items.map((stat: { label: string; value: string }, index: number) => (
+                <div key={`stat-${index}-${stat.label}`} className="flex flex-col-reverse">
                   <dt className="text-base leading-7 text-blue-100">{stat.label}</dt>
                   <dd className="text-2xl font-bold leading-9 tracking-tight text-white">{stat.value}</dd>
                 </div>

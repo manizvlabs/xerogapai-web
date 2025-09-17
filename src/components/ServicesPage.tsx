@@ -162,7 +162,6 @@ export default function ServicesPage() {
     hero: content?.hero || defaultContent.hero,
     services: content?.services || defaultContent.services,
     process: content?.process || defaultContent.process,
-    pricing: content?.pricing || defaultContent.pricing,
     cta: content?.cta || defaultContent.cta
   };
 
@@ -195,7 +194,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-              {pageContent.services.map((service, index) => {
+              {pageContent.services.map((service: { name: string; description: string; icon: string; price: string; features: string[]; deliverables: string[] }) => {
                 const IconComponent = iconMap[service.icon as keyof typeof iconMap] || SparklesIcon;
                 return (
                   <div key={service.name} className="flex flex-col justify-between rounded-2xl bg-gray-50 p-8 ring-1 ring-gray-200">
@@ -209,7 +208,7 @@ export default function ServicesPage() {
                       <p className="mt-4 text-base leading-7 text-gray-600">{service.description}</p>
                       
                       <div className="mt-6">
-                        <h4 className="text-sm font-semibold leading-6 text-gray-900">What's included:</h4>
+                        <h4 className="text-sm font-semibold leading-6 text-gray-900">What&apos;s included:</h4>
                         <ul className="mt-3 space-y-2">
                       {service.features?.map((feature) => (
                         <li key={feature} className="flex items-center gap-x-3 text-sm text-gray-600">
@@ -260,7 +259,7 @@ export default function ServicesPage() {
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
-              {pageContent.process.steps.map((item) => (
+              {pageContent.process.steps.map((item: { step: number; title: string; description: string }) => (
                 <div key={item.step} className="flex flex-col">
                   <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">

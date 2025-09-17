@@ -124,7 +124,7 @@ export default function ContactPage() {
                   {pageContent.contactInfo.description}
                 </p>
                 <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600">
-                  {pageContent.contactInfo.details && Array.isArray(pageContent.contactInfo.details) && pageContent.contactInfo.details.map((detail) => {
+                  {pageContent.contactInfo.details && Array.isArray(pageContent.contactInfo.details) && pageContent.contactInfo.details.map((detail: { icon: string; label: string; value: string; link?: string }) => {
                     const IconComponent = iconMap[detail.icon as keyof typeof iconMap] || MapPinIcon;
                     return (
                       <div key={detail.label} className="flex gap-x-4">

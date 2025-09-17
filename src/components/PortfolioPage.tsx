@@ -98,8 +98,8 @@ export default function PortfolioPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-              {pageContent.projects.map((project, index) => (
-                <div key={index} className="flex flex-col rounded-2xl bg-gray-50 ring-1 ring-gray-200">
+              {pageContent.projects.map((project: { category: string; name: string; description: string; technologies: string[]; link?: string; results: string }, index: number) => (
+                <div key={`project-${index}-${project.name}`} className="flex flex-col rounded-2xl bg-gray-50 ring-1 ring-gray-200">
                   <div className="h-48 bg-gray-200 rounded-t-2xl flex items-center justify-center">
                     <span className="text-gray-500">Project Image</span>
                   </div>
@@ -120,7 +120,7 @@ export default function PortfolioPage() {
                       <div className="mt-2 flex flex-wrap gap-2">
                         {project.technologies.map((tech, techIndex) => (
                           <span
-                            key={techIndex}
+                            key={`tech-${techIndex}-${tech}`}
                             className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
                           >
                             {tech}

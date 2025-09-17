@@ -4,12 +4,13 @@ import { withRateLimit } from '@/lib/rate-limit';
 import { applySecurityHeaders, logSecurityEvent } from '@/lib/security';
 
 // PUT /api/admin/users/[id] - Update user
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }): Promise<Response> {
+export async function PUT(request: NextRequest, context: { params: Promise<{ id: string }> }): Promise<Response> {
+  const params = await context.params;
   try {
     // Check authentication
-    const token = request.cookies.get('auth-token')?.value || 
-                  request.headers.get('authorization')?.replace('Bearer ', '');
-    
+    const token = request.cookies.get('auth-token')?.value ||
+                  request.headers.get('authorization')?.replace('Bearer ', '') || null;
+
     const payload = requireAuth(token);
     if (!payload || !isAdmin(payload)) {
       return NextResponse.json(
@@ -66,12 +67,13 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
 }
 
 // DELETE /api/admin/users/[id] - Delete user
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }): Promise<Response> {
+export async function DELETE(request: NextRequest, context: { params: Promise<{ id: string }> }): Promise<Response> {
+  const params = await context.params;
   try {
     // Check authentication
-    const token = request.cookies.get('auth-token')?.value || 
-                  request.headers.get('authorization')?.replace('Bearer ', '');
-    
+    const token = request.cookies.get('auth-token')?.value ||
+                  request.headers.get('authorization')?.replace('Bearer ', '') || null;
+
     const payload = requireAuth(token);
     if (!payload || !isAdmin(payload)) {
       return NextResponse.json(
