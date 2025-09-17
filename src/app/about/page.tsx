@@ -46,7 +46,7 @@ export default function About() {
               About Zero Digital
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              We're passionate about helping businesses transform through AI automation, digital solutions, 
+              We&apos;re passionate about helping businesses transform through AI automation, digital solutions, 
               and innovative technology. Based in Hyderabad, serving clients across India and globally.
             </p>
           </div>
@@ -190,7 +190,7 @@ export default function About() {
               Ready to work with us?
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Let's discuss your project and see how we can help transform your business with AI and digital solutions.
+              Let&apos;s discuss your project and see how we can help transform your business with AI and digital solutions.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a

@@ -145,7 +145,7 @@ export default function Services() {
                     <p className="mt-4 text-base leading-7 text-gray-600">{service.description}</p>
                     
                     <div className="mt-6">
-                      <h4 className="text-sm font-semibold leading-6 text-gray-900">What's included:</h4>
+                      <h4 className="text-sm font-semibold leading-6 text-gray-900">What&apos;s included:</h4>
                       <ul className="mt-3 space-y-2">
                         {service.features.map((feature) => (
                           <li key={feature} className="flex items-center gap-x-3 text-sm text-gray-600">
@@ -221,7 +221,7 @@ export default function Services() {
               Ready to get started?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
-              Let's discuss your project requirements and create a custom solution that drives real business results.
+              Let&apos;s discuss your project requirements and create a custom solution that drives real business results.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <button className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors">
