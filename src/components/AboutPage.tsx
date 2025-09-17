@@ -11,7 +11,7 @@ export default function AboutPage() {
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600 dark:text-gray-300 dark:text-gray-300">Loading about page content...</p>
+            <p className="text-lg text-gray-600 dark:text-gray-300">Loading about page content...</p>
           </div>
         </div>
       </div>
@@ -134,13 +134,13 @@ export default function AboutPage() {
   return (
     <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <div className="bg-gray-50 dark:bg-gray-800 dark:bg-gray-800">
+        <div className="bg-gray-50 dark:bg-gray-800">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white dark:text-white sm:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               {pageContent.hero.title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300 dark:text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               {pageContent.hero.subtitle}
             </p>
           </div>
@@ -153,7 +153,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white dark:text-white sm:text-4xl">
+                  <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
                   {pageContent.mission.title}
                 </h2>
                 <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
