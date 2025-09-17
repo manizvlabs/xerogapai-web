@@ -14,27 +14,29 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { readonly children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('theme');
-      if (saved && (saved === 'light' || saved === 'dark')) {
-        return saved;
-      }
-      return siteConfig.defaultTheme as Theme;
-    }
-    return siteConfig.defaultTheme as Theme;
-  });
-
+  const [theme, setThemeState] = useState<Theme>(siteConfig.defaultTheme as Theme);
   const [mounted, setMounted] = useState(false);
 
+  // Initialize theme from localStorage after mount
   useEffect(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved && (saved === 'light' || saved === 'dark')) {
+      setThemeState(saved);
+    }
     setMounted(true);
   }, []);
 
+  // Apply theme changes
   useEffect(() => {
     if (mounted) {
       localStorage.setItem('theme', theme);
-      document.documentElement.setAttribute('data-theme', theme);
+      
+      // Apply theme class to document element for Tailwind dark mode
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
       
       // Apply theme colors to CSS variables
       const root = document.documentElement;
