@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --port 4010",
+    "dev": "next dev --port 4010",
     "build": "npm run version:update && next build",
     "version:update": "node scripts/update-version.js",
     "start": "next start",
