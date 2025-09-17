@@ -2,7 +2,7 @@
 export const siteConfig = {
   name: process.env.NEXT_PUBLIC_SITE_NAME || 'Zero Digital',
   tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'AI-Powered Digital Transformation',
-  domain: process.env.NEXT_PUBLIC_DOMAIN || 'zerodigital.ai',
+  domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || process.env.NEXT_PUBLIC_DOMAIN || 'zerodigital.ai',
   location: process.env.NEXT_PUBLIC_LOCATION || 'Hyderabad, India',
   phone: process.env.NEXT_PUBLIC_PHONE || '+917702661991',
   email: process.env.NEXT_PUBLIC_EMAIL || 'info@zerodigital.ai',
