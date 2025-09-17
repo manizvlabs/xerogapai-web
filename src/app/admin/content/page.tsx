@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import ProtectedAdminLayout from '@/components/ProtectedAdminLayout';
 import { useContent } from '@/hooks/useContent';
-import { CheckIcon, PencilIcon, EyeIcon, UsersIcon, CogIcon } from '@heroicons/react/24/outline';
+import { CheckIcon, PencilIcon, EyeIcon, UsersIcon, CogIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
 
 export default function ContentManagementPage() {
   const [selectedSection, setSelectedSection] = useState<string>('');
@@ -200,6 +200,10 @@ export default function ContentManagementPage() {
               <Link href="/admin/users" className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
                 <UsersIcon className="h-5 w-5" />
                 User Management
+              </Link>
+              <Link href="/admin/contacts" className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                <ChatBubbleLeftRightIcon className="h-5 w-5" />
+                Contact Management
               </Link>
               <Link href="/admin/content" className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                 <CogIcon className="h-5 w-5" />
