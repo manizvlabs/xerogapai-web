@@ -1,5 +1,5 @@
 import { sql } from '@vercel/postgres';
-import { contactStoreFallback } from './contact-storage-fallback';
+import { getFileStorage } from './file-storage';
 
 // Global flag to track if we're using fallback
 let usingFallback = true; // Default to fallback since no DB is configured
@@ -100,7 +100,7 @@ export class ContactDatabase {
   // Create a new contact submission
   static async createContact(data: Omit<ContactSubmission, 'id' | 'submittedAt'>): Promise<ContactSubmission> {
     if (usingFallback) {
-      return contactStoreFallback.createContact(data);
+      return getFileStorage().createContact(data);
     }
     
     try {
@@ -131,9 +131,9 @@ export class ContactDatabase {
         userAgent: contact.user_agent
       };
     } catch (error) {
-      console.error('Database error, falling back to in-memory storage:', error);
+      console.error('Database error, falling back to file storage:', error);
       usingFallback = true;
-      return contactStoreFallback.createContact(data);
+      return getFileStorage().createContact(data);
     }
   }
 
@@ -146,7 +146,7 @@ export class ContactDatabase {
     search?: string;
   } = {}): Promise<ContactResponse> {
     if (usingFallback) {
-      return contactStoreFallback.getContacts(options);
+      return getFileStorage().getContacts(options);
     }
     
     try {
@@ -237,16 +237,16 @@ export class ContactDatabase {
         totalPages
       };
     } catch (error) {
-      console.error('Database error, falling back to in-memory storage:', error);
+      console.error('Database error, falling back to file storage:', error);
       usingFallback = true;
-      return contactStoreFallback.getContacts(options);
+      return getFileStorage().getContacts(options);
     }
   }
 
   // Get a single contact by ID
   static async getContactById(id: string): Promise<ContactSubmission | null> {
     if (usingFallback) {
-      return contactStoreFallback.getContactById(id);
+      return getFileStorage().getContactById(id);
     }
     
     try {
@@ -276,16 +276,16 @@ export class ContactDatabase {
         userAgent: contact.user_agent
       };
     } catch (error) {
-      console.error('Database error, falling back to in-memory storage:', error);
+      console.error('Database error, falling back to file storage:', error);
       usingFallback = true;
-      return contactStoreFallback.getContactById(id);
+      return getFileStorage().getContactById(id);
     }
   }
 
   // Delete a contact
   static async deleteContact(id: string): Promise<boolean> {
     if (usingFallback) {
-      return contactStoreFallback.deleteContact(id);
+      return getFileStorage().deleteContact(id);
     }
     
     try {
@@ -294,16 +294,16 @@ export class ContactDatabase {
       `;
       return result.rowCount > 0;
     } catch (error) {
-      console.error('Database error, falling back to in-memory storage:', error);
+      console.error('Database error, falling back to file storage:', error);
       usingFallback = true;
-      return contactStoreFallback.deleteContact(id);
+      return getFileStorage().deleteContact(id);
     }
   }
 
   // Get contact statistics
   static async getStats(): Promise<ContactStats> {
     if (usingFallback) {
-      return contactStoreFallback.getStats();
+      return getFileStorage().getStats();
     }
     
     try {
@@ -326,9 +326,9 @@ export class ContactDatabase {
         thisMonth: parseInt(monthResult.rows[0].count)
       };
     } catch (error) {
-      console.error('Database error, falling back to in-memory storage:', error);
+      console.error('Database error, falling back to file storage:', error);
       usingFallback = true;
-      return contactStoreFallback.getStats();
+      return getFileStorage().getStats();
     }
   }
 }
