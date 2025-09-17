@@ -11,6 +11,8 @@ export default function ContentManagementPage() {
   const [isEditing, setIsEditing] = useState(false);
   const [editContent, setEditContent] = useState<any>(null);
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'success' | 'error'>('idle');
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [originalContent, setOriginalContent] = useState<any>(null);
   
   const { content, loading, error, updateContent } = useContent();
 
@@ -24,17 +26,34 @@ export default function ContentManagementPage() {
   ];
 
   const handleSectionSelect = (sectionKey: string) => {
+    // If we have unsaved changes, ask for confirmation
+    if (hasUnsavedChanges && isEditing) {
+      const confirmLeave = window.confirm(
+        'You have unsaved changes. Are you sure you want to switch sections? Your changes will be lost.'
+      );
+      if (!confirmLeave) {
+        return;
+      }
+    }
+
     setSelectedSection(sectionKey);
     if (content?.[sectionKey]) {
       setEditContent(content[sectionKey]);
+      setOriginalContent(content[sectionKey]);
     }
     setIsEditing(false);
     setSaveStatus('idle');
+    setHasUnsavedChanges(false);
   };
 
   const handleEdit = () => {
     setIsEditing(true);
-    setEditContent(content[selectedSection]);
+    // If we already have edit content (unsaved changes), keep it
+    // Otherwise, start with the current content
+    if (!editContent) {
+      setEditContent(content[selectedSection]);
+      setOriginalContent(content[selectedSection]);
+    }
   };
 
   const handleSave = async () => {
@@ -46,6 +65,8 @@ export default function ContentManagementPage() {
     if (result.success) {
       setSaveStatus('success');
       setIsEditing(false);
+      setHasUnsavedChanges(false);
+      setOriginalContent(editContent);
       setTimeout(() => setSaveStatus('idle'), 3000);
     } else {
       setSaveStatus('error');
@@ -55,8 +76,9 @@ export default function ContentManagementPage() {
 
   const handleCancel = () => {
     setIsEditing(false);
-    setEditContent(content[selectedSection]);
+    setEditContent(originalContent || content[selectedSection]);
     setSaveStatus('idle');
+    setHasUnsavedChanges(false);
   };
 
   const renderContentArea = () => {
@@ -90,10 +112,13 @@ export default function ContentManagementPage() {
                 value={JSON.stringify(editContent, null, 2)}
                 onChange={(e) => {
                   try {
-                    setEditContent(JSON.parse(e.target.value));
+                    const newContent = JSON.parse(e.target.value);
+                    setEditContent(newContent);
+                    setHasUnsavedChanges(true);
                   } catch (error) {
                     // Invalid JSON, keep the text as is
                     console.warn('Invalid JSON input:', error);
+                    setHasUnsavedChanges(true);
                   }
                 }}
                 className="w-full h-80 max-h-80 p-3 border border-gray-300 dark:border-gray-600 rounded-md font-mono text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white resize-none overflow-y-auto"
@@ -106,8 +131,12 @@ export default function ContentManagementPage() {
             <div className="flex gap-2 items-center flex-wrap">
               <button
                 onClick={handleSave}
-                disabled={saveStatus === 'saving'}
-                className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={saveStatus === 'saving' || !hasUnsavedChanges}
+                className={`flex items-center gap-2 px-4 py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
+                  hasUnsavedChanges 
+                    ? 'bg-green-600 text-white hover:bg-green-700' 
+                    : 'bg-gray-400 text-white cursor-not-allowed'
+                }`}
               >
                 <CheckIcon className="h-4 w-4" />
                 {saveStatus === 'saving' ? 'Saving...' : 'Save Changes'}
@@ -119,6 +148,11 @@ export default function ContentManagementPage() {
               >
                 Cancel
               </button>
+              {hasUnsavedChanges && (
+                <span className="text-orange-600 dark:text-orange-400 text-sm font-medium">
+                  ⚠️ You have unsaved changes
+                </span>
+              )}
               {saveStatus === 'success' && (
                 <span className="text-green-600 dark:text-green-400 text-sm">
                   ✓ Changes saved successfully!
@@ -194,8 +228,13 @@ export default function ContentManagementPage() {
                           : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700'
                       }`}
                     >
-                      <div className="font-medium text-gray-900 dark:text-white">
-                        {section.name}
+                      <div className="flex items-center justify-between">
+                        <div className="font-medium text-gray-900 dark:text-white">
+                          {section.name}
+                        </div>
+                        {selectedSection === section.key && hasUnsavedChanges && (
+                          <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        )}
                       </div>
                       <div className="text-sm text-gray-500 dark:text-gray-400">
                         {section.description}
