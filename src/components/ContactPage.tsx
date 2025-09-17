@@ -76,7 +76,11 @@ export default function ContactPage() {
 
   const pageContent = {
     hero: content?.hero || defaultContent.hero,
-    contactInfo: content?.contactInfo || content?.info || defaultContent.contactInfo,
+    contactInfo: {
+      ...defaultContent.contactInfo,
+      ...(content?.contactInfo || content?.info || {}),
+      details: (content?.contactInfo?.details || content?.info?.details || defaultContent.contactInfo.details) || []
+    },
     responseTime: content?.responseTime || defaultContent.responseTime,
     consultation: content?.consultation || defaultContent.consultation
   };
@@ -120,7 +124,7 @@ export default function ContactPage() {
                   {pageContent.contactInfo.description}
                 </p>
                 <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600">
-                  {pageContent.contactInfo.details.map((detail) => {
+                  {pageContent.contactInfo.details && Array.isArray(pageContent.contactInfo.details) && pageContent.contactInfo.details.map((detail) => {
                     const IconComponent = iconMap[detail.icon as keyof typeof iconMap] || MapPinIcon;
                     return (
                       <div key={detail.label} className="flex gap-x-4">
