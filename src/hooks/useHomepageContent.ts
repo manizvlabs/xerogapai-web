@@ -31,7 +31,7 @@ export function useHomepageContent() {
     const fetchContent = async () => {
       try {
         // Try to fetch from API first
-        const response = await fetch('/api/admin/content?section=homepage');
+        const response = await fetch('/api/content?section=homepage');
         if (response.ok) {
           const data = await response.json();
           if (data.success && data.content) {

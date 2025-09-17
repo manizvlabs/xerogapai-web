@@ -17,22 +17,28 @@ export function useContent(section?: string) {
 
   const fetchContent = async () => {
     try {
+      console.log('useContent - Starting fetch for section:', section);
       setState(prev => ({ ...prev, loading: true, error: null }));
       
       const url = section 
-        ? `/api/admin/content?section=${encodeURIComponent(section)}`
-        : '/api/admin/content';
+        ? `/api/content?section=${encodeURIComponent(section)}`
+        : '/api/content';
         
+      console.log('useContent - Fetching from URL:', url);
       const response = await fetch(url);
       const data = await response.json();
       
+      console.log('useContent - Response data:', data);
+      
       if (data.success) {
+        console.log('useContent - Setting content:', data.content);
         setState({
-          content: section ? data.content : data.content,
+          content: data.content,
           loading: false,
           error: null
         });
       } else {
+        console.log('useContent - API returned error:', data.error);
         setState({
           content: null,
           loading: false,
@@ -40,6 +46,7 @@ export function useContent(section?: string) {
         });
       }
     } catch (error) {
+      console.error('Error fetching content:', error);
       setState({
         content: null,
         loading: false,
@@ -79,6 +86,7 @@ export function useContent(section?: string) {
         return { success: false, error: data.error };
       }
     } catch (error) {
+      console.error('Error updating content:', error);
       setState(prev => ({
         ...prev,
         loading: false,

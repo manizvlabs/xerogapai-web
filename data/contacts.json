@@ -38,8 +38,21 @@
       "ipAddress": "::1",
       "userAgent": "curl/8.7.1",
       "submittedAt": "2025-09-17T14:41:27.484Z"
+    },
+    {
+      "id": "4",
+      "firstName": "Mahesh",
+      "lastName": "Kumar",
+      "email": "mahesh@gmail.com",
+      "phone": "+91 7645236537",
+      "company": "Arizona Paper Company",
+      "service": "AI Agent Development",
+      "message": "AI agents needed",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "submittedAt": "2025-09-17T15:01:13.664Z"
     }
   ],
-  "nextId": 4,
-  "lastUpdated": "2025-09-17T14:41:27.484Z"
+  "nextId": 5,
+  "lastUpdated": "2025-09-17T15:01:13.664Z"
 }

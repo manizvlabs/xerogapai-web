@@ -101,45 +101,81 @@ export const contentConfig = {
       {
         name: 'AI Content Automation',
         description: 'Automated LinkedIn, Instagram, Facebook, and blog content generation using AI agents. Save 20+ hours per week with personalized content for your brand.',
+        icon: 'SparklesIcon',
         features: [
           'Automated content generation for all social platforms',
           'Brand voice consistency across all channels',
           'SEO-optimized content creation',
           'Analytics and performance tracking'
         ],
+        deliverables: [
+          'Content calendar for 3 months',
+          'AI-generated posts (30+ per month)',
+          'Visual content templates',
+          'Performance reports',
+          'Content strategy consultation'
+        ],
+        price: '₹25,000/month',
         pricing: 'Starting from ₹25,000/month'
       },
       {
         name: 'Mobile App Development',
         description: 'Custom mobile applications for iOS and Android. From concept to App Store deployment with modern UI/UX design.',
+        icon: 'DevicePhoneMobileIcon',
         features: [
           'Native iOS and Android development',
           'Cross-platform solutions with React Native',
           'App Store optimization and deployment',
           'Ongoing maintenance and updates'
         ],
+        deliverables: [
+          'Fully functional mobile application',
+          'Source code and documentation',
+          'App store listings and assets',
+          'User testing and feedback integration',
+          '6 months of maintenance support'
+        ],
+        price: '₹50,000 - ₹2,00,000',
         pricing: 'Starting from ₹1,50,000'
       },
       {
         name: 'Digital Transformation',
         description: 'Complete digital overhaul of your business processes, systems, and customer experience. Tailored solutions for Hyderabad businesses.',
+        icon: 'ChartBarIcon',
         features: [
           'Business process automation',
           'Legacy system modernization',
           'Cloud migration and optimization',
           'Change management and training'
         ],
+        deliverables: [
+          'Digital transformation roadmap',
+          'Modernized business processes',
+          'Cloud infrastructure setup',
+          'Staff training and documentation',
+          'Ongoing support and optimization'
+        ],
+        price: 'Custom pricing',
         pricing: 'Custom pricing based on scope'
       },
       {
         name: 'AI Agent Development',
         description: 'Custom AI agents for specific business needs. Automation that works 24/7 for your business, from chatbots to workflow automation.',
+        icon: 'CpuChipIcon',
         features: [
           'Custom AI agent development',
           'Integration with existing systems',
           '24/7 monitoring and maintenance',
           'Performance optimization'
         ],
+        deliverables: [
+          'Custom AI agent solution',
+          'Integration with your systems',
+          'Training and documentation',
+          'API endpoints and documentation',
+          '3 months of support and optimization'
+        ],
+        price: '₹75,000 - ₹3,00,000',
         pricing: 'Starting from ₹50,000'
       }
     ]

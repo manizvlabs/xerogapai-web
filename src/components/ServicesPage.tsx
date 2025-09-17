@@ -198,7 +198,7 @@ export default function ServicesPage() {
               {pageContent.services.map((service, index) => {
                 const IconComponent = iconMap[service.icon as keyof typeof iconMap] || SparklesIcon;
                 return (
-                  <div key={index} className="flex flex-col justify-between rounded-2xl bg-gray-50 p-8 ring-1 ring-gray-200">
+                  <div key={service.name} className="flex flex-col justify-between rounded-2xl bg-gray-50 p-8 ring-1 ring-gray-200">
                     <div>
                       <div className="flex items-center gap-x-4">
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
@@ -211,24 +211,24 @@ export default function ServicesPage() {
                       <div className="mt-6">
                         <h4 className="text-sm font-semibold leading-6 text-gray-900">What's included:</h4>
                         <ul className="mt-3 space-y-2">
-                      {service.features.map((feature) => (
+                      {service.features?.map((feature) => (
                         <li key={feature} className="flex items-center gap-x-3 text-sm text-gray-600">
                               <CheckIcon className="h-4 w-4 flex-none text-blue-600" />
                               {feature}
                             </li>
-                          ))}
+                          )) || []}
                         </ul>
                       </div>
 
                       <div className="mt-6">
                         <h4 className="text-sm font-semibold leading-6 text-gray-900">Deliverables:</h4>
                         <ul className="mt-3 space-y-2">
-                        {service.deliverables.map((deliverable) => (
+                        {service.deliverables?.map((deliverable) => (
                           <li key={deliverable} className="flex items-center gap-x-3 text-sm text-gray-600">
                               <div className="h-1.5 w-1.5 flex-none rounded-full bg-blue-600" />
                               {deliverable}
                             </li>
-                          ))}
+                          )) || []}
                         </ul>
                       </div>
                     </div>
