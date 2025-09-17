@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { contactStore } from '@/lib/contact-storage';
+import { ContactDatabase, initializeDatabase } from '@/lib/database';
 import { applySecurityHeaders, logSecurityEvent } from '@/lib/security';
 
 // GET /api/contacts - Get all contacts with pagination and filtering
 export async function GET(request: NextRequest) {
   try {
+    // Initialize database if needed
+    await initializeDatabase();
+    
     const { searchParams } = new URL(request.url);
     
     const page = parseInt(searchParams.get('page') || '1');
@@ -13,7 +16,7 @@ export async function GET(request: NextRequest) {
     const endDate = searchParams.get('endDate') || undefined;
     const search = searchParams.get('search') || undefined;
 
-    const result = contactStore.getContacts({
+    const result = await ContactDatabase.getContacts({
       page,
       limit,
       startDate,
@@ -42,6 +45,9 @@ export async function GET(request: NextRequest) {
 // POST /api/contacts - Create a new contact submission
 export async function POST(request: NextRequest) {
   try {
+    // Initialize database if needed
+    await initializeDatabase();
+    
     const body = await request.json();
     
     // Validate required fields
@@ -60,7 +66,7 @@ export async function POST(request: NextRequest) {
     const userAgent = request.headers.get('user-agent') || 'unknown';
 
     // Create contact submission
-    const contact = contactStore.createContact({
+    const contact = await ContactDatabase.createContact({
       firstName: body.firstName.trim(),
       lastName: body.lastName.trim(),
       email: body.email.trim(),

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { contactStore } from '@/lib/contact-storage';
+import { ContactDatabase, initializeDatabase } from '@/lib/database';
 import { applySecurityHeaders, logSecurityEvent } from '@/lib/security';
 
 // GET /api/contacts/[id] - Get a single contact by ID
@@ -8,7 +8,10 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const contact = contactStore.getContactById(params.id);
+    // Initialize database if needed
+    await initializeDatabase();
+    
+    const contact = await ContactDatabase.getContactById(params.id);
     
     if (!contact) {
       return NextResponse.json({
@@ -41,7 +44,10 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const success = contactStore.deleteContact(params.id);
+    // Initialize database if needed
+    await initializeDatabase();
+    
+    const success = await ContactDatabase.deleteContact(params.id);
     
     if (!success) {
       return NextResponse.json({

@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { contactStore } from '@/lib/contact-storage';
+import { ContactDatabase, initializeDatabase } from '@/lib/database';
 import { applySecurityHeaders } from '@/lib/security';
 
 // GET /api/contacts/stats - Get contact statistics
 export async function GET(request: NextRequest) {
   try {
-    const stats = contactStore.getStats();
+    // Initialize database if needed
+    await initializeDatabase();
+    
+    const stats = await ContactDatabase.getStats();
 
     const response = NextResponse.json({
       success: true,
