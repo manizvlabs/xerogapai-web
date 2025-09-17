@@ -32,6 +32,8 @@ export default function AdminLoginPage() {
     setIsLoading(true);
     setError('');
 
+    console.log('Form submitted with:', { username, password });
+
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -49,6 +51,7 @@ export default function AdminLoginPage() {
         setError(data.error || 'Login failed');
       }
     } catch (error) {
+      console.error('Login error:', error);
       setError('Network error. Please try again.');
     } finally {
       setIsLoading(false);
@@ -82,9 +85,14 @@ export default function AdminLoginPage() {
                   type="text"
                   required
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-700 dark:text-white"
+                  onChange={(e) => {
+                    console.log('Username changed:', e.target.value);
+                    setUsername(e.target.value);
+                  }}
+                  className="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-700 dark:text-white cursor-text"
                   placeholder="Enter your username"
+                  autoComplete="username"
+                  tabIndex={0}
                 />
               </div>
             </div>
@@ -100,9 +108,14 @@ export default function AdminLoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   required
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-700 dark:text-white"
+                  onChange={(e) => {
+                    console.log('Password changed:', e.target.value);
+                    setPassword(e.target.value);
+                  }}
+                  className="block w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-700 dark:text-white cursor-text"
                   placeholder="Enter your password"
+                  autoComplete="current-password"
+                  tabIndex={0}
                 />
                 <button
                   type="button"
