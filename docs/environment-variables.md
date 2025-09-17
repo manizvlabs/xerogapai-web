@@ -1,253 +1,179 @@
-# Environment Variables Guide
+# Environment Variables Reference
 
-This guide explains all environment variables used in the Zero Digital website and how to configure them for different environments.
+This document provides a comprehensive reference for all environment variables used in the Zero Digital website.
 
 ## Quick Setup
 
-Copy the example file and customize:
+1. Copy the example file:
+   ```bash
+   cp .env.example .env.local
+   ```
 
-```bash
-cp .env.example .env.local
-# Edit .env.local with your values
-```
+2. Update the values in `.env.local` for your environment
+3. Never commit `.env.local` to version control
 
-## Environment Variables Reference
+## Variable Categories
 
-### Site Configuration
-
-| Variable | Description | Default | Required |
+### 🌐 Site Configuration
+| Variable | Description | Example | Required |
 |----------|-------------|---------|----------|
-| `NEXT_PUBLIC_SITE_NAME` | Website name | "Zero Digital" | No |
-| `NEXT_PUBLIC_SITE_TAGLINE` | Main tagline | "AI-Powered Digital Transformation" | No |
-| `NEXT_PUBLIC_DOMAIN` | Primary domain | "zerodigital.ai" | No |
-| `NEXT_PUBLIC_SITE_URL` | Full site URL | "https://zerodigital.ai" | No |
-| `NEXT_PUBLIC_LOCATION` | Business location | "Hyderabad, India" | No |
-| `NEXT_PUBLIC_PHONE` | Contact phone | "+917702661991" | No |
-| `NEXT_PUBLIC_EMAIL` | Contact email | "info@zerodigital.ai" | No |
-| `NEXT_PUBLIC_BUSINESS_TYPE` | Target audience | "all" | No |
+| `NEXT_PUBLIC_SITE_NAME` | Website name | `"Zero Digital"` | ✅ |
+| `NEXT_PUBLIC_SITE_TAGLINE` | Website tagline | `"AI-Powered Digital Transformation"` | ✅ |
+| `NEXT_PUBLIC_SITE_DOMAIN` | Primary domain | `"zerodigital.ai"` | ✅ |
+| `NEXT_PUBLIC_SITE_URL` | Full website URL | `"https://zerodigital.ai"` | ✅ |
 
-### Theme Configuration
+### 🎨 Theme Configuration
+| Variable | Description | Options | Default |
+|----------|-------------|---------|---------|
+| `NEXT_PUBLIC_DEFAULT_THEME` | Default theme | `light`, `dark`, `system` | `light` |
+| `NEXT_PUBLIC_ENABLE_THEME_SWITCHER` | Enable theme toggle | `true`, `false` | `true` |
 
-| Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
-| `NEXT_PUBLIC_ENABLE_THEME_SWITCHER` | Enable theme toggle | "true" | No |
-| `NEXT_PUBLIC_DEFAULT_THEME` | Default theme | "light" | No |
+### 📞 Contact & Business
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `NEXT_PUBLIC_COMPANY_NAME` | Company name | `"Zero Digital"` |
+| `NEXT_PUBLIC_COMPANY_EMAIL` | Contact email | `"info@zerodigital.ai"` |
+| `NEXT_PUBLIC_COMPANY_PHONE` | Phone number | `"+91 98765 43210"` |
+| `NEXT_PUBLIC_COMPANY_ADDRESS` | Business address | `"Hyderabad, Telangana, India"` |
 
-### Social Media Links
+### 📊 Analytics & Tracking
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics 4 ID | ✅ |
+| `NEXT_PUBLIC_GTM_ID` | Google Tag Manager ID | ❌ |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Search Console verification | ❌ |
 
-| Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
-| `NEXT_PUBLIC_LINKEDIN_URL` | LinkedIn profile | "https://linkedin.com/company/zerodigital" | No |
-| `NEXT_PUBLIC_TWITTER_URL` | Twitter profile | "https://twitter.com/zerodigital" | No |
-| `NEXT_PUBLIC_INSTAGRAM_URL` | Instagram profile | "https://instagram.com/zerodigital" | No |
+### 📧 Email Configuration
+| Variable | Description | Service |
+|----------|-------------|---------|
+| `EMAIL_SERVICE` | Email provider | `resend`, `sendgrid`, `mailgun` |
+| `RESEND_API_KEY` | Resend API key | Resend |
+| `SENDGRID_API_KEY` | SendGrid API key | SendGrid |
+| `MAILGUN_API_KEY` | Mailgun API key | Mailgun |
+| `EMAIL_FROM` | From email address | All services |
+| `EMAIL_TO` | To email address | All services |
 
-### Analytics & Tracking
+### 🔗 GitHub Integration
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `GITHUB_CLI_OAUTH_TOKEN` | GitHub CLI OAuth Token (expires ~90 days) | ✅ |
+| `GITHUB_PAT` | Personal Access Token (alternative) | ❌ |
+| `GITHUB_REPO_OWNER` | Repository owner | ✅ |
+| `GITHUB_REPO_NAME` | Repository name | ✅ |
+| `GITHUB_REPO_URL` | Full repository URL | ✅ |
 
-| Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics ID | "GA-XXXXXXXXXX" | No |
+### 🚀 Deployment
+| Variable | Description | Platform |
+|----------|-------------|----------|
+| `VERCEL_PROJECT_ID` | Vercel project ID | Vercel |
+| `VERCEL_ORG_ID` | Vercel organization ID | Vercel |
+| `NETLIFY_SITE_ID` | Netlify site ID | Netlify |
+| `NETLIFY_ACCESS_TOKEN` | Netlify access token | Netlify |
 
-### Email Service
+### 🔒 Security
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `JWT_SECRET` | JWT signing secret | ✅ |
+| `RATE_LIMIT_MAX` | API rate limit | ❌ |
+| `CORS_ORIGIN` | Allowed origins | ❌ |
 
-| Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
-| `EMAIL_SERVICE_API_KEY` | Email service API key | "" | No |
-| `CONTACT_EMAIL` | Contact form recipient | "info@zerodigital.ai" | No |
+### 🛠️ Development
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `NODE_ENV` | Node environment | `development` |
+| `DEV_PORT` | Development port | `4010` |
+| `DEBUG` | Debug mode | `false` |
 
-### GitHub Integration
-
-| Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
-| `GITHUB_CLI_OAUTH_TOKEN` | GitHub CLI OAuth token | "" | No |
-
-### Deployment Configuration
-
-| Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
-| `NEXT_PUBLIC_VERCEL_URL` | Vercel deployment URL | Auto-generated | No |
-| `NEXT_PUBLIC_NETLIFY_URL` | Netlify deployment URL | Auto-generated | No |
+### 🎛️ Feature Flags
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `NEXT_PUBLIC_ENABLE_BLOG` | Enable blog section | `true` |
+| `NEXT_PUBLIC_ENABLE_PORTFOLIO` | Enable portfolio | `true` |
+| `NEXT_PUBLIC_ENABLE_TESTIMONIALS` | Enable testimonials | `true` |
+| `NEXT_PUBLIC_ENABLE_NEWSLETTER` | Enable newsletter | `false` |
+| `NEXT_PUBLIC_ENABLE_CHAT` | Enable chat widget | `false` |
 
 ## Environment-Specific Configurations
 
-### Development (.env.local)
-
+### Development
 ```env
-# Site Configuration
-NEXT_PUBLIC_SITE_NAME="Zero Digital"
-NEXT_PUBLIC_SITE_TAGLINE="AI-Powered Digital Transformation"
-NEXT_PUBLIC_DOMAIN="localhost:4010"
-NEXT_PUBLIC_SITE_URL="http://localhost:4010"
-
-# Theme Configuration
-NEXT_PUBLIC_ENABLE_THEME_SWITCHER="true"
-NEXT_PUBLIC_DEFAULT_THEME="light"
-
-# Analytics (Disabled for development)
-NEXT_PUBLIC_GA_MEASUREMENT_ID=""
-
-# Email Service (Mock for development)
-EMAIL_SERVICE_API_KEY=""
-CONTACT_EMAIL="info@zerodigital.ai"
+NODE_ENV=development
+NEXT_PUBLIC_APP_ENV=development
+DEBUG=true
+VERBOSE_LOGGING=true
 ```
 
-### Production (Vercel)
-
+### Production
 ```env
-# Site Configuration
-NEXT_PUBLIC_SITE_NAME="Zero Digital"
-NEXT_PUBLIC_SITE_TAGLINE="AI-Powered Digital Transformation"
-NEXT_PUBLIC_DOMAIN="zerodigital.ai"
-NEXT_PUBLIC_SITE_URL="https://zerodigital.ai"
-
-# Theme Configuration
-NEXT_PUBLIC_ENABLE_THEME_SWITCHER="true"
-NEXT_PUBLIC_DEFAULT_THEME="light"
-
-# Analytics
-NEXT_PUBLIC_GA_MEASUREMENT_ID="GA-XXXXXXXXXX"
-
-# Email Service
-EMAIL_SERVICE_API_KEY="your_production_api_key"
-CONTACT_EMAIL="info@zerodigital.ai"
-
-# GitHub Integration
-GITHUB_CLI_OAUTH_TOKEN="your_production_token"
+NODE_ENV=production
+NEXT_PUBLIC_APP_ENV=production
+NEXT_PUBLIC_ENABLE_ANALYTICS=true
+NEXT_PUBLIC_ENABLE_DEBUG=false
 ```
 
-### Production (Netlify)
-
+### Preview/Staging
 ```env
-# Site Configuration
-NEXT_PUBLIC_SITE_NAME="Zero Digital"
-NEXT_PUBLIC_SITE_TAGLINE="AI-Powered Digital Transformation"
-NEXT_PUBLIC_DOMAIN="zerodigital.ai"
-NEXT_PUBLIC_SITE_URL="https://zerodigital.ai"
-
-# Theme Configuration
-NEXT_PUBLIC_ENABLE_THEME_SWITCHER="true"
-NEXT_PUBLIC_DEFAULT_THEME="light"
-
-# Analytics
-NEXT_PUBLIC_GA_MEASUREMENT_ID="GA-XXXXXXXXXX"
-
-# Email Service
-EMAIL_SERVICE_API_KEY="your_production_api_key"
-CONTACT_EMAIL="info@zerodigital.ai"
+NODE_ENV=development
+NEXT_PUBLIC_APP_ENV=preview
+NEXT_PUBLIC_ENABLE_ANALYTICS=false
 ```
 
 ## Security Best Practices
 
-### 1. Never Commit Sensitive Data
+### ✅ Do's
+- Use strong, unique values for secrets
+- Rotate secrets regularly
+- Use different values for different environments
+- Never commit `.env.local` to version control
+- Use environment-specific files (`.env.development`, `.env.production`)
 
-```bash
-# Add to .gitignore
-.env
-.env.local
-.env.production
-.env.staging
-```
+### ❌ Don'ts
+- Don't use weak passwords or predictable secrets
+- Don't share secrets in chat or email
+- Don't commit secrets to version control
+- Don't use the same secrets across environments
+- Don't hardcode secrets in your code
 
-### 2. Use Different Tokens for Different Environments
+## Common Issues
 
-- **Development**: Use test/development tokens
-- **Staging**: Use staging-specific tokens
-- **Production**: Use production tokens with minimal permissions
+### Variable Not Working
+1. Check if variable starts with `NEXT_PUBLIC_` for client-side access
+2. Verify the variable name is correct (case-sensitive)
+3. Restart the development server after adding new variables
+4. Check if the variable is properly set in your deployment platform
 
-### 3. Rotate Tokens Regularly
-
-- GitHub tokens: Every 90 days
-- API keys: Every 6 months
-- Passwords: Every 3 months
-
-### 4. Use Environment-Specific Files
-
-```
-.env.local          # Local development
-.env.development    # Development environment
-.env.staging        # Staging environment
-.env.production     # Production environment
-```
+### Build Failures
+1. Ensure all required variables are set
+2. Check for typos in variable names
+3. Verify variable values are properly quoted
+4. Check deployment platform environment variable settings
 
 ## Platform-Specific Notes
 
 ### Vercel
-
-- Environment variables are set in the Vercel dashboard
-- Use `NEXT_PUBLIC_` prefix for client-side variables
-- Variables are automatically available at build time
+- Environment variables are set in Project Settings
+- Variables are automatically available in all environments
+- Use different values for Preview and Production
 
 ### Netlify
+- Environment variables are set in Site Settings
+- Variables are available in build and runtime
+- Use different values for different branches
 
-- Environment variables are set in Site settings
-- Use `NEXT_PUBLIC_` prefix for client-side variables
-- Variables are available during build and runtime
+### Local Development
+- Use `.env.local` for local development
+- Variables are loaded automatically by Next.js
+- Restart the server after changing variables
 
-### GitHub Pages
+## Getting Help
 
-- Limited environment variable support
-- Use build-time variables only
-- Consider using GitHub Secrets for sensitive data
+If you encounter issues with environment variables:
 
-## Troubleshooting
-
-### Common Issues
-
-**Variables Not Loading:**
-```bash
-# Check if variable starts with NEXT_PUBLIC_
-# Restart development server
-npm run dev
-```
-
-**Build Errors:**
-```bash
-# Check for missing required variables
-# Verify variable names match exactly
-# Check for typos in variable names
-```
-
-**Production Issues:**
-```bash
-# Verify variables are set in hosting platform
-# Check variable values are correct
-# Ensure no trailing spaces or quotes
-```
-
-### Debugging
-
-```bash
-# Check loaded variables
-console.log(process.env.NEXT_PUBLIC_SITE_NAME);
-
-# Check all public variables
-console.log(Object.keys(process.env).filter(key => key.startsWith('NEXT_PUBLIC_')));
-```
-
-## Migration Guide
-
-### From .env to .env.local
-
-1. Copy variables from `.env` to `.env.local`
-2. Update variable names to match new format
-3. Test locally with `npm run dev`
-4. Deploy to staging for testing
-
-### From Vercel to Netlify
-
-1. Export variables from Vercel dashboard
-2. Import variables to Netlify dashboard
-3. Update any platform-specific variables
-4. Test deployment
-
-## Support
-
-For questions about environment variables:
-
-- Check this documentation
-- Review platform-specific documentation
-- Contact support through the website
-- Create an issue in the repository
+1. Check this documentation
+2. Review the deployment guides
+3. Check the GitHub repository issues
+4. Contact the development team
 
 ---
 
-**Note**: Always test your configuration in a staging environment before deploying to production.
+**Remember**: Environment variables are crucial for your application's security and functionality. Always keep them secure and up-to-date!

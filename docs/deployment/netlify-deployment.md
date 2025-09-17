@@ -1,107 +1,112 @@
 # Netlify Deployment Guide
 
-This guide will help you deploy your Zero Digital website to Netlify, a popular hosting platform for static sites and JAMstack applications.
+This guide will walk you through deploying your Zero Digital website to Netlify, including environment variable configuration and GitHub integration.
 
 ## Prerequisites
 
 - GitHub repository with your code
 - Netlify account (free tier available)
-- Domain name (optional, for custom domain)
+- Domain name (optional, Netlify provides free subdomain)
 
 ## Step 1: Prepare Your Repository
 
-Ensure your repository is ready for deployment:
+### 1.1 Environment Variables
+Create a `.env.local` file based on `.env.example`:
 
 ```bash
-# Make sure all changes are committed
-git add .
-git commit -m "Ready for Netlify deployment"
-git push origin main
+cp .env.example .env.local
+```
+
+Update the following key variables in `.env.local`:
+```env
+NEXT_PUBLIC_SITE_DOMAIN="your-domain.com"
+NEXT_PUBLIC_SITE_URL="https://your-domain.com"
+NEXT_PUBLIC_GA_MEASUREMENT_ID="G-XXXXXXXXXX"
+GITHUB_PAT="ghp_your_github_personal_access_token"
+```
+
+### 1.2 Build Configuration
+Create `netlify.toml` in your project root:
+
+```toml
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production.environment]
+  NODE_ENV = "production"
+  NEXT_PUBLIC_APP_ENV = "production"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "development"
+  NEXT_PUBLIC_APP_ENV = "preview"
 ```
 
 ## Step 2: Deploy to Netlify
 
-### Option A: Deploy via Netlify Dashboard
+### 2.1 Connect Repository
+1. Go to [Netlify Dashboard](https://app.netlify.com)
+2. Click "New site from Git"
+3. Choose "GitHub" as your Git provider
+4. Select your repository: `manizvlabs/zero-digital-website`
+5. Configure build settings:
+   - **Build command**: `npm run build`
+   - **Publish directory**: `.next`
+   - **Node version**: 18
 
-1. **Visit Netlify**: Go to [netlify.com](https://netlify.com)
-2. **Sign up/Login**: Use your GitHub account for seamless integration
-3. **Import Project**: Click "New site from Git" and select your repository
-4. **Configure Build Settings**:
-   - Build Command: `npm run build`
-   - Publish Directory: `out` (for static export) or `.next` (for serverless)
-   - Node Version: `18` (or latest LTS)
-5. **Deploy**: Click "Deploy site" and wait for the build to complete
+### 2.2 Environment Variables
+In Netlify dashboard, go to Site settings → Environment variables and add:
 
-### Option B: Deploy via Netlify CLI
-
-```bash
-# Install Netlify CLI
-npm install -g netlify-cli
-
-# Login to Netlify
-netlify login
-
-# Deploy from your project directory
-cd zero-website
-netlify deploy
-
-# Follow the prompts:
-# - Create & configure a new site? Y
-# - Team: (select your team)
-# - Site name: zero-digital-website
-# - Directory to deploy: ./
-```
-
-## Step 3: Configure Environment Variables
-
-In your Netlify dashboard:
-
-1. Go to **Site settings** → **Environment variables**
-2. Add the following variables:
-
+#### Required Variables
 ```env
-# Site Configuration
-NEXT_PUBLIC_SITE_NAME=Zero Digital
-NEXT_PUBLIC_SITE_TAGLINE=AI-Powered Digital Transformation
-NEXT_PUBLIC_DOMAIN=zerodigital.ai
-NEXT_PUBLIC_SITE_URL=https://zerodigital.ai
-NEXT_PUBLIC_LOCATION=Hyderabad, India
-NEXT_PUBLIC_PHONE=+917702661991
-NEXT_PUBLIC_EMAIL=info@zerodigital.ai
-
-# Theme Configuration
-NEXT_PUBLIC_ENABLE_THEME_SWITCHER=true
-NEXT_PUBLIC_DEFAULT_THEME=light
-
-# Social Links
-NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/zerodigital
-NEXT_PUBLIC_TWITTER_URL=https://twitter.com/zerodigital
-NEXT_PUBLIC_INSTAGRAM_URL=https://instagram.com/zerodigital
-
-# Analytics (Optional)
-NEXT_PUBLIC_GA_MEASUREMENT_ID=GA-XXXXXXXXXX
-
-# Email Service (Optional)
-EMAIL_SERVICE_API_KEY=your_email_service_api_key
-CONTACT_EMAIL=info@zerodigital.ai
-
-# GitHub Integration
-GITHUB_CLI_OAUTH_TOKEN=your_github_token
+NEXT_PUBLIC_SITE_DOMAIN=your-domain.com
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your-verification-code
 ```
 
-3. **Redeploy** after adding environment variables
+#### Optional Variables
+```env
+NEXT_PUBLIC_DEFAULT_THEME=light
+NEXT_PUBLIC_ENABLE_THEME_SWITCHER=true
+NEXT_PUBLIC_TWITTER_HANDLE=@zerodigital
+NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/zero-digital
+```
 
-## Step 4: Custom Domain Setup
+#### GitHub Integration
+```env
+GITHUB_PAT=ghp_your_github_personal_access_token
+GITHUB_REPO_OWNER=manizvlabs
+GITHUB_REPO_NAME=zero-digital-website
+```
 
-### 4.1 Add Domain in Netlify
+#### Email Configuration (if using contact form)
+```env
+EMAIL_SERVICE=resend
+RESEND_API_KEY=re_your_resend_api_key
+EMAIL_FROM=noreply@your-domain.com
+EMAIL_TO=info@your-domain.com
+```
 
-1. Go to **Domain management** → **Add custom domain**
-2. Enter your domain: `zerodigital.ai`
-3. Netlify will provide DNS configuration instructions
+## Step 3: Custom Domain Setup
 
-### 4.2 Configure DNS
+### 3.1 Add Custom Domain
+1. Go to Site settings → Domain management
+2. Click "Add custom domain"
+3. Enter your domain: `your-domain.com`
+4. Follow DNS configuration instructions
 
-Update your domain's DNS records:
+### 3.2 DNS Configuration
+Add these DNS records to your domain provider:
 
 ```
 Type: A
@@ -110,137 +115,159 @@ Value: 75.2.60.5
 
 Type: CNAME
 Name: www
-Value: zero-digital-website.netlify.app
+Value: your-site-name.netlify.app
 ```
 
-### 4.3 SSL Certificate
+### 3.3 SSL Certificate
+- Netlify automatically provides SSL certificates
+- Enable "Force HTTPS" in Site settings → Domain management
 
-Netlify automatically provides SSL certificates. Wait 24-48 hours for full propagation.
+## Step 4: GitHub Integration
+
+### 4.1 GitHub Personal Access Token
+1. Go to GitHub → Settings → Developer settings → Personal access tokens
+2. Click "Generate new token (classic)"
+3. Select scopes:
+   - `repo` (Full control of private repositories)
+   - `workflow` (Update GitHub Action workflows)
+   - `write:packages` (Write packages to GitHub Package Registry)
+4. Copy the token and add it to Netlify environment variables as `GITHUB_PAT`
+
+### 4.2 Automatic Deployments
+- Netlify automatically deploys on every push to main branch
+- Preview deployments are created for pull requests
+- Configure branch settings in Site settings → Build & deploy → Branch deploys
 
 ## Step 5: Performance Optimization
 
-### 5.1 Enable Netlify Analytics
-
-1. Go to **Analytics** tab in your site
-2. Enable **Netlify Analytics** (free tier available)
-3. Monitor performance metrics
-
-### 5.2 Configure Caching
-
-Create `_headers` file in your `public` directory:
-
-```
-/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/_next/static/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/api/*
-  Cache-Control: public, max-age=0, must-revalidate
+### 5.1 Build Optimization
+Add to `next.config.ts`:
+```typescript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true
+  }
+}
 ```
 
-### 5.3 Enable Form Handling
+### 5.2 Netlify Functions (Optional)
+For server-side functionality, create `netlify/functions/` directory:
 
-1. Go to **Forms** tab
-2. Enable **Form detection**
-3. Set up form notifications
+```javascript
+// netlify/functions/contact.js
+exports.handler = async (event, context) => {
+  // Handle contact form submissions
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: 'Success' })
+  }
+}
+```
 
-## Step 6: GitHub Integration
+## Step 6: Monitoring & Analytics
 
-### 6.1 Continuous Deployment
+### 6.1 Google Analytics
+1. Create Google Analytics 4 property
+2. Get Measurement ID
+3. Add to environment variables as `NEXT_PUBLIC_GA_MEASUREMENT_ID`
 
-1. Go to **Site settings** → **Build & deploy**
-2. Ensure **Deploy settings** are configured:
-   - Branch to deploy: `main`
-   - Build command: `npm run build`
-   - Publish directory: `out`
-3. Enable **Deploy previews** for pull requests
+### 6.2 Netlify Analytics
+- Enable in Site settings → Analytics
+- View traffic, form submissions, and performance metrics
 
-### 6.2 Build Hooks
+### 6.3 Error Tracking
+Consider adding Sentry for error tracking:
+```env
+SENTRY_DSN=https://your-sentry-dsn@sentry.io/project-id
+```
 
-For manual deployments:
-1. Go to **Site settings** → **Build & deploy** → **Build hooks**
-2. Create a new build hook
-3. Use the URL to trigger deployments
+## Step 7: Security & Headers
 
-## Step 7: Monitoring and Maintenance
+### 7.1 Security Headers
+Add to `netlify.toml`:
+```toml
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com;"
+```
 
-### 7.1 Netlify Dashboard
+## Step 8: Backup & Recovery
 
-Monitor your deployment:
-- **Deploys**: Build logs and status
-- **Analytics**: Performance metrics
-- **Forms**: Contact form submissions
+### 8.1 Automated Backups
+- Netlify automatically backs up your site
+- Enable "Deploy notifications" for monitoring
+- Consider using GitHub Actions for additional backup strategies
 
-### 7.2 Error Tracking
-
-Set up error tracking:
-1. Go to **Site settings** → **Functions**
-2. Enable **Function logs**
-3. Monitor serverless function performance
+### 8.2 Disaster Recovery
+- Keep local copies of your code
+- Document all environment variables
+- Test deployment process regularly
 
 ## Troubleshooting
 
 ### Common Issues
 
-**Build Fails:**
-```bash
-# Check build logs in Netlify dashboard
-# Common fixes:
-npm run build  # Test locally first
-npm run export  # For static sites
-```
+1. **Build Failures**
+   - Check Node.js version (use 18)
+   - Verify all dependencies are in `package.json`
+   - Check build logs in Netlify dashboard
 
-**Environment Variables Not Working:**
-- Ensure variables start with `NEXT_PUBLIC_` for client-side access
-- Redeploy after adding new variables
-- Check variable names match exactly
+2. **Environment Variables Not Working**
+   - Ensure variables start with `NEXT_PUBLIC_` for client-side access
+   - Redeploy after adding new variables
+   - Check variable names for typos
 
-**Domain Not Working:**
-- Check DNS propagation: [whatsmydns.net](https://whatsmydns.net)
-- Verify DNS records match Netlify's requirements
-- Wait 24-48 hours for full propagation
+3. **Custom Domain Issues**
+   - Verify DNS propagation (can take 24-48 hours)
+   - Check SSL certificate status
+   - Ensure domain is properly configured
 
-**Performance Issues:**
-- Enable Netlify Analytics
-- Check Core Web Vitals
-- Optimize images and assets
-- Use Netlify's CDN features
+4. **Performance Issues**
+   - Enable Netlify's CDN
+   - Optimize images
+   - Use Netlify's image optimization features
 
-### Getting Help
-
-- **Netlify Docs**: [docs.netlify.com](https://docs.netlify.com)
-- **Community**: [community.netlify.com](https://community.netlify.com)
-- **Support**: Available in Netlify dashboard
+### Support Resources
+- [Netlify Documentation](https://docs.netlify.com/)
+- [Next.js on Netlify](https://docs.netlify.com/integrations/frameworks/nextjs/)
+- [Netlify Community](https://community.netlify.com/)
 
 ## Cost Estimation
 
-### Netlify Pricing (as of 2024)
-
-**Free Tier:**
+### Netlify Free Tier
 - 100GB bandwidth/month
 - 300 build minutes/month
-- Unlimited static sites
-- Perfect for small to medium websites
+- 1 concurrent build
+- Basic form handling (100 submissions/month)
 
-**Pro Tier ($19/month):**
+### Netlify Pro ($19/month)
 - 1TB bandwidth/month
-- 1,000 build minutes/month
-- Advanced analytics
+- 3,000 build minutes/month
+- 3 concurrent builds
+- Advanced form handling
 - Priority support
 
-**For Zero Digital:**
-- **Recommended**: Free tier initially
-- **Upgrade to Pro**: When traffic exceeds 100GB/month
-- **Estimated Cost**: $0-19/month
+### Additional Costs
+- Domain registration: $10-15/year
+- Email service (Resend): $20/month for 50k emails
+- Analytics (Google Analytics): Free
 
 ## Next Steps
 
-1. **Test Your Deployment**: Visit your Netlify URL
-2. **Set Up Monitoring**: Enable analytics and error tracking
-3. **Configure Email**: Set up contact form email service
-4. **SEO Setup**: Submit sitemap to Google Search Console
-5. **Performance**: Monitor Core Web Vitals and optimize
+1. **Set up monitoring**: Configure alerts for build failures and downtime
+2. **Implement CI/CD**: Use GitHub Actions for automated testing
+3. **Add CMS**: Consider integrating Strapi or Contentful
+4. **Performance monitoring**: Set up Lighthouse CI for performance tracking
+5. **Security scanning**: Implement automated security checks
 
-Your Zero Digital website is now live on Netlify! 🚀
+---
+
+**Need help?** Contact the development team or check the [GitHub repository](https://github.com/manizvlabs/zero-digital-website) for support.

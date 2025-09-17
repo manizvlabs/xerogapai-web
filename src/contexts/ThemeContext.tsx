@@ -64,10 +64,6 @@ export function ThemeProvider({ children }: { readonly children: React.ReactNode
     setTheme
   }), [theme, toggleTheme, setTheme]);
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
   return (
     <ThemeContext.Provider value={contextValue}>
       {children}
