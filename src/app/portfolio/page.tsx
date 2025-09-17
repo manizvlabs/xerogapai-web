@@ -97,7 +97,7 @@ export default function Portfolio() {
               Ready to start your project?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
-              Let's discuss your requirements and create a solution that delivers similar results for your business.
+              Let&apos;s discuss your requirements and create a solution that delivers similar results for your business.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a

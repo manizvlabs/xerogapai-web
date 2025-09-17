@@ -1,80 +1,138 @@
-import React from 'react';
+import { siteConfig } from '@/config/site';
 
 interface StructuredDataProps {
-  type: 'organization' | 'website' | 'product' | 'service';
-  data?: Record<string, any>;
+  type?: 'website' | 'organization' | 'article';
+  pageData?: any;
 }
 
-export default function StructuredData({ type, data }: StructuredDataProps) {
-  const getStructuredData = () => {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zerodigital.ai';
-    
-    switch (type) {
-      case 'organization':
-        return {
-          '@context': 'https://schema.org',
-          '@type': 'Organization',
-          name: 'Zero Digital',
-          url: baseUrl,
-          logo: `${baseUrl}/logo.png`,
-          description: 'AI-Powered Digital Transformation services for businesses of all sizes',
-          address: {
-            '@type': 'PostalAddress',
-            addressLocality: 'Hyderabad',
-            addressRegion: 'Telangana',
-            addressCountry: 'IN',
-          },
-          contactPoint: {
-            '@type': 'ContactPoint',
-            telephone: '+917702661991',
-            contactType: 'customer service',
-            email: 'info@zerodigital.ai',
-          },
-          sameAs: [
-            'https://linkedin.com/company/zerodigital',
-            'https://twitter.com/zerodigital',
-            'https://instagram.com/zerodigital',
-          ],
-        };
-      
-      case 'website':
-        return {
-          '@context': 'https://schema.org',
-          '@type': 'WebSite',
-          name: 'Zero Digital',
-          url: baseUrl,
-          description: 'AI-Powered Digital Transformation services',
-          publisher: {
-            '@type': 'Organization',
-            name: 'Zero Digital',
-          },
-        };
-      
-      case 'service':
-        return {
-          '@context': 'https://schema.org',
-          '@type': 'Service',
-          name: 'AI-Powered Digital Transformation',
-          provider: {
-            '@type': 'Organization',
-            name: 'Zero Digital',
-          },
-          description: 'Comprehensive digital transformation services including AI automation, mobile app development, and digital marketing',
-          serviceType: 'Digital Marketing Services',
-          areaServed: 'India',
-        };
-      
-      default:
-        return data || {};
-    }
+export default function StructuredData({ type = 'website', pageData }: StructuredDataProps) {
+  const baseData = {
+    '@context': 'https://schema.org',
+    '@type': type === 'website' ? 'WebSite' : type === 'organization' ? 'Organization' : 'Article',
+    name: siteConfig.name,
+    description: siteConfig.tagline,
+    url: `https://${siteConfig.domain}`,
+    logo: `https://${siteConfig.domain}/logo.png`,
+    sameAs: [
+      `https://linkedin.com/company/zerodigital`,
+      `https://twitter.com/zerodigital`,
+    ],
   };
 
-  const structuredData = getStructuredData();
+  if (type === 'organization') {
+    return (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            ...baseData,
+            '@type': 'Organization',
+            foundingDate: '2024',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: siteConfig.location,
+              addressRegion: 'Telangana',
+              addressCountry: 'India',
+            },
+            contactPoint: {
+              '@type': 'ContactPoint',
+              telephone: siteConfig.phone,
+              contactType: 'customer service',
+              email: siteConfig.email,
+            },
+            serviceArea: {
+              '@type': 'GeoCircle',
+              geoMidpoint: {
+                '@type': 'GeoCoordinates',
+                latitude: '17.3850',
+                longitude: '78.4867',
+              },
+              geoRadius: '50000', // 50km radius from Hyderabad
+            },
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: 'Digital Services',
+              itemListElement: [
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: 'AI Content Automation',
+                    description: 'Automated LinkedIn, Instagram, and blog content generation using AI agents',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: 'Mobile App Development',
+                    description: 'Custom mobile applications for iOS and Android',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: 'Digital Transformation',
+                    description: 'Complete digital overhaul of business processes and systems',
+                  },
+                },
+              ],
+            },
+          }),
+        }}
+      />
+    );
+  }
 
+  if (type === 'article' && pageData) {
+    return (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: pageData.title,
+            description: pageData.description,
+            image: pageData.image,
+            datePublished: pageData.datePublished,
+            dateModified: pageData.dateModified,
+            author: {
+              '@type': 'Person',
+              name: pageData.author,
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: siteConfig.name,
+              logo: {
+                '@type': 'ImageObject',
+                url: `https://${siteConfig.domain}/logo.png`,
+              },
+            },
+          }),
+        }}
+      />
+    );
+  }
+
+  // Default website structured data
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          ...baseData,
+          potentialAction: {
+            '@type': 'SearchAction',
+            target: {
+              '@type': 'EntryPoint',
+              urlTemplate: `https://${siteConfig.domain}/search?q={search_term_string}`,
+            },
+            'query-input': 'required name=search_term_string',
+          },
+        }),
+      }}
     />
   );
 }
