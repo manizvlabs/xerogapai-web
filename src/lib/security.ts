@@ -52,7 +52,6 @@ export const adminSecurityHeaders = {
 
 // Content protection rules
 export const protectedRoutes = [
-  '/admin',
   '/api/admin',
   '/api/auth',
   '/_next/static',

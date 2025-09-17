@@ -11,6 +11,12 @@ import { checkRateLimit, isIPBlocked } from '@/lib/rate-limit';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Allow admin login page without any checks
+  if (pathname === '/admin/login') {
+    const response = NextResponse.next();
+    return applySecurityHeaders(response, true);
+  }
+
   // Block sensitive content
   const blockedResponse = blockSensitiveContent(request);
   if (blockedResponse) {
@@ -57,14 +63,15 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  // Protect admin routes
-  if (pathname.startsWith('/admin')) {
+  // Protect admin routes (except login page)
+  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
     const token = request.cookies.get('auth-token')?.value;
     
     if (!token) {
       // Redirect to login page
       const loginUrl = new URL('/admin/login', request.url);
-      return NextResponse.redirect(loginUrl);
+      const response = NextResponse.redirect(loginUrl);
+      return applySecurityHeaders(response, true);
     }
 
     const user = requireAuth(token);
@@ -76,7 +83,10 @@ export function middleware(request: NextRequest) {
         reason: 'Invalid or insufficient permissions'
       }, request);
       
-      return new NextResponse('Access Denied', { status: 403 });
+      // Redirect to login page instead of 403
+      const loginUrl = new URL('/admin/login', request.url);
+      const response = NextResponse.redirect(loginUrl);
+      return applySecurityHeaders(response, true);
     }
 
     // Log admin access
