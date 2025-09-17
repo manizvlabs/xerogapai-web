@@ -1,26 +1,26 @@
 import { NextRequest } from 'next/server';
 
-// Rate limiting configuration
+// Rate limiting configuration from environment variables
 const RATE_LIMITS = {
   // General API endpoints
   api: {
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    maxRequests: 100, // 100 requests per window
+    windowMs: parseInt(process.env.RATE_LIMIT_API_WINDOW_MS || '900000'), // 15 minutes default
+    maxRequests: parseInt(process.env.RATE_LIMIT_API_MAX_REQUESTS || '100'), // 100 requests default
   },
   // Contact form
   contact: {
-    windowMs: 60 * 60 * 1000, // 1 hour
-    maxRequests: 5, // 5 contact form submissions per hour
+    windowMs: parseInt(process.env.RATE_LIMIT_CONTACT_WINDOW_MS || '3600000'), // 1 hour default
+    maxRequests: parseInt(process.env.RATE_LIMIT_CONTACT_MAX_REQUESTS || '5'), // 5 submissions default
   },
   // Admin routes
   admin: {
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    maxRequests: 20, // 20 admin requests per window
+    windowMs: parseInt(process.env.RATE_LIMIT_ADMIN_WINDOW_MS || '900000'), // 15 minutes default
+    maxRequests: parseInt(process.env.RATE_LIMIT_ADMIN_MAX_REQUESTS || '200'), // 200 requests default (more lenient)
   },
   // Login attempts
   login: {
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    maxRequests: 5, // 5 login attempts per window
+    windowMs: parseInt(process.env.RATE_LIMIT_LOGIN_WINDOW_MS || '900000'), // 15 minutes default
+    maxRequests: parseInt(process.env.RATE_LIMIT_LOGIN_MAX_REQUESTS || '50'), // 50 attempts default (more lenient)
   }
 };
 
