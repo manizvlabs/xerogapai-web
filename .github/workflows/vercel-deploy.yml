@@ -43,7 +43,7 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: ./
-          vercel-args: '--prod --yes'
+          vercel-args: '--prod'
 
       - name: Comment PR with deployment URL
         if: github.event_name == 'pull_request'
