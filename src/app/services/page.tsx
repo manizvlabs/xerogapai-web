@@ -122,7 +122,7 @@ export default function Services() {
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Comprehensive digital transformation solutions designed to accelerate your business growth. 
-              From AI automation to mobile apps, we've got you covered.
+              From AI automation to mobile apps, we&apos;ve got you covered.
             </p>
           </div>
         </div>

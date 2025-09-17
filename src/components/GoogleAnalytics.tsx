@@ -5,7 +5,8 @@ import { useEffect } from 'react';
 
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
+    gtag: (...args: unknown[]) => void;
+    dataLayer: unknown[];
   }
 }
 
@@ -27,9 +28,9 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: GoogleAnalyticsPr
     document.head.appendChild(script);
 
     // Initialize gtag
-    window.gtag = function gtag(...args: any[]) {
-      (window as any).dataLayer = (window as any).dataLayer || [];
-      (window as any).dataLayer.push(args);
+    window.gtag = function gtag(...args: unknown[]) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(args);
     };
 
     window.gtag('js', new Date());

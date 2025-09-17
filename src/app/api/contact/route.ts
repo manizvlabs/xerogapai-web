@@ -77,15 +77,15 @@ export async function POST(request: NextRequest) {
 }
 
 // Example function for sending emails (replace with your actual email service)
-async function sendEmail(emailData: any) {
-  // This is where you would integrate with your email service
-  // For example:
-  // - SendGrid
-  // - Mailgun
-  // - AWS SES
-  // - Resend
-  // - etc.
-
-  console.log('Email would be sent:', emailData);
-  return true;
-}
+// async function sendEmail(emailData: { to: string; subject: string; text: string; html: string }) {
+//   // This is where you would integrate with your email service
+//   // For example:
+//   // - SendGrid
+//   // - Mailgun
+//   // - AWS SES
+//   // - Resend
+//   // - etc.
+//
+//   console.log('Email would be sent:', emailData);
+//   return true;
+// }
