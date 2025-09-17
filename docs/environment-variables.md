@@ -56,7 +56,8 @@ This document provides a comprehensive reference for all environment variables u
 ### 🔗 GitHub Integration
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `GITHUB_PAT` | Personal Access Token | ✅ |
+| `GITHUB_CLI_OAUTH_TOKEN` | GitHub CLI OAuth Token (expires ~90 days) | ✅ |
+| `GITHUB_PAT` | Personal Access Token (alternative) | ❌ |
 | `GITHUB_REPO_OWNER` | Repository owner | ✅ |
 | `GITHUB_REPO_NAME` | Repository name | ✅ |
 | `GITHUB_REPO_URL` | Full repository URL | ✅ |
