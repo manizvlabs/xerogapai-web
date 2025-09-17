@@ -1,54 +1,62 @@
 'use client';
 
-import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
 declare global {
   interface Window {
-    gtag: (command: string, targetId?: string, config?: any) => void;
+    gtag: (...args: any[]) => void;
   }
 }
 
-export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID?: string }) {
-  // Don't render anything if GA_MEASUREMENT_ID is not provided
-  if (!GA_MEASUREMENT_ID) {
-    return null;
-  }
+interface GoogleAnalyticsProps {
+  GA_MEASUREMENT_ID?: string;
+}
+
+export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: GoogleAnalyticsProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    // Load Google Analytics script
-    const script1 = document.createElement('script');
-    script1.async = true;
-    script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-    document.head.appendChild(script1);
+    if (!GA_MEASUREMENT_ID) return;
 
-    const script2 = document.createElement('script');
-    script2.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${GA_MEASUREMENT_ID}', {
-        page_title: document.title,
-        page_location: window.location.href,
-      });
-    `;
-    document.head.appendChild(script2);
+    // Load Google Analytics script
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
+
+    // Initialize gtag
+    window.gtag = function gtag(...args: any[]) {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push(args);
+    };
+
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID, {
+      page_title: document.title,
+      page_location: window.location.href,
+    });
 
     return () => {
-      // Cleanup scripts on unmount
-      document.head.removeChild(script1);
-      document.head.removeChild(script2);
+      // Cleanup if needed
+      const existingScript = document.querySelector(`script[src*="${GA_MEASUREMENT_ID}"]`);
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
     };
   }, [GA_MEASUREMENT_ID]);
 
   useEffect(() => {
-    if (pathname && window.gtag) {
-      window.gtag('config', GA_MEASUREMENT_ID!, {
-        page_path: pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : ''),
-      });
-    }
+    if (!GA_MEASUREMENT_ID || !window.gtag) return;
+
+    const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
+    
+    window.gtag('config', GA_MEASUREMENT_ID, {
+      page_path: url,
+      page_title: document.title,
+      page_location: window.location.href,
+    });
   }, [pathname, searchParams, GA_MEASUREMENT_ID]);
 
   return null;
