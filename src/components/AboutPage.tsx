@@ -111,6 +111,7 @@ export default function AboutPage() {
     whyChooseUs: content?.whyChooseUs || defaultContent.whyChooseUs,
     team: content?.team || defaultContent.team,
     values: content?.values || defaultContent.values,
+    stats: content?.stats || defaultContent.stats,
     cta: content?.cta || defaultContent.cta
   };
 
