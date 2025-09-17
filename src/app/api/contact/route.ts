@@ -1,12 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { withRateLimit } from '@/lib/rate-limit';
+import { sanitizeInput, isValidEmail, isValidPhone, logSecurityEvent } from '@/lib/security';
 
-export async function POST(request: NextRequest) {
+async function contactHandler(request: NextRequest) {
   try {
     const body = await request.json();
     const { firstName, lastName, email, phone, company, service, message } = body;
 
+    // Sanitize all inputs
+    const sanitizedData = {
+      firstName: sanitizeInput(firstName || ''),
+      lastName: sanitizeInput(lastName || ''),
+      email: sanitizeInput(email || ''),
+      phone: sanitizeInput(phone || ''),
+      company: sanitizeInput(company || ''),
+      service: sanitizeInput(service || ''),
+      message: sanitizeInput(message || '')
+    };
+
     // Validate required fields
-    if (!firstName || !lastName || !email || !message) {
+    if (!sanitizedData.firstName || !sanitizedData.lastName || !sanitizedData.email || !sanitizedData.message) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -14,25 +27,37 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!isValidEmail(sanitizedData.email)) {
       return NextResponse.json(
         { error: 'Invalid email format' },
         { status: 400 }
       );
     }
 
-    // For now, we'll log the form data and simulate sending an email
-    // In production, you would integrate with an email service like SendGrid, Mailgun, etc.
+    // Validate phone format if provided
+    if (sanitizedData.phone && !isValidPhone(sanitizedData.phone)) {
+      return NextResponse.json(
+        { error: 'Invalid phone number format' },
+        { status: 400 }
+      );
+    }
+
+    // Log the sanitized form data
     console.log('Contact Form Submission:', {
-      name: `${firstName} ${lastName}`,
-      email,
-      phone,
-      company,
-      service,
-      message,
+      name: `${sanitizedData.firstName} ${sanitizedData.lastName}`,
+      email: sanitizedData.email,
+      phone: sanitizedData.phone,
+      company: sanitizedData.company,
+      service: sanitizedData.service,
+      message: sanitizedData.message,
       timestamp: new Date().toISOString(),
     });
+
+    // Log security event
+    logSecurityEvent('contact_form_submission', {
+      email: sanitizedData.email,
+      company: sanitizedData.company
+    }, request);
 
     // Simulate email sending delay
     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -69,12 +94,20 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Contact form error:', error);
+    
+    // Log security event for errors
+    logSecurityEvent('contact_form_error', {
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }, request);
+    
     return NextResponse.json(
       { error: 'Internal server error. Please try again later.' },
       { status: 500 }
     );
   }
 }
+
+export const POST = withRateLimit(contactHandler, 'contact');
 
 // Example function for sending emails (replace with your actual email service)
 // async function sendEmail(emailData: { to: string; subject: string; text: string; html: string }) {
