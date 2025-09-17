@@ -77,7 +77,12 @@ export default function BlogPage() {
     }
   };
 
-  const pageContent = content || defaultContent;
+  const pageContent = {
+    hero: content?.hero || defaultContent.hero,
+    posts: content?.posts || defaultContent.posts,
+    categories: content?.categories || defaultContent.categories,
+    newsletter: content?.newsletter || defaultContent.newsletter
+  };
 
   return (
     <div className="bg-white">

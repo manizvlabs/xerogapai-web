@@ -71,7 +71,11 @@ export default function PortfolioPage() {
     }
   };
 
-  const pageContent = content || defaultContent;
+  const pageContent = {
+    hero: content?.hero || defaultContent.hero,
+    projects: content?.projects || defaultContent.projects,
+    cta: content?.cta || defaultContent.cta
+  };
 
   return (
     <div className="bg-white">
