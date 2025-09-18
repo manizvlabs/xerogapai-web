@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyAccessToken, isAdmin } from '@/lib/auth-middleware';
 import { sanitizeInput, logSecurityEvent } from '@/lib/security';
-import { contentConfig } from '@/config/content';
-
-// In-memory content store (in production, use a database)
-const contentStore = { ...contentConfig };
+import { contentStore } from '@/lib/content-store';
 
 export async function GET(request: NextRequest) {
   try {
