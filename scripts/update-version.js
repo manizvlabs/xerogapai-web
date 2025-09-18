@@ -5,7 +5,7 @@ const path = require('path');
 
 // Get current date in YYYYMMDD format
 const date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-const version = `1.0.0-${date}`;
+const version = `1.0.1-${date}`;
 
 // Path to .env.local
 const envPath = path.join(__dirname, '..', '.env.local');
