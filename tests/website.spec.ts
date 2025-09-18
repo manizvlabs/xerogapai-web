@@ -618,9 +618,9 @@ test.describe('Zero Digital Website', () => {
       await page.goto('/nonexistent-page');
 
       // Should show 404 page with correct title and content
-      await expect(page.getByText('Page Not Found')).toBeVisible();
+      await expect(page.getByRole('heading', { name: 'Page Not Found' })).toBeVisible();
       await expect(page.getByText('The page you are looking for could not be found.')).toBeVisible();
-      await expect(page).toHaveTitle(/404.*Not Found|Page Not Found/i);
+      await expect(page).toHaveTitle(/404.*Page Not Found/i);
     });
 
     test('Invalid admin login shows error', async ({ page }) => {
