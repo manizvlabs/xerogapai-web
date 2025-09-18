@@ -9,7 +9,14 @@ async function verifyAuthHandler(request: NextRequest): Promise<Response> {
     const token = request.cookies.get('auth-token')?.value || 
                   request.headers.get('authorization')?.replace('Bearer ', '');
 
+    console.log('Verify auth request:', {
+      hasToken: !!token,
+      tokenLength: token?.length,
+      cookies: request.cookies.getAll().map(c => c.name)
+    });
+
     if (!token) {
+      console.log('No token provided');
       return NextResponse.json(
         { error: 'No token provided' },
         { status: 401 }
@@ -18,8 +25,10 @@ async function verifyAuthHandler(request: NextRequest): Promise<Response> {
 
     // Verify token
     const payload = requireAuth(token);
+    console.log('Token verification result:', { payload: payload ? { userId: payload.userId, username: payload.username } : null });
 
     if (!payload) {
+      console.log('Invalid token');
       return NextResponse.json(
         { error: 'Invalid token' },
         { status: 401 }

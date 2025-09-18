@@ -6,7 +6,7 @@
     "dev": "next dev --port 4010",
     "build": "npm run version:update && next build",
     "build:vercel": "npm run version:update && next build --no-lint",
-    "version:update": "node scripts/update-version.mjs",
+    "version:update": "node update-version.mjs",
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",

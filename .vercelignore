@@ -1,6 +1,23 @@
-# Skip TypeScript type checking in Vercel builds
-# This file tells Vercel to ignore type checking errors
-# The build will succeed with typescript.ignoreBuildErrors: true in next.config.ts
+# Ignore development files
+node_modules
+.next
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Note: tsconfig.json is needed for path mapping (@/ imports)
-# TypeScript type checking is disabled via next.config.ts instead
+# Ignore test files
+tests/
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+
+# Ignore documentation
+docs/
+*.md
+!README.md
+
+# Ignore scripts (except build-required scripts)
+scripts/
+!scripts/update-version.mjs
