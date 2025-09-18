@@ -55,6 +55,14 @@ class UserStore {
 
     this.users.set(adminUser.id, adminUser);
     this.users.set(adminUser.username, adminUser); // For username lookup
+    
+    console.log('Default admin user initialized:', {
+      username: adminUser.username,
+      email: adminUser.email,
+      role: adminUser.role,
+      isActive: adminUser.isActive,
+      passwordSet: !!adminUser.password
+    });
   }
 
   async createUser(userData: Omit<User, 'id' | 'createdAt' | 'password'> & { password: string }): Promise<User> {
@@ -151,9 +159,16 @@ class UserStore {
 const userStore = new UserStore();
 
 // JWT Configuration
-const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-in-production';
+const JWT_SECRET = process.env.JWT_SECRET || 'zerodigital-super-secret-jwt-key-2024-production';
 const JWT_EXPIRES_IN = '15m'; // 15 minutes
 const REFRESH_TOKEN_EXPIRES_IN = '7d'; // 7 days
+
+// Log JWT configuration for debugging
+console.log('JWT Configuration:', {
+  hasSecret: !!process.env.JWT_SECRET,
+  secretLength: JWT_SECRET.length,
+  expiresIn: JWT_EXPIRES_IN
+});
 
 // JWT Token Generation
 export function generateAccessToken(user: User): string {
@@ -208,15 +223,21 @@ export function verifyRefreshToken(token: string): boolean {
 // Authentication Functions
 export async function authenticateUser(username: string, password: string): Promise<AuthResult> {
   try {
+    console.log('Authenticating user:', { username, passwordLength: password.length });
+    
     const user = await userStore.findUserByUsername(username);
+    console.log('User found:', { user: user ? { id: user.id, username: user.username, isActive: user.isActive } : null });
     
     if (!user || !user.isActive) {
+      console.log('Authentication failed: User not found or inactive');
       return { success: false, error: 'Invalid credentials' };
     }
 
     const isValidPassword = await bcrypt.compare(password, user.password);
+    console.log('Password validation:', { isValidPassword });
     
     if (!isValidPassword) {
+      console.log('Authentication failed: Invalid password');
       return { success: false, error: 'Invalid credentials' };
     }
 
@@ -226,6 +247,13 @@ export async function authenticateUser(username: string, password: string): Prom
     // Generate tokens
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken();
+    
+    console.log('Authentication successful:', {
+      userId: user.id,
+      username: user.username,
+      tokenGenerated: !!accessToken,
+      refreshTokenGenerated: !!refreshToken
+    });
     
     // Store refresh token
     const refreshExpiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
