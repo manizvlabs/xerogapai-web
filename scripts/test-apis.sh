@@ -361,10 +361,33 @@ else
 fi
 
     # Run all test suites
-    run_api_tests
-    test_content_sync
-    test_performance
-    test_error_scenarios
+    if run_api_tests; then
+        log_success "API tests completed successfully"
+    else
+        log_error "API tests failed"
+        exit 1
+    fi
+    
+    if test_content_sync; then
+        log_success "Content sync tests completed successfully"
+    else
+        log_error "Content sync tests failed"
+        exit 1
+    fi
+    
+    if test_performance; then
+        log_success "Performance tests completed successfully"
+    else
+        log_error "Performance tests failed"
+        exit 1
+    fi
+    
+    if test_error_scenarios; then
+        log_success "Error scenario tests completed successfully"
+    else
+        log_error "Error scenario tests failed"
+        exit 1
+    fi
 
     # Print results
     echo
