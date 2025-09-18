@@ -329,36 +329,36 @@ main() {
     echo "Base URL: $BASE_URL"
     echo
 
-# Check if server is running, start it if not
-if ! curl -s --max-time 5 "$BASE_URL" > /dev/null 2>&1; then
-    log_warning "Server is not running at $BASE_URL, starting it..."
-    
-    # Kill any existing processes on port 4010
-    lsof -ti:4010 | xargs kill -9 2>/dev/null || true
-    sleep 2
-    
-    npm run dev &
-    SERVER_PID=$!
-
-    # Wait for server to start
-    local attempts=0
-    while [ $attempts -lt 30 ]; do
-        if curl -s --max-time 5 "$BASE_URL" > /dev/null 2>&1; then
-            log_success "Server started successfully"
-            sleep 2  # Give server extra time to stabilize
-            break
-        fi
+    # Check if server is running, start it if not
+    if ! curl -s --max-time 5 "$BASE_URL" > /dev/null 2>&1; then
+        log_warning "Server is not running at $BASE_URL, starting it..."
+        
+        # Kill any existing processes on port 4010
+        lsof -ti:4010 | xargs kill -9 2>/dev/null || true
         sleep 2
-        ((attempts++))
-    done
+        
+        npm run dev &
+        SERVER_PID=$!
 
-    if [ $attempts -eq 30 ]; then
-        log_error "Failed to start server after 60 seconds"
-        exit 1
+        # Wait for server to start
+        local attempts=0
+        while [ $attempts -lt 30 ]; do
+            if curl -s --max-time 5 "$BASE_URL" > /dev/null 2>&1; then
+                log_success "Server started successfully"
+                sleep 2  # Give server extra time to stabilize
+                break
+            fi
+            sleep 2
+            ((attempts++))
+        done
+
+        if [ $attempts -eq 30 ]; then
+            log_error "Failed to start server after 60 seconds"
+            exit 1
+        fi
+    else
+        log_success "Server is already running"
     fi
-else
-    log_success "Server is already running"
-fi
 
     # Run all test suites
     if run_api_tests; then
@@ -398,6 +398,9 @@ fi
     echo "Failed: $FAILED"
     echo "Total:  $((PASSED + FAILED))"
 
+    # Cleanup before exit
+    cleanup
+
     if [ $FAILED -eq 0 ]; then
         log_success "All tests passed! ✅"
         exit 0
@@ -419,8 +422,7 @@ cleanup() {
     log_info "Cleanup completed"
 }
 
-# Set trap for cleanup
-trap cleanup EXIT
+# Cleanup will be handled manually at the end
 
 # Run main function
 main "$@"
