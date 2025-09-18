@@ -1,21 +1,52 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Supabase configuration
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+// Supabase configuration - lazy loaded
+let supabaseClient: any = null;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('⚠️ Supabase environment variables not found. Using fallback storage.');
-}
+// Get Supabase client (lazy initialization)
+export const getSupabaseClient = () => {
+  if (supabaseClient) {
+    return supabaseClient;
+  }
 
-// Create Supabase client
-export const supabase = supabaseUrl && supabaseAnonKey 
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : null;
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.warn('⚠️ Supabase environment variables not found. Using fallback storage.');
+    return null;
+  }
+
+  supabaseClient = createClient(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+      detectSessionInUrl: false
+    },
+    global: {
+      fetch: (url, options = {}) => {
+        return fetch(url, {
+          ...options,
+          headers: {
+            ...options.headers,
+            'User-Agent': 'zero-website/1.0.1'
+          }
+        });
+      }
+    }
+  });
+
+  return supabaseClient;
+};
+
+// Legacy export for backward compatibility
+export const supabase = getSupabaseClient();
 
 // Check if Supabase is properly configured
 export const isSupabaseConfigured = () => {
-  return !!(supabaseUrl && supabaseAnonKey && supabase);
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  return !!(supabaseUrl && supabaseAnonKey);
 };
 
 // Database schema types
@@ -56,8 +87,15 @@ export async function initializeSupabaseDatabase() {
   }
 
   try {
+    // Get the Supabase client
+    const client = getSupabaseClient();
+    if (!client) {
+      console.log('🔄 Supabase client not available, using fallback storage');
+      return false;
+    }
+
     // Test if contacts table exists by trying to query it
-    const { error: testError } = await supabase
+    const { error: testError } = await client
       .from('contacts')
       .select('count')
       .limit(1);
@@ -84,12 +122,13 @@ export async function initializeSupabaseDatabase() {
 export class SupabaseContactDatabase {
   // Create a new contact submission
   static async createContact(data: Omit<ContactSubmission, 'id' | 'submitted_at'>): Promise<ContactSubmission> {
-    if (!isSupabaseConfigured()) {
+    const client = getSupabaseClient();
+    if (!client) {
       throw new Error('Supabase not configured');
     }
 
     try {
-      const { data: contact, error } = await supabase
+      const { data: contact, error } = await client
         .from('contacts')
         .insert({
           first_name: data.first_name,
@@ -136,7 +175,8 @@ export class SupabaseContactDatabase {
     endDate?: string;
     search?: string;
   } = {}): Promise<ContactResponse> {
-    if (!isSupabaseConfigured()) {
+    const client = getSupabaseClient();
+    if (!client) {
       throw new Error('Supabase not configured');
     }
 
@@ -152,7 +192,7 @@ export class SupabaseContactDatabase {
       const offset = (page - 1) * limit;
 
       // Build query
-      let query = supabase
+      let query = client
         .from('contacts')
         .select('*', { count: 'exact' });
 
@@ -208,12 +248,13 @@ export class SupabaseContactDatabase {
 
   // Get a single contact by ID
   static async getContactById(id: string): Promise<ContactSubmission | null> {
-    if (!isSupabaseConfigured()) {
+    const client = getSupabaseClient();
+    if (!client) {
       throw new Error('Supabase not configured');
     }
 
     try {
-      const { data: contact, error } = await supabase
+      const { data: contact, error } = await client
         .from('contacts')
         .select('*')
         .eq('id', id)
@@ -247,12 +288,13 @@ export class SupabaseContactDatabase {
 
   // Delete a contact
   static async deleteContact(id: string): Promise<boolean> {
-    if (!isSupabaseConfigured()) {
+    const client = getSupabaseClient();
+    if (!client) {
       throw new Error('Supabase not configured');
     }
 
     try {
-      const { error } = await supabase
+      const { error } = await client
         .from('contacts')
         .delete()
         .eq('id', id);
@@ -270,7 +312,8 @@ export class SupabaseContactDatabase {
 
   // Get contact statistics
   static async getStats(): Promise<ContactStats> {
-    if (!isSupabaseConfigured()) {
+    const client = getSupabaseClient();
+    if (!client) {
       throw new Error('Supabase not configured');
     }
 
@@ -281,10 +324,10 @@ export class SupabaseContactDatabase {
       const monthAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
 
       const [totalResult, todayResult, weekResult, monthResult] = await Promise.all([
-        supabase.from('contacts').select('*', { count: 'exact', head: true }),
-        supabase.from('contacts').select('*', { count: 'exact', head: true }).gte('submitted_at', today.toISOString()),
-        supabase.from('contacts').select('*', { count: 'exact', head: true }).gte('submitted_at', weekAgo.toISOString()),
-        supabase.from('contacts').select('*', { count: 'exact', head: true }).gte('submitted_at', monthAgo.toISOString())
+        client.from('contacts').select('*', { count: 'exact', head: true }),
+        client.from('contacts').select('*', { count: 'exact', head: true }).gte('submitted_at', today.toISOString()),
+        client.from('contacts').select('*', { count: 'exact', head: true }).gte('submitted_at', weekAgo.toISOString()),
+        client.from('contacts').select('*', { count: 'exact', head: true }).gte('submitted_at', monthAgo.toISOString())
       ]);
 
       return {
