@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { applySecurityHeaders } from '@/lib/security';
 import { contentStore } from '@/lib/content-store';
+import { withRateLimit } from '@/lib/rate-limit';
 
-export async function GET(request: NextRequest) {
+async function getContentHandler(request: NextRequest): Promise<Response> {
   try {
     const { searchParams } = new URL(request.url);
     const section = searchParams.get('section');
@@ -27,3 +28,5 @@ export async function GET(request: NextRequest) {
     return applySecurityHeaders(response, false);
   }
 }
+
+export const GET = withRateLimit(getContentHandler, 'api');

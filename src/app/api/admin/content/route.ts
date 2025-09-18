@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { verifyAccessToken, isAdmin } from '@/lib/auth-middleware';
 import { sanitizeInput, logSecurityEvent } from '@/lib/security';
 import { contentStore } from '@/lib/content-store';
+import { withRateLimit } from '@/lib/rate-limit';
 
-export async function GET(request: NextRequest) {
+async function getAdminContentHandler(request: NextRequest): Promise<Response> {
   try {
     // Verify admin authentication
     const token = request.headers.get('authorization')?.replace('Bearer ', '') ||
@@ -39,7 +40,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function PUT(request: NextRequest) {
+async function putAdminContentHandler(request: NextRequest): Promise<Response> {
   try {
     // Verify admin authentication
     const token = request.headers.get('authorization')?.replace('Bearer ', '') ||
@@ -90,3 +91,6 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
+
+export const GET = withRateLimit(getAdminContentHandler, 'admin');
+export const PUT = withRateLimit(putAdminContentHandler, 'admin');

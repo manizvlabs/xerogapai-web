@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ContactDatabase, initializeDatabase } from '@/lib/database';
 import { applySecurityHeaders, logSecurityEvent } from '@/lib/security';
+import { withRateLimit } from '@/lib/rate-limit';
 
 // GET /api/contacts - Get all contacts with pagination and filtering
-export async function GET(request: NextRequest) {
+async function getContactsHandler(request: NextRequest): Promise<Response> {
   try {
     // Initialize database if needed
     await initializeDatabase();
@@ -43,7 +44,7 @@ export async function GET(request: NextRequest) {
 }
 
 // POST /api/contacts - Create a new contact submission
-export async function POST(request: NextRequest) {
+async function postContactsHandler(request: NextRequest): Promise<Response> {
   try {
     // Initialize database if needed
     await initializeDatabase();
@@ -104,3 +105,6 @@ export async function POST(request: NextRequest) {
     return applySecurityHeaders(response, false);
   }
 }
+
+export const GET = withRateLimit(getContactsHandler, 'api');
+export const POST = withRateLimit(postContactsHandler, 'contact');

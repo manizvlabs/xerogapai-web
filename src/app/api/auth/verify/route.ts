@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAuth } from '@/lib/auth-jwt';
 import { applySecurityHeaders } from '@/lib/security';
+import { withRateLimit } from '@/lib/rate-limit';
 
-export async function GET(request: NextRequest): Promise<Response> {
+async function verifyAuthHandler(request: NextRequest): Promise<Response> {
   try {
     // Get token from cookie or Authorization header
     const token = request.cookies.get('auth-token')?.value || 
@@ -44,3 +45,5 @@ export async function GET(request: NextRequest): Promise<Response> {
     );
   }
 }
+
+export const GET = withRateLimit(verifyAuthHandler, 'api');
