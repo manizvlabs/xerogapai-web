@@ -332,6 +332,11 @@ main() {
 # Check if server is running, start it if not
 if ! curl -s --max-time 5 "$BASE_URL" > /dev/null 2>&1; then
     log_warning "Server is not running at $BASE_URL, starting it..."
+    
+    # Kill any existing processes on port 4010
+    lsof -ti:4010 | xargs kill -9 2>/dev/null || true
+    sleep 2
+    
     npm run dev &
     SERVER_PID=$!
 
