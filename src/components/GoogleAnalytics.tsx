@@ -19,7 +19,7 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: GoogleAnalyticsPr
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!GA_MEASUREMENT_ID) return;
+    if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === 'GA-XXXXXXXXXX') return;
 
     // Load Google Analytics script
     const script = document.createElement('script');
@@ -49,7 +49,7 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: GoogleAnalyticsPr
   }, [GA_MEASUREMENT_ID]);
 
   useEffect(() => {
-    if (!GA_MEASUREMENT_ID || !window.gtag) return;
+    if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === 'GA-XXXXXXXXXX' || !window.gtag) return;
 
     const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
     

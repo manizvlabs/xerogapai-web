@@ -37,9 +37,9 @@ const Header = () => {
               <Image
                 src="/logo.png"
                 alt={`${siteConfig.name} Logo`}
-                width={120}
-                height={40}
-                className="h-10 w-auto"
+                width={400}
+                height={133}
+                className="h-20 w-auto"
                 priority
               />
             </motion.div>
@@ -105,9 +105,9 @@ const Header = () => {
                 <Image
                   src="/logo.svg"
                   alt={`${siteConfig.name} Logo`}
-                  width={120}
-                  height={40}
-                  className="h-10 w-auto"
+                  width={400}
+                  height={133}
+                  className="h-20 w-auto"
                 />
               </Link>
               <div className="flex items-center gap-x-4">

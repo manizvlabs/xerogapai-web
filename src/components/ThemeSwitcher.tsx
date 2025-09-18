@@ -12,6 +12,10 @@ export default function ThemeSwitcher() {
     setMounted(true);
   }, []);
 
+  const handleToggle = () => {
+    toggleTheme();
+  };
+
   if (!mounted) {
     // Return a placeholder during SSR to prevent hydration mismatch
     return (
@@ -27,9 +31,11 @@ export default function ThemeSwitcher() {
 
   return (
     <button
-      onClick={toggleTheme}
-      className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors hover-scale"
+      onClick={handleToggle}
+      className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+      type="button"
+      title={`Current theme: ${theme}. Click to switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       <div
         className={`transition-transform duration-300 ease-in-out ${

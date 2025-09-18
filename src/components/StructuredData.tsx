@@ -11,8 +11,8 @@ export default function StructuredData({ type = 'website', pageData }: Structure
     '@type': type === 'website' ? 'WebSite' : type === 'organization' ? 'Organization' : 'Article',
     name: siteConfig.name,
     description: siteConfig.tagline,
-    url: `https://${siteConfig.domain}`,
-    logo: `https://${siteConfig.domain}/logo.png`,
+    url: process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}` : `http://localhost:4010`,
+    logo: process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}/logo.png` : '/logo.png',
     sameAs: [
       `https://linkedin.com/company/zerodigital`,
       `https://twitter.com/zerodigital`,
@@ -107,7 +107,7 @@ export default function StructuredData({ type = 'website', pageData }: Structure
               name: siteConfig.name,
               logo: {
                 '@type': 'ImageObject',
-                url: `https://${siteConfig.domain}/logo.png`,
+                url: process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}/logo.png` : '/logo.png',
               },
             },
           }),
@@ -127,7 +127,7 @@ export default function StructuredData({ type = 'website', pageData }: Structure
             '@type': 'SearchAction',
             target: {
               '@type': 'EntryPoint',
-              urlTemplate: `https://${siteConfig.domain}/search?q={search_term_string}`,
+              urlTemplate: process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}/search?q={search_term_string}` : `http://localhost:4010/search?q={search_term_string}`,
             },
             'query-input': 'required name=search_term_string',
           },
