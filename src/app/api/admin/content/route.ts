@@ -4,7 +4,7 @@ import { sanitizeInput, logSecurityEvent } from '@/lib/security';
 import { contentConfig } from '@/config/content';
 
 // In-memory content store (in production, use a database)
-let contentStore = { ...contentConfig };
+const contentStore = { ...contentConfig };
 
 export async function GET(request: NextRequest) {
   try {

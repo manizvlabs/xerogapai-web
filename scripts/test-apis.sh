@@ -329,14 +329,31 @@ main() {
     echo "Base URL: $BASE_URL"
     echo
 
-    # Check if server is running
-    if ! curl -s --max-time 5 "$BASE_URL" > /dev/null; then
-        log_error "Server is not running at $BASE_URL"
-        log_info "Please start the development server with: npm run dev"
+# Check if server is running, start it if not
+if ! curl -s --max-time 5 "$BASE_URL" > /dev/null 2>&1; then
+    log_warning "Server is not running at $BASE_URL, starting it..."
+    npm run dev &
+    SERVER_PID=$!
+
+    # Wait for server to start
+    local attempts=0
+    while [ $attempts -lt 30 ]; do
+        if curl -s --max-time 5 "$BASE_URL" > /dev/null 2>&1; then
+            log_success "Server started successfully"
+            sleep 2  # Give server extra time to stabilize
+            break
+        fi
+        sleep 2
+        ((attempts++))
+    done
+
+    if [ $attempts -eq 30 ]; then
+        log_error "Failed to start server after 60 seconds"
         exit 1
     fi
-
-    log_success "Server is running"
+else
+    log_success "Server is already running"
+fi
 
     # Run all test suites
     run_api_tests
@@ -361,6 +378,21 @@ main() {
         exit 1
     fi
 }
+
+# Cleanup function
+cleanup() {
+    log_info "Cleaning up..."
+
+    # Kill any background processes
+    if [ ! -z "$SERVER_PID" ]; then
+        kill $SERVER_PID 2>/dev/null || true
+    fi
+
+    log_info "Cleanup completed"
+}
+
+# Set trap for cleanup
+trap cleanup EXIT
 
 # Run main function
 main "$@"

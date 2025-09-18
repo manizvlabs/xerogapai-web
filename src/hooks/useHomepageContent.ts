@@ -34,7 +34,6 @@ export function useHomepageContent() {
       if (response.ok) {
         const data = await response.json();
         if (data.success && data.content) {
-          console.log('Loaded content from API:', data.content);
           setContent(data.content);
           setLoading(false);
           return;
@@ -45,7 +44,6 @@ export function useHomepageContent() {
     }
 
     // Fallback to default content
-    console.log('Using default content from config');
     setContent(contentConfig.homepage as unknown as HomepageContent);
     setLoading(false);
   };
@@ -53,19 +51,17 @@ export function useHomepageContent() {
   useEffect(() => {
     fetchContent();
 
-    // Listen for storage events to detect content updates
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === 'content-updated') {
-        console.log('Content updated, refreshing homepage content');
-        fetchContent();
-      }
-    };
+            // Listen for storage events to detect content updates
+            const handleStorageChange = (e: StorageEvent) => {
+              if (e.key === 'content-updated') {
+                fetchContent();
+              }
+            };
 
-    // Listen for custom events for content updates
-    const handleContentUpdate = () => {
-      console.log('Content update event received, refreshing homepage content');
-      fetchContent();
-    };
+            // Listen for custom events for content updates
+            const handleContentUpdate = () => {
+              fetchContent();
+            };
 
     window.addEventListener('storage', handleStorageChange);
     window.addEventListener('contentUpdated', handleContentUpdate);
