@@ -730,34 +730,8 @@
       "ipAddress": "::ffff:127.0.0.1",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:141.0) Gecko/20100101 Firefox/141.0",
       "submittedAt": "2025-09-18T07:17:54.661Z"
-    },
-    {
-      "id": "59",
-      "firstName": "Mahesh",
-      "lastName": "Gupta",
-      "email": "mahesh@test.com",
-      "phone": "+91 7331943617",
-      "company": "Robinsons company",
-      "service": "Digital Marketing Automation",
-      "message": "digital services required",
-      "ipAddress": "::1",
-      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-      "submittedAt": "2025-09-18T10:11:44.587Z"
-    },
-    {
-      "id": "60",
-      "firstName": "Test",
-      "lastName": "Contact",
-      "email": "test@contact.com",
-      "phone": "+1234567890",
-      "company": "Test Company",
-      "service": "Web Development",
-      "message": "This is a test contact form submission to debug the save issue",
-      "ipAddress": "::1",
-      "userAgent": "curl/8.7.1",
-      "submittedAt": "2025-09-18T10:14:09.458Z"
     }
   ],
-  "nextId": 61,
-  "lastUpdated": "2025-09-18T10:14:09.458Z"
+  "nextId": 59,
+  "lastUpdated": "2025-09-18T07:17:54.661Z"
 }
