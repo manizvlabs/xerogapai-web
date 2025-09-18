@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAuth, isAdmin, updateUser, deleteUser } from '@/lib/auth-jwt';
-import { withRateLimit } from '@/lib/rate-limit';
 import { applySecurityHeaders, logSecurityEvent } from '@/lib/security';
 
 // PUT /api/admin/users/[id] - Update user
@@ -22,7 +21,7 @@ export async function PUT(request: NextRequest, context: { params: Promise<{ id:
     const body = await request.json();
     const { username, email, role, isActive } = body;
 
-    const updates: any = {};
+    const updates: Record<string, unknown> = {};
     if (username !== undefined) updates.username = username;
     if (email !== undefined) updates.email = email;
     if (role !== undefined) {
@@ -58,7 +57,7 @@ export async function PUT(request: NextRequest, context: { params: Promise<{ id:
     });
 
     return applySecurityHeaders(response, true);
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -111,7 +110,7 @@ export async function DELETE(request: NextRequest, context: { params: Promise<{ 
     });
 
     return applySecurityHeaders(response, true);
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

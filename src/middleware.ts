@@ -121,7 +121,7 @@ export function middleware(request: NextRequest) {
         userId: payload.userId,
         username: payload.username
       }, request);
-    } catch (error) {
+    } catch {
       logSecurityEvent('admin_page_access_denied', {
         pathname,
         reason: 'Invalid token or insufficient permissions'

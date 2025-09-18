@@ -33,7 +33,7 @@ export default function UserManagementPage() {
       } else {
         setError(data.error || 'Failed to fetch users');
       }
-    } catch (err) {
+    } catch {
       setError('Failed to fetch users');
     } finally {
       setLoading(false);
@@ -67,7 +67,7 @@ export default function UserManagementPage() {
       } else {
         setError(data.error || 'Failed to create user');
       }
-    } catch (err) {
+    } catch {
       setError('Failed to create user');
     }
   };
@@ -90,7 +90,7 @@ export default function UserManagementPage() {
       } else {
         setError(data.error || 'Failed to update user');
       }
-    } catch (err) {
+    } catch {
       setError('Failed to update user');
     }
   };
@@ -112,7 +112,7 @@ export default function UserManagementPage() {
       } else {
         setError(data.error || 'Failed to delete user');
       }
-    } catch (err) {
+    } catch {
       setError('Failed to delete user');
     }
   };

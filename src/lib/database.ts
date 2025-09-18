@@ -162,7 +162,7 @@ export class ContactDatabase {
 
       // Build the WHERE clause
       let whereClause = 'WHERE 1=1';
-      const params: any[] = [];
+      const params: unknown[] = [];
       let paramCount = 0;
 
       if (startDate) {

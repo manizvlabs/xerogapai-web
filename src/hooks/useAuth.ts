@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface User {
@@ -26,9 +26,9 @@ export function useAuth() {
 
   useEffect(() => {
     checkAuth();
-  }, []);
+  }, [checkAuth]);
 
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     try {
       setAuthState(prev => ({ ...prev, loading: true, error: null }));
       
@@ -49,7 +49,7 @@ export function useAuth() {
         });
         router.push('/admin/login');
       }
-    } catch (error) {
+    } catch {
       setAuthState({
         user: null,
         loading: false,
@@ -57,7 +57,7 @@ export function useAuth() {
       });
       router.push('/admin/login');
     }
-  };
+  }, [router]);
 
   const logout = async () => {
     try {

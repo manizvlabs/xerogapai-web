@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --port 4010",
     "build": "npm run version:update && next build",
-    "version:update": "node scripts/update-version.js",
+    "version:update": "node scripts/update-version.mjs",
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",

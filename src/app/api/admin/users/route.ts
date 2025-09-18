@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { requireAuth, isAdmin, getAllUsers, createUser, updateUser, deleteUser } from '@/lib/auth-jwt';
-import { withRateLimit } from '@/lib/rate-limit';
+import { requireAuth, isAdmin, getAllUsers, createUser } from '@/lib/auth-jwt';
 import { applySecurityHeaders, logSecurityEvent } from '@/lib/security';
 
 // GET /api/admin/users - Get all users
@@ -26,7 +25,7 @@ async function getUsersHandler(request: NextRequest): Promise<Response> {
     });
 
     return applySecurityHeaders(response, true);
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -94,7 +93,7 @@ async function createUserHandler(request: NextRequest): Promise<Response> {
     });
 
     return applySecurityHeaders(response, true);
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

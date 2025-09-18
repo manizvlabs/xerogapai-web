@@ -160,7 +160,7 @@ test.describe('Zero Digital Website', () => {
       // Wait for navigation with multiple fallback strategies
       try {
         await page.waitForURL(/\/admin\/content/, { timeout: 30000 });
-      } catch (error) {
+      } catch {
         // Try alternative wait strategies
         await page.waitForLoadState('networkidle', { timeout: 20000 });
         if (!page.url().includes('/admin/content')) {
@@ -193,7 +193,7 @@ test.describe('Zero Digital Website', () => {
       // Wait for error message to appear with longer timeout for WebKit
       try {
         await expect(page.locator('[data-testid="error-message"]')).toBeVisible({ timeout: 10000 });
-      } catch (error) {
+      } catch {
         // Fallback: check for any error-related text
         const errorText = await page.getByText(/Invalid|Login failed|Error/).isVisible();
         if (!errorText) {
@@ -373,7 +373,7 @@ test.describe('Zero Digital Website', () => {
 
       // Open homepage in second tab
       await homepagePage.goto('/');
-      const originalTitle = await homepagePage.getByRole('heading', { level: 1 }).textContent();
+      // const originalTitle = await homepagePage.getByRole('heading', { level: 1 }).textContent();
 
       // Edit homepage content in admin tab
       await adminPage.getByRole('button', { name: 'Homepage' }).click();
@@ -398,7 +398,7 @@ test.describe('Zero Digital Website', () => {
       // Wait for success message with more flexible checking
       try {
         await expect(adminPage.getByText('✓ Changes saved successfully!')).toBeVisible({ timeout: 10000 });
-      } catch (error) {
+      } catch {
         // Check for alternative success indicators
         const successIndicators = [
           'Changes saved successfully',
@@ -558,7 +558,7 @@ test.describe('Zero Digital Website', () => {
 
       for (const element of textElements) {
         const color = await element.evaluate(el => window.getComputedStyle(el).color);
-        const backgroundColor = await element.evaluate(el => window.getComputedStyle(el).backgroundColor);
+        // const backgroundColor = await element.evaluate(el => window.getComputedStyle(el).backgroundColor);
 
         // Basic check - ensure text isn't invisible
         expect(color).not.toBe('rgba(0, 0, 0, 0)');

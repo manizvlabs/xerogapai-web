@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { ContactDatabase, initializeDatabase } from '@/lib/database';
 import { applySecurityHeaders } from '@/lib/security';
 
 // GET /api/contacts/stats - Get contact statistics
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Initialize database if needed
     await initializeDatabase();

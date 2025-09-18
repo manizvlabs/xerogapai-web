@@ -38,7 +38,7 @@ async function verifyAuthHandler(request: NextRequest): Promise<Response> {
     });
 
     return applySecurityHeaders(response, true);
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

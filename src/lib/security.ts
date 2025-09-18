@@ -153,7 +153,7 @@ export function verifyCSRFToken(token: string, sessionToken: string): boolean {
 }
 
 // Content filtering for admin routes
-export function filterAdminContent(content: any): any {
+export function filterAdminContent(content: Record<string, unknown>): Record<string, unknown> {
   // Remove sensitive information
   const filtered = { ...content };
   
@@ -171,7 +171,7 @@ export function filterAdminContent(content: any): any {
 // Log security events
 export function logSecurityEvent(
   event: string, 
-  details: Record<string, any>, 
+  details: Record<string, unknown>, 
   request: NextRequest
 ): void {
   const logEntry = {

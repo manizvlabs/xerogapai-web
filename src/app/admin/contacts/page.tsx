@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ProtectedAdminLayout from '@/components/ProtectedAdminLayout';
 import { 
   MagnifyingGlassIcon, 
-  CalendarIcon, 
   TrashIcon, 
   EyeIcon,
   ChartBarIcon,
@@ -34,13 +33,13 @@ interface ContactStats {
   thisMonth: number;
 }
 
-interface ContactResponse {
-  contacts: ContactSubmission[];
-  total: number;
-  page: number;
-  limit: number;
-  totalPages: number;
-}
+// interface ContactResponse {
+//   contacts: ContactSubmission[];
+//   total: number;
+//   page: number;
+//   limit: number;
+//   totalPages: number;
+// }
 
 export default function ContactManagementPage() {
   const [contacts, setContacts] = useState<ContactSubmission[]>([]);
@@ -61,7 +60,7 @@ export default function ContactManagementPage() {
   const [selectedContact, setSelectedContact] = useState<ContactSubmission | null>(null);
 
   // Fetch contacts with current filters
-  const fetchContacts = async (page = 1) => {
+  const fetchContacts = useCallback(async (page = 1) => {
     try {
       setLoading(true);
       const params = new URLSearchParams({
@@ -86,12 +85,12 @@ export default function ContactManagementPage() {
       } else {
         setError(data.error || 'Failed to fetch contacts');
       }
-    } catch (err) {
+    } catch {
       setError('Network error while fetching contacts');
     } finally {
       setLoading(false);
     }
-  };
+  }, [searchTerm, startDate, endDate, pagination.limit]);
 
   // Fetch statistics
   const fetchStats = async () => {
@@ -101,7 +100,7 @@ export default function ContactManagementPage() {
       if (data.success) {
         setStats(data.data);
       }
-    } catch (err) {
+    } catch {
       console.error('Failed to fetch stats:', err);
     }
   };
@@ -123,7 +122,7 @@ export default function ContactManagementPage() {
       } else {
         alert(data.error || 'Failed to delete contact');
       }
-    } catch (err) {
+    } catch {
       alert('Network error while deleting contact');
     }
   };
@@ -168,7 +167,7 @@ export default function ContactManagementPage() {
   useEffect(() => {
     fetchContacts();
     fetchStats();
-  }, []);
+  }, [fetchContacts]);
 
   return (
     <ProtectedAdminLayout>

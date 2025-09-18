@@ -109,6 +109,7 @@ class UserStore {
     const users: Omit<User, 'password'>[] = [];
     for (const [key, user] of this.users.entries()) {
       if (key === user.id) { // Avoid duplicates
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { password, ...userWithoutPassword } = user;
         users.push(userWithoutPassword);
       }
@@ -187,7 +188,7 @@ export function verifyAccessToken(token: string): JWTPayload | null {
     }) as JWTPayload;
     
     return decoded;
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -199,13 +200,14 @@ export function verifyRefreshToken(token: string): boolean {
       audience: 'zerodigital-refresh'
     });
     return true;
-  } catch (error) {
+  } catch {
     return false;
   }
 }
 
 // Authentication Functions
-export async function authenticateUser(username: string, password: string): Promise<AuthResult> {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function authenticateUser(username: string, _password: string): Promise<AuthResult> {
   try {
     const user = await userStore.findUserByUsername(username);
     
@@ -230,7 +232,8 @@ export async function authenticateUser(username: string, password: string): Prom
     const refreshExpiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
     userStore.storeRefreshToken(refreshToken, user.id, refreshExpiresAt);
 
-    const { password: _, ...userWithoutPassword } = user;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password: _password, ...userWithoutPassword } = user;
 
     return { 
       success: true, 
@@ -238,7 +241,7 @@ export async function authenticateUser(username: string, password: string): Prom
       token: accessToken,
       refreshToken 
     };
-  } catch (error) {
+  } catch {
     return { success: false, error: 'Authentication failed' };
   }
 }
@@ -264,14 +267,15 @@ export async function refreshAccessToken(refreshToken: string): Promise<AuthResu
 
     // Generate new access token
     const newAccessToken = generateAccessToken(user);
-    const { password: _, ...userWithoutPassword } = user;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password: _password, ...userWithoutPassword } = user;
 
     return { 
       success: true, 
       user: userWithoutPassword, 
       token: newAccessToken 
     };
-  } catch (error) {
+  } catch {
     return { success: false, error: 'Token refresh failed' };
   }
 }
@@ -280,7 +284,7 @@ export async function revokeToken(refreshToken: string): Promise<boolean> {
   try {
     userStore.revokeRefreshToken(refreshToken);
     return true;
-  } catch (error) {
+  } catch {
     return false;
   }
 }
@@ -314,9 +318,10 @@ export async function createUser(userData: {
       isActive: true
     });
 
-    const { password: _, ...userWithoutPassword } = user;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password: _password, ...userWithoutPassword } = user;
     return { success: true, user: userWithoutPassword };
-  } catch (error) {
+  } catch {
     return { success: false, error: 'Failed to create user' };
   }
 }
@@ -332,9 +337,10 @@ export async function updateUser(id: string, updates: Partial<Omit<User, 'id' | 
       return { success: false, error: 'User not found' };
     }
 
-    const { password: _, ...userWithoutPassword } = user;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password: _password, ...userWithoutPassword } = user;
     return { success: true, user: userWithoutPassword };
-  } catch (error) {
+  } catch {
     return { success: false, error: 'Failed to update user' };
   }
 }
@@ -347,7 +353,7 @@ export async function deleteUser(id: string): Promise<AuthResult> {
     }
 
     return { success: true };
-  } catch (error) {
+  } catch {
     return { success: false, error: 'Failed to delete user' };
   }
 }

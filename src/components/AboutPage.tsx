@@ -114,22 +114,22 @@ export default function AboutPage() {
     whyChooseUs: {
       ...defaultContent.whyChooseUs,
       ...(content?.whyChooseUs || {}),
-      features: ((content?.whyChooseUs as any)?.features || defaultContent.whyChooseUs.features) || []
+      features: ((content?.whyChooseUs as Record<string, unknown>)?.features || defaultContent.whyChooseUs.features) || []
     },
     team: {
       ...defaultContent.team,
       ...(content?.team || {}),
-      members: ((content?.team as any)?.members || defaultContent.team.members) || []
+      members: ((content?.team as Record<string, unknown>)?.members || defaultContent.team.members) || []
     },
     values: {
       ...defaultContent.values,
       ...(content?.values || {}),
-      items: ((content?.values as any)?.items || defaultContent.values.items) || []
+      items: ((content?.values as Record<string, unknown>)?.items || defaultContent.values.items) || []
     },
     stats: {
       ...defaultContent.stats,
       ...(content?.stats || {}),
-      items: ((content?.stats as any)?.items || defaultContent.stats.items) || []
+      items: ((content?.stats as Record<string, unknown>)?.items || defaultContent.stats.items) || []
     },
     cta: content?.cta || defaultContent.cta
   };
@@ -141,10 +141,10 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-              {(pageContent.hero as any).title}
+              {(pageContent.hero as Record<string, unknown>).title}
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              {(pageContent.hero as any).subtitle}
+              {(pageContent.hero as Record<string, unknown>).subtitle}
             </p>
           </div>
         </div>
@@ -157,19 +157,19 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
               <div>
                   <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-                  {(pageContent.mission as any).title}
+                  {(pageContent.mission as Record<string, unknown>).title}
                 </h2>
                 <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                  {(pageContent.mission as any).description}
+                  {(pageContent.mission as Record<string, unknown>).description}
                 </p>
                 <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                  {(pageContent.mission as any).additionalDescription}
+                  {(pageContent.mission as Record<string, unknown>).additionalDescription}
                 </p>
               </div>
               <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{(pageContent.whyChooseUs as any).title}</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{(pageContent.whyChooseUs as Record<string, unknown>).title}</h3>
                 <ul className="space-y-4">
-                  {(pageContent.whyChooseUs as any).features && Array.isArray((pageContent.whyChooseUs as any).features) && (pageContent.whyChooseUs as any).features.map((feature: string, index: number) => (
+                  {(pageContent.whyChooseUs as Record<string, unknown>).features && Array.isArray((pageContent.whyChooseUs as Record<string, unknown>).features) && (pageContent.whyChooseUs as Record<string, unknown>).features.map((feature: string, index: number) => (
                     <li key={`feature-${index}-${feature.slice(0, 20)}`} className="flex items-start gap-x-3">
                       <CheckIcon className="h-6 w-6 flex-none text-blue-600 mt-0.5" />
                       <span className="text-gray-600 dark:text-gray-300">{feature}</span>
@@ -187,15 +187,15 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              {(pageContent.values as any).title}
+              {(pageContent.values as Record<string, unknown>).title}
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              {(pageContent.values as any).subtitle}
+              {(pageContent.values as Record<string, unknown>).subtitle}
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
-              {(pageContent.values as any).items && Array.isArray((pageContent.values as any).items) && (pageContent.values as any).items.map((value: { name: string; description: string }, index: number) => (
+              {(pageContent.values as Record<string, unknown>).items && Array.isArray((pageContent.values as Record<string, unknown>).items) && (pageContent.values as Record<string, unknown>).items.map((value: { name: string; description: string }, index: number) => (
                 <div key={`value-${index}-${value.name}`} className="flex flex-col">
                   <dt className="text-base font-semibold leading-7 text-gray-900 dark:text-white">
                     {value.name}
@@ -215,15 +215,15 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              {(pageContent.team as any).title}
+              {(pageContent.team as Record<string, unknown>).title}
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              {(pageContent.team as any).subtitle}
+              {(pageContent.team as Record<string, unknown>).subtitle}
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-1">
-              {(pageContent.team as any).members && Array.isArray((pageContent.team as any).members) && (pageContent.team as any).members.map((person: { initials: string; name: string; title: string; description: string }, index: number) => (
+              {(pageContent.team as Record<string, unknown>).members && Array.isArray((pageContent.team as Record<string, unknown>).members) && (pageContent.team as Record<string, unknown>).members.map((person: { initials: string; name: string; title: string; description: string }, index: number) => (
                 <div key={`member-${index}-${person.name}`} className="flex flex-col items-center text-center">
                   <div className="h-32 w-32 rounded-full bg-gray-200 flex items-center justify-center">
                     <span className="text-2xl font-bold text-gray-600 dark:text-gray-300">{person.initials}</span>
@@ -244,14 +244,14 @@ export default function AboutPage() {
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="text-center">
               <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                {(pageContent.stats as any).title}
+                {(pageContent.stats as Record<string, unknown>).title}
               </h2>
               <p className="mt-4 text-lg leading-8 text-blue-100">
-                {(pageContent.stats as any).subtitle}
+                {(pageContent.stats as Record<string, unknown>).subtitle}
               </p>
             </div>
             <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
-              {(pageContent.stats as any).items && Array.isArray((pageContent.stats as any).items) && (pageContent.stats as any).items.map((stat: { label: string; value: string }, index: number) => (
+              {(pageContent.stats as Record<string, unknown>).items && Array.isArray((pageContent.stats as Record<string, unknown>).items) && (pageContent.stats as Record<string, unknown>).items.map((stat: { label: string; value: string }, index: number) => (
                 <div key={`stat-${index}-${stat.label}`} className="flex flex-col-reverse">
                   <dt className="text-base leading-7 text-blue-100">{stat.label}</dt>
                   <dd className="text-2xl font-bold leading-9 tracking-tight text-white">{stat.value}</dd>
@@ -267,20 +267,20 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              {(pageContent.cta as any).title}
+              {(pageContent.cta as Record<string, unknown>).title}
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              {(pageContent.cta as any).description}
+              {(pageContent.cta as Record<string, unknown>).description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="/contact"
                 className="rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
               >
-                {(pageContent.cta as any).primaryButton}
+                {(pageContent.cta as Record<string, unknown>).primaryButton}
               </a>
               <a href="/services" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-blue-600 transition-colors">
-                {(pageContent.cta as any).secondaryButton} <span aria-hidden="true">→</span>
+                {(pageContent.cta as Record<string, unknown>).secondaryButton} <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>

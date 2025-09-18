@@ -11,7 +11,7 @@ export interface JWTPayload {
 }
 
 // JWT Configuration
-const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-in-production';
+// const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-in-production';
 
 // Simple JWT verification for middleware (no bcrypt dependency)
 export function verifyAccessToken(token: string): JWTPayload | null {

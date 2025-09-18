@@ -20,7 +20,7 @@ export default function LoginForm() {
         if (response.ok) {
           router.push('/admin/content');
         }
-      } catch (error) {
+      } catch {
         // Not logged in, stay on login page
       }
     };

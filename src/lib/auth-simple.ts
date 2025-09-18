@@ -46,7 +46,7 @@ function verifySimpleToken(token: string): User | null {
       email: payload.email,
       role: payload.role
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -94,7 +94,7 @@ export async function authenticateUser(username: string, password: string): Prom
     const token = generateSimpleToken(user);
 
     return { success: true, user, token };
-  } catch (error) {
+  } catch {
     return { success: false, error: 'Authentication failed' };
   }
 }

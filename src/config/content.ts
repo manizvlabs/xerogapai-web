@@ -282,7 +282,7 @@ export const contentConfig = {
 };
 
 // Content validation function
-export function validateContent(content: any): boolean {
+export function validateContent(content: Record<string, unknown>): boolean {
   try {
     // Basic validation - check if required fields exist
     if (!content.homepage || !content.about || !content.services) {
@@ -298,7 +298,7 @@ export function validateContent(content: any): boolean {
 }
 
 // Content update helper
-export function updateContent(section: string, key: string, value: any): void {
+export function updateContent(section: string, key: string, value: unknown): void {
   console.log(`Updating content: ${section}.${key} = ${value}`);
   // In a real implementation, this would update the content file
   // For now, it's just a placeholder for documentation

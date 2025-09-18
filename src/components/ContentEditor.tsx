@@ -74,7 +74,7 @@ export default function ContentEditor({ section, onSave, onCancel }: ContentEdit
                 onChange={(e) => {
                   try {
                     setContent(JSON.parse(e.target.value));
-                  } catch (error) {
+                  } catch {
                     // Invalid JSON, keep the text as is
                   }
                 }}
