@@ -38,7 +38,7 @@ export default function AboutPage() {
   // Default content structure
   const defaultContent = {
     hero: {
-      title: "About Zero Digital",
+      title: "About XeroGap AI",
       subtitle: "We're passionate about helping businesses transform through AI automation, digital solutions, and innovative technology. Based in Hyderabad, serving clients across India and globally."
     },
     mission: {
@@ -80,7 +80,7 @@ export default function AboutPage() {
     },
     team: {
       title: "Meet the Team",
-      subtitle: "The passionate individuals behind Zero Digital",
+      subtitle: "The passionate individuals behind XeroGap AI",
       members: [
         {
           name: 'Manish Kumar',

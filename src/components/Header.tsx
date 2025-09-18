@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import ThemeSwitcher from './ThemeSwitcher';
+import RegionSwitcher from './RegionSwitcher';
 import { siteConfig } from '@/config/site';
 
 const Header = () => {
@@ -75,6 +76,7 @@ const Header = () => {
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-x-4">
           {siteConfig.enableThemeSwitcher && <ThemeSwitcher />}
+          <RegionSwitcher />
           <Link
             href="/contact"
             className="rounded-md bg-blue-600 dark:bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 dark:hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
@@ -112,6 +114,7 @@ const Header = () => {
               </Link>
               <div className="flex items-center gap-x-4">
                 {siteConfig.enableThemeSwitcher && <ThemeSwitcher />}
+                <RegionSwitcher />
                 <button
                   type="button"
                   className="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-300"

@@ -139,7 +139,7 @@ export default function LoginForm() {
         <div className="mt-6">
           <div className="text-center">
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              Secure access to Zero Digital admin panel
+              Secure access to XeroGap AI admin panel
             </p>
           </div>
         </div>

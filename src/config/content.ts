@@ -54,7 +54,7 @@ export const contentConfig = {
   // About Page Content
   about: {
     hero: {
-      title: "About Zero Digital",
+      title: "About XeroGap AI",
       subtitle: "We're a team of passionate technologists dedicated to transforming businesses through AI-powered solutions."
     },
     values: [

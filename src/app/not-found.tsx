@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '404 - Page Not Found | Zero Digital',
-  description: 'The page you are looking for could not be found. Return to Zero Digital homepage.',
+  title: '404 - Page Not Found | XeroGap AI',
+  description: 'The page you are looking for could not be found. Return to XeroGap AI homepage.',
 };
 
 export default function NotFound() {

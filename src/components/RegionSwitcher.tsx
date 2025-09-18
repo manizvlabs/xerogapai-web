@@ -1,0 +1,148 @@
+// RegionSwitcher.tsx - Header Component with Geographic Switcher
+// Place this in your components folder
+
+'use client';
+
+import { useState, useEffect } from 'react';
+import { ChevronDownIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
+import { useRegion } from '@/contexts/RegionContext';
+
+interface RegionSwitcherProps {
+  // Optional override props for testing
+  currentRegion?: 'global' | 'india';
+  onRegionChange?: (region: 'global' | 'india') => void;
+}
+
+export default function RegionSwitcher({ currentRegion: propCurrentRegion, onRegionChange: propOnRegionChange }: RegionSwitcherProps = {}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [autoDetected, setAutoDetected] = useState<string | null>(null);
+
+  // Use context if no props provided
+  const context = useRegion();
+  const currentRegion = propCurrentRegion || context.currentRegion;
+  const onRegionChange = propOnRegionChange || context.setRegion;
+
+  // Auto-detect user location on component mount
+  useEffect(() => {
+    const detectLocation = async () => {
+      try {
+        // Using a free IP geolocation service
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+
+        if (data.country_code === 'IN') {
+          setAutoDetected('India');
+          if (currentRegion !== 'india') {
+            onRegionChange('india');
+          }
+        } else {
+          setAutoDetected('Global');
+          if (currentRegion !== 'global') {
+            onRegionChange('global');
+          }
+        }
+      } catch (error) {
+        console.log('Auto-detection failed, using default');
+      }
+    };
+
+    // Only auto-detect if we haven't already set a region
+    if (!autoDetected) {
+      detectLocation();
+    }
+  }, [currentRegion, onRegionChange, autoDetected]);
+
+  const regions = [
+    {
+      id: 'global' as const,
+      name: 'Global',
+      flag: '🌍',
+      currency: 'USD',
+      description: 'Middle East, Africa, US'
+    },
+    {
+      id: 'india' as const,
+      name: 'India',
+      flag: '🇮🇳',
+      currency: 'INR',
+      description: 'India-specific services'
+    }
+  ];
+
+  const currentRegionData = regions.find(r => r.id === currentRegion);
+
+  return (
+    <div className="relative">
+      {/* Region Switcher Button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700"
+      >
+        <GlobeAltIcon className="w-4 h-4" />
+        <span className="hidden sm:inline">{currentRegionData?.flag}</span>
+        <span className="hidden md:inline">{currentRegionData?.name}</span>
+        <span className="md:hidden">Region</span>
+        <ChevronDownIcon className="w-4 h-4" />
+      </button>
+
+      {/* Dropdown Menu */}
+      {isOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 z-10"
+            onClick={() => setIsOpen(false)}
+          />
+
+          {/* Dropdown */}
+          <div className="absolute right-0 z-20 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-600">
+            <div className="p-3 border-b border-gray-200 dark:border-gray-600">
+              <p className="text-xs text-gray-500 uppercase tracking-wide font-medium dark:text-gray-400">
+                Choose Your Region
+              </p>
+              {autoDetected && (
+                <p className="text-xs text-gray-400 mt-1 dark:text-gray-500">
+                  Auto-detected: {autoDetected}
+                </p>
+              )}
+            </div>
+
+            <div className="py-1">
+              {regions.map((region) => (
+                <button
+                  key={region.id}
+                  onClick={() => {
+                    onRegionChange(region.id);
+                    setIsOpen(false);
+                  }}
+                  className={`w-full px-3 py-2 text-left hover:bg-gray-50 flex items-center gap-3 dark:hover:bg-gray-700 ${
+                    currentRegion === region.id ? 'bg-blue-50 text-blue-600 dark:bg-blue-900 dark:text-blue-400' : 'text-gray-700 dark:text-gray-200'
+                  }`}
+                >
+                  <span className="text-lg">{region.flag}</span>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium">{region.name}</span>
+                      {currentRegion === region.id && (
+                        <div className="w-2 h-2 bg-blue-600 rounded-full dark:bg-blue-400"></div>
+                      )}
+                    </div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{region.description}</p>
+                    <p className="text-xs text-gray-400 dark:text-gray-500">{region.currency} pricing</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <div className="px-3 py-2 border-t border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                💡 Content and pricing will update automatically
+              </p>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
