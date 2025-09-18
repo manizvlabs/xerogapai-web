@@ -102,5 +102,5 @@ async function createUserHandler(request: NextRequest): Promise<Response> {
 }
 
 
-export const GET = withRateLimit(getUsersHandler, 'admin');
-export const POST = withRateLimit(createUserHandler, 'admin');
+export const GET = getUsersHandler;
+export const POST = createUserHandler;
