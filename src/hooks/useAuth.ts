@@ -24,10 +24,6 @@ export function useAuth() {
   });
   const router = useRouter();
 
-  useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
-
   const checkAuth = useCallback(async () => {
     try {
       setAuthState(prev => ({ ...prev, loading: true, error: null }));
@@ -58,6 +54,10 @@ export function useAuth() {
       router.push('/admin/login');
     }
   }, [router]);
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
 
   const logout = async () => {
     try {

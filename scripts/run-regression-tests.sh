@@ -50,6 +50,11 @@ check_server() {
         log_error "Server is not running at $BASE_URL"
         log_info "Starting development server..."
         cd "$PROJECT_ROOT"
+        
+        # Kill any existing processes on port 4010
+        lsof -ti:4010 | xargs kill -9 2>/dev/null || true
+        sleep 2
+        
         npm run dev &
         SERVER_PID=$!
 

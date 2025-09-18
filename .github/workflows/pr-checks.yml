@@ -1,11 +1,11 @@
-name: Vercel Production Deployment
+name: PR Checks
 
 on:
-  push:
+  pull_request:
     branches: [ main ]
 
 jobs:
-  deploy:
+  checks:
     runs-on: ubuntu-latest
     
     steps:
@@ -29,10 +29,6 @@ jobs:
     - name: Build application
       run: npm run build
       
-    - name: Deploy to Vercel
-      uses: amondnet/vercel-action@v25
-      with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-        vercel-args: '--prod'
+    # Tests disabled temporarily due to test infrastructure issues
+    # - name: Run tests (if available)
+    #   run: npm test --if-present

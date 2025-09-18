@@ -34,14 +34,18 @@ export interface JWTPayload {
 class UserStore {
   private users: Map<string, User> = new Map();
   private refreshTokens: Map<string, { userId: string; expiresAt: Date }> = new Map();
+  private initialized: boolean = false;
 
   constructor() {
-    this.initializeDefaultAdmin();
+    if (!this.initialized) {
+      this.initializeDefaultAdmin();
+      this.initialized = true;
+    }
   }
 
-  private async initializeDefaultAdmin() {
+  private initializeDefaultAdmin() {
     const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
-    const hashedPassword = await bcrypt.hash(adminPassword, 12);
+    const hashedPassword = bcrypt.hashSync(adminPassword, 12);
     
     const adminUser: User = {
       id: '1',
@@ -55,6 +59,23 @@ class UserStore {
 
     this.users.set(adminUser.id, adminUser);
     this.users.set(adminUser.username, adminUser); // For username lookup
+    
+    console.log('Default admin user initialized:', {
+      username: adminUser.username,
+      email: adminUser.email,
+      role: adminUser.role,
+      isActive: adminUser.isActive,
+      passwordSet: !!adminUser.password
+    });
+    
+    // Debug: Check if user is stored correctly
+    const storedUser = this.users.get(adminUser.username);
+    console.log('User storage verification:', {
+      username: adminUser.username,
+      stored: !!storedUser,
+      storedUsername: storedUser?.username,
+      storedRole: storedUser?.role
+    });
   }
 
   async createUser(userData: Omit<User, 'id' | 'createdAt' | 'password'> & { password: string }): Promise<User> {
@@ -82,7 +103,14 @@ class UserStore {
   }
 
   async findUserByUsername(username: string): Promise<User | null> {
-    return this.users.get(username) || null;
+    const user = this.users.get(username);
+    console.log('findUserByUsername:', {
+      username,
+      found: !!user,
+      userKeys: Array.from(this.users.keys()),
+      user: user ? { id: user.id, username: user.username, role: user.role } : null
+    });
+    return user || null;
   }
 
   async updateUser(id: string, updates: Partial<Omit<User, 'id' | 'password'>>): Promise<User | null> {
@@ -147,13 +175,29 @@ class UserStore {
   }
 }
 
-// Singleton instance
-const userStore = new UserStore();
+// Global UserStore instance to ensure true singleton
+let userStore: UserStore;
+
+// Singleton getter
+function getUserStore(): UserStore {
+  if (!userStore) {
+    userStore = new UserStore();
+    console.log('UserStore singleton created:', { instanceId: Math.random() });
+  }
+  return userStore;
+}
 
 // JWT Configuration
-const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-in-production';
+const JWT_SECRET = process.env.JWT_SECRET || 'zerodigital-super-secret-jwt-key-2024-production';
 const JWT_EXPIRES_IN = '15m'; // 15 minutes
 const REFRESH_TOKEN_EXPIRES_IN = '7d'; // 7 days
+
+// Log JWT configuration for debugging
+console.log('JWT Configuration:', {
+  hasSecret: !!process.env.JWT_SECRET,
+  secretLength: JWT_SECRET.length,
+  expiresIn: JWT_EXPIRES_IN
+});
 
 // JWT Token Generation
 export function generateAccessToken(user: User): string {
@@ -208,28 +252,43 @@ export function verifyRefreshToken(token: string): boolean {
 // Authentication Functions
 export async function authenticateUser(username: string, password: string): Promise<AuthResult> {
   try {
-    const user = await userStore.findUserByUsername(username);
+    const store = getUserStore();
+    console.log('Authenticating user:', { username, passwordLength: password.length });
+    console.log('UserStore instance check:', { userStoreKeys: Array.from(store['users'].keys()) });
+    
+    const user = await store.findUserByUsername(username);
+    console.log('User found:', { user: user ? { id: user.id, username: user.username, isActive: user.isActive } : null });
     
     if (!user || !user.isActive) {
+      console.log('Authentication failed: User not found or inactive');
       return { success: false, error: 'Invalid credentials' };
     }
 
     const isValidPassword = await bcrypt.compare(password, user.password);
+    console.log('Password validation:', { isValidPassword });
     
     if (!isValidPassword) {
+      console.log('Authentication failed: Invalid password');
       return { success: false, error: 'Invalid credentials' };
     }
 
     // Update last login
-    await userStore.updateUser(user.id, { lastLogin: new Date() });
+    await store.updateUser(user.id, { lastLogin: new Date() });
 
     // Generate tokens
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken();
     
+    console.log('Authentication successful:', {
+      userId: user.id,
+      username: user.username,
+      tokenGenerated: !!accessToken,
+      refreshTokenGenerated: !!refreshToken
+    });
+    
     // Store refresh token
     const refreshExpiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
-    userStore.storeRefreshToken(refreshToken, user.id, refreshExpiresAt);
+    store.storeRefreshToken(refreshToken, user.id, refreshExpiresAt);
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password: _password, ...userWithoutPassword } = user;
@@ -253,13 +312,14 @@ export async function refreshAccessToken(refreshToken: string): Promise<AuthResu
     }
 
     // Check if refresh token exists in store
-    const tokenData = userStore.getRefreshToken(refreshToken);
+    const store = getUserStore();
+    const tokenData = store.getRefreshToken(refreshToken);
     if (!tokenData) {
       return { success: false, error: 'Refresh token not found' };
     }
 
     // Get user
-    const user = await userStore.findUserById(tokenData.userId);
+    const user = await store.findUserById(tokenData.userId);
     if (!user || !user.isActive) {
       return { success: false, error: 'User not found or inactive' };
     }
@@ -281,7 +341,8 @@ export async function refreshAccessToken(refreshToken: string): Promise<AuthResu
 
 export async function revokeToken(refreshToken: string): Promise<boolean> {
   try {
-    userStore.revokeRefreshToken(refreshToken);
+    const store = getUserStore();
+    store.revokeRefreshToken(refreshToken);
     return true;
   } catch {
     return false;
@@ -306,13 +367,14 @@ export async function createUser(userData: {
   role: 'admin' | 'user';
 }): Promise<AuthResult> {
   try {
+    const store = getUserStore();
     // Check if user already exists
-    const existingUser = await userStore.findUserByUsername(userData.username);
+    const existingUser = await store.findUserByUsername(userData.username);
     if (existingUser) {
       return { success: false, error: 'Username already exists' };
     }
 
-    const user = await userStore.createUser({
+    const user = await store.createUser({
       ...userData,
       isActive: true
     });
@@ -326,12 +388,14 @@ export async function createUser(userData: {
 }
 
 export async function getAllUsers(): Promise<Omit<User, 'password'>[]> {
-  return userStore.getAllUsers();
+  const store = getUserStore();
+  return store.getAllUsers();
 }
 
 export async function updateUser(id: string, updates: Partial<Omit<User, 'id' | 'password'>>): Promise<AuthResult> {
   try {
-    const user = await userStore.updateUser(id, updates);
+    const store = getUserStore();
+    const user = await store.updateUser(id, updates);
     if (!user) {
       return { success: false, error: 'User not found' };
     }
@@ -346,7 +410,8 @@ export async function updateUser(id: string, updates: Partial<Omit<User, 'id' | 
 
 export async function deleteUser(id: string): Promise<AuthResult> {
   try {
-    const success = await userStore.deleteUser(id);
+    const store = getUserStore();
+    const success = await store.deleteUser(id);
     if (!success) {
       return { success: false, error: 'User not found' };
     }
@@ -357,5 +422,5 @@ export async function deleteUser(id: string): Promise<AuthResult> {
   }
 }
 
-// Export user store for direct access if needed
-export { userStore };
+// Export user store getter for direct access if needed
+export { getUserStore };

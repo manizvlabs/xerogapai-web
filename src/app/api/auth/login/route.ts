@@ -8,8 +8,11 @@ async function loginHandler(request: NextRequest): Promise<Response> {
     const body = await request.json();
     const { username, password } = body;
 
+    console.log('Login attempt:', { username, passwordLength: password?.length });
+
     // Validate input
     if (!username || !password) {
+      console.log('Login failed: Missing credentials');
       return NextResponse.json(
         { error: 'Username and password are required' },
         { status: 400 }
