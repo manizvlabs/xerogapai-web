@@ -100,8 +100,8 @@ export default function ContactManagementPage() {
       if (data.success) {
         setStats(data.data);
       }
-    } catch {
-      console.error('Failed to fetch stats');
+    } catch (error) {
+      console.error('Failed to fetch stats:', error);
     }
   };
 
