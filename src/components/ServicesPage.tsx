@@ -180,10 +180,10 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-              {pageContent.hero.title}
+              {(pageContent.hero as any).title}
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              {pageContent.hero.subtitle}
+              {(pageContent.hero as any).subtitle}
             </p>
           </div>
         </div>
@@ -194,7 +194,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-              {pageContent.services.map((service: { name: string; description: string; icon: string; price: string; features: string[]; deliverables: string[] }) => {
+              {(pageContent.services as any).map((service: { name: string; description: string; icon: string; price: string; features: string[]; deliverables: string[] }) => {
                 const IconComponent = iconMap[service.icon as keyof typeof iconMap] || SparklesIcon;
                 return (
                   <div key={service.name} className="flex flex-col justify-between rounded-2xl bg-gray-50 dark:bg-gray-800 p-8 ring-1 ring-gray-200 dark:ring-gray-700">
@@ -251,15 +251,15 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              {pageContent.process.title}
+              {(pageContent.process as any).title}
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              {pageContent.process.subtitle}
+              {(pageContent.process as any).subtitle}
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
-              {pageContent.process.steps.map((item: { step: number; title: string; description: string }) => (
+              {(pageContent.process as any).steps.map((item: { step: number; title: string; description: string }) => (
                 <div key={item.step} className="flex flex-col">
                   <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
@@ -282,17 +282,17 @@ export default function ServicesPage() {
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              {pageContent.cta.title}
+              {(pageContent.cta as any).title}
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
-              {pageContent.cta.description}
+              {(pageContent.cta as any).description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <button className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors">
-                {pageContent.cta.primaryButton}
+                {(pageContent.cta as any).primaryButton}
               </button>
               <button className="text-sm font-semibold leading-6 text-white hover:text-blue-100 transition-colors">
-                {pageContent.cta.secondaryButton} <span aria-hidden="true">→</span>
+                {(pageContent.cta as any).secondaryButton} <span aria-hidden="true">→</span>
               </button>
             </div>
           </div>

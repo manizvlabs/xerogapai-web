@@ -5,7 +5,7 @@ import { contentConfig } from '@/config/content';
 
 interface ContentEditorProps {
   section: string;
-  onSave?: (content: any) => void;
+  onSave?: (content: Record<string, unknown>) => void;
   onCancel?: () => void;
 }
 

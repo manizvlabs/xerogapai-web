@@ -91,10 +91,10 @@ export default function BlogPage() {
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-              {pageContent.hero.title}
+              {(pageContent.hero as any).title}
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              {pageContent.hero.subtitle}
+              {(pageContent.hero as any).subtitle}
             </p>
           </div>
         </div>
@@ -104,7 +104,7 @@ export default function BlogPage() {
       <div className="py-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-4">
-            {pageContent.categories.map((category: string) => (
+            {(pageContent.categories as any)?.map((category: string) => (
               <button
                 key={category}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
@@ -125,7 +125,7 @@ export default function BlogPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-              {pageContent.posts.map((post: { title: string; category: string; date: string; readTime: string; excerpt: string; author: string }) => (
+              {(pageContent.posts as any)?.map((post: { title: string; category: string; date: string; readTime: string; excerpt: string; author: string }) => (
                 <article key={post.title} className="flex flex-col rounded-2xl bg-gray-50 dark:bg-gray-800 ring-1 ring-gray-200">
                   <div className="p-8">
                     <div className="flex items-center gap-x-4 text-xs">
@@ -171,10 +171,10 @@ export default function BlogPage() {
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              {pageContent.newsletter.title}
+              {(pageContent.newsletter as any).title}
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
-              {pageContent.newsletter.description}
+              {(pageContent.newsletter as any).description}
             </p>
             <form className="mt-10 flex max-w-md gap-x-4 mx-auto">
               <label htmlFor="email-address" className="sr-only">
@@ -187,13 +187,13 @@ export default function BlogPage() {
                 autoComplete="email"
                 required
                 className="min-w-0 flex-auto rounded-md border-0 bg-white dark:bg-gray-900/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-white/70 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
-                placeholder={pageContent.newsletter.placeholder}
+                placeholder={(pageContent.newsletter as any).placeholder}
               />
               <button
                 type="submit"
                 className="flex-none rounded-md bg-white dark:bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 dark:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
               >
-                {pageContent.newsletter.buttonText}
+                {(pageContent.newsletter as any).buttonText}
               </button>
             </form>
           </div>

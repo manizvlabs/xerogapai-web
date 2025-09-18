@@ -36,27 +36,44 @@ export function middleware(request: NextRequest) {
     return new NextResponse('Access Denied', { status: 403 });
   }
 
-  // Apply rate limiting for API routes
+  // Apply rate limiting for API routes (skip routes that handle their own rate limiting)
   if (pathname.startsWith('/api/')) {
-    const rateLimitType = pathname.startsWith('/api/auth') ? 'login' : 
-                         pathname.startsWith('/api/admin') ? 'admin' : 'api';
-    
-    const rateLimit = checkRateLimit(request, rateLimitType);
-    if (!rateLimit.allowed) {
-      return new NextResponse(
-        JSON.stringify({
-          error: 'Too many requests',
-          message: 'Rate limit exceeded. Please try again later.',
-          retryAfter: Math.ceil((rateLimit.resetTime - Date.now()) / 1000)
-        }),
-        {
-          status: 429,
-          headers: {
-            'Content-Type': 'application/json',
-            'Retry-After': Math.ceil((rateLimit.resetTime - Date.now()) / 1000).toString(),
+    // Skip rate limiting for routes that already handle it via withRateLimit wrapper
+    const skipRateLimitRoutes = [
+      '/api/auth/login',
+      '/api/auth/logout',
+      '/api/auth/refresh',
+      '/api/auth/verify',
+      '/api/contact',
+      '/api/admin/content',
+      '/api/admin/users',
+      '/api/contacts',
+      '/api/content'
+    ];
+
+    const shouldSkip = skipRateLimitRoutes.some(route => pathname.startsWith(route));
+
+    if (!shouldSkip) {
+      const rateLimitType = pathname.startsWith('/api/auth') ? 'login' :
+                           pathname.startsWith('/api/admin') ? 'admin' : 'api';
+
+      const rateLimit = checkRateLimit(request, rateLimitType);
+      if (!rateLimit.allowed) {
+        return new NextResponse(
+          JSON.stringify({
+            error: 'Too many requests',
+            message: 'Rate limit exceeded. Please try again later.',
+            retryAfter: Math.ceil((rateLimit.resetTime - Date.now()) / 1000)
+          }),
+          {
+            status: 429,
+            headers: {
+              'Content-Type': 'application/json',
+              'Retry-After': Math.ceil((rateLimit.resetTime - Date.now()) / 1000).toString(),
+            }
           }
-        }
-      );
+        );
+      }
     }
   }
 

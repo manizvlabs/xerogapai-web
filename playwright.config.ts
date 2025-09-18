@@ -12,6 +12,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    ignoreHTTPSErrors: true, // Handle SSL certificate issues for WebKit
   },
   projects: [
     {
@@ -24,7 +25,18 @@ export default defineConfig({
     },
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: {
+        ...devices['Desktop Safari'],
+        ignoreHTTPSErrors: true,
+        launchOptions: {
+          args: [
+            '--ignore-ssl-errors=yes',
+            '--ignore-certificate-errors',
+            '--disable-web-security',
+            '--allow-running-insecure-content'
+          ]
+        }
+      },
     },
   ],
   webServer: {

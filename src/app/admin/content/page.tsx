@@ -9,10 +9,10 @@ import { CheckIcon, PencilIcon, EyeIcon, UsersIcon, CogIcon, ChatBubbleLeftRight
 export default function ContentManagementPage() {
   const [selectedSection, setSelectedSection] = useState<string>('');
   const [isEditing, setIsEditing] = useState(false);
-  const [editContent, setEditContent] = useState<any>(null);
+  const [editContent, setEditContent] = useState<Record<string, unknown> | null>(null);
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'success' | 'error'>('idle');
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
-  const [originalContent, setOriginalContent] = useState<any>(null);
+  const [originalContent, setOriginalContent] = useState<Record<string, unknown> | null>(null);
   
   const { content, loading, error, updateContent } = useContent();
 
@@ -38,8 +38,9 @@ export default function ContentManagementPage() {
 
     setSelectedSection(sectionKey);
     if (content?.[sectionKey]) {
-      setEditContent(content[sectionKey]);
-      setOriginalContent(content[sectionKey]);
+      const sectionContent = content[sectionKey] as Record<string, unknown>;
+      setEditContent(sectionContent);
+      setOriginalContent(sectionContent);
     }
     setIsEditing(false);
     setSaveStatus('idle');
@@ -50,9 +51,10 @@ export default function ContentManagementPage() {
     setIsEditing(true);
     // If we already have edit content (unsaved changes), keep it
     // Otherwise, start with the current content
-    if (!editContent) {
-      setEditContent(content[selectedSection]);
-      setOriginalContent(content[selectedSection]);
+    if (!editContent && content && content[selectedSection]) {
+      const sectionContent = content[selectedSection] as Record<string, unknown>;
+      setEditContent(sectionContent);
+      setOriginalContent(sectionContent);
     }
   };
 
@@ -85,7 +87,8 @@ export default function ContentManagementPage() {
 
   const handleCancel = () => {
     setIsEditing(false);
-    setEditContent(originalContent || content[selectedSection]);
+    const contentToRestore = originalContent || (content && content[selectedSection] ? content[selectedSection] as Record<string, unknown> : null);
+    setEditContent(contentToRestore);
     setSaveStatus('idle');
     setHasUnsavedChanges(false);
   };
@@ -186,7 +189,7 @@ export default function ContentManagementPage() {
           </pre>
         </div>
         <div className="text-sm text-gray-500 dark:text-gray-400">
-          Click "Edit" to modify this content. Changes will be saved immediately and reflected on the live site.
+          Click &quot;Edit&quot; to modify this content. Changes will be saved immediately and reflected on the live site.
         </div>
       </div>
     );
@@ -301,9 +304,9 @@ export default function ContentManagementPage() {
           </h3>
           <div className="space-y-2 text-blue-800 dark:text-blue-200">
             <p>1. <strong>Select a section</strong> from the left panel</p>
-            <p>2. <strong>Click "Edit"</strong> to modify the content</p>
+            <p>2. <strong>Click &quot;Edit&quot;</strong> to modify the content</p>
             <p>3. <strong>Edit the JSON directly</strong> in the text area</p>
-            <p>4. <strong>Click "Save Changes"</strong> to update the content</p>
+            <p>4. <strong>Click &quot;Save Changes&quot;</strong> to update the content</p>
             <p>5. <strong>Test locally</strong> with <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">npm run dev</code></p>
             <p>6. <strong>Commit and push</strong> to feature/v2 branch</p>
             <p>7. <strong>Create a PR</strong> to merge to main</p>

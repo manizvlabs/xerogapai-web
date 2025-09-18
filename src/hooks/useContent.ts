@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
 interface ContentState {
-  content: any;
+  content: Record<string, unknown> | null;
   loading: boolean;
   error: string | null;
 }
@@ -49,7 +49,7 @@ export function useContent(section?: string) {
     }
   }, [section]);
 
-  const updateContent = async (section: string, content: any) => {
+  const updateContent = async (section: string, content: Record<string, unknown>) => {
     try {
       setState(prev => ({ ...prev, loading: true, error: null }));
 
@@ -94,10 +94,11 @@ export function useContent(section?: string) {
   };
 
   useEffect(() => {
-    // Add a delay to ensure client-side hydration is complete
+    // Add a shorter delay to ensure client-side hydration is complete
+    // Reduced from 500ms to 100ms to improve test performance
     const timer = setTimeout(() => {
       fetchContent();
-    }, 500);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [fetchContent]);
