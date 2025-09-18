@@ -16,6 +16,7 @@
     "migrate:supabase": "node scripts/migrate-contacts-supabase.mjs",
     "test:db": "node scripts/test-database.mjs",
     "test:supabase": "node scripts/test-supabase.mjs",
+    "test:supabase:local": "node scripts/test-supabase-simple.mjs",
     "setup:postgres": "node scripts/setup-vercel-postgres.mjs",
     "setup:supabase": "node scripts/setup-supabase.mjs",
     "test": "npm run test:regression",

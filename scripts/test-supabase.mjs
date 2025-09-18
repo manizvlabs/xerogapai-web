@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { SupabaseContactDatabase, isSupabaseConfigured, supabase } from '../src/lib/supabase.js';
+import { SupabaseContactDatabase, isSupabaseConfigured, supabase } from '../src/lib/supabase.ts';
 
 if (!isSupabaseConfigured()) {
   console.log('❌ Supabase not configured.');
