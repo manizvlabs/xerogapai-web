@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "buildCommand": "SKIP_TYPE_CHECK=true npm run build",
+  "buildCommand": "npm run build:vercel",
   "installCommand": "npm ci",
   "outputDirectory": ".next",
   "env": {
@@ -18,7 +18,10 @@
     "NEXT_PUBLIC_INSTAGRAM_URL": "https://instagram.com/zerodigital",
     "NEXT_PUBLIC_APP_VERSION": "1.0.0-09172025",
     "NEXT_PUBLIC_COPYRIGHT_YEAR": "2025",
-    "SKIP_TYPE_CHECK": "true"
+    "SKIP_TYPE_CHECK": "true",
+    "TSC_NONPOLLING_WATCHER": "true",
+    "NEXT_TELEMETRY_DISABLED": "1",
+    "DISABLE_ESLINT_PLUGIN": "true"
   },
   "headers": [
     {
