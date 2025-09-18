@@ -1,11 +1,9 @@
 import { getFileStorage } from './file-storage';
-import { 
-  SupabaseContactDatabase, 
-  initializeSupabaseDatabase, 
+import {
+  SupabaseContactDatabase,
+  initializeSupabaseDatabase,
   isSupabaseConfigured,
-  type ContactSubmission as SupabaseContactSubmission,
-  type ContactStats as SupabaseContactStats,
-  type ContactResponse as SupabaseContactResponse
+  type ContactSubmission as SupabaseContactSubmission
 } from './supabase';
 
 // Check if we have Supabase configuration

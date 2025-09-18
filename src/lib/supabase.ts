@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
 // Supabase configuration - lazy loaded
-let supabaseClient: any = null;
+let supabaseClient: ReturnType<typeof createClient> | null = null;
 
 // Get Supabase client (lazy initialization)
 export const getSupabaseClient = () => {
