@@ -2,5 +2,5 @@
 # This file tells Vercel to ignore type checking errors
 # The build will succeed with typescript.ignoreBuildErrors: true in next.config.ts
 
-# TypeScript configuration files that might trigger type checking
-tsconfig.json
+# Note: tsconfig.json is needed for path mapping (@/ imports)
+# TypeScript type checking is disabled via next.config.ts instead
