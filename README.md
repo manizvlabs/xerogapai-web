@@ -5,10 +5,15 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.3-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-blue)](https://tailwindcss.com/)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue)](https://github.com/manizvlabs/zero-digital-website/releases)
 
 **🌐 Live Website:** [https://zero-digital.vercel.app/](https://zero-digital.vercel.app/)
 
 Transform your business with cutting-edge AI automation, custom mobile apps, and digital marketing solutions. Built for Hyderabad businesses and beyond.
+
+## 📋 Changelog
+
+For a complete list of changes, features, and bug fixes, see the [CHANGELOG.md](CHANGELOG.md) file.
 
 ## 🌟 Features
 

@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { siteConfig } from "@/config/site";
 import StructuredData from "@/components/StructuredData";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import DarkModeTest from "@/components/DarkModeTest";
 import { Suspense } from "react";
 
 const inter = Inter({
@@ -26,20 +27,20 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(`https://${siteConfig.domain}`),
+  metadataBase: process.env.NODE_ENV === 'production' ? new URL(`https://${siteConfig.domain}`) : undefined,
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: `${siteConfig.name} - ${siteConfig.tagline}`,
     description: `${siteConfig.tagline}. Transform your business with AI-powered automation, custom mobile apps, and digital marketing solutions.`,
-    url: `https://${siteConfig.domain}`,
+    url: process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}` : `http://localhost:4010`,
     siteName: siteConfig.name,
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: `https://${siteConfig.domain}/og-image.jpg`,
+        url: process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}/og-image.jpg` : '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} - ${siteConfig.tagline}`,
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} - ${siteConfig.tagline}`,
     description: `${siteConfig.tagline}. Transform your business with AI-powered automation.`,
-    images: [`https://${siteConfig.domain}/og-image.jpg`],
+    images: [process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}/og-image.jpg` : '/og-image.jpg'],
     creator: "@zerodigital",
   },
   robots: {
@@ -82,6 +83,7 @@ export default function RootLayout({
           <Suspense fallback={null}>
             <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
           </Suspense>
+          <DarkModeTest />
           <Header />
           <main className="min-h-screen">
             {children}
