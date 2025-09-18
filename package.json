@@ -10,9 +10,15 @@
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
     "type-check": "tsc --noEmit",
-    "test": "echo \"No tests specified\" && exit 0",
+    "test": "npm run test:regression",
+    "test:ui": "npx playwright test",
+    "test:api": "bash scripts/test-apis.sh",
+    "test:regression": "bash scripts/run-regression-tests.sh",
+    "test:ui:headed": "npx playwright test --headed",
+    "test:ui:debug": "npx playwright test --debug",
+    "test:ui:report": "npx playwright show-report",
     "preview": "next build && next start",
-    "clean": "rm -rf .next out",
+    "clean": "rm -rf .next out test-results playwright-report",
     "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {

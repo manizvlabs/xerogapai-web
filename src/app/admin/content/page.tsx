@@ -58,15 +58,24 @@ export default function ContentManagementPage() {
 
   const handleSave = async () => {
     if (!selectedSection || !editContent) return;
-    
+
     setSaveStatus('saving');
     const result = await updateContent(selectedSection, editContent);
-    
+
     if (result.success) {
       setSaveStatus('success');
       setIsEditing(false);
       setHasUnsavedChanges(false);
       setOriginalContent(editContent);
+
+      // Dispatch event to notify other components that content has been updated
+      window.dispatchEvent(new CustomEvent('contentUpdated', {
+        detail: { section: selectedSection, content: editContent }
+      }));
+
+      // Also set localStorage to trigger storage events in other tabs/windows
+      localStorage.setItem('content-updated', Date.now().toString());
+
       setTimeout(() => setSaveStatus('idle'), 3000);
     } else {
       setSaveStatus('error');

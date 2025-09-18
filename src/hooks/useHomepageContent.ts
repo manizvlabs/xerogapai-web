@@ -27,32 +27,54 @@ export function useHomepageContent() {
   const [content, setContent] = useState<HomepageContent | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchContent = async () => {
-      try {
-        // Try to fetch from API first
-        const response = await fetch('/api/content?section=homepage');
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success && data.content) {
-            console.log('Loaded content from API:', data.content);
-            setContent(data.content);
-            setLoading(false);
-            return;
-          }
+  const fetchContent = async () => {
+    try {
+      // Try to fetch from API first
+      const response = await fetch('/api/content?section=homepage');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.content) {
+          console.log('Loaded content from API:', data.content);
+          setContent(data.content);
+          setLoading(false);
+          return;
         }
-      } catch (error) {
-        console.log('API not available, using default content:', error);
       }
-      
-      // Fallback to default content
-      console.log('Using default content from config');
-      setContent(contentConfig.homepage as unknown as HomepageContent);
-      setLoading(false);
+    } catch (error) {
+      console.log('API not available, using default content:', error);
+    }
+
+    // Fallback to default content
+    console.log('Using default content from config');
+    setContent(contentConfig.homepage as unknown as HomepageContent);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchContent();
+
+    // Listen for storage events to detect content updates
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'content-updated') {
+        console.log('Content updated, refreshing homepage content');
+        fetchContent();
+      }
     };
 
-    fetchContent();
+    // Listen for custom events for content updates
+    const handleContentUpdate = () => {
+      console.log('Content update event received, refreshing homepage content');
+      fetchContent();
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('contentUpdated', handleContentUpdate);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('contentUpdated', handleContentUpdate);
+    };
   }, []);
 
-  return { content, loading };
+  return { content, loading, refetch: fetchContent };
 }

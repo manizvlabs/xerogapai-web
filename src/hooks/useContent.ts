@@ -60,7 +60,7 @@ export function useContent(section?: string) {
   const updateContent = async (section: string, content: any) => {
     try {
       setState(prev => ({ ...prev, loading: true, error: null }));
-      
+
       const response = await fetch('/api/admin/content', {
         method: 'PUT',
         headers: {
@@ -68,13 +68,16 @@ export function useContent(section?: string) {
         },
         body: JSON.stringify({ section, content }),
       });
-      
+
       const data = await response.json();
-      
+
       if (data.success) {
+        // For the general useContent hook, we need to handle different sections
+        // If this hook is used for a specific section, update it
+        // If it's used for all content, update the specific section
         setState(prev => ({
           ...prev,
-          content: section === prev.content?.section ? data.content : prev.content,
+          content: data.section ? { ...prev.content, [data.section]: data.content } : data.content,
           loading: false,
           error: null
         }));
