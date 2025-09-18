@@ -63,6 +63,15 @@ class UserStore {
       isActive: adminUser.isActive,
       passwordSet: !!adminUser.password
     });
+    
+    // Debug: Check if user is stored correctly
+    const storedUser = this.users.get(adminUser.username);
+    console.log('User storage verification:', {
+      username: adminUser.username,
+      stored: !!storedUser,
+      storedUsername: storedUser?.username,
+      storedRole: storedUser?.role
+    });
   }
 
   async createUser(userData: Omit<User, 'id' | 'createdAt' | 'password'> & { password: string }): Promise<User> {
@@ -90,7 +99,14 @@ class UserStore {
   }
 
   async findUserByUsername(username: string): Promise<User | null> {
-    return this.users.get(username) || null;
+    const user = this.users.get(username);
+    console.log('findUserByUsername:', {
+      username,
+      found: !!user,
+      userKeys: Array.from(this.users.keys()),
+      user: user ? { id: user.id, username: user.username, role: user.role } : null
+    });
+    return user || null;
   }
 
   async updateUser(id: string, updates: Partial<Omit<User, 'id' | 'password'>>): Promise<User | null> {
