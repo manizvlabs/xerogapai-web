@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface ContentState {
   content: any;
@@ -15,7 +15,9 @@ export function useContent(section?: string) {
     error: null
   });
 
-  const fetchContent = async () => {
+  console.log('useContent - Hook called with section:', section);
+
+  const fetchContent = useCallback(async () => {
     try {
       console.log('useContent - Starting fetch for section:', section);
       setState(prev => ({ ...prev, loading: true, error: null }));
@@ -53,7 +55,7 @@ export function useContent(section?: string) {
         error: 'Network error'
       });
     }
-  };
+  }, [section]);
 
   const updateContent = async (section: string, content: any) => {
     try {
@@ -97,7 +99,54 @@ export function useContent(section?: string) {
   };
 
   useEffect(() => {
-    fetchContent();
+    console.log('useContent - useEffect triggered for section:', section);
+    
+    // Add a small delay to ensure client-side hydration is complete
+    const timer = setTimeout(() => {
+      const fetchData = async () => {
+        try {
+          console.log('useContent - Starting fetch for section:', section);
+          setState(prev => ({ ...prev, loading: true, error: null }));
+          
+          const url = section 
+            ? `/api/content?section=${encodeURIComponent(section)}`
+            : '/api/content';
+            
+          console.log('useContent - Fetching from URL:', url);
+          const response = await fetch(url);
+          const data = await response.json();
+          
+          console.log('useContent - Response data:', data);
+          
+          if (data.success) {
+            console.log('useContent - Setting content:', data.content);
+            setState({
+              content: data.content,
+              loading: false,
+              error: null
+            });
+          } else {
+            console.log('useContent - API returned error:', data.error);
+            setState({
+              content: null,
+              loading: false,
+              error: data.error || 'Failed to fetch content'
+            });
+          }
+        } catch (error) {
+          console.error('Error fetching content:', error);
+          setState({
+            content: null,
+            loading: false,
+            error: 'Network error'
+          });
+        }
+      };
+
+      fetchData();
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [section]);
 
   return {

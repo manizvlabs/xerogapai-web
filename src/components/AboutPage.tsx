@@ -5,6 +5,9 @@ import { useContent } from '@/hooks/useContent';
 export default function AboutPage() {
   const { content, loading, error } = useContent('about');
 
+  console.log('AboutPage - State:', { content, loading, error });
+  console.log('AboutPage - Component rendered');
+
   if (loading) {
     return (
       <div className="bg-white dark:bg-gray-900">
