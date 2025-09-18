@@ -206,8 +206,7 @@ export function verifyRefreshToken(token: string): boolean {
 }
 
 // Authentication Functions
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function authenticateUser(username: string, _password: string): Promise<AuthResult> {
+export async function authenticateUser(username: string, password: string): Promise<AuthResult> {
   try {
     const user = await userStore.findUserByUsername(username);
     

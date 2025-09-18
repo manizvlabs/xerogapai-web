@@ -84,10 +84,10 @@ export default function PortfolioPage() {
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-              {(pageContent.hero as any).title}
+              {(pageContent.hero as Record<string, unknown>).title}
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              {(pageContent.hero as any).subtitle}
+              {(pageContent.hero as Record<string, unknown>).subtitle}
             </p>
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function PortfolioPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-              {(pageContent.projects as any)?.map((project: { category: string; name: string; description: string; technologies: string[]; link?: string; results: string }, index: number) => (
+              {(pageContent.projects as Record<string, unknown>)?.map((project: { category: string; name: string; description: string; technologies: string[]; link?: string; results: string }, index: number) => (
                 <div key={`project-${index}-${project.name}`} className="flex flex-col rounded-2xl bg-gray-50 dark:bg-gray-800 ring-1 ring-gray-200">
                   <div className="h-48 bg-gray-200 rounded-t-2xl flex items-center justify-center">
                     <span className="text-gray-500">Project Image</span>
@@ -145,20 +145,20 @@ export default function PortfolioPage() {
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              {(pageContent.cta as any).title}
+              {(pageContent.cta as Record<string, unknown>).title}
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
-              {(pageContent.cta as any).description}
+              {(pageContent.cta as Record<string, unknown>).description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="/contact"
                 className="rounded-md bg-white dark:bg-gray-900 px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 dark:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
               >
-                {(pageContent.cta as any).primaryButton}
+                {(pageContent.cta as Record<string, unknown>).primaryButton}
               </a>
               <a href="/services" className="text-sm font-semibold leading-6 text-white hover:text-blue-100 transition-colors">
-                {(pageContent.cta as any).secondaryButton} <span aria-hidden="true">→</span>
+                {(pageContent.cta as Record<string, unknown>).secondaryButton} <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
