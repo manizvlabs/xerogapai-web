@@ -58,8 +58,8 @@ async function contactHandler(request: NextRequest) {
     await initializeDatabase();
 
     // Get client IP and user agent for tracking
-    const ipAddress = request.headers.get('x-forwarded-for') || 
-                     request.headers.get('x-real-ip') || 
+    const ipAddress = request.headers.get('x-forwarded-for') ||
+                     request.headers.get('x-real-ip') ||
                      'unknown';
     const userAgent = request.headers.get('user-agent') || 'unknown';
 

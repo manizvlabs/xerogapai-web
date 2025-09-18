@@ -25,14 +25,22 @@ export const getSupabaseClient = () => {
     },
     global: {
       fetch: (url, options = {}) => {
+        // Preserve original headers and add required Supabase headers
+        const headers = {
+          ...options.headers,
+          'apikey': supabaseAnonKey,
+          'Authorization': `Bearer ${supabaseAnonKey}`,
+          'User-Agent': 'zero-website/1.0.1'
+        };
+
+        // Ensure Content-Type is set for JSON requests
+        if (options.body && !headers['Content-Type']) {
+          headers['Content-Type'] = 'application/json';
+        }
+
         return fetch(url, {
           ...options,
-          headers: {
-            ...options.headers,
-            'apikey': supabaseAnonKey,
-            'Authorization': `Bearer ${supabaseAnonKey}`,
-            'User-Agent': 'zero-website/1.0.1'
-          }
+          headers
         });
       }
     }
@@ -130,7 +138,8 @@ export class SupabaseContactDatabase {
     }
 
     try {
-      const { data: contact, error } = await client
+      // Use insert-only approach to avoid RLS issues and duplicates
+      const { error: insertError } = await client
         .from('contacts')
         .insert({
           first_name: data.first_name,
@@ -142,26 +151,27 @@ export class SupabaseContactDatabase {
           message: data.message,
           ip_address: data.ip_address || null,
           user_agent: data.user_agent || null
-        })
-        .select()
-        .single();
+        });
 
-      if (error) {
-        throw error;
+      if (insertError) {
+        throw insertError;
       }
 
+      // Since we can't get the inserted data due to RLS, create a mock response
+      // This works around RLS limitations without creating duplicates
+      const mockId = Date.now().toString();
       return {
-        id: contact.id.toString(),
-        first_name: contact.first_name,
-        last_name: contact.last_name,
-        email: contact.email,
-        phone: contact.phone,
-        company: contact.company,
-        service: contact.service,
-        message: contact.message,
-        submitted_at: contact.submitted_at,
-        ip_address: contact.ip_address,
-        user_agent: contact.user_agent
+        id: mockId,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        email: data.email,
+        phone: data.phone,
+        company: data.company,
+        service: data.service,
+        message: data.message,
+        submitted_at: new Date().toISOString(),
+        ip_address: data.ip_address,
+        user_agent: data.user_agent
       };
     } catch (error) {
       console.error('Supabase error creating contact:', error);
@@ -320,26 +330,55 @@ export class SupabaseContactDatabase {
     }
 
     try {
+      // Simpler approach: get all contacts and calculate stats in memory
+      // This avoids the complex count queries that seem to be failing
+      const { data: contacts, error } = await client
+        .from('contacts')
+        .select('submitted_at');
+
+      if (error) {
+        console.error('❌ Error fetching contacts:', error);
+        throw error;
+      }
+
+      if (!contacts || contacts.length === 0) {
+        return { total: 0, today: 0, thisWeek: 0, thisMonth: 0 };
+      }
+
       const now = new Date();
-      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
       const weekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
       const monthAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
 
-      const [totalResult, todayResult, weekResult, monthResult] = await Promise.all([
-        client.from('contacts').select('*', { count: 'exact', head: true }),
-        client.from('contacts').select('*', { count: 'exact', head: true }).gte('submitted_at', today.toISOString()),
-        client.from('contacts').select('*', { count: 'exact', head: true }).gte('submitted_at', weekAgo.toISOString()),
-        client.from('contacts').select('*', { count: 'exact', head: true }).gte('submitted_at', monthAgo.toISOString())
-      ]);
+      let todayCount = 0;
+      let weekCount = 0;
+      let monthCount = 0;
 
-      return {
-        total: totalResult.count || 0,
-        today: todayResult.count || 0,
-        thisWeek: weekResult.count || 0,
-        thisMonth: monthResult.count || 0
+      // Calculate stats by iterating through contacts
+      for (const contact of contacts) {
+        const submittedAt = new Date(contact.submitted_at);
+
+        if (submittedAt >= today) {
+          todayCount++;
+        }
+        if (submittedAt >= weekAgo) {
+          weekCount++;
+        }
+        if (submittedAt >= monthAgo) {
+          monthCount++;
+        }
+      }
+
+      const stats = {
+        total: contacts.length,
+        today: todayCount,
+        thisWeek: weekCount,
+        thisMonth: monthCount
       };
+
+      return stats;
     } catch (error) {
-      console.error('Supabase error fetching stats:', error);
+      console.error('❌ Supabase error fetching stats:', error);
       throw error;
     }
   }
