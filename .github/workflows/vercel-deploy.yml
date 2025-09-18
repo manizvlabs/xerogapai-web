@@ -1,90 +1,47 @@
-name: Vercel Deploy
+name: Vercel Deployment
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to deploy to'
-        required: true
-        default: 'production'
-        type: choice
-        options:
-        - production
-        - preview
-      deploy_message:
-        description: 'Deploy message (optional)'
-        required: false
-        type: string
-      skip_tests:
-        description: 'Skip tests and linting (faster deployment)'
-        required: false
-        default: false
-        type: boolean
   push:
-    branches: [ main ]
+    branches: [ main, feature/v2 ]
   pull_request:
     branches: [ main ]
-
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run linting
-        if: ${{ !inputs.skip_tests }}
-        run: npm run lint
-
-      - name: Run type checking
-        if: ${{ !inputs.skip_tests }}
-        run: npm run type-check
-
-      - name: Build project
-        run: npm run build
-
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./
-          vercel-args: ${{ github.event_name == 'push' && '--prod' || (github.event_name == 'workflow_dispatch' && (inputs.environment == 'production' && '--prod' || '')) }}
-
-  notify:
-    needs: deploy
-    runs-on: ubuntu-latest
-    if: always()
-    
-    steps:
-      - name: Notify deployment status
-        run: |
-          if [ "${{ needs.deploy.result }}" == "success" ]; then
-            echo "✅ ${{ inputs.environment }} deployment successful!"
-            if [ "${{ inputs.deploy_message }}" != "" ]; then
-              echo "📝 Deploy message: ${{ inputs.deploy_message }}"
-            fi
-            if [ "${{ inputs.environment }}" == "production" ]; then
-              echo "🌐 Live URL: https://zero-digital.vercel.app/"
-            else
-              echo "🔗 Preview URL: Check Vercel dashboard for preview URL"
-            fi
-          else
-            echo "❌ ${{ inputs.environment }} deployment failed!"
-            exit 1
-          fi
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: zero-website/package-lock.json
+        
+    - name: Install dependencies
+      working-directory: zero-website
+      run: npm ci
+      
+    - name: Run linting
+      working-directory: zero-website
+      run: npm run lint
+      
+    - name: Run type check (disabled)
+      working-directory: zero-website
+      run: npm run type-check
+      
+    - name: Build application
+      working-directory: zero-website
+      run: npm run build
+      
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        working-directory: zero-website
+        vercel-args: '--prod'
