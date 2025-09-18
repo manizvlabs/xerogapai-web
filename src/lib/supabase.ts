@@ -29,6 +29,8 @@ export const getSupabaseClient = () => {
           ...options,
           headers: {
             ...options.headers,
+            'apikey': supabaseAnonKey,
+            'Authorization': `Bearer ${supabaseAnonKey}`,
             'User-Agent': 'zero-website/1.0.1'
           }
         });
