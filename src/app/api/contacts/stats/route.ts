@@ -7,7 +7,7 @@ export async function GET() {
   try {
     // Initialize database if needed
     await initializeDatabase();
-    
+
     const stats = await ContactDatabase.getStats();
 
     const response = NextResponse.json({
@@ -18,7 +18,7 @@ export async function GET() {
     return applySecurityHeaders(response, false);
   } catch (error) {
     console.error('Error fetching contact stats:', error);
-    
+
     const response = NextResponse.json({
       success: false,
       error: 'Failed to fetch contact statistics'

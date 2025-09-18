@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { withRateLimit } from '@/lib/rate-limit';
 import { sanitizeInput, isValidEmail, isValidPhone, logSecurityEvent } from '@/lib/security';
+import { ContactDatabase, initializeDatabase } from '@/lib/database';
 
 async function contactHandler(request: NextRequest) {
   try {
@@ -53,10 +54,34 @@ async function contactHandler(request: NextRequest) {
       timestamp: new Date().toISOString(),
     });
 
+    // Initialize database if needed
+    await initializeDatabase();
+
+    // Get client IP and user agent for tracking
+    const ipAddress = request.headers.get('x-forwarded-for') ||
+                     request.headers.get('x-real-ip') ||
+                     'unknown';
+    const userAgent = request.headers.get('user-agent') || 'unknown';
+
+    // Store contact in database
+    const contact = await ContactDatabase.createContact({
+      firstName: sanitizedData.firstName,
+      lastName: sanitizedData.lastName,
+      email: sanitizedData.email,
+      phone: sanitizedData.phone,
+      company: sanitizedData.company,
+      service: sanitizedData.service,
+      message: sanitizedData.message,
+      ipAddress,
+      userAgent
+    });
+
     // Log security event
     logSecurityEvent('contact_form_submission', {
+      contactId: contact.id,
       email: sanitizedData.email,
-      company: sanitizedData.company
+      company: sanitizedData.company,
+      ipAddress
     }, request);
 
     // Simulate email sending delay
