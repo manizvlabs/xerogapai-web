@@ -173,6 +173,7 @@ class UserStore {
 
 // Singleton instance
 const userStore = new UserStore();
+console.log('UserStore singleton created:', { instanceId: Math.random() });
 
 // JWT Configuration
 const JWT_SECRET = process.env.JWT_SECRET || 'zerodigital-super-secret-jwt-key-2024-production';
@@ -240,6 +241,7 @@ export function verifyRefreshToken(token: string): boolean {
 export async function authenticateUser(username: string, password: string): Promise<AuthResult> {
   try {
     console.log('Authenticating user:', { username, passwordLength: password.length });
+    console.log('UserStore instance check:', { userStoreKeys: Array.from(userStore['users'].keys()) });
     
     const user = await userStore.findUserByUsername(username);
     console.log('User found:', { user: user ? { id: user.id, username: user.username, isActive: user.isActive } : null });
