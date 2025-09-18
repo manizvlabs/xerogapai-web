@@ -43,9 +43,9 @@ class UserStore {
     }
   }
 
-  private async initializeDefaultAdmin() {
+  private initializeDefaultAdmin() {
     const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
-    const hashedPassword = await bcrypt.hash(adminPassword, 12);
+    const hashedPassword = bcrypt.hashSync(adminPassword, 12);
     
     const adminUser: User = {
       id: '1',

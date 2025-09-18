@@ -678,8 +678,60 @@
       "ipAddress": "::ffff:127.0.0.1",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:141.0) Gecko/20100101 Firefox/141.0",
       "submittedAt": "2025-09-18T07:12:44.006Z"
+    },
+    {
+      "id": "55",
+      "firstName": "Test User",
+      "lastName": "Test Last",
+      "email": "test@example.com",
+      "phone": "1234567890",
+      "company": "Test Company",
+      "service": "AI Content Automation",
+      "message": "This is a test message",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.16 Safari/537.36",
+      "submittedAt": "2025-09-18T07:17:16.782Z"
+    },
+    {
+      "id": "56",
+      "firstName": "Mobile Test",
+      "lastName": "User",
+      "email": "mobile@example.com",
+      "phone": "",
+      "company": "",
+      "service": "AI Content Automation",
+      "message": "Testing mobile contact form",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.16 Safari/537.36",
+      "submittedAt": "2025-09-18T07:17:30.374Z"
+    },
+    {
+      "id": "57",
+      "firstName": "Test User",
+      "lastName": "Test Last",
+      "email": "test@example.com",
+      "phone": "1234567890",
+      "company": "Test Company",
+      "service": "AI Content Automation",
+      "message": "This is a test message",
+      "ipAddress": "::ffff:127.0.0.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:141.0) Gecko/20100101 Firefox/141.0",
+      "submittedAt": "2025-09-18T07:17:38.644Z"
+    },
+    {
+      "id": "58",
+      "firstName": "Mobile Test",
+      "lastName": "User",
+      "email": "mobile@example.com",
+      "phone": "",
+      "company": "",
+      "service": "AI Content Automation",
+      "message": "Testing mobile contact form",
+      "ipAddress": "::ffff:127.0.0.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:141.0) Gecko/20100101 Firefox/141.0",
+      "submittedAt": "2025-09-18T07:17:54.661Z"
     }
   ],
-  "nextId": 55,
-  "lastUpdated": "2025-09-18T07:12:44.006Z"
+  "nextId": 59,
+  "lastUpdated": "2025-09-18T07:17:54.661Z"
 }
