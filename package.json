@@ -28,7 +28,8 @@
     "test:ui:report": "npx playwright show-report",
     "preview": "next build && next start",
     "clean": "rm -rf .next out test-results playwright-report",
-    "analyze": "ANALYZE=true npm run build"
+    "analyze": "ANALYZE=true npm run build",
+    "generate-secrets": "node scripts/generate-secrets.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

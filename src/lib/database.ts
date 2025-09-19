@@ -1,9 +1,11 @@
 import { getFileStorage } from './file-storage';
 import {
   SupabaseContactDatabase,
+  SupabaseUserDatabase,
   initializeSupabaseDatabase,
   isSupabaseConfigured,
-  type ContactSubmission as SupabaseContactSubmission
+  type ContactSubmission as SupabaseContactSubmission,
+  type UserSubmission as SupabaseUserSubmission
 } from './supabase';
 
 // Check if we have Supabase configuration
@@ -36,6 +38,19 @@ export interface ContactStats {
   thisMonth: number;
 }
 
+// User database types
+export interface UserSubmission {
+  id: string;
+  username: string;
+  email: string;
+  password_hash: string;
+  role: 'admin' | 'user';
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+  last_login?: string;
+}
+
 export interface ContactResponse {
   contacts: ContactSubmission[];
   total: number;
@@ -46,40 +61,40 @@ export interface ContactResponse {
 
 // Initialize the database schema
 export async function initializeDatabase() {
-  console.log('🚀 initializeDatabase called, initialized:', initialized, 'usingFallback:', usingFallback);
+  
 
   if (initialized) {
-    console.log('✅ Database already initialized, returning:', usingFallback ? 'file storage' : 'Supabase');
+    
     return usingFallback ? false : true;
   }
 
   // If no Supabase config, use fallback immediately
   if (!hasSupabaseConfig) {
-    console.log('🔄 No Supabase configuration found, using file storage');
+    
     usingFallback = true;
     initialized = true;
     return false;
   }
 
   try {
-    console.log('🔄 Attempting Supabase initialization...');
+    
     // Initialize Supabase database
     const success = await initializeSupabaseDatabase();
 
     if (success) {
-      console.log('✅ Supabase database initialized successfully');
+      
       usingFallback = false;
       initialized = true;
       return true;
     } else {
-      console.log('❌ Supabase initialization returned false, falling back to file storage');
+      
       usingFallback = true;
       initialized = true;
       return false;
     }
   } catch (error) {
     console.error('❌ Supabase initialization failed:', error);
-    console.log('🔄 Falling back to file storage');
+    
     usingFallback = true;
     initialized = true;
     return false;
@@ -90,15 +105,15 @@ export async function initializeDatabase() {
 export class ContactDatabase {
   // Create a new contact submission
   static async createContact(data: Omit<ContactSubmission, 'id' | 'submittedAt'>): Promise<ContactSubmission> {
-    console.log('📝 createContact called - usingFallback:', usingFallback);
+    
 
     if (usingFallback) {
-      console.log('📁 Using file storage for contact creation');
+      
       return getFileStorage().createContact(data);
     }
 
     try {
-      console.log('🗄️ Attempting to create contact in Supabase');
+      
       // Convert to Supabase format
       const supabaseData: Omit<SupabaseContactSubmission, 'id' | 'submitted_at'> = {
         first_name: data.firstName,
@@ -113,7 +128,7 @@ export class ContactDatabase {
       };
 
       const supabaseContact = await SupabaseContactDatabase.createContact(supabaseData);
-      console.log('🗄️ Contact created in Supabase:', supabaseContact.id);
+      
 
       // Convert back to our format
       return {
@@ -132,7 +147,7 @@ export class ContactDatabase {
     } catch (error) {
       console.error('❌ Supabase error, falling back to file storage:', error);
       usingFallback = true;
-      console.log('📁 Falling back to file storage for contact creation');
+      
       return getFileStorage().createContact(data);
     }
   }
@@ -248,6 +263,256 @@ export class ContactDatabase {
       console.error('Supabase error, falling back to file storage:', error);
       usingFallback = true;
       return getFileStorage().getStats();
+    }
+  }
+}
+
+// User database operations
+export class UserDatabase {
+  // Create a new user
+  static async createUser(data: Omit<UserSubmission, 'id' | 'created_at' | 'updated_at'>): Promise<UserSubmission> {
+    
+
+    if (usingFallback) {
+      // For now, we'll use a simple fallback - in production you might want to implement file storage
+      
+      throw new Error('User creation requires Supabase database');
+    }
+
+    try {
+      
+      // Convert to Supabase format
+      const supabaseData: Omit<SupabaseUserSubmission, 'id' | 'created_at' | 'updated_at'> = {
+        username: data.username,
+        email: data.email,
+        password_hash: data.password_hash,
+        role: data.role,
+        is_active: data.is_active
+      };
+
+      const supabaseUser = await SupabaseUserDatabase.createUser(supabaseData);
+      
+
+      // Convert back to our format
+      return {
+        id: supabaseUser.id,
+        username: supabaseUser.username,
+        email: supabaseUser.email,
+        password_hash: supabaseUser.password_hash,
+        role: supabaseUser.role,
+        is_active: supabaseUser.is_active,
+        created_at: supabaseUser.created_at,
+        updated_at: supabaseUser.updated_at,
+        last_login: supabaseUser.last_login
+      };
+    } catch (error) {
+      console.error('❌ Supabase error, user creation failed:', error);
+      throw error;
+    }
+  }
+
+  // Get user by username
+  static async getUserByUsername(username: string): Promise<UserSubmission | null> {
+    if (usingFallback) {
+      
+      return null;
+    }
+
+    try {
+      const supabaseUser = await SupabaseUserDatabase.getUserByUsername(username);
+
+      if (!supabaseUser) {
+        return null;
+      }
+
+      // Convert to our format
+      return {
+        id: supabaseUser.id,
+        username: supabaseUser.username,
+        email: supabaseUser.email,
+        password_hash: supabaseUser.password_hash,
+        role: supabaseUser.role,
+        is_active: supabaseUser.is_active,
+        created_at: supabaseUser.created_at,
+        updated_at: supabaseUser.updated_at,
+        last_login: supabaseUser.last_login
+      };
+    } catch (error) {
+      console.error('Supabase error, falling back to null:', error);
+      usingFallback = true;
+      return null;
+    }
+  }
+
+  // Get user by ID
+  static async getUserById(id: string): Promise<UserSubmission | null> {
+    if (usingFallback) {
+      
+      return null;
+    }
+
+    try {
+      const supabaseUser = await SupabaseUserDatabase.getUserById(id);
+
+      if (!supabaseUser) {
+        return null;
+      }
+
+      // Convert to our format
+      return {
+        id: supabaseUser.id,
+        username: supabaseUser.username,
+        email: supabaseUser.email,
+        password_hash: supabaseUser.password_hash,
+        role: supabaseUser.role,
+        is_active: supabaseUser.is_active,
+        created_at: supabaseUser.created_at,
+        updated_at: supabaseUser.updated_at,
+        last_login: supabaseUser.last_login
+      };
+    } catch (error) {
+      console.error('Supabase error, falling back to null:', error);
+      usingFallback = true;
+      return null;
+    }
+  }
+
+  // Update user
+  static async updateUser(id: string, updates: Partial<Omit<UserSubmission, 'id' | 'created_at' | 'updated_at'>>): Promise<UserSubmission | null> {
+    if (usingFallback) {
+      
+      return null;
+    }
+
+    try {
+      const supabaseUser = await SupabaseUserDatabase.updateUser(id, updates);
+
+      if (!supabaseUser) {
+        return null;
+      }
+
+      // Convert to our format
+      return {
+        id: supabaseUser.id,
+        username: supabaseUser.username,
+        email: supabaseUser.email,
+        password_hash: supabaseUser.password_hash,
+        role: supabaseUser.role,
+        is_active: supabaseUser.is_active,
+        created_at: supabaseUser.created_at,
+        updated_at: supabaseUser.updated_at,
+        last_login: supabaseUser.last_login
+      };
+    } catch (error) {
+      console.error('Supabase error, falling back to null:', error);
+      usingFallback = true;
+      return null;
+    }
+  }
+
+  // Delete user
+  static async deleteUser(id: string): Promise<boolean> {
+    if (usingFallback) {
+      
+      return false;
+    }
+
+    try {
+      return await SupabaseUserDatabase.deleteUser(id);
+    } catch (error) {
+      console.error('Supabase error, falling back to false:', error);
+      usingFallback = true;
+      return false;
+    }
+  }
+
+  // Get all users
+  static async getAllUsers(): Promise<UserSubmission[]> {
+    if (usingFallback) {
+      
+      return [];
+    }
+
+    try {
+      const supabaseUsers = await SupabaseUserDatabase.getAllUsers();
+
+      // Convert to our format
+      return supabaseUsers.map(user => ({
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        password_hash: user.password_hash,
+        role: user.role,
+        is_active: user.is_active,
+        created_at: user.created_at,
+        updated_at: user.updated_at,
+        last_login: user.last_login
+      }));
+    } catch (error) {
+      console.error('Supabase error, falling back to empty array:', error);
+      usingFallback = true;
+      return [];
+    }
+  }
+
+  // Store refresh token
+  static async storeRefreshToken(token: string, userId: string, expiresAt: Date): Promise<void> {
+    if (usingFallback) {
+      
+      return;
+    }
+
+    try {
+      await SupabaseUserDatabase.storeRefreshToken(token, userId, expiresAt);
+    } catch (error) {
+      console.error('Supabase error storing refresh token:', error);
+      usingFallback = true;
+    }
+  }
+
+  // Get refresh token
+  static async getRefreshToken(token: string): Promise<{ userId: string; expiresAt: Date } | null> {
+    if (usingFallback) {
+      
+      return null;
+    }
+
+    try {
+      return await SupabaseUserDatabase.getRefreshToken(token);
+    } catch (error) {
+      console.error('Supabase error getting refresh token:', error);
+      usingFallback = true;
+      return null;
+    }
+  }
+
+  // Revoke refresh token
+  static async revokeRefreshToken(token: string): Promise<void> {
+    if (usingFallback) {
+      
+      return;
+    }
+
+    try {
+      await SupabaseUserDatabase.revokeRefreshToken(token);
+    } catch (error) {
+      console.error('Supabase error revoking refresh token:', error);
+      usingFallback = true;
+    }
+  }
+
+  // Revoke all user tokens
+  static async revokeAllUserTokens(userId: string): Promise<void> {
+    if (usingFallback) {
+      
+      return;
+    }
+
+    try {
+      await SupabaseUserDatabase.revokeAllUserTokens(userId);
+    } catch (error) {
+      console.error('Supabase error revoking all user tokens:', error);
+      usingFallback = true;
     }
   }
 }
