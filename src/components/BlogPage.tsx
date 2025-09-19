@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import React from 'react';
 import { useContent } from '@/hooks/useContent';
 
@@ -35,45 +36,73 @@ export default function BlogPage() {
   // Default content structure
   const defaultContent = {
     hero: {
-      title: "Our Blog",
-      subtitle: "Insights, tips, and strategies for digital transformation, AI automation, and business growth."
+      title: "AI Insights & Automation Strategies",
+      subtitle: "Stay ahead of the AI revolution with expert insights, implementation guides, and success stories from the world of intelligent automation."
     },
     posts: [
       {
-        title: 'The Future of AI in Business: 5 Trends to Watch in 2024',
-        excerpt: 'Explore the latest AI trends that are reshaping how businesses operate and compete in the digital landscape.',
+        title: 'WhatsApp CX Automation: How AI is Revolutionizing Customer Communication',
+        excerpt: 'Discover how AI-powered WhatsApp automation is transforming customer service, reducing response times by 85%, and boosting customer satisfaction.',
         date: 'December 15, 2024',
-        category: 'AI & Automation',
-        readTime: '5 min read'
-      },
-      {
-        title: 'How to Choose the Right Mobile App Development Approach',
-        excerpt: 'Native vs Cross-platform: A comprehensive guide to help you make the best decision for your mobile app project.',
-        date: 'December 10, 2024',
-        category: 'Mobile Development',
-        readTime: '7 min read'
-      },
-      {
-        title: 'Digital Marketing Automation: A Complete Guide for Indian Businesses',
-        excerpt: 'Learn how to automate your digital marketing efforts and scale your business growth with proven strategies.',
-        date: 'December 5, 2024',
-        category: 'Digital Marketing',
+        category: 'WhatsApp CX',
         readTime: '6 min read'
       },
       {
-        title: 'Building AI Agents: From Concept to Deployment',
-        excerpt: 'A step-by-step guide to creating custom AI agents that can automate your business processes effectively.',
-        date: 'November 28, 2024',
-        category: 'AI & Automation',
+        title: 'Enterprise Knowledge Copilots: The Future of Internal AI Assistance',
+        excerpt: 'Learn how multi-lingual knowledge copilots are helping enterprises access company information instantly, with compliance and security built-in.',
+        date: 'December 12, 2024',
+        category: 'Enterprise AI',
         readTime: '8 min read'
+      },
+      {
+        title: 'AI Readiness Assessment: Why Every Business Needs One',
+        excerpt: 'Understand the importance of AI readiness assessments and how they help businesses identify automation opportunities and create implementation roadmaps.',
+        date: 'December 8, 2024',
+        category: 'AI Strategy',
+        readTime: '5 min read'
+      },
+      {
+        title: 'Sales Intelligence Automation: From Leads to Revenue',
+        excerpt: 'Explore how AI-powered sales intelligence systems are transforming prospect research, outreach campaigns, and conversion rates.',
+        date: 'December 5, 2024',
+        category: 'Sales Automation',
+        readTime: '7 min read'
+      },
+      {
+        title: 'Contact Center AI: Improving Quality & Reducing Costs',
+        excerpt: 'How AI-driven call scoring and coaching systems are helping contact centers improve agent performance and customer satisfaction.',
+        date: 'December 2, 2024',
+        category: 'Contact Center',
+        readTime: '6 min read'
+      },
+      {
+        title: 'DPDP Compliance in the Age of AI: What You Need to Know',
+        excerpt: 'Navigate the intersection of AI implementation and data privacy compliance with our comprehensive guide to DPDP Act requirements.',
+        date: 'November 28, 2024',
+        category: 'Compliance',
+        readTime: '9 min read'
+      },
+      {
+        title: 'XeroGap AI Workflow Automation: Beyond Basic Task Automation',
+        excerpt: 'Discover how XeroGap AI connects Notion, Slack, and business tools to create intelligent workflow automation that learns and adapts.',
+        date: 'November 25, 2024',
+        category: 'Workflow Automation',
+        readTime: '7 min read'
+      },
+      {
+        title: 'The ROI of AI Implementation: Real Numbers from Real Businesses',
+        excerpt: 'Case studies showing measurable ROI from AI automation, including cost savings, efficiency gains, and competitive advantages.',
+        date: 'November 20, 2024',
+        category: 'ROI & Analytics',
+        readTime: '6 min read'
       }
     ],
-    categories: ['All', 'AI & Automation', 'Mobile Development', 'Digital Marketing', 'Business Strategy'],
+    categories: ['All', 'AI Strategy', 'WhatsApp CX', 'Enterprise AI', 'Sales Automation', 'Contact Center', 'Workflow Automation', 'Compliance', 'ROI & Analytics'],
     newsletter: {
-      title: "Stay Updated",
-      description: "Get the latest insights on AI automation, digital marketing, and business growth delivered to your inbox.",
+      title: "Stay Ahead of AI Innovation",
+      description: "Get weekly insights on AI automation trends, implementation strategies, and success stories delivered directly to your inbox.",
       placeholder: "Enter your email",
-      buttonText: "Subscribe"
+      buttonText: "Subscribe to AI Insights"
     }
   };
 
@@ -124,7 +153,7 @@ export default function BlogPage() {
       <div className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
               {(pageContent.posts as Record<string, unknown>)?.map((post: { title: string; category: string; date: string; readTime: string; excerpt: string; author: string }) => (
                 <article key={post.title} className="flex flex-col rounded-2xl bg-gray-50 dark:bg-gray-800 ring-1 ring-gray-200">
                   <div className="p-8">
@@ -138,10 +167,10 @@ export default function BlogPage() {
                     </div>
                     <div className="group relative">
                       <h3 className="mt-4 text-lg font-semibold leading-6 text-gray-900 dark:text-white group-hover:text-blue-600">
-                        <a href={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                        <Link href={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}>
                           <span className="absolute inset-0" />
                           {post.title}
-                        </a>
+                        </Link>
                       </h3>
                       <p className="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-300">
                         {post.excerpt}
@@ -154,7 +183,7 @@ export default function BlogPage() {
                         </div>
                         <div className="text-sm">
                           <p className="font-semibold text-gray-900 dark:text-white">Manish Kumar</p>
-                          <p className="text-gray-600 dark:text-gray-300">Founder, Zero Digital</p>
+                          <p className="text-gray-600 dark:text-gray-300">Founder, XeroGap AI</p>
                         </div>
                       </div>
                     </div>

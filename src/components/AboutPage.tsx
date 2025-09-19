@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { CheckIcon } from '@heroicons/react/24/outline';
 import { useContent } from '@/hooks/useContent';
 
@@ -38,73 +39,92 @@ export default function AboutPage() {
   // Default content structure
   const defaultContent = {
     hero: {
-      title: "About Zero Digital",
-      subtitle: "We're passionate about helping businesses transform through AI automation, digital solutions, and innovative technology. Based in Hyderabad, serving clients across India and globally."
+      title: "About XeroGap AI",
+      subtitle: "We're on a mission to democratize AI automation for businesses worldwide. From WhatsApp CX to Enterprise Copilots, we make cutting-edge AI accessible and practical for growing companies."
     },
     mission: {
       title: "Our Mission",
-      description: "To democratize AI and digital transformation for businesses of all sizes. We believe that every company, regardless of size or budget, should have access to cutting-edge technology that can accelerate their growth and success.",
-      additionalDescription: "Our approach combines deep technical expertise with business acumen, ensuring that every solution we deliver not only works technically but also drives real business value."
+      description: "To bridge the gap between advanced AI technology and business implementation. We believe every business deserves access to intelligent automation that drives real ROI and competitive advantage.",
+      additionalDescription: "Founded by AI experts with deep industry experience, we combine technical excellence with business pragmatism to deliver AI solutions that actually work and deliver measurable results."
     },
     whyChooseUs: {
-      title: "Why Choose Us?",
+      title: "Why Choose XeroGap AI?",
       features: [
-        "Proven track record with 50+ successful projects",
-        "Transparent pricing with no hidden costs",
-        "Agile development process with regular updates",
-        "Post-delivery support and maintenance",
-        "Free consultation and project planning"
+        "AI-First Approach: Every solution built with AI at the core",
+        "Proven Track Record: 200+ AI implementations across industries",
+        "End-to-End Service: From assessment to deployment and optimization",
+        "Enterprise-Grade Security: SOC 2 compliant with GDPR & DPDP compliance",
+        "Global Reach: Serving businesses in MEA, US, and international markets",
+        "Transparent Pricing: No hidden costs, clear ROI metrics"
       ]
     },
     values: {
-      title: "Our Values",
-      subtitle: "The principles that guide everything we do",
+      title: "Our AI-First Values",
+      subtitle: "The principles that guide our AI innovation journey",
       items: [
         {
-          name: 'Innovation First',
-          description: 'We stay at the forefront of technology, always exploring new ways to solve business challenges with cutting-edge solutions.'
+          name: 'AI Democratization',
+          description: 'Making advanced AI accessible to businesses of all sizes, from startups to enterprises, without the complexity and high costs.'
         },
         {
-          name: 'Client Success',
-          description: 'Your success is our success. We measure our achievements by the growth and satisfaction of our clients.'
+          name: 'Practical Implementation',
+          description: 'Focus on real-world applications that drive measurable business outcomes, not just technical demonstrations.'
         },
         {
-          name: 'Transparency',
-          description: 'Complete transparency in pricing, timelines, and processes. No hidden costs or surprises.'
+          name: 'Ethical AI Development',
+          description: 'Building responsible AI solutions with transparency, fairness, and compliance at the forefront of every decision.'
         },
         {
-          name: 'Quality Delivery',
-          description: 'We deliver high-quality solutions that exceed expectations and provide long-term value.'
+          name: 'Continuous Innovation',
+          description: 'Staying ahead of AI trends while maintaining backward compatibility and seamless integration with existing systems.'
+        },
+        {
+          name: 'Data Privacy & Security',
+          description: 'Zero compromise on data protection, with enterprise-grade security and global compliance standards.'
+        },
+        {
+          name: 'Measurable ROI',
+          description: 'Every AI solution designed to deliver clear, quantifiable business value and competitive advantage.'
         }
       ]
     },
     team: {
-      title: "Meet the Team",
-      subtitle: "The passionate individuals behind Zero Digital",
+      title: "Our AI Leadership Team",
+      subtitle: "Industry veterans with deep AI and enterprise expertise",
       members: [
         {
           name: 'Manish Kumar',
-          title: 'Founder & Solutions Architect',
-          description: '5+ years experience in enterprise solutions, AI automation, and digital transformation. Based in Hyderabad.',
+          title: 'Founder & Chief AI Architect',
+          description: 'AI/ML expert with 8+ years in enterprise automation, large language models, and scalable AI solutions. Former tech lead at major enterprises.',
           initials: 'MK'
+        },
+        {
+          name: 'AI Development Team',
+          title: 'Senior AI Engineers & ML Specialists',
+          description: 'Our team includes PhD-level AI researchers, ML engineers, and full-stack developers specializing in production AI systems.',
+          initials: 'AI'
         }
       ]
     },
     stats: {
-      title: "Our Impact",
-      subtitle: "Numbers that speak to our commitment and success",
+      title: "AI Impact by Numbers",
+      subtitle: "Transforming businesses through intelligent automation",
       items: [
-        { label: 'Years of Experience', value: '5+' },
-        { label: 'Projects Delivered', value: '50+' },
-        { label: 'Happy Clients', value: '25+' },
-        { label: 'AI Agents Deployed', value: '15+' }
+        { label: 'AI Solutions Deployed', value: '200+' },
+        { label: 'Average Response Time Reduction', value: '85%' },
+        { label: 'Customer Satisfaction Increase', value: '94%' },
+        { label: 'Cost Savings Generated', value: '$2M+' },
+        { label: 'Languages Supported', value: '25+' },
+        { label: 'Industries Served', value: '12+' }
       ]
     },
     cta: {
-      title: "Ready to work with us?",
-      description: "Let's discuss your project and see how we can help transform your business with AI and digital solutions.",
-      primaryButton: "Get Started",
-      secondaryButton: "View Services"
+      title: "Ready to Transform Your Business with AI?",
+      description: "Take our free AI Readiness Assessment and discover which automation solutions will drive the most impact for your business.",
+      primaryButton: "Get Free AI Assessment",
+      primaryHref: "/assessment",
+      secondaryButton: "Book Demo",
+      secondaryHref: "/demo"
     }
   };
 
@@ -273,15 +293,18 @@ export default function AboutPage() {
               {(pageContent.cta as Record<string, unknown>).description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="/contact"
+              <Link
+                href={(pageContent.cta as Record<string, unknown>).primaryHref as string || "/assessment"}
                 className="rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
               >
                 {(pageContent.cta as Record<string, unknown>).primaryButton}
-              </a>
-              <a href="/services" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-blue-600 transition-colors">
+              </Link>
+              <Link
+                href={(pageContent.cta as Record<string, unknown>).secondaryHref as string || "/demo"}
+                className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-blue-600 transition-colors"
+              >
                 {(pageContent.cta as Record<string, unknown>).secondaryButton} <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

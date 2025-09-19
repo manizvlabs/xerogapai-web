@@ -1,4 +1,5 @@
 import { siteConfig } from '@/config/site';
+import Link from 'next/link';
 
 interface StructuredDataProps {
   type?: 'website' | 'organization' | 'article';

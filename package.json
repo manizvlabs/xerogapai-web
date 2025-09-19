@@ -1,6 +1,6 @@
 {
   "name": "zero-website",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "private": true,
   "scripts": {
     "dev": "next dev --port 4010",
@@ -28,7 +28,8 @@
     "test:ui:report": "npx playwright show-report",
     "preview": "next build && next start",
     "clean": "rm -rf .next out test-results playwright-report",
-    "analyze": "ANALYZE=true npm run build"
+    "analyze": "ANALYZE=true npm run build",
+    "generate-secrets": "node scripts/generate-secrets.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

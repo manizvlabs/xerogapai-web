@@ -1,11 +1,100 @@
 'use client';
+import Link from 'next/link';
 import React from 'react';
-import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import { EnvelopeIcon, PhoneIcon, MapPinIcon, DevicePhoneMobileIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 import { useContent } from '@/hooks/useContent';
+import { useRegion } from '@/contexts/RegionContext';
 import ContactForm from '../app/contact/ContactForm';
+
+interface ConsultationSection {
+  title: string;
+  description: string;
+  buttonText: string;
+  buttonHref: string;
+}
+
+interface ResponseTimeSection {
+  title: string;
+  description: string;
+}
+
+interface RegionalSupportSection {
+  title: string;
+  india: {
+    title: string;
+    contact: string;
+    whatsapp: string;
+    timezone: string;
+    languages: string;
+  };
+  global: {
+    title: string;
+    contact: string;
+    whatsapp: string;
+    timezone: string;
+    languages: string;
+  };
+}
+
+interface ContactPageContent {
+  consultation?: ConsultationSection;
+  responseTime?: ResponseTimeSection;
+  regionalSupport?: RegionalSupportSection;
+}
 
 export default function ContactPage() {
   const { content, loading, error } = useContent('contact');
+
+  // Default content structure (moved up before usage)
+  const defaultContent = {
+    hero: {
+      title: "Get in Touch with Our AI Experts",
+      subtitle: "Ready to transform your business with AI automation? Let's discuss your specific needs and create a solution that drives measurable results."
+    },
+    contactInfo: {
+      title: "Contact Information",
+      description: "Connect with our AI specialists through your preferred channel. We serve businesses globally with dedicated regional support.",
+      details: []
+    },
+    responseTime: {
+      title: "Quick Response Guarantee",
+      description: "We respond to all inquiries within 24 hours, with urgent requests receiving same-day attention."
+    },
+    consultation: {
+      title: "Book a Consultation",
+      description: "Schedule a personalized consultation to discuss your AI automation needs and explore how XeroGap AI can transform your business operations.",
+      buttonText: "Book Consultation",
+      buttonHref: "/consultation"
+    },
+    regionalSupport: {
+      title: "Regional Support Teams",
+      india: {
+        title: "India Support",
+        contact: "+91 98765 43210",
+        whatsapp: "https://wa.me/919876543210",
+        timezone: "IST (GMT+5:30)",
+        languages: "English, Hindi, Telugu, Tamil"
+      },
+      global: {
+        title: "Global Support",
+        contact: "+1 (555) 123-4567",
+        whatsapp: "https://wa.me/15551234567",
+        timezone: "EST (GMT-5)",
+        languages: "English, Arabic, French"
+      }
+    }
+  };
+
+  const pageContent: ContactPageContent = {
+    hero: content?.hero || defaultContent.hero,
+    contactInfo: {
+      ...defaultContent.contactInfo,
+      ...(content?.contactInfo || content?.info || {})
+    },
+    responseTime: (content?.responseTime as Record<string, unknown>) || defaultContent.responseTime,
+    consultation: (content?.consultation as Record<string, unknown>) || defaultContent.consultation,
+    regionalSupport: content?.regionalSupport || defaultContent.regionalSupport
+  };
 
   if (loading) {
     return (
@@ -34,62 +123,15 @@ export default function ContactPage() {
     );
   }
 
-  // Default content structure
-  const defaultContent = {
-    hero: {
-      title: "Get in Touch",
-      subtitle: "Ready to transform your business? Let's discuss your project and create a solution that drives real results."
-    },
-    contactInfo: {
-      title: "Contact information",
-      description: "We're here to help you transform your business. Reach out to us through any of these channels.",
-      details: [
-        {
-          icon: "MapPinIcon",
-          label: "Address",
-          value: "Hyderabad, Telangana, India\nServing clients globally"
-        },
-        {
-          icon: "PhoneIcon",
-          label: "Telephone",
-          value: "+91 98765 43210",
-          link: "tel:+919876543210"
-        },
-        {
-          icon: "EnvelopeIcon",
-          label: "Email",
-          value: "info@zerodigital.ai",
-          link: "mailto:info@zerodigital.ai"
-        }
-      ]
-    },
-    responseTime: {
-      title: "Response time",
-      description: "We typically respond to all inquiries within 24 hours. For urgent matters, please call us directly."
-    },
-    consultation: {
-      title: "Free consultation",
-      description: "Schedule a free 30-minute consultation to discuss your project requirements and get a custom quote.",
-      buttonText: "Schedule Now"
-    }
-  };
 
-  const pageContent = {
-    hero: content?.hero || defaultContent.hero,
-    contactInfo: {
-      ...defaultContent.contactInfo,
-      ...(content?.contactInfo || content?.info || {}),
-      details: (((content?.contactInfo as Record<string, unknown>)?.details || (content?.info as Record<string, unknown>)?.details || defaultContent.contactInfo.details) || [])
-    },
-    responseTime: (content?.responseTime as Record<string, unknown>) || defaultContent.responseTime,
-    consultation: (content?.consultation as Record<string, unknown>) || defaultContent.consultation
-  };
 
   // Icon mapping
   const iconMap = {
     MapPinIcon,
     PhoneIcon,
-    EnvelopeIcon
+    EnvelopeIcon,
+    DevicePhoneMobileIcon,
+    GlobeAltIcon
   };
 
   return (
@@ -134,14 +176,14 @@ export default function ContactPage() {
                         </dt>
                         <dd>
                           {detail.link ? (
-                            <a className="hover:text-gray-900 dark:text-white" href={detail.link}>
+                            <Link className="hover:text-gray-900 dark:text-white" href={detail.link}>
                               {detail.value.split('\n').map((line, lineIndex) => (
                                 <React.Fragment key={line}>
                                   {line}
                                   {lineIndex < detail.value.split('\n').length - 1 && <br />}
                                 </React.Fragment>
                               ))}
-                            </a>
+                            </Link>
                           ) : (
                             detail.value.split('\n').map((line, lineIndex) => (
                               <React.Fragment key={line}>
@@ -157,20 +199,137 @@ export default function ContactPage() {
                 </dl>
 
                 <div className="mt-16">
-                  <h3 className="text-lg font-semibold leading-7 text-gray-900 dark:text-white">{(pageContent.responseTime as Record<string, unknown>).title}</h3>
+                  <h3 className="text-lg font-semibold leading-7 text-gray-900 dark:text-white">{pageContent.responseTime?.title}</h3>
                   <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
-                    {(pageContent.responseTime as Record<string, unknown>).description}
+                    {pageContent.responseTime?.description}
                   </p>
                 </div>
 
                 <div className="mt-8">
-                  <h3 className="text-lg font-semibold leading-7 text-gray-900 dark:text-white">{(pageContent.consultation as Record<string, unknown>).title}</h3>
+                  <h3 className="text-lg font-semibold leading-7 text-gray-900 dark:text-white">{pageContent.consultation?.title}</h3>
                   <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
-                    {(pageContent.consultation as Record<string, unknown>).description}
+                    {pageContent.consultation?.description}
                   </p>
-                  <button className="mt-4 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors">
-                    {(pageContent.consultation as Record<string, unknown>).buttonText}
-                  </button>
+                  <Link
+                    href={pageContent.consultation?.buttonHref || "/assessment"}
+                    className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                  >
+                    {pageContent.consultation?.buttonText}
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Regional Support Section */}
+      <div className="bg-gray-50 dark:bg-gray-800 py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+              {pageContent.regionalSupport?.title}
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+              Dedicated support teams for your region with local language assistance and timezone alignment.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              {/* India Support */}
+              <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                    🇮🇳
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                      {pageContent.regionalSupport?.india?.title || "India Support"}
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      {pageContent.regionalSupport?.india?.timezone || "IST (GMT+5:30)"}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <PhoneIcon className="w-5 h-5 text-blue-600" />
+                    <Link href={`tel:${pageContent.regionalSupport?.india?.contact || "+919876543210"}`}
+                       className="text-gray-600 dark:text-gray-300 hover:text-blue-600">
+                      {pageContent.regionalSupport?.india?.contact || "+91 98765 43210"}
+                    </Link>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <DevicePhoneMobileIcon className="w-5 h-5 text-green-600" />
+                    <Link href={pageContent.regionalSupport?.india?.whatsapp || "https://wa.me/919876543210"}
+                       className="text-gray-600 dark:text-gray-300 hover:text-green-600">
+                      WhatsApp Business
+                    </Link>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <GlobeAltIcon className="w-5 h-5 text-purple-600" />
+                    <span className="text-gray-600 dark:text-gray-300">
+                      {pageContent.regionalSupport?.india?.languages || "English, Hindi, Telugu, Tamil"}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Available: 9 AM - 9 PM IST | Response: &lt; 2 hours
+                  </p>
+                </div>
+              </div>
+
+              {/* Global Support */}
+              <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
+                    🌍
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                      {pageContent.regionalSupport?.global?.title || "Global Support"}
+                    </h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      {pageContent.regionalSupport?.global?.timezone || "EST (GMT-5)"}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <PhoneIcon className="w-5 h-5 text-blue-600" />
+                    <Link href={`tel:${pageContent.regionalSupport?.global?.contact || "+15551234567"}`}
+                       className="text-gray-600 dark:text-gray-300 hover:text-blue-600">
+                      {pageContent.regionalSupport?.global?.contact || "+1 (555) 123-4567"}
+                    </Link>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <DevicePhoneMobileIcon className="w-5 h-5 text-green-600" />
+                    <Link href={pageContent.regionalSupport?.global?.whatsapp || "https://wa.me/15551234567"}
+                       className="text-gray-600 dark:text-gray-300 hover:text-green-600">
+                      WhatsApp Business
+                    </Link>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <GlobeAltIcon className="w-5 h-5 text-purple-600" />
+                    <span className="text-gray-600 dark:text-gray-300">
+                      {pageContent.regionalSupport?.global?.languages || "English, Arabic, French"}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Available: 9 AM - 6 PM EST | Response: &lt; 4 hours
+                  </p>
                 </div>
               </div>
             </div>
