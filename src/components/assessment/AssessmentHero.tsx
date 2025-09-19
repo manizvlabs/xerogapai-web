@@ -19,7 +19,7 @@ export default function AssessmentHero({ onStart }: AssessmentHeroProps) {
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            Discover Your Business's
+            Discover Your Business&apos;s
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
               {" "}AI Readiness
             </span>
@@ -67,7 +67,7 @@ export default function AssessmentHero({ onStart }: AssessmentHeroProps) {
           {/* Benefits List */}
           <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 mb-12 max-w-2xl mx-auto">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 text-center">
-              What You'll Get:
+              What You&apos;ll Get:
             </h3>
             <div className="space-y-4">
               {[

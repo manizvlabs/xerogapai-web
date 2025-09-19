@@ -105,7 +105,7 @@ export default function CareerApply() {
             Join Our Team
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-            Ready to start your journey with XeroGap AI? Here's everything you need to know about our application process.
+            Ready to start your journey with XeroGap AI? Here&apos;s everything you need to know about our application process.
           </p>
         </div>
 
@@ -242,7 +242,7 @@ export default function CareerApply() {
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
               Browse our open positions and take the first step towards joining our innovative team.
-              We're excited to hear from you!
+              We&apos;re excited to hear from you!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

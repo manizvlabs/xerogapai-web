@@ -1,6 +1,12 @@
+interface CalendlyWidget {
+  initInlineWidget(options: Record<string, unknown>): void;
+  closePopupWidget(): void;
+  initPopupWidget(options: Record<string, unknown>): void;
+}
+
 declare global {
   interface Window {
-    Calendly: any;
+    Calendly: CalendlyWidget;
   }
 }
 

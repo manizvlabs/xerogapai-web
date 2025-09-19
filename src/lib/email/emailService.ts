@@ -8,7 +8,7 @@ export interface LeadData {
   companySize?: string;
   source: 'assessment' | 'demo' | 'consultation' | 'contact' | 'newsletter' | 'blog';
   tags?: string[];
-  customFields?: Record<string, any>;
+  customFields?: Record<string, unknown>;
 }
 
 export interface EmailSequence {

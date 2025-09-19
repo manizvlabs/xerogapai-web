@@ -155,7 +155,7 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
           <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
             <div className="text-center">
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                Join 500+ businesses who've transformed their operations with AI
+                Join 500+ businesses who&apos;ve transformed their operations with AI
               </p>
               <div className="flex items-center justify-center space-x-8">
                 <div className="text-center">
