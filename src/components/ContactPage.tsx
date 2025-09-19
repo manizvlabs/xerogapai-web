@@ -6,8 +6,26 @@ import { useContent } from '@/hooks/useContent';
 import { useRegion } from '@/contexts/RegionContext';
 import ContactForm from '../app/contact/ContactForm';
 
+interface ConsultationSection {
+  title: string;
+  description: string;
+  buttonText: string;
+  buttonHref: string;
+}
+
+interface ResponseTimeSection {
+  title: string;
+  description: string;
+}
+
+interface ContactPageContent {
+  consultation?: ConsultationSection;
+  responseTime?: ResponseTimeSection;
+}
+
 export default function ContactPage() {
   const { content, loading, error } = useContent('contact');
+  const pageContent = content as ContactPageContent;
 
   if (loading) {
     return (
@@ -191,22 +209,22 @@ export default function ContactPage() {
                 </dl>
 
                 <div className="mt-16">
-                  <h3 className="text-lg font-semibold leading-7 text-gray-900 dark:text-white">{(pageContent.responseTime as Record<string, unknown>).title}</h3>
+                  <h3 className="text-lg font-semibold leading-7 text-gray-900 dark:text-white">{pageContent.responseTime?.title}</h3>
                   <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
-                    {(pageContent.responseTime as Record<string, unknown>).description}
+                    {pageContent.responseTime?.description}
                   </p>
                 </div>
 
                 <div className="mt-8">
-                  <h3 className="text-lg font-semibold leading-7 text-gray-900 dark:text-white">{(pageContent.consultation as any)?.title}</h3>
+                  <h3 className="text-lg font-semibold leading-7 text-gray-900 dark:text-white">{pageContent.consultation?.title}</h3>
                   <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
-                    {(pageContent.consultation as any)?.description}
+                    {pageContent.consultation?.description}
                   </p>
                   <Link
-                    href={(pageContent.consultation as any)?.buttonHref || "/assessment"}
+                    href={pageContent.consultation?.buttonHref || "/assessment"}
                     className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
                   >
-                    {(pageContent.consultation as any)?.buttonText}
+                    {pageContent.consultation?.buttonText}
                   </Link>
                 </div>
               </div>

@@ -173,7 +173,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
               {content.socialProof.testimonials.map((testimonial) => (
                 <div key={`${testimonial.author}-${testimonial.company}`} className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg">
-                  <div className="text-4xl mb-4 text-gray-400">"</div>
+                  <div className="text-4xl mb-4 text-gray-400">&quot;</div>
                   <blockquote className="text-gray-700 dark:text-gray-300 mb-6 italic">
                     {testimonial.quote}
                   </blockquote>

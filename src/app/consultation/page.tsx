@@ -87,7 +87,7 @@ export default function ConsultationPage() {
               Consultation Booked Successfully!
             </h1>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Thank you for booking your consultation. You'll receive a confirmation email shortly with all the details and preparation materials.
+              Thank you for booking your consultation. You&apos;ll receive a confirmation email shortly with all the details and preparation materials.
             </p>
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-6">
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Booking Details:</h3>
