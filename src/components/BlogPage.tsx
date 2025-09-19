@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import React from 'react';
 import { useContent } from '@/hooks/useContent';
 
@@ -166,10 +167,10 @@ export default function BlogPage() {
                     </div>
                     <div className="group relative">
                       <h3 className="mt-4 text-lg font-semibold leading-6 text-gray-900 dark:text-white group-hover:text-blue-600">
-                        <a href={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                        <Link href={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}>
                           <span className="absolute inset-0" />
                           {post.title}
-                        </a>
+                        </Link>
                       </h3>
                       <p className="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-300">
                         {post.excerpt}

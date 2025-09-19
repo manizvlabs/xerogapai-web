@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import React from 'react';
 import { EnvelopeIcon, PhoneIcon, MapPinIcon, DevicePhoneMobileIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 import { useContent } from '@/hooks/useContent';
@@ -167,14 +168,14 @@ export default function ContactPage() {
                         </dt>
                         <dd>
                           {detail.link ? (
-                            <a className="hover:text-gray-900 dark:text-white" href={detail.link}>
+                            <Link className="hover:text-gray-900 dark:text-white" href={detail.link}>
                               {detail.value.split('\n').map((line, lineIndex) => (
                                 <React.Fragment key={line}>
                                   {line}
                                   {lineIndex < detail.value.split('\n').length - 1 && <br />}
                                 </React.Fragment>
                               ))}
-                            </a>
+                            </Link>
                           ) : (
                             detail.value.split('\n').map((line, lineIndex) => (
                               <React.Fragment key={line}>
@@ -201,12 +202,12 @@ export default function ContactPage() {
                   <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
                     {(pageContent.consultation as any)?.description}
                   </p>
-                  <a
+                  <Link
                     href={(pageContent.consultation as any)?.buttonHref || "/assessment"}
                     className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
                   >
                     {(pageContent.consultation as any)?.buttonText}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -247,18 +248,18 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <PhoneIcon className="w-5 h-5 text-blue-600" />
-                    <a href={`tel:${(pageContent.regionalSupport as Record<string, unknown>).india?.contact as string || "+919876543210"}`}
+                    <Link href={`tel:${(pageContent.regionalSupport as Record<string, unknown>).india?.contact as string || "+919876543210"}`}
                        className="text-gray-600 dark:text-gray-300 hover:text-blue-600">
                       {(pageContent.regionalSupport as Record<string, unknown>).india?.contact as string || "+91 98765 43210"}
-                    </a>
+                    </Link>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <DevicePhoneMobileIcon className="w-5 h-5 text-green-600" />
-                    <a href={(pageContent.regionalSupport as Record<string, unknown>).india?.whatsapp as string || "https://wa.me/919876543210"}
+                    <Link href={(pageContent.regionalSupport as Record<string, unknown>).india?.whatsapp as string || "https://wa.me/919876543210"}
                        className="text-gray-600 dark:text-gray-300 hover:text-green-600">
                       WhatsApp Business
-                    </a>
+                    </Link>
                   </div>
 
                   <div className="flex items-center gap-3">
@@ -271,7 +272,7 @@ export default function ContactPage() {
 
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Available: 9 AM - 9 PM IST | Response: < 2 hours
+                    Available: 9 AM - 9 PM IST | Response: &lt; 2 hours
                   </p>
                 </div>
               </div>
@@ -295,18 +296,18 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <PhoneIcon className="w-5 h-5 text-blue-600" />
-                    <a href={`tel:${(pageContent.regionalSupport as Record<string, unknown>).global?.contact as string || "+15551234567"}`}
+                    <Link href={`tel:${(pageContent.regionalSupport as Record<string, unknown>).global?.contact as string || "+15551234567"}`}
                        className="text-gray-600 dark:text-gray-300 hover:text-blue-600">
                       {(pageContent.regionalSupport as Record<string, unknown>).global?.contact as string || "+1 (555) 123-4567"}
-                    </a>
+                    </Link>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <DevicePhoneMobileIcon className="w-5 h-5 text-green-600" />
-                    <a href={(pageContent.regionalSupport as Record<string, unknown>).global?.whatsapp as string || "https://wa.me/15551234567"}
+                    <Link href={(pageContent.regionalSupport as Record<string, unknown>).global?.whatsapp as string || "https://wa.me/15551234567"}
                        className="text-gray-600 dark:text-gray-300 hover:text-green-600">
                       WhatsApp Business
-                    </a>
+                    </Link>
                   </div>
 
                   <div className="flex items-center gap-3">
@@ -319,7 +320,7 @@ export default function ContactPage() {
 
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Available: 9 AM - 6 PM EST | Response: < 4 hours
+                    Available: 9 AM - 6 PM EST | Response: &lt; 4 hours
                   </p>
                 </div>
               </div>

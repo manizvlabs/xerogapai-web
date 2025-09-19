@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { RocketLaunchIcon, CodeBracketIcon, CloudIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 
@@ -190,12 +191,12 @@ console.log(response);`
                     </div>
                   </div>
                 </div>
-                <a
+                <Link
                   href={guide.href}
                   className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium"
                 >
                   Read Guide →
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -240,18 +241,18 @@ console.log(response);`
               Join thousands of developers building the future with XeroGap AI
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/docs/quick-start"
                 className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 Start Building Now
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/docs/api/overview"
                 className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors"
               >
                 Explore API Reference
-              </a>
+              </Link>
             </div>
           </div>
         </div>

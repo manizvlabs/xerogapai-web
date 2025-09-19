@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { DocumentTextIcon, ChatBubbleLeftRightIcon, UserGroupIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 
@@ -244,18 +245,18 @@ export default function CareerApply() {
               We're excited to hear from you!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="#openings"
                 className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
               >
                 View Open Positions
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/about"
                 className="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               >
                 Learn About Us
-              </a>
+              </Link>
             </div>
           </div>
         </div>

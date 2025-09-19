@@ -1,6 +1,6 @@
 'use client';
 
-import { GlobeIcon, ChatBubbleLeftRightIcon, LanguageIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import { GlobeAltIcon, ChatBubbleLeftRightIcon, LanguageIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 
 export default function EnterpriseLanguages() {
   const languages = [
@@ -61,7 +61,7 @@ export default function EnterpriseLanguages() {
       ]
     },
     {
-      icon: GlobeIcon,
+      icon: GlobeAltIcon,
       title: 'Global Knowledge Access',
       description: 'Unified knowledge base accessible in any supported language worldwide.',
       features: [
@@ -222,7 +222,7 @@ export default function EnterpriseLanguages() {
         <div className="text-center">
           <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto">
             <div className="flex items-center justify-center mb-6">
-              <GlobeIcon className="w-12 h-12 text-cyan-600 mr-4" />
+              <GlobeAltIcon className="w-12 h-12 text-cyan-600 mr-4" />
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                 Language Quality Assurance
               </h3>
@@ -247,7 +247,7 @@ export default function EnterpriseLanguages() {
               </div>
 
               <div className="text-center">
-                <div className="text-3xl font-bold text-cyan-600 mb-2">< 2s</div>
+                <div className="text-3xl font-bold text-cyan-600 mb-2">&lt; 2s</div>
                 <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Response Time</div>
                 <div className="text-xs text-gray-600 dark:text-gray-400">Real-time translation</div>
               </div>

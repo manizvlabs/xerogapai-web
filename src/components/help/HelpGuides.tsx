@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { BookOpenIcon, PlayIcon, UsersIcon, LightBulbIcon } from '@heroicons/react/24/outline';
 
@@ -250,12 +251,12 @@ export default function HelpGuides() {
                   </div>
                 ))}
               </div>
-              <a
+              <Link
                 href="/help/videos"
                 className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm mt-4"
               >
                 View all videos →
-              </a>
+              </Link>
             </div>
 
             {/* Learning Paths */}
@@ -300,18 +301,18 @@ export default function HelpGuides() {
               Our comprehensive guides and tutorials will help you unlock the full potential of AI automation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/docs"
                 className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 Browse Documentation
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/academy"
                 className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors"
               >
                 Join Learning Academy
-              </a>
+              </Link>
             </div>
           </div>
         </div>

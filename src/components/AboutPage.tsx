@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { CheckIcon } from '@heroicons/react/24/outline';
 import { useContent } from '@/hooks/useContent';
 
@@ -292,18 +293,18 @@ export default function AboutPage() {
               {(pageContent.cta as Record<string, unknown>).description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
+              <Link
                 href={(pageContent.cta as Record<string, unknown>).primaryHref as string || "/assessment"}
                 className="rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
               >
                 {(pageContent.cta as Record<string, unknown>).primaryButton}
-              </a>
-              <a
+              </Link>
+              <Link
                 href={(pageContent.cta as Record<string, unknown>).secondaryHref as string || "/demo"}
                 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-blue-600 transition-colors"
               >
                 {(pageContent.cta as Record<string, unknown>).secondaryButton} <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

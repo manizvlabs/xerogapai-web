@@ -1,11 +1,12 @@
 'use client';
+import Link from 'next/link';
 
-import { TrendingUpIcon, ClockIcon, UsersIcon, DollarSignIcon, TargetIcon, AwardIcon } from '@heroicons/react/24/outline';
+import { ArrowTrendingUpIcon, ClockIcon, UsersIcon, CurrencyDollarIcon, CursorArrowRaysIcon, TrophyIcon } from '@heroicons/react/24/outline';
 
 export default function CaseMetrics() {
   const metrics = [
     {
-      icon: TrendingUpIcon,
+      icon: ArrowTrendingUpIcon,
       title: 'Average Efficiency Improvement',
       value: '150%',
       description: 'Across all automation implementations',
@@ -26,21 +27,21 @@ export default function CaseMetrics() {
       color: 'text-purple-600'
     },
     {
-      icon: DollarSignIcon,
+      icon: CurrencyDollarIcon,
       title: 'Revenue Generated',
       value: '$50M+',
       description: 'Total revenue impact across clients',
       color: 'text-green-600'
     },
     {
-      icon: TargetIcon,
+      icon: CursorArrowRaysIcon,
       title: 'ROI Achieved',
       value: '300%',
       description: 'Average return on investment',
       color: 'text-orange-600'
     },
     {
-      icon: AwardIcon,
+      icon: TrophyIcon,
       title: 'Client Satisfaction',
       value: '4.9/5',
       description: 'Average rating from our clients',
@@ -219,18 +220,18 @@ export default function CaseMetrics() {
               See how XeroGap AI can transform your business with measurable results and ROI.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/demo"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
               >
                 Start Your Success Story
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/assessment"
                 className="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               >
                 Get Free Assessment
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { ChartBarIcon, TrendingUpIcon, UserGroupIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { ChartBarIcon, ArrowTrendingUpIcon, UserGroupIcon, ClockIcon } from '@heroicons/react/24/outline';
 
 export default function ContactAnalytics() {
   const analyticsFeatures = [
@@ -11,7 +12,7 @@ export default function ContactAnalytics() {
       metrics: ['Call volume trends', 'Quality scores', 'Agent performance', 'Customer satisfaction']
     },
     {
-      icon: TrendingUpIcon,
+      icon: ArrowTrendingUpIcon,
       title: 'Performance Trends',
       description: 'Historical analysis and forecasting to identify patterns and predict future performance.',
       metrics: ['Quality improvement', 'Training effectiveness', 'Seasonal patterns', 'Performance forecasting']
@@ -163,12 +164,12 @@ export default function ContactAnalytics() {
             <p className="text-purple-100 text-sm mb-6">
               Customizable dashboards with alerts, reports, and predictive analytics
             </p>
-            <a
+            <Link
               href="/demo"
               className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               View Analytics Demo
-            </a>
+            </Link>
           </div>
         </div>
       </div>

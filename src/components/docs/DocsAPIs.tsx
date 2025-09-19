@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { ServerIcon, LockClosedIcon, ArrowPathIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 
@@ -245,12 +246,12 @@ export default function DocsAPIs() {
             </div>
           </div>
 
-          <a
+          <Link
             href="/docs/api/explorer"
             className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
           >
             Open API Explorer
-          </a>
+          </Link>
         </div>
       </div>
     </section>

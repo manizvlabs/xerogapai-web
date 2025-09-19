@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { CpuChipIcon, DatabaseIcon, GlobeIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { CpuChipIcon, CircleStackIcon, GlobeAltIcon, ClockIcon } from '@heroicons/react/24/outline';
 
 export default function ContactSpecs() {
   const specs = [
@@ -18,7 +19,7 @@ export default function ContactSpecs() {
     },
     {
       category: 'Scalability & Integration',
-      icon: DatabaseIcon,
+      icon: CircleStackIcon,
       items: [
         { label: 'Concurrent Calls', value: 'Unlimited' },
         { label: 'Agent Support', value: 'Unlimited' },
@@ -30,7 +31,7 @@ export default function ContactSpecs() {
     },
     {
       category: 'Security & Compliance',
-      icon: GlobeIcon,
+      icon: GlobeAltIcon,
       items: [
         { label: 'Data Encryption', value: 'AES-256' },
         { label: 'GDPR Compliance', value: 'Fully compliant' },
@@ -140,12 +141,12 @@ export default function ContactSpecs() {
           </div>
 
           <div className="mt-8">
-            <a
+            <Link
               href="/demo"
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               See Technical Architecture
-            </a>
+            </Link>
           </div>
         </div>
       </div>

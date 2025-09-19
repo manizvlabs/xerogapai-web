@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { HeartIcon, UsersIcon, LightBulbIcon, TrophyIcon, GlobeIcon, CpuChipIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, UsersIcon, LightBulbIcon, TrophyIcon, GlobeAltIcon, CpuChipIcon } from '@heroicons/react/24/outline';
 
 export default function CareerCulture() {
   const values = [
@@ -29,7 +30,7 @@ export default function CareerCulture() {
       color: 'text-yellow-600'
     },
     {
-      icon: GlobeIcon,
+      icon: GlobeAltIcon,
       title: 'Global Mindset',
       description: 'We operate globally, embracing different cultures and perspectives in our work.',
       color: 'text-green-600'
@@ -257,18 +258,18 @@ export default function CareerCulture() {
               Become part of a team that's shaping the future of AI automation and making a real impact on businesses worldwide.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="#openings"
                 className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 View Open Positions
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/about"
                 className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors"
               >
                 Learn About Us
-              </a>
+              </Link>
             </div>
           </div>
         </div>

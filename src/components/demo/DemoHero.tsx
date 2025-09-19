@@ -1,6 +1,6 @@
 'use client';
 
-import { PlayIcon, CalendarIcon, UsersIcon, TrendingUpIcon } from '@heroicons/react/24/outline';
+import { PlayIcon, CalendarIcon, UsersIcon, ArrowTrendingUpIcon } from '@heroicons/react/24/outline';
 
 interface DemoHeroProps {
   onStartBooking: () => void;
@@ -52,7 +52,7 @@ export default function DemoHero({ onStartBooking }: DemoHeroProps) {
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
-              <TrendingUpIcon className="h-8 w-8 text-orange-600 mx-auto mb-3" />
+              <ArrowTrendingUpIcon className="h-8 w-8 text-orange-600 mx-auto mb-3" />
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">ROI Focus</div>
               <div className="text-xs text-gray-600 dark:text-gray-400">Real results</div>
             </div>

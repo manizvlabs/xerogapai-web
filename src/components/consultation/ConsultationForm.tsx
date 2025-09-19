@@ -1,11 +1,33 @@
 'use client';
+import Link from 'next/link';
 
 import { useState } from 'react';
-import { ChevronLeftIcon, CalendarIcon, ClockIcon, UserIcon, BuildingIcon, GlobeIcon } from '@heroicons/react/24/outline';
+import { ChevronLeftIcon, CalendarIcon, ClockIcon, UserIcon, BuildingOfficeIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
+
+interface ConsultationData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  companyName: string;
+  jobTitle: string;
+  companySize: string;
+  industry: string;
+  website: string;
+  preferredDate: string;
+  preferredTime: string;
+  timezone: string;
+  consultationGoals: string;
+  currentChallenges: string;
+  budget: string;
+  timeline: string;
+  additionalNotes: string;
+  consultationType: string;
+}
 
 interface ConsultationFormProps {
   consultationType: string;
-  onComplete: (data: any) => void;
+  onComplete: (data: ConsultationData) => void;
   onBack: () => void;
 }
 
@@ -215,7 +237,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
           {/* Company Information */}
           <div className="mb-8">
             <div className="flex items-center mb-4">
-              <BuildingIcon className="w-5 h-5 text-green-600 mr-2" />
+              <BuildingOfficeIcon className="w-5 h-5 text-green-600 mr-2" />
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Company Information</h2>
             </div>
 
@@ -331,7 +353,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
                   Timezone
                 </label>
                 <div className="flex items-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700">
-                  <GlobeIcon className="w-5 h-5 text-gray-400 mr-2" />
+                  <GlobeAltIcon className="w-5 h-5 text-gray-400 mr-2" />
                   <span className="text-gray-900 dark:text-white">{formData.timezone}</span>
                 </div>
               </div>
@@ -412,9 +434,9 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-500 dark:text-gray-400">
               By booking this consultation, you agree to our{' '}
-              <a href="/privacy" className="text-green-600 hover:text-green-700">Privacy Policy</a>
+              <Link href="/privacy" className="text-green-600 hover:text-green-700">Privacy Policy</Link>
               {' '}and{' '}
-              <a href="/terms" className="text-green-600 hover:text-green-700">Terms of Service</a>.
+              <Link href="/terms" className="text-green-600 hover:text-green-700">Terms of Service</Link>.
               We'll send you preparation materials and a calendar invite.
             </p>
           </div>

@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { LinkIcon, CogIcon, CloudIcon, DevicePhoneMobileIcon } from '@heroicons/react/24/outline';
 
@@ -187,12 +188,12 @@ export default function DocsGuides() {
                   </div>
                 </div>
 
-                <a
+                <Link
                   href={guide.href}
                   className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium text-sm"
                 >
                   Read Guide →
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -242,12 +243,12 @@ export default function DocsGuides() {
                   </ol>
                 </div>
 
-                <a
+                <Link
                   href={guide.href}
                   className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium text-sm"
                 >
                   Start Implementation →
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -285,12 +286,12 @@ export default function DocsGuides() {
                   </div>
                 </div>
 
-                <a
+                <Link
                   href={category.href}
                   className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium text-sm"
                 >
                   Browse Tutorials →
-                </a>
+                </Link>
               </div>
             );
           })}
@@ -324,12 +325,12 @@ export default function DocsGuides() {
           </div>
 
           <div className="mt-8">
-            <a
+            <Link
               href="/docs/videos"
               className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               Watch Tutorials
-            </a>
+            </Link>
           </div>
         </div>
       </div>

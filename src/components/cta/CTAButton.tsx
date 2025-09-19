@@ -77,7 +77,7 @@ export default function CTAButton({
   if (href) {
     if (external) {
       return (
-        <a
+        <Link
           href={href}
           onClick={handleClick}
           className={buttonClasses}
@@ -85,7 +85,7 @@ export default function CTAButton({
           rel="noopener noreferrer"
         >
           {children}
-        </a>
+        </Link>
       );
     }
 

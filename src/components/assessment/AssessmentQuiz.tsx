@@ -4,7 +4,13 @@ import { useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 interface AssessmentQuizProps {
-  onComplete: (data: any) => void;
+  onComplete: (data: {
+    score: number;
+    totalScore: number;
+    maxScore: number;
+    answers: Record<number, unknown>;
+    insights: unknown[];
+  }) => void;
 }
 
 const questions = [

@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { MicrophoneIcon, EyeIcon, AcademicCapIcon, ChartBarIcon, SpeakerWaveIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
 
@@ -226,12 +227,12 @@ export default function ContactFeatures() {
           </div>
 
           <div className="mt-8">
-            <a
+            <Link
               href="/demo"
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               See QA Dashboard Live
-            </a>
+            </Link>
           </div>
         </div>
       </div>

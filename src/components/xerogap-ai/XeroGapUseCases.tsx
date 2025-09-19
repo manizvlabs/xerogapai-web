@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { BuildingOfficeIcon, UserGroupIcon, AcademicCapIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/outline';
 
@@ -250,18 +251,18 @@ export default function XeroGapUseCases() {
               Start with our free trial and see how XeroGap AI can transform your team's productivity in just 30 minutes.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="#pricing"
                 className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 Start Free Trial
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/demo"
                 className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors"
               >
                 Book Workflow Demo
-              </a>
+              </Link>
             </div>
           </div>
         </div>

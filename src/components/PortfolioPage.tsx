@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { useContent } from '@/hooks/useContent';
 
 export default function PortfolioPage() {
@@ -221,15 +222,15 @@ export default function PortfolioPage() {
               {(pageContent.cta as Record<string, unknown>).description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
+              <Link
                 href={(pageContent.cta as any)?.primaryHref || "/assessment"}
                 className="rounded-md bg-white dark:bg-gray-900 px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 dark:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
               >
                 {(pageContent.cta as any)?.primaryButton}
-              </a>
-              <a href={(pageContent.cta as any)?.secondaryHref || "/demo"} className="text-sm font-semibold leading-6 text-white hover:text-blue-100 transition-colors">
+              </Link>
+              <Link href={(pageContent.cta as any)?.secondaryHref || "/demo"} className="text-sm font-semibold leading-6 text-white hover:text-blue-100 transition-colors">
                 {(pageContent.cta as any)?.secondaryButton} <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

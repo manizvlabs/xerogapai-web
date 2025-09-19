@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { DocumentIcon, CpuChipIcon, PlayIcon, BarChartIcon } from '@heroicons/react/24/outline';
+import { DocumentIcon, CpuChipIcon, PlayIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 
 export default function EnterpriseProcess() {
   const steps = [
@@ -32,7 +33,7 @@ export default function EnterpriseProcess() {
       step: '04',
       title: 'Optimization & Scale',
       description: 'Continuous monitoring, performance optimization, and scaling to meet growing enterprise needs.',
-      icon: BarChartIcon,
+      icon: ChartBarIcon,
       duration: 'Ongoing',
       deliverables: ['Performance monitoring', 'Usage analytics', 'Continuous improvement', 'Enterprise support']
     }
@@ -109,18 +110,18 @@ export default function EnterpriseProcess() {
               Our enterprise implementation team ensures smooth deployment and maximum value from day one.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="#pricing"
                 className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 View Enterprise Pricing
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/demo"
                 className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
               >
                 Schedule Enterprise Demo
-              </a>
+              </Link>
             </div>
           </div>
         </div>

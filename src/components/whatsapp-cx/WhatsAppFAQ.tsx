@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
@@ -120,18 +121,18 @@ export default function WhatsAppFAQ() {
               Our experts are here to help. Book a consultation or contact our sales team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/consultation"
                 className="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors"
               >
                 Book Consultation
-              </a>
-              <a
+              </Link>
+              <Link
                 href="mailto:sales@xerogap.ai"
                 className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Contact Sales Team
-              </a>
+              </Link>
             </div>
           </div>
         </div>

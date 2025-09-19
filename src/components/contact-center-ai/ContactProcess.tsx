@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { CloudArrowUpIcon, CogIcon, PlayIcon, TrendingUpIcon } from '@heroicons/react/24/outline';
+import { CloudArrowUpIcon, CogIcon, PlayIcon, ArrowTrendingUpIcon } from '@heroicons/react/24/outline';
 
 export default function ContactProcess() {
   const steps = [
@@ -32,7 +33,7 @@ export default function ContactProcess() {
       step: '04',
       title: 'Optimization & Scaling',
       description: 'Continuously improve the system and scale to additional channels and locations.',
-      icon: TrendingUpIcon,
+      icon: ArrowTrendingUpIcon,
       duration: 'Ongoing',
       deliverables: ['Performance optimization', 'Feature expansion', 'Team training', 'ROI tracking']
     }
@@ -109,18 +110,18 @@ export default function ContactProcess() {
               Start your free trial and see how our AI-powered QA can improve your contact center performance in just weeks.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="#pricing"
                 className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 View Pricing
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/demo"
                 className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
               >
                 Book QA Demo
-              </a>
+              </Link>
             </div>
           </div>
         </div>

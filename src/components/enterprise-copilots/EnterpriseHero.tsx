@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { BuildingOfficeIcon, ShieldCheckIcon, GlobeIcon, CpuChipIcon } from '@heroicons/react/24/outline';
+import { BuildingOfficeIcon, ShieldCheckIcon, GlobeAltIcon, CpuChipIcon } from '@heroicons/react/24/outline';
 
 export default function EnterpriseHero() {
   return (
@@ -54,7 +55,7 @@ export default function EnterpriseHero() {
             </div>
 
             <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700">
-              <GlobeIcon className="h-8 w-8 text-cyan-400 mx-auto mb-3" />
+              <GlobeAltIcon className="h-8 w-8 text-cyan-400 mx-auto mb-3" />
               <div className="text-3xl font-bold text-white mb-1">20+</div>
               <div className="text-sm text-slate-400">Languages Supported</div>
             </div>
@@ -117,18 +118,18 @@ export default function EnterpriseHero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
+            <Link
               href="#pricing"
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Start Enterprise Trial
-            </a>
-            <a
+            </Link>
+            <Link
               href="/demo"
               className="bg-slate-700 hover:bg-slate-600 text-white border-2 border-slate-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-slate-600 transition-colors"
             >
               Book Enterprise Demo
-            </a>
+            </Link>
           </div>
 
           {/* Trust Signals */}

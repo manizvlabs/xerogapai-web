@@ -5,7 +5,7 @@ import {
   ChatBubbleLeftRightIcon,
   ChartBarIcon,
   ArrowPathIcon,
-  GlobeIcon,
+  GlobeAltIcon,
   ShieldCheckIcon
 } from '@heroicons/react/24/outline';
 
@@ -36,7 +36,7 @@ export default function WhatsAppFeatures() {
       benefits: ['Context preservation', 'Instant handoff', 'Agent notification', 'Quality assurance']
     },
     {
-      icon: GlobeIcon,
+      icon: GlobeAltIcon,
       title: 'Multi-Language Support',
       description: 'Serve customers in their preferred language with automatic translation and localized responses.',
       benefits: ['20+ languages', 'Cultural adaptation', 'Local business hours', 'Regional compliance']

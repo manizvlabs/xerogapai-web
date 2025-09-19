@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { DocumentTextIcon, ShieldCheckIcon, UserCheckIcon, ClipboardDocumentCheckIcon, ExclamationTriangleIcon, CogIcon } from '@heroicons/react/24/outline';
+import { DocumentTextIcon, ShieldCheckIcon, ClipboardDocumentCheckIcon, ExclamationTriangleIcon, CogIcon } from '@heroicons/react/24/outline';
 
 export default function DpdpFeatures() {
   const features = [
@@ -29,7 +30,7 @@ export default function DpdpFeatures() {
       benefit: 'Ready-to-use compliance documentation'
     },
     {
-      icon: UserCheckIcon,
+      icon: ShieldCheckIcon,
       title: 'Consent Management System',
       description: 'Automated consent collection, management, and withdrawal processing for all data subjects.',
       capabilities: [
@@ -255,12 +256,12 @@ export default function DpdpFeatures() {
           </div>
 
           <div className="mt-8">
-            <a
+            <Link
               href="/demo"
               className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               Start Your Assessment
-            </a>
+            </Link>
           </div>
         </div>
       </div>

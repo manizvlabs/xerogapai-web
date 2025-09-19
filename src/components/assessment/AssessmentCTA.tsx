@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { CheckCircleIcon, CalendarIcon, PhoneIcon, MailIcon } from '@heroicons/react/24/outline';
+import { CheckCircleIcon, CalendarIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 
 interface AssessmentCTAProps {
   assessmentData: any;
@@ -68,7 +68,7 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
             </div>
 
             <div className="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-lg">
-              <MailIcon className="h-8 w-8 text-purple-600 mx-auto mb-3" />
+              <EnvelopeIcon className="h-8 w-8 text-purple-600 mx-auto mb-3" />
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
                 Implementation Support
               </h3>

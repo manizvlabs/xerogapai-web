@@ -1,6 +1,6 @@
 'use client';
 
-import { ServerIcon, ShieldCheckIcon, CpuChipIcon, GlobeIcon } from '@heroicons/react/24/outline';
+import { ServerIcon, ShieldCheckIcon, CpuChipIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 
 export default function EnterpriseSpecs() {
   const specs = [
@@ -42,7 +42,7 @@ export default function EnterpriseSpecs() {
     },
     {
       category: 'Global Infrastructure',
-      icon: GlobeIcon,
+      icon: GlobeAltIcon,
       items: [
         { label: 'Data Centers', value: 'Global regions' },
         { label: 'CDN Coverage', value: 'Worldwide' },

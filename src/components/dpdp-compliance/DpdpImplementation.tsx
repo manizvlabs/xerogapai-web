@@ -1,6 +1,6 @@
 'use client';
 
-import { CogIcon, DocumentTextIcon, ShieldCheckIcon, UserCheckIcon } from '@heroicons/react/24/outline';
+import { CogIcon, DocumentTextIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 
 export default function DpdpImplementation() {
   const implementationPhases = [
@@ -56,7 +56,7 @@ export default function DpdpImplementation() {
       ]
     },
     {
-      icon: UserCheckIcon,
+      icon: ShieldCheckIcon,
       phase: 'Training & Testing',
       duration: 'Weeks 11-12',
       activities: [

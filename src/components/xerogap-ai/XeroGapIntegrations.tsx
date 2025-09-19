@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { ArrowPathIcon, CloudIcon, DatabaseIcon } from '@heroicons/react/24/outline';
+import { ArrowPathIcon, CloudIcon, CircleStackIcon } from '@heroicons/react/24/outline';
 
 export default function XeroGapIntegrations() {
   const integrations = [
@@ -20,7 +21,7 @@ export default function XeroGapIntegrations() {
     // CRM & Sales
     {
       category: 'CRM & Sales',
-      icon: DatabaseIcon,
+      icon: CircleStackIcon,
       tools: [
         { name: 'HubSpot', logo: '🎯', description: 'Lead management & tracking' },
         { name: 'Zoho CRM', logo: '📊', description: 'Sales pipeline automation' },
@@ -46,7 +47,7 @@ export default function XeroGapIntegrations() {
     // Finance & Operations
     {
       category: 'Finance & Operations',
-      icon: DatabaseIcon,
+      icon: CircleStackIcon,
       tools: [
         { name: 'QuickBooks', logo: '💰', description: 'Accounting & invoicing' },
         { name: 'Xero', logo: '💰', description: 'Business accounting' },
@@ -158,12 +159,12 @@ export default function XeroGapIntegrations() {
             </div>
           </div>
 
-          <a
+          <Link
             href="/demo"
             className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
           >
             Watch Integration Demo
-          </a>
+          </Link>
         </div>
       </div>
     </section>

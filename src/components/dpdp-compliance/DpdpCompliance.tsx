@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { ShieldCheckIcon, UserGroupIcon, LockClosedIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
 
@@ -188,12 +189,12 @@ export default function DpdpCompliance() {
             <p className="text-orange-100 text-sm mb-6">
               Get expert guidance on implementing each DPDP requirement
             </p>
-            <a
+            <Link
               href="/demo"
               className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               Start Implementation
-            </a>
+            </Link>
           </div>
         </div>
       </div>

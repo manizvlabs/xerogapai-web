@@ -24,20 +24,20 @@ const Footer = () => {
                 leverage AI automation, mobile apps, and digital marketing to achieve exponential growth.
               </p>
               <div className="flex space-x-4">
-                <a 
+                <Link 
                   href={`mailto:${siteConfig.email}`} 
                   className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-800"
                   aria-label="Email us"
                 >
                   <EnvelopeIcon className="h-5 w-5" />
-                </a>
-                <a 
+                </Link>
+                <Link 
                   href={`tel:${siteConfig.phone}`} 
                   className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-800"
                   aria-label="Call us"
                 >
                   <PhoneIcon className="h-5 w-5" />
-                </a>
+                </Link>
                 <span 
                   className="text-gray-400 p-2 rounded-lg"
                   aria-label="Location"

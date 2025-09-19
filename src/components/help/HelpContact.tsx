@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { ChatBubbleLeftRightIcon, EnvelopeIcon, PhoneIcon, ClockIcon } from '@heroicons/react/24/outline';
 
@@ -253,12 +254,12 @@ export default function HelpContact() {
           </div>
 
           <div className="text-center">
-            <a
+            <Link
               href="/support/login"
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               Access Support Portal
-            </a>
+            </Link>
           </div>
         </div>
       </div>

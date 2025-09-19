@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { QuestionMarkCircleIcon, LightBulbIcon, ChatBubbleLeftRightIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
 
@@ -104,18 +105,18 @@ export default function HelpHero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
+            <Link
               href="#search"
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Search Help Center
-            </a>
-            <a
+            </Link>
+            <Link
               href="#contact"
               className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
               Contact Support
-            </a>
+            </Link>
           </div>
 
           {/* Trust Signals */}

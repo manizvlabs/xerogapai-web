@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { RocketLaunchIcon, UsersIcon, LightBulbIcon, HeartIcon } from '@heroicons/react/24/outline';
 
@@ -117,18 +118,18 @@ export default function CareerHero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
+            <Link
               href="#openings"
               className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               View Open Positions
-            </a>
-            <a
+            </Link>
+            <Link
               href="#culture"
               className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
               Our Culture
-            </a>
+            </Link>
           </div>
 
           {/* Trust Signals */}

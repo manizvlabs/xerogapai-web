@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
 import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 
@@ -33,12 +34,12 @@ export default function ProtectedAdminLayout({ children }: ProtectedAdminLayoutP
             <p className="text-red-800 dark:text-red-200 mb-4">
               You need to be logged in as an admin to access this page.
             </p>
-            <a
+            <Link
               href="/admin/login"
               className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               Go to Login
-            </a>
+            </Link>
           </div>
         </div>
       </div>

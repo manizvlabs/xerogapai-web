@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { useState } from 'react';
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
@@ -141,7 +142,7 @@ export default function DocsNavigation() {
                 {expandedSections.includes(section.id) && (
                   <div className="border-t border-gray-200 dark:border-gray-600">
                     {section.items.map((item, index) => (
-                      <a
+                      <Link
                         key={index}
                         href={item.href}
                         className="block px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors border-b border-gray-100 dark:border-gray-700 last:border-b-0"
@@ -154,7 +155,7 @@ export default function DocsNavigation() {
                             {item.time}
                           </span>
                         </div>
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}
@@ -176,13 +177,13 @@ export default function DocsNavigation() {
                 'Contact Center QA',
                 'DPDP Compliance'
               ].map((topic, index) => (
-                <a
+                <Link
                   key={index}
                   href="#"
                   className="px-3 py-1 bg-indigo-100 dark:bg-indigo-800 text-indigo-800 dark:text-indigo-200 rounded-full text-sm hover:bg-indigo-200 dark:hover:bg-indigo-700 transition-colors"
                 >
                   {topic}
-                </a>
+                </Link>
               ))}
             </div>
           </div>

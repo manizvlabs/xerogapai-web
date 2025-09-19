@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { EyeIcon, ChartBarIcon, MagnifyingGlassIcon, LightBulbIcon } from '@heroicons/react/24/outline';
 
@@ -176,12 +177,12 @@ export default function SalesIntelligence() {
           </div>
 
           <div className="mt-8">
-            <a
+            <Link
               href="/demo"
               className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               See Intelligence Dashboard
-            </a>
+            </Link>
           </div>
         </div>
       </div>

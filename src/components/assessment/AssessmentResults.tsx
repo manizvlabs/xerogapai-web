@@ -1,7 +1,8 @@
 'use client';
+import Link from 'next/link';
 
 import { useState } from 'react';
-import { CheckCircleIcon, ArrowPathIcon, EnvelopeIcon, ChartBarIcon, LightBulbIcon, ExclamationTriangleIcon, RocketIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { CheckCircleIcon, ArrowPathIcon, EnvelopeIcon, ChartBarIcon, LightBulbIcon, ExclamationTriangleIcon, RocketLaunchIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { useAssessmentEngine } from '@/hooks/useAssessmentEngine';
 import { useEmailCapture } from '@/hooks/useEmailCapture';
 import { AssessmentResults as AssessmentResultsType } from '@/lib/assessment/assessmentEngine';
@@ -11,8 +12,8 @@ interface AssessmentResultsProps {
     score: number;
     totalScore: number;
     maxScore: number;
-    answers: Record<number, any>;
-    insights: any[];
+    answers: Record<number, unknown>;
+    insights: unknown[];
   };
   onComplete: (email: string) => void;
   onRestart: () => void;
@@ -287,7 +288,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h5 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
-                          <RocketIcon className="w-4 h-4 mr-2 text-blue-600" />
+                          <RocketLaunchIcon className="w-4 h-4 mr-2 text-blue-600" />
                           Key Actions
                         </h5>
                         <ul className="space-y-1">
@@ -412,12 +413,12 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
               <ArrowPathIcon className="w-4 h-4 mr-2" />
               Retake Assessment
             </button>
-            <a
+            <Link
               href="/consultation"
               className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors"
             >
               Book Free Consultation
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { ScaleIcon, TrendingUpIcon, UsersIcon, ClockIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import { ScaleIcon, ArrowTrendingUpIcon, UsersIcon, ClockIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 
 export default function WhatsAppBenefits() {
   const benefits = [
@@ -16,7 +16,7 @@ export default function WhatsAppBenefits() {
       color: 'green'
     },
     {
-      icon: TrendingUpIcon,
+      icon: ArrowTrendingUpIcon,
       title: 'Boost Revenue & Conversion',
       description: 'Turn WhatsApp conversations into sales opportunities with intelligent lead qualification and follow-up.',
       metrics: [

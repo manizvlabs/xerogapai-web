@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckCircleIcon, MailIcon, PhoneIcon, PresentationChartBarIcon, ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline';
+import { CheckCircleIcon, EnvelopeIcon, PhoneIcon, PresentationChartBarIcon, ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline';
 
 export default function DemoProcess() {
   const steps = [
@@ -8,7 +8,7 @@ export default function DemoProcess() {
       step: '1',
       title: 'Confirmation Email',
       description: 'Receive immediate confirmation with demo details and preparation materials.',
-      icon: MailIcon,
+      icon: EnvelopeIcon,
       time: 'Instant'
     },
     {

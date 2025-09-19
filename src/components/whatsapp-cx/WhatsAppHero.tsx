@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { PlayIcon, ChatBubbleLeftRightIcon, ClockIcon, TrendingUpIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import { PlayIcon, ChatBubbleLeftRightIcon, ClockIcon, ArrowTrendingUpIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 
 export default function WhatsAppHero() {
   return (
@@ -50,7 +51,7 @@ export default function WhatsAppHero() {
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <TrendingUpIcon className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+              <ArrowTrendingUpIcon className="h-8 w-8 text-blue-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">85%</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Customer Satisfaction Increase</div>
             </div>
@@ -111,18 +112,18 @@ export default function WhatsAppHero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
+            <Link
               href="#pricing"
               className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Start Free Trial
-            </a>
-            <a
+            </Link>
+            <Link
               href="/demo"
               className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
               Book Demo
-            </a>
+            </Link>
           </div>
 
           {/* Trust Signals */}

@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { CloudArrowUpIcon, CogIcon, ChartBarIcon, RocketLaunchIcon } from '@heroicons/react/24/outline';
 
@@ -182,12 +183,12 @@ export default function WhatsAppProcess() {
                 <div className="text-sm text-blue-100">Training & Onboarding</div>
               </div>
             </div>
-            <a
+            <Link
               href="/demo"
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               Start Your Implementation
-            </a>
+            </Link>
           </div>
         </div>
       </div>

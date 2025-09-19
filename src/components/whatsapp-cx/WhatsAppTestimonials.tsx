@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 export default function WhatsAppTestimonials() {
   const testimonials = [
@@ -182,18 +183,18 @@ export default function WhatsAppTestimonials() {
               See how WhatsApp CX Copilot can transform your business with a personalized demo and ROI analysis.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/demo"
                 className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 Book Your Demo
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/case-studies"
                 className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors"
               >
                 View More Case Studies
-              </a>
+              </Link>
             </div>
           </div>
         </div>

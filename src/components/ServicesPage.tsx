@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { ChatBubbleLeftRightIcon, CogIcon, DocumentTextIcon, ChartBarIcon, UserGroupIcon, ShieldCheckIcon, CheckIcon } from '@heroicons/react/24/outline';
 import { useContent } from '@/hooks/useContent';
 
@@ -287,12 +288,12 @@ export default function ServicesPage() {
                     <div className="mt-8 flex items-center justify-between">
                       <span className="text-2xl font-bold text-blue-600">{service.price}</span>
                       {service.href ? (
-                        <a
+                        <Link
                           href={service.href}
                           className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
                         >
                           Learn More
-                        </a>
+                        </Link>
                       ) : (
                         <button className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors">
                           Get Started
@@ -349,18 +350,18 @@ export default function ServicesPage() {
               {(pageContent.cta as Record<string, unknown>).description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
+              <Link
                 href={(pageContent.cta as Record<string, unknown>).primaryHref as string || "/assessment"}
                 className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
               >
                 {(pageContent.cta as Record<string, unknown>).primaryButton}
-              </a>
-              <a
+              </Link>
+              <Link
                 href={(pageContent.cta as Record<string, unknown>).secondaryHref as string || "/demo"}
                 className="text-sm font-semibold leading-6 text-white hover:text-blue-100 transition-colors"
               >
                 {(pageContent.cta as Record<string, unknown>).secondaryButton} <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

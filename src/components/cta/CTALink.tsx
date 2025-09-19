@@ -48,7 +48,7 @@ export default function CTALink({
 
   if (external) {
     return (
-      <a
+      <Link
         href={href}
         onClick={handleClick}
         className={linkClasses}
@@ -57,7 +57,7 @@ export default function CTALink({
       >
         {children}
         {showArrow && <span className="ml-1" aria-hidden="true">→</span>}
-      </a>
+      </Link>
     );
   }
 

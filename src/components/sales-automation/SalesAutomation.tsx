@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { EnvelopeIcon, PhoneIcon, CalendarIcon, DocumentTextIcon, CogIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 
@@ -218,12 +219,12 @@ export default function SalesAutomation() {
             <p className="text-green-100 text-sm mb-6">
               Every step is automated, tracked, and optimized by AI for maximum conversion
             </p>
-            <a
+            <Link
               href="/demo"
               className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               See Automation in Action
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { useState } from 'react';
 import { MagnifyingGlassIcon, CommandLineIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
@@ -154,7 +155,7 @@ export default function HelpSearch() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {quickActions.map((action, index) => (
-              <a
+              <Link
                 key={index}
                 href={action.href}
                 className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-blue-500 transition-all group"
@@ -170,7 +171,7 @@ export default function HelpSearch() {
                   <span>Get Started</span>
                   <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

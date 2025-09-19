@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 export default function ContactCTA() {
   return (
@@ -59,18 +60,18 @@ export default function ContactCTA() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-4 mb-8">
-            <a
+            <Link
               href="#pricing"
               className="rounded-md bg-white px-8 py-4 text-lg font-semibold text-blue-600 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
             >
               Start Free Trial
-            </a>
-            <a
+            </Link>
+            <Link
               href="/demo"
               className="text-lg font-semibold leading-6 text-white hover:text-blue-200 transition-colors"
             >
               Book QA Demo <span aria-hidden="true">→</span>
-            </a>
+            </Link>
           </div>
 
           {/* Trust Signals */}

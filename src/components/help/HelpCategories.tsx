@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { useState } from 'react';
 import {
@@ -185,7 +186,7 @@ export default function HelpCategories() {
                 </h4>
                 <div className="space-y-3">
                   {currentCategory.popular.map((article, index) => (
-                    <a
+                    <Link
                       key={index}
                       href="#"
                       className="block p-4 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md hover:border-blue-500 transition-all group"
@@ -201,18 +202,18 @@ export default function HelpCategories() {
                           5 min read
                         </span>
                       </div>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
 
               {/* View All Link */}
-              <a
+              <Link
                 href={`/help/category/${currentCategory.id}`}
                 className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold"
               >
                 View all {currentCategory.articles} articles →
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -279,12 +280,12 @@ export default function HelpCategories() {
               <p className="text-green-800 dark:text-green-200 text-sm mb-4">
                 Can't find what you're looking for? Our support team is here to help.
               </p>
-              <a
+              <Link
                 href="#contact"
                 className="inline-flex items-center text-green-700 dark:text-green-300 hover:text-green-900 dark:hover:text-green-100 font-medium"
               >
                 Contact Support →
-              </a>
+              </Link>
             </div>
           </div>
         </div>

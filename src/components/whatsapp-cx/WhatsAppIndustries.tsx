@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { ShoppingBagIcon, HeartIcon, HomeIcon, TruckIcon, BriefcaseIcon, AcademicCapIcon } from '@heroicons/react/24/outline';
 
@@ -236,18 +237,18 @@ export default function WhatsAppIndustries() {
               Join hundreds of businesses in your industry that are already using WhatsApp automation to drive growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="#pricing"
                 className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 View Pricing
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/demo"
                 className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
               >
                 Book Industry Demo
-              </a>
+              </Link>
             </div>
           </div>
         </div>

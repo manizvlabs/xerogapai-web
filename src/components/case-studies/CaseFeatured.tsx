@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { ArrowRightIcon, TrendingUpIcon, ClockIcon, UsersIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon, ArrowTrendingUpIcon, ClockIcon, UsersIcon } from '@heroicons/react/24/outline';
 
 export default function CaseFeatured() {
   const featuredCases = [
@@ -13,8 +14,8 @@ export default function CaseFeatured() {
       solution: 'XeroGap AI workflow automation with 25+ tool integrations',
       results: [
         { metric: 'Time Saved', value: '25 hrs/week', icon: ClockIcon },
-        { metric: 'Efficiency Increase', value: '150%', icon: TrendingUpIcon },
-        { metric: 'ROI', value: '350%', icon: TrendingUpIcon }
+        { metric: 'Efficiency Increase', value: '150%', icon: ArrowTrendingUpIcon },
+        { metric: 'ROI', value: '350%', icon: ArrowTrendingUpIcon }
       ],
       quote: 'XeroGap AI transformed our entire operation. We went from drowning in manual tasks to having intelligent automation that just works.',
       author: 'Sarah Mitchell',
@@ -30,9 +31,9 @@ export default function CaseFeatured() {
       challenge: 'Complex DPDP compliance requirements across multiple jurisdictions',
       solution: 'Complete DPDP compliance assessment and implementation',
       results: [
-        { metric: 'Compliance Rate', value: '100%', icon: TrendingUpIcon },
-        { metric: 'Audit Success', value: '100%', icon: TrendingUpIcon },
-        { metric: 'Penalty Risk', value: 'Eliminated', icon: TrendingUpIcon }
+        { metric: 'Compliance Rate', value: '100%', icon: ArrowTrendingUpIcon },
+        { metric: 'Audit Success', value: '100%', icon: ArrowTrendingUpIcon },
+        { metric: 'Penalty Risk', value: 'Eliminated', icon: ArrowTrendingUpIcon }
       ],
       quote: 'The DPDP assessment was incredibly thorough and saved us from potential penalties worth crores.',
       author: 'Rajesh Kumar',
@@ -48,7 +49,7 @@ export default function CaseFeatured() {
       challenge: 'Sales team struggling with lead generation and follow-ups',
       solution: 'AI-powered sales automation with predictive lead scoring',
       results: [
-        { metric: 'Lead Quality', value: '+200%', icon: TrendingUpIcon },
+        { metric: 'Lead Quality', value: '+200%', icon: ArrowTrendingUpIcon },
         { metric: 'Conversion Rate', value: '+150%', icon: UsersIcon },
         { metric: 'Sales Cycle', value: '-40%', icon: ClockIcon }
       ],
@@ -157,13 +158,13 @@ export default function CaseFeatured() {
 
               {/* CTA */}
               <div className="px-8 pb-8">
-                <a
+                <Link
                   href={`/case-studies/${caseStudy.id}`}
                   className="group/btn w-full flex items-center justify-center px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
                 >
                   Read Full Case Study
                   <ArrowRightIcon className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -179,18 +180,18 @@ export default function CaseFeatured() {
               See how XeroGap AI can transform your business with a free consultation and custom solution assessment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/demo"
                 className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 Book Free Consultation
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#all-studies"
                 className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
               >
                 View All Case Studies
-              </a>
+              </Link>
             </div>
           </div>
         </div>

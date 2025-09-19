@@ -11,7 +11,7 @@ type AssessmentStep = 'intro' | 'quiz' | 'results' | 'consultation';
 
 export default function AssessmentPage() {
   const [currentStep, setCurrentStep] = useState<AssessmentStep>('intro');
-  const [assessmentData, setAssessmentData] = useState<any>(null);
+  const [assessmentData, setAssessmentData] = useState<Linkny>(null);
   const [userEmail, setUserEmail] = useState<string>('');
 
   // Progress calculation based on current step
@@ -29,7 +29,13 @@ export default function AssessmentPage() {
     setCurrentStep('quiz');
   };
 
-  const handleQuizComplete = (data: any) => {
+  const handleQuizComplete = (data: {
+    score: number;
+    totalScore: number;
+    maxScore: number;
+    answers: Record<number, unknown>;
+    insights: unknown[];
+  }) => {
     setAssessmentData(data);
     setCurrentStep('results');
   };

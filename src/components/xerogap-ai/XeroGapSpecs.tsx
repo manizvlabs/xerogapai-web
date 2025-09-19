@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { CpuChipIcon, ShieldCheckIcon, GlobeIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { CpuChipIcon, ShieldCheckIcon, GlobeAltIcon, ClockIcon } from '@heroicons/react/24/outline';
 
 export default function XeroGapSpecs() {
   const specs = [
@@ -30,7 +31,7 @@ export default function XeroGapSpecs() {
     },
     {
       category: 'Integration & Scalability',
-      icon: GlobeIcon,
+      icon: GlobeAltIcon,
       items: [
         { label: 'API Endpoints', value: 'REST & GraphQL' },
         { label: 'Webhook Support', value: 'Real-time events' },
@@ -104,12 +105,12 @@ export default function XeroGapSpecs() {
           <p className="text-purple-100 mb-8 max-w-2xl mx-auto">
             Our enterprise-grade specifications ensure XeroGap AI can handle your most demanding automation requirements.
           </p>
-          <a
+          <Link
             href="/demo"
             className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
           >
             Schedule Enterprise Demo
-          </a>
+          </Link>
         </div>
       </div>
     </section>

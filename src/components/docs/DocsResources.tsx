@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import { CloudArrowDownIcon, BookOpenIcon, CodeBracketIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
 
@@ -225,12 +226,12 @@ export default function DocsResources() {
                   {resource.description}
                 </p>
 
-                <a
+                <Link
                   href={resource.href}
                   className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-semibold"
                 >
                   Access Resource →
-                </a>
+                </Link>
               </div>
             );
           })}
@@ -306,12 +307,12 @@ export default function DocsResources() {
               ))}
             </div>
 
-            <a
+            <Link
               href="/docs/changelog"
               className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium text-sm mt-4"
             >
               View Full Changelog →
-            </a>
+            </Link>
           </div>
         </div>
 

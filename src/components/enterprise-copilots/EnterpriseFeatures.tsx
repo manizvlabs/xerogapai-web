@@ -1,6 +1,6 @@
 'use client';
 
-import { DocumentTextIcon, GlobeIcon, ShieldCheckIcon, CpuChipIcon, UserGroupIcon, ChartBarIcon } from '@heroicons/react/24/outline';
+import { DocumentTextIcon, GlobeAltIcon, ShieldCheckIcon, CpuChipIcon, UserGroupIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 
 export default function EnterpriseFeatures() {
   const features = [
@@ -17,7 +17,7 @@ export default function EnterpriseFeatures() {
       benefit: 'Reduce time to find information by 90%'
     },
     {
-      icon: GlobeIcon,
+      icon: GlobeAltIcon,
       title: 'Multi-Language Support',
       description: 'Serve your global workforce with automatic translation and culturally-aware responses in 20+ languages.',
       capabilities: [

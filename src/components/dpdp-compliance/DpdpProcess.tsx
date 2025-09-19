@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { DocumentIcon, CogIcon, PlayIcon, TrendingUpIcon } from '@heroicons/react/24/outline';
+import { DocumentIcon, CogIcon, PlayIcon, ArrowTrendingUpIcon } from '@heroicons/react/24/outline';
 
 export default function DpdpProcess() {
   const steps = [
@@ -40,7 +41,7 @@ export default function DpdpProcess() {
       step: '05',
       title: 'Validation & Go-Live',
       description: 'Validate compliance implementation and prepare for ongoing compliance management.',
-      icon: TrendingUpIcon,
+      icon: ArrowTrendingUpIcon,
       duration: '2 weeks',
       deliverables: ['Compliance validation', 'Go-live checklist', 'Monitoring setup', 'Handover documentation']
     },
@@ -48,7 +49,7 @@ export default function DpdpProcess() {
       step: '06',
       title: 'Ongoing Compliance',
       description: 'Continuous monitoring and support for maintaining DPDP compliance.',
-      icon: TrendingUpIcon,
+      icon: ArrowTrendingUpIcon,
       duration: 'Ongoing',
       deliverables: ['Compliance monitoring', 'Annual audits', 'Updates & training', 'Incident response']
     }
@@ -125,18 +126,18 @@ export default function DpdpProcess() {
               Begin with our free consultation and assessment to understand your current compliance status.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="#assessment"
                 className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 Start Free Assessment
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/demo"
                 className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors"
               >
                 Book Compliance Demo
-              </a>
+              </Link>
             </div>
           </div>
         </div>

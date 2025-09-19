@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { CpuChipIcon, DatabaseIcon, GlobeIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { CpuChipIcon, CircleStackIcon, GlobeAltIcon, ClockIcon } from '@heroicons/react/24/outline';
 
 export default function SalesSpecs() {
   const specs = [
@@ -18,7 +19,7 @@ export default function SalesSpecs() {
     },
     {
       category: 'Data & Integrations',
-      icon: DatabaseIcon,
+      icon: CircleStackIcon,
       items: [
         { label: 'CRM Platforms', value: '15+ supported' },
         { label: 'Email Platforms', value: '10+ integrated' },
@@ -30,7 +31,7 @@ export default function SalesSpecs() {
     },
     {
       category: 'Scalability & Reliability',
-      icon: GlobeIcon,
+      icon: GlobeAltIcon,
       items: [
         { label: 'Concurrent Users', value: 'Unlimited' },
         { label: 'Monthly Leads', value: 'Unlimited' },
@@ -140,12 +141,12 @@ export default function SalesSpecs() {
           </div>
 
           <div className="mt-8">
-            <a
+            <Link
               href="/demo"
               className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               See Technical Demo
-            </a>
+            </Link>
           </div>
         </div>
       </div>

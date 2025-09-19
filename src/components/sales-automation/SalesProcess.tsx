@@ -1,6 +1,7 @@
 'use client';
+import Link from 'next/link';
 
-import { UserPlusIcon, CogIcon, PlayIcon, TrendingUpIcon } from '@heroicons/react/24/outline';
+import { UserPlusIcon, CogIcon, PlayIcon, ArrowTrendingUpIcon } from '@heroicons/react/24/outline';
 
 export default function SalesProcess() {
   const steps = [
@@ -32,7 +33,7 @@ export default function SalesProcess() {
       step: '04',
       title: 'Scale & Advanced Features',
       description: 'Expand to advanced features like predictive analytics, custom AI models, and enterprise integrations.',
-      icon: TrendingUpIcon,
+      icon: ArrowTrendingUpIcon,
       duration: '1-3 months',
       deliverables: ['Advanced analytics', 'Custom integrations', 'Team expansion', 'ROI maximization']
     }
@@ -109,18 +110,18 @@ export default function SalesProcess() {
               Start your free trial and see how our sales automation can transform your team's performance in just 5 days.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="#pricing"
                 className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 Start Free Trial
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/demo"
                 className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors"
               >
                 Book Sales Demo
-              </a>
+              </Link>
             </div>
           </div>
         </div>

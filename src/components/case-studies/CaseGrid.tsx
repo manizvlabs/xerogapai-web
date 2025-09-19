@@ -1,7 +1,8 @@
 'use client';
+import Link from 'next/link';
 
 import { useState } from 'react';
-import { ArrowRightIcon, CalendarIcon, UsersIcon, BuildingIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon, CalendarIcon, UsersIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
 
 export default function CaseGrid() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -245,13 +246,13 @@ export default function CaseGrid() {
 
               {/* CTA */}
               <div className="px-6 pb-6">
-                <a
+                <Link
                   href={`/case-studies/${study.id}`}
                   className="group/btn w-full flex items-center justify-center px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold text-sm transition-colors"
                 >
                   Read Case Study
                   <ArrowRightIcon className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                </a>
+                </Link>
               </div>
             </div>
           ))}
