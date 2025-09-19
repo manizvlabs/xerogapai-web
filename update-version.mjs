@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // Get current date in YYYYMMDD format
 const date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-const version = `1.0.2-${date}`;
+const version = `1.0.3-${date}`;
 
 // Path to .env.local
 const envPath = path.join(__dirname, '.env.local');
@@ -110,8 +110,8 @@ NEXT_PUBLIC_VERCEL_ENV="production"
   const packageJsonPath = path.join(__dirname, 'package.json');
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
   
-  if (packageJson.version !== '1.0.2') {
-    packageJson.version = '1.0.2';
+  if (packageJson.version !== '1.0.3') {
+    packageJson.version = '1.0.3';
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
     console.log(`✅ Updated package.json version to: 1.0.2`);
   }
