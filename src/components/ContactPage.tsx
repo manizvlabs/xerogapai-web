@@ -18,14 +18,83 @@ interface ResponseTimeSection {
   description: string;
 }
 
+interface RegionalSupportSection {
+  title: string;
+  india: {
+    title: string;
+    contact: string;
+    whatsapp: string;
+    timezone: string;
+    languages: string;
+  };
+  global: {
+    title: string;
+    contact: string;
+    whatsapp: string;
+    timezone: string;
+    languages: string;
+  };
+}
+
 interface ContactPageContent {
   consultation?: ConsultationSection;
   responseTime?: ResponseTimeSection;
+  regionalSupport?: RegionalSupportSection;
 }
 
 export default function ContactPage() {
   const { content, loading, error } = useContent('contact');
-  const pageContent = content as ContactPageContent;
+
+  // Default content structure (moved up before usage)
+  const defaultContent = {
+    hero: {
+      title: "Get in Touch with Our AI Experts",
+      subtitle: "Ready to transform your business with AI automation? Let's discuss your specific needs and create a solution that drives measurable results."
+    },
+    contactInfo: {
+      title: "Contact Information",
+      description: "Connect with our AI specialists through your preferred channel. We serve businesses globally with dedicated regional support.",
+      details: []
+    },
+    responseTime: {
+      title: "Quick Response Guarantee",
+      description: "We respond to all inquiries within 24 hours, with urgent requests receiving same-day attention."
+    },
+    consultation: {
+      title: "Book a Consultation",
+      description: "Schedule a personalized consultation to discuss your AI automation needs and explore how XeroGap AI can transform your business operations.",
+      buttonText: "Book Consultation",
+      buttonHref: "/consultation"
+    },
+    regionalSupport: {
+      title: "Regional Support Teams",
+      india: {
+        title: "India Support",
+        contact: "+91 98765 43210",
+        whatsapp: "https://wa.me/919876543210",
+        timezone: "IST (GMT+5:30)",
+        languages: "English, Hindi, Telugu, Tamil"
+      },
+      global: {
+        title: "Global Support",
+        contact: "+1 (555) 123-4567",
+        whatsapp: "https://wa.me/15551234567",
+        timezone: "EST (GMT-5)",
+        languages: "English, Arabic, French"
+      }
+    }
+  };
+
+  const pageContent: ContactPageContent = {
+    hero: content?.hero || defaultContent.hero,
+    contactInfo: {
+      ...defaultContent.contactInfo,
+      ...(content?.contactInfo || content?.info || {})
+    },
+    responseTime: (content?.responseTime as Record<string, unknown>) || defaultContent.responseTime,
+    consultation: (content?.consultation as Record<string, unknown>) || defaultContent.consultation,
+    regionalSupport: content?.regionalSupport || defaultContent.regionalSupport
+  };
 
   if (loading) {
     return (
@@ -54,86 +123,7 @@ export default function ContactPage() {
     );
   }
 
-  // Default content structure
-  const defaultContent = {
-    hero: {
-      title: "Get in Touch with Our AI Experts",
-      subtitle: "Ready to transform your business with AI automation? Let's discuss your specific needs and create a solution that drives measurable results."
-    },
-    contactInfo: {
-      title: "Contact Information",
-      description: "Connect with our AI specialists through your preferred channel. We serve businesses globally with dedicated regional support.",
-      details: [
-        {
-          icon: "MapPinIcon",
-          label: "Global Headquarters",
-          value: "Hyderabad, Telangana, India\nBangalore, Karnataka, India"
-        },
-        {
-          icon: "PhoneIcon",
-          label: "Telephone",
-          value: "+91 98765 43210",
-          link: "tel:+919876543210"
-        },
-        {
-          icon: "DevicePhoneMobileIcon",
-          label: "WhatsApp Business",
-          value: "+91 98765 43210",
-          link: "https://wa.me/919876543210"
-        },
-        {
-          icon: "EnvelopeIcon",
-          label: "Email",
-          value: "hello@xerogap.ai",
-          link: "mailto:hello@xerogap.ai"
-        },
-        {
-          icon: "GlobeAltIcon",
-          label: "Regional Support",
-          value: "MEA, US, India & Global Markets"
-        }
-      ]
-    },
-    responseTime: {
-      title: "Response Times",
-      description: "Email: < 4 hours | WhatsApp: < 2 hours | Phone: Immediate | Demo requests: < 24 hours"
-    },
-    consultation: {
-      title: "Free AI Readiness Assessment",
-      description: "Get a comprehensive AI readiness assessment ($500 value) to identify automation opportunities and receive a custom implementation roadmap.",
-      buttonText: "Get Free Assessment",
-      buttonHref: "/assessment"
-    },
-    regionalSupport: {
-      title: "Regional Support Teams",
-      india: {
-        title: "India Support",
-        contact: "+91 98765 43210",
-        whatsapp: "https://wa.me/919876543210",
-        timezone: "IST (GMT+5:30)",
-        languages: "English, Hindi, Telugu, Tamil"
-      },
-      global: {
-        title: "Global Support",
-        contact: "+1 (555) 123-4567",
-        whatsapp: "https://wa.me/15551234567",
-        timezone: "EST (GMT-5)",
-        languages: "English, Arabic, French"
-      }
-    }
-  };
 
-  const pageContent = {
-    hero: content?.hero || defaultContent.hero,
-    contactInfo: {
-      ...defaultContent.contactInfo,
-      ...(content?.contactInfo || content?.info || {}),
-      details: (((content?.contactInfo as Record<string, unknown>)?.details || (content?.info as Record<string, unknown>)?.details || defaultContent.contactInfo.details) || [])
-    },
-    responseTime: (content?.responseTime as Record<string, unknown>) || defaultContent.responseTime,
-    consultation: (content?.consultation as Record<string, unknown>) || defaultContent.consultation,
-    regionalSupport: (content?.regionalSupport as Record<string, unknown>) || defaultContent.regionalSupport
-  };
 
   // Icon mapping
   const iconMap = {
@@ -238,7 +228,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              {(pageContent.regionalSupport as Record<string, unknown>).title}
+              {pageContent.regionalSupport?.title}
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               Dedicated support teams for your region with local language assistance and timezone alignment.
@@ -255,10 +245,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      {(pageContent.regionalSupport as Record<string, unknown>).india?.title as string || "India Support"}
+                      {pageContent.regionalSupport?.india?.title || "India Support"}
                     </h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {(pageContent.regionalSupport as Record<string, unknown>).india?.timezone as string || "IST (GMT+5:30)"}
+                      {pageContent.regionalSupport?.india?.timezone || "IST (GMT+5:30)"}
                     </p>
                   </div>
                 </div>
@@ -266,15 +256,15 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <PhoneIcon className="w-5 h-5 text-blue-600" />
-                    <Link href={`tel:${(pageContent.regionalSupport as Record<string, unknown>).india?.contact as string || "+919876543210"}`}
+                    <Link href={`tel:${pageContent.regionalSupport?.india?.contact || "+919876543210"}`}
                        className="text-gray-600 dark:text-gray-300 hover:text-blue-600">
-                      {(pageContent.regionalSupport as Record<string, unknown>).india?.contact as string || "+91 98765 43210"}
+                      {pageContent.regionalSupport?.india?.contact || "+91 98765 43210"}
                     </Link>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <DevicePhoneMobileIcon className="w-5 h-5 text-green-600" />
-                    <Link href={(pageContent.regionalSupport as Record<string, unknown>).india?.whatsapp as string || "https://wa.me/919876543210"}
+                    <Link href={pageContent.regionalSupport?.india?.whatsapp || "https://wa.me/919876543210"}
                        className="text-gray-600 dark:text-gray-300 hover:text-green-600">
                       WhatsApp Business
                     </Link>
@@ -283,7 +273,7 @@ export default function ContactPage() {
                   <div className="flex items-center gap-3">
                     <GlobeAltIcon className="w-5 h-5 text-purple-600" />
                     <span className="text-gray-600 dark:text-gray-300">
-                      {(pageContent.regionalSupport as Record<string, unknown>).india?.languages as string || "English, Hindi, Telugu, Tamil"}
+                      {pageContent.regionalSupport?.india?.languages || "English, Hindi, Telugu, Tamil"}
                     </span>
                   </div>
                 </div>
@@ -303,10 +293,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      {(pageContent.regionalSupport as Record<string, unknown>).global?.title as string || "Global Support"}
+                      {pageContent.regionalSupport?.global?.title || "Global Support"}
                     </h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {(pageContent.regionalSupport as Record<string, unknown>).global?.timezone as string || "EST (GMT-5)"}
+                      {pageContent.regionalSupport?.global?.timezone || "EST (GMT-5)"}
                     </p>
                   </div>
                 </div>
@@ -314,15 +304,15 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <PhoneIcon className="w-5 h-5 text-blue-600" />
-                    <Link href={`tel:${(pageContent.regionalSupport as Record<string, unknown>).global?.contact as string || "+15551234567"}`}
+                    <Link href={`tel:${pageContent.regionalSupport?.global?.contact || "+15551234567"}`}
                        className="text-gray-600 dark:text-gray-300 hover:text-blue-600">
-                      {(pageContent.regionalSupport as Record<string, unknown>).global?.contact as string || "+1 (555) 123-4567"}
+                      {pageContent.regionalSupport?.global?.contact || "+1 (555) 123-4567"}
                     </Link>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <DevicePhoneMobileIcon className="w-5 h-5 text-green-600" />
-                    <Link href={(pageContent.regionalSupport as Record<string, unknown>).global?.whatsapp as string || "https://wa.me/15551234567"}
+                    <Link href={pageContent.regionalSupport?.global?.whatsapp || "https://wa.me/15551234567"}
                        className="text-gray-600 dark:text-gray-300 hover:text-green-600">
                       WhatsApp Business
                     </Link>
@@ -331,7 +321,7 @@ export default function ContactPage() {
                   <div className="flex items-center gap-3">
                     <GlobeAltIcon className="w-5 h-5 text-purple-600" />
                     <span className="text-gray-600 dark:text-gray-300">
-                      {(pageContent.regionalSupport as Record<string, unknown>).global?.languages as string || "English, Arabic, French"}
+                      {pageContent.regionalSupport?.global?.languages || "English, Arabic, French"}
                     </span>
                   </div>
                 </div>
