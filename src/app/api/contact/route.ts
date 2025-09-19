@@ -43,39 +43,6 @@ async function contactHandler(request: NextRequest) {
       );
     }
 
-    // Prepare sanitized form data
-    const formData = {
-      name: `${sanitizedData.firstName} ${sanitizedData.lastName}`,
-      email: sanitizedData.email,
-      phone: sanitizedData.phone,
-      company: sanitizedData.company,
-      service: sanitizedData.service,
-      message: sanitizedData.message,
-      timestamp: new Date().toISOString(),
-    };
-
-    // Initialize database if needed
-    await initializeDatabase();
-
-    // Get client IP and user agent for tracking
-    const ipAddress = request.headers.get('x-forwarded-for') ||
-                     request.headers.get('x-real-ip') ||
-                     'unknown';
-    const userAgent = request.headers.get('user-agent') || 'unknown';
-
-    // Store contact in database
-    const contact = await ContactDatabase.createContact({
-      firstName: sanitizedData.firstName,
-      lastName: sanitizedData.lastName,
-      email: sanitizedData.email,
-      phone: sanitizedData.phone,
-      company: sanitizedData.company,
-      service: sanitizedData.service,
-      message: sanitizedData.message,
-      ipAddress,
-      userAgent
-    });
-
     // Initialize database if needed
     await initializeDatabase();
 

@@ -61,67 +61,32 @@ export interface ContactResponse {
 
 // Initialize the database schema
 export async function initializeDatabase() {
-<<<<<<< HEAD
-  
-
   if (initialized) {
-    
-=======
-  console.log('🚀 initializeDatabase called, initialized:', initialized, 'usingFallback:', usingFallback);
-
-  if (initialized) {
-    console.log('✅ Database already initialized, returning:', usingFallback ? 'file storage' : 'Supabase');
->>>>>>> main
     return usingFallback ? false : true;
   }
 
   // If no Supabase config, use fallback immediately
   if (!hasSupabaseConfig) {
-<<<<<<< HEAD
-    
-=======
-    console.log('🔄 No Supabase configuration found, using file storage');
->>>>>>> main
     usingFallback = true;
     initialized = true;
     return false;
   }
 
   try {
-<<<<<<< HEAD
-    
-=======
-    console.log('🔄 Attempting Supabase initialization...');
->>>>>>> main
     // Initialize Supabase database
     const success = await initializeSupabaseDatabase();
 
     if (success) {
-<<<<<<< HEAD
-      
-=======
-      console.log('✅ Supabase database initialized successfully');
->>>>>>> main
       usingFallback = false;
       initialized = true;
       return true;
     } else {
-<<<<<<< HEAD
-      
-=======
-      console.log('❌ Supabase initialization returned false, falling back to file storage');
->>>>>>> main
       usingFallback = true;
       initialized = true;
       return false;
     }
   } catch (error) {
-    console.error('❌ Supabase initialization failed:', error);
-<<<<<<< HEAD
-    
-=======
-    console.log('🔄 Falling back to file storage');
->>>>>>> main
+    console.error('Supabase initialization failed:', error);
     usingFallback = true;
     initialized = true;
     return false;
@@ -132,26 +97,12 @@ export async function initializeDatabase() {
 export class ContactDatabase {
   // Create a new contact submission
   static async createContact(data: Omit<ContactSubmission, 'id' | 'submittedAt'>): Promise<ContactSubmission> {
-<<<<<<< HEAD
-    
-
     if (usingFallback) {
-      
-=======
-    console.log('📝 createContact called - usingFallback:', usingFallback);
-
-    if (usingFallback) {
-      console.log('📁 Using file storage for contact creation');
->>>>>>> main
       return getFileStorage().createContact(data);
     }
 
     try {
-<<<<<<< HEAD
       
-=======
-      console.log('🗄️ Attempting to create contact in Supabase');
->>>>>>> main
       // Convert to Supabase format
       const supabaseData: Omit<SupabaseContactSubmission, 'id' | 'submitted_at'> = {
         first_name: data.firstName,
@@ -166,11 +117,7 @@ export class ContactDatabase {
       };
 
       const supabaseContact = await SupabaseContactDatabase.createContact(supabaseData);
-<<<<<<< HEAD
       
-=======
-      console.log('🗄️ Contact created in Supabase:', supabaseContact.id);
->>>>>>> main
 
       // Convert back to our format
       return {
@@ -189,11 +136,7 @@ export class ContactDatabase {
     } catch (error) {
       console.error('❌ Supabase error, falling back to file storage:', error);
       usingFallback = true;
-<<<<<<< HEAD
       
-=======
-      console.log('📁 Falling back to file storage for contact creation');
->>>>>>> main
       return getFileStorage().createContact(data);
     }
   }

@@ -51,7 +51,6 @@ export const getSupabaseClient = () => {
 // Legacy export for backward compatibility
 export const supabase = getSupabaseClient();
 
-<<<<<<< HEAD
 // Get Supabase service role client (bypasses RLS)
 export const getSupabaseServiceClient = () => {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -70,8 +69,6 @@ export const getSupabaseServiceClient = () => {
   });
 };
 
-=======
->>>>>>> main
 // Check if Supabase is properly configured
 export const isSupabaseConfigured = () => {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -101,7 +98,6 @@ export interface ContactStats {
   thisMonth: number;
 }
 
-<<<<<<< HEAD
 // User database schema types
 export interface UserSubmission {
   id: string;
@@ -123,8 +119,6 @@ export interface RefreshTokenSubmission {
   created_at: string;
 }
 
-=======
->>>>>>> main
 export interface ContactResponse {
   contacts: ContactSubmission[];
   total: number;
@@ -136,11 +130,8 @@ export interface ContactResponse {
 // Initialize database schema
 export async function initializeSupabaseDatabase() {
   if (!isSupabaseConfigured()) {
-<<<<<<< HEAD
     
-=======
     console.log('🔄 Supabase not configured, using fallback storage');
->>>>>>> main
     return false;
   }
 
@@ -148,11 +139,8 @@ export async function initializeSupabaseDatabase() {
     // Get the Supabase client
     const client = getSupabaseClient();
     if (!client) {
-<<<<<<< HEAD
       
-=======
       console.log('🔄 Supabase client not available, using fallback storage');
->>>>>>> main
       return false;
     }
 
@@ -164,24 +152,18 @@ export async function initializeSupabaseDatabase() {
     
     if (testError) {
       if (testError.code === 'PGRST116') {
-<<<<<<< HEAD
         
         
-=======
         console.log('⚠️  Contacts table does not exist. Please create it manually in Supabase dashboard.');
         console.log('📖 See docs/deployment/SUPABASE_SETUP.md for SQL schema');
->>>>>>> main
         return false;
       } else {
         throw testError;
       }
     }
 
-<<<<<<< HEAD
     
-=======
     console.log('✅ Supabase database initialized successfully');
->>>>>>> main
     return true;
   } catch (error) {
     console.error('❌ Supabase initialization failed:', error);
@@ -444,7 +426,6 @@ export class SupabaseContactDatabase {
     }
   }
 }
-<<<<<<< HEAD
 
 // User database operations
 export class SupabaseUserDatabase {
@@ -967,5 +948,3 @@ export class SupabaseUserDatabase {
     }
   }
 }
-=======
->>>>>>> main
