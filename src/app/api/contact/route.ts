@@ -43,8 +43,8 @@ async function contactHandler(request: NextRequest) {
       );
     }
 
-    // Log the sanitized form data
-    console.log('Contact Form Submission:', {
+    // Prepare sanitized form data
+    const formData = {
       name: `${sanitizedData.firstName} ${sanitizedData.lastName}`,
       email: sanitizedData.email,
       phone: sanitizedData.phone,
@@ -52,7 +52,7 @@ async function contactHandler(request: NextRequest) {
       service: sanitizedData.service,
       message: sanitizedData.message,
       timestamp: new Date().toISOString(),
-    });
+    };
 
     // Initialize database if needed
     await initializeDatabase();
@@ -144,6 +144,5 @@ export const POST = withRateLimit(contactHandler, 'contact');
 //   // - Resend
 //   // - etc.
 //
-//   console.log('Email would be sent:', emailData);
 //   return true;
 // }
