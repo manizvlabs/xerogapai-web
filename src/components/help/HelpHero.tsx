@@ -8,14 +8,14 @@ export default function HelpHero() {
     <div className="relative isolate bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
+        <svg className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
           <defs>
             <pattern id="help-pattern" width={200} height={200} x="50%" y={-1} patternUnits="userSpaceOnUse">
               <path d="M.5 200V.5H200" fill="none" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" strokeWidth={0} fill="url(#help-pattern)" />
-        </div>
+        </svg>
       </div>
 
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
