@@ -1,26 +1,68 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { motion } from 'framer-motion';
+import { Bars3Icon, XMarkIcon, ChevronDownIcon, ChatBubbleLeftRightIcon, CogIcon, CpuChipIcon, DocumentTextIcon, ShieldCheckIcon, UserGroupIcon, BriefcaseIcon, QuestionMarkCircleIcon, BookOpenIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
+import { motion, AnimatePresence } from 'framer-motion';
 import ThemeSwitcher from './ThemeSwitcher';
 import RegionSwitcher from './RegionSwitcher';
 import { siteConfig } from '@/config/site';
 import { useRegion } from '@/contexts/RegionContext';
-import { globalHomepageContent } from '@/regions/global/homepage';
-import { indianHomepageContent } from '@/regions/indian/homepage';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { currentRegion } = useRegion();
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Select navigation based on region
-  const content = currentRegion === 'india' ? indianHomepageContent : globalHomepageContent;
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Navigation structure with dropdowns
   const navigation = [
-    { name: 'Home', href: '/' },
-    ...content.header.navigation
+    {
+      name: 'Solutions',
+      href: '#',
+      hasDropdown: true,
+      dropdownItems: [
+        { name: 'WhatsApp CX Copilot', href: '/whatsapp-cx', icon: ChatBubbleLeftRightIcon, description: 'AI-powered customer conversations' },
+        { name: 'XeroGap AI Workflow', href: '/xerogap-ai', icon: CogIcon, description: 'Workspace automation' },
+        { name: 'Enterprise Copilots', href: '/enterprise-copilots', icon: CpuChipIcon, description: 'Knowledge management' },
+        { name: 'Sales Automation', href: '/sales-automation', icon: UserGroupIcon, description: 'Lead intelligence' },
+        { name: 'Contact Center AI', href: '/contact-center-ai', icon: ShieldCheckIcon, description: 'Quality assurance' },
+        { name: 'DPDP Compliance', href: '/dpdp-compliance', icon: DocumentTextIcon, description: 'Data protection' }
+      ]
+    },
+    {
+      name: 'Resources',
+      href: '#',
+      hasDropdown: true,
+      dropdownItems: [
+        { name: 'Case Studies', href: '/case-studies', icon: BriefcaseIcon, description: 'Success stories' },
+        { name: 'Documentation', href: '/docs', icon: BookOpenIcon, description: 'API docs & guides' },
+        { name: 'Help Center', href: '/help', icon: QuestionMarkCircleIcon, description: 'Support & FAQ' }
+      ]
+    },
+    {
+      name: 'Company',
+      href: '#',
+      hasDropdown: true,
+      dropdownItems: [
+        { name: 'About Us', href: '/about', icon: BuildingOfficeIcon, description: 'Our story & mission' },
+        { name: 'Careers', href: '/careers', icon: UserGroupIcon, description: 'Join our team' },
+        { name: 'Consultation', href: '/consultation', icon: ChatBubbleLeftRightIcon, description: 'Book a meeting' }
+      ]
+    },
+    { name: 'Contact', href: '/contact', hasDropdown: false }
   ];
 
   return (
@@ -58,21 +100,73 @@ const Header = () => {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
+        <div className="hidden lg:flex lg:gap-x-8" ref={dropdownRef}>
           {navigation.map((item, index) => (
             <motion.div
               key={item.name}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative"
             >
-              <Link
-                href={item.href}
-                className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 group-hover:w-full transition-all duration-300"></span>
-              </Link>
+              {item.hasDropdown ? (
+                <div>
+                  <button
+                    onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                    className="flex items-center text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors relative group"
+                  >
+                    {item.name}
+                    <ChevronDownIcon className={`ml-1 h-4 w-4 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+                  </button>
+
+                  <AnimatePresence>
+                    {activeDropdown === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 z-50"
+                      >
+                        <div className="p-2">
+                          {item.dropdownItems?.map((dropdownItem, dropdownIndex) => {
+                            const IconComponent = dropdownItem.icon;
+                            return (
+                              <Link
+                                key={dropdownItem.name}
+                                href={dropdownItem.href}
+                                className="flex items-start p-3 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors group"
+                                onClick={() => setActiveDropdown(null)}
+                              >
+                                <div className="flex-shrink-0">
+                                  <IconComponent className="h-6 w-6 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                                </div>
+                                <div className="ml-3">
+                                  <p className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                                    {dropdownItem.name}
+                                  </p>
+                                  <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300">
+                                    {dropdownItem.description}
+                                  </p>
+                                </div>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors relative group"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              )}
             </motion.div>
           ))}
         </div>
@@ -137,13 +231,40 @@ const Header = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                     >
-                      <Link
-                        href={item.href}
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
+                      {item.hasDropdown ? (
+                        <div className="space-y-1">
+                          <div className="-mx-3 px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-100">
+                            {item.name}
+                          </div>
+                          {item.dropdownItems?.map((dropdownItem) => {
+                            const IconComponent = dropdownItem.icon;
+                            return (
+                              <Link
+                                key={dropdownItem.name}
+                                href={dropdownItem.href}
+                                className="-mx-3 flex items-center rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                <IconComponent className="h-5 w-5 mr-3 text-gray-400" />
+                                <div>
+                                  <div>{dropdownItem.name}</div>
+                                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                                    {dropdownItem.description}
+                                  </div>
+                                </div>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      )}
                     </motion.div>
                   ))}
                 </div>

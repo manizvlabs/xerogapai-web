@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-12 lg:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Company Info */}
             <div className="lg:col-span-2">
               <Link href="/" className="inline-flex items-center group mb-4">
@@ -47,76 +47,131 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Services */}
+            {/* AI Solutions */}
             <div>
-              <h3 className="text-sm font-semibold leading-6 text-white mb-4">Services</h3>
+              <h3 className="text-sm font-semibold leading-6 text-white mb-4">AI Solutions</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link 
-                    href="/services" 
+                  <Link
+                    href="/whatsapp-cx"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
-                    AI Content Automation
+                    WhatsApp CX Copilot
                   </Link>
                 </li>
                 <li>
-                  <Link 
-                    href="/services" 
+                  <Link
+                    href="/xerogap-ai"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
-                    Mobile App Development
+                    XeroGap AI Workflow
                   </Link>
                 </li>
                 <li>
-                  <Link 
-                    href="/services" 
+                  <Link
+                    href="/enterprise-copilots"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
-                    Digital Marketing
+                    Enterprise Copilots
                   </Link>
                 </li>
                 <li>
-                  <Link 
-                    href="/services" 
+                  <Link
+                    href="/sales-automation"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
-                    AI Agent Development
+                    Sales Intelligence
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact-center-ai"
+                    className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
+                  >
+                    Contact Center AI
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/dpdp-compliance"
+                    className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
+                  >
+                    DPDP Compliance
                   </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Quick Links */}
+            {/* Resources */}
             <div>
-              <h3 className="text-sm font-semibold leading-6 text-white mb-4">Quick Links</h3>
+              <h3 className="text-sm font-semibold leading-6 text-white mb-4">Resources</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link 
-                    href="/about" 
+                  <Link
+                    href="/case-studies"
+                    className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
+                  >
+                    Case Studies
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/docs"
+                    className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
+                  >
+                    Documentation
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/help"
+                    className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
+                  >
+                    Help Center
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/assessment"
+                    className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
+                  >
+                    AI Assessment
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Company */}
+            <div>
+              <h3 className="text-sm font-semibold leading-6 text-white mb-4">Company</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link
+                    href="/about"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link 
-                    href="/portfolio" 
+                  <Link
+                    href="/careers"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
-                    Portfolio
+                    Careers
                   </Link>
                 </li>
                 <li>
-                  <Link 
-                    href="/blog" 
+                  <Link
+                    href="/consultation"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
-                    Blog
+                    Consultation
                   </Link>
                 </li>
                 <li>
-                  <Link 
-                    href="/contact" 
+                  <Link
+                    href="/contact"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
                     Contact
