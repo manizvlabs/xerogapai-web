@@ -42,7 +42,12 @@ export default function RegionSwitcher({ currentRegion: propCurrentRegion, onReg
           }
         }
       } catch (error) {
-        console.log('Auto-detection failed, using default');
+        console.error('Region auto-detection failed:', error);
+        // Set to global as fallback
+        setAutoDetected('Global');
+        if (currentRegion !== 'global') {
+          onRegionChange('global');
+        }
       }
     };
 

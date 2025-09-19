@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { createContext, useContext, useState, useEffect } from 'react';
 
 type Region = 'global' | 'india';
@@ -19,39 +20,23 @@ export function RegionProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Auto-detect user location
-    const detectLocation = async () => {
-      try {
-        // Using a free IP geolocation service
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-
-        if (data.country_code === 'IN') {
-          setCurrentRegion('india');
-          setAutoDetected(true);
-        } else {
-          setCurrentRegion('global');
-          setAutoDetected(true);
-        }
-      } catch (error) {
-        console.log('Auto-detection failed, using default');
-        // Default to global if auto-detection fails
-        setCurrentRegion('global');
-        setAutoDetected(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     // Check if user has manually set a region preference
     const savedRegion = localStorage.getItem('userRegion') as Region;
     if (savedRegion && (savedRegion === 'global' || savedRegion === 'india')) {
       setCurrentRegion(savedRegion);
       setAutoDetected(false);
-      setIsLoading(false);
     } else {
-      detectLocation();
+      // Default to global region immediately
+      setCurrentRegion('global');
+      setAutoDetected(false);
     }
+
+    // Always set loading to false after a short delay
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 100); // Very short delay to ensure smooth transition
+
+    return () => clearTimeout(timeout);
   }, []);
 
   const setRegion = (region: Region) => {

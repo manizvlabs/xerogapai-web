@@ -6,18 +6,7 @@ import { globalHomepageContent } from '@/regions/global/homepage';
 import { indianHomepageContent } from '@/regions/indian/homepage';
 
 export default function HomePage() {
-  const { currentRegion, isLoading } = useRegion();
-
-  if (isLoading) {
-    return (
-      <div className="bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-300">Loading personalized content...</p>
-        </div>
-      </div>
-    );
-  }
+  const { currentRegion } = useRegion();
 
   // Select content based on region
   const content = currentRegion === 'india' ? indianHomepageContent : globalHomepageContent;
@@ -51,8 +40,8 @@ export default function HomePage() {
 
             {/* Value Props */}
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {content.hero.valueProps.map((prop, index) => (
-                <div key={index} className="flex flex-col items-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              {content.hero.valueProps.map((prop) => (
+                <div key={`${prop.title}-${prop.icon}`} className="flex flex-col items-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
                   <div className="text-3xl mb-3">{prop.icon}</div>
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{prop.title}</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300 text-center">{prop.description}</p>
@@ -125,8 +114,8 @@ export default function HomePage() {
                   </div>
 
                   <ul className="space-y-3 mb-8">
-                    {service.features.map((feature, index) => (
-                      <li key={index} className="flex items-start">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-start">
                         <span className="text-green-500 mr-2 mt-0.5">✓</span>
                         <span className="text-sm text-gray-600 dark:text-gray-300">{feature}</span>
                       </li>
@@ -182,8 +171,8 @@ export default function HomePage() {
 
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-              {content.socialProof.testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg">
+              {content.socialProof.testimonials.map((testimonial) => (
+                <div key={`${testimonial.author}-${testimonial.company}`} className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg">
                   <div className="text-4xl mb-4 text-gray-400">"</div>
                   <blockquote className="text-gray-700 dark:text-gray-300 mb-6 italic">
                     {testimonial.quote}
@@ -234,8 +223,8 @@ export default function HomePage() {
               {content.partners.sectionTitle}
             </h2>
             <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
-              {content.partners.partners.map((partner, index) => (
-                <div key={index} className="flex items-center justify-center p-4 bg-white dark:bg-gray-900 rounded-lg">
+              {content.partners.partners.map((partner) => (
+                <div key={partner.name} className="flex items-center justify-center p-4 bg-white dark:bg-gray-900 rounded-lg">
                   <span className="text-gray-600 dark:text-gray-400 font-medium">
                     {partner.name}
                   </span>
@@ -257,8 +246,8 @@ export default function HomePage() {
               {content.compliance.message}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-              {content.compliance.badges.map((badge, index) => (
-                <div key={index} className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              {content.compliance.badges.map((badge) => (
+                <div key={badge.name} className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                   <div className="text-2xl mb-2">{badge.icon}</div>
                   <div className="text-sm font-medium text-gray-900 dark:text-white text-center">
                     {badge.name}
@@ -287,8 +276,8 @@ export default function HomePage() {
             )}
 
             <ul className="mt-8 space-y-2">
-              {content.finalCTA.offers.map((offer, index) => (
-                <li key={index} className="flex items-center justify-center text-blue-100">
+              {content.finalCTA.offers.map((offer) => (
+                <li key={offer} className="flex items-center justify-center text-blue-100">
                   <span className="text-green-300 mr-2">✓</span>
                   {offer}
                 </li>
