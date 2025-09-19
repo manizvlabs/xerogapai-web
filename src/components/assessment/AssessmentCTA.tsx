@@ -4,8 +4,16 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { CheckCircleIcon, CalendarIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 
+interface AssessmentData {
+  score?: number;
+  recommendations?: string[];
+  category?: string;
+  priority?: string;
+  timeline?: string;
+}
+
 interface AssessmentCTAProps {
-  assessmentData: any;
+  assessmentData: AssessmentData;
   userEmail: string;
   onRestart: () => void;
 }

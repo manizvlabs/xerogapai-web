@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { AssessmentEngine, AssessmentResults } from '@/lib/assessment/assessmentEngine';
 
-export function useAssessmentEngine(answers: Record<number, any>) {
+export function useAssessmentEngine(answers: Record<number, string | number>) {
   const results = useMemo(() => {
     if (!answers || Object.keys(answers).length === 0) {
       return null;

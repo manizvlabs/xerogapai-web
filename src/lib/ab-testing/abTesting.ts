@@ -2,7 +2,7 @@ export interface ABTestVariant {
   id: string;
   name: string;
   weight: number; // Percentage weight (0-100)
-  content: any;
+  content: Record<string, unknown>;
 }
 
 export interface ABTest {
