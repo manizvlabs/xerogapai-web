@@ -278,6 +278,128 @@ export const contentConfig = {
       title: "Get in Touch",
       subtitle: "We're here to help you succeed. Reach out to us through any of these channels."
     }
+  },
+
+  // Documentation Content
+  docs: {
+    hero: {
+      title: "Documentation",
+      subtitle: "Everything you need to know about our products and services."
+    },
+    sections: [
+      {
+        id: 'getting-started',
+        title: 'Getting Started',
+        icon: '🚀',
+        items: [
+          {
+            title: 'Quick Start Guide',
+            description: 'Get up and running with our platform in minutes',
+            slug: 'quick-start',
+            readTime: '5 min'
+          },
+          {
+            title: 'Installation',
+            description: 'Step-by-step installation instructions',
+            slug: 'installation',
+            readTime: '3 min'
+          },
+          {
+            title: 'Authentication',
+            description: 'Learn about our authentication methods',
+            slug: 'authentication',
+            readTime: '4 min'
+          },
+          {
+            title: 'First API Call',
+            description: 'Make your first API call',
+            slug: 'first-api-call',
+            readTime: '2 min'
+          }
+        ]
+      },
+      {
+        id: 'api-reference',
+        title: 'API Reference',
+        icon: '🔌',
+        items: [
+          {
+            title: 'REST API Overview',
+            description: 'Overview of our REST API',
+            slug: 'api/overview',
+            readTime: '8 min'
+          },
+          {
+            title: 'Authentication Endpoints',
+            description: 'API endpoints for authentication',
+            slug: 'api/auth',
+            readTime: '6 min'
+          },
+          {
+            title: 'Workflow Endpoints',
+            description: 'API endpoints for workflow management',
+            slug: 'api/workflows',
+            readTime: '10 min'
+          },
+          {
+            title: 'Analytics Endpoints',
+            description: 'API endpoints for analytics',
+            slug: 'api/analytics',
+            readTime: '7 min'
+          }
+        ]
+      },
+      {
+        id: 'integrations',
+        title: 'Integrations',
+        icon: '🔗',
+        items: [
+          {
+            title: 'Notion Integration',
+            description: 'Connect with Notion',
+            slug: 'integrations/notion',
+            readTime: '12 min'
+          },
+          {
+            title: 'CRM Connectors',
+            description: 'Connect with popular CRM systems',
+            slug: 'integrations/crm',
+            readTime: '15 min'
+          },
+          {
+            title: 'Email Platforms',
+            description: 'Integrate with email services',
+            slug: 'integrations/email',
+            readTime: '8 min'
+          }
+        ]
+      },
+      {
+        id: 'solutions',
+        title: 'Solution Guides',
+        icon: '💡',
+        items: [
+          {
+            title: 'XeroGap AI Implementation',
+            description: 'Implement XeroGap AI in your workflow',
+            slug: 'solutions/xerogap-ai',
+            readTime: '20 min'
+          },
+          {
+            title: 'Sales Automation Setup',
+            description: 'Set up sales automation',
+            slug: 'solutions/sales-automation',
+            readTime: '18 min'
+          },
+          {
+            title: 'Contact Center QA',
+            description: 'Quality assurance for contact centers',
+            slug: 'solutions/contact-center',
+            readTime: '16 min'
+          }
+        ]
+      }
+    ]
   }
 };
 
