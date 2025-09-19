@@ -2,6 +2,21 @@
 
 All notable changes to Zero Digital Website will be documented in this file.
 
+## [1.0.3] - 2025-09-19
+
+### 🐛 Bug Fixes
+- **SVG Rendering**: Fixed SVG element rendering issues in WebKit browsers
+  - Properly structured SVG elements in hero components
+  - Fixed path and pattern element nesting
+  - Improved cross-browser compatibility
+- **Global Reach**: Updated footer to reflect global client service
+- **Browser Compatibility**: Enhanced WebKit browser support for SVG patterns
+
+### 🔧 Technical Improvements
+- **Code Quality**: Improved SVG structure across all hero components
+- **Documentation**: Updated version and changelog documentation
+- **Build Process**: Verified build process and deployment readiness
+
 ## [1.0.2] - 2025-09-18
 
 ### 🚀 Features
