@@ -22,38 +22,15 @@ export default function RegionSwitcher({ currentRegion: propCurrentRegion, onReg
   const currentRegion = propCurrentRegion || context.currentRegion;
   const onRegionChange = propOnRegionChange || context.setRegion;
 
-  // Auto-detect user location on component mount
+  // Auto-detect user location on component mount (disabled to prevent console errors)
   useEffect(() => {
-    const detectLocation = async () => {
-      try {
-        // Using a free IP geolocation service
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-
-        if (data.country_code === 'IN') {
-          setAutoDetected('India');
-          if (currentRegion !== 'india') {
-            onRegionChange('india');
-          }
-        } else {
-          setAutoDetected('Global');
-          if (currentRegion !== 'global') {
-            onRegionChange('global');
-          }
-        }
-      } catch (error) {
-        console.error('Region auto-detection failed:', error);
-        // Set to global as fallback
-        setAutoDetected('Global');
-        if (currentRegion !== 'global') {
-          onRegionChange('global');
-        }
-      }
-    };
-
-    // Only auto-detect if we haven't already set a region
+    // Disable auto-detection to prevent CORS and network errors
+    // Users can manually select their region instead
     if (!autoDetected) {
-      detectLocation();
+      setAutoDetected('Global');
+      if (currentRegion !== 'global') {
+        onRegionChange('global');
+      }
     }
   }, [currentRegion, onRegionChange, autoDetected]);
 
