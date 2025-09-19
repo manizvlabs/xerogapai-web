@@ -5,7 +5,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.3-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-blue)](https://tailwindcss.com/)
-[![Version](https://img.shields.io/badge/version-1.0.1-blue)](https://github.com/manizvlabs/zero-digital-website/releases)
+[![Version](https://img.shields.io/badge/version-1.0.3-blue)](https://github.com/manizvlabs/zero-digital-website/releases)
 
 **🌐 Live Website:** [https://zero-digital.vercel.app/](https://zero-digital.vercel.app/)
 

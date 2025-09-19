@@ -1,5 +1,85 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+// Simple password validation function
+function validatePassword(password: string): { isValid: boolean; errors: string[] } {
+  const errors: string[] = [];
+
+  // Minimum length
+  if (password.length < 8) {
+    errors.push('Password must be at least 8 characters long');
+  }
+
+  // Uppercase letter
+  if (!/[A-Z]/.test(password)) {
+    errors.push('Password must contain at least one uppercase letter');
+  }
+
+  // Lowercase letter
+  if (!/[a-z]/.test(password)) {
+    errors.push('Password must contain at least one lowercase letter');
+  }
+
+  // Number
+  if (!/[0-9]/.test(password)) {
+    errors.push('Password must contain at least one number');
+  }
+
+  // Special character
+  if (!/[^A-Za-z0-9]/.test(password)) {
+    errors.push('Password must contain at least one special character');
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors,
+  };
+}
+import { UserDatabase } from './database';
+
+// Initialize admin user on startup
+async function initializeAdminUser() {
+  try {
+
+    // Check if Supabase is configured
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseKey || supabaseUrl.includes('your-project-ref') || supabaseKey.includes('your-anon-key')) {
+      return;
+    }
+
+    const existingAdmin = await UserDatabase.getUserByUsername('admin');
+    if (existingAdmin) {
+      return;
+    }
+
+    // Use the exact password from .env.local
+    const adminPassword = process.env.ADMIN_PASSWORD;
+
+    if (!adminPassword) {
+      console.error('ADMIN_PASSWORD not set in .env.local');
+      process.exit(1);
+    }
+
+    const hashedPassword = await bcrypt.hash(adminPassword, 12);
+
+    // Create admin user in database
+    const adminUser = await UserDatabase.createUser({
+      username: process.env.ADMIN_USERNAME || 'admin',
+      email: process.env.ADMIN_EMAIL || 'admin@zerodigital.ai',
+      password_hash: hashedPassword,
+      role: 'admin',
+      is_active: true
+    });
+
+  } catch (error) {
+    console.error('Failed to initialize admin user:', error);
+    // In development, we can continue without admin user
+    if (process.env.NODE_ENV === 'production') {
+      process.exit(1);
+    }
+  }
+}
 
 // Types
 export interface User {
@@ -30,174 +110,11 @@ export interface JWTPayload {
   exp: number;
 }
 
-// In-memory user store (in production, use a database)
-class UserStore {
-  private users: Map<string, User> = new Map();
-  private refreshTokens: Map<string, { userId: string; expiresAt: Date }> = new Map();
-  private initialized: boolean = false;
-
-  constructor() {
-    if (!this.initialized) {
-      this.initializeDefaultAdmin();
-      this.initialized = true;
-    }
-  }
-
-  private initializeDefaultAdmin() {
-    const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
-    const hashedPassword = bcrypt.hashSync(adminPassword, 12);
-    
-    const adminUser: User = {
-      id: '1',
-      username: process.env.ADMIN_USERNAME || 'admin',
-      email: process.env.ADMIN_EMAIL || 'admin@zerodigital.ai',
-      password: hashedPassword,
-      role: 'admin',
-      createdAt: new Date(),
-      isActive: true
-    };
-
-    this.users.set(adminUser.id, adminUser);
-    this.users.set(adminUser.username, adminUser); // For username lookup
-    
-    console.log('Default admin user initialized:', {
-      username: adminUser.username,
-      email: adminUser.email,
-      role: adminUser.role,
-      isActive: adminUser.isActive,
-      passwordSet: !!adminUser.password
-    });
-    
-    // Debug: Check if user is stored correctly
-    const storedUser = this.users.get(adminUser.username);
-    console.log('User storage verification:', {
-      username: adminUser.username,
-      stored: !!storedUser,
-      storedUsername: storedUser?.username,
-      storedRole: storedUser?.role
-    });
-  }
-
-  async createUser(userData: Omit<User, 'id' | 'createdAt' | 'password'> & { password: string }): Promise<User> {
-    const id = (this.users.size + 1).toString();
-    const hashedPassword = await bcrypt.hash(userData.password, 12);
-    
-    const user: User = {
-      id,
-      username: userData.username,
-      email: userData.email,
-      password: hashedPassword,
-      role: userData.role,
-      createdAt: new Date(),
-      isActive: userData.isActive
-    };
-
-    this.users.set(id, user);
-    this.users.set(userData.username, user);
-    
-    return user;
-  }
-
-  async findUserById(id: string): Promise<User | null> {
-    return this.users.get(id) || null;
-  }
-
-  async findUserByUsername(username: string): Promise<User | null> {
-    const user = this.users.get(username);
-    console.log('findUserByUsername:', {
-      username,
-      found: !!user,
-      userKeys: Array.from(this.users.keys()),
-      user: user ? { id: user.id, username: user.username, role: user.role } : null
-    });
-    return user || null;
-  }
-
-  async updateUser(id: string, updates: Partial<Omit<User, 'id' | 'password'>>): Promise<User | null> {
-    const user = this.users.get(id);
-    if (!user) return null;
-
-    const updatedUser = { ...user, ...updates };
-    this.users.set(id, updatedUser);
-    this.users.set(updatedUser.username, updatedUser);
-    
-    return updatedUser;
-  }
-
-  async deleteUser(id: string): Promise<boolean> {
-    const user = this.users.get(id);
-    if (!user) return false;
-
-    this.users.delete(id);
-    this.users.delete(user.username);
-    return true;
-  }
-
-  async getAllUsers(): Promise<Omit<User, 'password'>[]> {
-    const users: Omit<User, 'password'>[] = [];
-    for (const [key, user] of this.users.entries()) {
-      if (key === user.id) { // Avoid duplicates
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { password, ...userWithoutPassword } = user;
-        users.push(userWithoutPassword);
-      }
-    }
-    return users;
-  }
-
-  // Refresh token management
-  storeRefreshToken(token: string, userId: string, expiresAt: Date): void {
-    this.refreshTokens.set(token, { userId, expiresAt });
-  }
-
-  getRefreshToken(token: string): { userId: string; expiresAt: Date } | null {
-    const tokenData = this.refreshTokens.get(token);
-    if (!tokenData) return null;
-
-    if (tokenData.expiresAt < new Date()) {
-      this.refreshTokens.delete(token);
-      return null;
-    }
-
-    return tokenData;
-  }
-
-  revokeRefreshToken(token: string): void {
-    this.refreshTokens.delete(token);
-  }
-
-  revokeAllUserTokens(userId: string): void {
-    for (const [token, data] of this.refreshTokens.entries()) {
-      if (data.userId === userId) {
-        this.refreshTokens.delete(token);
-      }
-    }
-  }
-}
-
-// Global UserStore instance to ensure true singleton
-let userStore: UserStore;
-
-// Singleton getter
-function getUserStore(): UserStore {
-  if (!userStore) {
-    userStore = new UserStore();
-    console.log('UserStore singleton created:', { instanceId: Math.random() });
-  }
-  return userStore;
-}
-
 // JWT Configuration
 const JWT_SECRET = process.env.JWT_SECRET || 'zerodigital-super-secret-jwt-key-2024-production';
 const JWT_EXPIRES_IN = '15m'; // 15 minutes
 const REFRESH_TOKEN_EXPIRES_IN = '7d'; // 7 days
 
-// Log JWT configuration for debugging
-console.log('JWT Configuration:', {
-  hasSecret: !!process.env.JWT_SECRET,
-  secretLength: JWT_SECRET.length,
-  expiresIn: JWT_EXPIRES_IN
-});
 
 // JWT Token Generation
 export function generateAccessToken(user: User): string {
@@ -208,7 +125,7 @@ export function generateAccessToken(user: User): string {
     role: user.role
   };
 
-  return jwt.sign(payload, JWT_SECRET, { 
+  return jwt.sign(payload, JWT_SECRET, {
     expiresIn: JWT_EXPIRES_IN,
     issuer: 'zerodigital.ai',
     audience: 'zerodigital-users'
@@ -216,7 +133,7 @@ export function generateAccessToken(user: User): string {
 }
 
 export function generateRefreshToken(): string {
-  return jwt.sign({}, JWT_SECRET, { 
+  return jwt.sign({}, JWT_SECRET, {
     expiresIn: REFRESH_TOKEN_EXPIRES_IN,
     issuer: 'zerodigital.ai',
     audience: 'zerodigital-refresh'
@@ -230,7 +147,7 @@ export function verifyAccessToken(token: string): JWTPayload | null {
       issuer: 'zerodigital.ai',
       audience: 'zerodigital-users'
     }) as JWTPayload;
-    
+
     return decoded;
   } catch {
     return null;
@@ -252,54 +169,69 @@ export function verifyRefreshToken(token: string): boolean {
 // Authentication Functions
 export async function authenticateUser(username: string, password: string): Promise<AuthResult> {
   try {
-    const store = getUserStore();
-    console.log('Authenticating user:', { username, passwordLength: password.length });
-    console.log('UserStore instance check:', { userStoreKeys: Array.from(store['users'].keys()) });
-    
-    const user = await store.findUserByUsername(username);
-    console.log('User found:', { user: user ? { id: user.id, username: user.username, isActive: user.isActive } : null });
-    
-    if (!user || !user.isActive) {
-      console.log('Authentication failed: User not found or inactive');
+
+    let dbUser;
+    try {
+      dbUser = await UserDatabase.getUserByUsername(username);
+    } catch (dbError) {
+      console.error('Database error during user lookup:', dbError);
+      return { success: false, error: 'Database connection failed' };
+    }
+
+    if (!dbUser || !dbUser.is_active) {
       return { success: false, error: 'Invalid credentials' };
     }
 
-    const isValidPassword = await bcrypt.compare(password, user.password);
-    console.log('Password validation:', { isValidPassword });
-    
+    const isValidPassword = await bcrypt.compare(password, dbUser.password_hash);
+
     if (!isValidPassword) {
-      console.log('Authentication failed: Invalid password');
       return { success: false, error: 'Invalid credentials' };
     }
 
     // Update last login
-    await store.updateUser(user.id, { lastLogin: new Date() });
+    try {
+      await UserDatabase.updateUser(dbUser.id, { last_login: new Date().toISOString() });
+    } catch (updateError) {
+      // Don't fail the authentication for this, just log it
+      console.error('Failed to update last login:', updateError);
+    }
+
+    // Convert database user to our User format
+    const user: User = {
+      id: dbUser.id,
+      username: dbUser.username,
+      email: dbUser.email,
+      password: dbUser.password_hash,
+      role: dbUser.role,
+      createdAt: new Date(dbUser.created_at),
+      lastLogin: dbUser.last_login ? new Date(dbUser.last_login) : undefined,
+      isActive: dbUser.is_active
+    };
 
     // Generate tokens
     const accessToken = generateAccessToken(user);
     const refreshToken = generateRefreshToken();
-    
-    console.log('Authentication successful:', {
-      userId: user.id,
-      username: user.username,
-      tokenGenerated: !!accessToken,
-      refreshTokenGenerated: !!refreshToken
-    });
-    
+
     // Store refresh token
     const refreshExpiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
-    store.storeRefreshToken(refreshToken, user.id, refreshExpiresAt);
+    try {
+      await UserDatabase.storeRefreshToken(refreshToken, user.id, refreshExpiresAt);
+    } catch (tokenError) {
+      // Don't fail the authentication for this, just log it
+      console.error('Failed to store refresh token:', tokenError);
+    }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password: _password, ...userWithoutPassword } = user;
 
-    return { 
-      success: true, 
-      user: userWithoutPassword, 
+    return {
+      success: true,
+      user: userWithoutPassword,
       token: accessToken,
-      refreshToken 
+      refreshToken
     };
-  } catch {
+  } catch (error) {
+    console.error('Authentication error:', error);
     return { success: false, error: 'Authentication failed' };
   }
 }
@@ -311,28 +243,39 @@ export async function refreshAccessToken(refreshToken: string): Promise<AuthResu
       return { success: false, error: 'Invalid refresh token' };
     }
 
-    // Check if refresh token exists in store
-    const store = getUserStore();
-    const tokenData = store.getRefreshToken(refreshToken);
+    // Check if refresh token exists in database
+    const tokenData = await UserDatabase.getRefreshToken(refreshToken);
     if (!tokenData) {
       return { success: false, error: 'Refresh token not found' };
     }
 
     // Get user
-    const user = await store.findUserById(tokenData.userId);
-    if (!user || !user.isActive) {
+    const dbUser = await UserDatabase.getUserById(tokenData.userId);
+    if (!dbUser || !dbUser.is_active) {
       return { success: false, error: 'User not found or inactive' };
     }
+
+    // Convert to our User format
+    const user: User = {
+      id: dbUser.id,
+      username: dbUser.username,
+      email: dbUser.email,
+      password: dbUser.password_hash,
+      role: dbUser.role,
+      createdAt: new Date(dbUser.created_at),
+      lastLogin: dbUser.last_login ? new Date(dbUser.last_login) : undefined,
+      isActive: dbUser.is_active
+    };
 
     // Generate new access token
     const newAccessToken = generateAccessToken(user);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password: _password, ...userWithoutPassword } = user;
 
-    return { 
-      success: true, 
-      user: userWithoutPassword, 
-      token: newAccessToken 
+    return {
+      success: true,
+      user: userWithoutPassword,
+      token: newAccessToken
     };
   } catch {
     return { success: false, error: 'Token refresh failed' };
@@ -341,8 +284,7 @@ export async function refreshAccessToken(refreshToken: string): Promise<AuthResu
 
 export async function revokeToken(refreshToken: string): Promise<boolean> {
   try {
-    const store = getUserStore();
-    store.revokeRefreshToken(refreshToken);
+    await UserDatabase.revokeRefreshToken(refreshToken);
     return true;
   } catch {
     return false;
@@ -367,17 +309,43 @@ export async function createUser(userData: {
   role: 'admin' | 'user';
 }): Promise<AuthResult> {
   try {
-    const store = getUserStore();
+    // Validate password strength
+    const passwordValidation = validatePassword(userData.password);
+    if (!passwordValidation.isValid) {
+      return {
+        success: false,
+        error: `Password does not meet requirements: ${passwordValidation.errors.join(', ')}`
+      };
+    }
+
     // Check if user already exists
-    const existingUser = await store.findUserByUsername(userData.username);
+    const existingUser = await UserDatabase.getUserByUsername(userData.username);
     if (existingUser) {
       return { success: false, error: 'Username already exists' };
     }
 
-    const user = await store.createUser({
-      ...userData,
-      isActive: true
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(userData.password, 12);
+
+    const dbUser = await UserDatabase.createUser({
+      username: userData.username,
+      email: userData.email,
+      password_hash: hashedPassword,
+      role: userData.role,
+      is_active: true
     });
+
+    // Convert to our User format
+    const user: User = {
+      id: dbUser.id,
+      username: dbUser.username,
+      email: dbUser.email,
+      password: dbUser.password_hash,
+      role: dbUser.role,
+      createdAt: new Date(dbUser.created_at),
+      lastLogin: dbUser.last_login ? new Date(dbUser.last_login) : undefined,
+      isActive: dbUser.is_active
+    };
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password: _password, ...userWithoutPassword } = user;
@@ -388,17 +356,37 @@ export async function createUser(userData: {
 }
 
 export async function getAllUsers(): Promise<Omit<User, 'password'>[]> {
-  const store = getUserStore();
-  return store.getAllUsers();
+  const dbUsers = await UserDatabase.getAllUsers();
+
+  return dbUsers.map(dbUser => ({
+    id: dbUser.id,
+    username: dbUser.username,
+    email: dbUser.email,
+    role: dbUser.role,
+    createdAt: new Date(dbUser.created_at),
+    lastLogin: dbUser.last_login ? new Date(dbUser.last_login) : undefined,
+    isActive: dbUser.is_active
+  }));
 }
 
 export async function updateUser(id: string, updates: Partial<Omit<User, 'id' | 'password'>>): Promise<AuthResult> {
   try {
-    const store = getUserStore();
-    const user = await store.updateUser(id, updates);
-    if (!user) {
+    const dbUser = await UserDatabase.updateUser(id, updates);
+    if (!dbUser) {
       return { success: false, error: 'User not found' };
     }
+
+    // Convert to our User format
+    const user: User = {
+      id: dbUser.id,
+      username: dbUser.username,
+      email: dbUser.email,
+      password: dbUser.password_hash,
+      role: dbUser.role,
+      createdAt: new Date(dbUser.created_at),
+      lastLogin: dbUser.last_login ? new Date(dbUser.last_login) : undefined,
+      isActive: dbUser.is_active
+    };
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password: _password, ...userWithoutPassword } = user;
@@ -410,8 +398,7 @@ export async function updateUser(id: string, updates: Partial<Omit<User, 'id' | 
 
 export async function deleteUser(id: string): Promise<AuthResult> {
   try {
-    const store = getUserStore();
-    const success = await store.deleteUser(id);
+    const success = await UserDatabase.deleteUser(id);
     if (!success) {
       return { success: false, error: 'User not found' };
     }
@@ -422,5 +409,5 @@ export async function deleteUser(id: string): Promise<AuthResult> {
   }
 }
 
-// Export user store getter for direct access if needed
-export { getUserStore };
+// Initialize admin user on module load
+initializeAdminUser();

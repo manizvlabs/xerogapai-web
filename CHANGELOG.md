@@ -2,6 +2,33 @@
 
 All notable changes to Zero Digital Website will be documented in this file.
 
+## [1.0.3] - 2025-09-19
+
+### 🐛 Bug Fixes
+- **SVG Rendering**: Fixed SVG element rendering issues in WebKit browsers
+  - Properly structured SVG elements in hero components
+  - Fixed path and pattern element nesting
+  - Improved cross-browser compatibility
+- **Global Reach**: Updated footer to reflect global client service
+- **Browser Compatibility**: Enhanced WebKit browser support for SVG patterns
+
+### 🔧 Technical Improvements
+- **Code Quality**: Improved SVG structure across all hero components
+- **Documentation**: Updated version and changelog documentation
+- **Build Process**: Verified build process and deployment readiness
+
+## [1.0.2] - 2025-09-18
+
+### 🚀 Features
+- **Version Management**: Automated version update system for consistent releases
+- **Documentation Updates**: Enhanced README and changelog documentation
+- **Git Workflow**: Improved git tagging and versioning workflow
+
+### 🔧 Technical Improvements
+- **Version Automation**: Streamlined version bump process with date stamps
+- **Documentation Standards**: Standardized version format across all files
+- **Release Process**: Optimized release tagging and deployment workflow
+
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 

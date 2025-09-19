@@ -1,163 +1,306 @@
 'use client';
 
 import Link from 'next/link';
-import { SparklesIcon, DevicePhoneMobileIcon, ChartBarIcon, CpuChipIcon } from '@heroicons/react/24/outline';
-import { useHomepageContent } from '@/hooks/useHomepageContent';
+import { useRegion } from '@/contexts/RegionContext';
+import { globalHomepageContent } from '@/regions/global/homepage';
+import { indianHomepageContent } from '@/regions/indian/homepage';
 
 export default function HomePage() {
-  const { content, loading } = useHomepageContent();
-  
-  if (loading) {
-    return (
-      <div className="bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-300">Loading...</p>
-        </div>
-      </div>
-    );
-  }
+  const { currentRegion } = useRegion();
 
-  if (!content) {
-    return (
-      <div className="bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-gray-600 dark:text-gray-300">Failed to load content</p>
-        </div>
-      </div>
-    );
-  }
-  
-  // Map icon names to actual components
-  const iconMap = {
-    SparklesIcon,
-    DevicePhoneMobileIcon,
-    ChartBarIcon,
-    CpuChipIcon,
-  };
+  // Select content based on region
+  const content = currentRegion === 'india' ? indianHomepageContent : globalHomepageContent;
 
   return (
     <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <div className="relative isolate px-6 pt-14 lg:px-8">
+      <section className="relative isolate px-6 pt-14 lg:px-8">
         <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-          <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
+          <div
+            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }}
+          />
         </div>
-        
+
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-              {content.hero.title}
+              {content.hero.headline}
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              {content.hero.subtitle}
+              {content.hero.subheadline}
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link
-                href="/contact"
-                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-              >
-                {content.hero.cta.primary}
-              </Link>
-              <Link href="/about" className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">
-                {content.hero.cta.secondary} <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Stats Section */}
-      <div className="bg-gray-50 dark:bg-gray-800 py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:max-w-none">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-                Trusted by businesses across Hyderabad
-              </h2>
-              <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                Our AI-powered solutions deliver measurable results
+            {/* Region-specific messaging */}
+            {currentRegion === 'india' && content.hero.localizedMessage && (
+              <p className="mt-4 text-lg leading-8 text-blue-600 dark:text-blue-400 font-medium">
+                {content.hero.localizedMessage}
               </p>
+            )}
+
+            {/* Value Props */}
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {content.hero.valueProps.map((prop) => (
+                <div key={`${prop.title}-${prop.icon}`} className="flex flex-col items-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                  <div className="text-3xl mb-3">{prop.icon}</div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{prop.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 text-center">{prop.description}</p>
+                </div>
+              ))}
             </div>
-            <dl className="mt-16 grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-4">
-              {content.stats && content.stats.length > 0 ? content.stats.map((stat) => (
-                <div key={stat.name} className="mx-auto flex max-w-xs flex-col gap-y-4">
-                  <dt className="text-base leading-7 text-gray-600 dark:text-gray-300">{stat.name}</dt>
-                  <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-                    {stat.value}
-                  </dd>
-                </div>
-              )) : (
-                <div className="col-span-full text-center text-gray-500 dark:text-gray-400">
-                  No statistics available
-                </div>
-              )}
-            </dl>
+
+            {/* CTAs */}
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-4">
+              <Link
+                href={content.hero.primaryCTA.href}
+                className="rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+              >
+                {content.hero.primaryCTA.text}
+              </Link>
+              <span className="text-sm text-gray-500 dark:text-gray-400 hidden sm:block">
+                {content.hero.primaryCTA.subtext}
+              </span>
+              <Link
+                href={content.hero.secondaryCTA.href}
+                className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                {content.hero.secondaryCTA.text} <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Services Section */}
-      <div className="py-24 sm:py-32">
+      <section className="py-24 sm:py-32 bg-gray-50 dark:bg-gray-800">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="text-base font-semibold leading-7 text-blue-600 dark:text-blue-400">Our Services</h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              AI-Powered Solutions for Every Business Need
-            </p>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              We provide comprehensive AI automation services to help your business thrive in the digital age.
-            </p>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+              {content.services.sectionTitle}
+            </h2>
+            {currentRegion === 'india' && content.services.localizedNote && (
+              <p className="mt-4 text-lg text-blue-600 dark:text-blue-400 font-medium">
+                {content.services.localizedNote}
+              </p>
+            )}
           </div>
+
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-              {content.services && content.services.length > 0 ? content.services.map((service, index) => {
-                const IconComponent = iconMap[service.icon as keyof typeof iconMap];
-                return (
-                  <div key={`service-${index}-${service.name}`} className="flex flex-col">
-                    <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                      <IconComponent className="h-5 w-5 flex-none text-blue-600 dark:text-blue-400" aria-hidden="true" />
-                      {service.name}
-                    </dt>
-                    <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
-                      <p className="flex-auto">{service.description}</p>
-                    </dd>
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
+              {content.services.services.map((service) => (
+                <div
+                  key={service.id}
+                  className={`relative bg-white dark:bg-gray-900 p-8 rounded-lg shadow-sm border-2 transition-all hover:shadow-md ${
+                    service.pricing.popular
+                      ? 'border-blue-500 dark:border-blue-400'
+                      : 'border-gray-200 dark:border-gray-700'
+                  }`}
+                >
+                  {service.pricing.popular && (
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                      <div className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                        Most Popular
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {service.subtitle}
+                    </p>
                   </div>
-                );
-              }) : (
-                <div className="col-span-full text-center text-gray-500 dark:text-gray-400">
-                  No services available
+
+                  <ul className="space-y-3 mb-8">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-start">
+                        <span className="text-green-500 mr-2 mt-0.5">✓</span>
+                        <span className="text-sm text-gray-600 dark:text-gray-300">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mb-6">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-2xl font-bold text-gray-900 dark:text-white">
+                        {service.pricing.starting}
+                      </span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">/month</span>
+                    </div>
+                    {service.pricing.note && (
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                        {service.pricing.note}
+                      </p>
+                    )}
+                  </div>
+
+                  {service.href ? (
+                    <Link
+                      href={service.href}
+                      className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center block"
+                    >
+                      {service.cta}
+                    </Link>
+                  ) : (
+                    <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                      {service.cta}
+                    </button>
+                  )}
                 </div>
-              )}
-            </dl>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* CTA Section */}
-      <div className="bg-blue-600 dark:bg-blue-700">
+      {/* Social Proof Section */}
+      <section className="py-24 sm:py-32 bg-white dark:bg-gray-900">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+              {content.socialProof.sectionTitle}
+            </h2>
+            {currentRegion === 'india' && content.socialProof.localizedMessage && (
+              <p className="mt-4 text-lg text-blue-600 dark:text-blue-400 font-medium">
+                {content.socialProof.localizedMessage}
+              </p>
+            )}
+          </div>
+
+          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+              {content.socialProof.testimonials.map((testimonial) => (
+                <div key={`${testimonial.author}-${testimonial.company}`} className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg">
+                  <div className="text-4xl mb-4 text-gray-400">&quot;</div>
+                  <blockquote className="text-gray-700 dark:text-gray-300 mb-6 italic">
+                    {testimonial.quote}
+                  </blockquote>
+
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                      {testimonial.author.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900 dark:text-white">
+                        {testimonial.author}
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        {testimonial.position}
+                      </div>
+                      <div className="text-sm text-gray-500 dark:text-gray-500">
+                        {testimonial.location}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Metrics */}
+                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                    {Object.entries(testimonial.metrics).map(([key, value]) => (
+                      <div key={key} className="text-center">
+                        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                          {value}
+                        </div>
+                        <div className="text-xs text-gray-600 dark:text-gray-400 capitalize">
+                          {key.replace(/([A-Z])/g, ' $1').trim()}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Section */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+              {content.partners.sectionTitle}
+            </h2>
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
+              {content.partners.partners.map((partner) => (
+                <div key={partner.name} className="flex items-center justify-center p-4 bg-white dark:bg-gray-900 rounded-lg">
+                  <span className="text-gray-600 dark:text-gray-400 font-medium">
+                    {partner.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Compliance Section */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+              {content.compliance.sectionTitle}
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+              {content.compliance.message}
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {content.compliance.badges.map((badge) => (
+                <div key={badge.name} className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                  <div className="text-2xl mb-2">{badge.icon}</div>
+                  <div className="text-sm font-medium text-gray-900 dark:text-white text-center">
+                    {badge.name}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-24 sm:py-32 bg-blue-600 dark:bg-blue-700">
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Ready to transform your business?
+              {content.finalCTA.sectionTitle}
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
-              Get started with our AI-powered solutions today and see the difference automation can make.
+              {content.finalCTA.content}
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            {currentRegion === 'india' && content.finalCTA.localizedContent && (
+              <p className="mt-4 text-lg text-blue-200">
+                {content.finalCTA.localizedContent}
+              </p>
+            )}
+
+            <ul className="mt-8 space-y-2">
+              {content.finalCTA.offers.map((offer) => (
+                <li key={offer} className="flex items-center justify-center text-blue-100">
+                  <span className="text-green-300 mr-2">✓</span>
+                  {offer}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-4">
               <Link
-                href="/contact"
-                className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                href={content.finalCTA.primaryCTA.href}
+                className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
               >
-                Get started
+                {content.finalCTA.primaryCTA.text}
               </Link>
-              <Link href="/about" className="text-sm font-semibold leading-6 text-white">
-                Learn more <span aria-hidden="true">→</span>
+              <Link
+                href={content.finalCTA.secondaryCTA.href}
+                className="text-sm font-semibold leading-6 text-white hover:text-blue-200 transition-colors"
+              >
+                {content.finalCTA.secondaryCTA.text} <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

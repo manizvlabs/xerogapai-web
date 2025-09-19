@@ -13,7 +13,6 @@ export const getSupabaseClient = () => {
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!supabaseUrl || !supabaseAnonKey) {
-    console.warn('⚠️ Supabase environment variables not found. Using fallback storage.');
     return null;
   }
 
@@ -52,6 +51,24 @@ export const getSupabaseClient = () => {
 // Legacy export for backward compatibility
 export const supabase = getSupabaseClient();
 
+// Get Supabase service role client (bypasses RLS)
+export const getSupabaseServiceClient = () => {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !serviceRoleKey) {
+    return null;
+  }
+
+  return createClient(supabaseUrl, serviceRoleKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+      detectSessionInUrl: false
+    }
+  });
+};
+
 // Check if Supabase is properly configured
 export const isSupabaseConfigured = () => {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -81,6 +98,27 @@ export interface ContactStats {
   thisMonth: number;
 }
 
+// User database schema types
+export interface UserSubmission {
+  id: string;
+  username: string;
+  email: string;
+  password_hash: string;
+  role: 'admin' | 'user';
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+  last_login?: string;
+}
+
+export interface RefreshTokenSubmission {
+  id: string;
+  token: string;
+  user_id: string;
+  expires_at: string;
+  created_at: string;
+}
+
 export interface ContactResponse {
   contacts: ContactSubmission[];
   total: number;
@@ -92,6 +130,7 @@ export interface ContactResponse {
 // Initialize database schema
 export async function initializeSupabaseDatabase() {
   if (!isSupabaseConfigured()) {
+    
     console.log('🔄 Supabase not configured, using fallback storage');
     return false;
   }
@@ -100,6 +139,7 @@ export async function initializeSupabaseDatabase() {
     // Get the Supabase client
     const client = getSupabaseClient();
     if (!client) {
+      
       console.log('🔄 Supabase client not available, using fallback storage');
       return false;
     }
@@ -112,6 +152,8 @@ export async function initializeSupabaseDatabase() {
     
     if (testError) {
       if (testError.code === 'PGRST116') {
+        
+        
         console.log('⚠️  Contacts table does not exist. Please create it manually in Supabase dashboard.');
         console.log('📖 See docs/deployment/SUPABASE_SETUP.md for SQL schema');
         return false;
@@ -120,6 +162,7 @@ export async function initializeSupabaseDatabase() {
       }
     }
 
+    
     console.log('✅ Supabase database initialized successfully');
     return true;
   } catch (error) {
@@ -379,6 +422,528 @@ export class SupabaseContactDatabase {
       return stats;
     } catch (error) {
       console.error('❌ Supabase error fetching stats:', error);
+      throw error;
+    }
+  }
+}
+
+// User database operations
+export class SupabaseUserDatabase {
+  // Create a new user
+  static async createUser(data: Omit<UserSubmission, 'id' | 'created_at' | 'updated_at'>): Promise<UserSubmission> {
+    // Use service role client to bypass RLS policies
+    const client = getSupabaseServiceClient();
+    if (!client) {
+      
+      const fallbackClient = getSupabaseClient();
+      if (!fallbackClient) {
+        throw new Error('Supabase not configured');
+      }
+      // Try with fallback client (may fail due to RLS)
+      try {
+        const { data: insertedUser, error: insertError } = await fallbackClient
+          .from('users')
+          .insert({
+            username: data.username,
+            email: data.email,
+            password_hash: data.password_hash,
+            role: data.role,
+            is_active: data.is_active
+          })
+          .select()
+          .single();
+
+        if (insertError) {
+          throw insertError;
+        }
+
+        return {
+          id: insertedUser.id.toString(),
+          username: insertedUser.username,
+          email: insertedUser.email,
+          password_hash: insertedUser.password_hash,
+          role: insertedUser.role,
+          is_active: insertedUser.is_active,
+          created_at: insertedUser.created_at,
+          updated_at: insertedUser.updated_at,
+          last_login: insertedUser.last_login
+        };
+      } catch (fallbackError) {
+        
+        throw fallbackError;
+      }
+    }
+
+    try {
+      const { data: insertedUser, error: insertError } = await client
+        .from('users')
+        .insert({
+          username: data.username,
+          email: data.email,
+          password_hash: data.password_hash,
+          role: data.role,
+          is_active: data.is_active
+        })
+        .select()
+        .single();
+
+      if (insertError) {
+        throw insertError;
+      }
+
+      return {
+        id: insertedUser.id.toString(),
+        username: insertedUser.username,
+        email: insertedUser.email,
+        password_hash: insertedUser.password_hash,
+        role: insertedUser.role,
+        is_active: insertedUser.is_active,
+        created_at: insertedUser.created_at,
+        updated_at: insertedUser.updated_at,
+        last_login: insertedUser.last_login
+      };
+    } catch (error) {
+      console.error('Supabase service role error creating user:', error);
+      throw error;
+    }
+  }
+
+  // Get user by username
+  static async getUserByUsername(username: string): Promise<UserSubmission | null> {
+    // Use service role client for authentication (bypasses RLS)
+    const client = getSupabaseServiceClient();
+    if (!client) {
+      
+      const fallbackClient = getSupabaseClient();
+      if (!fallbackClient) {
+        throw new Error('Supabase not configured');
+      }
+      // For fallback, try with anon key (might fail due to RLS)
+      try {
+        const { data: user, error } = await fallbackClient
+          .from('users')
+          .select('*')
+          .eq('username', username)
+          .single();
+
+        if (error) {
+          if (error.code === 'PGRST116') {
+            return null; // No rows found
+          }
+          throw error;
+        }
+
+        if (!user) {
+          return null;
+        }
+
+        return {
+          id: user.id.toString(),
+          username: user.username,
+          email: user.email,
+          password_hash: user.password_hash,
+          role: user.role,
+          is_active: user.is_active,
+          created_at: user.created_at,
+          updated_at: user.updated_at,
+          last_login: user.last_login
+        };
+      } catch (fallbackError) {
+        
+        throw fallbackError;
+      }
+    }
+
+    try {
+      const { data: user, error } = await client
+        .from('users')
+        .select('*')
+        .eq('username', username)
+        .single();
+
+      if (error) {
+        if (error.code === 'PGRST116') {
+          return null; // No rows found
+        }
+        throw error;
+      }
+
+      if (!user) {
+        return null;
+      }
+
+      return {
+        id: user.id.toString(),
+        username: user.username,
+        email: user.email,
+        password_hash: user.password_hash,
+        role: user.role,
+        is_active: user.is_active,
+        created_at: user.created_at,
+        updated_at: user.updated_at,
+        last_login: user.last_login
+      };
+    } catch (error) {
+      console.error('Supabase error fetching user by username:', error);
+      throw error;
+    }
+  }
+
+  // Get user by ID
+  static async getUserById(id: string): Promise<UserSubmission | null> {
+    // Use service role client for authentication (bypasses RLS)
+    const client = getSupabaseServiceClient();
+    if (!client) {
+      
+      const fallbackClient = getSupabaseClient();
+      if (!fallbackClient) {
+        throw new Error('Supabase not configured');
+      }
+      // For fallback, try with anon key (might fail due to RLS)
+      try {
+        const { data: user, error } = await fallbackClient
+          .from('users')
+          .select('*')
+          .eq('id', id)
+          .single();
+
+        if (error) {
+          if (error.code === 'PGRST116') {
+            return null; // No rows found
+          }
+          throw error;
+        }
+
+        if (!user) {
+          return null;
+        }
+
+        return {
+          id: user.id.toString(),
+          username: user.username,
+          email: user.email,
+          password_hash: user.password_hash,
+          role: user.role,
+          is_active: user.is_active,
+          created_at: user.created_at,
+          updated_at: user.updated_at,
+          last_login: user.last_login
+        };
+      } catch (fallbackError) {
+        
+        throw fallbackError;
+      }
+    }
+
+    try {
+      const { data: user, error } = await client
+        .from('users')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+      if (error) {
+        if (error.code === 'PGRST116') {
+          return null; // No rows found
+        }
+        throw error;
+      }
+
+      if (!user) {
+        return null;
+      }
+
+      return {
+        id: user.id.toString(),
+        username: user.username,
+        email: user.email,
+        password_hash: user.password_hash,
+        role: user.role,
+        is_active: user.is_active,
+        created_at: user.created_at,
+        updated_at: user.updated_at,
+        last_login: user.last_login
+      };
+    } catch (error) {
+      console.error('Supabase error fetching user by ID:', error);
+      throw error;
+    }
+  }
+
+  // Update user
+  static async updateUser(id: string, updates: Partial<Omit<UserSubmission, 'id' | 'created_at' | 'updated_at'>>): Promise<UserSubmission | null> {
+    const client = getSupabaseClient();
+    if (!client) {
+      throw new Error('Supabase not configured');
+    }
+
+    try {
+      const { data: user, error } = await client
+        .from('users')
+        .update({
+          username: updates.username,
+          email: updates.email,
+          password_hash: updates.password_hash,
+          role: updates.role,
+          is_active: updates.is_active,
+          last_login: updates.last_login
+        })
+        .eq('id', id)
+        .select()
+        .single();
+
+      if (error) {
+        throw error;
+      }
+
+      if (!user) {
+        return null;
+      }
+
+      return {
+        id: user.id.toString(),
+        username: user.username,
+        email: user.email,
+        password_hash: user.password_hash,
+        role: user.role,
+        is_active: user.is_active,
+        created_at: user.created_at,
+        updated_at: user.updated_at,
+        last_login: user.last_login
+      };
+    } catch (error) {
+      console.error('Supabase error updating user:', error);
+      throw error;
+    }
+  }
+
+  // Delete user
+  static async deleteUser(id: string): Promise<boolean> {
+    const client = getSupabaseClient();
+    if (!client) {
+      throw new Error('Supabase not configured');
+    }
+
+    try {
+      const { error } = await client
+        .from('users')
+        .delete()
+        .eq('id', id);
+
+      if (error) {
+        throw error;
+      }
+
+      return true;
+    } catch (error) {
+      console.error('Supabase error deleting user:', error);
+      throw error;
+    }
+  }
+
+  // Get all users
+  static async getAllUsers(): Promise<UserSubmission[]> {
+    const client = getSupabaseClient();
+    if (!client) {
+      throw new Error('Supabase not configured');
+    }
+
+    try {
+      const { data: users, error } = await client
+        .from('users')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        throw error;
+      }
+
+      return users?.map(user => ({
+        id: user.id.toString(),
+        username: user.username,
+        email: user.email,
+        password_hash: user.password_hash,
+        role: user.role,
+        is_active: user.is_active,
+        created_at: user.created_at,
+        updated_at: user.updated_at,
+        last_login: user.last_login
+      })) || [];
+    } catch (error) {
+      console.error('Supabase error fetching all users:', error);
+      throw error;
+    }
+  }
+
+  // Store refresh token
+  static async storeRefreshToken(token: string, userId: string, expiresAt: Date): Promise<void> {
+    // Use service role client to bypass RLS policies
+    const client = getSupabaseServiceClient();
+    if (!client) {
+      
+      const fallbackClient = getSupabaseClient();
+      if (!fallbackClient) {
+        throw new Error('Supabase not configured');
+      }
+      // Try with fallback client (may fail due to RLS)
+      try {
+        const { error } = await fallbackClient
+          .from('refresh_tokens')
+          .insert({
+            token: token,
+            user_id: parseInt(userId),
+            expires_at: expiresAt.toISOString()
+          });
+
+        if (error) {
+          throw error;
+        }
+        return;
+      } catch (fallbackError) {
+        
+        throw fallbackError;
+      }
+    }
+
+    try {
+      const { error } = await client
+        .from('refresh_tokens')
+        .insert({
+          token: token,
+          user_id: parseInt(userId),
+          expires_at: expiresAt.toISOString()
+        });
+
+      if (error) {
+        throw error;
+      }
+    } catch (error) {
+      console.error('Supabase service role error storing refresh token:', error);
+      throw error;
+    }
+  }
+
+  // Get refresh token
+  static async getRefreshToken(token: string): Promise<{ userId: string; expiresAt: Date } | null> {
+    // Use service role client to bypass RLS policies
+    const client = getSupabaseServiceClient();
+    if (!client) {
+      
+      const fallbackClient = getSupabaseClient();
+      if (!fallbackClient) {
+        throw new Error('Supabase not configured');
+      }
+      // Try with fallback client (may fail due to RLS)
+      try {
+        const { data: tokenData, error } = await fallbackClient
+          .from('refresh_tokens')
+          .select('*')
+          .eq('token', token)
+          .single();
+
+        if (error) {
+          if (error.code === 'PGRST116') {
+            return null; // No rows found
+          }
+          throw error;
+        }
+
+        // Check if token is expired
+        const expiresAt = new Date(tokenData.expires_at);
+        if (expiresAt < new Date()) {
+          // Clean up expired token
+          await fallbackClient
+            .from('refresh_tokens')
+            .delete()
+            .eq('token', token);
+          return null;
+        }
+
+        return {
+          userId: tokenData.user_id.toString(),
+          expiresAt: expiresAt
+        };
+      } catch (fallbackError) {
+        
+        throw fallbackError;
+      }
+    }
+
+    try {
+      const { data: tokenData, error } = await client
+        .from('refresh_tokens')
+        .select('*')
+        .eq('token', token)
+        .single();
+
+      if (error) {
+        if (error.code === 'PGRST116') {
+          return null; // No rows found
+        }
+        throw error;
+      }
+
+      // Check if token is expired
+      const expiresAt = new Date(tokenData.expires_at);
+      if (expiresAt < new Date()) {
+        // Clean up expired token
+        await client
+          .from('refresh_tokens')
+          .delete()
+          .eq('token', token);
+        return null;
+      }
+
+      return {
+        userId: tokenData.user_id.toString(),
+        expiresAt: expiresAt
+      };
+    } catch (error) {
+      console.error('Supabase error fetching refresh token:', error);
+      throw error;
+    }
+  }
+
+  // Revoke refresh token
+  static async revokeRefreshToken(token: string): Promise<void> {
+    const client = getSupabaseClient();
+    if (!client) {
+      throw new Error('Supabase not configured');
+    }
+
+    try {
+      const { error } = await client
+        .from('refresh_tokens')
+        .delete()
+        .eq('token', token);
+
+      if (error) {
+        throw error;
+      }
+    } catch (error) {
+      console.error('Supabase error revoking refresh token:', error);
+      throw error;
+    }
+  }
+
+  // Revoke all user tokens
+  static async revokeAllUserTokens(userId: string): Promise<void> {
+    const client = getSupabaseClient();
+    if (!client) {
+      throw new Error('Supabase not configured');
+    }
+
+    try {
+      const { error } = await client
+        .from('refresh_tokens')
+        .delete()
+        .eq('user_id', parseInt(userId));
+
+      if (error) {
+        throw error;
+      }
+    } catch (error) {
+      console.error('Supabase error revoking all user tokens:', error);
       throw error;
     }
   }
