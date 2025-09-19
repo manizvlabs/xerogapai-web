@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { useState } from 'react';
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { contentConfig } from '@/config/content';
 
 export default function DocsNavigation() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -16,85 +17,13 @@ export default function DocsNavigation() {
     );
   };
 
-  const navigationSections = [
-    {
-      id: 'getting-started',
-      title: 'Getting Started',
-      icon: '🚀',
-      items: [
-        { title: 'Quick Start Guide', href: '/docs/quick-start', time: '5 min' },
-        { title: 'Installation', href: '/docs/installation', time: '3 min' },
-        { title: 'Authentication', href: '/docs/authentication', time: '4 min' },
-        { title: 'First API Call', href: '/docs/first-api-call', time: '2 min' }
-      ]
-    },
-    {
-      id: 'api-reference',
-      title: 'API Reference',
-      icon: '🔌',
-      items: [
-        { title: 'REST API Overview', href: '/docs/api/overview', time: '8 min' },
-        { title: 'Authentication Endpoints', href: '/docs/api/auth', time: '6 min' },
-        { title: 'Workflow Endpoints', href: '/docs/api/workflows', time: '10 min' },
-        { title: 'Analytics Endpoints', href: '/docs/api/analytics', time: '7 min' },
-        { title: 'Error Handling', href: '/docs/api/errors', time: '5 min' },
-        { title: 'Rate Limits', href: '/docs/api/rate-limits', time: '3 min' }
-      ]
-    },
-    {
-      id: 'integrations',
-      title: 'Integrations',
-      icon: '🔗',
-      items: [
-        { title: 'Notion Integration', href: '/docs/integrations/notion', time: '12 min' },
-        { title: 'CRM Connectors', href: '/docs/integrations/crm', time: '15 min' },
-        { title: 'Email Platforms', href: '/docs/integrations/email', time: '8 min' },
-        { title: 'Calendar Systems', href: '/docs/integrations/calendar', time: '6 min' },
-        { title: 'Custom Webhooks', href: '/docs/integrations/webhooks', time: '10 min' }
-      ]
-    },
-    {
-      id: 'solutions',
-      title: 'Solution Guides',
-      icon: '💡',
-      items: [
-        { title: 'XeroGap AI Implementation', href: '/docs/solutions/xerogap-ai', time: '20 min' },
-        { title: 'Sales Automation Setup', href: '/docs/solutions/sales-automation', time: '18 min' },
-        { title: 'Contact Center QA', href: '/docs/solutions/contact-center', time: '16 min' },
-        { title: 'DPDP Compliance', href: '/docs/solutions/dpdp', time: '25 min' },
-        { title: 'Enterprise Copilots', href: '/docs/solutions/copilots', time: '22 min' }
-      ]
-    },
-    {
-      id: 'advanced',
-      title: 'Advanced Topics',
-      icon: '⚡',
-      items: [
-        { title: 'Custom AI Models', href: '/docs/advanced/custom-models', time: '15 min' },
-        { title: 'Performance Optimization', href: '/docs/advanced/optimization', time: '12 min' },
-        { title: 'Security Best Practices', href: '/docs/advanced/security', time: '10 min' },
-        { title: 'Troubleshooting', href: '/docs/advanced/troubleshooting', time: '8 min' },
-        { title: 'Migration Guide', href: '/docs/advanced/migration', time: '14 min' }
-      ]
-    },
-    {
-      id: 'resources',
-      title: 'Resources',
-      icon: '📚',
-      items: [
-        { title: 'SDK Downloads', href: '/docs/resources/sdks', time: '2 min' },
-        { title: 'Code Samples', href: '/docs/resources/samples', time: '5 min' },
-        { title: 'API Changelog', href: '/docs/resources/changelog', time: '3 min' },
-        { title: 'Status Page', href: '/docs/resources/status', time: '1 min' },
-        { title: 'Community Forum', href: '/docs/resources/community', time: '2 min' }
-      ]
-    }
-  ];
+  const { sections } = contentConfig.docs;
 
-  const filteredSections = navigationSections.map(section => ({
+  const filteredSections = sections.map(section => ({
     ...section,
     items: section.items.filter(item =>
-      item.title.toLowerCase().includes(searchQuery.toLowerCase())
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchQuery.toLowerCase())
     )
   })).filter(section => section.items.length > 0);
 
@@ -144,16 +73,21 @@ export default function DocsNavigation() {
                     {section.items.map((item, index) => (
                       <Link
                         key={index}
-                        href={item.href}
+                        href={`/docs/${item.slug}`}
                         className="block px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors border-b border-gray-100 dark:border-gray-700 last:border-b-0"
                       >
-                        <div className="flex items-center justify-between">
-                          <span className="text-gray-700 dark:text-gray-300 text-sm">
-                            {item.title}
-                          </span>
-                          <span className="text-xs text-gray-500 dark:text-gray-400">
-                            {item.time}
-                          </span>
+                        <div className="flex flex-col">
+                          <div className="flex items-center justify-between">
+                            <span className="text-gray-700 dark:text-gray-300 text-sm font-medium">
+                              {item.title}
+                            </span>
+                            <span className="text-xs text-gray-500 dark:text-gray-400">
+                              {item.readTime}
+                            </span>
+                          </div>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                            {item.description}
+                          </p>
                         </div>
                       </Link>
                     ))}
@@ -169,22 +103,17 @@ export default function DocsNavigation() {
               Popular Topics
             </h4>
             <div className="flex flex-wrap gap-2">
-              {[
-                'Quick Start Guide',
-                'API Authentication',
-                'Notion Integration',
-                'Sales Automation',
-                'Contact Center QA',
-                'DPDP Compliance'
-              ].map((topic, index) => (
-                <Link
-                  key={index}
-                  href="#"
-                  className="px-3 py-1 bg-indigo-100 dark:bg-indigo-800 text-indigo-800 dark:text-indigo-200 rounded-full text-sm hover:bg-indigo-200 dark:hover:bg-indigo-700 transition-colors"
-                >
-                  {topic}
-                </Link>
-              ))}
+              {sections.flatMap(section => 
+                section.items.slice(0, 2).map(item => (
+                  <Link
+                    key={item.slug}
+                    href={`/docs/${item.slug}`}
+                    className="px-3 py-1 bg-indigo-100 dark:bg-indigo-800 text-indigo-800 dark:text-indigo-200 rounded-full text-sm hover:bg-indigo-200 dark:hover:bg-indigo-700 transition-colors"
+                  >
+                    {item.title}
+                  </Link>
+                ))
+              )}
             </div>
           </div>
         </div>
