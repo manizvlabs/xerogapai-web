@@ -7,8 +7,14 @@ export const indianHomepageContent = {
     logo: "XeroGap AI",
     navigation: [
       { name: "Services", href: "/services" },
-      { name: "Solutions", href: "/solutions" },
+      { name: "WhatsApp CX", href: "/whatsapp-cx" },
+      { name: "XeroGap AI", href: "/xerogap-ai" },
+      { name: "Enterprise Copilots", href: "/enterprise-copilots" },
+      { name: "Sales Automation", href: "/sales-automation" },
+      { name: "Contact Center AI", href: "/contact-center-ai" },
+      { name: "DPDP Compliance", href: "/dpdp-compliance" },
       { name: "Case Studies", href: "/case-studies" },
+      { name: "Docs", href: "/docs" },
       { name: "About", href: "/about" },
       { name: "Contact", href: "/contact" }
     ],
@@ -67,7 +73,8 @@ export const indianHomepageContent = {
           starting: "₹40,000/month",
           popular: true
         },
-        cta: "Get Started"
+        cta: "Learn More",
+        href: "/whatsapp-cx"
       },
       {
         id: "xerogap-ai",
@@ -83,74 +90,76 @@ export const indianHomepageContent = {
           starting: "₹25,000/month",
           popular: false
         },
-        cta: "Get Started"
+        cta: "Learn More",
+        href: "/xerogap-ai"
       },
       {
-        id: "ai-content-services",
-        title: "AI-Powered Content Services",
-        subtitle: "Professional content creation for Indian businesses",
+        id: "enterprise-copilots",
+        title: "Enterprise Knowledge Copilots",
+        subtitle: "Multi-lingual Q&A over company documents",
         features: [
-          "Social media posts & reels scripts",
-          "Blog writing & SEO content",
-          "Email marketing campaigns",
-          "Website content optimization"
+          "Private knowledge base with AI search",
+          "Compliance-aware responses",
+          "Audit trails and access controls",
+          "Multi-language support (Hindi, English)"
         ],
         pricing: {
-          starting: "₹10,000/month",
-          popular: true,
-          note: "Perfect for SMBs"
-        },
-        cta: "View Packages"
-      },
-      {
-        id: "digital-consulting",
-        title: "Digital Consulting for Offline Businesses",
-        subtitle: "Go digital with expert guidance",
-        features: [
-          "Website development",
-          "WhatsApp automation setup",
-          "Social media marketing strategy",
-          "Online reputation management"
-        ],
-        pricing: {
-          starting: "₹30,000/starter",
-          popular: false,
-          note: "One-time setup"
-        },
-        cta: "Book Consultation"
-      },
-      {
-        id: "linkedin-branding",
-        title: "LinkedIn Branding Service",
-        subtitle: "Build your professional brand on LinkedIn",
-        features: [
-          "Content strategy & planning",
-          "Post creation & ghostwriting",
-          "Profile optimization",
-          "Networking strategy"
-        ],
-        pricing: {
-          starting: "₹5,000/month",
-          popular: false,
-          note: "For professionals"
-        },
-        cta: "Learn More"
-      },
-      {
-        id: "ai-consulting",
-        title: "AI Implementation Consulting",
-        subtitle: "Expert guidance to implement AI in your Indian business",
-        features: [
-          "AI readiness assessment",
-          "Custom implementation roadmap",
-          "Team training in Hindi/English",
-          "Ongoing support & optimization"
-        ],
-        pricing: {
-          starting: "₹1,50,000/project",
+          starting: "₹65,000/month",
           popular: false
         },
-        cta: "Book Consultation"
+        cta: "Learn More",
+        href: "/enterprise-copilots"
+      },
+      {
+        id: "sales-automation",
+        title: "Sales Intelligence Automation",
+        subtitle: "AI-powered prospect research and outreach",
+        features: [
+          "Automated lead intelligence gathering",
+          "Personalized outreach campaigns",
+          "CRM integration and tracking",
+          "Performance analytics"
+        ],
+        pricing: {
+          starting: "₹50,000/month",
+          popular: false
+        },
+        cta: "Learn More",
+        href: "/sales-automation"
+      },
+      {
+        id: "contact-center-ai",
+        title: "Contact Center QA & Coaching",
+        subtitle: "AI-driven call quality and agent development",
+        features: [
+          "Automated call scoring and analysis",
+          "Compliance monitoring",
+          "Personalized coaching recommendations",
+          "Performance tracking"
+        ],
+        pricing: {
+          starting: "₹55,000/month",
+          popular: false
+        },
+        cta: "Learn More",
+        href: "/contact-center-ai"
+      },
+      {
+        id: "dpdp-compliance",
+        title: "DPDP Compliance Solutions",
+        subtitle: "Complete data protection and privacy compliance",
+        features: [
+          "GDPR & DPDP compliance assessment",
+          "Data mapping and gap analysis",
+          "Compliance automation tools",
+          "Regular audit and reporting"
+        ],
+        pricing: {
+          starting: "₹80,000/month",
+          popular: false
+        },
+        cta: "Learn More",
+        href: "/dpdp-compliance"
       }
     ]
   },
@@ -303,22 +312,25 @@ export const indianHomepageContent = {
     },
     links: {
       services: [
-        { name: "WhatsApp CX Copilot", href: "/services/whatsapp-cx" },
-        { name: "XeroGap AI", href: "/services/xerogap-ai" },
-        { name: "Content Services", href: "/services/content-services" },
-        { name: "Digital Consulting", href: "/services/digital-consulting" }
+        { name: "WhatsApp CX Copilot", href: "/whatsapp-cx" },
+        { name: "XeroGap AI", href: "/xerogap-ai" },
+        { name: "Enterprise Copilots", href: "/enterprise-copilots" },
+        { name: "Sales Automation", href: "/sales-automation" },
+        { name: "Contact Center AI", href: "/contact-center-ai" },
+        { name: "DPDP Compliance", href: "/dpdp-compliance" }
       ],
       company: [
         { name: "About Us", href: "/about" },
-        { name: "Indian Case Studies", href: "/case-studies/india" },
-        { name: "Blog", href: "/blog" },
-        { name: "Careers", href: "/careers" }
+        { name: "Case Studies", href: "/case-studies" },
+        { name: "Careers", href: "/careers" },
+        { name: "Consultation", href: "/consultation" }
       ],
       support: [
         { name: "Contact", href: "/contact" },
         { name: "Help Center", href: "/help" },
         { name: "API Docs", href: "/docs" },
-        { name: "Status", href: "/status" }
+        { name: "Assessment", href: "/assessment" },
+        { name: "Demo", href: "/demo" }
       ]
     },
     newsletter: {

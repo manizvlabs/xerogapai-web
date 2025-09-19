@@ -147,9 +147,18 @@ export default function HomePage() {
                     )}
                   </div>
 
-                  <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                    {service.cta}
-                  </button>
+                  {service.href ? (
+                    <Link
+                      href={service.href}
+                      className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center block"
+                    >
+                      {service.cta}
+                    </Link>
+                  ) : (
+                    <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                      {service.cta}
+                    </button>
+                  )}
                 </div>
               ))}
             </div>

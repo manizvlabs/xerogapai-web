@@ -7,8 +7,14 @@ export const globalHomepageContent = {
     logo: "XeroGap AI",
     navigation: [
       { name: "Services", href: "/services" },
-      { name: "Solutions", href: "/solutions" },
+      { name: "WhatsApp CX", href: "/whatsapp-cx" },
+      { name: "XeroGap AI", href: "/xerogap-ai" },
+      { name: "Enterprise Copilots", href: "/enterprise-copilots" },
+      { name: "Sales Automation", href: "/sales-automation" },
+      { name: "Contact Center AI", href: "/contact-center-ai" },
+      { name: "DPDP Compliance", href: "/dpdp-compliance" },
       { name: "Case Studies", href: "/case-studies" },
+      { name: "Docs", href: "/docs" },
       { name: "About", href: "/about" },
       { name: "Contact", href: "/contact" }
     ],
@@ -17,23 +23,23 @@ export const globalHomepageContent = {
 
   // Hero Section
   hero: {
-    headline: "Transform Customer Experience with WhatsApp AI",
-    subheadline: "Intelligent AI agents that automate workflows, boost efficiency, and scale your business globally",
+    headline: "Accelerate Your Business with AI Automation",
+    subheadline: "From WhatsApp CX to Enterprise Copilots - discover which AI solutions will transform your operations",
     valueProps: [
+      {
+        icon: "🎯",
+        title: "AI Readiness Assessment",
+        description: "Free $500 assessment to identify your automation opportunities"
+      },
       {
         icon: "⚡",
         title: "Quick Implementation",
-        description: "Deploy in days, not months"
+        description: "Deploy in days, not months with our expert team"
       },
       {
-        icon: "📊",
+        icon: "📈",
         title: "Measurable ROI",
-        description: "Track performance with clear metrics"
-      },
-      {
-        icon: "🛡️",
-        title: "Human-in-the-Loop Safety",
-        description: "AI assistance with human oversight"
+        description: "Track performance with comprehensive analytics"
       }
     ],
     primaryCTA: {
@@ -42,14 +48,14 @@ export const globalHomepageContent = {
       href: "/assessment"
     },
     secondaryCTA: {
-      text: "Book WhatsApp Automation Demo",
+      text: "Book Personalized Demo",
       href: "/demo"
     }
   },
 
   // Services Section
   services: {
-    sectionTitle: "Specialized AI Solutions for Growing Businesses",
+    sectionTitle: "Comprehensive AI Solutions for Every Business Need",
     services: [
       {
         id: "whatsapp-cx",
@@ -65,7 +71,8 @@ export const globalHomepageContent = {
           starting: "$500/month",
           popular: true
         },
-        cta: "Get Started"
+        cta: "Learn More",
+        href: "/whatsapp-cx"
       },
       {
         id: "xerogap-ai",
@@ -81,7 +88,8 @@ export const globalHomepageContent = {
           starting: "$300/month",
           popular: false
         },
-        cta: "Get Started"
+        cta: "Learn More",
+        href: "/xerogap-ai"
       },
       {
         id: "enterprise-copilots",
@@ -97,7 +105,8 @@ export const globalHomepageContent = {
           starting: "$800/month",
           popular: false
         },
-        cta: "Learn More"
+        cta: "Learn More",
+        href: "/enterprise-copilots"
       },
       {
         id: "sales-automation",
@@ -113,7 +122,8 @@ export const globalHomepageContent = {
           starting: "$600/month",
           popular: false
         },
-        cta: "Learn More"
+        cta: "Learn More",
+        href: "/sales-automation"
       },
       {
         id: "contact-center-ai",
@@ -129,23 +139,25 @@ export const globalHomepageContent = {
           starting: "$700/month",
           popular: false
         },
-        cta: "Learn More"
+        cta: "Learn More",
+        href: "/contact-center-ai"
       },
       {
-        id: "ai-consulting",
-        title: "AI Implementation Consulting",
-        subtitle: "Expert guidance to implement AI agents in your business",
+        id: "dpdp-compliance",
+        title: "DPDP Compliance Solutions",
+        subtitle: "Complete data protection and privacy compliance",
         features: [
-          "AI readiness assessment",
-          "Custom implementation roadmap",
-          "Team training and support",
-          "Ongoing optimization"
+          "GDPR & DPDP compliance assessment",
+          "Data mapping and gap analysis",
+          "Compliance automation tools",
+          "Regular audit and reporting"
         ],
         pricing: {
-          starting: "$2,000/project",
+          starting: "$1,000/month",
           popular: false
         },
-        cta: "Book Consultation"
+        cta: "Learn More",
+        href: "/dpdp-compliance"
       }
     ]
   },
@@ -248,22 +260,25 @@ export const globalHomepageContent = {
     },
     links: {
       services: [
-        { name: "WhatsApp CX Copilot", href: "/services/whatsapp-cx" },
-        { name: "XeroGap AI", href: "/services/xerogap-ai" },
-        { name: "Enterprise Copilots", href: "/services/enterprise-copilots" },
-        { name: "Sales Automation", href: "/services/sales-automation" }
+        { name: "WhatsApp CX Copilot", href: "/whatsapp-cx" },
+        { name: "XeroGap AI", href: "/xerogap-ai" },
+        { name: "Enterprise Copilots", href: "/enterprise-copilots" },
+        { name: "Sales Automation", href: "/sales-automation" },
+        { name: "Contact Center AI", href: "/contact-center-ai" },
+        { name: "DPDP Compliance", href: "/dpdp-compliance" }
       ],
       company: [
         { name: "About Us", href: "/about" },
         { name: "Case Studies", href: "/case-studies" },
-        { name: "Blog", href: "/blog" },
-        { name: "Careers", href: "/careers" }
+        { name: "Careers", href: "/careers" },
+        { name: "Consultation", href: "/consultation" }
       ],
       support: [
         { name: "Contact", href: "/contact" },
         { name: "Help Center", href: "/help" },
         { name: "API Docs", href: "/docs" },
-        { name: "Status", href: "/status" }
+        { name: "Assessment", href: "/assessment" },
+        { name: "Demo", href: "/demo" }
       ]
     },
     newsletter: {

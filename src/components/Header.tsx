@@ -8,17 +8,19 @@ import { motion } from 'framer-motion';
 import ThemeSwitcher from './ThemeSwitcher';
 import RegionSwitcher from './RegionSwitcher';
 import { siteConfig } from '@/config/site';
+import { useRegion } from '@/contexts/RegionContext';
+import { globalHomepageContent } from '@/regions/global/homepage';
+import { indianHomepageContent } from '@/regions/indian/homepage';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { currentRegion } = useRegion();
 
+  // Select navigation based on region
+  const content = currentRegion === 'india' ? indianHomepageContent : globalHomepageContent;
   const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    ...content.header.navigation
   ];
 
   return (
