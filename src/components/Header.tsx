@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Bars3Icon, XMarkIcon, ChevronDownIcon, ChatBubbleLeftRightIcon, CogIcon, CpuChipIcon, DocumentTextIcon, ShieldCheckIcon, UserGroupIcon, BriefcaseIcon, QuestionMarkCircleIcon, BookOpenIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
-import { motion, AnimatePresence } from 'framer-motion';
 import ThemeSwitcher from './ThemeSwitcher';
 import RegionSwitcher from './RegionSwitcher';
 import { siteConfig } from '@/config/site';
@@ -72,8 +71,7 @@ const Header = () => {
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5 group">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
+            <div
               className="flex items-center"
             >
               <Image
@@ -84,7 +82,7 @@ const Header = () => {
                 className="h-20 w-auto"
                 priority
               />
-            </motion.div>
+            </div>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -114,13 +112,8 @@ const Header = () => {
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 group-hover:w-full transition-all duration-300"></span>
                   </button>
 
-                  <AnimatePresence>
-                    {activeDropdown === item.name && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
+                  {activeDropdown === item.name && (
+                      <div
                         className="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 z-50"
                       >
                         <div className="p-2">
@@ -148,9 +141,8 @@ const Header = () => {
                             );
                           })}
                         </div>
-                      </motion.div>
+                      </div>
                     )}
-                  </AnimatePresence>
                 </div>
               ) : (
                 <Link
