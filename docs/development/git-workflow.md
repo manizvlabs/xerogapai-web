@@ -1,4 +1,4 @@
-# Git Workflow for Zero Digital Website
+# Git Workflow for XeroGap AI Website
 
 ## 🚨 **CRITICAL RULES - ALWAYS FOLLOW**
 

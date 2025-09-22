@@ -1,8 +1,8 @@
-# Security Guide for Zero Digital Website
+# Security Guide for XeroGap AI Website
 
 ## 🔒 **Security Implementation Overview**
 
-This document outlines the comprehensive security measures implemented to protect the Zero Digital website from various threats and attacks.
+This document outlines the comprehensive security measures implemented to protect the XeroGap AI website from various threats and attacks.
 
 ## 🛡️ **Security Features Implemented**
 

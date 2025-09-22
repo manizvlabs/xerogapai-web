@@ -1,4 +1,4 @@
-# Zero Digital - AI-Powered Digital Transformation
+# XeroGap AI - AI-Powered Digital Transformation
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/manizvlabs/zero-digital-website)
 [![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://zero-digital.vercel.app/)
@@ -63,7 +63,7 @@ The website is automatically deployed to Vercel on every push to the `main` bran
 
    ```env
    # Site Configuration
-   NEXT_PUBLIC_SITE_NAME="Zero Digital"
+   NEXT_PUBLIC_SITE_NAME="XeroGap AI"
    NEXT_PUBLIC_SITE_TAGLINE="AI-Powered Digital Transformation"
    NEXT_PUBLIC_DOMAIN="zerodigital.ai"
    NEXT_PUBLIC_LOCATION="Hyderabad, India"

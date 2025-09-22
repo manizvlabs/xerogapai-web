@@ -1,6 +1,6 @@
-# Zero Digital Testing Suite
+# XeroGap AI Testing Suite
 
-This document describes the comprehensive testing setup for the Zero Digital website, including UI tests, API tests, and regression testing.
+This document describes the comprehensive testing setup for the XeroGap AI website, including UI tests, API tests, and regression testing.
 
 ## Overview
 

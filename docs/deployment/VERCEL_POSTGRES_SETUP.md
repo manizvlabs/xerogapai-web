@@ -1,10 +1,10 @@
 # Vercel Postgres Setup Guide
 
-This guide will help you set up Vercel Postgres for persistent contact management in the Zero Digital Website.
+This guide will help you set up Vercel Postgres for persistent contact management in the XeroGap AI Website.
 
 ## 🎯 Overview
 
-The Zero Digital Website currently uses file-based storage for contact form submissions. This guide will help you migrate to Vercel Postgres for persistent, scalable data storage that survives deployments.
+The XeroGap AI Website currently uses file-based storage for contact form submissions. This guide will help you migrate to Vercel Postgres for persistent, scalable data storage that survives deployments.
 
 ## 📋 Prerequisites
 

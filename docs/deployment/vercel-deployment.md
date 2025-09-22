@@ -1,6 +1,6 @@
 # Vercel Deployment Guide
 
-This comprehensive guide will walk you through deploying your Zero Digital website to Vercel, including environment variable configuration, GitHub integration, and production optimizations.
+This comprehensive guide will walk you through deploying your XeroGap AI website to Vercel, including environment variable configuration, GitHub integration, and production optimizations.
 
 ## Prerequisites
 
@@ -282,7 +282,7 @@ import Image from 'next/image'
 
 <Image
   src="/logo.png"
-  alt="Zero Digital Logo"
+  alt="XeroGap AI Logo"
   width={200}
   height={60}
   priority

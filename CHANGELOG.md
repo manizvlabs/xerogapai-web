@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Zero Digital Website will be documented in this file.
+All notable changes to XeroGap AI Website will be documented in this file.
 
 ## [1.0.3] - 2025-09-19
 
@@ -60,7 +60,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2025-09-18
 
 ### 🎉 Initial Release
-- **Complete Website**: Full-featured business website for Zero Digital
+- **Complete Website**: Full-featured business website for XeroGap AI
 - **AI-Powered Branding**: AI-powered digital transformation messaging
 - **Modern UI/UX**: Responsive design with light/dark theme support
 - **SEO Optimized**: Comprehensive meta tags, structured data, and performance optimization

@@ -3,10 +3,10 @@
 Create a `.env.local` file in the root directory with these variables:
 
 ```bash
-# Zero Digital Website Environment Variables
+# XeroGap AI Website Environment Variables
 
 # Site Configuration
-NEXT_PUBLIC_SITE_NAME="Zero Digital"
+NEXT_PUBLIC_SITE_NAME="XeroGap AI"
 NEXT_PUBLIC_SITE_TAGLINE="AI-Powered Digital Transformation"
 NEXT_PUBLIC_SITE_DOMAIN="zerodigital.ai"
 NEXT_PUBLIC_LOCATION="Hyderabad, India"

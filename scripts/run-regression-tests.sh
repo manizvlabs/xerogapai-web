@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Comprehensive Regression Test Runner for Zero Digital
+# Comprehensive Regression Test Runner for XeroGap AI
 # Runs both Playwright UI tests and API tests
 
 set -e  # Exit on any error
@@ -177,7 +177,7 @@ generate_report() {
     echo "           Test Report"
     echo "========================================"
     echo "Test Run Completed: $(date)"
-    echo "Project: Zero Digital Website"
+    echo "Project: XeroGap AI Website"
     echo "Environment: Development"
     echo
 
@@ -217,7 +217,7 @@ cleanup() {
 # Main execution
 main() {
     echo "=========================================="
-    echo "  Zero Digital - Regression Test Suite"
+    echo "  XeroGap AI - Regression Test Suite"
     echo "=========================================="
     echo
 
