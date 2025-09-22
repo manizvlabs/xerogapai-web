@@ -32,11 +32,11 @@ try {
     console.log(`✅ Version updated in .env.local to: ${version}`);
   } else {
     // .env.local doesn't exist, create it with the version
-    const envContent = `# Zero Digital Website Environment Variables
+    const envContent = `# XeroGap AI Website Environment Variables
 # Auto-generated version file
 
 # Site Configuration
-NEXT_PUBLIC_SITE_NAME="Zero Digital"
+NEXT_PUBLIC_SITE_NAME="XeroGap AI"
 NEXT_PUBLIC_SITE_TAGLINE="AI-Powered Digital Transformation"
 NEXT_PUBLIC_SITE_DOMAIN="zerodigital.ai"
 NEXT_PUBLIC_LOCATION="Hyderabad, India"

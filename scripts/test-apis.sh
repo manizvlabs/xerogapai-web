@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# API Testing Script for Zero Digital Website
+# API Testing Script for XeroGap AI Website
 # This script tests all API endpoints with sample data for regression testing
 
 set -e  # Exit on any error
@@ -108,7 +108,7 @@ get_admin_token() {
 # Main test function
 run_api_tests() {
     echo "========================================"
-    echo "   Zero Digital API Regression Tests"
+    echo "   XeroGap AI API Regression Tests"
     echo "========================================"
     echo
 
@@ -325,7 +325,7 @@ test_error_scenarios() {
 
 # Main execution
 main() {
-    echo "Starting API regression tests for Zero Digital..."
+    echo "Starting API regression tests for XeroGap AI..."
     echo "Base URL: $BASE_URL"
     echo
 

@@ -1,6 +1,6 @@
 # Environment Variables Reference
 
-This document provides a comprehensive reference for all environment variables used in the Zero Digital website.
+This document provides a comprehensive reference for all environment variables used in the XeroGap AI website.
 
 ## Quick Setup
 
@@ -17,7 +17,7 @@ This document provides a comprehensive reference for all environment variables u
 ### 🌐 Site Configuration
 | Variable | Description | Example | Required |
 |----------|-------------|---------|----------|
-| `NEXT_PUBLIC_SITE_NAME` | Website name | `"Zero Digital"` | ✅ |
+| `NEXT_PUBLIC_SITE_NAME` | Website name | `"XeroGap AI"` | ✅ |
 | `NEXT_PUBLIC_SITE_TAGLINE` | Website tagline | `"AI-Powered Digital Transformation"` | ✅ |
 | `NEXT_PUBLIC_SITE_DOMAIN` | Primary domain | `"zerodigital.ai"` | ✅ |
 | `NEXT_PUBLIC_SITE_URL` | Full website URL | `"https://zerodigital.ai"` | ✅ |
@@ -31,7 +31,7 @@ This document provides a comprehensive reference for all environment variables u
 ### 📞 Contact & Business
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `NEXT_PUBLIC_COMPANY_NAME` | Company name | `"Zero Digital"` |
+| `NEXT_PUBLIC_COMPANY_NAME` | Company name | `"XeroGap AI"` |
 | `NEXT_PUBLIC_COMPANY_EMAIL` | Contact email | `"info@zerodigital.ai"` |
 | `NEXT_PUBLIC_COMPANY_PHONE` | Phone number | `"+91 98765 43210"` |
 | `NEXT_PUBLIC_COMPANY_ADDRESS` | Business address | `"Hyderabad, Telangana, India"` |

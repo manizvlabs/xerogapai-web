@@ -1,6 +1,6 @@
 // Site Configuration
 export const siteConfig = {
-  name: process.env.NEXT_PUBLIC_SITE_NAME || 'Zero Digital',
+  name: process.env.NEXT_PUBLIC_SITE_NAME || 'XeroGap AI',
   tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'AI-Powered Digital Transformation',
   domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || process.env.NEXT_PUBLIC_DOMAIN || 'zerodigital.ai',
   githubCliToken: process.env.GITHUB_CLI_OAUTH_TOKEN || process.env.GITHUB_PAT,

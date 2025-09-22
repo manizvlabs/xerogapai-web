@@ -1,6 +1,6 @@
 # Netlify Deployment Guide
 
-This guide will walk you through deploying your Zero Digital website to Netlify, including environment variable configuration and GitHub integration.
+This guide will walk you through deploying your XeroGap AI website to Netlify, including environment variable configuration and GitHub integration.
 
 ## Prerequisites
 

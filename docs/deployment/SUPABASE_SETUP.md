@@ -1,10 +1,10 @@
 # Supabase Setup Guide
 
-This guide will help you set up Supabase PostgreSQL for persistent contact management in the Zero Digital Website.
+This guide will help you set up Supabase PostgreSQL for persistent contact management in the XeroGap AI Website.
 
 ## 🎯 Overview
 
-The Zero Digital Website uses Supabase as the primary database for contact form submissions. Supabase offers a generous free tier with 500MB database storage and 50,000 monthly active users, making it perfect for small to medium businesses.
+The XeroGap AI Website uses Supabase as the primary database for contact form submissions. Supabase offers a generous free tier with 500MB database storage and 50,000 monthly active users, making it perfect for small to medium businesses.
 
 ## 📋 Prerequisites
 

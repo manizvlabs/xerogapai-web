@@ -3,7 +3,7 @@
 # GitHub Actions Secrets Setup Script
 # This script helps you set up the required secrets for GitHub Actions
 
-echo "🔧 Setting up GitHub Actions secrets for Zero Digital website deployment..."
+echo "🔧 Setting up GitHub Actions secrets for XeroGap AI website deployment..."
 
 # Check if gh CLI is installed
 if ! command -v gh &> /dev/null; then

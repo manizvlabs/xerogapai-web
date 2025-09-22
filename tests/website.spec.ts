@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Zero Digital Website', () => {
+test.describe('XeroGap AI Website', () => {
   test('Homepage loads correctly', async ({ page }) => {
     // Listen for console errors
     const errors: string[] = [];
@@ -15,7 +15,7 @@ test.describe('Zero Digital Website', () => {
     await page.waitForLoadState('networkidle');
 
     // Check page title
-    await expect(page).toHaveTitle(/Zero Digital/);
+    await expect(page).toHaveTitle(/XeroGap AI/);
 
     // Log any JavaScript errors
     if (errors.length > 0) {
@@ -56,7 +56,7 @@ test.describe('Zero Digital Website', () => {
     
     // Check footer - target the footer specifically
     const footer = page.getByRole('contentinfo');
-    await expect(footer.getByText('Zero Digital')).toBeVisible();
+    await expect(footer.getByText('XeroGap AI')).toBeVisible();
   });
 
   test('Services page loads correctly', async ({ page }) => {
@@ -305,7 +305,7 @@ test.describe('Zero Digital Website', () => {
         await expect(page).toHaveURL(link.url);
 
         // Verify the page title contains expected text
-        const expectedTitle = link.name === 'Home' ? 'Zero Digital' : `${link.name} - Zero Digital`;
+        const expectedTitle = link.name === 'Home' ? 'XeroGap AI' : `${link.name} - XeroGap AI`;
         await expect(page).toHaveTitle(new RegExp(expectedTitle));
 
         // Go back to homepage for next test (using goto instead of goBack for reliability)
@@ -435,12 +435,12 @@ test.describe('Zero Digital Website', () => {
   test.describe('SEO and Performance', () => {
     test('All pages have proper meta tags', async ({ page }) => {
       const pages = [
-        { url: '/', title: 'Zero Digital' },
-        { url: '/about', title: 'About - Zero Digital' },
-        { url: '/services', title: 'Services - Zero Digital' },
-        { url: '/portfolio', title: 'Portfolio - Zero Digital' },
-        { url: '/blog', title: 'Blog - Zero Digital' },
-        { url: '/contact', title: 'Contact - Zero Digital' }
+        { url: '/', title: 'XeroGap AI' },
+        { url: '/about', title: 'About - XeroGap AI' },
+        { url: '/services', title: 'Services - XeroGap AI' },
+        { url: '/portfolio', title: 'Portfolio - XeroGap AI' },
+        { url: '/blog', title: 'Blog - XeroGap AI' },
+        { url: '/contact', title: 'Contact - XeroGap AI' }
       ];
 
       for (const pageData of pages) {
