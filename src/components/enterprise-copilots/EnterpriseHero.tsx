@@ -24,7 +24,7 @@ export default function EnterpriseHero() {
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800 dark:bg-slate-700 text-slate-200 text-sm font-medium mb-8">
-            <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+            <span className="w-2 h-2 bg-indigo-400 rounded-full mr-2"></span>
             Enterprise Knowledge Copilots
           </div>
 
@@ -51,7 +51,7 @@ export default function EnterpriseHero() {
             </div>
 
             <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700">
-              <ShieldCheckIcon className="h-8 w-8 text-green-400 mx-auto mb-3" />
+              <ShieldCheckIcon className="h-8 w-8 text-indigo-400 mx-auto mb-3" />
               <div className="text-3xl font-bold text-white mb-1">99.9%</div>
               <div className="text-sm text-slate-400">Compliance Rate</div>
             </div>
@@ -77,8 +77,8 @@ export default function EnterpriseHero() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <div className="w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <span className="text-green-400 text-sm font-bold">✓</span>
+                  <div className="w-6 h-6 bg-indigo-500/20 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span className="text-indigo-400 text-sm font-bold">✓</span>
                   </div>
                   <div>
                     <div className="font-semibold text-white">Instant Knowledge Access</div>
@@ -86,8 +86,8 @@ export default function EnterpriseHero() {
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <span className="text-green-400 text-sm font-bold">✓</span>
+                  <div className="w-6 h-6 bg-indigo-500/20 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span className="text-indigo-400 text-sm font-bold">✓</span>
                   </div>
                   <div>
                     <div className="font-semibold text-white">Multi-Language Support</div>
@@ -97,8 +97,8 @@ export default function EnterpriseHero() {
               </div>
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <div className="w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <span className="text-green-400 text-sm font-bold">✓</span>
+                  <div className="w-6 h-6 bg-indigo-500/20 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span className="text-indigo-400 text-sm font-bold">✓</span>
                   </div>
                   <div>
                     <div className="font-semibold text-white">Enterprise Security</div>
@@ -106,8 +106,8 @@ export default function EnterpriseHero() {
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <span className="text-green-400 text-sm font-bold">✓</span>
+                  <div className="w-6 h-6 bg-indigo-500/20 rounded-full flex items-center justify-center mr-3 mt-1">
+                    <span className="text-indigo-400 text-sm font-bold">✓</span>
                   </div>
                   <div>
                     <div className="font-semibold text-white">Always Up-to-Date</div>
@@ -122,7 +122,7 @@ export default function EnterpriseHero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="#pricing"
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Start Enterprise Trial
             </Link>

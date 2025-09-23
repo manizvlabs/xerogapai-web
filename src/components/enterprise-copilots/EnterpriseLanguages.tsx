@@ -124,12 +124,12 @@ export default function EnterpriseLanguages() {
                 key={index}
                 className={`p-4 rounded-lg border text-center ${
                   language.rtl
-                    ? 'border-green-200 bg-green-50 dark:bg-green-900/20'
+                    ? 'border-indigo-200 bg-indigo-50 dark:bg-indigo-900/20'
                     : 'border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800'
                 }`}
               >
                 <div className={`text-lg font-semibold mb-1 ${
-                  language.rtl ? 'text-green-800 dark:text-green-300' : 'text-gray-900 dark:text-white'
+                  language.rtl ? 'text-indigo-800 dark:text-indigo-300' : 'text-gray-900 dark:text-white'
                 }`}>
                   {language.native}
                 </div>
@@ -180,12 +180,12 @@ export default function EnterpriseLanguages() {
         </div>
 
         {/* Global Use Cases */}
-        <div className="bg-gradient-to-r from-cyan-600 to-green-600 rounded-2xl p-8 text-white mb-16">
+        <div className="bg-gradient-to-r from-indigo-600 to-blue-600 rounded-2xl p-8 text-white mb-16">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
               Global Enterprise Success Stories
             </h3>
-            <p className="text-cyan-100 max-w-2xl mx-auto">
+            <p className="text-indigo-100 max-w-2xl mx-auto">
               See how multinational companies are using multi-language AI to support their global workforce
             </p>
           </div>
@@ -200,17 +200,17 @@ export default function EnterpriseLanguages() {
                 <div className="space-y-3 text-sm">
                   <div>
                     <div className="text-cyan-200 font-medium mb-1">Challenge:</div>
-                    <div className="text-cyan-100">{useCase.challenge}</div>
+                    <div className="text-indigo-100">{useCase.challenge}</div>
                   </div>
 
                   <div>
                     <div className="text-cyan-200 font-medium mb-1">Solution:</div>
-                    <div className="text-cyan-100">{useCase.solution}</div>
+                    <div className="text-indigo-100">{useCase.solution}</div>
                   </div>
 
-                  <div className="bg-green-500/20 rounded-lg p-3 mt-4">
-                    <div className="text-green-300 font-medium mb-1">Result:</div>
-                    <div className="text-green-200">{useCase.result}</div>
+                  <div className="bg-indigo-500/20 rounded-lg p-3 mt-4">
+                    <div className="text-indigo-300 font-medium mb-1">Result:</div>
+                    <div className="text-indigo-200">{useCase.result}</div>
                   </div>
                 </div>
               </div>

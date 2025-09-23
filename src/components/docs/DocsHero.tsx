@@ -5,7 +5,7 @@ import { BookOpenIcon, CodeBracketIcon, LightBulbIcon, UsersIcon } from '@heroic
 
 export default function DocsHero() {
   return (
-    <div className="relative isolate bg-gradient-to-br from-indigo-50 via-green-50 to-cyan-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="relative isolate bg-gradient-to-br from-indigo-900 via-blue-900 to-cyan-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <svg className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
@@ -27,15 +27,15 @@ export default function DocsHero() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl mb-8">
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl mb-8">
             Build, Integrate, and
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-green-600 to-cyan-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-cyan-400">
               {" "}Scale with XeroGap AI
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl leading-8 text-gray-600 dark:text-white mb-12 max-w-3xl mx-auto">
+          <p className="text-xl leading-8 text-slate-300 mb-12 max-w-3xl mx-auto">
             Comprehensive documentation, API references, and integration guides to help you build
             powerful AI-powered applications with XeroGap AI. From quick starts to advanced implementations.
           </p>
