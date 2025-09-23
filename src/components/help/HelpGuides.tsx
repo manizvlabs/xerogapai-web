@@ -130,7 +130,7 @@ export default function HelpGuides() {
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case 'Beginner':
-        return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300';
+        return 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300';
       case 'Intermediate':
         return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300';
       case 'Advanced':
@@ -169,7 +169,7 @@ export default function HelpGuides() {
                       {guide.description}
                     </p>
                     <div className="flex items-center space-x-2 mb-3">
-                      <span className="text-xs bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-2 py-1 rounded">
+                      <span className="text-xs bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 px-2 py-1 rounded">
                         {guide.type}
                       </span>
                       <span className={`text-xs px-2 py-1 rounded ${getDifficultyColor(guide.difficulty)}`}>
@@ -182,7 +182,7 @@ export default function HelpGuides() {
                     </div>
                   </div>
                 </div>
-                <button className="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors">
+                <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors">
                   Start Guide
                 </button>
               </div>
@@ -216,7 +216,7 @@ export default function HelpGuides() {
                         </span>
                       </div>
                     </div>
-                    <button className="ml-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors">
+                    <button className="ml-4 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors">
                       Read
                     </button>
                   </div>
@@ -235,7 +235,7 @@ export default function HelpGuides() {
               <div className="space-y-3">
                 {videoTutorials.map((video, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+                    <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center">
                       <span className="text-lg">{video.thumbnail}</span>
                     </div>
                     <div className="flex-1">
@@ -253,7 +253,7 @@ export default function HelpGuides() {
               </div>
               <Link
                 href="/help/videos"
-                className="inline-flex items-center text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-blue-300 font-medium text-sm mt-4"
+                className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium text-sm mt-4"
               >
                 View all videos →
               </Link>
@@ -269,7 +269,7 @@ export default function HelpGuides() {
                   const IconComponent = path.icon;
                   return (
                     <div key={index} className="flex items-start space-x-3">
-                      <IconComponent className="w-8 h-8 text-green-600 mt-1" />
+                      <IconComponent className="w-8 h-8 text-indigo-600 mt-1" />
                       <div className="flex-1">
                         <h5 className="font-medium text-gray-900 dark:text-white text-sm">
                           {path.title}

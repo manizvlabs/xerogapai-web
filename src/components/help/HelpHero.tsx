@@ -5,7 +5,7 @@ import { QuestionMarkCircleIcon, LightBulbIcon, ChatBubbleLeftRightIcon, Documen
 
 export default function HelpHero() {
   return (
-    <div className="relative isolate bg-gradient-to-br from-green-50 via-emerald-50 to-purple-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+    <div className="relative isolate bg-gradient-to-br from-indigo-900 via-purple-900 to-violet-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <svg className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
@@ -21,21 +21,21 @@ export default function HelpHero() {
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm font-medium mb-8">
-            <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-indigo-800/30 text-indigo-200 text-sm font-medium mb-8">
+            <span className="w-2 h-2 bg-indigo-400 rounded-full mr-2"></span>
             24/7 Self-Service Support
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl mb-8">
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl mb-8">
             Find Answers
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-indigo-600 to-emerald-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-violet-400">
               {" "}Instantly
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl leading-8 text-gray-600 dark:text-white mb-12 max-w-3xl mx-auto">
+          <p className="text-xl leading-8 text-slate-300 mb-12 max-w-3xl mx-auto">
             Get instant answers to your questions with our comprehensive knowledge base,
             detailed guides, and interactive support tools. No waiting required.
           </p>
@@ -107,7 +107,7 @@ export default function HelpHero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="#search"
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Search Help Center
             </Link>

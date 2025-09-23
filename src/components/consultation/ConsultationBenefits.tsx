@@ -88,8 +88,8 @@ export default function ConsultationBenefits() {
             return (
               <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
-                    <IconComponent className="w-6 h-6 text-green-600" />
+                  <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center mr-4">
+                    <IconComponent className="w-6 h-6 text-emerald-600" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                     {benefit.title}

@@ -107,8 +107,8 @@ export default function EnterpriseSecurity() {
             return (
               <div key={index} className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
-                    <IconComponent className="w-6 h-6 text-green-600" />
+                  <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center mr-4">
+                    <IconComponent className="w-6 h-6 text-indigo-600" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                     {feature.title}
@@ -125,7 +125,7 @@ export default function EnterpriseSecurity() {
                   </h4>
                   {feature.details.map((detail, detailIndex) => (
                     <div key={detailIndex} className="flex items-center text-sm">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
+                      <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-3 flex-shrink-0"></div>
                       <span className="text-gray-600 dark:text-white">{detail}</span>
                     </div>
                   ))}
@@ -154,8 +154,8 @@ export default function EnterpriseSecurity() {
                     {standard.name}
                   </div>
                   <div className={`text-sm font-medium ${
-                    standard.status === 'Certified' ? 'text-green-600' :
-                    standard.status === 'Compliant' ? 'text-green-600' : 'text-orange-600'
+                    standard.status === 'Certified' ? 'text-indigo-600' :
+                    standard.status === 'Compliant' ? 'text-indigo-600' : 'text-orange-600'
                   }`}>
                     {standard.status}
                   </div>
@@ -169,12 +169,12 @@ export default function EnterpriseSecurity() {
         </div>
 
         {/* Security Metrics */}
-        <div className="bg-gradient-to-r from-green-600 to-green-600 rounded-2xl p-8 text-white mb-16">
+        <div className="bg-gradient-to-r from-indigo-600 to-blue-600 rounded-2xl p-8 text-white mb-16">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
               Security Track Record
             </h3>
-            <p className="text-green-100 max-w-2xl mx-auto">
+            <p className="text-indigo-100 max-w-2xl mx-auto">
               Proven security performance with zero incidents and perfect compliance scores
             </p>
           </div>
@@ -184,7 +184,7 @@ export default function EnterpriseSecurity() {
               <div key={index} className="text-center">
                 <div className="text-3xl font-bold mb-2">{metric.value}</div>
                 <div className="text-lg font-semibold mb-1">{metric.label}</div>
-                <div className="text-sm text-green-100">{metric.description}</div>
+                <div className="text-sm text-indigo-100">{metric.description}</div>
               </div>
             ))}
           </div>
@@ -194,7 +194,7 @@ export default function EnterpriseSecurity() {
         <div className="text-center">
           <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto">
             <div className="flex items-center justify-center mb-6">
-              <ShieldCheckIcon className="w-12 h-12 text-green-600 mr-4" />
+              <ShieldCheckIcon className="w-12 h-12 text-indigo-600 mr-4" />
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                 Our Security Promise
               </h3>

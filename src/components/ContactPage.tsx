@@ -101,7 +101,7 @@ export default function ContactPage() {
       <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p className="text-lg text-gray-600 dark:text-white">Loading contact page content...</p>
           </div>
         </div>
@@ -137,13 +137,36 @@ export default function ContactPage() {
   return (
     <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <div className="bg-gray-50 dark:bg-gray-800">
+      <div className="relative isolate bg-gradient-to-br from-blue-900 via-indigo-900 to-violet-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-blue-700 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
+            <svg>
+              <defs>
+                <pattern id="contact-pattern" width={200} height={200} x="50%" y={-1} patternUnits="userSpaceOnUse">
+                  <path d="M.5 200V.5H200" fill="none" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" strokeWidth={0} fill="url(#contact-pattern)" />
+            </svg>
+          </div>
+        </div>
+
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
+            {/* Badge */}
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-800/30 text-blue-200 text-sm font-medium mb-8">
+              <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+              Get in Touch
+            </div>
+
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
               {(pageContent.hero as Record<string, unknown>).title}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400">
+                {" "}& Support
+              </span>
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
+            <p className="mt-6 text-xl leading-8 text-slate-300">
               {(pageContent.hero as Record<string, unknown>).subtitle}
             </p>
           </div>
@@ -212,7 +235,7 @@ export default function ContactPage() {
                   </p>
                   <Link
                     href={pageContent.consultation?.buttonHref || "/assessment"}
-                    className="mt-4 inline-block rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
+                    className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
                   >
                     {pageContent.consultation?.buttonText}
                   </Link>
@@ -240,7 +263,7 @@ export default function ContactPage() {
               {/* India Support */}
               <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
                     🇮🇳
                   </div>
                   <div>
@@ -255,17 +278,17 @@ export default function ContactPage() {
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <PhoneIcon className="w-5 h-5 text-green-600" />
+                    <PhoneIcon className="w-5 h-5 text-blue-600" />
                     <Link href={`tel:${pageContent.regionalSupport?.india?.contact || "+919876543210"}`}
-                       className="text-gray-600 dark:text-white hover:text-green-600">
+                       className="text-gray-600 dark:text-white hover:text-blue-600">
                       {pageContent.regionalSupport?.india?.contact || "+91 98765 43210"}
                     </Link>
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <DevicePhoneMobileIcon className="w-5 h-5 text-green-600" />
+                    <DevicePhoneMobileIcon className="w-5 h-5 text-blue-600" />
                     <Link href={pageContent.regionalSupport?.india?.whatsapp || "https://wa.me/919876543210"}
-                       className="text-gray-600 dark:text-white hover:text-green-600">
+                       className="text-gray-600 dark:text-white hover:text-blue-600">
                       WhatsApp Business
                     </Link>
                   </div>
@@ -288,7 +311,7 @@ export default function ContactPage() {
               {/* Global Support */}
               <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
                     🌍
                   </div>
                   <div>
@@ -303,17 +326,17 @@ export default function ContactPage() {
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <PhoneIcon className="w-5 h-5 text-green-600" />
+                    <PhoneIcon className="w-5 h-5 text-blue-600" />
                     <Link href={`tel:${pageContent.regionalSupport?.global?.contact || "+15551234567"}`}
-                       className="text-gray-600 dark:text-white hover:text-green-600">
+                       className="text-gray-600 dark:text-white hover:text-blue-600">
                       {pageContent.regionalSupport?.global?.contact || "+1 (555) 123-4567"}
                     </Link>
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <DevicePhoneMobileIcon className="w-5 h-5 text-green-600" />
+                    <DevicePhoneMobileIcon className="w-5 h-5 text-blue-600" />
                     <Link href={pageContent.regionalSupport?.global?.whatsapp || "https://wa.me/15551234567"}
-                       className="text-gray-600 dark:text-white hover:text-green-600">
+                       className="text-gray-600 dark:text-white hover:text-blue-600">
                       WhatsApp Business
                     </Link>
                   </div>

@@ -72,8 +72,8 @@ export default function EnterpriseSpecs() {
             return (
               <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
-                    <IconComponent className="w-6 h-6 text-green-600" />
+                  <div className="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center mr-4">
+                    <IconComponent className="w-6 h-6 text-indigo-600" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                     {spec.category}
@@ -86,7 +86,7 @@ export default function EnterpriseSpecs() {
                       <span className="text-gray-700 dark:text-white font-medium">
                         {item.label}
                       </span>
-                      <span className="text-green-600 dark:text-green-400 font-semibold">
+                      <span className="text-indigo-600 dark:text-green-400 font-semibold">
                         {item.value}
                       </span>
                     </div>
@@ -97,11 +97,11 @@ export default function EnterpriseSpecs() {
           })}
         </div>
 
-        <div className="bg-gradient-to-r from-green-600 to-indigo-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-indigo-600 to-blue-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">
             Enterprise Architecture Overview
           </h3>
-          <p className="text-green-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-indigo-100 mb-8 max-w-2xl mx-auto">
             Multi-region, multi-tenant architecture designed for scale, security, and compliance
           </p>
 
@@ -109,7 +109,7 @@ export default function EnterpriseSpecs() {
             <div className="text-center">
               <div className="text-3xl mb-3">🏗️</div>
               <h4 className="text-lg font-semibold mb-2">Microservices</h4>
-              <p className="text-green-100 text-sm">
+              <p className="text-indigo-100 text-sm">
                 Modular architecture for scalability
               </p>
             </div>
@@ -117,7 +117,7 @@ export default function EnterpriseSpecs() {
             <div className="text-center">
               <div className="text-3xl mb-3">🔒</div>
               <h4 className="text-lg font-semibold mb-2">Zero Trust</h4>
-              <p className="text-green-100 text-sm">
+              <p className="text-indigo-100 text-sm">
                 Security-first design principles
               </p>
             </div>
@@ -125,7 +125,7 @@ export default function EnterpriseSpecs() {
             <div className="text-center">
               <div className="text-3xl mb-3">📊</div>
               <h4 className="text-lg font-semibold mb-2">Real-time Analytics</h4>
-              <p className="text-green-100 text-sm">
+              <p className="text-indigo-100 text-sm">
                 Live monitoring and insights
               </p>
             </div>
@@ -133,7 +133,7 @@ export default function EnterpriseSpecs() {
             <div className="text-center">
               <div className="text-3xl mb-3">🌍</div>
               <h4 className="text-lg font-semibold mb-2">Global CDN</h4>
-              <p className="text-green-100 text-sm">
+              <p className="text-indigo-100 text-sm">
                 Worldwide content delivery
               </p>
             </div>

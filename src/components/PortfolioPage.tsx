@@ -125,13 +125,36 @@ export default function PortfolioPage() {
   return (
     <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <div className="bg-gray-50 dark:bg-gray-800">
+      <div className="relative isolate bg-gradient-to-br from-cyan-900 via-teal-900 to-emerald-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-cyan-700 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
+            <svg>
+              <defs>
+                <pattern id="portfolio-pattern" width={200} height={200} x="50%" y={-1} patternUnits="userSpaceOnUse">
+                  <path d="M.5 200V.5H200" fill="none" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" strokeWidth={0} fill="url(#portfolio-pattern)" />
+            </svg>
+          </div>
+        </div>
+
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
+            {/* Badge */}
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-cyan-800/30 text-cyan-200 text-sm font-medium mb-8">
+              <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>
+              Featured Projects
+            </div>
+
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
               {(pageContent.hero as Record<string, unknown>).title}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400">
+                {" "}& Impact
+              </span>
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
+            <p className="mt-6 text-xl leading-8 text-slate-300">
               {(pageContent.hero as Record<string, unknown>).subtitle}
             </p>
           </div>

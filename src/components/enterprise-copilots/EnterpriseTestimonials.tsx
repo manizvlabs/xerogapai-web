@@ -81,7 +81,7 @@ export default function EnterpriseTestimonials() {
               </blockquote>
 
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                <div className="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                   {testimonial.avatar}
                 </div>
                 <div>
@@ -94,7 +94,7 @@ export default function EnterpriseTestimonials() {
                   <div className="text-sm text-gray-500 dark:text-white">
                     {testimonial.company}, {testimonial.location}
                   </div>
-                  <div className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">
+                  <div className="text-xs text-indigo-600 dark:text-indigo-400 font-medium mt-1">
                     {testimonial.industry}
                   </div>
                 </div>
@@ -104,7 +104,7 @@ export default function EnterpriseTestimonials() {
               <div className="grid grid-cols-3 gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
                 {testimonial.metrics.map((metric, metricIndex) => (
                   <div key={metricIndex} className="text-center">
-                    <div className="text-lg font-bold text-green-600 mb-1">
+                    <div className="text-lg font-bold text-indigo-600 mb-1">
                       {metric.value}
                     </div>
                     <div className="text-xs text-gray-600 dark:text-white leading-tight">
@@ -120,19 +120,19 @@ export default function EnterpriseTestimonials() {
         {/* Enterprise Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600 mb-2">500+</div>
+            <div className="text-3xl font-bold text-indigo-600 mb-2">500+</div>
             <div className="text-sm text-gray-600 dark:text-white">Enterprise Clients</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600 mb-2">2M+</div>
+            <div className="text-3xl font-bold text-indigo-600 mb-2">2M+</div>
             <div className="text-sm text-gray-600 dark:text-white">Daily Queries</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600 mb-2">99.9%</div>
+            <div className="text-3xl font-bold text-indigo-600 mb-2">99.9%</div>
             <div className="text-sm text-gray-600 dark:text-white">Uptime SLA</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600 mb-2">95%</div>
+            <div className="text-3xl font-bold text-indigo-600 mb-2">95%</div>
             <div className="text-sm text-gray-600 dark:text-white">User Satisfaction</div>
           </div>
         </div>

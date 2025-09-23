@@ -106,8 +106,8 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
               {/* Header */}
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
-                    <IconComponent className="w-6 h-6 text-green-600" />
+                  <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center mr-4">
+                    <IconComponent className="w-6 h-6 text-emerald-600" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
@@ -119,7 +119,7 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
                     </div>
                   </div>
                 </div>
-                <div className="text-green-600 group-hover:text-green-700 transition-colors">
+                <div className="text-emerald-600 group-hover:text-emerald-700 transition-colors">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -156,7 +156,7 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
                 <ul className="space-y-2">
                   {type.covers.map((item, index) => (
                     <li key={index} className="flex items-start text-sm">
-                      <span className="text-green-500 mr-2 mt-0.5">•</span>
+                      <span className="text-emerald-500 mr-2 mt-0.5">•</span>
                       <span className="text-gray-600 dark:text-white">{item}</span>
                     </li>
                   ))}
@@ -169,7 +169,7 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
                   e.stopPropagation();
                   onTypeSelected(type.id);
                 }}
-                className="w-full mt-6 bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg font-semibold transition-colors"
+                className="w-full mt-6 bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-4 rounded-lg font-semibold transition-colors"
               >
                 Select This Consultation
               </button>
@@ -180,7 +180,7 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
 
       {/* Help text */}
       <div className="mt-12 text-center">
-        <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-6 border border-green-200 dark:border-green-800 max-w-2xl mx-auto">
+        <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-6 border border-emerald-200 dark:border-emerald-800 max-w-2xl mx-auto">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
             Not sure which consultation to choose?
           </h3>
@@ -190,7 +190,7 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
           </p>
           <button
             onClick={() => onTypeSelected('business')}
-            className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
           >
             Start with Business Strategy
           </button>

@@ -110,13 +110,13 @@ export default function EnterprisePricing() {
               key={index}
               className={`relative bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-2 ${
                 plan.popular
-                  ? 'border-green-500 dark:border-green-400'
+                  ? 'border-indigo-500 dark:border-indigo-400'
                   : 'border-gray-200 dark:border-gray-700'
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  <div className="bg-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
                     Most Popular
                   </div>
                 </div>
@@ -152,7 +152,7 @@ export default function EnterprisePricing() {
                 </h4>
                 {plan.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center">
-                    <CheckIcon className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
+                    <CheckIcon className="h-5 w-5 text-indigo-500 mr-3 flex-shrink-0" />
                     <span className="text-sm text-gray-700 dark:text-white">{feature}</span>
                   </div>
                 ))}
@@ -175,7 +175,7 @@ export default function EnterprisePricing() {
               <button
                 className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${
                   plan.popular
-                    ? 'bg-green-600 hover:bg-green-700 text-white'
+                    ? 'bg-indigo-600 hover:bg-indigo-700 text-white'
                     : plan.name === 'Enterprise Elite'
                     ? 'bg-gray-900 hover:bg-gray-800 text-white dark:bg-gray-700 dark:hover:bg-gray-600'
                     : 'bg-gray-100 hover:bg-gray-200 text-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white'
@@ -204,7 +204,7 @@ export default function EnterprisePricing() {
                 <tr className="border-b border-gray-200 dark:border-gray-700">
                   <th className="text-left py-4 px-4 font-semibold text-gray-900 dark:text-white">Feature</th>
                   <th className="text-center py-4 px-4 font-semibold text-gray-900 dark:text-white">Starter</th>
-                  <th className="text-center py-4 px-4 font-semibold text-green-600">Pro</th>
+                  <th className="text-center py-4 px-4 font-semibold text-indigo-600">Pro</th>
                   <th className="text-center py-4 px-4 font-semibold text-gray-900 dark:text-white">Elite</th>
                 </tr>
               </thead>
@@ -216,20 +216,20 @@ export default function EnterprisePricing() {
                     </td>
                     <td className="py-4 px-4 text-center">
                       {index < 6 ? (
-                        <CheckIcon className="h-5 w-5 text-green-500 mx-auto" />
+                        <CheckIcon className="h-5 w-5 text-indigo-500 mx-auto" />
                       ) : (
                         <XMarkIcon className="h-5 w-5 text-red-500 mx-auto" />
                       )}
                     </td>
                     <td className="py-4 px-4 text-center">
                       {index < 9 ? (
-                        <CheckIcon className="h-5 w-5 text-green-500 mx-auto" />
+                        <CheckIcon className="h-5 w-5 text-indigo-500 mx-auto" />
                       ) : (
                         <XMarkIcon className="h-5 w-5 text-red-500 mx-auto" />
                       )}
                     </td>
                     <td className="py-4 px-4 text-center">
-                      <CheckIcon className="h-5 w-5 text-green-500 mx-auto" />
+                      <CheckIcon className="h-5 w-5 text-indigo-500 mx-auto" />
                     </td>
                   </tr>
                 ))}
@@ -239,12 +239,12 @@ export default function EnterprisePricing() {
         </div>
 
         {/* Enterprise Benefits */}
-        <div className="bg-gradient-to-r from-green-600 to-indigo-600 rounded-2xl p-8 text-white">
+        <div className="bg-gradient-to-r from-indigo-600 to-blue-600 rounded-2xl p-8 text-white">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
               Why Enterprise Copilots?
             </h3>
-            <p className="text-green-100 max-w-2xl mx-auto">
+            <p className="text-indigo-100 max-w-2xl mx-auto">
               More than just AI - a complete enterprise knowledge management solution
             </p>
           </div>
@@ -253,7 +253,7 @@ export default function EnterprisePricing() {
             <div className="text-center">
               <div className="text-4xl mb-3">🏢</div>
               <h4 className="text-xl font-semibold mb-2">Enterprise Scale</h4>
-              <p className="text-green-100 text-sm">
+              <p className="text-indigo-100 text-sm">
                 Built for thousands of users and millions of documents
               </p>
             </div>
@@ -261,7 +261,7 @@ export default function EnterprisePricing() {
             <div className="text-center">
               <div className="text-4xl mb-3">🔒</div>
               <h4 className="text-xl font-semibold mb-2">Bank-Level Security</h4>
-              <p className="text-green-100 text-sm">
+              <p className="text-indigo-100 text-sm">
                 SOC 2, ISO 27001, and GDPR compliant
               </p>
             </div>
@@ -269,7 +269,7 @@ export default function EnterprisePricing() {
             <div className="text-center">
               <div className="text-4xl mb-3">🌍</div>
               <h4 className="text-xl font-semibold mb-2">Global Support</h4>
-              <p className="text-green-100 text-sm">
+              <p className="text-indigo-100 text-sm">
                 20+ languages with 24/7 enterprise support
               </p>
             </div>

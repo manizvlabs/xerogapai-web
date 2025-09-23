@@ -85,7 +85,7 @@ export default function HelpStatus() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'operational':
-        return <CheckCircleIcon className="w-5 h-5 text-green-500" />;
+        return <CheckCircleIcon className="w-5 h-5 text-indigo-500" />;
       case 'degraded':
         return <ExclamationTriangleIcon className="w-5 h-5 text-yellow-500" />;
       case 'down':
@@ -98,7 +98,7 @@ export default function HelpStatus() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'operational':
-        return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300';
+        return 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300';
       case 'degraded':
         return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300';
       case 'down':
@@ -184,8 +184,8 @@ export default function HelpStatus() {
                     </h4>
                     <span className={`text-xs px-2 py-1 rounded-full ${
                       incident.status === 'resolved'
-                        ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
-                        : 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                        ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300'
+                        : 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300'
                     }`}>
                       {incident.status}
                     </span>

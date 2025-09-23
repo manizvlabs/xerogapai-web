@@ -5,7 +5,7 @@ import { RocketLaunchIcon, UsersIcon, LightBulbIcon, HeartIcon } from '@heroicon
 
 export default function CareerHero() {
   return (
-    <div className="relative isolate bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="relative isolate bg-gradient-to-br from-purple-900 via-pink-900 to-orange-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <svg className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
@@ -27,15 +27,15 @@ export default function CareerHero() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl mb-8">
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl mb-8">
             Shape the Future of
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400">
               {" "}AI Automation
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl leading-8 text-gray-600 dark:text-white mb-12 max-w-3xl mx-auto">
+          <p className="text-xl leading-8 text-slate-300 mb-12 max-w-3xl mx-auto">
             Join a team of passionate innovators building the next generation of AI-powered business solutions.
             We're looking for talented individuals who want to make a real impact.
           </p>
