@@ -30,7 +30,7 @@ export default function DpdpHero() {
 
           {/* Main Headline */}
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl mb-8">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 dark:from-orange-400 dark:via-red-400 dark:to-pink-400">
+            <span className="text-white">
               Achieve DPDP Compliance
               <br />
               Before 2025
