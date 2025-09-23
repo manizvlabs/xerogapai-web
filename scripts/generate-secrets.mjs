@@ -66,7 +66,7 @@ const secrets = {
   NEXT_PUBLIC_SITE_NAME: 'XeroGap AI',
   NEXT_PUBLIC_SITE_TAGLINE: 'AI-Powered Digital Transformation',
   NEXT_PUBLIC_SITE_DOMAIN: 'zerodigital.ai',
-  NEXT_PUBLIC_LOCATION: 'Hyderabad, India',
+  NEXT_PUBLIC_LOCATION: '',
   NEXT_PUBLIC_PHONE: '+917702661991',
   NEXT_PUBLIC_EMAIL: 'info@zerodigital.ai',
   NEXT_PUBLIC_APP_VERSION: getCurrentVersion(),

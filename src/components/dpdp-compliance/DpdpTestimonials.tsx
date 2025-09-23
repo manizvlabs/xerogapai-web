@@ -49,7 +49,7 @@ export default function DpdpTestimonials() {
       author: "Vikram Singh",
       position: "CEO",
       company: "E-commerce Plus",
-      location: "Hyderabad, Telangana",
+      location: "",
       avatar: "VS",
       metrics: [
         { label: "Data Practices", value: "Improved 80%" },

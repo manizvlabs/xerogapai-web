@@ -56,7 +56,7 @@ export default function CareerApply() {
     },
     {
       question: 'Do you accept remote applications?',
-      answer: 'Yes! We have a remote-first culture and accept applications from anywhere in India. Some roles may require occasional travel to our Bangalore office.'
+      answer: 'Yes! We have a remote-first culture and accept applications from anywhere. Some roles may require occasional travel to our Bangalore office.'
     },
     {
       question: 'What is the typical interview process timeline?',

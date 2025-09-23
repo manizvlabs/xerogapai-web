@@ -34,7 +34,7 @@ This document provides a comprehensive reference for all environment variables u
 | `NEXT_PUBLIC_COMPANY_NAME` | Company name | `"XeroGap AI"` |
 | `NEXT_PUBLIC_COMPANY_EMAIL` | Contact email | `"info@zerodigital.ai"` |
 | `NEXT_PUBLIC_COMPANY_PHONE` | Phone number | `"+91 98765 43210"` |
-| `NEXT_PUBLIC_COMPANY_ADDRESS` | Business address | `"Hyderabad, Telangana, India"` |
+| `NEXT_PUBLIC_COMPANY_ADDRESS` | Business address | `""` |
 
 ### 📊 Analytics & Tracking
 | Variable | Description | Required |
