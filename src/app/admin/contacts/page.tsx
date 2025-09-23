@@ -192,7 +192,7 @@ export default function ContactManagementPage() {
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <UserGroupIcon className="h-8 w-8 text-blue-600" />
+                  <UserGroupIcon className="h-8 w-8 text-green-600" />
                 </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Total Contacts</p>
@@ -249,7 +249,7 @@ export default function ContactManagementPage() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search contacts..."
-                  className="w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:text-white"
                 />
                 <MagnifyingGlassIcon className="h-5 w-5 absolute left-3 top-2.5 text-gray-400" />
               </div>
@@ -262,7 +262,7 @@ export default function ContactManagementPage() {
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:text-white"
               />
             </div>
             <div>
@@ -273,13 +273,13 @@ export default function ContactManagementPage() {
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:text-white"
               />
             </div>
             <div className="flex items-end space-x-2">
               <button
                 onClick={handleSearch}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
               >
                 Search
               </button>
@@ -303,7 +303,7 @@ export default function ContactManagementPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow">
           {loading ? (
             <div className="flex items-center justify-center py-12">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
               <span className="ml-2 text-gray-600 dark:text-gray-300">Loading contacts...</span>
             </div>
           ) : error ? (
@@ -362,7 +362,7 @@ export default function ContactManagementPage() {
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                             {contact.service}
                           </span>
                         </td>
@@ -375,7 +375,7 @@ export default function ContactManagementPage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                           <button
                             onClick={() => setSelectedContact(contact)}
-                            className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+                            className="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-blue-300"
                           >
                             <EyeIcon className="h-4 w-4" />
                           </button>
@@ -434,7 +434,7 @@ export default function ContactManagementPage() {
                             onClick={() => goToPage(page)}
                             className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${
                               page === pagination.page
-                                ? 'z-10 bg-blue-50 border-blue-500 text-blue-600 dark:bg-blue-900 dark:border-blue-400 dark:text-blue-200'
+                                ? 'z-10 bg-green-50 border-green-500 text-green-600 dark:bg-green-900 dark:border-green-400 dark:text-green-200'
                                 : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700'
                             }`}
                           >

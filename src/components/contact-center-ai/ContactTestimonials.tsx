@@ -81,7 +81,7 @@ export default function ContactTestimonials() {
               </blockquote>
 
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                   {testimonial.avatar}
                 </div>
                 <div>
@@ -94,7 +94,7 @@ export default function ContactTestimonials() {
                   <div className="text-sm text-gray-500 dark:text-gray-500">
                     {testimonial.company}, {testimonial.location}
                   </div>
-                  <div className="text-xs text-blue-600 dark:text-blue-400 font-medium mt-1">
+                  <div className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">
                     {testimonial.industry}
                   </div>
                 </div>
@@ -120,19 +120,19 @@ export default function ContactTestimonials() {
         {/* Aggregate Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">200+</div>
+            <div className="text-3xl font-bold text-green-600 mb-2">200+</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Contact Centers</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">10M+</div>
+            <div className="text-3xl font-bold text-green-600 mb-2">10M+</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Calls Analyzed</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">95%</div>
+            <div className="text-3xl font-bold text-green-600 mb-2">95%</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">QA Accuracy</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">40%</div>
+            <div className="text-3xl font-bold text-green-600 mb-2">40%</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Performance Improvement</div>
           </div>
         </div>

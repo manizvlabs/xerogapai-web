@@ -146,18 +146,18 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-6 text-white">
+        <div className="bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-6 text-white">
           <div className="flex items-center mb-4">
             <button
               onClick={onBack}
-              className="flex items-center text-blue-100 hover:text-white transition-colors mr-4"
+              className="flex items-center text-green-100 hover:text-white transition-colors mr-4"
             >
               <ChevronLeftIcon className="w-5 h-5 mr-1" />
               Back
             </button>
             <h1 className="text-2xl font-bold">Schedule Your Demo</h1>
           </div>
-          <p className="text-blue-100">Fill out the form below to book your personalized demo session.</p>
+          <p className="text-green-100">Fill out the form below to book your personalized demo session.</p>
         </div>
 
         {/* Form */}
@@ -165,7 +165,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
           {/* Contact Information */}
           <div className="mb-8">
             <div className="flex items-center mb-4">
-              <UserIcon className="w-5 h-5 text-blue-600 mr-2" />
+              <UserIcon className="w-5 h-5 text-green-600 mr-2" />
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Contact Information</h2>
             </div>
 
@@ -178,7 +178,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
                   type="text"
                   value={formData.firstName}
                   onChange={(e) => handleInputChange('firstName', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
                     errors.firstName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-white`}
                   placeholder="John"
@@ -194,7 +194,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
                   type="text"
                   value={formData.lastName}
                   onChange={(e) => handleInputChange('lastName', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
                     errors.lastName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-white`}
                   placeholder="Doe"
@@ -210,7 +210,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
                   type="email"
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
                     errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-white`}
                   placeholder="john@company.com"
@@ -226,7 +226,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   placeholder="+1 (555) 123-4567"
                 />
               </div>
@@ -236,7 +236,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
           {/* Company Information */}
           <div className="mb-8">
             <div className="flex items-center mb-4">
-              <BuildingOfficeIcon className="w-5 h-5 text-blue-600 mr-2" />
+              <BuildingOfficeIcon className="w-5 h-5 text-green-600 mr-2" />
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Company Information</h2>
             </div>
 
@@ -249,7 +249,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
                   type="text"
                   value={formData.companyName}
                   onChange={(e) => handleInputChange('companyName', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
                     errors.companyName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-white`}
                   placeholder="Acme Corporation"
@@ -264,7 +264,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
                 <select
                   value={formData.companySize}
                   onChange={(e) => handleInputChange('companySize', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
                     errors.companySize ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-white`}
                 >
@@ -283,7 +283,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
                 <select
                   value={formData.industry}
                   onChange={(e) => handleInputChange('industry', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
                     errors.industry ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-white`}
                 >
@@ -303,7 +303,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
                   type="url"
                   value={formData.website}
                   onChange={(e) => handleInputChange('website', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   placeholder="https://www.company.com"
                 />
               </div>
@@ -317,7 +317,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
                 value={formData.challenges}
                 onChange={(e) => handleInputChange('challenges', e.target.value)}
                 rows={3}
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 placeholder="Tell us about your current challenges and what you'd like to improve..."
               />
             </div>
@@ -326,7 +326,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
           {/* Demo Preferences */}
           <div className="mb-8">
             <div className="flex items-center mb-4">
-              <CalendarIcon className="w-5 h-5 text-blue-600 mr-2" />
+              <CalendarIcon className="w-5 h-5 text-green-600 mr-2" />
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Demo Preferences</h2>
             </div>
 
@@ -338,7 +338,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
                 <select
                   value={formData.preferredDate}
                   onChange={(e) => handleInputChange('preferredDate', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
                     errors.preferredDate ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-white`}
                 >
@@ -357,7 +357,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
                 <select
                   value={formData.preferredTime}
                   onChange={(e) => handleInputChange('preferredTime', e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
                     errors.preferredTime ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-white`}
                 >
@@ -386,7 +386,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
                 <select
                   value={formData.demoType}
                   onChange={(e) => handleInputChange('demoType', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 >
                   {demoTypes.map(type => (
                     <option key={type.value} value={type.value}>{type.label}</option>
@@ -401,7 +401,7 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors disabled:cursor-not-allowed"
+              className="flex-1 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <div className="flex items-center justify-center">
@@ -426,9 +426,9 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-500 dark:text-gray-400">
               By booking this demo, you agree to our{' '}
-              <Link href="/privacy" className="text-blue-600 hover:text-blue-700">Privacy Policy</Link>
+              <Link href="/privacy" className="text-green-600 hover:text-green-700">Privacy Policy</Link>
               {' '}and{' '}
-              <Link href="/terms" className="text-blue-600 hover:text-blue-700">Terms of Service</Link>.
+              <Link href="/terms" className="text-green-600 hover:text-green-700">Terms of Service</Link>.
               We'll send you confirmation and reminder emails.
             </p>
           </div>

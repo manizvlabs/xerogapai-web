@@ -21,10 +21,10 @@ const Footer = () => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-3xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                  <span className="text-3xl font-bold text-white group-hover:text-green-400 transition-colors">
                     {siteConfig.name.split(' ')[0]}
                   </span>
-                  <span className="text-xl text-gray-300 group-hover:text-blue-300 transition-colors">
+                  <span className="text-xl text-gray-300 group-hover:text-green-300 transition-colors">
                     {siteConfig.name.split(' ')[1]}
                   </span>
                 </div>

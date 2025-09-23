@@ -130,8 +130,8 @@ export default function WhatsAppIndustries() {
                 className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all hover:-translate-y-1"
               >
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
-                    <IconComponent className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                    <IconComponent className="w-6 h-6 text-green-600" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                     {industry.name}
@@ -149,7 +149,7 @@ export default function WhatsAppIndustries() {
                   <ul className="space-y-2">
                     {industry.useCases.map((useCase, useCaseIndex) => (
                       <li key={useCaseIndex} className="flex items-start text-sm">
-                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
                         <span className="text-gray-600 dark:text-gray-300">{useCase}</span>
                       </li>
                     ))}
@@ -166,7 +166,7 @@ export default function WhatsAppIndustries() {
                       <div className="text-xs text-gray-600 dark:text-gray-400">Automation</div>
                     </div>
                     <div>
-                      <div className="text-lg font-bold text-blue-600">{industry.metrics.satisfaction}</div>
+                      <div className="text-lg font-bold text-green-600">{industry.metrics.satisfaction}</div>
                       <div className="text-xs text-gray-600 dark:text-gray-400">Satisfaction</div>
                     </div>
                     <div>
@@ -211,7 +211,7 @@ export default function WhatsAppIndustries() {
                     <td className="py-4 px-4 text-center text-green-600 font-semibold">
                       {industry.metrics.automation}
                     </td>
-                    <td className="py-4 px-4 text-center text-blue-600 font-semibold">
+                    <td className="py-4 px-4 text-center text-green-600 font-semibold">
                       2 min
                     </td>
                     <td className="py-4 px-4 text-center text-purple-600 font-semibold">
@@ -229,23 +229,23 @@ export default function WhatsAppIndustries() {
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">
               Ready to Transform Your Industry?
             </h3>
-            <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
+            <p className="text-green-100 mb-6 max-w-2xl mx-auto">
               Join hundreds of businesses in your industry that are already using WhatsApp automation to drive growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="#pricing"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+                className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 View Pricing
               </Link>
               <Link
                 href="/demo"
-                className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+                className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors"
               >
                 Book Industry Demo
               </Link>

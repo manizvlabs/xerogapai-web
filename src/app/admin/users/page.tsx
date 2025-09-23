@@ -185,7 +185,7 @@ export default function UserManagementPage() {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto"></div>
           <p className="mt-4 text-gray-600 dark:text-gray-300">Loading users...</p>
         </div>
       </div>
@@ -207,7 +207,7 @@ export default function UserManagementPage() {
             </div>
             <button
               onClick={() => setShowCreateForm(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
             >
               <UserPlusIcon className="h-5 w-5" />
               Add User
@@ -240,7 +240,7 @@ export default function UserManagementPage() {
               </p>
               <button
                 onClick={() => setShowCreateForm(true)}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
               >
                 <UserPlusIcon className="h-5 w-5" />
                 Add First User
@@ -306,7 +306,7 @@ export default function UserManagementPage() {
                         <div className="flex gap-2">
                           <button
                             onClick={() => setEditingUser(user)}
-                            className="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300"
+                            className="text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-blue-300"
                           >
                             <PencilIcon className="h-4 w-4" />
                           </button>
@@ -500,7 +500,7 @@ function CreateUserForm({ onSubmit, onCancel }: {
                   ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
                   : formData.password && passwordErrors.length === 0
                   ? 'border-green-300 dark:border-green-600 focus:ring-green-500 focus:border-green-500'
-                  : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500'
+                  : 'border-gray-300 dark:border-gray-600 focus:ring-green-500 focus:border-green-500'
               }`}
               placeholder="Enter a strong password"
               required
@@ -542,7 +542,7 @@ function CreateUserForm({ onSubmit, onCancel }: {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Creating...' : 'Create User'}
             </button>
@@ -635,7 +635,7 @@ function EditUserForm({ user, onSubmit, onCancel }: {
               id="isActive"
               checked={formData.isActive}
               onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-              className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              className="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
             />
             <label htmlFor="isActive" className="ml-2 text-sm text-gray-700 dark:text-gray-300">
               Active
@@ -645,7 +645,7 @@ function EditUserForm({ user, onSubmit, onCancel }: {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Updating...' : 'Update User'}
             </button>

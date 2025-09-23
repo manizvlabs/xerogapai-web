@@ -92,7 +92,7 @@ export default function CalendlyWidget({
           </p>
           <button
             onClick={() => window.location.reload()}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium"
+            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium"
           >
             Try Again
           </button>
@@ -106,7 +106,7 @@ export default function CalendlyWidget({
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-lg z-10">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
             <p className="text-gray-600 dark:text-gray-300">Loading calendar...</p>
           </div>
         </div>

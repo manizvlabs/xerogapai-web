@@ -250,7 +250,7 @@ export default function DocsResources() {
                 <div key={index} className="text-center">
                   <div className={`text-2xl font-bold mb-1 ${
                     metric.status === 'operational' ? 'text-green-600' :
-                    metric.status === 'good' ? 'text-blue-600' : 'text-gray-600'
+                    metric.status === 'good' ? 'text-green-600' : 'text-gray-600'
                   }`}>
                     {metric.value}
                   </div>
@@ -284,7 +284,7 @@ export default function DocsResources() {
                     </span>
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                       entry.type === 'Major Release' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
-                      entry.type === 'Minor Release' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300' :
+                      entry.type === 'Minor Release' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
                       'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300'
                     }`}>
                       {entry.type}
@@ -317,7 +317,7 @@ export default function DocsResources() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-indigo-600 to-emerald-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">
             Stay Updated
           </h3>

@@ -80,7 +80,7 @@ export default function CaseFeatured() {
               <div className="p-8 pb-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center text-2xl mr-4">
+                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center text-2xl mr-4">
                       {caseStudy.logo}
                     </div>
                     <div>
@@ -109,7 +109,7 @@ export default function CaseFeatured() {
 
                 {/* Solution */}
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                  <h4 className="text-sm font-semibold text-green-600 dark:text-green-400 mb-2">
                     Solution
                   </h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
@@ -160,7 +160,7 @@ export default function CaseFeatured() {
               <div className="px-8 pb-8">
                 <Link
                   href={`/case-studies/${caseStudy.id}`}
-                  className="group/btn w-full flex items-center justify-center px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
+                  className="group/btn w-full flex items-center justify-center px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
                 >
                   Read Full Case Study
                   <ArrowRightIcon className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
@@ -172,23 +172,23 @@ export default function CaseFeatured() {
 
         {/* Call to Action */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">
               Want Similar Results?
             </h3>
-            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-green-100 mb-8 max-w-2xl mx-auto">
               See how XeroGap AI can transform your business with a free consultation and custom solution assessment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/demo"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+                className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 Book Free Consultation
               </Link>
               <Link
                 href="#all-studies"
-                className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+                className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors"
               >
                 View All Case Studies
               </Link>

@@ -34,7 +34,7 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
     <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
         {/* Success Header */}
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 px-6 py-8 text-white text-center">
+        <div className="bg-gradient-to-r from-green-600 to-green-600 px-6 py-8 text-white text-center">
           <div className="flex items-center justify-center mb-4">
             <CheckCircleIcon className="h-12 w-12 text-white" />
           </div>
@@ -56,7 +56,7 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
           {/* Consultation Benefits */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-lg">
-              <CalendarIcon className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+              <CalendarIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
                 Personalized Strategy
               </h3>
@@ -87,7 +87,7 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
           </div>
 
           {/* Consultation Details */}
-          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 mb-8">
+          <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-6 mb-8">
             <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
               What to Expect in Your Consultation:
             </h3>
@@ -112,7 +112,7 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
             <button
               onClick={handleBookConsultation}
               disabled={isBooking}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isBooking ? (
                 <div className="flex items-center justify-center">

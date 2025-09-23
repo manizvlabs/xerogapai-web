@@ -221,7 +221,7 @@ export default function DocsGuides() {
                     <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
                       {guide.description}
                     </p>
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300">
                       {guide.category}
                     </span>
                   </div>
@@ -298,7 +298,7 @@ export default function DocsGuides() {
         </div>
 
         {/* Video Tutorials */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-indigo-600 to-emerald-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">
             Video Tutorials & Webinars
           </h3>

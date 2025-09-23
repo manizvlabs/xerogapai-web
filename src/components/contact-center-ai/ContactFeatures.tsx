@@ -127,8 +127,8 @@ export default function ContactFeatures() {
             return (
               <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all hover:-translate-y-1">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
-                    <IconComponent className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                    <IconComponent className="w-6 h-6 text-green-600" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                     {feature.title}
@@ -146,15 +146,15 @@ export default function ContactFeatures() {
                   <ul className="space-y-2">
                     {feature.capabilities.map((capability, capabilityIndex) => (
                       <li key={capabilityIndex} className="flex items-start text-sm">
-                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
                         <span className="text-gray-600 dark:text-gray-300">{capability}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                  <p className="text-sm font-medium text-blue-800 dark:text-blue-300">
+                <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
+                  <p className="text-sm font-medium text-green-800 dark:text-green-300">
                     {feature.benefit}
                   </p>
                 </div>
@@ -178,9 +178,9 @@ export default function ContactFeatures() {
             {qaProcess.map((step, index) => (
               <div key={index} className="text-center relative">
                 {index > 0 && (
-                  <div className="hidden md:block absolute top-6 left-0 w-full h-0.5 bg-blue-200 dark:bg-blue-800 -translate-x-full translate-y-2" />
+                  <div className="hidden md:block absolute top-6 left-0 w-full h-0.5 bg-green-200 dark:bg-green-800 -translate-x-full translate-y-2" />
                 )}
-                <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">
+                <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">
                   {step.step}
                 </div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
@@ -195,11 +195,11 @@ export default function ContactFeatures() {
         </div>
 
         {/* Quality Metrics */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-green-600 to-indigo-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">
             Quality Assurance Metrics
           </h3>
-          <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-green-100 mb-8 max-w-2xl mx-auto">
             Comprehensive quality metrics that ensure every customer interaction meets your standards
           </p>
 
@@ -207,29 +207,29 @@ export default function ContactFeatures() {
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-2xl mb-2">🎯</div>
               <div className="font-semibold mb-1">Call Quality Score</div>
-              <div className="text-sm text-blue-100">95% average score</div>
+              <div className="text-sm text-green-100">95% average score</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-2xl mb-2">⚡</div>
               <div className="font-semibold mb-1">Response Time</div>
-              <div className="text-sm text-blue-100">Instant feedback</div>
+              <div className="text-sm text-green-100">Instant feedback</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-2xl mb-2">📈</div>
               <div className="font-semibold mb-1">Performance Tracking</div>
-              <div className="text-sm text-blue-100">Real-time monitoring</div>
+              <div className="text-sm text-green-100">Real-time monitoring</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-2xl mb-2">🎓</div>
               <div className="font-semibold mb-1">Training Effectiveness</div>
-              <div className="text-sm text-blue-100">60% improvement rate</div>
+              <div className="text-sm text-green-100">60% improvement rate</div>
             </div>
           </div>
 
           <div className="mt-8">
             <Link
               href="/demo"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+              className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               See QA Dashboard Live
             </Link>

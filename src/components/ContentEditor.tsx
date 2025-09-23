@@ -32,7 +32,7 @@ export default function ContentEditor({ section, onSave, onCancel }: ContentEdit
       <div className="fixed bottom-4 right-4 z-50">
         <button
           onClick={() => setIsEditing(true)}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-700 transition-colors"
+          className="bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-green-700 transition-colors"
         >
           Edit Content
         </button>

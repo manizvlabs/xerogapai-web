@@ -100,13 +100,13 @@ export default function WhatsAppPricing() {
               key={index}
               className={`relative bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-2 ${
                 plan.popular
-                  ? 'border-blue-500 dark:border-blue-400'
+                  ? 'border-green-500 dark:border-green-400'
                   : 'border-gray-200 dark:border-gray-700'
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  <div className="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
                     Most Popular
                   </div>
                 </div>
@@ -161,7 +161,7 @@ export default function WhatsAppPricing() {
               <button
                 className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${
                   plan.popular
-                    ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                    ? 'bg-green-600 hover:bg-green-700 text-white'
                     : plan.name === 'Enterprise'
                     ? 'bg-gray-900 hover:bg-gray-800 text-white dark:bg-gray-700 dark:hover:bg-gray-600'
                     : 'bg-gray-100 hover:bg-gray-200 text-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white'
@@ -190,7 +190,7 @@ export default function WhatsAppPricing() {
                 <tr className="border-b border-gray-200 dark:border-gray-700">
                   <th className="text-left py-4 px-4 font-semibold text-gray-900 dark:text-white">Feature</th>
                   <th className="text-center py-4 px-4 font-semibold text-gray-900 dark:text-white">Starter</th>
-                  <th className="text-center py-4 px-4 font-semibold text-blue-600">Professional</th>
+                  <th className="text-center py-4 px-4 font-semibold text-green-600">Professional</th>
                   <th className="text-center py-4 px-4 font-semibold text-gray-900 dark:text-white">Enterprise</th>
                 </tr>
               </thead>

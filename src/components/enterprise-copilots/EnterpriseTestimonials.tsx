@@ -81,7 +81,7 @@ export default function EnterpriseTestimonials() {
               </blockquote>
 
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                   {testimonial.avatar}
                 </div>
                 <div>
@@ -94,7 +94,7 @@ export default function EnterpriseTestimonials() {
                   <div className="text-sm text-gray-500 dark:text-gray-500">
                     {testimonial.company}, {testimonial.location}
                   </div>
-                  <div className="text-xs text-blue-600 dark:text-blue-400 font-medium mt-1">
+                  <div className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">
                     {testimonial.industry}
                   </div>
                 </div>
@@ -120,19 +120,19 @@ export default function EnterpriseTestimonials() {
         {/* Enterprise Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">500+</div>
+            <div className="text-3xl font-bold text-green-600 mb-2">500+</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Enterprise Clients</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">2M+</div>
+            <div className="text-3xl font-bold text-green-600 mb-2">2M+</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Daily Queries</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">99.9%</div>
+            <div className="text-3xl font-bold text-green-600 mb-2">99.9%</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Uptime SLA</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">95%</div>
+            <div className="text-3xl font-bold text-green-600 mb-2">95%</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">User Satisfaction</div>
           </div>
         </div>

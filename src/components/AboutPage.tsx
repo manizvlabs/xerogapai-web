@@ -14,7 +14,7 @@ export default function AboutPage() {
       <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
             <p className="text-lg text-gray-600 dark:text-gray-300">Loading about page content...</p>
           </div>
         </div>
@@ -191,7 +191,7 @@ export default function AboutPage() {
                 <ul className="space-y-4">
                   {(pageContent.whyChooseUs as Record<string, unknown>).features && Array.isArray((pageContent.whyChooseUs as Record<string, unknown>).features) && (pageContent.whyChooseUs as Record<string, unknown>).features.map((feature: string, index: number) => (
                     <li key={`feature-${index}-${feature.slice(0, 20)}`} className="flex items-start gap-x-3">
-                      <CheckIcon className="h-6 w-6 flex-none text-blue-600 mt-0.5" />
+                      <CheckIcon className="h-6 w-6 flex-none text-green-600 mt-0.5" />
                       <span className="text-gray-600 dark:text-gray-300">{feature}</span>
                     </li>
                   ))}
@@ -249,7 +249,7 @@ export default function AboutPage() {
                     <span className="text-2xl font-bold text-gray-600 dark:text-gray-300">{person.initials}</span>
                   </div>
                   <h3 className="mt-6 text-lg font-semibold text-gray-900 dark:text-white">{person.name}</h3>
-                  <p className="mt-2 text-base text-blue-600">{person.title}</p>
+                  <p className="mt-2 text-base text-green-600">{person.title}</p>
                   <p className="mt-4 text-base text-gray-600 dark:text-gray-300 max-w-md">{person.description}</p>
                 </div>
               ))}
@@ -259,21 +259,21 @@ export default function AboutPage() {
       </div>
 
       {/* Stats Section */}
-      <div className="bg-blue-600">
+      <div className="bg-green-600">
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <div className="text-center">
               <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 {(pageContent.stats as Record<string, unknown>).title}
               </h2>
-              <p className="mt-4 text-lg leading-8 text-blue-100">
+              <p className="mt-4 text-lg leading-8 text-green-100">
                 {(pageContent.stats as Record<string, unknown>).subtitle}
               </p>
             </div>
             <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
               {(pageContent.stats as Record<string, unknown>).items && Array.isArray((pageContent.stats as Record<string, unknown>).items) && (pageContent.stats as Record<string, unknown>).items.map((stat: { label: string; value: string }, index: number) => (
                 <div key={`stat-${index}-${stat.label}`} className="flex flex-col-reverse">
-                  <dt className="text-base leading-7 text-blue-100">{stat.label}</dt>
+                  <dt className="text-base leading-7 text-green-100">{stat.label}</dt>
                   <dd className="text-2xl font-bold leading-9 tracking-tight text-white">{stat.value}</dd>
                 </div>
               ))}
@@ -295,13 +295,13 @@ export default function AboutPage() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href={(pageContent.cta as Record<string, unknown>).primaryHref as string || "/assessment"}
-                className="rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                className="rounded-md bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
               >
                 {(pageContent.cta as Record<string, unknown>).primaryButton}
               </Link>
               <Link
                 href={(pageContent.cta as Record<string, unknown>).secondaryHref as string || "/demo"}
-                className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-blue-600 transition-colors"
+                className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-green-600 transition-colors"
               >
                 {(pageContent.cta as Record<string, unknown>).secondaryButton} <span aria-hidden="true">→</span>
               </Link>

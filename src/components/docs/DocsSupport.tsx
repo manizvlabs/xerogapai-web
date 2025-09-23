@@ -276,7 +276,7 @@ export default function DocsSupport() {
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
                     {faq.answer}
                   </p>
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300">
                     {faq.category}
                   </span>
                 </div>
@@ -339,7 +339,7 @@ export default function DocsSupport() {
         </div>
 
         {/* Support Quality Metrics */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-indigo-600 to-emerald-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">
             Support Quality Metrics
           </h3>

@@ -32,7 +32,7 @@ export default function HomePage() {
         {/* Gradient Overlay */}
         <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
           <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-blue-600/20 to-emerald-400/20 dark:from-blue-600/10 dark:to-emerald-400/10 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-green-600/20 to-emerald-400/20 dark:from-green-600/10 dark:to-emerald-400/10 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }}
           />
         </div>
@@ -61,7 +61,7 @@ export default function HomePage() {
 
             {/* Region-specific messaging */}
             {currentRegion === 'india' && content.hero.localizedMessage && (
-              <p className="mt-4 text-lg leading-8 text-blue-600 dark:text-blue-400 font-medium">
+              <p className="mt-4 text-lg leading-8 text-green-600 dark:text-green-400 font-medium">
                 {content.hero.localizedMessage}
               </p>
             )}
@@ -70,13 +70,13 @@ export default function HomePage() {
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
               <Link
                 href="/assessment"
-                className="flex items-center justify-center rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                className="flex items-center justify-center rounded-md bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
               >
                 Get Free AI Readiness Assessment
               </Link>
               <Link
                 href="/demo"
-                className="flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-600 border border-blue-200 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                className="flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-green-600 border border-green-200 shadow-sm hover:bg-green-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
               >
                 Book Personalized Demo
               </Link>
@@ -109,7 +109,7 @@ export default function HomePage() {
               {content.services.sectionTitle}
             </h2>
             {currentRegion === 'india' && content.services.localizedNote && (
-              <p className="mt-4 text-lg text-blue-600 dark:text-blue-400 font-medium">
+              <p className="mt-4 text-lg text-green-600 dark:text-green-400 font-medium">
                 {content.services.localizedNote}
               </p>
             )}
@@ -122,13 +122,13 @@ export default function HomePage() {
                   key={service.id}
                   className={`relative bg-white dark:bg-gray-900 p-8 rounded-lg shadow-sm border-2 transition-all hover:shadow-md ${
                     service.pricing.popular
-                      ? 'border-blue-500 dark:border-blue-400'
+                      ? 'border-green-500 dark:border-green-400'
                       : 'border-gray-200 dark:border-gray-700'
                   }`}
                 >
                   {service.pricing.popular && (
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                      <div className="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-medium">
                         Most Popular
                       </div>
                     </div>
@@ -169,12 +169,12 @@ export default function HomePage() {
                   {service.href ? (
                     <Link
                       href={service.href}
-                      className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center block"
+                      className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors text-center block"
                     >
                       {service.cta}
                     </Link>
                   ) : (
-                    <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                    <button className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors">
                       {service.cta}
                     </button>
                   )}
@@ -202,7 +202,7 @@ export default function HomePage() {
               {content.socialProof.sectionTitle}
             </h2>
             {currentRegion === 'india' && content.socialProof.localizedMessage && (
-              <p className="mt-4 text-lg text-blue-600 dark:text-blue-400 font-medium">
+              <p className="mt-4 text-lg text-green-600 dark:text-green-400 font-medium">
                 {content.socialProof.localizedMessage}
               </p>
             )}
@@ -218,7 +218,7 @@ export default function HomePage() {
                   </blockquote>
 
                   <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                    <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                       {testimonial.author.charAt(0)}
                     </div>
                     <div>
@@ -238,7 +238,7 @@ export default function HomePage() {
                   <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                     {Object.entries(testimonial.metrics).map(([key, value]) => (
                       <div key={key} className="text-center">
-                        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                        <div className="text-2xl font-bold text-green-600 dark:text-green-400">
                           {value}
                         </div>
                         <div className="text-xs text-gray-600 dark:text-gray-400 capitalize">
@@ -314,7 +314,7 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="relative py-24 sm:py-32 bg-blue-600 dark:bg-blue-700">
+      <section className="relative py-24 sm:py-32 bg-green-600 dark:bg-green-700">
         {/* Logo Background Pattern */}
         <div className="absolute inset-0 opacity-[0.06] pointer-events-none" aria-hidden="true">
           <div className="absolute top-16 left-16 transform rotate-12">
@@ -332,18 +332,18 @@ export default function HomePage() {
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               {content.finalCTA.sectionTitle}
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-green-100">
               {content.finalCTA.content}
             </p>
             {currentRegion === 'india' && content.finalCTA.localizedContent && (
-              <p className="mt-4 text-lg text-blue-200">
+              <p className="mt-4 text-lg text-green-200">
                 {content.finalCTA.localizedContent}
               </p>
             )}
 
             <ul className="mt-8 space-y-2">
               {content.finalCTA.offers.map((offer) => (
-                <li key={offer} className="flex items-center justify-center text-blue-100">
+                <li key={offer} className="flex items-center justify-center text-green-100">
                   <span className="text-green-300 mr-2">✓</span>
                   {offer}
                 </li>
@@ -353,13 +353,13 @@ export default function HomePage() {
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-4">
               <Link
                 href={content.finalCTA.primaryCTA.href}
-                className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
+                className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-green-600 shadow-sm hover:bg-green-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
               >
                 {content.finalCTA.primaryCTA.text}
               </Link>
               <Link
                 href={content.finalCTA.secondaryCTA.href}
-                className="rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-white hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
+                className="rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-white hover:text-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
               >
                 {content.finalCTA.secondaryCTA.text} <span aria-hidden="true">→</span>
               </Link>

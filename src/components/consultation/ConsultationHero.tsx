@@ -8,7 +8,7 @@ interface ConsultationHeroProps {
 
 export default function ConsultationHero({ onStartBooking }: ConsultationHeroProps) {
   return (
-    <div className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+    <div className="bg-gradient-to-br from-green-50 to-green-50 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-6xl mx-auto px-4 py-16 sm:py-24">
         <div className="text-center">
           {/* Badge */}
@@ -20,7 +20,7 @@ export default function ConsultationHero({ onStartBooking }: ConsultationHeroPro
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Get Expert AI
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-600">
               {" "}Guidance
             </span>
           </h1>
@@ -40,7 +40,7 @@ export default function ConsultationHero({ onStartBooking }: ConsultationHeroPro
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
-              <LightBulbIcon className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+              <LightBulbIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Custom Strategy</div>
               <div className="text-xs text-gray-600 dark:text-gray-400">Tailored to you</div>
             </div>

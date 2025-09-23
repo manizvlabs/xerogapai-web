@@ -216,7 +216,7 @@ class EmailService {
           <li>Expected ROI and cost savings</li>
         </ul>
         <div style="text-align: center; margin: 30px 0;">
-          <a href="/assessment/report" style="background: #3b82f6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px;">View Your Report</a>
+          <a href="/assessment/report" style="background: #2FDA37; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px;">View Your Report</a>
         </div>
         <p>Have questions? Reply to this email or <a href="/consultation">schedule a free consultation</a>.</p>
       </div>
@@ -361,7 +361,7 @@ class EmailService {
         <p>As a welcome gift, here's your <a href="/assessment">free AI readiness assessment</a> to discover automation opportunities in your business.</p>
 
         <div style="text-align: center; margin: 30px 0;">
-          <a href="/assessment" style="background: #3b82f6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px;">Take Free Assessment</a>
+          <a href="/assessment" style="background: #2FDA37; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px;">Take Free Assessment</a>
         </div>
       </div>
     `;

@@ -102,7 +102,7 @@ export default function XeroGapProcess() {
         </div>
 
         <div className="text-center">
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-purple-600 to-green-600 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">
               Ready to Transform Your Workflow?
             </h3>

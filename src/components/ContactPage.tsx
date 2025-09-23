@@ -101,7 +101,7 @@ export default function ContactPage() {
       <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
             <p className="text-lg text-gray-600 dark:text-gray-300">Loading contact page content...</p>
           </div>
         </div>
@@ -212,7 +212,7 @@ export default function ContactPage() {
                   </p>
                   <Link
                     href={pageContent.consultation?.buttonHref || "/assessment"}
-                    className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                    className="mt-4 inline-block rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
                   >
                     {pageContent.consultation?.buttonText}
                   </Link>
@@ -255,9 +255,9 @@ export default function ContactPage() {
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <PhoneIcon className="w-5 h-5 text-blue-600" />
+                    <PhoneIcon className="w-5 h-5 text-green-600" />
                     <Link href={`tel:${pageContent.regionalSupport?.india?.contact || "+919876543210"}`}
-                       className="text-gray-600 dark:text-gray-300 hover:text-blue-600">
+                       className="text-gray-600 dark:text-gray-300 hover:text-green-600">
                       {pageContent.regionalSupport?.india?.contact || "+91 98765 43210"}
                     </Link>
                   </div>
@@ -288,7 +288,7 @@ export default function ContactPage() {
               {/* Global Support */}
               <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
                     🌍
                   </div>
                   <div>
@@ -303,9 +303,9 @@ export default function ContactPage() {
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <PhoneIcon className="w-5 h-5 text-blue-600" />
+                    <PhoneIcon className="w-5 h-5 text-green-600" />
                     <Link href={`tel:${pageContent.regionalSupport?.global?.contact || "+15551234567"}`}
-                       className="text-gray-600 dark:text-gray-300 hover:text-blue-600">
+                       className="text-gray-600 dark:text-gray-300 hover:text-green-600">
                       {pageContent.regionalSupport?.global?.contact || "+1 (555) 123-4567"}
                     </Link>
                   </div>

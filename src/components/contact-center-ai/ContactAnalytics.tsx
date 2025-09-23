@@ -108,7 +108,7 @@ export default function ContactAnalytics() {
                     {metric.label}
                   </h4>
                   <div className={`text-sm font-semibold ${
-                    metric.status === 'improving' ? 'text-green-600' : 'text-blue-600'
+                    metric.status === 'improving' ? 'text-green-600' : 'text-green-600'
                   }`}>
                     {metric.trend}
                   </div>
@@ -117,7 +117,7 @@ export default function ContactAnalytics() {
                   {metric.value}
                 </div>
                 <div className={`text-xs font-medium ${
-                  metric.status === 'improving' ? 'text-green-600' : 'text-blue-600'
+                  metric.status === 'improving' ? 'text-green-600' : 'text-green-600'
                 }`}>
                   {metric.status === 'improving' ? '↗ Improving' : '✓ Excellent'}
                 </div>

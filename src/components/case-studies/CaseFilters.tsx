@@ -57,7 +57,7 @@ export default function CaseFilters() {
                 placeholder="Search case studies..."
                 value={activeFilters.search}
                 onChange={(e) => handleFilterChange('search', e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function CaseFilters() {
               <select
                 value={activeFilters.industry || 'All Industries'}
                 onChange={(e) => handleFilterChange('industry', e.target.value)}
-                className="appearance-none bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 pr-8 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="appearance-none bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 pr-8 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >
                 {filters.industry.map((industry) => (
                   <option key={industry} value={industry}>
@@ -85,7 +85,7 @@ export default function CaseFilters() {
               <select
                 value={activeFilters.solution || 'All Solutions'}
                 onChange={(e) => handleFilterChange('solution', e.target.value)}
-                className="appearance-none bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 pr-8 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="appearance-none bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 pr-8 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >
                 {filters.solution.map((solution) => (
                   <option key={solution} value={solution}>
@@ -101,7 +101,7 @@ export default function CaseFilters() {
               <select
                 value={activeFilters.companySize || 'All Sizes'}
                 onChange={(e) => handleFilterChange('companySize', e.target.value)}
-                className="appearance-none bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 pr-8 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="appearance-none bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 pr-8 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent"
               >
                 {filters.companySize.map((size) => (
                   <option key={size} value={size}>
@@ -133,14 +133,14 @@ export default function CaseFilters() {
                 return (
                   <span
                     key={key}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300"
+                    className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300"
                   >
                     {key === 'companySize' ? 'Company Size' :
                      key === 'search' ? 'Search' :
                      key.charAt(0).toUpperCase() + key.slice(1)}: {value}
                     <button
                       onClick={() => handleFilterChange(key, '')}
-                      className="ml-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200"
+                      className="ml-2 text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-200"
                     >
                       ×
                     </button>

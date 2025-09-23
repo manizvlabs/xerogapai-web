@@ -8,19 +8,19 @@ interface AssessmentHeroProps {
 
 export default function AssessmentHero({ onStart }: AssessmentHeroProps) {
   return (
-    <div className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-4xl mx-auto px-4 py-16 sm:py-24">
         <div className="text-center">
           {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm font-medium mb-8">
-            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm font-medium mb-8">
+            <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
             Free AI Readiness Assessment
           </div>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Discover Your Business&apos;s
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
               {" "}AI Readiness
             </span>
           </h1>
@@ -90,7 +90,7 @@ export default function AssessmentHero({ onStart }: AssessmentHeroProps) {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={onStart}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform"
+              className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform"
             >
               Start Free Assessment
             </button>

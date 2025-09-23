@@ -20,9 +20,9 @@ interface CTAButtonProps {
 }
 
 const variantStyles = {
-  primary: 'bg-blue-600 hover:bg-blue-700 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
-  secondary: 'bg-white hover:bg-gray-50 text-blue-600 border border-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
-  outline: 'bg-transparent hover:bg-blue-50 text-blue-600 border border-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
+  primary: 'bg-green-600 hover:bg-green-700 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600',
+  secondary: 'bg-white hover:bg-gray-50 text-green-600 border border-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600',
+  outline: 'bg-transparent hover:bg-green-50 text-green-600 border border-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600',
   ghost: 'bg-transparent hover:bg-gray-100 text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900'
 };
 

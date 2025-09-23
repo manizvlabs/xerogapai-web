@@ -31,7 +31,7 @@ export default function DocPage() {
         <nav className="mb-8">
           <ol className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
             <li>
-              <Link href="/docs" className="hover:text-blue-600 dark:hover:text-blue-400">
+              <Link href="/docs" className="hover:text-green-600 dark:hover:text-green-400">
                 Documentation
               </Link>
             </li>

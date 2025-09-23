@@ -22,18 +22,18 @@ export const siteConfig = {
 // Theme Configuration
 export const themeConfig = {
   light: {
-    primary: '#2563eb', // blue-600
-    secondary: '#7c3aed', // violet-600
-    accent: '#06b6d4', // cyan-500
+    primary: '#2FDA37', // brand green
+    secondary: '#25D02D', // darker green
+    accent: '#20B628', // darkest green
     background: '#ffffff',
     surface: '#f8fafc',
     text: '#1f2937',
     textSecondary: '#6b7280',
   },
   dark: {
-    primary: '#3b82f6', // blue-500
-    secondary: '#8b5cf6', // violet-500
-    accent: '#06b6d4', // cyan-500
+    primary: '#25D02D', // brand green for dark mode
+    secondary: '#20B628', // darker green for dark mode
+    accent: '#1A9A24', // darkest green for dark mode
     background: '#0f172a',
     surface: '#1e293b',
     text: '#f1f5f9',

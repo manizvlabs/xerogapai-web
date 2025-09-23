@@ -59,22 +59,22 @@ export default function WhatsAppProcess() {
               <div key={index} className="relative">
                 {/* Connector line (hidden on first item) */}
                 {index > 0 && (
-                  <div className="hidden lg:block absolute top-8 left-0 w-full h-0.5 bg-blue-200 dark:bg-blue-800 -translate-x-full translate-y-4" />
+                  <div className="hidden lg:block absolute top-8 left-0 w-full h-0.5 bg-green-200 dark:bg-green-800 -translate-x-full translate-y-4" />
                 )}
 
                 <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
                   {/* Step number */}
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center">
-                      <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">
+                      <div className="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">
                         {step.step}
                       </div>
-                      <div className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                      <div className="text-sm font-medium text-green-600 dark:text-green-400">
                         {step.duration}
                       </div>
                     </div>
-                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-blue-600" />
+                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-green-600" />
                     </div>
                   </div>
 
@@ -119,7 +119,7 @@ export default function WhatsAppProcess() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">Week 1</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">Week 1</div>
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-3">Setup & Training</div>
               <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
                 <li>• API Connection</li>
@@ -162,30 +162,30 @@ export default function WhatsAppProcess() {
 
         {/* Support & Resources */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">
               Expert Support Every Step
             </h3>
-            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-green-100 mb-8 max-w-2xl mx-auto">
               Our implementation specialists and AI experts are with you from day one, ensuring smooth deployment and maximum ROI.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div>
                 <div className="text-2xl font-bold mb-2">24/7</div>
-                <div className="text-sm text-blue-100">Technical Support</div>
+                <div className="text-sm text-green-100">Technical Support</div>
               </div>
               <div>
                 <div className="text-2xl font-bold mb-2">1:1</div>
-                <div className="text-sm text-blue-100">Implementation Manager</div>
+                <div className="text-sm text-green-100">Implementation Manager</div>
               </div>
               <div>
                 <div className="text-2xl font-bold mb-2">Free</div>
-                <div className="text-sm text-blue-100">Training & Onboarding</div>
+                <div className="text-sm text-green-100">Training & Onboarding</div>
               </div>
             </div>
             <Link
               href="/demo"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+              className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               Start Your Implementation
             </Link>

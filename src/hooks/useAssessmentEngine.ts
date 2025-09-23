@@ -25,8 +25,8 @@ export function useAssessmentEngine(answers: Record<number, string | number>) {
         return {
           title: 'AI Advanced',
           description: 'You have strong foundations and are ready for comprehensive AI solutions.',
-          color: 'text-blue-600',
-          bgColor: 'bg-blue-50 dark:bg-blue-900/20',
+          color: 'text-green-600',
+          bgColor: 'bg-green-50 dark:bg-green-900/20',
           status: 'Ready for Advanced AI'
         };
       case 'intermediate':

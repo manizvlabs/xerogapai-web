@@ -91,13 +91,13 @@ export default function ContactPricing() {
               key={index}
               className={`relative bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg border-2 ${
                 plan.popular
-                  ? 'border-blue-500 dark:border-blue-400'
+                  ? 'border-green-500 dark:border-green-400'
                   : 'border-gray-200 dark:border-gray-700'
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                  <div className="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
                     Most Popular
                   </div>
                 </div>
@@ -153,7 +153,7 @@ export default function ContactPricing() {
               <button
                 className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${
                   plan.popular
-                    ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                    ? 'bg-green-600 hover:bg-green-700 text-white'
                     : plan.name === 'Contact Center Enterprise'
                     ? 'bg-gray-900 hover:bg-gray-800 text-white dark:bg-gray-700 dark:hover:bg-gray-600'
                     : 'bg-gray-100 hover:bg-gray-200 text-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white'
@@ -166,33 +166,33 @@ export default function ContactPricing() {
         </div>
 
         {/* ROI Calculator */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-green-600 to-indigo-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">
             Calculate Your QA ROI
           </h3>
-          <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-green-100 mb-8 max-w-2xl mx-auto">
             See how much our contact center QA solution can save your organization
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-3xl font-bold mb-1">$25K+</div>
-              <div className="text-sm text-blue-100">Annual Savings</div>
-              <div className="text-xs text-blue-200 mt-1">Per QA analyst</div>
+              <div className="text-sm text-green-100">Annual Savings</div>
+              <div className="text-xs text-green-200 mt-1">Per QA analyst</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-3xl font-bold mb-1">40%</div>
-              <div className="text-sm text-blue-100">Performance Improvement</div>
-              <div className="text-xs text-blue-200 mt-1">Agent effectiveness</div>
+              <div className="text-sm text-green-100">Performance Improvement</div>
+              <div className="text-xs text-green-200 mt-1">Agent effectiveness</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-3xl font-bold mb-1">90%</div>
-              <div className="text-sm text-blue-100">Reduction in QA Time</div>
-              <div className="text-xs text-blue-200 mt-1">Manual review eliminated</div>
+              <div className="text-sm text-green-100">Reduction in QA Time</div>
+              <div className="text-xs text-green-200 mt-1">Manual review eliminated</div>
             </div>
           </div>
 
-          <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+          <button className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
             Calculate Your ROI
           </button>
         </div>

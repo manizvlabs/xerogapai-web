@@ -11,7 +11,7 @@ export default function BlogPage() {
       <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
             <p className="text-lg text-gray-600 dark:text-gray-300">Loading blog page content...</p>
           </div>
         </div>
@@ -138,7 +138,7 @@ export default function BlogPage() {
                 key={category}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                   category === 'All'
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-green-600 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -158,7 +158,7 @@ export default function BlogPage() {
                 <article key={post.title} className="flex flex-col rounded-2xl bg-gray-50 dark:bg-gray-800 ring-1 ring-gray-200">
                   <div className="p-8">
                     <div className="flex items-center gap-x-4 text-xs">
-                      <span className="relative z-10 rounded-full bg-blue-600 px-3 py-1.5 font-medium text-white">
+                      <span className="relative z-10 rounded-full bg-green-600 px-3 py-1.5 font-medium text-white">
                         {post.category}
                       </span>
                       <span className="text-gray-500">{post.date}</span>
@@ -166,7 +166,7 @@ export default function BlogPage() {
                       <span className="text-gray-500">{post.readTime}</span>
                     </div>
                     <div className="group relative">
-                      <h3 className="mt-4 text-lg font-semibold leading-6 text-gray-900 dark:text-white group-hover:text-blue-600">
+                      <h3 className="mt-4 text-lg font-semibold leading-6 text-gray-900 dark:text-white group-hover:text-green-600">
                         <Link href={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}>
                           <span className="absolute inset-0" />
                           {post.title}
@@ -196,13 +196,13 @@ export default function BlogPage() {
       </div>
 
       {/* Newsletter Signup */}
-      <div className="bg-blue-600">
+      <div className="bg-green-600">
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               {(pageContent.newsletter as Record<string, unknown>).title}
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-green-100">
               {(pageContent.newsletter as Record<string, unknown>).description}
             </p>
             <form className="mt-10 flex max-w-md gap-x-4 mx-auto">
@@ -220,7 +220,7 @@ export default function BlogPage() {
               />
               <button
                 type="submit"
-                className="flex-none rounded-md bg-white dark:bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 dark:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
+                className="flex-none rounded-md bg-white dark:bg-gray-900 px-3.5 py-2.5 text-sm font-semibold text-green-600 shadow-sm hover:bg-gray-50 dark:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
               >
                 {(pageContent.newsletter as Record<string, unknown>).buttonText}
               </button>

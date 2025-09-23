@@ -185,7 +185,7 @@ export default function CaseGrid() {
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center">
-                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-3">
+                    <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-3">
                       {study.company.charAt(0)}
                     </div>
                     <div>
@@ -209,7 +209,7 @@ export default function CaseGrid() {
 
                 {/* Solution Badge */}
                 <div className="mb-4">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300">
                     {study.solution}
                   </span>
                 </div>
@@ -248,7 +248,7 @@ export default function CaseGrid() {
               <div className="px-6 pb-6">
                 <Link
                   href={`/case-studies/${study.id}`}
-                  className="group/btn w-full flex items-center justify-center px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold text-sm transition-colors"
+                  className="group/btn w-full flex items-center justify-center px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold text-sm transition-colors"
                 >
                   Read Case Study
                   <ArrowRightIcon className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
@@ -275,7 +275,7 @@ export default function CaseGrid() {
                 onClick={() => handlePageChange(page)}
                 className={`px-3 py-2 text-sm font-medium rounded-md ${
                   page === currentPage
-                    ? 'text-white bg-blue-600 border-blue-600'
+                    ? 'text-white bg-green-600 border-green-600'
                     : 'text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
                 }`}
               >

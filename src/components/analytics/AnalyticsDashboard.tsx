@@ -32,7 +32,7 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
     return (
       <div className={`flex items-center justify-center min-h-[400px] ${className}`}>
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-300">Loading analytics data...</p>
         </div>
       </div>
@@ -66,8 +66,8 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
           <div className="flex items-center">
-            <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-              <UsersIcon className="w-6 h-6 text-blue-600" />
+            <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+              <UsersIcon className="w-6 h-6 text-green-600" />
             </div>
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Visitors</p>
@@ -119,7 +119,7 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
       <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
         <div className="p-6 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center">
-            <FunnelIcon className="w-6 h-6 text-blue-600 mr-3" />
+            <FunnelIcon className="w-6 h-6 text-green-600 mr-3" />
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Conversion Funnels</h3>
           </div>
         </div>
@@ -129,13 +129,13 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
             {analyticsData.funnelPerformance.map((funnel: any, index: number) => (
               <div key={index} className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                  <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-600 rounded-full"></div>
                   <span className="font-medium text-gray-900 dark:text-white">{funnel.funnel}</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="w-24 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                     <div
-                      className="bg-blue-600 h-2 rounded-full"
+                      className="bg-green-600 h-2 rounded-full"
                       style={{ width: `${funnel.conversionRate}%` }}
                     ></div>
                   </div>
@@ -229,7 +229,7 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
                   URL.revokeObjectURL(url);
                 }
               }}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium"
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium"
             >
               Export Data
             </button>

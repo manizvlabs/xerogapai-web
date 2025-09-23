@@ -114,7 +114,7 @@ export default function WhatsAppTestimonials() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-2xl lg:text-3xl font-bold text-blue-600 mb-2">
+              <div className="text-2xl lg:text-3xl font-bold text-green-600 mb-2">
                 {stat.value}
               </div>
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">
@@ -137,7 +137,7 @@ export default function WhatsAppTestimonials() {
               </blockquote>
 
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                   {testimonial.avatar}
                 </div>
                 <div>
@@ -150,7 +150,7 @@ export default function WhatsAppTestimonials() {
                   <div className="text-sm text-gray-500 dark:text-gray-500">
                     {testimonial.company}, {testimonial.location}
                   </div>
-                  <div className="text-xs text-blue-600 dark:text-blue-400 font-medium mt-1">
+                  <div className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">
                     {testimonial.industry}
                   </div>
                 </div>
@@ -175,7 +175,7 @@ export default function WhatsAppTestimonials() {
 
         {/* Success Stories CTA */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">
               Ready to Join Our Success Stories?
             </h3>

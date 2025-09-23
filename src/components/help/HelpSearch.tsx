@@ -86,7 +86,7 @@ export default function HelpSearch() {
               placeholder="Search for help articles, guides, and FAQs..."
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 text-lg border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-lg"
+              className="w-full pl-12 pr-4 py-4 text-lg border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent shadow-lg"
             />
             <div className="absolute right-4 top-4 flex items-center space-x-1">
               <CommandLineIcon className="h-4 w-4 text-gray-400" />
@@ -115,7 +115,7 @@ export default function HelpSearch() {
                         <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
                           {result.snippet}
                         </p>
-                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300">
                           {result.category}
                         </span>
                       </div>
@@ -139,7 +139,7 @@ export default function HelpSearch() {
                 <button
                   key={index}
                   onClick={() => handleSearch(search)}
-                  className="px-4 py-2 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-blue-500 transition-colors"
+                  className="px-4 py-2 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-green-500 transition-colors"
                 >
                   {search}
                 </button>
@@ -158,16 +158,16 @@ export default function HelpSearch() {
               <Link
                 key={index}
                 href={action.href}
-                className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-blue-500 transition-all group"
+                className="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-green-500 transition-all group"
               >
                 <div className="text-3xl mb-4">{action.icon}</div>
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-blue-400 transition-colors">
                   {action.title}
                 </h4>
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
                   {action.description}
                 </p>
-                <div className="flex items-center text-blue-600 dark:text-blue-400 font-medium">
+                <div className="flex items-center text-green-600 dark:text-green-400 font-medium">
                   <span>Get Started</span>
                   <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </div>

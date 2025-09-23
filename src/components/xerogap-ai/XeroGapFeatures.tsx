@@ -194,7 +194,7 @@ export default function XeroGapFeatures() {
         </div>
 
         {/* Feature Comparison */}
-        <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
+        <div className="bg-gradient-to-r from-purple-600 to-green-600 rounded-2xl p-8 text-white">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
               XeroGap AI vs Traditional Automation
