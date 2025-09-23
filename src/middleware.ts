@@ -1,13 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { 
-  blockSensitiveContent, 
-  applySecurityHeaders, 
-  logSecurityEvent 
+import {
+  blockSensitiveContent,
+  applySecurityHeaders,
+  logSecurityEvent
 } from '@/lib/security';
 import { checkRateLimit, isIPBlocked } from '@/lib/rate-limit';
+import { requireAuth } from '@/lib/auth-jwt';
+
+// Use the same JWT_SECRET as the login API
+const MIDDLEWARE_JWT_SECRET = 'p4s028GCng2A52WfnWbBukY7xUmVlgtBGlEPtY+sWKi/LW39d2GU9+nX2fHEpPakzsTrq9M3IaMr/Mp7eIlDYw==';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  console.log('Middleware executed for:', pathname);
+  console.log('Auth token cookie:', request.cookies.get('auth-token')?.value ? '✅' : '❌');
 
   // Allow admin routes and auth API routes without sensitive content blocking
   if (pathname.startsWith('/admin') || pathname.startsWith('/api/auth') || pathname.startsWith('/api/admin')) {
@@ -54,8 +61,12 @@ export function middleware(request: NextRequest) {
     const shouldSkip = skipRateLimitRoutes.some(route => pathname.startsWith(route));
 
     if (!shouldSkip) {
-      const rateLimitType = pathname.startsWith('/api/auth') ? 'login' :
-                           pathname.startsWith('/api/admin') ? 'admin' : 'api';
+      let rateLimitType = 'api';
+      if (pathname.startsWith('/api/auth')) {
+        rateLimitType = 'login';
+      } else if (pathname.startsWith('/api/admin')) {
+        rateLimitType = 'admin';
+      }
 
       const rateLimit = checkRateLimit(request, rateLimitType);
       if (!rateLimit.allowed) {
@@ -79,8 +90,10 @@ export function middleware(request: NextRequest) {
 
   // Protect admin pages (except login page)
   if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
-    const token = request.cookies.get('auth-token')?.value;
-    
+    // Get token from cookie or Authorization header
+    const token = request.cookies.get('auth-token')?.value ||
+                  request.headers.get('authorization')?.replace('Bearer ', '');
+
     if (!token) {
       logSecurityEvent('admin_page_access_denied', {
         pathname,
@@ -92,45 +105,40 @@ export function middleware(request: NextRequest) {
       return applySecurityHeaders(response, true);
     }
 
-    // Simple token check (just verify it exists and is not expired)
-    try {
-      const parts = token.split('.');
-      if (parts.length !== 3) {
-        throw new Error('Invalid token format');
-      }
+    // Verify token using JWT auth
+    console.log('Middleware: Verifying token:', token?.substring(0, 20) + '...');
+    const payload = requireAuth(token);
+    console.log('Middleware: Token verification result:', !!payload);
 
-      // Decode base64url (JWT uses base64url, not base64)
-      const base64Url = parts[1];
-      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-      const padded = base64.padEnd(base64.length + (4 - base64.length % 4) % 4, '=');
-      const payload = JSON.parse(atob(padded));
-      
-      // Check if token is expired
-      if (payload.exp && payload.exp < Date.now() / 1000) {
-        throw new Error('Token expired');
-      }
-
-      // Check if user is admin
-      if (payload.role !== 'admin') {
-        throw new Error('Insufficient permissions');
-      }
-
-      // Log admin page access
-      logSecurityEvent('admin_page_access', {
-        pathname,
-        userId: payload.userId,
-        username: payload.username
-      }, request);
-    } catch {
+    if (!payload) {
       logSecurityEvent('admin_page_access_denied', {
         pathname,
-        reason: 'Invalid token or insufficient permissions'
+        reason: 'Invalid token'
       }, request);
       // Redirect to login page
       const loginUrl = new URL('/admin/login', request.url);
       const response = NextResponse.redirect(loginUrl);
       return applySecurityHeaders(response, true);
     }
+
+    // Check if user is admin
+    if (payload.role !== 'admin') {
+      logSecurityEvent('admin_page_access_denied', {
+        pathname,
+        reason: 'Insufficient permissions'
+      }, request);
+      // Redirect to login page
+      const loginUrl = new URL('/admin/login', request.url);
+      const response = NextResponse.redirect(loginUrl);
+      return applySecurityHeaders(response, true);
+    }
+
+    // Log admin page access
+    logSecurityEvent('admin_page_access', {
+      pathname,
+      userId: payload.userId,
+      username: payload.username
+    }, request);
   }
 
   // Apply security headers to all responses
@@ -154,4 +162,8 @@ export const config = {
      */
     '/((?!_next/static|_next/image|favicon.ico|public/).*)',
   ],
+  // Force middleware to run on admin routes
+  unstable_allowDynamic: ['/admin/**'],
+  // Use Node.js runtime for JWT verification
+  runtime: 'nodejs',
 };

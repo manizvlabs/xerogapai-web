@@ -20,21 +20,44 @@ export default function UserManagementPage() {
   const [error, setError] = useState<string | null>(null);
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingUser, setEditingUser] = useState<User | null>(null);
+  const [deletingUser, setDeletingUser] = useState<User | null>(null);
 
   // Fetch users
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/admin/users');
+      console.log('📋 Fetching users...');
+
+      const response = await fetch('/api/admin/users', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include', // Include cookies
+      });
+
+      console.log('Fetch users response status:', response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Fetch users failed:', response.status, errorText);
+        setError(`Failed to fetch users: ${response.status} ${response.statusText}`);
+        return;
+      }
+
       const data = await response.json();
-      
+      console.log('Fetch users response data:', data);
+
       if (data.success) {
         setUsers(data.users);
+        console.log(`✅ Fetched ${data.users.length} users`);
       } else {
+        console.error('❌ Fetch users failed:', data.error);
         setError(data.error || 'Failed to fetch users');
       }
-    } catch {
-      setError('Failed to fetch users');
+    } catch (error) {
+      console.error('❌ Fetch users operation failed:', error);
+      setError('Failed to fetch users: ' + (error as Error).message);
     } finally {
       setLoading(false);
     }
@@ -53,22 +76,38 @@ export default function UserManagementPage() {
   }) => {
     try {
       setError(null);
+      console.log('🔧 Creating user:', userData.username);
+
       const response = await fetch('/api/admin/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userData)
+        body: JSON.stringify(userData),
+        credentials: 'include', // Include cookies
       });
-      
+
+      console.log('Create user response status:', response.status);
+
       const data = await response.json();
-      
+      console.log('Create user response data:', data);
+
       if (data.success) {
-        await fetchUsers();
+        console.log('✅ User created successfully');
+        console.log('🔄 Closing create form...');
+        // Force close form regardless of refresh success
         setShowCreateForm(false);
+        console.log('📋 Refreshing user list...');
+        // Refresh users asynchronously but don't wait for it
+        fetchUsers().catch(refreshError => {
+          console.error('❌ Failed to refresh users after creation:', refreshError);
+        });
+        console.log('✅ User creation process completed');
       } else {
+        console.error('❌ Create failed:', data.error);
         setError(data.error || 'Failed to create user');
       }
-    } catch {
-      setError('Failed to create user');
+    } catch (error) {
+      console.error('❌ Create operation failed:', error);
+      setError('Failed to create user: ' + (error as Error).message);
     }
   };
 
@@ -79,7 +118,8 @@ export default function UserManagementPage() {
       const response = await fetch(`/api/admin/users/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updates)
+        body: JSON.stringify(updates),
+        credentials: 'include', // Include cookies
       });
       
       const data = await response.json();
@@ -96,24 +136,48 @@ export default function UserManagementPage() {
   };
 
   // Delete user
-  const handleDeleteUser = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this user?')) return;
-    
+  const handleDeleteUser = async (user: User) => {
+    setDeletingUser(user);
+  };
+
+  const confirmDeleteUser = async () => {
+    if (!deletingUser) return;
+
     try {
       setError(null);
-      const response = await fetch(`/api/admin/users/${id}`, {
-        method: 'DELETE'
+      console.log('🗑️ Deleting user with ID:', deletingUser.id);
+
+      const response = await fetch(`/api/admin/users/${deletingUser.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include', // Include cookies
       });
-      
+
+      console.log('Delete response status:', response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Delete request failed:', response.status, errorText);
+        setError(`Failed to delete user: ${response.status} ${response.statusText}`);
+        return;
+      }
+
       const data = await response.json();
-      
+      console.log('Delete response data:', data);
+
       if (data.success) {
+        console.log('✅ User deleted successfully');
         await fetchUsers();
+        setDeletingUser(null);
       } else {
+        console.error('❌ Delete failed:', data.error);
         setError(data.error || 'Failed to delete user');
       }
-    } catch {
-      setError('Failed to delete user');
+    } catch (error) {
+      console.error('❌ Delete operation failed:', error);
+      setError('Failed to delete user: ' + (error as Error).message);
     }
   };
 
@@ -247,7 +311,7 @@ export default function UserManagementPage() {
                             <PencilIcon className="h-4 w-4" />
                           </button>
                           <button
-                            onClick={() => handleDeleteUser(user.id)}
+                            onClick={() => handleDeleteUser(user)}
                             className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300"
                           >
                             <TrashIcon className="h-4 w-4" />
@@ -278,9 +342,73 @@ export default function UserManagementPage() {
             onCancel={() => setEditingUser(null)}
           />
         )}
+
+        {/* Delete User Confirmation Modal */}
+        {deletingUser && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-full max-w-md">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                Confirm Deletion
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">
+                Are you sure you want to delete the user <strong>{deletingUser.username}</strong> ({deletingUser.email})?
+                This action cannot be undone.
+              </p>
+              <div className="flex gap-2">
+                <button
+                  onClick={confirmDeleteUser}
+                  className="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors"
+                >
+                  Delete User
+                </button>
+                <button
+                  onClick={() => setDeletingUser(null)}
+                  className="flex-1 bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </ProtectedAdminLayout>
   );
+}
+
+// Password validation function
+function validatePassword(password: string): { isValid: boolean; errors: string[] } {
+  const errors: string[] = [];
+
+  // Minimum length
+  if (password.length < 8) {
+    errors.push('Password must be at least 8 characters long');
+  }
+
+  // Uppercase letter
+  if (!/[A-Z]/.test(password)) {
+    errors.push('Password must contain at least one uppercase letter');
+  }
+
+  // Lowercase letter
+  if (!/[a-z]/.test(password)) {
+    errors.push('Password must contain at least one lowercase letter');
+  }
+
+  // Number
+  if (!/\d/.test(password)) {
+    errors.push('Password must contain at least one number');
+  }
+
+  // Special character
+  if (!/[^A-Za-z0-9]/.test(password)) {
+    errors.push('Password must contain at least one special character');
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors,
+  };
 }
 
 // Create User Form Component
@@ -295,20 +423,35 @@ function CreateUserForm({ onSubmit, onCancel }: {
     role: 'user' as 'admin' | 'user'
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
+
+  const handlePasswordChange = (password: string) => {
+    setFormData({ ...formData, password });
+    // Validate password in real-time
+    const validation = validatePassword(password);
+    setPasswordErrors(validation.errors);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate password before submission
+    const validation = validatePassword(formData.password);
+    if (!validation.isValid) {
+      setPasswordErrors(validation.errors);
+      return;
+    }
+
+    console.log('📝 Form submit triggered for user:', formData.username);
     setIsSubmitting(true);
     try {
+      console.log('📤 Calling onSubmit with data:', formData);
       await onSubmit(formData);
-      // Reset form after successful submission
-      setFormData({
-        username: '',
-        email: '',
-        password: '',
-        role: 'user'
-      });
-    } finally {
+      console.log('✅ Form submission completed successfully');
+      // Form will be closed by parent component
+    } catch (error) {
+      console.error('❌ Form submission failed:', error);
+      // Re-enable form on error
       setIsSubmitting(false);
     }
   };
@@ -351,10 +494,36 @@ function CreateUserForm({ onSubmit, onCancel }: {
             <input
               type="password"
               value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              onChange={(e) => handlePasswordChange(e.target.value)}
+              className={`w-full px-3 py-2 border rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 ${
+                passwordErrors.length > 0
+                  ? 'border-red-300 dark:border-red-600 focus:ring-red-500 focus:border-red-500'
+                  : formData.password && passwordErrors.length === 0
+                  ? 'border-green-300 dark:border-green-600 focus:ring-green-500 focus:border-green-500'
+                  : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500'
+              }`}
+              placeholder="Enter a strong password"
               required
             />
+            {passwordErrors.length > 0 && (
+              <div className="mt-1 text-sm text-red-600 dark:text-red-400">
+                <ul className="list-disc list-inside">
+                  {passwordErrors.map((error) => (
+                    <li key={error}>{error}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {formData.password && passwordErrors.length === 0 && (
+              <div className="mt-1 text-sm text-green-600 dark:text-green-400">
+                ✅ Password meets all requirements
+              </div>
+            )}
+            {!formData.password && (
+              <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                Password must contain: 8+ chars, uppercase, lowercase, number, special character
+              </div>
+            )}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
