@@ -157,7 +157,6 @@ export default function HomePage() {
                       <span className="text-2xl font-bold text-gray-900 dark:text-white">
                         {service.pricing.starting}
                       </span>
-                      <span className="text-sm text-gray-600 dark:text-white">/month</span>
                     </div>
                     {service.pricing.note && (
                       <p className="text-xs text-gray-500 dark:text-white mt-1">
