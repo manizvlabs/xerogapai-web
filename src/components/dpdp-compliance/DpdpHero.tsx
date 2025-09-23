@@ -137,21 +137,21 @@ export default function DpdpHero() {
 
           {/* Trust Signals */}
           <div className="mt-12 pt-8 border-t border-slate-700">
-            <p className="text-sm text-slate-400 mb-6">
+            <p className="text-sm text-white mb-6">
               Trusted by 150+ Indian businesses and organizations for DPDP compliance
             </p>
             <div className="flex items-center justify-center space-x-8 opacity-70">
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">150+</div>
-                <div className="text-xs text-slate-400">Companies Compliant</div>
+                <div className="text-xs text-white">Companies Compliant</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">₹500Cr</div>
-                <div className="text-xs text-slate-400">Penalties Avoided</div>
+                <div className="text-xs text-white">Penalties Avoided</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">98%</div>
-                <div className="text-xs text-slate-400">Assessment Accuracy</div>
+                <div className="text-xs text-white">Assessment Accuracy</div>
               </div>
             </div>
           </div>
