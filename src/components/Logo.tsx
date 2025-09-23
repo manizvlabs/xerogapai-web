@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useTheme } from '@/contexts/ThemeContext';
 import { siteConfig } from '@/config/site';
 
 interface LogoProps {
@@ -25,8 +24,6 @@ const Logo = ({
   onLoad,
   onError
 }: LogoProps) => {
-  const { theme } = useTheme();
-
   // Size configurations with responsive variants
   const sizeConfig = {
     sm: { height: 32, width: 'auto', responsiveHeight: { sm: 24, md: 28, lg: 32 } },
@@ -35,23 +32,21 @@ const Logo = ({
     xl: { height: 120, width: 'auto', responsiveHeight: { sm: 80, md: 96, lg: 120 } },
   };
 
-  // Logo variant mappings with theme awareness and fallbacks
+  // Logo variant mappings with consistent sizing across themes
   const getLogoSrc = () => {
-    const isDark = theme === 'dark';
-
     switch (variant) {
       case 'full':
-        return isDark ? '/logo-dark.png' : '/logo-header.png';
+        return '/logo-header.png'; // Use same logo for both themes to maintain consistent sizing
       case 'icon':
-        return isDark ? '/logo-dark.png' : '/logo-header-mobile.png';
+        return '/logo-header-mobile.png'; // Use same logo for both themes to maintain consistent sizing
       case 'hero':
         return '/logo-hero.png';
       case 'footer':
-        return isDark ? '/logo-dark.png' : '/logo-footer.png';
+        return '/logo-icononly.png'; // Use icon-only logo for footer
       case 'dark':
-        return '/logo-dark.png';
+        return '/logo-dark.png'; // Explicitly dark variant
       case 'text':
-        return isDark ? '/logo-dark.png' : '/logo-header.png';
+        return '/logo-header.png'; // Use same logo for both themes to maintain consistent sizing
       default:
         return '/logo-fallback.png';
     }

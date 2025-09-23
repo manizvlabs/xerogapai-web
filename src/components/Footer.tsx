@@ -12,22 +12,21 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Company Info */}
             <div className="lg:col-span-2">
-              <Link href="/" className="inline-flex items-center group mb-6">
-                <div className="flex items-center mr-4">
+              <Link href="/" className="inline-flex items-center group mb-6 relative h-16">
+                <div className="flex items-center justify-center mr-4 h-16">
                   <Logo
                     variant="footer"
                     size="lg"
                     className="h-16 w-auto"
                   />
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-3xl font-bold text-white group-hover:text-green-400 transition-colors">
-                    {siteConfig.name.split(' ')[0]}
-                  </span>
-                  <span className="text-xl text-gray-300 group-hover:text-green-300 transition-colors">
-                    {siteConfig.name.split(' ')[1]}
+                <div className="flex items-center">
+                  <span className="text-2xl font-bold text-white group-hover:text-green-400 transition-colors">
+                    {siteConfig.name}
                   </span>
                 </div>
+                {/* Debugging horizontal line bisecting logo and text */}
+                <div className="absolute top-8 left-0 right-0 h-px bg-red-500 opacity-75 pointer-events-none"></div>
               </Link>
               <p className="text-sm leading-6 text-gray-300 mb-6 max-w-md">
                 {siteConfig.tagline}. We help businesses in {siteConfig.location} and across globe 
