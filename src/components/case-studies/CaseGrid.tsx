@@ -172,7 +172,7 @@ export default function CaseGrid() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl mb-4">
             All Case Studies
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="text-lg text-gray-600 dark:text-white">
             Browse through our complete collection of customer success stories across industries and solutions.
           </p>
         </div>
@@ -192,12 +192,12 @@ export default function CaseGrid() {
                       <h3 className="font-semibold text-gray-900 dark:text-white text-sm">
                         {study.company}
                       </h3>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">
+                      <p className="text-xs text-gray-600 dark:text-white">
                         {study.industry} • {study.companySize}
                       </p>
                     </div>
                   </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500">
+                  <div className="text-xs text-gray-500 dark:text-white">
                     {study.readTime}
                   </div>
                 </div>
@@ -225,7 +225,7 @@ export default function CaseGrid() {
                         <div className="text-sm font-bold text-green-600 dark:text-green-400">
                           {value}
                         </div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400 capitalize">
+                        <div className="text-xs text-gray-600 dark:text-white capitalize">
                           {key.replace(/([A-Z])/g, ' $1').trim()}
                         </div>
                       </div>
@@ -234,7 +234,7 @@ export default function CaseGrid() {
                 </div>
 
                 {/* Date */}
-                <div className="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-4">
+                <div className="flex items-center text-xs text-gray-500 dark:text-white mb-4">
                   <CalendarIcon className="w-4 h-4 mr-1" />
                   {new Date(study.date).toLocaleDateString('en-US', {
                     year: 'numeric',
@@ -264,7 +264,7 @@ export default function CaseGrid() {
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
-              className="px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700"
+              className="px-3 py-2 text-sm font-medium text-gray-500 dark:text-white bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700"
             >
               Previous
             </button>
@@ -276,7 +276,7 @@ export default function CaseGrid() {
                 className={`px-3 py-2 text-sm font-medium rounded-md ${
                   page === currentPage
                     ? 'text-white bg-green-600 border-green-600'
-                    : 'text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
+                    : 'text-gray-500 dark:text-white bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
                 }`}
               >
                 {page}
@@ -286,7 +286,7 @@ export default function CaseGrid() {
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className="px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700"
+              className="px-3 py-2 text-sm font-medium text-gray-500 dark:text-white bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700"
             >
               Next
             </button>
@@ -295,7 +295,7 @@ export default function CaseGrid() {
 
         {/* Results Summary */}
         <div className="mt-12 text-center">
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-gray-600 dark:text-white">
             Showing <span className="font-semibold text-gray-900 dark:text-white">
               {startIndex + 1}-{Math.min(endIndex, caseStudies.length)}
             </span> of{' '}

@@ -131,7 +131,7 @@ export default function XeroGapUseCases() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Perfect for Growing Businesses
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Tailored automation solutions for startups, agencies, consulting firms, and educational institutions.
           </p>
         </div>
@@ -151,7 +151,7 @@ export default function XeroGapUseCases() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {useCase.description}
                 </p>
 
@@ -208,7 +208,7 @@ export default function XeroGapUseCases() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Popular Automation Workflows
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Pre-built automation templates that you can customize for your specific needs
             </p>
           </div>
@@ -225,7 +225,7 @@ export default function XeroGapUseCases() {
                   </div>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-600 dark:text-white mb-4">
                   {workflow.description}
                 </p>
 

@@ -38,7 +38,7 @@ export default function DemoTestimonials() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             What Demo Attendees Say
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Real feedback from businesses who've experienced our personalized demos and seen the potential of AI automation.
           </p>
         </div>
@@ -48,7 +48,7 @@ export default function DemoTestimonials() {
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg border border-gray-200 dark:border-gray-700">
                 <div className="text-4xl mb-4 text-gray-400">"</div>
-                <blockquote className="text-gray-700 dark:text-gray-300 mb-6 italic">
+                <blockquote className="text-gray-700 dark:text-white mb-6 italic">
                   {testimonial.quote}
                 </blockquote>
 
@@ -60,10 +60,10 @@ export default function DemoTestimonials() {
                     <div className="font-semibold text-gray-900 dark:text-white">
                       {testimonial.author}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                    <div className="text-sm text-gray-600 dark:text-white">
                       {testimonial.position}
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-500">
+                    <div className="text-sm text-gray-500 dark:text-white">
                       {testimonial.company}, {testimonial.location}
                     </div>
                   </div>
@@ -91,19 +91,19 @@ export default function DemoTestimonials() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
               <div className="text-3xl font-bold text-green-600 mb-2">95%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Demo to Trial Conversion</div>
+              <div className="text-sm text-gray-600 dark:text-white">Demo to Trial Conversion</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-green-600 mb-2">85%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Report Implementation</div>
+              <div className="text-sm text-gray-600 dark:text-white">Report Implementation</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-purple-600 mb-2">30min</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Average Demo Length</div>
+              <div className="text-sm text-gray-600 dark:text-white">Average Demo Length</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-orange-600 mb-2">2.5x</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Average ROI Multiple</div>
+              <div className="text-sm text-gray-600 dark:text-white">Average ROI Multiple</div>
             </div>
           </div>
         </div>

@@ -62,7 +62,7 @@ export default function XeroGapSpecs() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Enterprise-Grade Specifications
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Built for scale, security, and reliability with specifications that match enterprise requirements.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function XeroGapSpecs() {
                 <div className="space-y-4">
                   {spec.items.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-800 last:border-b-0">
-                      <span className="text-gray-700 dark:text-gray-300 font-medium">
+                      <span className="text-gray-700 dark:text-white font-medium">
                         {item.label}
                       </span>
                       <span className="text-purple-600 dark:text-purple-400 font-semibold">

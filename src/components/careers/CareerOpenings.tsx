@@ -215,7 +215,7 @@ export default function CareerOpenings() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Open Positions
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Join our growing team of innovators and help shape the future of AI-powered business automation.
           </p>
         </div>
@@ -229,7 +229,7 @@ export default function CareerOpenings() {
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 selectedDepartment === department
                   ? 'bg-purple-600 text-white'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700'
               }`}
             >
               {department}
@@ -253,7 +253,7 @@ export default function CareerOpenings() {
                       </span>
                     )}
                   </div>
-                  <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-white mb-3">
                     <div className="flex items-center">
                       <MapPinIcon className="w-4 h-4 mr-1" />
                       {job.location}
@@ -270,7 +270,7 @@ export default function CareerOpenings() {
                 </div>
               </div>
 
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <p className="text-gray-600 dark:text-white mb-6">
                 {job.description}
               </p>
 
@@ -279,7 +279,7 @@ export default function CareerOpenings() {
                 <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
                   Key Requirements:
                 </h4>
-                <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                <ul className="text-sm text-gray-600 dark:text-white space-y-1">
                   {job.requirements.slice(0, 2).map((req, index) => (
                     <li key={index} className="flex items-center">
                       <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3 flex-shrink-0"></div>
@@ -310,7 +310,7 @@ export default function CareerOpenings() {
 
               {/* CTA */}
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400">
+                <span className="text-sm text-gray-600 dark:text-white">
                   {job.type}
                 </span>
                 <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors flex items-center">
@@ -329,7 +329,7 @@ export default function CareerOpenings() {
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
               No positions found
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
+            <p className="text-gray-600 dark:text-white mb-6">
               We don't have any open positions in {selectedDepartment} right now.
             </p>
             <button

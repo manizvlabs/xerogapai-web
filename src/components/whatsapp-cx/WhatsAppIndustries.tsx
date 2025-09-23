@@ -116,7 +116,7 @@ export default function WhatsAppIndustries() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Perfect for MEA & Global Businesses
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Tailored solutions for every industry, with industry-specific workflows and compliance requirements.
           </p>
         </div>
@@ -138,7 +138,7 @@ export default function WhatsAppIndustries() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {industry.description}
                 </p>
 
@@ -150,7 +150,7 @@ export default function WhatsAppIndustries() {
                     {industry.useCases.map((useCase, useCaseIndex) => (
                       <li key={useCaseIndex} className="flex items-start text-sm">
                         <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-600 dark:text-gray-300">{useCase}</span>
+                        <span className="text-gray-600 dark:text-white">{useCase}</span>
                       </li>
                     ))}
                   </ul>
@@ -163,15 +163,15 @@ export default function WhatsAppIndustries() {
                   <div className="grid grid-cols-3 gap-2 text-center">
                     <div>
                       <div className="text-lg font-bold text-green-600">{industry.metrics.automation}</div>
-                      <div className="text-xs text-gray-600 dark:text-gray-400">Automation</div>
+                      <div className="text-xs text-gray-600 dark:text-white">Automation</div>
                     </div>
                     <div>
                       <div className="text-lg font-bold text-green-600">{industry.metrics.satisfaction}</div>
-                      <div className="text-xs text-gray-600 dark:text-gray-400">Satisfaction</div>
+                      <div className="text-xs text-gray-600 dark:text-white">Satisfaction</div>
                     </div>
                     <div>
                       <div className="text-lg font-bold text-purple-600">{industry.metrics.revenue}</div>
-                      <div className="text-xs text-gray-600 dark:text-gray-400">Revenue Impact</div>
+                      <div className="text-xs text-gray-600 dark:text-white">Revenue Impact</div>
                     </div>
                   </div>
                 </div>
@@ -186,7 +186,7 @@ export default function WhatsAppIndustries() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               WhatsApp Automation by Industry
             </h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-white">
               See how different industries benefit from automated WhatsApp communication
             </p>
           </div>

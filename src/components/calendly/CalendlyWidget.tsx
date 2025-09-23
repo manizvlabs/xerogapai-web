@@ -87,7 +87,7 @@ export default function CalendlyWidget({
           <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
             Scheduling Unavailable
           </h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-4">
+          <p className="text-gray-600 dark:text-white mb-4">
             {error}
           </p>
           <button
@@ -107,7 +107,7 @@ export default function CalendlyWidget({
         <div className="absolute inset-0 flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-lg z-10">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-            <p className="text-gray-600 dark:text-gray-300">Loading calendar...</p>
+            <p className="text-gray-600 dark:text-white">Loading calendar...</p>
           </div>
         </div>
       )}
@@ -120,7 +120,7 @@ export default function CalendlyWidget({
 
       {!isLoading && (
         <div className="mt-4 text-center">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-gray-500 dark:text-white">
             Select a date and time that works best for you. The demo will be conducted via video call.
           </p>
         </div>

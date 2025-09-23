@@ -79,7 +79,7 @@ export default function SalesPricing() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Sales Automation Pricing
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Choose the plan that fits your sales team size and automation needs. All plans include our 14-day free trial.
           </p>
         </div>
@@ -107,7 +107,7 @@ export default function SalesPricing() {
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                   {plan.name}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {plan.description}
                 </p>
 
@@ -115,10 +115,10 @@ export default function SalesPricing() {
                   <span className="text-4xl font-bold text-gray-900 dark:text-white">
                     {plan.price}
                   </span>
-                  <span className="text-gray-600 dark:text-gray-400">/{plan.period}</span>
+                  <span className="text-gray-600 dark:text-white">/{plan.period}</span>
                 </div>
 
-                <div className="space-y-2 mb-6 text-sm text-gray-600 dark:text-gray-400">
+                <div className="space-y-2 mb-6 text-sm text-gray-600 dark:text-white">
                   <div>{plan.users}</div>
                   <div>{plan.leads}</div>
                 </div>
@@ -131,7 +131,7 @@ export default function SalesPricing() {
                 {plan.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center">
                     <CheckIcon className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
+                    <span className="text-sm text-gray-700 dark:text-white">{feature}</span>
                   </div>
                 ))}
 
@@ -143,7 +143,7 @@ export default function SalesPricing() {
                     {plan.limitations.map((limitation, limitIndex) => (
                       <div key={limitIndex} className="flex items-center">
                         <XMarkIcon className="h-5 w-5 text-red-500 mr-3 flex-shrink-0" />
-                        <span className="text-sm text-gray-700 dark:text-gray-300">{limitation}</span>
+                        <span className="text-sm text-gray-700 dark:text-white">{limitation}</span>
                       </div>
                     ))}
                   </>

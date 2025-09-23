@@ -150,7 +150,7 @@ export default function DocsSupport() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Developer Support
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Get the help you need, when you need it. From instant chat support to comprehensive documentation,
             we're here to ensure your success with XeroGap AI.
           </p>
@@ -174,14 +174,14 @@ export default function DocsSupport() {
                       <span className="text-sm text-green-600 dark:text-green-400">
                         {channel.availability}
                       </span>
-                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                      <span className="text-sm text-gray-600 dark:text-white">
                         {channel.responseTime}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-600 dark:text-white mb-4">
                   {channel.description}
                 </p>
 
@@ -189,7 +189,7 @@ export default function DocsSupport() {
                   <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
                     Best for:
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-sm text-gray-600 dark:text-white">
                     {channel.bestFor}
                   </p>
                 </div>
@@ -211,7 +211,7 @@ export default function DocsSupport() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Support Plans
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Choose the support level that fits your needs and development timeline
             </p>
           </div>
@@ -226,7 +226,7 @@ export default function DocsSupport() {
                   <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 mb-1">
                     {plan.price}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                  <div className="text-sm text-gray-600 dark:text-white">
                     Response: {plan.responseTime}
                   </div>
                 </div>
@@ -235,13 +235,13 @@ export default function DocsSupport() {
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-sm">
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-600 dark:text-gray-300">{feature}</span>
+                      <span className="text-gray-600 dark:text-white">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <div className="text-center">
-                  <div className="text-xs text-gray-500 dark:text-gray-400 mb-3">
+                  <div className="text-xs text-gray-500 dark:text-white mb-3">
                     {plan.supportHours}
                   </div>
                   <button
@@ -273,7 +273,7 @@ export default function DocsSupport() {
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                     {faq.question}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                  <p className="text-gray-600 dark:text-white text-sm mb-2">
                     {faq.answer}
                   </p>
                   <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300">
@@ -304,10 +304,10 @@ export default function DocsSupport() {
                     <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
                       {option.method}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                    <p className="text-gray-600 dark:text-white text-sm mb-2">
                       {option.description}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                    <p className="text-xs text-gray-500 dark:text-white">
                       {option.availability}
                     </p>
                   </div>

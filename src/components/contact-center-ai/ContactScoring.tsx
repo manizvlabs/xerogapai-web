@@ -104,7 +104,7 @@ export default function ContactScoring() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Intelligent Call Scoring & Evaluation
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Comprehensive AI-powered scoring that evaluates every aspect of customer interactions
             with detailed feedback and actionable insights.
           </p>
@@ -130,7 +130,7 @@ export default function ContactScoring() {
                   </div>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {category.description}
                 </p>
 
@@ -142,7 +142,7 @@ export default function ContactScoring() {
                     {category.criteria.map((criterion, criterionIndex) => (
                       <div key={criterionIndex} className="flex items-center text-sm">
                         <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-600 dark:text-gray-300">{criterion}</span>
+                        <span className="text-gray-600 dark:text-white">{criterion}</span>
                       </div>
                     ))}
                   </div>
@@ -159,14 +159,14 @@ export default function ContactScoring() {
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <p className="text-gray-600 dark:text-white mb-6">
                 {feature.description}
               </p>
               <div className="space-y-2">
                 {feature.benefits.map((benefit, benefitIndex) => (
                   <div key={benefitIndex} className="flex items-center text-sm">
                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-600 dark:text-gray-300">{benefit}</span>
+                    <span className="text-gray-600 dark:text-white">{benefit}</span>
                   </div>
                 ))}
               </div>
@@ -246,7 +246,7 @@ export default function ContactScoring() {
               </h3>
             </div>
 
-            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white mb-8 max-w-2xl mx-auto">
               Our AI scoring system maintains 95% accuracy and perfect consistency,
               eliminating human bias and ensuring fair evaluation.
             </p>
@@ -255,19 +255,19 @@ export default function ContactScoring() {
               <div className="text-center">
                 <div className="text-3xl font-bold text-green-600 mb-2">95%</div>
                 <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Scoring Accuracy</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">Industry leading precision</div>
+                <div className="text-xs text-gray-600 dark:text-white">Industry leading precision</div>
               </div>
 
               <div className="text-center">
                 <div className="text-3xl font-bold text-green-600 mb-2">100%</div>
                 <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Call Coverage</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">Every interaction scored</div>
+                <div className="text-xs text-gray-600 dark:text-white">Every interaction scored</div>
               </div>
 
               <div className="text-center">
                 <div className="text-3xl font-bold text-purple-600 mb-2">0%</div>
                 <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Bias in Scoring</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">Consistent evaluation</div>
+                <div className="text-xs text-gray-600 dark:text-white">Consistent evaluation</div>
               </div>
             </div>
           </div>

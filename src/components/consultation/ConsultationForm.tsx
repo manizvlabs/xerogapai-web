@@ -172,7 +172,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   First Name *
                 </label>
                 <input
@@ -188,7 +188,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   Last Name *
                 </label>
                 <input
@@ -204,7 +204,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   Email Address *
                 </label>
                 <input
@@ -220,7 +220,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   Phone Number
                 </label>
                 <input
@@ -243,7 +243,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   Company Name *
                 </label>
                 <input
@@ -259,7 +259,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   Job Title *
                 </label>
                 <input
@@ -275,7 +275,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   Industry
                 </label>
                 <input
@@ -288,7 +288,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   Company Website
                 </label>
                 <input
@@ -311,7 +311,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   Preferred Date *
                 </label>
                 <select
@@ -330,7 +330,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   Preferred Time *
                 </label>
                 <select
@@ -349,7 +349,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   Timezone
                 </label>
                 <div className="flex items-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700">
@@ -359,7 +359,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   Preferred Language
                 </label>
                 <select
@@ -377,7 +377,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
 
             <div className="mt-6 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   What are your main goals for this consultation?
                 </label>
                 <textarea
@@ -390,7 +390,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                   What challenges are you currently facing? (Optional)
                 </label>
                 <textarea
@@ -424,7 +424,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
             <button
               type="button"
               onClick={onBack}
-              className="px-8 py-4 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              className="px-8 py-4 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
               Back
             </button>
@@ -432,7 +432,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
 
           {/* Privacy Notice */}
           <div className="mt-6 text-center">
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-500 dark:text-white">
               By booking this consultation, you agree to our{' '}
               <Link href="/privacy" className="text-green-600 hover:text-green-700">Privacy Policy</Link>
               {' '}and{' '}

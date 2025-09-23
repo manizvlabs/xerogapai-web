@@ -33,7 +33,7 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
       <div className={`flex items-center justify-center min-h-[400px] ${className}`}>
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-300">Loading analytics data...</p>
+          <p className="text-gray-600 dark:text-white">Loading analytics data...</p>
         </div>
       </div>
     );
@@ -45,11 +45,11 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Analytics Dashboard</h2>
-          <p className="text-gray-600 dark:text-gray-300">Track your conversion funnels and user behavior</p>
+          <p className="text-gray-600 dark:text-white">Track your conversion funnels and user behavior</p>
         </div>
 
         <div className="flex items-center space-x-2">
-          <span className="text-sm text-gray-600 dark:text-gray-400">Timeframe:</span>
+          <span className="text-sm text-gray-600 dark:text-white">Timeframe:</span>
           <select
             value={selectedTimeframe}
             onChange={(e) => setSelectedTimeframe(e.target.value as 'day' | 'week' | 'month')}
@@ -70,7 +70,7 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
               <UsersIcon className="w-6 h-6 text-green-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Visitors</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-white">Total Visitors</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">{analyticsData.totalVisitors.toLocaleString()}</p>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
               <CheckCircleIcon className="w-6 h-6 text-green-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Conversions</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-white">Conversions</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">{analyticsData.totalConversions}</p>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
               <ArrowTrendingUpIcon className="w-6 h-6 text-purple-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Conversion Rate</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-white">Conversion Rate</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">{analyticsData.conversionRate.toFixed(1)}%</p>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
               <CursorClickIcon className="w-6 h-6 text-orange-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">CTA Clicks</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-white">CTA Clicks</p>
               <p className="text-2xl font-bold text-gray-900 dark:text-white">
                 {analyticsData.topEvents.find((e: any) => e.event === 'cta_click')?.count || 0}
               </p>
@@ -165,12 +165,12 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
               {analyticsData.topPages.map((page: any, index: number) => (
                 <div key={index} className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <span className="text-sm font-mono text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    <span className="text-sm font-mono text-gray-500 dark:text-white bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
                       {page.page}
                     </span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">{page.visits} visits</span>
+                    <span className="text-sm text-gray-600 dark:text-white">{page.visits} visits</span>
                   </div>
                 </div>
               ))}
@@ -197,7 +197,7 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
                     </span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">{event.count} times</span>
+                    <span className="text-sm text-gray-600 dark:text-white">{event.count} times</span>
                   </div>
                 </div>
               ))}
@@ -212,7 +212,7 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Export Analytics Data</h3>
-              <p className="text-gray-600 dark:text-gray-300">Download detailed analytics data for further analysis</p>
+              <p className="text-gray-600 dark:text-white">Download detailed analytics data for further analysis</p>
             </div>
             <button
               onClick={() => {

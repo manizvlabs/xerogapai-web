@@ -86,12 +86,12 @@ export default function ConsultationPage() {
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Consultation Booked Successfully!
             </h1>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
+            <p className="text-gray-600 dark:text-white mb-6">
               Thank you for booking your consultation. You&apos;ll receive a confirmation email shortly with all the details and preparation materials.
             </p>
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-6">
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Booking Details:</h3>
-              <div className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+              <div className="text-sm text-gray-600 dark:text-white space-y-1">
                 <p><strong>Consultation Type:</strong> {bookingData.consultationType}</p>
                 <p><strong>Name:</strong> {bookingData.firstName} {bookingData.lastName}</p>
                 <p><strong>Email:</strong> {bookingData.email}</p>
@@ -103,7 +103,7 @@ export default function ConsultationPage() {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => setCurrentStep('types')}
-                className="flex-1 px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                className="flex-1 px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
               >
                 Book Another Consultation
               </button>
@@ -122,7 +122,7 @@ export default function ConsultationPage() {
       <div className="fixed bottom-6 left-6 z-40">
         <Link
           href="/"
-          className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+          className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-white bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
         >
           ← Back to Home
         </Link>

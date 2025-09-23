@@ -5,7 +5,7 @@ import { MicrophoneIcon, ChartBarIcon, UserGroupIcon, ClockIcon } from '@heroico
 
 export default function ContactHero() {
   return (
-    <div className="relative isolate bg-gradient-to-br from-green-50 via-emerald-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="relative isolate bg-gradient-to-br from-blue-900 via-indigo-900 to-violet-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <svg className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
@@ -21,55 +21,56 @@ export default function ContactHero() {
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm font-medium mb-8">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-800/30 text-blue-200 text-sm font-medium mb-8">
             <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
             AI-Powered Contact Center QA
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl mb-8">
-            Transform Every Customer
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-indigo-600 to-emerald-600">
-              {" "}Interaction
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl mb-8">
+            Transform Every
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400">
+              Customer Interaction
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl leading-8 text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
+          <p className="text-xl leading-8 text-slate-300 mb-12 max-w-3xl mx-auto">
             AI-powered call scoring, real-time coaching, and quality assurance that helps your agents
             deliver exceptional customer experiences and improve performance by 40%.
           </p>
 
           {/* Key Metrics */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12 max-w-5xl mx-auto">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <MicrophoneIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
-              <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">95%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Call Quality Score</div>
+            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700">
+              <MicrophoneIcon className="h-8 w-8 text-blue-400 mx-auto mb-3" />
+              <div className="text-3xl font-bold text-white mb-1">95%</div>
+              <div className="text-sm text-slate-400">Call Quality Score</div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <ChartBarIcon className="h-8 w-8 text-indigo-600 mx-auto mb-3" />
-              <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">40%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Performance Improvement</div>
+            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700">
+              <ChartBarIcon className="h-8 w-8 text-indigo-400 mx-auto mb-3" />
+              <div className="text-3xl font-bold text-white mb-1">40%</div>
+              <div className="text-sm text-slate-400">Performance Improvement</div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <UserGroupIcon className="h-8 w-8 text-purple-600 mx-auto mb-3" />
-              <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">60%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Faster Agent Training</div>
+            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700">
+              <UserGroupIcon className="h-8 w-8 text-violet-400 mx-auto mb-3" />
+              <div className="text-3xl font-bold text-white mb-1">60%</div>
+              <div className="text-sm text-slate-400">Faster Agent Training</div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <ClockIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
-              <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">90%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Reduction in QA Time</div>
+            <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-2xl border border-slate-700">
+              <ClockIcon className="h-8 w-8 text-blue-400 mx-auto mb-3" />
+              <div className="text-3xl font-bold text-white mb-1">90%</div>
+              <div className="text-sm text-slate-400">Reduction in QA Time</div>
             </div>
           </div>
 
           {/* Value Proposition */}
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700 mb-12 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+          <div className="bg-slate-800/30 backdrop-blur-sm p-8 rounded-3xl border border-slate-700 mb-12 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">
               Complete Contact Center QA Solution
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -79,8 +80,8 @@ export default function ContactHero() {
                     <span className="text-green-600 text-sm font-bold">✓</span>
                   </div>
                   <div>
-                    <div className="font-semibold text-white dark:text-white">Automated Call Scoring</div>
-                    <div className="text-sm text-gray-300 dark:text-gray-400">Real-time evaluation of every interaction</div>
+                    <div className="font-semibold text-white">Automated Call Scoring</div>
+                    <div className="text-sm text-slate-300">Real-time evaluation of every interaction</div>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -88,8 +89,8 @@ export default function ContactHero() {
                     <span className="text-green-600 text-sm font-bold">✓</span>
                   </div>
                   <div>
-                    <div className="font-semibold text-white dark:text-white">AI-Powered Coaching</div>
-                    <div className="text-sm text-gray-300 dark:text-gray-400">Personalized feedback and improvement plans</div>
+                    <div className="font-semibold text-white">AI-Powered Coaching</div>
+                    <div className="text-sm text-slate-300">Personalized feedback and improvement plans</div>
                   </div>
                 </div>
               </div>
@@ -99,8 +100,8 @@ export default function ContactHero() {
                     <span className="text-green-600 text-sm font-bold">✓</span>
                   </div>
                   <div>
-                    <div className="font-semibold text-white dark:text-white">Quality Assurance</div>
-                    <div className="text-sm text-gray-300 dark:text-gray-400">Consistent standards across all channels</div>
+                    <div className="font-semibold text-white">Quality Assurance</div>
+                    <div className="text-sm text-slate-300">Consistent standards across all channels</div>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -108,8 +109,8 @@ export default function ContactHero() {
                     <span className="text-green-600 text-sm font-bold">✓</span>
                   </div>
                   <div>
-                    <div className="font-semibold text-white dark:text-white">Performance Analytics</div>
-                    <div className="text-sm text-gray-300 dark:text-gray-400">Deep insights into team and individual performance</div>
+                    <div className="font-semibold text-white">Performance Analytics</div>
+                    <div className="text-sm text-slate-300">Deep insights into team and individual performance</div>
                   </div>
                 </div>
               </div>
@@ -126,29 +127,29 @@ export default function ContactHero() {
             </Link>
             <Link
               href="/demo"
-              className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              className="bg-slate-700 hover:bg-slate-600 text-white border-2 border-slate-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-slate-600 transition-colors"
             >
               Book QA Demo
             </Link>
           </div>
 
           {/* Trust Signals */}
-          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+          <div className="mt-12 pt-8 border-t border-slate-700">
+            <p className="text-sm text-slate-400 mb-6">
               Trusted by 200+ contact centers and customer service teams worldwide
             </p>
-            <div className="flex items-center justify-center space-x-8 opacity-60">
+            <div className="flex items-center justify-center space-x-8 opacity-70">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">200+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Contact Centers</div>
+                <div className="text-2xl font-bold text-white">200+</div>
+                <div className="text-xs text-slate-400">Contact Centers</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">10M+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Calls Analyzed</div>
+                <div className="text-2xl font-bold text-white">10M+</div>
+                <div className="text-xs text-slate-400">Calls Analyzed</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">95%</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Accuracy Rate</div>
+                <div className="text-2xl font-bold text-white">95%</div>
+                <div className="text-xs text-slate-400">Accuracy Rate</div>
               </div>
             </div>
           </div>

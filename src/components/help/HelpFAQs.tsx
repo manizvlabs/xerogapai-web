@@ -109,7 +109,7 @@ export default function HelpFAQs() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Frequently Asked Questions
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Quick answers to the most common questions about XeroGap AI.
           </p>
         </div>
@@ -149,7 +149,7 @@ export default function HelpFAQs() {
 
                       {isOpen && (
                         <div className="px-4 pb-4">
-                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                          <p className="text-gray-600 dark:text-white leading-relaxed">
                             {faq.answer}
                           </p>
                         </div>

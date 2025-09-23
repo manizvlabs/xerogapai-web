@@ -112,7 +112,7 @@ export default function DocsAPIs() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Complete API Reference
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Everything you need to integrate XeroGap AI into your applications.
             Comprehensive documentation with examples and interactive testing.
           </p>
@@ -149,7 +149,7 @@ export default function DocsAPIs() {
                           {endpoint.path}
                         </code>
                       </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-gray-600 dark:text-white">
                         {endpoint.description}
                       </p>
                     </div>
@@ -166,7 +166,7 @@ export default function DocsAPIs() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Official SDK Support
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Build faster with our official SDKs for all major programming languages
             </p>
           </div>
@@ -184,7 +184,7 @@ export default function DocsAPIs() {
                   {sdk.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-sm">
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-600 dark:text-gray-300">{feature}</span>
+                      <span className="text-gray-600 dark:text-white">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -200,7 +200,7 @@ export default function DocsAPIs() {
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <p className="text-gray-600 dark:text-white mb-6">
                 {feature.description}
               </p>
 
@@ -211,7 +211,7 @@ export default function DocsAPIs() {
                 {feature.benefits.map((benefit, benefitIndex) => (
                   <div key={benefitIndex} className="flex items-center text-sm">
                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-600 dark:text-gray-300">{benefit}</span>
+                    <span className="text-gray-600 dark:text-white">{benefit}</span>
                   </div>
                 ))}
               </div>

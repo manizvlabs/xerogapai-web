@@ -35,7 +35,7 @@ export default function DocsHero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl leading-8 text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
+          <p className="text-xl leading-8 text-gray-600 dark:text-white mb-12 max-w-3xl mx-auto">
             Comprehensive documentation, API references, and integration guides to help you build
             powerful AI-powered applications with XeroGap AI. From quick starts to advanced implementations.
           </p>
@@ -45,25 +45,25 @@ export default function DocsHero() {
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <BookOpenIcon className="h-8 w-8 text-indigo-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">500+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Documentation Pages</div>
+              <div className="text-sm text-gray-600 dark:text-white">Documentation Pages</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <CodeBracketIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">50+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">API Endpoints</div>
+              <div className="text-sm text-gray-600 dark:text-white">API Endpoints</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <LightBulbIcon className="h-8 w-8 text-cyan-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">25+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Integration Guides</div>
+              <div className="text-sm text-gray-600 dark:text-white">Integration Guides</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <UsersIcon className="h-8 w-8 text-purple-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">24/7</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Developer Support</div>
+              <div className="text-sm text-gray-600 dark:text-white">Developer Support</div>
             </div>
           </div>
 
@@ -80,7 +80,7 @@ export default function DocsHero() {
                   </div>
                   <div>
                     <div className="font-semibold text-white dark:text-white">Quick Start Guides</div>
-                    <div className="text-sm text-gray-300 dark:text-gray-400">Get up and running in under 30 minutes</div>
+                    <div className="text-sm text-gray-300 dark:text-white">Get up and running in under 30 minutes</div>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -89,7 +89,7 @@ export default function DocsHero() {
                   </div>
                   <div>
                     <div className="font-semibold text-white dark:text-white">Complete API Reference</div>
-                    <div className="text-sm text-gray-300 dark:text-gray-400">Every endpoint, parameter, and response documented</div>
+                    <div className="text-sm text-gray-300 dark:text-white">Every endpoint, parameter, and response documented</div>
                   </div>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export default function DocsHero() {
                   </div>
                   <div>
                     <div className="font-semibold text-white dark:text-white">Integration Tutorials</div>
-                    <div className="text-sm text-gray-300 dark:text-gray-400">Step-by-step guides for popular platforms</div>
+                    <div className="text-sm text-gray-300 dark:text-white">Step-by-step guides for popular platforms</div>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -109,7 +109,7 @@ export default function DocsHero() {
                   </div>
                   <div>
                     <div className="font-semibold text-white dark:text-white">Developer Community</div>
-                    <div className="text-sm text-gray-300 dark:text-gray-400">Connect with other developers and get support</div>
+                    <div className="text-sm text-gray-300 dark:text-white">Connect with other developers and get support</div>
                   </div>
                 </div>
               </div>
@@ -134,21 +134,21 @@ export default function DocsHero() {
 
           {/* Trust Signals */}
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+            <p className="text-sm text-gray-500 dark:text-white mb-6">
               Trusted by 500+ developers and 1,000+ applications worldwide
             </p>
             <div className="flex items-center justify-center space-x-8 opacity-60">
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">500+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Active Developers</div>
+                <div className="text-xs text-gray-500 dark:text-white">Active Developers</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">1M+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">API Requests/Month</div>
+                <div className="text-xs text-gray-500 dark:text-white">API Requests/Month</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">99.9%</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">API Uptime</div>
+                <div className="text-xs text-gray-500 dark:text-white">API Uptime</div>
               </div>
             </div>
           </div>

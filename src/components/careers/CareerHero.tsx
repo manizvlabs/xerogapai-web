@@ -35,7 +35,7 @@ export default function CareerHero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl leading-8 text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
+          <p className="text-xl leading-8 text-gray-600 dark:text-white mb-12 max-w-3xl mx-auto">
             Join a team of passionate innovators building the next generation of AI-powered business solutions.
             We're looking for talented individuals who want to make a real impact.
           </p>
@@ -45,25 +45,25 @@ export default function CareerHero() {
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <RocketLaunchIcon className="h-8 w-8 text-purple-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">50+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Team Members</div>
+              <div className="text-sm text-gray-600 dark:text-white">Team Members</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <UsersIcon className="h-8 w-8 text-pink-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">15+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Nationalities</div>
+              <div className="text-sm text-gray-600 dark:text-white">Nationalities</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <LightBulbIcon className="h-8 w-8 text-orange-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">25+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Open Positions</div>
+              <div className="text-sm text-gray-600 dark:text-white">Open Positions</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <HeartIcon className="h-8 w-8 text-red-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">95%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Employee Satisfaction</div>
+              <div className="text-sm text-gray-600 dark:text-white">Employee Satisfaction</div>
             </div>
           </div>
 
@@ -80,7 +80,7 @@ export default function CareerHero() {
                   </div>
                   <div>
                     <div className="font-semibold text-white dark:text-white">Cutting-Edge Technology</div>
-                    <div className="text-sm text-gray-300 dark:text-gray-400">Work with the latest AI and automation technologies</div>
+                    <div className="text-sm text-gray-300 dark:text-white">Work with the latest AI and automation technologies</div>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -89,7 +89,7 @@ export default function CareerHero() {
                   </div>
                   <div>
                     <div className="font-semibold text-white dark:text-white">Global Impact</div>
-                    <div className="text-sm text-gray-300 dark:text-gray-400">Your work will help thousands of businesses worldwide</div>
+                    <div className="text-sm text-gray-300 dark:text-white">Your work will help thousands of businesses worldwide</div>
                   </div>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export default function CareerHero() {
                   </div>
                   <div>
                     <div className="font-semibold text-white dark:text-white">Growth Opportunities</div>
-                    <div className="text-sm text-gray-300 dark:text-gray-400">Continuous learning and career development support</div>
+                    <div className="text-sm text-gray-300 dark:text-white">Continuous learning and career development support</div>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -109,7 +109,7 @@ export default function CareerHero() {
                   </div>
                   <div>
                     <div className="font-semibold text-white dark:text-white">Work-Life Balance</div>
-                    <div className="text-sm text-gray-300 dark:text-gray-400">Flexible work arrangements and comprehensive benefits</div>
+                    <div className="text-sm text-gray-300 dark:text-white">Flexible work arrangements and comprehensive benefits</div>
                   </div>
                 </div>
               </div>
@@ -134,21 +134,21 @@ export default function CareerHero() {
 
           {/* Trust Signals */}
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+            <p className="text-sm text-gray-500 dark:text-white mb-6">
               Recognized as a Great Place to Work and named one of India's Best Startups to Work For
             </p>
             <div className="flex items-center justify-center space-x-8 opacity-60">
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">#1</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">AI Startup 2024</div>
+                <div className="text-xs text-gray-500 dark:text-white">AI Startup 2024</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">4.8/5</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Glassdoor Rating</div>
+                <div className="text-xs text-gray-500 dark:text-white">Glassdoor Rating</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">50+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Awards Won</div>
+                <div className="text-xs text-gray-500 dark:text-white">Awards Won</div>
               </div>
             </div>
           </div>

@@ -186,7 +186,7 @@ export default function UserManagementPage() {
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-300">Loading users...</p>
+          <p className="mt-4 text-gray-600 dark:text-white">Loading users...</p>
         </div>
       </div>
     );
@@ -201,7 +201,7 @@ export default function UserManagementPage() {
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
                 User Management
               </h1>
-              <p className="mt-2 text-gray-600 dark:text-gray-300">
+              <p className="mt-2 text-gray-600 dark:text-white">
                 Manage admin and user accounts
               </p>
             </div>
@@ -231,11 +231,11 @@ export default function UserManagementPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
           {users.length === 0 ? (
             <div className="text-center py-12">
-              <UsersIcon className="h-12 w-12 mx-auto text-gray-400 dark:text-gray-500 mb-4" />
+              <UsersIcon className="h-12 w-12 mx-auto text-gray-400 dark:text-white mb-4" />
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
                 No users found
               </h3>
-              <p className="text-gray-500 dark:text-gray-400 mb-4">
+              <p className="text-gray-500 dark:text-white mb-4">
                 Get started by creating your first user account.
               </p>
               <button
@@ -251,19 +251,19 @@ export default function UserManagementPage() {
               <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead className="bg-gray-50 dark:bg-gray-700">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       User
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Role
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Status
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Last Login
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
@@ -276,7 +276,7 @@ export default function UserManagementPage() {
                           <div className="text-sm font-medium text-gray-900 dark:text-white">
                             {user.username}
                           </div>
-                          <div className="text-sm text-gray-500 dark:text-gray-400">
+                          <div className="text-sm text-gray-500 dark:text-white">
                             {user.email}
                           </div>
                         </div>
@@ -299,7 +299,7 @@ export default function UserManagementPage() {
                           {user.isActive ? 'Active' : 'Inactive'}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-white">
                         {user.lastLogin ? new Date(user.lastLogin).toLocaleDateString() : 'Never'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -350,7 +350,7 @@ export default function UserManagementPage() {
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                 Confirm Deletion
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <p className="text-gray-600 dark:text-white mb-6">
                 Are you sure you want to delete the user <strong>{deletingUser.username}</strong> ({deletingUser.email})?
                 This action cannot be undone.
               </p>
@@ -464,7 +464,7 @@ function CreateUserForm({ onSubmit, onCancel }: {
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
               Username
             </label>
             <input
@@ -476,7 +476,7 @@ function CreateUserForm({ onSubmit, onCancel }: {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
               Email
             </label>
             <input
@@ -488,7 +488,7 @@ function CreateUserForm({ onSubmit, onCancel }: {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
               Password
             </label>
             <input
@@ -520,13 +520,13 @@ function CreateUserForm({ onSubmit, onCancel }: {
               </div>
             )}
             {!formData.password && (
-              <div className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+              <div className="mt-1 text-xs text-gray-500 dark:text-white">
                 Password must contain: 8+ chars, uppercase, lowercase, number, special character
               </div>
             )}
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
               Role
             </label>
             <select
@@ -593,7 +593,7 @@ function EditUserForm({ user, onSubmit, onCancel }: {
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
               Username
             </label>
             <input
@@ -605,7 +605,7 @@ function EditUserForm({ user, onSubmit, onCancel }: {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
               Email
             </label>
             <input
@@ -617,7 +617,7 @@ function EditUserForm({ user, onSubmit, onCancel }: {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
               Role
             </label>
             <select
@@ -637,7 +637,7 @@ function EditUserForm({ user, onSubmit, onCancel }: {
               onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
               className="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
             />
-            <label htmlFor="isActive" className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+            <label htmlFor="isActive" className="ml-2 text-sm text-gray-700 dark:text-white">
               Active
             </label>
           </div>

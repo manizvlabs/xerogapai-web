@@ -78,14 +78,14 @@ export default function DocsNavigation() {
                       >
                         <div className="flex flex-col">
                           <div className="flex items-center justify-between">
-                            <span className="text-gray-700 dark:text-gray-300 text-sm font-medium">
+                            <span className="text-gray-700 dark:text-white text-sm font-medium">
                               {item.title}
                             </span>
-                            <span className="text-xs text-gray-500 dark:text-gray-400">
+                            <span className="text-xs text-gray-500 dark:text-white">
                               {item.readTime}
                             </span>
                           </div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                          <p className="text-xs text-gray-500 dark:text-white mt-1">
                             {item.description}
                           </p>
                         </div>

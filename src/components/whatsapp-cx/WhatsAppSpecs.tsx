@@ -77,7 +77,7 @@ export default function WhatsAppSpecs() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Enterprise-Grade Specifications
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Built for scale, security, and reliability with specifications that match enterprise requirements.
           </p>
         </div>
@@ -100,7 +100,7 @@ export default function WhatsAppSpecs() {
                 <div className="space-y-4">
                   {spec.items.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-800 last:border-b-0">
-                      <span className="text-gray-700 dark:text-gray-300 font-medium">
+                      <span className="text-gray-700 dark:text-white font-medium">
                         {item.label}
                       </span>
                       <span className="text-green-600 dark:text-green-400 font-semibold">
@@ -120,7 +120,7 @@ export default function WhatsAppSpecs() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Seamless Integrations
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Connect with your existing tools and workflows for a unified customer experience
             </p>
           </div>
@@ -128,7 +128,7 @@ export default function WhatsAppSpecs() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {integrations.map((integration, index) => (
               <div key={index} className="flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center">
+                <span className="text-sm font-medium text-gray-700 dark:text-white text-center">
                   {integration}
                 </span>
               </div>

@@ -116,7 +116,7 @@ export default function CaseFilters() {
             {activeFilterCount > 0 && (
               <button
                 onClick={clearFilters}
-                className="px-4 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                className="px-4 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
               >
                 Clear ({activeFilterCount})
               </button>
@@ -127,7 +127,7 @@ export default function CaseFilters() {
         {/* Active Filters Display */}
         {activeFilterCount > 0 && (
           <div className="mt-6 flex flex-wrap gap-2">
-            <span className="text-sm text-gray-600 dark:text-gray-400 mr-2">Active filters:</span>
+            <span className="text-sm text-gray-600 dark:text-white mr-2">Active filters:</span>
             {Object.entries(activeFilters).map(([key, value]) => {
               if (value) {
                 return (
@@ -154,7 +154,7 @@ export default function CaseFilters() {
 
         {/* Results Summary */}
         <div className="mt-6 text-center">
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-gray-600 dark:text-white">
             Showing <span className="font-semibold text-gray-900 dark:text-white">24 case studies</span>
             {activeFilterCount > 0 && (
               <span> matching your filters</span>

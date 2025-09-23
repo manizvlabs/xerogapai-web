@@ -217,10 +217,10 @@ export default function AssessmentQuiz({ onComplete }: AssessmentQuizProps) {
         {/* Progress Bar */}
         <div className="bg-gray-50 dark:bg-gray-700 px-6 py-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <span className="text-sm font-medium text-gray-700 dark:text-white">
               Question {currentQuestion + 1} of {questions.length}
             </span>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-sm text-gray-500 dark:text-white">
               {Math.round(progress)}% Complete
             </span>
           </div>
@@ -261,7 +261,7 @@ export default function AssessmentQuiz({ onComplete }: AssessmentQuizProps) {
                   className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
                     isSelected
                       ? 'border-green-500 bg-green-50 dark:bg-green-900/20 text-green-900 dark:text-green-300'
-                      : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 text-gray-700 dark:text-gray-300'
+                      : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 text-gray-700 dark:text-white'
                   }`}
                 >
                   <div className="flex items-center">
@@ -282,7 +282,7 @@ export default function AssessmentQuiz({ onComplete }: AssessmentQuizProps) {
           </div>
 
           {question.type === 'multiple' && (
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+            <p className="text-sm text-gray-500 dark:text-white mt-4">
               Select all that apply
             </p>
           )}
@@ -296,14 +296,14 @@ export default function AssessmentQuiz({ onComplete }: AssessmentQuizProps) {
             className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${
               currentQuestion === 0
                 ? 'text-gray-400 cursor-not-allowed'
-                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                : 'text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600'
             }`}
           >
             <ChevronLeftIcon className="w-4 h-4 mr-1" />
             Previous
           </button>
 
-          <div className="text-sm text-gray-500 dark:text-gray-400">
+          <div className="text-sm text-gray-500 dark:text-white">
             {currentQuestion + 1} / {questions.length}
           </div>
 

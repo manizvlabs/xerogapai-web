@@ -95,7 +95,7 @@ export default function EnterpriseSecurity() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Enterprise-Grade Security & Compliance
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Built with security-first architecture to meet the highest standards of data protection and regulatory compliance.
           </p>
         </div>
@@ -115,7 +115,7 @@ export default function EnterpriseSecurity() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {feature.description}
                 </p>
 
@@ -126,7 +126,7 @@ export default function EnterpriseSecurity() {
                   {feature.details.map((detail, detailIndex) => (
                     <div key={detailIndex} className="flex items-center text-sm">
                       <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-600 dark:text-gray-300">{detail}</span>
+                      <span className="text-gray-600 dark:text-white">{detail}</span>
                     </div>
                   ))}
                 </div>
@@ -141,7 +141,7 @@ export default function EnterpriseSecurity() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Compliance & Certifications
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Meet global standards with comprehensive compliance certifications and audit-ready documentation
             </p>
           </div>
@@ -160,7 +160,7 @@ export default function EnterpriseSecurity() {
                     {standard.status}
                   </div>
                 </div>
-                <p className="text-xs text-gray-600 dark:text-gray-400">
+                <p className="text-xs text-gray-600 dark:text-white">
                   {standard.description}
                 </p>
               </div>
@@ -200,7 +200,7 @@ export default function EnterpriseSecurity() {
               </h3>
             </div>
 
-            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white mb-8 max-w-2xl mx-auto">
               Your data security and privacy are our top priorities. We employ multiple layers of protection
               and maintain the highest standards of enterprise security.
             </p>
@@ -209,7 +209,7 @@ export default function EnterpriseSecurity() {
               <div className="text-center">
                 <div className="text-4xl mb-3">🔐</div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Zero Trust Security</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600 dark:text-white">
                   Never trust, always verify - every request is authenticated and authorized
                 </p>
               </div>
@@ -217,7 +217,7 @@ export default function EnterpriseSecurity() {
               <div className="text-center">
                 <div className="text-4xl mb-3">🛡️</div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Defense in Depth</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600 dark:text-white">
                   Multiple security layers ensure comprehensive protection at every level
                 </p>
               </div>
@@ -225,7 +225,7 @@ export default function EnterpriseSecurity() {
               <div className="text-center">
                 <div className="text-4xl mb-3">📋</div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Compliance First</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600 dark:text-white">
                   Security controls designed to meet and exceed regulatory requirements
                 </p>
               </div>

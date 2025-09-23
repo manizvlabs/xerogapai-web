@@ -68,7 +68,7 @@ export default function CaseFeatured() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Featured Success Stories
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Discover how leading companies achieved extraordinary results with XeroGap AI solutions.
           </p>
         </div>
@@ -87,12 +87,12 @@ export default function CaseFeatured() {
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                         {caseStudy.company}
                       </h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-gray-600 dark:text-white">
                         {caseStudy.industry}
                       </p>
                     </div>
                   </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500">
+                  <div className="text-xs text-gray-500 dark:text-white">
                     {caseStudy.readTime}
                   </div>
                 </div>
@@ -102,7 +102,7 @@ export default function CaseFeatured() {
                   <h4 className="text-sm font-semibold text-red-600 dark:text-red-400 mb-2">
                     Challenge
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  <p className="text-gray-600 dark:text-white text-sm">
                     {caseStudy.challenge}
                   </p>
                 </div>
@@ -112,7 +112,7 @@ export default function CaseFeatured() {
                   <h4 className="text-sm font-semibold text-green-600 dark:text-green-400 mb-2">
                     Solution
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  <p className="text-gray-600 dark:text-white text-sm">
                     {caseStudy.solution}
                   </p>
                 </div>
@@ -131,7 +131,7 @@ export default function CaseFeatured() {
                           <div className="text-lg font-bold text-gray-900 dark:text-white">
                             {result.value}
                           </div>
-                          <div className="text-xs text-gray-600 dark:text-gray-400">
+                          <div className="text-xs text-gray-600 dark:text-white">
                             {result.metric}
                           </div>
                         </div>
@@ -143,14 +143,14 @@ export default function CaseFeatured() {
 
               {/* Quote */}
               <div className="px-8 pb-6">
-                <blockquote className="text-gray-700 dark:text-gray-300 italic text-sm leading-relaxed">
+                <blockquote className="text-gray-700 dark:text-white italic text-sm leading-relaxed">
                   "{caseStudy.quote}"
                 </blockquote>
                 <div className="mt-3">
                   <div className="font-semibold text-gray-900 dark:text-white text-sm">
                     {caseStudy.author}
                   </div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">
+                  <div className="text-xs text-gray-600 dark:text-white">
                     {caseStudy.position}
                   </div>
                 </div>

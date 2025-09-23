@@ -41,7 +41,7 @@ export default function DemoProcess() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             What to Expect
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Our demo process is designed to give you maximum value in minimum time.
             Here's exactly what happens after you book.
           </p>
@@ -73,7 +73,7 @@ export default function DemoProcess() {
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
                       {step.title}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 text-center">
+                    <p className="text-sm text-gray-600 dark:text-white mb-3 text-center">
                       {step.description}
                     </p>
                     <p className="text-xs text-green-600 dark:text-green-400 font-medium text-center">
@@ -96,7 +96,7 @@ export default function DemoProcess() {
               <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Custom Demo</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Tailored to your industry and use cases</p>
+                <p className="text-sm text-gray-600 dark:text-white">Tailored to your industry and use cases</p>
               </div>
             </div>
 
@@ -104,7 +104,7 @@ export default function DemoProcess() {
               <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Live Examples</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">See real workflows and automation in action</p>
+                <p className="text-sm text-gray-600 dark:text-white">See real workflows and automation in action</p>
               </div>
             </div>
 
@@ -112,7 +112,7 @@ export default function DemoProcess() {
               <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-1">ROI Analysis</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Get specific cost savings and efficiency metrics</p>
+                <p className="text-sm text-gray-600 dark:text-white">Get specific cost savings and efficiency metrics</p>
               </div>
             </div>
 
@@ -120,7 +120,7 @@ export default function DemoProcess() {
               <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Implementation Plan</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Detailed roadmap for deployment and training</p>
+                <p className="text-sm text-gray-600 dark:text-white">Detailed roadmap for deployment and training</p>
               </div>
             </div>
 
@@ -128,7 +128,7 @@ export default function DemoProcess() {
               <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Free Consultation</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">30-minute follow-up call at no cost</p>
+                <p className="text-sm text-gray-600 dark:text-white">30-minute follow-up call at no cost</p>
               </div>
             </div>
 
@@ -136,7 +136,7 @@ export default function DemoProcess() {
               <CheckCircleIcon className="h-6 w-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-1">No Pressure</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Purely educational - no sales pitch</p>
+                <p className="text-sm text-gray-600 dark:text-white">Purely educational - no sales pitch</p>
               </div>
             </div>
           </div>

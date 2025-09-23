@@ -26,7 +26,7 @@ export default function ConsultationHero({ onStartBooking }: ConsultationHeroPro
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-white mb-8 max-w-3xl mx-auto leading-relaxed">
             Book a free 30-minute consultation with our AI specialists.
             Get personalized recommendations, implementation strategies, and answers to all your AI questions.
           </p>
@@ -36,25 +36,25 @@ export default function ConsultationHero({ onStartBooking }: ConsultationHeroPro
             <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <UserGroupIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Expert Team</div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">AI specialists</div>
+              <div className="text-xs text-gray-600 dark:text-white">AI specialists</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <LightBulbIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Custom Strategy</div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">Tailored to you</div>
+              <div className="text-xs text-gray-600 dark:text-white">Tailored to you</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <ChartBarIcon className="h-8 w-8 text-purple-600 mx-auto mb-3" />
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">ROI Analysis</div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">Data-driven</div>
+              <div className="text-xs text-gray-600 dark:text-white">Data-driven</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <CheckBadgeIcon className="h-8 w-8 text-orange-600 mx-auto mb-3" />
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">No Obligation</div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">Free consultation</div>
+              <div className="text-xs text-gray-600 dark:text-white">Free consultation</div>
             </div>
           </div>
 
@@ -71,7 +71,7 @@ export default function ConsultationHero({ onStartBooking }: ConsultationHeroPro
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">AI Readiness Assessment</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Evaluate your current capabilities</div>
+                    <div className="text-sm text-gray-600 dark:text-white">Evaluate your current capabilities</div>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -80,7 +80,7 @@ export default function ConsultationHero({ onStartBooking }: ConsultationHeroPro
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">Custom Implementation Plan</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Step-by-step roadmap</div>
+                    <div className="text-sm text-gray-600 dark:text-white">Step-by-step roadmap</div>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -89,7 +89,7 @@ export default function ConsultationHero({ onStartBooking }: ConsultationHeroPro
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">ROI Projections</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Expected cost savings and benefits</div>
+                    <div className="text-sm text-gray-600 dark:text-white">Expected cost savings and benefits</div>
                   </div>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export default function ConsultationHero({ onStartBooking }: ConsultationHeroPro
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">Technology Recommendations</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Best tools for your needs</div>
+                    <div className="text-sm text-gray-600 dark:text-white">Best tools for your needs</div>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -109,7 +109,7 @@ export default function ConsultationHero({ onStartBooking }: ConsultationHeroPro
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">Risk Assessment</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Identify potential challenges</div>
+                    <div className="text-sm text-gray-600 dark:text-white">Identify potential challenges</div>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -118,7 +118,7 @@ export default function ConsultationHero({ onStartBooking }: ConsultationHeroPro
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 dark:text-white">Q&A Session</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Ask anything about AI</div>
+                    <div className="text-sm text-gray-600 dark:text-white">Ask anything about AI</div>
                   </div>
                 </div>
               </div>
@@ -133,28 +133,28 @@ export default function ConsultationHero({ onStartBooking }: ConsultationHeroPro
             >
               Book Free Consultation
             </button>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-sm text-gray-500 dark:text-white">
               30 minutes • Expert guidance • No cost
             </span>
           </div>
 
           {/* Trust Indicators */}
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+            <p className="text-sm text-gray-500 dark:text-white mb-4">
               Join 300+ businesses who've benefited from our expert consultations
             </p>
             <div className="flex items-center justify-center space-x-8 opacity-60">
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">300+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Consultations Completed</div>
+                <div className="text-xs text-gray-500 dark:text-white">Consultations Completed</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">95%</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Client Satisfaction</div>
+                <div className="text-xs text-gray-500 dark:text-white">Client Satisfaction</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">$500K+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Client Savings Identified</div>
+                <div className="text-xs text-gray-500 dark:text-white">Client Savings Identified</div>
               </div>
             </div>
           </div>

@@ -110,7 +110,7 @@ console.log(response);`
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Get Started in 15 Minutes
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Follow our step-by-step guide to go from zero to building AI-powered applications
             with XeroGap AI. No prior experience required.
           </p>
@@ -142,7 +142,7 @@ console.log(response);`
                     </div>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  <p className="text-gray-600 dark:text-white mb-6">
                     {step.description}
                   </p>
 
@@ -163,7 +163,7 @@ console.log(response);`
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Comprehensive Getting Started Guides
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Dive deeper with our detailed guides covering everything from basic concepts to advanced implementations
             </p>
           </div>
@@ -176,10 +176,10 @@ console.log(response);`
                     <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                       {guide.title}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                    <p className="text-gray-600 dark:text-white text-sm mb-3">
                       {guide.description}
                     </p>
-                    <div className="flex items-center space-x-4 text-xs text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center space-x-4 text-xs text-gray-500 dark:text-white">
                       <span>{guide.readTime}</span>
                       <span className={`px-2 py-1 rounded-full ${
                         guide.difficulty === 'Beginner' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :

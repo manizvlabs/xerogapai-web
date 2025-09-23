@@ -73,7 +73,7 @@ export default function SalesIntelligence() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             AI-Powered Sales Intelligence
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Get a competitive edge with intelligent insights that help you identify, qualify, and close deals faster.
           </p>
         </div>
@@ -93,7 +93,7 @@ export default function SalesIntelligence() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {feature.description}
                 </p>
 
@@ -105,7 +105,7 @@ export default function SalesIntelligence() {
                     {feature.capabilities.map((capability, capabilityIndex) => (
                       <li key={capabilityIndex} className="flex items-start text-sm">
                         <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-600 dark:text-gray-300">{capability}</span>
+                        <span className="text-gray-600 dark:text-white">{capability}</span>
                       </li>
                     ))}
                   </ul>
@@ -127,7 +127,7 @@ export default function SalesIntelligence() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Comprehensive Data Sources
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Aggregate intelligence from 50+ data sources to build complete prospect profiles
             </p>
           </div>
@@ -136,7 +136,7 @@ export default function SalesIntelligence() {
             {dataSources.map((source, index) => (
               <div key={index} className="flex items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
                 <div className="w-3 h-3 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                <span className="text-sm font-medium text-gray-700 dark:text-white">
                   {source}
                 </span>
               </div>

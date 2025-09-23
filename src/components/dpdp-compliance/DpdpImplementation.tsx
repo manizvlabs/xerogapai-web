@@ -111,7 +111,7 @@ export default function DpdpImplementation() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             90-Day Implementation Program
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Structured 12-week program to achieve complete DPDP compliance with expert guidance.
           </p>
         </div>
@@ -153,7 +153,7 @@ export default function DpdpImplementation() {
                       {phase.activities.map((activity, activityIndex) => (
                         <li key={activityIndex} className="flex items-center text-sm">
                           <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 flex-shrink-0"></div>
-                          <span className="text-gray-600 dark:text-gray-300">{activity}</span>
+                          <span className="text-gray-600 dark:text-white">{activity}</span>
                         </li>
                       ))}
                     </ul>
@@ -167,7 +167,7 @@ export default function DpdpImplementation() {
                       {phase.deliverables.map((deliverable, deliverableIndex) => (
                         <li key={deliverableIndex} className="flex items-center text-sm">
                           <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                          <span className="text-gray-600 dark:text-gray-300">{deliverable}</span>
+                          <span className="text-gray-600 dark:text-white">{deliverable}</span>
                         </li>
                       ))}
                     </ul>
@@ -184,7 +184,7 @@ export default function DpdpImplementation() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Implementation Toolkit
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Comprehensive toolkit with templates, tools, and resources for successful implementation
             </p>
           </div>
@@ -199,7 +199,7 @@ export default function DpdpImplementation() {
                   {category.tools.map((tool, toolIndex) => (
                     <li key={toolIndex} className="flex items-center text-sm">
                       <div className="w-2 h-2 bg-orange-500 rounded-full mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-600 dark:text-gray-300">{tool}</span>
+                      <span className="text-gray-600 dark:text-white">{tool}</span>
                     </li>
                   ))}
                 </ul>

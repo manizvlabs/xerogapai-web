@@ -67,7 +67,7 @@ export default function DemoFAQ() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Demo FAQ
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Common questions about our demo process and what to expect.
           </p>
         </div>
@@ -93,7 +93,7 @@ export default function DemoFAQ() {
 
                 {isOpen && (
                   <div className="px-6 pb-4">
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p className="text-gray-600 dark:text-white leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
@@ -109,7 +109,7 @@ export default function DemoFAQ() {
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
               Still have questions?
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
+            <p className="text-gray-600 dark:text-white mb-6">
               Can't find the answer you're looking for? Our team is here to help.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -91,7 +91,7 @@ export default function SalesAutomation() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             End-to-End Sales Automation
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Automate every step of your sales process from lead generation to deal closure,
             freeing your team to focus on building relationships.
           </p>
@@ -112,7 +112,7 @@ export default function SalesAutomation() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {feature.description}
                 </p>
 
@@ -124,7 +124,7 @@ export default function SalesAutomation() {
                     {feature.automation.map((item, itemIndex) => (
                       <li key={itemIndex} className="flex items-start text-sm">
                         <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-600 dark:text-gray-300">{item}</span>
+                        <span className="text-gray-600 dark:text-white">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -146,7 +146,7 @@ export default function SalesAutomation() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Seamless CRM Integration
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Connect with all major CRM platforms for unified sales automation and data synchronization
             </p>
           </div>
@@ -154,7 +154,7 @@ export default function SalesAutomation() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {crmIntegrations.map((crm, index) => (
               <div key={index} className="flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600">
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center">
+                <span className="text-sm font-medium text-gray-700 dark:text-white text-center">
                   {crm}
                 </span>
               </div>

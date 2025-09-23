@@ -12,7 +12,7 @@ export default function BlogPage() {
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600 dark:text-gray-300">Loading blog page content...</p>
+            <p className="text-lg text-gray-600 dark:text-white">Loading blog page content...</p>
           </div>
         </div>
       </div>
@@ -122,7 +122,7 @@ export default function BlogPage() {
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               {(pageContent.hero as Record<string, unknown>).title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
               {(pageContent.hero as Record<string, unknown>).subtitle}
             </p>
           </div>
@@ -172,18 +172,18 @@ export default function BlogPage() {
                           {post.title}
                         </Link>
                       </h3>
-                      <p className="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-300">
+                      <p className="mt-4 text-sm leading-6 text-gray-600 dark:text-white">
                         {post.excerpt}
                       </p>
                     </div>
                     <div className="mt-6 flex items-center">
                       <div className="flex items-center gap-x-4">
                         <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
-                          <span className="text-xs font-medium text-gray-600 dark:text-gray-300">MK</span>
+                          <span className="text-xs font-medium text-gray-600 dark:text-white">MK</span>
                         </div>
                         <div className="text-sm">
                           <p className="font-semibold text-gray-900 dark:text-white">Manish Kumar</p>
-                          <p className="text-gray-600 dark:text-gray-300">Founder, XeroGap AI</p>
+                          <p className="text-gray-600 dark:text-white">Founder, XeroGap AI</p>
                         </div>
                       </div>
                     </div>

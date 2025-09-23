@@ -67,7 +67,7 @@ export default function ContactTestimonials() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Contact Centers Love Our QA Solution
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             See how contact centers across different industries are achieving exceptional results with AI-powered quality assurance.
           </p>
         </div>
@@ -76,7 +76,7 @@ export default function ContactTestimonials() {
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <div className="text-4xl mb-4 text-gray-400">"</div>
-              <blockquote className="text-gray-700 dark:text-gray-300 mb-6 italic leading-relaxed">
+              <blockquote className="text-gray-700 dark:text-white mb-6 italic leading-relaxed">
                 {testimonial.quote}
               </blockquote>
 
@@ -88,10 +88,10 @@ export default function ContactTestimonials() {
                   <div className="font-semibold text-gray-900 dark:text-white">
                     {testimonial.author}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                  <div className="text-sm text-gray-600 dark:text-white">
                     {testimonial.position}
                   </div>
-                  <div className="text-sm text-gray-500 dark:text-gray-500">
+                  <div className="text-sm text-gray-500 dark:text-white">
                     {testimonial.company}, {testimonial.location}
                   </div>
                   <div className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">
@@ -107,7 +107,7 @@ export default function ContactTestimonials() {
                     <div className="text-lg font-bold text-green-600 mb-1">
                       {metric.value}
                     </div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
+                    <div className="text-xs text-gray-600 dark:text-white leading-tight">
                       {metric.label}
                     </div>
                   </div>
@@ -121,19 +121,19 @@ export default function ContactTestimonials() {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
             <div className="text-3xl font-bold text-green-600 mb-2">200+</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Contact Centers</div>
+            <div className="text-sm text-gray-600 dark:text-white">Contact Centers</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-green-600 mb-2">10M+</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Calls Analyzed</div>
+            <div className="text-sm text-gray-600 dark:text-white">Calls Analyzed</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-green-600 mb-2">95%</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">QA Accuracy</div>
+            <div className="text-sm text-gray-600 dark:text-white">QA Accuracy</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-green-600 mb-2">40%</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Performance Improvement</div>
+            <div className="text-sm text-gray-600 dark:text-white">Performance Improvement</div>
           </div>
         </div>
       </div>

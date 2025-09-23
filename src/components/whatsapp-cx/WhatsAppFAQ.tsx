@@ -75,7 +75,7 @@ export default function WhatsAppFAQ() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Frequently Asked Questions
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Everything you need to know about WhatsApp CX Copilot
           </p>
         </div>
@@ -101,7 +101,7 @@ export default function WhatsAppFAQ() {
 
                 {isOpen && (
                   <div className="px-6 pb-4">
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p className="text-gray-600 dark:text-white leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
@@ -113,11 +113,11 @@ export default function WhatsAppFAQ() {
 
         {/* Still have questions */}
         <div className="mt-12 text-center">
-          <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-8 border border-green-200 dark:border-green-800">
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 border border-gray-200 dark:border-gray-700">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
               Still have questions?
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
+            <p className="text-gray-600 dark:text-white mb-6">
               Our experts are here to help. Book a consultation or contact our sales team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

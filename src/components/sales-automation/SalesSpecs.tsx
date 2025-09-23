@@ -62,7 +62,7 @@ export default function SalesSpecs() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Enterprise-Grade Sales Automation
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Built for high-performance sales teams with world-class AI accuracy, scalability, and security.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function SalesSpecs() {
                 <div className="space-y-4">
                   {spec.items.map((item, itemIndex) => (
                     <div key={itemIndex} className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-800 last:border-b-0">
-                      <span className="text-gray-700 dark:text-gray-300 font-medium">
+                      <span className="text-gray-700 dark:text-white font-medium">
                         {item.label}
                       </span>
                       <span className="text-green-600 dark:text-green-400 font-semibold">

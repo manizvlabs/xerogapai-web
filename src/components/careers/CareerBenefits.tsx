@@ -196,7 +196,7 @@ export default function CareerBenefits() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Comprehensive Benefits Package
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             We offer industry-leading benefits designed to support your professional growth,
             health, and work-life balance.
           </p>
@@ -217,7 +217,7 @@ export default function CareerBenefits() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {category.description}
                 </p>
 
@@ -229,7 +229,7 @@ export default function CareerBenefits() {
                         <h4 className="font-semibold text-gray-900 dark:text-white text-sm">
                           {benefit.name}
                         </h4>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        <p className="text-gray-600 dark:text-white text-sm">
                           {benefit.description}
                         </p>
                       </div>
@@ -247,7 +247,7 @@ export default function CareerBenefits() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               What Our Team Says About Benefits
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Hear from our team members about how our benefits package supports their professional and personal growth
             </p>
           </div>
@@ -256,7 +256,7 @@ export default function CareerBenefits() {
             {testimonials.map((testimonial, index) => (
               <div key={index} className="text-center">
                 <div className="text-4xl mb-4">"</div>
-                <blockquote className="text-gray-700 dark:text-gray-300 italic mb-6">
+                <blockquote className="text-gray-700 dark:text-white italic mb-6">
                   {testimonial.quote}
                 </blockquote>
                 <div className="flex items-center justify-center">
@@ -267,7 +267,7 @@ export default function CareerBenefits() {
                     <div className="font-semibold text-gray-900 dark:text-white">
                       {testimonial.author}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                    <div className="text-sm text-gray-600 dark:text-white">
                       {testimonial.position}
                     </div>
                   </div>

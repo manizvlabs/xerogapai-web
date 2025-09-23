@@ -112,7 +112,7 @@ export default function HelpSearch() {
                         <h4 className="font-medium text-gray-900 dark:text-white mb-1">
                           {result.title}
                         </h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                        <p className="text-sm text-gray-600 dark:text-white mb-2">
                           {result.snippet}
                         </p>
                         <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300">
@@ -139,7 +139,7 @@ export default function HelpSearch() {
                 <button
                   key={index}
                   onClick={() => handleSearch(search)}
-                  className="px-4 py-2 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-green-500 transition-colors"
+                  className="px-4 py-2 bg-white dark:bg-gray-900 text-gray-700 dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-green-500 transition-colors"
                 >
                   {search}
                 </button>
@@ -164,7 +164,7 @@ export default function HelpSearch() {
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-blue-400 transition-colors">
                   {action.title}
                 </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-sm text-gray-600 dark:text-white mb-4">
                   {action.description}
                 </p>
                 <div className="flex items-center text-green-600 dark:text-green-400 font-medium">
@@ -187,25 +187,25 @@ export default function HelpSearch() {
                 <div className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs font-mono mb-1">
                   Ctrl+K
                 </div>
-                <div className="text-gray-600 dark:text-gray-400">Focus search</div>
+                <div className="text-gray-600 dark:text-white">Focus search</div>
               </div>
               <div className="text-center">
                 <div className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs font-mono mb-1">
                   ↓/↑
                 </div>
-                <div className="text-gray-600 dark:text-gray-400">Navigate results</div>
+                <div className="text-gray-600 dark:text-white">Navigate results</div>
               </div>
               <div className="text-center">
                 <div className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs font-mono mb-1">
                   Enter
                 </div>
-                <div className="text-gray-600 dark:text-gray-400">Open result</div>
+                <div className="text-gray-600 dark:text-white">Open result</div>
               </div>
               <div className="text-center">
                 <div className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs font-mono mb-1">
                   Esc
                 </div>
-                <div className="text-gray-600 dark:text-gray-400">Close search</div>
+                <div className="text-gray-600 dark:text-white">Close search</div>
               </div>
             </div>
           </div>

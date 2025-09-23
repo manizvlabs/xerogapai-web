@@ -179,7 +179,7 @@ export default function ContactManagementPage() {
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
                 Contact Management
               </h1>
-              <p className="mt-2 text-gray-600 dark:text-gray-300">
+              <p className="mt-2 text-gray-600 dark:text-white">
                 Manage and view all contact form submissions
               </p>
             </div>
@@ -195,7 +195,7 @@ export default function ContactManagementPage() {
                   <UserGroupIcon className="h-8 w-8 text-green-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Total Contacts</p>
+                  <p className="text-sm font-medium text-gray-500 dark:text-white">Total Contacts</p>
                   <p className="text-2xl font-semibold text-gray-900 dark:text-white">{stats.total}</p>
                 </div>
               </div>
@@ -206,7 +206,7 @@ export default function ContactManagementPage() {
                   <ClockIcon className="h-8 w-8 text-green-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Today</p>
+                  <p className="text-sm font-medium text-gray-500 dark:text-white">Today</p>
                   <p className="text-2xl font-semibold text-gray-900 dark:text-white">{stats.today}</p>
                 </div>
               </div>
@@ -217,7 +217,7 @@ export default function ContactManagementPage() {
                   <CalendarDaysIcon className="h-8 w-8 text-yellow-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">This Week</p>
+                  <p className="text-sm font-medium text-gray-500 dark:text-white">This Week</p>
                   <p className="text-2xl font-semibold text-gray-900 dark:text-white">{stats.thisWeek}</p>
                 </div>
               </div>
@@ -228,7 +228,7 @@ export default function ContactManagementPage() {
                   <ChartBarIcon className="h-8 w-8 text-purple-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">This Month</p>
+                  <p className="text-sm font-medium text-gray-500 dark:text-white">This Month</p>
                   <p className="text-2xl font-semibold text-gray-900 dark:text-white">{stats.thisMonth}</p>
                 </div>
               </div>
@@ -240,7 +240,7 @@ export default function ContactManagementPage() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                 Search
               </label>
               <div className="relative">
@@ -255,7 +255,7 @@ export default function ContactManagementPage() {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                 Start Date
               </label>
               <input
@@ -266,7 +266,7 @@ export default function ContactManagementPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                 End Date
               </label>
               <input
@@ -304,7 +304,7 @@ export default function ContactManagementPage() {
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
-              <span className="ml-2 text-gray-600 dark:text-gray-300">Loading contacts...</span>
+              <span className="ml-2 text-gray-600 dark:text-white">Loading contacts...</span>
             </div>
           ) : error ? (
             <div className="p-6 text-center">
@@ -314,7 +314,7 @@ export default function ContactManagementPage() {
             <div className="p-12 text-center">
               <UserGroupIcon className="h-12 w-12 mx-auto text-gray-400 mb-4" />
               <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">No contacts found</h3>
-              <p className="text-gray-500 dark:text-gray-400">
+              <p className="text-gray-500 dark:text-white">
                 {searchTerm || startDate || endDate 
                   ? 'No contacts match your search criteria.' 
                   : 'No contact submissions yet.'}
@@ -326,19 +326,19 @@ export default function ContactManagementPage() {
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                   <thead className="bg-gray-50 dark:bg-gray-700">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                         Contact
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                         Service
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                         Company
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                         Submitted
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                         Actions
                       </th>
                     </tr>
@@ -351,11 +351,11 @@ export default function ContactManagementPage() {
                             <div className="text-sm font-medium text-gray-900 dark:text-white">
                               {contact.firstName} {contact.lastName}
                             </div>
-                            <div className="text-sm text-gray-500 dark:text-gray-400">
+                            <div className="text-sm text-gray-500 dark:text-white">
                               {contact.email}
                             </div>
                             {contact.phone && (
-                              <div className="text-sm text-gray-500 dark:text-gray-400">
+                              <div className="text-sm text-gray-500 dark:text-white">
                                 {contact.phone}
                               </div>
                             )}
@@ -369,7 +369,7 @@ export default function ContactManagementPage() {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                           {contact.company || '-'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-white">
                           {formatDate(contact.submittedAt)}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
@@ -399,21 +399,21 @@ export default function ContactManagementPage() {
                     <button
                       onClick={() => goToPage(pagination.page - 1)}
                       disabled={pagination.page === 1}
-                      className="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Previous
                     </button>
                     <button
                       onClick={() => goToPage(pagination.page + 1)}
                       disabled={pagination.page === pagination.totalPages}
-                      className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       Next
                     </button>
                   </div>
                   <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                     <div>
-                      <p className="text-sm text-gray-700 dark:text-gray-300">
+                      <p className="text-sm text-gray-700 dark:text-white">
                         Showing{' '}
                         <span className="font-medium">
                           {((pagination.page - 1) * pagination.limit) + 1}
@@ -435,7 +435,7 @@ export default function ContactManagementPage() {
                             className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${
                               page === pagination.page
                                 ? 'z-10 bg-green-50 border-green-500 text-green-600 dark:bg-green-900 dark:border-green-400 dark:text-green-200'
-                                : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700'
+                                : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:hover:bg-gray-700'
                             }`}
                           >
                             {page}
@@ -472,40 +472,40 @@ export default function ContactManagementPage() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">First Name</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-white">First Name</label>
                       <p className="mt-1 text-sm text-gray-900 dark:text-white">{selectedContact.firstName}</p>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Last Name</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-white">Last Name</label>
                       <p className="mt-1 text-sm text-gray-900 dark:text-white">{selectedContact.lastName}</p>
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-white">Email</label>
                     <p className="mt-1 text-sm text-gray-900 dark:text-white">{selectedContact.email}</p>
                   </div>
                   {selectedContact.phone && (
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-white">Phone</label>
                       <p className="mt-1 text-sm text-gray-900 dark:text-white">{selectedContact.phone}</p>
                     </div>
                   )}
                   {selectedContact.company && (
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Company</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-white">Company</label>
                       <p className="mt-1 text-sm text-gray-900 dark:text-white">{selectedContact.company}</p>
                     </div>
                   )}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Service</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-white">Service</label>
                     <p className="mt-1 text-sm text-gray-900 dark:text-white">{selectedContact.service}</p>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-white">Message</label>
                     <p className="mt-1 text-sm text-gray-900 dark:text-white whitespace-pre-wrap">{selectedContact.message}</p>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Submitted At</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-white">Submitted At</label>
                     <p className="mt-1 text-sm text-gray-900 dark:text-white">{formatDate(selectedContact.submittedAt)}</p>
                   </div>
                 </div>

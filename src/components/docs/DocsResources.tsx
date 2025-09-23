@@ -140,7 +140,7 @@ export default function DocsResources() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Developer Resources
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Everything you need to build, test, and deploy with XeroGap AI.
             From SDKs to community support, we've got you covered.
           </p>
@@ -158,7 +158,7 @@ export default function DocsResources() {
                   <h4 className="font-semibold text-gray-900 dark:text-white">
                     {sdk.language}
                   </h4>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                  <span className="text-xs text-gray-500 dark:text-white">
                     {sdk.version}
                   </span>
                 </div>
@@ -171,11 +171,11 @@ export default function DocsResources() {
 
                 <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
                   <div>
-                    <span className="text-gray-600 dark:text-gray-400">Size:</span>
+                    <span className="text-gray-600 dark:text-white">Size:</span>
                     <span className="ml-2 font-medium text-gray-900 dark:text-white">{sdk.size}</span>
                   </div>
                   <div>
-                    <span className="text-gray-600 dark:text-gray-400">Downloads:</span>
+                    <span className="text-gray-600 dark:text-white">Downloads:</span>
                     <span className="ml-2 font-medium text-gray-900 dark:text-white">{sdk.downloads}</span>
                   </div>
                 </div>
@@ -184,7 +184,7 @@ export default function DocsResources() {
                   <h5 className="text-xs font-semibold text-gray-900 dark:text-white mb-2">
                     Features:
                   </h5>
-                  <ul className="text-xs text-gray-600 dark:text-gray-300 space-y-1">
+                  <ul className="text-xs text-gray-600 dark:text-white space-y-1">
                     {sdk.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center">
                         <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 flex-shrink-0"></div>
@@ -222,7 +222,7 @@ export default function DocsResources() {
                   </div>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {resource.description}
                 </p>
 
@@ -254,7 +254,7 @@ export default function DocsResources() {
                   }`}>
                     {metric.value}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                  <div className="text-sm text-gray-600 dark:text-white">
                     {metric.label}
                   </div>
                 </div>
@@ -263,7 +263,7 @@ export default function DocsResources() {
 
             <div className="flex items-center">
               <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
-              <span className="text-sm text-gray-600 dark:text-gray-400">
+              <span className="text-sm text-gray-600 dark:text-white">
                 All systems operational
               </span>
             </div>
@@ -285,17 +285,17 @@ export default function DocsResources() {
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                       entry.type === 'Major Release' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
                       entry.type === 'Minor Release' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
-                      'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300'
+                      'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-white'
                     }`}>
                       {entry.type}
                     </span>
                   </div>
 
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                  <p className="text-xs text-gray-500 dark:text-white mb-2">
                     {entry.date}
                   </p>
 
-                  <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                  <ul className="text-sm text-gray-600 dark:text-white space-y-1">
                     {entry.changes.map((change, changeIndex) => (
                       <li key={changeIndex} className="flex items-start">
                         <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>

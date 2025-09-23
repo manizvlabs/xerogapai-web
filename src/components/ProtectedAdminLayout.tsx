@@ -17,7 +17,7 @@ export default function ProtectedAdminLayout({ children }: ProtectedAdminLayoutP
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-300">Checking authentication...</p>
+          <p className="mt-4 text-gray-600 dark:text-white">Checking authentication...</p>
         </div>
       </div>
     );
@@ -58,12 +58,12 @@ export default function ProtectedAdminLayout({ children }: ProtectedAdminLayoutP
               </h1>
             </div>
             <div className="flex items-center gap-4">
-              <div className="text-sm text-gray-600 dark:text-gray-300">
+              <div className="text-sm text-gray-600 dark:text-white">
                 Welcome, <span className="font-medium">{user.username}</span>
               </div>
               <button
                 onClick={logout}
-                className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors"
+                className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors"
               >
                 <ArrowRightOnRectangleIcon className="h-4 w-4" />
                 Logout

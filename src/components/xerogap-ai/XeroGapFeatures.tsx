@@ -115,7 +115,7 @@ export default function XeroGapFeatures() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Advanced AI Features for Modern Teams
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Powerful automation capabilities powered by cutting-edge AI technology, designed to transform how your team works.
           </p>
         </div>
@@ -135,7 +135,7 @@ export default function XeroGapFeatures() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {feature.description}
                 </p>
 
@@ -147,7 +147,7 @@ export default function XeroGapFeatures() {
                     {feature.capabilities.map((capability, capabilityIndex) => (
                       <li key={capabilityIndex} className="flex items-start text-sm">
                         <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-600 dark:text-gray-300">{capability}</span>
+                        <span className="text-gray-600 dark:text-white">{capability}</span>
                       </li>
                     ))}
                   </ul>
@@ -169,7 +169,7 @@ export default function XeroGapFeatures() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               AI Technology Stack
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Powered by advanced AI models and machine learning algorithms for intelligent automation
             </p>
           </div>
@@ -182,7 +182,7 @@ export default function XeroGapFeatures() {
                 </h4>
                 <ul className="space-y-2">
                   {capability.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-center justify-center text-sm text-gray-600 dark:text-gray-300">
+                    <li key={itemIndex} className="flex items-center justify-center text-sm text-gray-600 dark:text-white">
                       <div className="w-2 h-2 bg-purple-500 rounded-full mr-2"></div>
                       {item}
                     </li>

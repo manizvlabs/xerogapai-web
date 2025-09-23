@@ -155,7 +155,7 @@ export default function CareerLife() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Life at XeroGap AI
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Experience a workplace that combines innovation, collaboration, and work-life balance
             in a supportive and inclusive environment.
           </p>
@@ -176,7 +176,7 @@ export default function CareerLife() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {aspect.description}
                 </p>
 
@@ -184,7 +184,7 @@ export default function CareerLife() {
                   {aspect.highlights.map((highlight, highlightIndex) => (
                     <div key={highlightIndex} className="flex items-center text-sm">
                       <div className="w-2 h-2 bg-purple-500 rounded-full mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-600 dark:text-gray-300">{highlight}</span>
+                      <span className="text-gray-600 dark:text-white">{highlight}</span>
                     </div>
                   ))}
                 </div>
@@ -199,7 +199,7 @@ export default function CareerLife() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Our Work Environment
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Whether you work from our office or remotely, we provide the tools and environment you need to thrive
             </p>
           </div>
@@ -212,7 +212,7 @@ export default function CareerLife() {
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                     {office.title}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  <p className="text-gray-600 dark:text-white text-sm">
                     {office.description}
                   </p>
                 </div>
@@ -221,7 +221,7 @@ export default function CareerLife() {
                   {office.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-sm">
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-600 dark:text-gray-300">{feature}</span>
+                      <span className="text-gray-600 dark:text-white">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -248,10 +248,10 @@ export default function CareerLife() {
                       {event.frequency}
                     </span>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                  <p className="text-gray-600 dark:text-white text-sm mb-2">
                     {event.description}
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <p className="text-xs text-gray-500 dark:text-white">
                     Attendees: {event.attendees}
                   </p>
                 </div>

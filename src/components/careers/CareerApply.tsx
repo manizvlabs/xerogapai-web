@@ -104,7 +104,7 @@ export default function CareerApply() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Join Our Team
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Ready to start your journey with XeroGap AI? Here&apos;s everything you need to know about our application process.
           </p>
         </div>
@@ -138,7 +138,7 @@ export default function CareerApply() {
                     </div>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-300">
+                  <p className="text-gray-600 dark:text-white">
                     {step.description}
                   </p>
                 </div>
@@ -153,7 +153,7 @@ export default function CareerApply() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Frequently Asked Questions
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Everything you need to know about working at XeroGap AI
             </p>
           </div>
@@ -164,7 +164,7 @@ export default function CareerApply() {
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
                   {faq.question}
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   {faq.answer}
                 </p>
               </div>
@@ -184,11 +184,11 @@ export default function CareerApply() {
                 {method.contact}
               </div>
 
-              <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+              <p className="text-gray-600 dark:text-white text-sm mb-4">
                 {method.description}
               </p>
 
-              <div className="text-xs text-gray-500 dark:text-gray-400 mb-6">
+              <div className="text-xs text-gray-500 dark:text-white mb-6">
                 Response time: {method.response}
               </div>
 
@@ -240,7 +240,7 @@ export default function CareerApply() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Ready to Apply?
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white mb-8 max-w-2xl mx-auto">
               Browse our open positions and take the first step towards joining our innovative team.
               We&apos;re excited to hear from you!
             </p>

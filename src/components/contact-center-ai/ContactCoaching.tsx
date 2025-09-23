@@ -124,7 +124,7 @@ export default function ContactCoaching() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             AI-Powered Agent Coaching
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Intelligent coaching that helps your agents improve performance, build confidence,
             and deliver exceptional customer experiences.
           </p>
@@ -145,7 +145,7 @@ export default function ContactCoaching() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {feature.description}
                 </p>
 
@@ -156,7 +156,7 @@ export default function ContactCoaching() {
                   {feature.benefits.map((benefit, benefitIndex) => (
                     <div key={benefitIndex} className="flex items-center text-sm">
                       <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-600 dark:text-gray-300">{benefit}</span>
+                      <span className="text-gray-600 dark:text-white">{benefit}</span>
                     </div>
                   ))}
                 </div>
@@ -171,7 +171,7 @@ export default function ContactCoaching() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Intelligent Coaching Workflow
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Continuous improvement cycle that ensures agents receive the right coaching at the right time
             </p>
           </div>
@@ -188,7 +188,7 @@ export default function ContactCoaching() {
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                   {step.title}
                 </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                <p className="text-sm text-gray-600 dark:text-white mb-2">
                   {step.description}
                 </p>
                 <div className="text-xs text-green-600 dark:text-green-400 font-medium">
@@ -206,7 +206,7 @@ export default function ContactCoaching() {
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 {type.type}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <p className="text-gray-600 dark:text-white mb-6">
                 {type.description}
               </p>
 
@@ -217,7 +217,7 @@ export default function ContactCoaching() {
                 {type.examples.map((example, exampleIndex) => (
                   <div key={exampleIndex} className="flex items-center text-sm">
                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-600 dark:text-gray-300">{example}</span>
+                    <span className="text-gray-600 dark:text-white">{example}</span>
                   </div>
                 ))}
               </div>
