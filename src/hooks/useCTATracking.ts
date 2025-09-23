@@ -18,12 +18,24 @@ interface CTATrackingData {
 export function useCTATracking() {
   const pathname = usePathname();
 
+  // Initialize trackCTA function if it doesn't exist (failsafe)
+  if (typeof window !== 'undefined' && !(window as any).trackCTA) {
+    (window as any).trackCTA = (ctaData: CTATrackingData) => {
+      // Fallback: just log to console if Google Analytics hasn't loaded yet
+      console.log('CTA event (analytics not loaded):', ctaData);
+    };
+  }
+
   const trackCTA = useCallback((ctaData: CTATrackingData) => {
-    if (typeof window !== 'undefined' && window.trackCTA) {
-      window.trackCTA({
-        ...ctaData,
-        page: ctaData.page || pathname,
-      });
+    if (typeof window !== 'undefined' && (window as any).trackCTA) {
+      try {
+        (window as any).trackCTA({
+          ...ctaData,
+          page: ctaData.page || pathname,
+        });
+      } catch (error) {
+        console.warn('CTA tracking failed:', error);
+      }
     }
   }, [pathname]);
 
