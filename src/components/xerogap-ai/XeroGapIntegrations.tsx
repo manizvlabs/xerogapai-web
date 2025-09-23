@@ -71,7 +71,7 @@ export default function XeroGapIntegrations() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Connect Your Entire Tech Stack
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             50+ integrations to create a unified workflow ecosystem. Your data flows seamlessly between all your favorite tools.
           </p>
         </div>
@@ -99,7 +99,7 @@ export default function XeroGapIntegrations() {
                         <div className="font-medium text-gray-900 dark:text-white text-sm">
                           {tool.name}
                         </div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400">
+                        <div className="text-xs text-gray-600 dark:text-white">
                           {tool.description}
                         </div>
                       </div>
@@ -117,7 +117,7 @@ export default function XeroGapIntegrations() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Most Popular Integrations
             </h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-white">
               Join thousands of teams already connecting these essential tools
             </p>
           </div>

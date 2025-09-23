@@ -88,7 +88,7 @@ export default function WhatsAppPricing() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Simple, Transparent Pricing
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Choose the plan that fits your business needs. All plans include our 14-day free trial.
           </p>
         </div>
@@ -116,7 +116,7 @@ export default function WhatsAppPricing() {
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                   {plan.name}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {plan.description}
                 </p>
 
@@ -124,10 +124,10 @@ export default function WhatsAppPricing() {
                   <span className="text-4xl font-bold text-gray-900 dark:text-white">
                     {plan.price}
                   </span>
-                  <span className="text-gray-600 dark:text-gray-400">/{plan.period}</span>
+                  <span className="text-gray-600 dark:text-white">/{plan.period}</span>
                 </div>
 
-                <div className="text-sm text-gray-600 dark:text-gray-400 mb-6">
+                <div className="text-sm text-gray-600 dark:text-white mb-6">
                   {plan.conversations} conversations/month
                 </div>
               </div>
@@ -139,7 +139,7 @@ export default function WhatsAppPricing() {
                 {plan.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center">
                     <CheckIcon className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
+                    <span className="text-sm text-gray-700 dark:text-white">{feature}</span>
                   </div>
                 ))}
 
@@ -151,7 +151,7 @@ export default function WhatsAppPricing() {
                     {plan.limitations.map((limitation, limitIndex) => (
                       <div key={limitIndex} className="flex items-center">
                         <XMarkIcon className="h-5 w-5 text-red-500 mr-3 flex-shrink-0" />
-                        <span className="text-sm text-gray-700 dark:text-gray-300">{limitation}</span>
+                        <span className="text-sm text-gray-700 dark:text-white">{limitation}</span>
                       </div>
                     ))}
                   </>
@@ -179,7 +179,7 @@ export default function WhatsAppPricing() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Compare Plans
             </h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-white">
               Detailed feature comparison to help you choose the right plan
             </p>
           </div>
@@ -230,7 +230,7 @@ export default function WhatsAppPricing() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Pricing FAQ
             </h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-white">
               Common questions about our pricing and plans
             </p>
           </div>
@@ -241,7 +241,7 @@ export default function WhatsAppPricing() {
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                   Is there a free trial?
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   Yes! All plans include a 14-day free trial with full access to all features. No credit card required.
                 </p>
               </div>
@@ -250,7 +250,7 @@ export default function WhatsAppPricing() {
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                   Can I change plans anytime?
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   Absolutely! You can upgrade or downgrade your plan at any time. Changes take effect immediately.
                 </p>
               </div>
@@ -259,7 +259,7 @@ export default function WhatsAppPricing() {
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                   What if I exceed my conversation limit?
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   We'll notify you when you approach your limit. Additional conversations are billed at $0.10 each.
                 </p>
               </div>
@@ -270,7 +270,7 @@ export default function WhatsAppPricing() {
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                   Do you offer annual discounts?
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   Yes! Annual plans receive a 15% discount and include 2 months of service for the price of 10.
                 </p>
               </div>
@@ -279,7 +279,7 @@ export default function WhatsAppPricing() {
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                   Is there a setup fee?
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   No setup fees for our standard plans. Enterprise plans may include custom implementation fees.
                 </p>
               </div>
@@ -288,7 +288,7 @@ export default function WhatsAppPricing() {
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                   What payment methods do you accept?
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   We accept all major credit cards, PayPal, and bank transfers for annual plans.
                 </p>
               </div>

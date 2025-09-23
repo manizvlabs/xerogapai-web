@@ -108,7 +108,7 @@ export default function EnterpriseFeatures() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Enterprise-Grade Knowledge Management
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Transform your enterprise documents into an intelligent knowledge system that scales with your organization.
           </p>
         </div>
@@ -128,7 +128,7 @@ export default function EnterpriseFeatures() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {feature.description}
                 </p>
 
@@ -140,7 +140,7 @@ export default function EnterpriseFeatures() {
                     {feature.capabilities.map((capability, capabilityIndex) => (
                       <li key={capabilityIndex} className="flex items-start text-sm">
                         <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                        <span className="text-gray-600 dark:text-gray-300">{capability}</span>
+                        <span className="text-gray-600 dark:text-white">{capability}</span>
                       </li>
                     ))}
                   </ul>
@@ -162,7 +162,7 @@ export default function EnterpriseFeatures() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Real Enterprise Use Cases
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               See how leading enterprises are using AI coplots to transform their knowledge management
             </p>
           </div>
@@ -179,7 +179,7 @@ export default function EnterpriseFeatures() {
                   </div>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   {useCase.description}
                 </p>
               </div>

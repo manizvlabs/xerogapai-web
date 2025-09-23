@@ -136,7 +136,7 @@ export default function HelpGuides() {
       case 'Advanced':
         return 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300';
       default:
-        return 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300';
+        return 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-white';
     }
   };
 
@@ -147,7 +147,7 @@ export default function HelpGuides() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Detailed Guides & Tutorials
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Comprehensive guides and tutorials to help you master XeroGap AI.
           </p>
         </div>
@@ -165,7 +165,7 @@ export default function HelpGuides() {
                     <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                       {guide.title}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                    <p className="text-gray-600 dark:text-white text-sm mb-3">
                       {guide.description}
                     </p>
                     <div className="flex items-center space-x-2 mb-3">
@@ -176,7 +176,7 @@ export default function HelpGuides() {
                         {guide.difficulty}
                       </span>
                     </div>
-                    <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center justify-between text-xs text-gray-500 dark:text-white">
                       <span>{guide.category}</span>
                       <span>{guide.duration}</span>
                     </div>
@@ -205,12 +205,12 @@ export default function HelpGuides() {
                       <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
                         {guide.title}
                       </h4>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                      <p className="text-gray-600 dark:text-white text-sm mb-2">
                         {guide.description}
                       </p>
                       <div className="flex items-center space-x-4 text-xs">
-                        <span className="text-gray-500 dark:text-gray-400">{guide.category}</span>
-                        <span className="text-gray-500 dark:text-gray-400">{guide.duration}</span>
+                        <span className="text-gray-500 dark:text-white">{guide.category}</span>
+                        <span className="text-gray-500 dark:text-white">{guide.duration}</span>
                         <span className={`px-2 py-1 rounded ${getDifficultyColor(guide.difficulty)}`}>
                           {guide.difficulty}
                         </span>
@@ -242,7 +242,7 @@ export default function HelpGuides() {
                       <h5 className="font-medium text-gray-900 dark:text-white text-sm">
                         {video.title}
                       </h5>
-                      <div className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center space-x-2 text-xs text-gray-500 dark:text-white">
                         <span>{video.duration}</span>
                         <span>•</span>
                         <span>{video.views} views</span>
@@ -274,10 +274,10 @@ export default function HelpGuides() {
                         <h5 className="font-medium text-gray-900 dark:text-white text-sm">
                           {path.title}
                         </h5>
-                        <p className="text-gray-600 dark:text-gray-300 text-xs mb-1">
+                        <p className="text-gray-600 dark:text-white text-xs mb-1">
                           {path.description}
                         </p>
-                        <div className="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
+                        <div className="flex items-center space-x-2 text-xs text-gray-500 dark:text-white">
                           <span>{path.courses} courses</span>
                           <span>•</span>
                           <span>{path.duration}</span>

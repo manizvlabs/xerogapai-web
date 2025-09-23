@@ -56,7 +56,7 @@ export default function WhatsAppFeatures() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Complete WhatsApp Business Automation Suite
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Everything you need to transform your WhatsApp customer experience into a revenue-generating powerhouse.
           </p>
         </div>
@@ -79,7 +79,7 @@ export default function WhatsAppFeatures() {
                     </h3>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  <p className="text-gray-600 dark:text-white mb-6">
                     {feature.description}
                   </p>
 
@@ -90,7 +90,7 @@ export default function WhatsAppFeatures() {
                     {feature.benefits.map((benefit, benefitIndex) => (
                       <div key={benefitIndex} className="flex items-center text-sm">
                         <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-600 dark:text-gray-300">{benefit}</span>
+                        <span className="text-gray-600 dark:text-white">{benefit}</span>
                       </div>
                     ))}
                   </div>

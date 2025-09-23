@@ -98,7 +98,7 @@ export default function ContentManagementPage() {
       return (
         <div className="flex items-center justify-center py-8">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
-          <span className="ml-2 text-gray-600 dark:text-gray-300">Loading content...</span>
+          <span className="ml-2 text-gray-600 dark:text-white">Loading content...</span>
         </div>
       );
     }
@@ -115,7 +115,7 @@ export default function ContentManagementPage() {
       return (
         <div className="space-y-4">
           <div>
-            <label htmlFor="content-json" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="content-json" className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
               Content (JSON)
             </label>
             <div className="relative">
@@ -188,7 +188,7 @@ export default function ContentManagementPage() {
             {JSON.stringify(editContent, null, 2)}
           </pre>
         </div>
-        <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="text-sm text-gray-500 dark:text-white">
           Click &quot;Edit&quot; to modify this content. Changes will be saved immediately and reflected on the live site.
         </div>
       </div>
@@ -204,7 +204,7 @@ export default function ContentManagementPage() {
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
                 Admin Dashboard
               </h1>
-              <p className="mt-2 text-gray-600 dark:text-gray-300">
+              <p className="mt-2 text-gray-600 dark:text-white">
                 Manage your website content and settings
               </p>
             </div>
@@ -252,7 +252,7 @@ export default function ContentManagementPage() {
                           <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                         )}
                       </div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">
+                      <div className="text-sm text-gray-500 dark:text-white">
                         {section.description}
                       </div>
                     </button>
@@ -287,7 +287,7 @@ export default function ContentManagementPage() {
               </div>
             ) : (
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-                <div className="text-center text-gray-500 dark:text-gray-400">
+                <div className="text-center text-gray-500 dark:text-white">
                   <EyeIcon className="h-12 w-12 mx-auto mb-4 text-gray-400" />
                   <h3 className="text-lg font-medium mb-2">Select a Content Section</h3>
                   <p>Choose a section from the left panel to view and edit its content.</p>

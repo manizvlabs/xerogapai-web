@@ -47,7 +47,7 @@ export default function ContactAnalytics() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Advanced Contact Center Analytics
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Comprehensive analytics that provide deep insights into performance, trends, and opportunities for improvement.
           </p>
         </div>
@@ -67,7 +67,7 @@ export default function ContactAnalytics() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {feature.description}
                 </p>
 
@@ -79,7 +79,7 @@ export default function ContactAnalytics() {
                     {feature.metrics.map((metric, metricIndex) => (
                       <li key={metricIndex} className="flex items-center text-sm">
                         <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-600 dark:text-gray-300">{metric}</span>
+                        <span className="text-gray-600 dark:text-white">{metric}</span>
                       </li>
                     ))}
                   </div>
@@ -95,7 +95,7 @@ export default function ContactAnalytics() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Key Performance Metrics
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Track the most important contact center metrics with real-time updates and trend analysis
             </p>
           </div>

@@ -88,7 +88,7 @@ export default function LoginForm() {
       <div className="bg-white dark:bg-gray-800 py-8 px-4 shadow sm:rounded-lg sm:px-10">
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-white">
               Username
             </label>
             <div className="mt-1">
@@ -110,7 +110,7 @@ export default function LoginForm() {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-white">
               Password
             </label>
             <div className="mt-1 relative">
@@ -161,7 +161,7 @@ export default function LoginForm() {
 
         <div className="mt-6">
           <div className="text-center">
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-gray-500 dark:text-white">
               Secure access to XeroGap AI admin panel
             </p>
           </div>

@@ -37,7 +37,7 @@ export default function CaseHero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl leading-8 text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
+          <p className="text-xl leading-8 text-gray-600 dark:text-white mb-12 max-w-3xl mx-auto">
             Discover how businesses across industries are transforming their operations with XeroGap AI solutions.
             From startups to enterprises, see the measurable impact of AI-powered automation.
           </p>
@@ -47,25 +47,25 @@ export default function CaseHero() {
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <TrophyIcon className="h-8 w-8 text-yellow-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">200+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Success Stories</div>
+              <div className="text-sm text-gray-600 dark:text-white">Success Stories</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <ArrowTrendingUpIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">$50M+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Revenue Generated</div>
+              <div className="text-sm text-gray-600 dark:text-white">Revenue Generated</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <UsersIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">1,000+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Companies Served</div>
+              <div className="text-sm text-gray-600 dark:text-white">Companies Served</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <StarIcon className="h-8 w-8 text-purple-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">4.9/5</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Customer Rating</div>
+              <div className="text-sm text-gray-600 dark:text-white">Customer Rating</div>
             </div>
           </div>
 
@@ -80,7 +80,7 @@ export default function CaseHero() {
                 'Retail', 'Consulting', 'Education', 'Real Estate'
               ].map((industry, index) => (
                 <div key={index} className="flex items-center justify-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center">
+                  <span className="text-sm font-medium text-gray-700 dark:text-white text-center">
                     {industry}
                   </span>
                 </div>
@@ -106,21 +106,21 @@ export default function CaseHero() {
 
           {/* Trust Signals */}
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+            <p className="text-sm text-gray-500 dark:text-white mb-6">
               Trusted by companies from startups to Fortune 500 enterprises worldwide
             </p>
             <div className="flex items-center justify-center space-x-8 opacity-60">
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">95%</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Client Satisfaction</div>
+                <div className="text-xs text-gray-500 dark:text-white">Client Satisfaction</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">300%</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Average ROI</div>
+                <div className="text-xs text-gray-500 dark:text-white">Average ROI</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">6 months</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Payback Period</div>
+                <div className="text-xs text-gray-500 dark:text-white">Payback Period</div>
               </div>
             </div>
           </div>

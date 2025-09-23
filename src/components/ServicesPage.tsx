@@ -12,7 +12,7 @@ export default function ServicesPage() {
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600 dark:text-gray-300">Loading services page content...</p>
+            <p className="text-lg text-gray-600 dark:text-white">Loading services page content...</p>
           </div>
         </div>
       </div>
@@ -235,7 +235,7 @@ export default function ServicesPage() {
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               {(pageContent.hero as Record<string, unknown>).title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
               {(pageContent.hero as Record<string, unknown>).subtitle}
             </p>
           </div>
@@ -258,13 +258,13 @@ export default function ServicesPage() {
                         </div>
                         <h3 className="text-xl font-semibold leading-8 text-gray-900 dark:text-white">{service.name}</h3>
                       </div>
-                      <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">{service.description}</p>
+                      <p className="mt-4 text-base leading-7 text-gray-600 dark:text-white">{service.description}</p>
 
                       <div className="mt-6">
                         <h4 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">What&apos;s included:</h4>
                         <ul className="mt-3 space-y-2">
                       {service.features?.map((feature) => (
-                        <li key={feature} className="flex items-center gap-x-3 text-sm text-gray-600 dark:text-gray-300">
+                        <li key={feature} className="flex items-center gap-x-3 text-sm text-gray-600 dark:text-white">
                               <CheckIcon className="h-4 w-4 flex-none text-green-600" />
                               {feature}
                             </li>
@@ -276,7 +276,7 @@ export default function ServicesPage() {
                         <h4 className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Deliverables:</h4>
                         <ul className="mt-3 space-y-2">
                         {service.deliverables?.map((deliverable) => (
-                          <li key={deliverable} className="flex items-center gap-x-3 text-sm text-gray-600 dark:text-gray-300">
+                          <li key={deliverable} className="flex items-center gap-x-3 text-sm text-gray-600 dark:text-white">
                               <div className="h-1.5 w-1.5 flex-none rounded-full bg-green-600" />
                               {deliverable}
                             </li>
@@ -315,7 +315,7 @@ export default function ServicesPage() {
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {(pageContent.process as Record<string, unknown>).title}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
               {(pageContent.process as Record<string, unknown>).subtitle}
             </p>
           </div>
@@ -329,7 +329,7 @@ export default function ServicesPage() {
                     </div>
                     {item.title}
                   </dt>
-                  <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+                  <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-white">
                     <p className="flex-auto">{item.description}</p>
                   </dd>
                 </div>

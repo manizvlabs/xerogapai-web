@@ -102,7 +102,7 @@ export default function ContactPage() {
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600 dark:text-gray-300">Loading contact page content...</p>
+            <p className="text-lg text-gray-600 dark:text-white">Loading contact page content...</p>
           </div>
         </div>
       </div>
@@ -143,7 +143,7 @@ export default function ContactPage() {
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               {(pageContent.hero as Record<string, unknown>).title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
               {(pageContent.hero as Record<string, unknown>).subtitle}
             </p>
           </div>
@@ -162,10 +162,10 @@ export default function ContactPage() {
               {/* Contact Information */}
               <div className="lg:pl-16">
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{(pageContent.contactInfo as Record<string, unknown>).title}</h2>
-                <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
+                <p className="mt-4 text-base leading-7 text-gray-600 dark:text-white">
                   {(pageContent.contactInfo as Record<string, unknown>).description}
                 </p>
-                <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600 dark:text-gray-300">
+                <dl className="mt-10 space-y-4 text-base leading-7 text-gray-600 dark:text-white">
                   {(pageContent.contactInfo as Record<string, unknown>).details && Array.isArray((pageContent.contactInfo as Record<string, unknown>).details) && (pageContent.contactInfo as Record<string, unknown>).details.map((detail: { icon: string; label: string; value: string; link?: string }) => {
                     const IconComponent = iconMap[detail.icon as keyof typeof iconMap] || MapPinIcon;
                     return (
@@ -200,14 +200,14 @@ export default function ContactPage() {
 
                 <div className="mt-16">
                   <h3 className="text-lg font-semibold leading-7 text-gray-900 dark:text-white">{pageContent.responseTime?.title}</h3>
-                  <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
+                  <p className="mt-4 text-base leading-7 text-gray-600 dark:text-white">
                     {pageContent.responseTime?.description}
                   </p>
                 </div>
 
                 <div className="mt-8">
                   <h3 className="text-lg font-semibold leading-7 text-gray-900 dark:text-white">{pageContent.consultation?.title}</h3>
-                  <p className="mt-4 text-base leading-7 text-gray-600 dark:text-gray-300">
+                  <p className="mt-4 text-base leading-7 text-gray-600 dark:text-white">
                     {pageContent.consultation?.description}
                   </p>
                   <Link
@@ -230,7 +230,7 @@ export default function ContactPage() {
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {pageContent.regionalSupport?.title}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
               Dedicated support teams for your region with local language assistance and timezone alignment.
             </p>
           </div>
@@ -247,7 +247,7 @@ export default function ContactPage() {
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                       {pageContent.regionalSupport?.india?.title || "India Support"}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <p className="text-sm text-gray-600 dark:text-white">
                       {pageContent.regionalSupport?.india?.timezone || "IST (GMT+5:30)"}
                     </p>
                   </div>
@@ -257,7 +257,7 @@ export default function ContactPage() {
                   <div className="flex items-center gap-3">
                     <PhoneIcon className="w-5 h-5 text-green-600" />
                     <Link href={`tel:${pageContent.regionalSupport?.india?.contact || "+919876543210"}`}
-                       className="text-gray-600 dark:text-gray-300 hover:text-green-600">
+                       className="text-gray-600 dark:text-white hover:text-green-600">
                       {pageContent.regionalSupport?.india?.contact || "+91 98765 43210"}
                     </Link>
                   </div>
@@ -265,21 +265,21 @@ export default function ContactPage() {
                   <div className="flex items-center gap-3">
                     <DevicePhoneMobileIcon className="w-5 h-5 text-green-600" />
                     <Link href={pageContent.regionalSupport?.india?.whatsapp || "https://wa.me/919876543210"}
-                       className="text-gray-600 dark:text-gray-300 hover:text-green-600">
+                       className="text-gray-600 dark:text-white hover:text-green-600">
                       WhatsApp Business
                     </Link>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <GlobeAltIcon className="w-5 h-5 text-purple-600" />
-                    <span className="text-gray-600 dark:text-gray-300">
+                    <span className="text-gray-600 dark:text-white">
                       {pageContent.regionalSupport?.india?.languages || "English, Hindi, Telugu, Tamil"}
                     </span>
                   </div>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-sm text-gray-500 dark:text-white">
                     Available: 9 AM - 9 PM IST | Response: &lt; 2 hours
                   </p>
                 </div>
@@ -295,7 +295,7 @@ export default function ContactPage() {
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                       {pageContent.regionalSupport?.global?.title || "Global Support"}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <p className="text-sm text-gray-600 dark:text-white">
                       {pageContent.regionalSupport?.global?.timezone || "EST (GMT-5)"}
                     </p>
                   </div>
@@ -305,7 +305,7 @@ export default function ContactPage() {
                   <div className="flex items-center gap-3">
                     <PhoneIcon className="w-5 h-5 text-green-600" />
                     <Link href={`tel:${pageContent.regionalSupport?.global?.contact || "+15551234567"}`}
-                       className="text-gray-600 dark:text-gray-300 hover:text-green-600">
+                       className="text-gray-600 dark:text-white hover:text-green-600">
                       {pageContent.regionalSupport?.global?.contact || "+1 (555) 123-4567"}
                     </Link>
                   </div>
@@ -313,21 +313,21 @@ export default function ContactPage() {
                   <div className="flex items-center gap-3">
                     <DevicePhoneMobileIcon className="w-5 h-5 text-green-600" />
                     <Link href={pageContent.regionalSupport?.global?.whatsapp || "https://wa.me/15551234567"}
-                       className="text-gray-600 dark:text-gray-300 hover:text-green-600">
+                       className="text-gray-600 dark:text-white hover:text-green-600">
                       WhatsApp Business
                     </Link>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <GlobeAltIcon className="w-5 h-5 text-purple-600" />
-                    <span className="text-gray-600 dark:text-gray-300">
+                    <span className="text-gray-600 dark:text-white">
                       {pageContent.regionalSupport?.global?.languages || "English, Arabic, French"}
                     </span>
                   </div>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-sm text-gray-500 dark:text-white">
                     Available: 9 AM - 6 PM EST | Response: &lt; 4 hours
                   </p>
                 </div>

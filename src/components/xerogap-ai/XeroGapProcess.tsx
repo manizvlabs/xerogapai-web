@@ -46,7 +46,7 @@ export default function XeroGapProcess() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Get Started in Minutes
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             From setup to full automation in just 45 minutes. Our guided process ensures you get maximum value quickly.
           </p>
         </div>
@@ -78,7 +78,7 @@ export default function XeroGapProcess() {
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                     {step.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  <p className="text-gray-600 dark:text-white mb-6">
                     {step.description}
                   </p>
 
@@ -90,7 +90,7 @@ export default function XeroGapProcess() {
                       {step.deliverables.map((deliverable, deliverableIndex) => (
                         <li key={deliverableIndex} className="flex items-center text-sm">
                           <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                          <span className="text-gray-600 dark:text-gray-300">{deliverable}</span>
+                          <span className="text-gray-600 dark:text-white">{deliverable}</span>
                         </li>
                       ))}
                     </ul>

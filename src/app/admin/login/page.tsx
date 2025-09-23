@@ -15,7 +15,7 @@ export default function AdminLoginPage() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
             Admin Login
           </h2>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-sm text-gray-600 dark:text-white">
             XeroGap AI Content Management
           </p>
         </div>

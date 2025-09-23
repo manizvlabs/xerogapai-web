@@ -134,7 +134,7 @@ export default function DocsGuides() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Integration Guides & Tutorials
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Comprehensive guides to help you integrate XeroGap AI with your existing tools
             and build powerful automation solutions.
           </p>
@@ -163,7 +163,7 @@ export default function DocsGuides() {
                         }`}>
                           {guide.difficulty}
                         </span>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">
+                        <span className="text-xs text-gray-500 dark:text-white">
                           {guide.readTime}
                         </span>
                       </div>
@@ -171,7 +171,7 @@ export default function DocsGuides() {
                   </div>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                <p className="text-gray-600 dark:text-white text-sm mb-4">
                   {guide.description}
                 </p>
 
@@ -205,7 +205,7 @@ export default function DocsGuides() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Solution Implementation Guides
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               End-to-end guides for implementing complete XeroGap AI solutions in your organization
             </p>
           </div>
@@ -218,7 +218,7 @@ export default function DocsGuides() {
                     <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                       {guide.title}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                    <p className="text-gray-600 dark:text-white text-sm mb-3">
                       {guide.description}
                     </p>
                     <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300">
@@ -231,7 +231,7 @@ export default function DocsGuides() {
                   <h5 className="text-xs font-semibold text-gray-900 dark:text-white mb-2">
                     Implementation Steps:
                   </h5>
-                  <ol className="text-xs text-gray-600 dark:text-gray-300 space-y-1">
+                  <ol className="text-xs text-gray-600 dark:text-white space-y-1">
                     {guide.steps.map((step, stepIndex) => (
                       <li key={stepIndex} className="flex items-center">
                         <span className="w-4 h-4 bg-indigo-600 text-white rounded-full flex items-center justify-center text-xs mr-2 flex-shrink-0">
@@ -267,19 +267,19 @@ export default function DocsGuides() {
                   </h4>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                <p className="text-gray-600 dark:text-white text-sm mb-4">
                   {category.description}
                 </p>
 
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600 dark:text-gray-400">Tutorials:</span>
+                    <span className="text-gray-600 dark:text-white">Tutorials:</span>
                     <span className="font-semibold text-indigo-600 dark:text-indigo-400">
                       {category.tutorials}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600 dark:text-gray-400">Difficulty:</span>
+                    <span className="text-gray-600 dark:text-white">Difficulty:</span>
                     <span className="text-gray-900 dark:text-white">
                       {category.difficulty}
                     </span>

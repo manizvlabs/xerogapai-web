@@ -80,7 +80,7 @@ export default function DpdpCompliance() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             DPDP Act Compliance Framework
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Complete understanding of DPDP Act requirements with practical implementation guidance.
           </p>
         </div>
@@ -100,7 +100,7 @@ export default function DpdpCompliance() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {principle.description}
                 </p>
 
@@ -112,7 +112,7 @@ export default function DpdpCompliance() {
                     {principle.requirements.map((req, reqIndex) => (
                       <div key={reqIndex} className="flex items-center text-sm">
                         <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-600 dark:text-gray-300">{req}</span>
+                        <span className="text-gray-600 dark:text-white">{req}</span>
                       </div>
                     ))}
                   </div>
@@ -128,7 +128,7 @@ export default function DpdpCompliance() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               DPDP Compliance Checklist
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Complete checklist of DPDP Act requirements with implementation guidance
             </p>
           </div>

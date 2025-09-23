@@ -81,7 +81,7 @@ export default function DpdpPricing() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             DPDP Compliance Pricing
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Transparent pricing designed to help Indian businesses achieve DPDP compliance cost-effectively.
           </p>
         </div>
@@ -109,7 +109,7 @@ export default function DpdpPricing() {
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                   {plan.name}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {plan.description}
                 </p>
 
@@ -117,7 +117,7 @@ export default function DpdpPricing() {
                   <span className="text-4xl font-bold text-gray-900 dark:text-white">
                     {plan.price}
                   </span>
-                  <span className="text-gray-600 dark:text-gray-400 block text-sm">
+                  <span className="text-gray-600 dark:text-white block text-sm">
                     {plan.duration}
                   </span>
                 </div>
@@ -130,7 +130,7 @@ export default function DpdpPricing() {
                 {plan.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center">
                     <CheckIcon className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
+                    <span className="text-sm text-gray-700 dark:text-white">{feature}</span>
                   </div>
                 ))}
 
@@ -142,7 +142,7 @@ export default function DpdpPricing() {
                     {plan.limitations.map((limitation, limitIndex) => (
                       <div key={limitIndex} className="flex items-center">
                         <XMarkIcon className="h-5 w-5 text-red-500 mr-3 flex-shrink-0" />
-                        <span className="text-sm text-gray-700 dark:text-gray-300">{limitation}</span>
+                        <span className="text-sm text-gray-700 dark:text-white">{limitation}</span>
                       </div>
                     ))}
                   </>
@@ -170,7 +170,7 @@ export default function DpdpPricing() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Optional Add-ons
             </h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-white">
               Enhance your compliance program with these additional services
             </p>
           </div>
@@ -186,7 +186,7 @@ export default function DpdpPricing() {
                     {addon.price}
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-600 dark:text-white">
                   {addon.description}
                 </p>
               </div>

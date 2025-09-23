@@ -80,7 +80,7 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
       <div className="text-center mb-12">
         <button
           onClick={onBack}
-          className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors mb-6"
+          className="inline-flex items-center text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white transition-colors mb-6"
         >
           <ChevronLeftIcon className="w-5 h-5 mr-2" />
           Back to consultation overview
@@ -89,7 +89,7 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
           Choose Your Consultation Type
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 dark:text-white max-w-2xl mx-auto">
           Select the consultation that best matches your needs. All consultations are free and conducted by AI experts.
         </p>
       </div>
@@ -113,7 +113,7 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
                       {type.name}
                     </h3>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-white">
                       <span>⏱️ {type.duration}</span>
                       <span>💰 {type.price}</span>
                     </div>
@@ -127,7 +127,7 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
               </div>
 
               {/* Description */}
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <p className="text-gray-600 dark:text-white mb-6">
                 {type.description}
               </p>
 
@@ -140,7 +140,7 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
                   {type.idealFor.map((person, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
+                      className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-white rounded-full text-sm"
                     >
                       {person}
                     </span>
@@ -157,7 +157,7 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
                   {type.covers.map((item, index) => (
                     <li key={index} className="flex items-start text-sm">
                       <span className="text-green-500 mr-2 mt-0.5">•</span>
-                      <span className="text-gray-600 dark:text-gray-300">{item}</span>
+                      <span className="text-gray-600 dark:text-white">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -184,7 +184,7 @@ export default function ConsultationTypes({ onTypeSelected, onBack }: Consultati
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
             Not sure which consultation to choose?
           </h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-4">
+          <p className="text-gray-600 dark:text-white mb-4">
             Most clients start with the Business Strategy consultation to understand the big picture,
             then follow up with Technical consultation for implementation details.
           </p>

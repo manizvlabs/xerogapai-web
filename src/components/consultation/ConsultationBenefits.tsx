@@ -77,7 +77,7 @@ export default function ConsultationBenefits() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl mb-4">
             Why Book a Consultation?
           </h2>
-          <p className="text-lg leading-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg leading-8 text-gray-600 dark:text-white max-w-2xl mx-auto">
             Get expert AI guidance that transforms your business. Our consultations deliver actionable insights and measurable results.
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function ConsultationBenefits() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-600 dark:text-white mb-4">
                   {benefit.description}
                 </p>
 
@@ -116,7 +116,7 @@ export default function ConsultationBenefits() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               What Happens During Your Consultation?
             </h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-white">
               A structured 30-45 minute session designed to maximize value
             </p>
           </div>
@@ -127,7 +127,7 @@ export default function ConsultationBenefits() {
                 1
               </div>
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Discovery (10 min)</h4>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <p className="text-sm text-gray-600 dark:text-white">
                 We learn about your business, challenges, and goals
               </p>
             </div>
@@ -137,7 +137,7 @@ export default function ConsultationBenefits() {
                 2
               </div>
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Assessment (10 min)</h4>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <p className="text-sm text-gray-600 dark:text-white">
                 Quick evaluation of your AI readiness and opportunities
               </p>
             </div>
@@ -147,7 +147,7 @@ export default function ConsultationBenefits() {
                 3
               </div>
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Recommendations (10 min)</h4>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <p className="text-sm text-gray-600 dark:text-white">
                 Customized AI strategy and implementation roadmap
               </p>
             </div>
@@ -157,7 +157,7 @@ export default function ConsultationBenefits() {
                 4
               </div>
               <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Next Steps (5-10 min)</h4>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <p className="text-sm text-gray-600 dark:text-white">
                 Action plan and timeline for moving forward
               </p>
             </div>
@@ -169,7 +169,7 @@ export default function ConsultationBenefits() {
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             What Our Clients Say
           </h3>
-          <p className="text-gray-600 dark:text-gray-300">
+          <p className="text-gray-600 dark:text-white">
             Real results from businesses that booked consultations with us
           </p>
         </div>
@@ -178,7 +178,7 @@ export default function ConsultationBenefits() {
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
               <div className="text-3xl mb-4 text-gray-400">"</div>
-              <blockquote className="text-gray-700 dark:text-gray-300 mb-6 italic">
+              <blockquote className="text-gray-700 dark:text-white mb-6 italic">
                 {testimonial.quote}
               </blockquote>
 
@@ -190,10 +190,10 @@ export default function ConsultationBenefits() {
                   <div className="font-semibold text-gray-900 dark:text-white text-sm">
                     {testimonial.author}
                   </div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400">
+                  <div className="text-xs text-gray-600 dark:text-white">
                     {testimonial.position}
                   </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500">
+                  <div className="text-xs text-gray-500 dark:text-white">
                     {testimonial.company}, {testimonial.location}
                   </div>
                 </div>

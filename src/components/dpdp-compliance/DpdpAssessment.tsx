@@ -94,7 +94,7 @@ export default function DpdpAssessment() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Comprehensive DPDP Assessment
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             30-day detailed assessment that identifies all compliance gaps and provides
             actionable recommendations to achieve DPDP compliance.
           </p>
@@ -115,7 +115,7 @@ export default function DpdpAssessment() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {step.description}
                 </p>
 
@@ -126,7 +126,7 @@ export default function DpdpAssessment() {
                   {step.deliverables.map((deliverable, deliverableIndex) => (
                     <div key={deliverableIndex} className="flex items-center text-sm">
                       <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-600 dark:text-gray-300">{deliverable}</span>
+                      <span className="text-gray-600 dark:text-white">{deliverable}</span>
                     </div>
                   ))}
                 </div>
@@ -141,7 +141,7 @@ export default function DpdpAssessment() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Assessment Toolkit
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               Comprehensive toolkit combining automated scanning, manual assessment, and advanced analytics
             </p>
           </div>
@@ -156,7 +156,7 @@ export default function DpdpAssessment() {
                   {category.tools.map((tool, toolIndex) => (
                     <li key={toolIndex} className="flex items-center text-sm">
                       <div className="w-2 h-2 bg-orange-500 rounded-full mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-600 dark:text-gray-300">{tool}</span>
+                      <span className="text-gray-600 dark:text-white">{tool}</span>
                     </li>
                   ))}
                 </ul>
@@ -212,7 +212,7 @@ export default function DpdpAssessment() {
               </h3>
             </div>
 
-            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white mb-8 max-w-2xl mx-auto">
               Comprehensive assessment that goes beyond compliance to optimize your data practices
             </p>
 
@@ -220,7 +220,7 @@ export default function DpdpAssessment() {
               <div className="text-center">
                 <div className="text-3xl mb-3">🎯</div>
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">98% Accuracy</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600 dark:text-white">
                   Industry-leading assessment accuracy with detailed validation
                 </p>
               </div>
@@ -228,7 +228,7 @@ export default function DpdpAssessment() {
               <div className="text-center">
                 <div className="text-3xl mb-3">⚡</div>
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">30 Days</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600 dark:text-white">
                   Complete assessment delivered within 30 days
                 </p>
               </div>
@@ -236,7 +236,7 @@ export default function DpdpAssessment() {
               <div className="text-center">
                 <div className="text-3xl mb-3">📋</div>
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Actionable</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600 dark:text-white">
                   Detailed implementation roadmap with clear next steps
                 </p>
               </div>

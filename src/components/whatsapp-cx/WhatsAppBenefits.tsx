@@ -73,7 +73,7 @@ export default function WhatsAppBenefits() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Why Businesses Choose WhatsApp CX Copilot
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Measurable results that drive business growth and customer satisfaction across industries.
           </p>
         </div>
@@ -102,14 +102,14 @@ export default function WhatsAppBenefits() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {benefit.description}
                 </p>
 
                 <div className="space-y-3">
                   {benefit.metrics.map((metric, metricIndex) => (
                     <div key={metricIndex} className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">{metric.label}</span>
+                      <span className="text-sm text-gray-600 dark:text-white">{metric.label}</span>
                       <span className={`text-sm font-semibold ${
                         benefit.color === 'green' ? 'text-green-600' :
                         benefit.color === 'blue' ? 'text-green-600' : 'text-purple-600'
@@ -130,7 +130,7 @@ export default function WhatsAppBenefits() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Real-World Success Stories
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               See how businesses across different industries are transforming their customer experience with WhatsApp automation.
             </p>
           </div>
@@ -154,7 +154,7 @@ export default function WhatsAppBenefits() {
                     <div className="text-sm font-medium text-red-600 dark:text-red-400 mb-1">
                       Challenge:
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">
+                    <div className="text-sm text-gray-600 dark:text-white">
                       {useCase.problem}
                     </div>
                   </div>
@@ -163,7 +163,7 @@ export default function WhatsAppBenefits() {
                     <div className="text-sm font-medium text-green-600 dark:text-green-400 mb-1">
                       Solution:
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">
+                    <div className="text-sm text-gray-600 dark:text-white">
                       {useCase.solution}
                     </div>
                   </div>

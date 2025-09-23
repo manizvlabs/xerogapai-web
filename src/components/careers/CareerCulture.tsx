@@ -122,7 +122,7 @@ export default function CareerCulture() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Our Culture & Values
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             We're more than just a workplace. We're a community of innovators, problem-solvers, and dreamers
             who believe in the power of AI to transform businesses and improve lives.
           </p>
@@ -146,7 +146,7 @@ export default function CareerCulture() {
                       {value.title}
                     </h4>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300">
+                  <p className="text-gray-600 dark:text-white">
                     {value.description}
                   </p>
                 </div>
@@ -161,7 +161,7 @@ export default function CareerCulture() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Life at XeroGap AI
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               We foster a vibrant, inclusive culture that celebrates creativity, collaboration, and continuous learning
             </p>
           </div>
@@ -175,7 +175,7 @@ export default function CareerCulture() {
                     {highlight.title}
                   </h4>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   {highlight.description}
                 </p>
               </div>
@@ -238,7 +238,7 @@ export default function CareerCulture() {
                     {category.items.map((item, itemIndex) => (
                       <li key={itemIndex} className="flex items-center text-sm">
                         <div className="w-2 h-2 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-600 dark:text-gray-300">{item}</span>
+                        <span className="text-gray-600 dark:text-white">{item}</span>
                       </li>
                     ))}
                   </ul>

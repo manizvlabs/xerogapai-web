@@ -89,7 +89,7 @@ export default function DemoBookingEnhanced({ onComplete, onBack }: DemoBookingE
                   Quick Calendly Booking
                 </h3>
               </div>
-              <p className="text-gray-600 dark:text-gray-300 text-left">
+              <p className="text-gray-600 dark:text-white text-left">
                 Fast, interactive calendar booking with instant confirmation
               </p>
             </button>
@@ -108,7 +108,7 @@ export default function DemoBookingEnhanced({ onComplete, onBack }: DemoBookingE
                   Detailed Form Booking
                 </h3>
               </div>
-              <p className="text-gray-600 dark:text-gray-300 text-left">
+              <p className="text-gray-600 dark:text-white text-left">
                 Comprehensive form with specific requirements and preferences
               </p>
             </button>
@@ -123,7 +123,7 @@ export default function DemoBookingEnhanced({ onComplete, onBack }: DemoBookingE
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                   Select Your Preferred Date & Time
                 </h2>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-600 dark:text-white">
                   Choose a convenient time for your personalized AI automation demo. The session will last about 45 minutes.
                 </p>
               </div>
@@ -188,7 +188,7 @@ export default function DemoBookingEnhanced({ onComplete, onBack }: DemoBookingE
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                   Tell Us About Your Needs
                 </h2>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-600 dark:text-white">
                   Provide detailed information to help us customize the perfect demo for your business.
                 </p>
               </div>

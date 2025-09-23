@@ -66,7 +66,7 @@ export default function ContentEditor({ section, onSave, onCancel }: ContentEdit
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white mb-2">
                 Content (JSON)
               </label>
               <textarea

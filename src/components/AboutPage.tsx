@@ -15,7 +15,7 @@ export default function AboutPage() {
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600 dark:text-gray-300">Loading about page content...</p>
+            <p className="text-lg text-gray-600 dark:text-white">Loading about page content...</p>
           </div>
         </div>
       </div>
@@ -163,7 +163,7 @@ export default function AboutPage() {
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               {(pageContent.hero as Record<string, unknown>).title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
               {(pageContent.hero as Record<string, unknown>).subtitle}
             </p>
           </div>
@@ -179,10 +179,10 @@ export default function AboutPage() {
                   <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
                   {(pageContent.mission as Record<string, unknown>).title}
                 </h2>
-                <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+                <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
                   {(pageContent.mission as Record<string, unknown>).description}
                 </p>
-                <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+                <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
                   {(pageContent.mission as Record<string, unknown>).additionalDescription}
                 </p>
               </div>
@@ -192,7 +192,7 @@ export default function AboutPage() {
                   {(pageContent.whyChooseUs as Record<string, unknown>).features && Array.isArray((pageContent.whyChooseUs as Record<string, unknown>).features) && (pageContent.whyChooseUs as Record<string, unknown>).features.map((feature: string, index: number) => (
                     <li key={`feature-${index}-${feature.slice(0, 20)}`} className="flex items-start gap-x-3">
                       <CheckIcon className="h-6 w-6 flex-none text-green-600 mt-0.5" />
-                      <span className="text-gray-600 dark:text-gray-300">{feature}</span>
+                      <span className="text-gray-600 dark:text-white">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -209,7 +209,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {(pageContent.values as Record<string, unknown>).title}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
               {(pageContent.values as Record<string, unknown>).subtitle}
             </p>
           </div>
@@ -220,7 +220,7 @@ export default function AboutPage() {
                   <dt className="text-base font-semibold leading-7 text-gray-900 dark:text-white">
                     {value.name}
                   </dt>
-                  <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
+                  <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-white">
                     <p className="flex-auto">{value.description}</p>
                   </dd>
                 </div>
@@ -237,7 +237,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {(pageContent.team as Record<string, unknown>).title}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
               {(pageContent.team as Record<string, unknown>).subtitle}
             </p>
           </div>
@@ -246,11 +246,11 @@ export default function AboutPage() {
               {(pageContent.team as Record<string, unknown>).members && Array.isArray((pageContent.team as Record<string, unknown>).members) && (pageContent.team as Record<string, unknown>).members.map((person: { initials: string; name: string; title: string; description: string }, index: number) => (
                 <div key={`member-${index}-${person.name}`} className="flex flex-col items-center text-center">
                   <div className="h-32 w-32 rounded-full bg-gray-200 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-gray-600 dark:text-gray-300">{person.initials}</span>
+                    <span className="text-2xl font-bold text-gray-600 dark:text-white">{person.initials}</span>
                   </div>
                   <h3 className="mt-6 text-lg font-semibold text-gray-900 dark:text-white">{person.name}</h3>
                   <p className="mt-2 text-base text-green-600">{person.title}</p>
-                  <p className="mt-4 text-base text-gray-600 dark:text-gray-300 max-w-md">{person.description}</p>
+                  <p className="mt-4 text-base text-gray-600 dark:text-white max-w-md">{person.description}</p>
                 </div>
               ))}
             </div>
@@ -289,7 +289,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               {(pageContent.cta as Record<string, unknown>).title}
             </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
               {(pageContent.cta as Record<string, unknown>).description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">

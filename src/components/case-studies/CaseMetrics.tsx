@@ -81,7 +81,7 @@ export default function CaseMetrics() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Proven Results Across Industries
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Our track record speaks for itself. Here's what our clients have achieved with XeroGap AI solutions.
           </p>
         </div>
@@ -100,12 +100,12 @@ export default function CaseMetrics() {
                     <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
                       {metric.value}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                    <div className="text-sm text-gray-600 dark:text-white">
                       {metric.title}
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   {metric.description}
                 </p>
               </div>
@@ -128,7 +128,7 @@ export default function CaseMetrics() {
                       <span className="text-sm font-medium text-gray-900 dark:text-white">
                         {item.industry}
                       </span>
-                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                      <span className="text-sm text-gray-600 dark:text-white">
                         {item.companies} companies
                       </span>
                     </div>
@@ -160,7 +160,7 @@ export default function CaseMetrics() {
                       <span className="text-sm font-medium text-gray-900 dark:text-white">
                         {item.solution}
                       </span>
-                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                      <span className="text-sm text-gray-600 dark:text-white">
                         {item.implementations} implementations
                       </span>
                     </div>
@@ -216,7 +216,7 @@ export default function CaseMetrics() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Ready to Join Our Success Stories?
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white mb-8 max-w-2xl mx-auto">
               See how XeroGap AI can transform your business with measurable results and ROI.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

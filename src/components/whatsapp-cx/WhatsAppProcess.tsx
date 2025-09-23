@@ -46,7 +46,7 @@ export default function WhatsAppProcess() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Simple Setup, Powerful Results
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Get started in just 1-2 weeks with our proven implementation process and expert support every step of the way.
           </p>
         </div>
@@ -82,7 +82,7 @@ export default function WhatsAppProcess() {
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                     {step.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  <p className="text-gray-600 dark:text-white mb-6">
                     {step.description}
                   </p>
 
@@ -95,7 +95,7 @@ export default function WhatsAppProcess() {
                       {step.deliverables.map((deliverable, deliverableIndex) => (
                         <li key={deliverableIndex} className="flex items-center text-sm">
                           <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                          <span className="text-gray-600 dark:text-gray-300">{deliverable}</span>
+                          <span className="text-gray-600 dark:text-white">{deliverable}</span>
                         </li>
                       ))}
                     </ul>
@@ -112,7 +112,7 @@ export default function WhatsAppProcess() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Implementation Timeline
             </h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-white">
               From setup to full automation in just 1-2 weeks
             </p>
           </div>
@@ -121,7 +121,7 @@ export default function WhatsAppProcess() {
             <div className="text-center">
               <div className="text-3xl font-bold text-green-600 mb-2">Week 1</div>
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-3">Setup & Training</div>
-              <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+              <ul className="text-sm text-gray-600 dark:text-white space-y-1">
                 <li>• API Connection</li>
                 <li>• AI Training</li>
                 <li>• Configuration</li>
@@ -131,7 +131,7 @@ export default function WhatsAppProcess() {
             <div className="text-center">
               <div className="text-3xl font-bold text-green-600 mb-2">Week 2</div>
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-3">Testing & Launch</div>
-              <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+              <ul className="text-sm text-gray-600 dark:text-white space-y-1">
                 <li>• Quality Testing</li>
                 <li>• Go Live</li>
                 <li>• Monitoring Setup</li>
@@ -141,7 +141,7 @@ export default function WhatsAppProcess() {
             <div className="text-center">
               <div className="text-3xl font-bold text-purple-600 mb-2">Month 1</div>
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-3">Optimization</div>
-              <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+              <ul className="text-sm text-gray-600 dark:text-white space-y-1">
                 <li>• Performance Tuning</li>
                 <li>• Feature Expansion</li>
                 <li>• ROI Analysis</li>
@@ -151,7 +151,7 @@ export default function WhatsAppProcess() {
             <div className="text-center">
               <div className="text-3xl font-bold text-orange-600 mb-2">Ongoing</div>
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-3">Scale & Support</div>
-              <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+              <ul className="text-sm text-gray-600 dark:text-white space-y-1">
                 <li>• Continuous Learning</li>
                 <li>• 24/7 Support</li>
                 <li>• Feature Updates</li>

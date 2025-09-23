@@ -130,7 +130,7 @@ const Header = () => {
                                   <p className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400">
                                     {dropdownItem.name}
                                   </p>
-                                  <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300">
+                                  <p className="text-sm text-gray-500 dark:text-white group-hover:text-gray-600 dark:group-hover:text-white">
                                     {dropdownItem.description}
                                   </p>
                                 </div>
@@ -183,7 +183,7 @@ const Header = () => {
                 <RegionSwitcher />
                 <button
                   type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-300"
+                  className="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-white"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <span className="sr-only">Close menu</span>
@@ -209,13 +209,13 @@ const Header = () => {
                               <Link
                                 key={dropdownItem.name}
                                 href={dropdownItem.href}
-                                className="-mx-3 flex items-center rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                                className="-mx-3 flex items-center rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-600 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
                                 onClick={() => setMobileMenuOpen(false)}
                               >
                                 <IconComponent className="h-5 w-5 mr-3 text-gray-400" />
                                 <div>
                                   <div>{dropdownItem.name}</div>
-                                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                                  <div className="text-sm text-gray-500 dark:text-white">
                                     {dropdownItem.description}
                                   </div>
                                 </div>

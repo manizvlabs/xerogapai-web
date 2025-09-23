@@ -26,7 +26,7 @@ export default function DemoHero({ onStartBooking }: DemoHeroProps) {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-white mb-8 max-w-3xl mx-auto leading-relaxed">
             Experience a personalized demonstration of our WhatsApp automation and AI workflow solutions.
             See real results in just 30 minutes.
           </p>
@@ -36,25 +36,25 @@ export default function DemoHero({ onStartBooking }: DemoHeroProps) {
             <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <PlayIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Live Demo</div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">30 minutes</div>
+              <div className="text-xs text-gray-600 dark:text-white">30 minutes</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <CalendarIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Your Schedule</div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">Pick your time</div>
+              <div className="text-xs text-gray-600 dark:text-white">Pick your time</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <UsersIcon className="h-8 w-8 text-purple-600 mx-auto mb-3" />
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Expert Led</div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">AI specialists</div>
+              <div className="text-xs text-gray-600 dark:text-white">AI specialists</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <ArrowTrendingUpIcon className="h-8 w-8 text-orange-600 mx-auto mb-3" />
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">ROI Focus</div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">Real results</div>
+              <div className="text-xs text-gray-600 dark:text-white">Real results</div>
             </div>
           </div>
 
@@ -67,17 +67,17 @@ export default function DemoHero({ onStartBooking }: DemoHeroProps) {
               <div className="text-center">
                 <div className="text-2xl mb-3">📱</div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">WhatsApp Automation</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">See how AI handles customer conversations 24/7</p>
+                <p className="text-sm text-gray-600 dark:text-white">See how AI handles customer conversations 24/7</p>
               </div>
               <div className="text-center">
                 <div className="text-2xl mb-3">🤖</div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Workflow Intelligence</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Watch AI automate complex business processes</p>
+                <p className="text-sm text-gray-600 dark:text-white">Watch AI automate complex business processes</p>
               </div>
               <div className="text-center">
                 <div className="text-2xl mb-3">📊</div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Real-Time Analytics</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">View live dashboards and performance metrics</p>
+                <p className="text-sm text-gray-600 dark:text-white">View live dashboards and performance metrics</p>
               </div>
             </div>
           </div>
@@ -90,28 +90,28 @@ export default function DemoHero({ onStartBooking }: DemoHeroProps) {
             >
               Schedule Your Free Demo
             </button>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-sm text-gray-500 dark:text-white">
               No commitment • 30 minutes • 100% free
             </span>
           </div>
 
           {/* Trust Indicators */}
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+            <p className="text-sm text-gray-500 dark:text-white mb-4">
               Join 200+ businesses who've seen XeroGap AI in action
             </p>
             <div className="flex items-center justify-center space-x-8 opacity-60">
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">200+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Demos Completed</div>
+                <div className="text-xs text-gray-500 dark:text-white">Demos Completed</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">95%</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Book to Demo Rate</div>
+                <div className="text-xs text-gray-500 dark:text-white">Book to Demo Rate</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">85%</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Demo to Trial Rate</div>
+                <div className="text-xs text-gray-500 dark:text-white">Demo to Trial Rate</div>
               </div>
             </div>
           </div>

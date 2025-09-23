@@ -89,7 +89,7 @@ export default function HelpContact() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Contact Support
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Get the help you need with multiple support channels and expert assistance.
           </p>
         </div>
@@ -112,14 +112,14 @@ export default function HelpContact() {
                       <span className="text-sm text-green-600 dark:text-green-400">
                         {method.availability}
                       </span>
-                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                      <span className="text-sm text-gray-600 dark:text-white">
                         {method.responseTime}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {method.description}
                 </p>
 
@@ -127,7 +127,7 @@ export default function HelpContact() {
                   <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
                     Best for:
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-sm text-gray-600 dark:text-white">
                     {method.bestFor}
                   </p>
                 </div>
@@ -164,25 +164,25 @@ export default function HelpContact() {
                     <h4 className="font-semibold text-gray-900 dark:text-white">
                       {region.region}
                     </h4>
-                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                    <span className="text-sm text-gray-600 dark:text-white">
                       {region.timezone}
                     </span>
                   </div>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <span className="text-gray-600 dark:text-gray-400">Hours:</span>
+                      <span className="text-gray-600 dark:text-white">Hours:</span>
                       <div className="font-medium text-gray-900 dark:text-white">
                         {region.hours}
                       </div>
                     </div>
                     <div>
-                      <span className="text-gray-600 dark:text-gray-400">Phone:</span>
+                      <span className="text-gray-600 dark:text-white">Phone:</span>
                       <div className="font-medium text-gray-900 dark:text-white">
                         {region.phone}
                       </div>
                     </div>
                   </div>
-                  <div className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  <div className="mt-2 text-sm text-gray-600 dark:text-white">
                     {region.days}
                   </div>
                 </div>

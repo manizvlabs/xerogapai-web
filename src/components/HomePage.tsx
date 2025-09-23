@@ -55,7 +55,7 @@ export default function HomePage() {
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               {content.hero.headline}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
               {content.hero.subheadline}
             </p>
 
@@ -138,7 +138,7 @@ export default function HomePage() {
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                       {service.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-gray-600 dark:text-white">
                       {service.subtitle}
                     </p>
                   </div>
@@ -147,7 +147,7 @@ export default function HomePage() {
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-start">
                         <span className="text-green-500 mr-2 mt-0.5">✓</span>
-                        <span className="text-sm text-gray-600 dark:text-gray-300">{feature}</span>
+                        <span className="text-sm text-gray-600 dark:text-white">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -157,10 +157,10 @@ export default function HomePage() {
                       <span className="text-2xl font-bold text-gray-900 dark:text-white">
                         {service.pricing.starting}
                       </span>
-                      <span className="text-sm text-gray-500 dark:text-gray-400">/month</span>
+                      <span className="text-sm text-gray-600 dark:text-white">/month</span>
                     </div>
                     {service.pricing.note && (
-                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      <p className="text-xs text-gray-500 dark:text-white mt-1">
                         {service.pricing.note}
                       </p>
                     )}
@@ -213,7 +213,7 @@ export default function HomePage() {
               {content.socialProof.testimonials.map((testimonial) => (
                 <div key={`${testimonial.author}-${testimonial.company}`} className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg">
                   <div className="text-4xl mb-4 text-gray-400">&quot;</div>
-                  <blockquote className="text-gray-700 dark:text-gray-300 mb-6 italic">
+                  <blockquote className="text-gray-700 dark:text-white mb-6 italic">
                     {testimonial.quote}
                   </blockquote>
 
@@ -225,10 +225,10 @@ export default function HomePage() {
                       <div className="font-semibold text-gray-900 dark:text-white">
                         {testimonial.author}
                       </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                      <div className="text-sm text-gray-600 dark:text-white">
                         {testimonial.position}
                       </div>
-                      <div className="text-sm text-gray-500 dark:text-gray-500">
+                      <div className="text-sm text-gray-500 dark:text-white">
                         {testimonial.location}
                       </div>
                     </div>
@@ -241,7 +241,7 @@ export default function HomePage() {
                         <div className="text-2xl font-bold text-green-600 dark:text-green-400">
                           {value}
                         </div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400 capitalize">
+                        <div className="text-xs text-gray-700 dark:text-white capitalize">
                           {key.replace(/([A-Z])/g, ' $1').trim()}
                         </div>
                       </div>
@@ -270,7 +270,7 @@ export default function HomePage() {
             <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
               {content.partners.partners.map((partner) => (
                 <div key={partner.name} className="flex items-center justify-center p-4 bg-white dark:bg-gray-900 rounded-lg">
-                  <span className="text-gray-600 dark:text-gray-400 font-medium">
+                  <span className="text-gray-700 dark:text-white font-medium">
                     {partner.name}
                   </span>
                 </div>
@@ -296,7 +296,7 @@ export default function HomePage() {
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
               {content.compliance.sectionTitle}
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white mb-8 max-w-2xl mx-auto">
               {content.compliance.message}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">

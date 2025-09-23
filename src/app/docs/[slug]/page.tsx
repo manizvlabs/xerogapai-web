@@ -29,7 +29,7 @@ export default function DocPage() {
       <div className="max-w-3xl mx-auto">
         {/* Breadcrumb */}
         <nav className="mb-8">
-          <ol className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <ol className="flex items-center space-x-2 text-sm text-gray-500 dark:text-white">
             <li>
               <Link href="/docs" className="hover:text-green-600 dark:hover:text-green-400">
                 Documentation
@@ -56,11 +56,11 @@ export default function DocPage() {
             {docPage.title}
           </h1>
           
-          <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400 mb-8">
+          <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-white mb-8">
             <span>Reading time: {docPage.readTime}</span>
           </div>
 
-          <p className="text-gray-600 dark:text-gray-300 mb-8">
+          <p className="text-gray-600 dark:text-white mb-8">
             {docPage.description}
           </p>
 
@@ -74,7 +74,7 @@ export default function DocPage() {
           <div className="mt-12 flex items-center justify-between pt-8 border-t border-gray-200 dark:border-gray-700">
             <Link
               href="/docs"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+              className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-white bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
             >
               ← Back to Documentation
             </Link>

@@ -105,7 +105,7 @@ export default function WhatsAppTestimonials() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Real Results from Real Businesses
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Join hundreds of businesses across MEA and globally that are transforming their customer experience with WhatsApp automation.
           </p>
         </div>
@@ -120,7 +120,7 @@ export default function WhatsAppTestimonials() {
               <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">
                 {stat.label}
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">
+              <div className="text-xs text-gray-600 dark:text-white">
                 {stat.change}
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function WhatsAppTestimonials() {
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <div className="text-4xl mb-4 text-gray-400">"</div>
-              <blockquote className="text-gray-700 dark:text-gray-300 mb-6 italic leading-relaxed">
+              <blockquote className="text-gray-700 dark:text-white mb-6 italic leading-relaxed">
                 {testimonial.quote}
               </blockquote>
 
@@ -144,10 +144,10 @@ export default function WhatsAppTestimonials() {
                   <div className="font-semibold text-gray-900 dark:text-white">
                     {testimonial.author}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                  <div className="text-sm text-gray-600 dark:text-white">
                     {testimonial.position}
                   </div>
-                  <div className="text-sm text-gray-500 dark:text-gray-500">
+                  <div className="text-sm text-gray-500 dark:text-white">
                     {testimonial.company}, {testimonial.location}
                   </div>
                   <div className="text-xs text-green-600 dark:text-green-400 font-medium mt-1">
@@ -163,7 +163,7 @@ export default function WhatsAppTestimonials() {
                     <div className="text-lg font-bold text-green-600 mb-1">
                       {metric.value}
                     </div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
+                    <div className="text-xs text-gray-600 dark:text-white leading-tight">
                       {metric.label}
                     </div>
                   </div>

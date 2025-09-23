@@ -132,7 +132,7 @@ export default function HelpCategories() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Browse by Category
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Find exactly what you need with our organized knowledge base categories.
           </p>
         </div>
@@ -148,7 +148,7 @@ export default function HelpCategories() {
                 className={`p-4 rounded-xl border transition-all ${
                   activeCategory === category.id
                     ? 'bg-green-600 text-white border-green-600 shadow-lg'
-                    : 'bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700'
+                    : 'bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-white border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
               >
                 <IconComponent className="w-6 h-6 mx-auto mb-2" />
@@ -173,7 +173,7 @@ export default function HelpCategories() {
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                     {currentCategory.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mt-1">
+                  <p className="text-gray-600 dark:text-white mt-1">
                     {currentCategory.description}
                   </p>
                 </div>
@@ -198,7 +198,7 @@ export default function HelpCategories() {
                             {article}
                           </span>
                         </div>
-                        <span className="text-sm text-gray-500 dark:text-gray-400">
+                        <span className="text-sm text-gray-500 dark:text-white">
                           5 min read
                         </span>
                       </div>
@@ -262,8 +262,8 @@ export default function HelpCategories() {
                       className="w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                     >
                       <div className="flex items-center">
-                        <category.icon className="w-4 h-4 text-gray-600 dark:text-gray-400 mr-3" />
-                        <span className="text-sm text-gray-700 dark:text-gray-300">
+                        <category.icon className="w-4 h-4 text-gray-600 dark:text-white mr-3" />
+                        <span className="text-sm text-gray-700 dark:text-white">
                           {category.title}
                         </span>
                       </div>

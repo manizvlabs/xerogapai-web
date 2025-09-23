@@ -26,7 +26,7 @@ export default function AssessmentHero({ onStart }: AssessmentHeroProps) {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-white mb-8 max-w-3xl mx-auto leading-relaxed">
             Get a comprehensive AI readiness assessment worth $500 completely free.
             Discover your automation potential, identify quick wins, and get a custom implementation roadmap in just 10 minutes.
           </p>
@@ -38,7 +38,7 @@ export default function AssessmentHero({ onStart }: AssessmentHeroProps) {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                 Custom Roadmap
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-gray-600 dark:text-white text-sm">
                 AI strategy tailored to your business goals and current capabilities
               </p>
             </div>
@@ -48,7 +48,7 @@ export default function AssessmentHero({ onStart }: AssessmentHeroProps) {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                 Detailed Report
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-gray-600 dark:text-white text-sm">
                 Comprehensive analysis with ROI projections and priority actions
               </p>
             </div>
@@ -58,7 +58,7 @@ export default function AssessmentHero({ onStart }: AssessmentHeroProps) {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                 Expert Guidance
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-gray-600 dark:text-white text-sm">
                 Free consultation call with AI implementation specialists
               </p>
             </div>
@@ -80,7 +80,7 @@ export default function AssessmentHero({ onStart }: AssessmentHeroProps) {
               ].map((benefit, index) => (
                 <div key={index} className="flex items-center">
                   <CheckIcon className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                  <span className="text-gray-700 dark:text-gray-300">{benefit}</span>
+                  <span className="text-gray-700 dark:text-white">{benefit}</span>
                 </div>
               ))}
             </div>
@@ -94,28 +94,28 @@ export default function AssessmentHero({ onStart }: AssessmentHeroProps) {
             >
               Start Free Assessment
             </button>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-sm text-gray-500 dark:text-white">
               Takes only 10 minutes • No credit card required
             </span>
           </div>
 
           {/* Trust Indicators */}
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+            <p className="text-sm text-gray-500 dark:text-white mb-4">
               Trusted by 500+ businesses worldwide
             </p>
             <div className="flex items-center justify-center space-x-8 opacity-60">
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">500+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Assessments Completed</div>
+                <div className="text-xs text-gray-500 dark:text-white">Assessments Completed</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">95%</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Client Satisfaction</div>
+                <div className="text-xs text-gray-500 dark:text-white">Client Satisfaction</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">$2M+</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Client Savings</div>
+                <div className="text-xs text-gray-500 dark:text-white">Client Savings</div>
               </div>
             </div>
           </div>

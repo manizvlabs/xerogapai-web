@@ -104,7 +104,7 @@ export default function HelpStatus() {
       case 'down':
         return 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300';
       default:
-        return 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300';
+        return 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-white';
     }
   };
 
@@ -115,7 +115,7 @@ export default function HelpStatus() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             System Status & Updates
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Real-time status of all XeroGap AI services and upcoming maintenance windows.
           </p>
         </div>
@@ -142,13 +142,13 @@ export default function HelpStatus() {
 
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="text-gray-600 dark:text-gray-400">Uptime:</span>
+                    <span className="text-gray-600 dark:text-white">Uptime:</span>
                     <div className="font-semibold text-gray-900 dark:text-white">
                       {service.uptime}
                     </div>
                   </div>
                   <div>
-                    <span className="text-gray-600 dark:text-gray-400">Response:</span>
+                    <span className="text-gray-600 dark:text-white">Response:</span>
                     <div className="font-semibold text-gray-900 dark:text-white">
                       {service.responseTime}
                     </div>
@@ -191,15 +191,15 @@ export default function HelpStatus() {
                     </span>
                   </div>
 
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  <div className="text-sm text-gray-600 dark:text-white mb-2">
                     Started: {incident.started} | Resolved: {incident.resolved}
                   </div>
 
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                  <p className="text-sm text-gray-600 dark:text-white mb-2">
                     <strong>Impact:</strong> {incident.impact}
                   </p>
 
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-sm text-gray-600 dark:text-white">
                     {incident.description}
                   </p>
                 </div>
@@ -220,15 +220,15 @@ export default function HelpStatus() {
                     {maintenance.title}
                   </h4>
 
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  <div className="text-sm text-gray-600 dark:text-white mb-2">
                     {maintenance.date} | {maintenance.time}
                   </div>
 
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                  <p className="text-sm text-gray-600 dark:text-white mb-2">
                     <strong>Expected Impact:</strong> {maintenance.impact}
                   </p>
 
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-sm text-gray-600 dark:text-white">
                     {maintenance.description}
                   </p>
                 </div>

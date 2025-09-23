@@ -11,7 +11,7 @@ export default function PortfolioPage() {
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-            <p className="text-lg text-gray-600 dark:text-gray-300">Loading portfolio page content...</p>
+            <p className="text-lg text-gray-600 dark:text-white">Loading portfolio page content...</p>
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@ export default function PortfolioPage() {
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               {(pageContent.hero as Record<string, unknown>).title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
               {(pageContent.hero as Record<string, unknown>).subtitle}
             </p>
           </div>
@@ -150,7 +150,7 @@ export default function PortfolioPage() {
                       <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mb-2">
                         <span className="text-white font-bold text-xl">AI</span>
                       </div>
-                      <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">{project.category}</span>
+                      <span className="text-gray-600 dark:text-white text-sm font-medium">{project.category}</span>
                     </div>
                   </div>
                   <div className="p-6">
@@ -159,7 +159,7 @@ export default function PortfolioPage() {
                         {project.category}
                       </span>
                       {project.industry && (
-                        <span className="text-gray-500 dark:text-gray-400">
+                        <span className="text-gray-500 dark:text-white">
                           {project.industry}
                         </span>
                       )}
@@ -167,14 +167,14 @@ export default function PortfolioPage() {
                     <h3 className="text-lg font-semibold leading-6 text-gray-900 dark:text-white">
                       {project.name}
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">
+                    <p className="mt-2 text-sm leading-6 text-gray-600 dark:text-white">
                       {project.description}
                     </p>
 
                     {project.client && (
                       <div className="mt-4">
                         <h4 className="text-sm font-medium text-gray-900 dark:text-white">Client:</h4>
-                        <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{project.client}</p>
+                        <p className="mt-1 text-sm text-gray-600 dark:text-white">{project.client}</p>
                       </div>
                     )}
 
@@ -200,7 +200,7 @@ export default function PortfolioPage() {
                     {project.duration && (
                       <div className="mt-4">
                         <h4 className="text-sm font-medium text-gray-900 dark:text-white">Duration:</h4>
-                        <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{project.duration}</p>
+                        <p className="mt-1 text-sm text-gray-600 dark:text-white">{project.duration}</p>
                       </div>
                     )}
                   </div>

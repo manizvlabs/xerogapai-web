@@ -37,7 +37,7 @@ export const themeConfig = {
     background: '#0f172a',
     surface: '#1e293b',
     text: '#f1f5f9',
-    textSecondary: '#94a3b8',
+    textSecondary: '#ffffff', // Changed from #94a3b8 to white for all text white rule
   }
 };
 

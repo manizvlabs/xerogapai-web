@@ -5,7 +5,7 @@ import { QuestionMarkCircleIcon, LightBulbIcon, ChatBubbleLeftRightIcon, Documen
 
 export default function HelpHero() {
   return (
-    <div className="relative isolate bg-gradient-to-br from-green-50 via-emerald-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="relative isolate bg-gradient-to-br from-green-50 via-emerald-50 to-purple-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <svg className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
@@ -35,7 +35,7 @@ export default function HelpHero() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl leading-8 text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
+          <p className="text-xl leading-8 text-gray-600 dark:text-white mb-12 max-w-3xl mx-auto">
             Get instant answers to your questions with our comprehensive knowledge base,
             detailed guides, and interactive support tools. No waiting required.
           </p>
@@ -45,25 +45,25 @@ export default function HelpHero() {
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <QuestionMarkCircleIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">500+</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Help Articles</div>
+              <div className="text-sm text-gray-600 dark:text-white">Help Articles</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <LightBulbIcon className="h-8 w-8 text-indigo-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">24/7</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Self-Service</div>
+              <div className="text-sm text-gray-600 dark:text-white">Self-Service</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <ChatBubbleLeftRightIcon className="h-8 w-8 text-purple-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">5 min</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Average Resolution</div>
+              <div className="text-sm text-gray-600 dark:text-white">Average Resolution</div>
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <DocumentTextIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">95%</div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">Self-Resolution Rate</div>
+              <div className="text-sm text-gray-600 dark:text-white">Self-Resolution Rate</div>
             </div>
           </div>
 
@@ -78,7 +78,7 @@ export default function HelpHero() {
                   <QuestionMarkCircleIcon className="w-8 h-8 text-green-600" />
                 </div>
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Knowledge Base</h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   Comprehensive articles, tutorials, and troubleshooting guides
                 </p>
               </div>
@@ -87,7 +87,7 @@ export default function HelpHero() {
                   <ChatBubbleLeftRightIcon className="w-8 h-8 text-indigo-600" />
                 </div>
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Live Chat</h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   Real-time support from our expert team (paid plans)
                 </p>
               </div>
@@ -96,7 +96,7 @@ export default function HelpHero() {
                   <LightBulbIcon className="w-8 h-8 text-purple-600" />
                 </div>
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Community</h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   Connect with other users and share solutions
                 </p>
               </div>
@@ -121,21 +121,21 @@ export default function HelpHero() {
 
           {/* Trust Signals */}
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+            <p className="text-sm text-gray-500 dark:text-white mb-6">
               Join thousands of users who find answers instantly in our help center
             </p>
             <div className="flex items-center justify-center space-x-8 opacity-60">
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">95%</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Self-Resolution</div>
+                <div className="text-xs text-gray-500 dark:text-white">Self-Resolution</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">5 min</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Average Time</div>
+                <div className="text-xs text-gray-500 dark:text-white">Average Time</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900 dark:text-white">24/7</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">Availability</div>
+                <div className="text-xs text-gray-500 dark:text-white">Availability</div>
               </div>
             </div>
           </div>

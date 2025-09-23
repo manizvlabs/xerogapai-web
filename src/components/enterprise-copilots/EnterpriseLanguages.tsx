@@ -101,7 +101,7 @@ export default function EnterpriseLanguages() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             20+ Languages, One Knowledge Base
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Break down language barriers with automatic translation and culturally-aware responses.
             Your global workforce gets instant answers in their preferred language.
           </p>
@@ -113,7 +113,7 @@ export default function EnterpriseLanguages() {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Supported Languages
             </h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-white">
               Comprehensive language support for global enterprises
             </p>
           </div>
@@ -133,10 +133,10 @@ export default function EnterpriseLanguages() {
                 }`}>
                   {language.native}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                <div className="text-sm text-gray-600 dark:text-white mb-1">
                   {language.name}
                 </div>
-                <div className="text-xs text-gray-500 dark:text-gray-500">
+                <div className="text-xs text-gray-500 dark:text-white">
                   {language.speakers} speakers
                 </div>
               </div>
@@ -159,7 +159,7 @@ export default function EnterpriseLanguages() {
                   </h3>
                 </div>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                <p className="text-gray-600 dark:text-white mb-6">
                   {capability.description}
                 </p>
 
@@ -170,7 +170,7 @@ export default function EnterpriseLanguages() {
                   {capability.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center text-sm">
                       <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-600 dark:text-gray-300">{feature}</span>
+                      <span className="text-gray-600 dark:text-white">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -228,7 +228,7 @@ export default function EnterpriseLanguages() {
               </h3>
             </div>
 
-            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-white mb-8 max-w-2xl mx-auto">
               Our AI models are trained on billions of multilingual examples to ensure accurate,
               contextually appropriate responses in every supported language.
             </p>
@@ -237,25 +237,25 @@ export default function EnterpriseLanguages() {
               <div className="text-center">
                 <div className="text-3xl font-bold text-cyan-600 mb-2">95%</div>
                 <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Translation Accuracy</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">Industry leading</div>
+                <div className="text-xs text-gray-600 dark:text-white">Industry leading</div>
               </div>
 
               <div className="text-center">
                 <div className="text-3xl font-bold text-cyan-600 mb-2">20+</div>
                 <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Languages</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">Full support</div>
+                <div className="text-xs text-gray-600 dark:text-white">Full support</div>
               </div>
 
               <div className="text-center">
                 <div className="text-3xl font-bold text-cyan-600 mb-2">&lt; 2s</div>
                 <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Response Time</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">Real-time translation</div>
+                <div className="text-xs text-gray-600 dark:text-white">Real-time translation</div>
               </div>
 
               <div className="text-center">
                 <div className="text-3xl font-bold text-cyan-600 mb-2">100%</div>
                 <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Context Preservation</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">Meaning maintained</div>
+                <div className="text-xs text-gray-600 dark:text-white">Meaning maintained</div>
               </div>
             </div>
           </div>

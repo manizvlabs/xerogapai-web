@@ -67,7 +67,7 @@ export default function XeroGapTestimonials() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Teams Love XeroGap AI
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             See how businesses across different industries are transforming their workflows with AI-powered automation.
           </p>
         </div>
@@ -76,7 +76,7 @@ export default function XeroGapTestimonials() {
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
               <div className="text-4xl mb-4 text-gray-400">"</div>
-              <blockquote className="text-gray-700 dark:text-gray-300 mb-6 italic leading-relaxed">
+              <blockquote className="text-gray-700 dark:text-white mb-6 italic leading-relaxed">
                 {testimonial.quote}
               </blockquote>
 
@@ -88,10 +88,10 @@ export default function XeroGapTestimonials() {
                   <div className="font-semibold text-gray-900 dark:text-white">
                     {testimonial.author}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                  <div className="text-sm text-gray-600 dark:text-white">
                     {testimonial.position}
                   </div>
-                  <div className="text-sm text-gray-500 dark:text-gray-500">
+                  <div className="text-sm text-gray-500 dark:text-white">
                     {testimonial.company}, {testimonial.location}
                   </div>
                   <div className="text-xs text-purple-600 dark:text-purple-400 font-medium mt-1">
@@ -107,7 +107,7 @@ export default function XeroGapTestimonials() {
                     <div className="text-lg font-bold text-green-600 mb-1">
                       {metric.value}
                     </div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 leading-tight">
+                    <div className="text-xs text-gray-600 dark:text-white leading-tight">
                       {metric.label}
                     </div>
                   </div>
@@ -121,19 +121,19 @@ export default function XeroGapTestimonials() {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">150+</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Teams Using XeroGap AI</div>
+            <div className="text-sm text-gray-600 dark:text-white">Teams Using XeroGap AI</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">500+</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Integrations Created</div>
+            <div className="text-sm text-gray-600 dark:text-white">Integrations Created</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">50+</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Business Tools Connected</div>
+            <div className="text-sm text-gray-600 dark:text-white">Business Tools Connected</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">99.5%</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Automation Accuracy</div>
+            <div className="text-sm text-gray-600 dark:text-white">Automation Accuracy</div>
           </div>
         </div>
       </div>
