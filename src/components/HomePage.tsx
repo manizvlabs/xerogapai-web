@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useRegion } from '@/contexts/RegionContext';
+import Logo from './Logo';
 import { globalHomepageContent } from '@/regions/global/homepage';
 import { indianHomepageContent } from '@/regions/indian/homepage';
 
@@ -20,6 +21,19 @@ export default function HomePage() {
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }}
           />
+        </div>
+
+        {/* Logo Watermark Background */}
+        <div className="absolute inset-0 -z-5 opacity-[0.02] dark:opacity-[0.03]" aria-hidden="true">
+          <div className="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2">
+            <Logo variant="hero" size="xl" className="w-96 h-auto" />
+          </div>
+          <div className="absolute top-3/4 right-1/4 transform translate-x-1/2 -translate-y-1/2">
+            <Logo variant="hero" size="xl" className="w-96 h-auto" />
+          </div>
+          <div className="absolute top-1/2 left-3/4 transform -translate-x-1/2 -translate-y-1/2 rotate-12">
+            <Logo variant="hero" size="lg" className="w-72 h-auto" />
+          </div>
         </div>
 
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
@@ -72,7 +86,16 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 sm:py-32 bg-gray-50 dark:bg-gray-800">
+      <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-800">
+        {/* Logo Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]" aria-hidden="true">
+          <div className="absolute top-12 right-12 transform rotate-6">
+            <Logo variant="hero" size="md" className="w-24 h-auto" />
+          </div>
+          <div className="absolute bottom-12 left-12 transform -rotate-6">
+            <Logo variant="hero" size="md" className="w-24 h-auto" />
+          </div>
+        </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
@@ -156,7 +179,16 @@ export default function HomePage() {
       </section>
 
       {/* Social Proof Section */}
-      <section className="py-24 sm:py-32 bg-white dark:bg-gray-900">
+      <section className="relative py-24 sm:py-32 bg-white dark:bg-gray-900">
+        {/* Logo Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.01] dark:opacity-[0.02]" aria-hidden="true">
+          <div className="absolute top-16 left-1/4 transform -translate-x-1/2 -rotate-12">
+            <Logo variant="hero" size="sm" className="w-16 h-auto" />
+          </div>
+          <div className="absolute bottom-16 right-1/4 transform translate-x-1/2 rotate-12">
+            <Logo variant="hero" size="sm" className="w-16 h-auto" />
+          </div>
+        </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
@@ -216,7 +248,13 @@ export default function HomePage() {
       </section>
 
       {/* Partners Section */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+      <section className="relative py-16 bg-gray-50 dark:bg-gray-800">
+        {/* Logo Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]" aria-hidden="true">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
+            <Logo variant="hero" size="sm" className="w-20 h-auto" />
+          </div>
+        </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
@@ -236,7 +274,16 @@ export default function HomePage() {
       </section>
 
       {/* Compliance Section */}
-      <section className="py-16 bg-white dark:bg-gray-900">
+      <section className="relative py-16 bg-white dark:bg-gray-900">
+        {/* Logo Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.025]" aria-hidden="true">
+          <div className="absolute top-8 right-8 transform rotate-6">
+            <Logo variant="icon" size="sm" className="w-12 h-auto" />
+          </div>
+          <div className="absolute bottom-8 left-8 transform -rotate-6">
+            <Logo variant="icon" size="sm" className="w-12 h-auto" />
+          </div>
+        </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
@@ -260,7 +307,19 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-24 sm:py-32 bg-blue-600 dark:bg-blue-700">
+      <section className="relative py-24 sm:py-32 bg-blue-600 dark:bg-blue-700">
+        {/* Logo Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.04]" aria-hidden="true">
+          <div className="absolute top-16 left-16 transform rotate-12">
+            <Logo variant="dark" size="md" className="w-32 h-auto" />
+          </div>
+          <div className="absolute bottom-16 right-16 transform -rotate-12">
+            <Logo variant="dark" size="md" className="w-32 h-auto" />
+          </div>
+          <div className="absolute top-1/2 right-1/3 transform translate-x-1/2 -translate-y-1/2 rotate-45">
+            <Logo variant="dark" size="sm" className="w-20 h-auto" />
+          </div>
+        </div>
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">

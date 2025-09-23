@@ -1,26 +1,26 @@
 'use client';
-import Link from 'next/link';
 
 import React from 'react';
 import CTAButton from './CTAButton';
 import CTALink from './CTALink';
+import Logo from '../Logo';
 
 interface CTASectionProps {
-  title: string;
-  description: string;
-  primaryButton?: {
-    text: string;
-    href: string;
-    ctaType?: 'assessment' | 'demo' | 'consultation' | 'contact';
+  readonly title: string;
+  readonly description: string;
+  readonly primaryButton?: {
+    readonly text: string;
+    readonly href: string;
+    readonly ctaType?: 'assessment' | 'demo' | 'consultation' | 'contact';
   };
-  secondaryButton?: {
-    text: string;
-    href: string;
-    ctaType?: 'assessment' | 'demo' | 'consultation' | 'contact';
+  readonly secondaryButton?: {
+    readonly text: string;
+    readonly href: string;
+    readonly ctaType?: 'assessment' | 'demo' | 'consultation' | 'contact';
   };
-  section?: string;
-  className?: string;
-  variant?: 'blue' | 'gradient' | 'white';
+  readonly section?: string;
+  readonly className?: string;
+  readonly variant?: 'blue' | 'gradient' | 'white';
 }
 
 export default function CTASection({
@@ -39,8 +39,21 @@ export default function CTASection({
   };
 
   return (
-    <div className={`${variantStyles[variant]} ${className}`}>
-      <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+    <div className={`relative ${variantStyles[variant]} ${className}`}>
+      {/* Logo Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" aria-hidden="true">
+        <div className="absolute top-8 left-8 transform rotate-12">
+          <Logo variant="icon" size="sm" className="w-16 h-auto" />
+        </div>
+        <div className="absolute bottom-8 right-8 transform -rotate-12">
+          <Logo variant="icon" size="sm" className="w-16 h-auto" />
+        </div>
+        <div className="absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
+          <Logo variant="icon" size="sm" className="w-12 h-auto" />
+        </div>
+      </div>
+
+      <div className="relative px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             {title}
