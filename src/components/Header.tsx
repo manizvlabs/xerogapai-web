@@ -2,12 +2,11 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Bars3Icon, XMarkIcon, ChevronDownIcon, ChatBubbleLeftRightIcon, CogIcon, CpuChipIcon, DocumentTextIcon, ShieldCheckIcon, UserGroupIcon, BriefcaseIcon, QuestionMarkCircleIcon, BookOpenIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
 import ThemeSwitcher from './ThemeSwitcher';
 import RegionSwitcher from './RegionSwitcher';
+import Logo from './Logo';
 import { siteConfig } from '@/config/site';
-import { useRegion } from '@/contexts/RegionContext';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -74,13 +73,11 @@ const Header = () => {
             <div
               className="flex items-center"
             >
-              <Image
-                src="/logo.png"
-                alt={`${siteConfig.name} Logo`}
-                width={400}
-                height={133}
-                className="h-20 w-auto"
+              <Logo
+                variant="full"
+                size="lg"
                 priority
+                className="h-20 w-auto"
               />
             </div>
           </Link>
@@ -175,11 +172,9 @@ const Header = () => {
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:ring-gray-700/10">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
-                <Image
-                  src="/logo.svg"
-                  alt={`${siteConfig.name} Logo`}
-                  width={400}
-                  height={133}
+                <Logo
+                  variant="icon"
+                  size="lg"
                   className="h-20 w-auto"
                 />
               </Link>

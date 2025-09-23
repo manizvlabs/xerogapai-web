@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import Logo from './Logo';
 import { siteConfig } from '@/config/site';
 
 const Footer = () => {
@@ -12,12 +13,19 @@ const Footer = () => {
             {/* Company Info */}
             <div className="lg:col-span-2">
               <Link href="/" className="inline-flex items-center group mb-4">
-                <span className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                  {siteConfig.name.split(' ')[0]}
-                </span>
-                <span className="text-lg text-gray-300 ml-2 group-hover:text-blue-300 transition-colors">
-                  {siteConfig.name.split(' ')[1]}
-                </span>
+                <Logo
+                  variant="footer"
+                  size="md"
+                  className="mr-3 h-10 w-auto"
+                />
+                <div className="flex flex-col">
+                  <span className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                    {siteConfig.name.split(' ')[0]}
+                  </span>
+                  <span className="text-lg text-gray-300 group-hover:text-blue-300 transition-colors">
+                    {siteConfig.name.split(' ')[1]}
+                  </span>
+                </div>
               </Link>
               <p className="text-sm leading-6 text-gray-300 mb-6 max-w-md">
                 {siteConfig.tagline}. We help businesses in {siteConfig.location} and across globe 
