@@ -41,15 +41,15 @@ export default function CTASection({
   return (
     <div className={`relative ${variantStyles[variant]} ${className}`}>
       {/* Logo Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" aria-hidden="true">
-        <div className="absolute top-8 left-8 transform rotate-12">
-          <Logo variant="icon" size="sm" className="w-16 h-auto" />
-        </div>
-        <div className="absolute bottom-8 right-8 transform -rotate-12">
-          <Logo variant="icon" size="sm" className="w-16 h-auto" />
-        </div>
-        <div className="absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
+      <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.025] pointer-events-none" aria-hidden="true">
+        <div className="absolute top-4 left-4 transform rotate-12">
           <Logo variant="icon" size="sm" className="w-12 h-auto" />
+        </div>
+        <div className="absolute bottom-4 right-4 transform -rotate-12">
+          <Logo variant="icon" size="sm" className="w-12 h-auto" />
+        </div>
+        <div className="absolute top-1/3 right-1/4 transform translate-x-1/2 -translate-y-1/2 rotate-45">
+          <Logo variant="icon" size="sm" className="w-10 h-auto" />
         </div>
       </div>
 
