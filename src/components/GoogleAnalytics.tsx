@@ -33,6 +33,14 @@ export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: GoogleAnalyticsPr
   const searchParams = useSearchParams();
   const { trackPageView, trackEvent } = useFunnelAnalytics();
 
+  // Initialize trackCTA function immediately (before useEffect)
+  if (typeof window !== 'undefined') {
+    window.trackCTA = (ctaData: CTATrackingData) => {
+      // Store events until Google Analytics loads
+      console.log('CTA event (GA loading):', ctaData);
+    };
+  }
+
   useEffect(() => {
     if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === 'GA-XXXXXXXXXX') return;
 
