@@ -18,8 +18,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: `${siteConfig.name} - ${siteConfig.tagline}`,
-  description: `${siteConfig.tagline}. Transform your business with AI-powered automation, custom mobile apps, and digital marketing solutions. Serving startups, small businesses, and enterprises in Hyderabad and beyond.`,
-  keywords: "AI automation, mobile app development, digital marketing, AI agents, Hyderabad, India, digital transformation, content automation, AI consulting, mobile development",
+  description: `${siteConfig.tagline}. Transform your business with AI-powered automation, custom mobile apps, and digital marketing solutions. Serving startups, small businesses, and enterprises.`,
+  keywords: "AI automation, mobile app development, digital marketing, AI agents, digital transformation, content automation, AI consulting, mobile development",
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   publisher: siteConfig.name,

@@ -70,10 +70,10 @@ export default function ContactPage() {
       title: "Regional Support Teams",
       india: {
         title: "India Support",
-        contact: "+91 98765 43210",
+        contact: "",
         whatsapp: "https://wa.me/919876543210",
         timezone: "IST (GMT+5:30)",
-        languages: "English, Hindi, Telugu, Tamil"
+        languages: "English, Hindi"
       },
       global: {
         title: "Global Support",

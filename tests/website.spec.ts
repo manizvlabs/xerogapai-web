@@ -385,7 +385,7 @@ test.describe('XeroGap AI Website', () => {
       const contentObj = JSON.parse(currentContent || '{}');
 
       // Modify the hero title
-      const newTitle = '123 testing - AI-Powered Digital Transformation for Hyderabad Businesses';
+      const newTitle = '123 testing - AI-Powered Digital Transformation for Businesses';
       contentObj.hero = contentObj.hero || {};
       contentObj.hero.title = newTitle;
 

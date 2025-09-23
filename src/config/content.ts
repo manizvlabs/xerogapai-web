@@ -6,8 +6,8 @@ export const contentConfig = {
   // Homepage Content
   homepage: {
     hero: {
-      title: "AI-Powered Digital Transformation for Hyderabad Businesses",
-      subtitle: "Transform your business with cutting-edge AI automation, custom mobile apps, and digital solutions. From startups to enterprises in Hyderabad and beyond, we help you scale efficiently with AI-driven innovation.",
+      title: "AI-Powered Digital Transformation for Businesses",
+      subtitle: "Transform your business with cutting-edge AI automation, custom mobile apps, and digital solutions. From startups to enterprises, we help you scale efficiently with AI-driven innovation.",
       cta: {
         primary: "Get Started",
         secondary: "Learn more"
@@ -32,7 +32,7 @@ export const contentConfig = {
       },
       {
         name: 'Digital Transformation',
-        description: 'Complete digital overhaul of your business processes, systems, and customer experience. Tailored solutions for Hyderabad businesses.',
+        description: 'Complete digital overhaul of your business processes, systems, and customer experience. Tailored solutions for businesses.',
         icon: 'ChartBarIcon'
       },
       {
@@ -42,8 +42,8 @@ export const contentConfig = {
       }
     ],
     cta: {
-      title: "Ready to Transform Your Hyderabad Business?",
-      subtitle: "Join 50+ Hyderabad businesses that have already transformed their operations with our AI-powered solutions. Let's discuss your project and see how we can help you achieve your digital transformation goals.",
+      title: "Ready to Transform Your Business?",
+      subtitle: "Join 50+ businesses that have already transformed their operations with our AI-powered solutions. Let's discuss your project and see how we can help you achieve your digital transformation goals.",
       cta: {
         primary: "Get started today",
         secondary: "Learn more about us"
@@ -79,7 +79,7 @@ export const contentConfig = {
       {
         name: 'Manish Kumar',
         title: 'Founder & Solutions Architect',
-        description: '5+ years experience in enterprise solutions, AI automation, and digital transformation. Based in Hyderabad.',
+        description: '5+ years experience in enterprise solutions, AI automation, and digital transformation.',
         image: '/api/placeholder/150/150'
       }
     ],
@@ -140,7 +140,7 @@ export const contentConfig = {
       },
       {
         name: 'Digital Transformation',
-        description: 'Complete digital overhaul of your business processes, systems, and customer experience. Tailored solutions for Hyderabad businesses.',
+        description: 'Complete digital overhaul of your business processes, systems, and customer experience. Tailored solutions for businesses.',
         icon: 'ChartBarIcon',
         features: [
           'Business process automation',
@@ -245,7 +245,7 @@ export const contentConfig = {
         slug: 'mobile-app-development-approach-guide'
       },
       {
-        title: 'Digital Marketing Automation: A Complete Guide for Indian Businesses',
+        title: 'Digital Marketing Automation: A Complete Guide for Businesses',
         excerpt: 'Learn how to automate your digital marketing efforts and scale your business growth with proven strategies.',
         date: 'December 5, 2024',
         category: 'Digital Marketing',

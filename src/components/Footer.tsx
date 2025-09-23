@@ -20,7 +20,7 @@ const Footer = () => {
                 </span>
               </Link>
               <p className="text-sm leading-6 text-gray-300 mb-6 max-w-md">
-                {siteConfig.tagline}. We help businesses in {siteConfig.location} and across India 
+                {siteConfig.tagline}. We help businesses in {siteConfig.location} and across globe 
                 leverage AI automation, mobile apps, and digital marketing to achieve exponential growth.
               </p>
               <div className="flex space-x-4">

@@ -173,7 +173,7 @@ export class SEOService {
       },
       serviceArea: {
         '@type': 'Country',
-        name: ['India', 'United Arab Emirates', 'United States']
+        name: ['Asia', 'Middle East', 'Africa', 'Europe', 'United States']
       }
     };
   }

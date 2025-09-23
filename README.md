@@ -66,7 +66,7 @@ The website is automatically deployed to Vercel on every push to the `main` bran
    NEXT_PUBLIC_SITE_NAME="XeroGap AI"
    NEXT_PUBLIC_SITE_TAGLINE="AI-Powered Digital Transformation"
    NEXT_PUBLIC_DOMAIN="zerodigital.ai"
-   NEXT_PUBLIC_LOCATION="Hyderabad, India"
+   NEXT_PUBLIC_LOCATION=""
    NEXT_PUBLIC_PHONE="+919876543210"
    NEXT_PUBLIC_EMAIL="info@zerodigital.ai"
 
@@ -320,8 +320,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For support and questions:
 - **Email**: info@zerodigital.ai
-- **Location**: Hyderabad, Telangana, India
-- **Phone**: +91 98765 43210
+- **Phone**: 
 
 ## 🙏 Acknowledgments
 
@@ -332,7 +331,5 @@ For support and questions:
 - **Google Analytics** - Analytics and tracking
 
 ---
-
-**Built with ❤️ in Hyderabad, India**
 
 Transform your business with AI-powered digital solutions. 🚀

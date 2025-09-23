@@ -28,7 +28,7 @@ export default function StructuredData({ type = 'website', pageData }: Structure
           __html: JSON.stringify({
             ...baseData,
             '@type': 'Organization',
-            foundingDate: '2024',
+            foundingDate: '2025',
             address: {
               '@type': 'PostalAddress',
               addressLocality: siteConfig.location,
