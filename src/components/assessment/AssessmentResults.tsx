@@ -134,9 +134,9 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
     <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-8 text-white text-center">
+        <div className="bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-8 text-white text-center">
           <h1 className="text-3xl font-bold mb-2">Your AI Readiness Results</h1>
-          <p className="text-blue-100">Assessment completed successfully!</p>
+          <p className="text-green-100">Assessment completed successfully!</p>
         </div>
 
           {/* Score Display */}
@@ -185,7 +185,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
             {/* Category Scores */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="text-center">
-                <div className="text-lg font-bold text-blue-600">{results.categoryScores.technicalReadiness}%</div>
+                <div className="text-lg font-bold text-green-600">{results.categoryScores.technicalReadiness}%</div>
                 <div className="text-xs text-gray-600 dark:text-gray-400">Technical</div>
               </div>
               <div className="text-center">
@@ -254,7 +254,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
                       </div>
                       <div>
                         <span className="font-medium text-gray-900 dark:text-white">Time: </span>
-                        <span className="text-blue-600">{service.implementationTime}</span>
+                        <span className="text-green-600">{service.implementationTime}</span>
                       </div>
                     </div>
                   </div>
@@ -273,7 +273,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
                 {results.actionPlan.map((phase, index) => (
                   <div key={index} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
                     <div className="flex items-center mb-4">
-                      <div className="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full text-sm font-bold mr-3">
+                      <div className="flex items-center justify-center w-8 h-8 bg-green-600 text-white rounded-full text-sm font-bold mr-3">
                         {index + 1}
                       </div>
                       <div>
@@ -288,7 +288,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <h5 className="font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
-                          <RocketLaunchIcon className="w-4 h-4 mr-2 text-blue-600" />
+                          <RocketLaunchIcon className="w-4 h-4 mr-2 text-green-600" />
                           Key Actions
                         </h5>
                         <ul className="space-y-1">
@@ -336,7 +336,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
                       <div>
                         <h4 className="font-semibold text-gray-900 dark:text-white mb-1">{insight.title}</h4>
                         <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{insight.description}</p>
-                        <p className="text-sm font-medium text-blue-600 dark:text-blue-400">{insight.recommendation}</p>
+                        <p className="text-sm font-medium text-green-600 dark:text-green-400">{insight.recommendation}</p>
                       </div>
                     </div>
                   </div>
@@ -346,9 +346,9 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
           )}
 
           {/* Email Capture Form */}
-          <div className="mt-8 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 border border-blue-200 dark:border-blue-800">
+          <div className="mt-8 bg-green-50 dark:bg-green-900/20 rounded-lg p-6 border border-green-200 dark:border-green-800">
             <div className="flex items-start mb-4">
-              <EnvelopeIcon className="h-6 w-6 text-blue-600 mr-3 mt-1" />
+              <EnvelopeIcon className="h-6 w-6 text-green-600 mr-3 mt-1" />
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
                   Get Your Detailed Report
@@ -366,7 +366,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
                   value={email}
                   onChange={handleEmailChange}
                   placeholder="Enter your email address"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   required
                 />
               </div>
@@ -388,7 +388,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
                 disabled={!isEmailValid || isSubmitting}
                 className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${
                   isEmailValid && !isSubmitting
-                    ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                    ? 'bg-green-600 hover:bg-green-700 text-white'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >

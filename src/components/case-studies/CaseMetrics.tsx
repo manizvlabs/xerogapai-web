@@ -17,7 +17,7 @@ export default function CaseMetrics() {
       title: 'Time Saved Per Week',
       value: '20+ hours',
       description: 'Per team member on average',
-      color: 'text-blue-600'
+      color: 'text-green-600'
     },
     {
       icon: UsersIcon,
@@ -134,12 +134,12 @@ export default function CaseMetrics() {
                     </div>
                     <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                       <div
-                        className="bg-blue-600 h-2 rounded-full"
+                        className="bg-green-600 h-2 rounded-full"
                         style={{ width: `${item.percentage}%` }}
                       />
                     </div>
                   </div>
-                  <div className="ml-4 text-sm font-semibold text-blue-600 dark:text-blue-400">
+                  <div className="ml-4 text-sm font-semibold text-green-600 dark:text-green-400">
                     {item.percentage}%
                   </div>
                 </div>
@@ -181,12 +181,12 @@ export default function CaseMetrics() {
         </div>
 
         {/* Success Timeline */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-16">
+        <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 text-white mb-16">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
               Typical Success Timeline
             </h3>
-            <p className="text-blue-100 max-w-2xl mx-auto">
+            <p className="text-green-100 max-w-2xl mx-auto">
               Most clients see significant improvements within the first few months of implementation
             </p>
           </div>
@@ -196,7 +196,7 @@ export default function CaseMetrics() {
               <div key={index} className="text-center">
                 <div className="text-3xl font-bold mb-2">{milestone.percentage}%</div>
                 <div className="text-lg font-semibold mb-2">{milestone.month}</div>
-                <div className="text-sm text-blue-100 mb-4">
+                <div className="text-sm text-green-100 mb-4">
                   {milestone.achievement}
                 </div>
                 <div className="w-full bg-blue-800/50 rounded-full h-2">
@@ -222,7 +222,7 @@ export default function CaseMetrics() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/demo"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
               >
                 Start Your Success Story
               </Link>

@@ -202,7 +202,7 @@ export default function ContactCoaching() {
         {/* Coaching Types */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {coachingTypes.map((type, index) => (
-            <div key={index} className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 p-8 rounded-2xl border border-blue-200 dark:border-gray-600">
+            <div key={index} className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-800 dark:to-gray-900 p-8 rounded-2xl border border-green-200 dark:border-gray-600">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                 {type.type}
               </h3>
@@ -216,7 +216,7 @@ export default function ContactCoaching() {
                 </h4>
                 {type.examples.map((example, exampleIndex) => (
                   <div key={exampleIndex} className="flex items-center text-sm">
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 flex-shrink-0"></div>
+                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
                     <span className="text-gray-600 dark:text-gray-300">{example}</span>
                   </div>
                 ))}

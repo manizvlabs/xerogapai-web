@@ -113,7 +113,7 @@ export default function WhatsAppFAQ() {
 
         {/* Still have questions */}
         <div className="mt-12 text-center">
-          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-8 border border-blue-200 dark:border-blue-800">
+          <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-8 border border-green-200 dark:border-green-800">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
               Still have questions?
             </h3>
@@ -123,13 +123,13 @@ export default function WhatsAppFAQ() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/consultation"
-                className="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors"
+                className="inline-flex items-center px-6 py-3 border border-green-600 text-green-600 rounded-lg hover:bg-green-600 hover:text-white transition-colors"
               >
                 Book Consultation
               </Link>
               <Link
                 href="mailto:sales@xerogap.ai"
-                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
               >
                 Contact Sales Team
               </Link>

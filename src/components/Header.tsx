@@ -102,11 +102,11 @@ const Header = () => {
                 <div>
                   <button
                     onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                    className="flex items-center text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors relative group"
+                    className="flex items-center text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100 hover:text-green-600 dark:hover:text-green-400 transition-colors relative group"
                   >
                     {item.name}
                     <ChevronDownIcon className={`ml-1 h-4 w-4 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 dark:bg-green-400 group-hover:w-full transition-all duration-300"></span>
                   </button>
 
                   {activeDropdown === item.name && (
@@ -124,10 +124,10 @@ const Header = () => {
                                 onClick={() => setActiveDropdown(null)}
                               >
                                 <div className="flex-shrink-0">
-                                  <IconComponent className="h-6 w-6 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                                  <IconComponent className="h-6 w-6 text-gray-400 group-hover:text-green-500 transition-colors" />
                                 </div>
                                 <div className="ml-3">
-                                  <p className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                                  <p className="text-sm font-medium text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400">
                                     {dropdownItem.name}
                                   </p>
                                   <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300">
@@ -144,10 +144,10 @@ const Header = () => {
               ) : (
                 <Link
                   href={item.href}
-                  className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors relative group"
+                  className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100 hover:text-green-600 dark:hover:text-green-400 transition-colors relative group"
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 dark:bg-green-400 group-hover:w-full transition-all duration-300"></span>
                 </Link>
               )}
             </div>
@@ -158,7 +158,7 @@ const Header = () => {
           <RegionSwitcher />
           <Link
             href="/contact"
-            className="rounded-md bg-blue-600 dark:bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 dark:hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+            className="rounded-md bg-green-600 dark:bg-green-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-700 dark:hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
           >
             Get Started
           </Link>
@@ -238,7 +238,7 @@ const Header = () => {
                 <div className="py-6">
                   <Link
                     href="/contact"
-                    className="rounded-md bg-blue-600 dark:bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 dark:hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                    className="rounded-md bg-green-600 dark:bg-green-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-700 dark:hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Get Started

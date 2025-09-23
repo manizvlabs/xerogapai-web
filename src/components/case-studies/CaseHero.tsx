@@ -5,7 +5,7 @@ import { TrophyIcon, ArrowTrendingUpIcon, UsersIcon, StarIcon } from '@heroicons
 
 export default function CaseHero() {
   return (
-    <div className="relative isolate bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="relative isolate bg-gradient-to-br from-green-50 via-green-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
@@ -31,7 +31,7 @@ export default function CaseHero() {
           {/* Main Headline */}
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl mb-8">
             Real Results from
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-blue-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-green-600 to-emerald-600">
               {" "}Real Customers
             </span>
           </h1>
@@ -57,7 +57,7 @@ export default function CaseHero() {
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <UsersIcon className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+              <UsersIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">1,000+</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Companies Served</div>
             </div>

@@ -33,8 +33,8 @@ export default function CTASection({
   variant = 'blue',
 }: CTASectionProps) {
   const variantStyles = {
-    blue: 'bg-blue-600 text-white',
-    gradient: 'bg-gradient-to-r from-blue-600 to-purple-600 text-white',
+    blue: 'bg-green-600 text-white',
+    gradient: 'bg-gradient-to-r from-green-600 to-emerald-600 text-white',
     white: 'bg-white text-gray-900 border border-gray-200',
   };
 
@@ -59,7 +59,7 @@ export default function CTASection({
             {title}
           </h2>
           <p className={`mx-auto mt-6 max-w-xl text-lg leading-8 ${
-            variant === 'white' ? 'text-gray-600' : 'text-blue-100'
+            variant === 'white' ? 'text-gray-600' : 'text-green-100'
           }`}>
             {description}
           </p>
@@ -79,7 +79,7 @@ export default function CTASection({
             {secondaryButton && (
               <CTALink
                 href={secondaryButton.href}
-                className={variant === 'white' ? 'text-blue-600 hover:text-blue-700' : 'text-white hover:text-blue-100'}
+                className={variant === 'white' ? 'text-green-600 hover:text-green-700' : 'text-white hover:text-green-100'}
                 trackingLabel={secondaryButton.text}
                 trackingSection={section}
                 ctaType={secondaryButton.ctaType}

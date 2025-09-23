@@ -15,7 +15,7 @@ export default function CareerCulture() {
       icon: UsersIcon,
       title: 'Collaboration',
       description: 'We believe great things happen when diverse minds work together towards common goals.',
-      color: 'text-blue-600'
+      color: 'text-green-600'
     },
     {
       icon: HeartIcon,

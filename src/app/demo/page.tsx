@@ -97,7 +97,7 @@ export default function DemoPage() {
               </button>
               <Link
                 href="/assessment"
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors"
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors"
               >
                 Take AI Assessment
               </Link>

@@ -23,8 +23,8 @@ export default function PersonalizedCTASection({
   const { urgencyText, timeSensitive } = getTimeBasedPersonalization();
 
   const variantStyles = {
-    blue: 'bg-blue-600 text-white',
-    gradient: 'bg-gradient-to-r from-blue-600 to-purple-600 text-white',
+    blue: 'bg-green-600 text-white',
+    gradient: 'bg-gradient-to-r from-green-600 to-emerald-600 text-white',
     white: 'bg-white text-gray-900 border border-gray-200',
   };
 
@@ -65,7 +65,7 @@ export default function PersonalizedCTASection({
           </h2>
 
           <p className={`mx-auto mt-6 max-w-xl text-lg leading-8 ${
-            variant === 'white' ? 'text-gray-600' : 'text-blue-100'
+            variant === 'white' ? 'text-gray-600' : 'text-green-100'
           }`}>
             {personalizedCTA.primaryText.includes('Consultation')
               ? "You've shown interest in our AI solutions. Let's discuss how we can help transform your business."
@@ -107,7 +107,7 @@ export default function PersonalizedCTASection({
             {personalizedCTA.secondaryText && personalizedCTA.secondaryHref && (
               <CTALink
                 href={personalizedCTA.secondaryHref}
-                className={variant === 'white' ? 'text-blue-600 hover:text-blue-700' : 'text-white hover:text-blue-100'}
+                className={variant === 'white' ? 'text-green-600 hover:text-green-700' : 'text-white hover:text-green-100'}
                 trackingLabel={personalizedCTA.secondaryText}
                 trackingSection={section}
                 ctaType={

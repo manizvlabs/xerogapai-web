@@ -97,7 +97,7 @@ export default function ContentManagementPage() {
     if (loading) {
       return (
         <div className="flex items-center justify-center py-8">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
           <span className="ml-2 text-gray-600 dark:text-gray-300">Loading content...</span>
         </div>
       );
@@ -217,7 +217,7 @@ export default function ContentManagementPage() {
                 <ChatBubbleLeftRightIcon className="h-5 w-5" />
                 Contact Management
               </Link>
-              <Link href="/admin/content" className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+              <Link href="/admin/content" className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
                 <CogIcon className="h-5 w-5" />
                 Content Management
               </Link>
@@ -240,7 +240,7 @@ export default function ContentManagementPage() {
                       onClick={() => handleSectionSelect(section.key)}
                       className={`w-full text-left p-3 rounded-lg border transition-colors ${
                         selectedSection === section.key
-                          ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                          ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
                           : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700'
                       }`}
                     >
@@ -274,7 +274,7 @@ export default function ContentManagementPage() {
                     <div className="flex gap-2">
                       <button
                         onClick={handleEdit}
-                        className="flex items-center gap-2 px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+                        className="flex items-center gap-2 px-3 py-2 text-sm bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
                       >
                         <PencilIcon className="h-4 w-4" />
                         Edit
@@ -298,16 +298,16 @@ export default function ContentManagementPage() {
         </div>
 
         {/* Instructions */}
-        <div className="mt-8 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-4">
+        <div className="mt-8 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+          <h3 className="text-lg font-semibold text-green-900 dark:text-green-100 mb-4">
             How to Edit Content Safely
           </h3>
-          <div className="space-y-2 text-blue-800 dark:text-blue-200">
+          <div className="space-y-2 text-green-800 dark:text-green-200">
             <p>1. <strong>Select a section</strong> from the left panel</p>
             <p>2. <strong>Click &quot;Edit&quot;</strong> to modify the content</p>
             <p>3. <strong>Edit the JSON directly</strong> in the text area</p>
             <p>4. <strong>Click &quot;Save Changes&quot;</strong> to update the content</p>
-            <p>5. <strong>Test locally</strong> with <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">npm run dev</code></p>
+            <p>5. <strong>Test locally</strong> with <code className="bg-green-100 dark:bg-green-800 px-1 rounded">npm run dev</code></p>
             <p>6. <strong>Commit and push</strong> to feature/v2 branch</p>
             <p>7. <strong>Create a PR</strong> to merge to main</p>
           </div>

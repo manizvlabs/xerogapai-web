@@ -101,8 +101,8 @@ export default function HelpContact() {
             return (
               <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
-                    <IconComponent className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                    <IconComponent className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -135,7 +135,7 @@ export default function HelpContact() {
                 <button
                   className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${
                     method.primary
-                      ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                      ? 'bg-green-600 hover:bg-green-700 text-white'
                       : 'bg-gray-100 hover:bg-gray-200 text-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white'
                   }`}
                 >
@@ -225,12 +225,12 @@ export default function HelpContact() {
         </div>
 
         {/* Support Portal */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+        <div className="bg-gradient-to-r from-green-600 to-indigo-600 rounded-2xl p-8 text-white">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
               Customer Support Portal
             </h3>
-            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-green-100 mb-8 max-w-2xl mx-auto">
               Access your personalized support dashboard with ticket history, knowledge base, and direct support line.
             </p>
           </div>
@@ -239,24 +239,24 @@ export default function HelpContact() {
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-2xl mb-2">🎫</div>
               <div className="font-semibold text-sm mb-1">Support Tickets</div>
-              <div className="text-xs text-blue-100">Track and manage all your support requests</div>
+              <div className="text-xs text-green-100">Track and manage all your support requests</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-2xl mb-2">📊</div>
               <div className="font-semibold text-sm mb-1">Service Status</div>
-              <div className="text-xs text-blue-100">Real-time system status and incident updates</div>
+              <div className="text-xs text-green-100">Real-time system status and incident updates</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-2xl mb-2">📚</div>
               <div className="font-semibold text-sm mb-1">Knowledge Base</div>
-              <div className="text-xs text-blue-100">Personalized help articles and tutorials</div>
+              <div className="text-xs text-green-100">Personalized help articles and tutorials</div>
             </div>
           </div>
 
           <div className="text-center">
             <Link
               href="/support/login"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+              className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               Access Support Portal
             </Link>

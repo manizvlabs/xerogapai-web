@@ -11,7 +11,7 @@ export default function ServicesPage() {
       <div className="bg-white dark:bg-gray-900">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
             <p className="text-lg text-gray-600 dark:text-gray-300">Loading services page content...</p>
           </div>
         </div>
@@ -253,7 +253,7 @@ export default function ServicesPage() {
                   <div key={service.name} className="flex flex-col justify-between rounded-2xl bg-gray-50 dark:bg-gray-800 p-8 ring-1 ring-gray-200 dark:ring-gray-700 hover:ring-blue-300 dark:hover:ring-blue-600 transition-colors">
                     <div>
                       <div className="flex items-center gap-x-4">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-600">
                           <IconComponent className="h-6 w-6 text-white" aria-hidden="true" />
                         </div>
                         <h3 className="text-xl font-semibold leading-8 text-gray-900 dark:text-white">{service.name}</h3>
@@ -265,7 +265,7 @@ export default function ServicesPage() {
                         <ul className="mt-3 space-y-2">
                       {service.features?.map((feature) => (
                         <li key={feature} className="flex items-center gap-x-3 text-sm text-gray-600 dark:text-gray-300">
-                              <CheckIcon className="h-4 w-4 flex-none text-blue-600" />
+                              <CheckIcon className="h-4 w-4 flex-none text-green-600" />
                               {feature}
                             </li>
                           )) || []}
@@ -277,7 +277,7 @@ export default function ServicesPage() {
                         <ul className="mt-3 space-y-2">
                         {service.deliverables?.map((deliverable) => (
                           <li key={deliverable} className="flex items-center gap-x-3 text-sm text-gray-600 dark:text-gray-300">
-                              <div className="h-1.5 w-1.5 flex-none rounded-full bg-blue-600" />
+                              <div className="h-1.5 w-1.5 flex-none rounded-full bg-green-600" />
                               {deliverable}
                             </li>
                           )) || []}
@@ -286,16 +286,16 @@ export default function ServicesPage() {
                     </div>
 
                     <div className="mt-8 flex items-center justify-between">
-                      <span className="text-2xl font-bold text-blue-600">{service.price}</span>
+                      <span className="text-2xl font-bold text-green-600">{service.price}</span>
                       {service.href ? (
                         <Link
                           href={service.href}
-                          className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+                          className="rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
                         >
                           Learn More
                         </Link>
                       ) : (
-                        <button className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors">
+                        <button className="rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors">
                           Get Started
                         </button>
                       )}
@@ -324,7 +324,7 @@ export default function ServicesPage() {
               {(pageContent.process as Record<string, unknown>).steps.map((item: { step: number; title: string; description: string }) => (
                 <div key={item.step} className="flex flex-col">
                   <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-600">
                       <span className="text-sm font-bold text-white">{item.step}</span>
                     </div>
                     {item.title}
@@ -340,25 +340,25 @@ export default function ServicesPage() {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-blue-600">
+      <div className="bg-green-600">
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               {(pageContent.cta as Record<string, unknown>).title}
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-blue-100">
+            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-green-100">
               {(pageContent.cta as Record<string, unknown>).description}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href={(pageContent.cta as Record<string, unknown>).primaryHref as string || "/assessment"}
-                className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
+                className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-green-600 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
               >
                 {(pageContent.cta as Record<string, unknown>).primaryButton}
               </Link>
               <Link
                 href={(pageContent.cta as Record<string, unknown>).secondaryHref as string || "/demo"}
-                className="text-sm font-semibold leading-6 text-white hover:text-blue-100 transition-colors"
+                className="text-sm font-semibold leading-6 text-white hover:text-green-100 transition-colors"
               >
                 {(pageContent.cta as Record<string, unknown>).secondaryButton} <span aria-hidden="true">→</span>
               </Link>

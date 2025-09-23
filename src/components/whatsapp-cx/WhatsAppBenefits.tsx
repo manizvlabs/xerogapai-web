@@ -84,7 +84,7 @@ export default function WhatsAppBenefits() {
             const IconComponent = benefit.icon;
             const colorClasses = {
               green: 'text-green-600 bg-green-100 dark:bg-green-900/30',
-              blue: 'text-blue-600 bg-blue-100 dark:bg-blue-900/30',
+              blue: 'text-green-600 bg-green-100 dark:bg-green-900/30',
               purple: 'text-purple-600 bg-purple-100 dark:bg-purple-900/30'
             };
 
@@ -112,7 +112,7 @@ export default function WhatsAppBenefits() {
                       <span className="text-sm text-gray-600 dark:text-gray-400">{metric.label}</span>
                       <span className={`text-sm font-semibold ${
                         benefit.color === 'green' ? 'text-green-600' :
-                        benefit.color === 'blue' ? 'text-blue-600' : 'text-purple-600'
+                        benefit.color === 'blue' ? 'text-green-600' : 'text-purple-600'
                       }`}>
                         {metric.value}
                       </span>
@@ -160,7 +160,7 @@ export default function WhatsAppBenefits() {
                   </div>
 
                   <div>
-                    <div className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-1">
+                    <div className="text-sm font-medium text-green-600 dark:text-green-400 mb-1">
                       Solution:
                     </div>
                     <div className="text-sm text-gray-600 dark:text-gray-300">
@@ -183,7 +183,7 @@ export default function WhatsAppBenefits() {
         </div>
 
         {/* ROI Calculator Preview */}
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-green-600 to-green-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">
             Calculate Your Potential ROI
           </h3>

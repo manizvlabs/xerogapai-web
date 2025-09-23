@@ -73,8 +73,8 @@ export default function ContactSpecs() {
             return (
               <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
-                    <IconComponent className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                    <IconComponent className="w-6 h-6 text-green-600" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                     {spec.category}
@@ -87,7 +87,7 @@ export default function ContactSpecs() {
                       <span className="text-gray-700 dark:text-gray-300 font-medium">
                         {item.label}
                       </span>
-                      <span className="text-blue-600 dark:text-blue-400 font-semibold">
+                      <span className="text-green-600 dark:text-green-400 font-semibold">
                         {item.value}
                       </span>
                     </div>
@@ -98,11 +98,11 @@ export default function ContactSpecs() {
           })}
         </div>
 
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-green-600 to-indigo-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">
             Contact Center AI Architecture
           </h3>
-          <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-green-100 mb-8 max-w-2xl mx-auto">
             Multi-layered AI system designed for maximum contact center efficiency and customer satisfaction
           </p>
 
@@ -110,7 +110,7 @@ export default function ContactSpecs() {
             <div className="text-center">
               <div className="text-3xl mb-3">🎯</div>
               <h4 className="text-lg font-semibold mb-2">Quality Engine</h4>
-              <p className="text-blue-100 text-sm">
+              <p className="text-green-100 text-sm">
                 Advanced scoring algorithms
               </p>
             </div>
@@ -118,7 +118,7 @@ export default function ContactSpecs() {
             <div className="text-center">
               <div className="text-3xl mb-3">🎓</div>
               <h4 className="text-lg font-semibold mb-2">Coaching AI</h4>
-              <p className="text-blue-100 text-sm">
+              <p className="text-green-100 text-sm">
                 Personalized training system
               </p>
             </div>
@@ -126,7 +126,7 @@ export default function ContactSpecs() {
             <div className="text-center">
               <div className="text-3xl mb-3">📊</div>
               <h4 className="text-lg font-semibold mb-2">Analytics Hub</h4>
-              <p className="text-blue-100 text-sm">
+              <p className="text-green-100 text-sm">
                 Real-time performance insights
               </p>
             </div>
@@ -134,7 +134,7 @@ export default function ContactSpecs() {
             <div className="text-center">
               <div className="text-3xl mb-3">🔗</div>
               <h4 className="text-lg font-semibold mb-2">Integration Layer</h4>
-              <p className="text-blue-100 text-sm">
+              <p className="text-green-100 text-sm">
                 Seamless system connectivity
               </p>
             </div>
@@ -143,7 +143,7 @@ export default function ContactSpecs() {
           <div className="mt-8">
             <Link
               href="/demo"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+              className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               See Technical Architecture
             </Link>

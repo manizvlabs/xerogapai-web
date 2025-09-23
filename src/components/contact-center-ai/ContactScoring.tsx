@@ -118,14 +118,14 @@ export default function ContactScoring() {
               <div key={index} className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
-                      <IconComponent className="w-6 h-6 text-blue-600" />
+                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                      <IconComponent className="w-6 h-6 text-green-600" />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                       {category.title}
                     </h3>
                   </div>
-                  <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  <div className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                     {category.weight}
                   </div>
                 </div>
@@ -141,7 +141,7 @@ export default function ContactScoring() {
                   <div className="grid grid-cols-2 gap-2">
                     {category.criteria.map((criterion, criterionIndex) => (
                       <div key={criterionIndex} className="flex items-center text-sm">
-                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
                         <span className="text-gray-600 dark:text-gray-300">{criterion}</span>
                       </div>
                     ))}
@@ -175,12 +175,12 @@ export default function ContactScoring() {
         </div>
 
         {/* Sample Scorecard */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white mb-16">
+        <div className="bg-gradient-to-r from-green-600 to-indigo-600 rounded-2xl p-8 text-white mb-16">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
               Sample Call Scorecard
             </h3>
-            <p className="text-blue-100 max-w-2xl mx-auto">
+            <p className="text-green-100 max-w-2xl mx-auto">
               See how our AI provides detailed, actionable feedback on every customer interaction
             </p>
           </div>
@@ -189,17 +189,17 @@ export default function ContactScoring() {
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-6">
               <div className="text-center mb-6">
                 <div className="text-4xl font-bold mb-2">{sampleScorecard.overall}/100</div>
-                <div className="text-blue-100">Overall Call Quality Score</div>
+                <div className="text-green-100">Overall Call Quality Score</div>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 {sampleScorecard.categories.map((category, index) => (
                   <div key={index} className="text-center">
                     <div className="text-2xl font-bold mb-1">{category.score}</div>
-                    <div className="text-sm text-blue-100">{category.name}</div>
-                    <div className="w-full bg-blue-900/30 rounded-full h-2 mt-2">
+                    <div className="text-sm text-green-100">{category.name}</div>
+                    <div className="w-full bg-green-900/30 rounded-full h-2 mt-2">
                       <div
-                        className="bg-blue-400 h-2 rounded-full"
+                        className="bg-green-400 h-2 rounded-full"
                         style={{ width: `${(category.score / category.max) * 100}%` }}
                       />
                     </div>
@@ -259,7 +259,7 @@ export default function ContactScoring() {
               </div>
 
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">100%</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">100%</div>
                 <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Call Coverage</div>
                 <div className="text-xs text-gray-600 dark:text-gray-400">Every interaction scored</div>
               </div>

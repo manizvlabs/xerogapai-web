@@ -15,7 +15,7 @@ export default function DocNotFound() {
         </p>
         <Link
           href="/docs"
-          className="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors shadow-sm"
+          className="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg transition-colors shadow-sm"
         >
           Return to Documentation
         </Link>

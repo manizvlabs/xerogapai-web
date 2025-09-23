@@ -57,21 +57,21 @@ export default function ContactProcess() {
             return (
               <div key={index} className="relative">
                 {index > 0 && (
-                  <div className="hidden lg:block absolute top-8 left-0 w-full h-0.5 bg-blue-200 dark:bg-blue-800 -translate-x-full translate-y-4" />
+                  <div className="hidden lg:block absolute top-8 left-0 w-full h-0.5 bg-green-200 dark:bg-green-800 -translate-x-full translate-y-4" />
                 )}
 
                 <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center">
-                      <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">
+                      <div className="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">
                         {step.step}
                       </div>
-                      <div className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                      <div className="text-sm font-medium text-green-600 dark:text-green-400">
                         {step.duration}
                       </div>
                     </div>
-                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 text-blue-600" />
+                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-green-600" />
                     </div>
                   </div>
 
@@ -102,23 +102,23 @@ export default function ContactProcess() {
         </div>
 
         <div className="text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-green-600 to-indigo-600 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">
               Ready to Transform Your Contact Center?
             </h3>
-            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-green-100 mb-8 max-w-2xl mx-auto">
               Start your free trial and see how our AI-powered QA can improve your contact center performance in just weeks.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="#pricing"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+                className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 View Pricing
               </Link>
               <Link
                 href="/demo"
-                className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+                className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors"
               >
                 Book QA Demo
               </Link>

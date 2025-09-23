@@ -24,7 +24,7 @@ export default function EnterpriseHero() {
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-800 dark:bg-slate-700 text-slate-200 text-sm font-medium mb-8">
-            <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+            <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
             Enterprise Knowledge Copilots
           </div>
 
@@ -122,7 +122,7 @@ export default function EnterpriseHero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="#pricing"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Start Enterprise Trial
             </Link>

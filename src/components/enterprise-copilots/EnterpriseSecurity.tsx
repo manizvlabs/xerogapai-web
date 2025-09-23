@@ -155,7 +155,7 @@ export default function EnterpriseSecurity() {
                   </div>
                   <div className={`text-sm font-medium ${
                     standard.status === 'Certified' ? 'text-green-600' :
-                    standard.status === 'Compliant' ? 'text-blue-600' : 'text-orange-600'
+                    standard.status === 'Compliant' ? 'text-green-600' : 'text-orange-600'
                   }`}>
                     {standard.status}
                   </div>
@@ -169,7 +169,7 @@ export default function EnterpriseSecurity() {
         </div>
 
         {/* Security Metrics */}
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl p-8 text-white mb-16">
+        <div className="bg-gradient-to-r from-green-600 to-green-600 rounded-2xl p-8 text-white mb-16">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
               Security Track Record

@@ -185,7 +185,7 @@ export default function HelpStatus() {
                     <span className={`text-xs px-2 py-1 rounded-full ${
                       incident.status === 'resolved'
                         ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
-                        : 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
+                        : 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
                     }`}>
                       {incident.status}
                     </span>
@@ -238,7 +238,7 @@ export default function HelpStatus() {
         </div>
 
         {/* Status Page Links */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white">
+        <div className="bg-gradient-to-r from-indigo-600 to-emerald-600 rounded-2xl p-8 text-white">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
               Stay Informed

@@ -166,7 +166,7 @@ export default function XeroGapUseCases() {
                         <div className="text-red-600 dark:text-red-400">
                           Problem: {scenario.problem}
                         </div>
-                        <div className="text-blue-600 dark:text-blue-400">
+                        <div className="text-green-600 dark:text-green-400">
                           Solution: {scenario.solution}
                         </div>
                         <div className="text-green-600 dark:text-green-400 font-medium">
@@ -243,7 +243,7 @@ export default function XeroGapUseCases() {
 
         {/* CTA Section */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-purple-600 to-green-600 rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">
               Ready to Automate Your Workflows?
             </h3>

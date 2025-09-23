@@ -118,7 +118,7 @@ export default function HelpFAQs() {
           {faqCategories.map((category, categoryIndex) => (
             <div key={categoryIndex} className="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center mb-6">
-                <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
+                <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
                   <span className="text-2xl">{category.icon}</span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -164,7 +164,7 @@ export default function HelpFAQs() {
 
         {/* Still Need Help */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-green-600 to-indigo-600 rounded-2xl p-8 text-white max-w-4xl mx-auto">
             <div className="flex items-center justify-center mb-6">
               <QuestionMarkCircleIcon className="w-12 h-12 mr-4" />
               <h3 className="text-2xl font-bold">
@@ -172,20 +172,20 @@ export default function HelpFAQs() {
               </h3>
             </div>
 
-            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-green-100 mb-8 max-w-2xl mx-auto">
               Can't find the answer you're looking for? Our support team is here to help you succeed with XeroGap AI.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="#contact"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+                className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 Contact Support
               </Link>
               <Link
                 href="/docs"
-                className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+                className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors"
               >
                 Browse Documentation
               </Link>

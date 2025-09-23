@@ -124,12 +124,12 @@ export default function EnterpriseLanguages() {
                 key={index}
                 className={`p-4 rounded-lg border text-center ${
                   language.rtl
-                    ? 'border-blue-200 bg-blue-50 dark:bg-blue-900/20'
+                    ? 'border-green-200 bg-green-50 dark:bg-green-900/20'
                     : 'border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800'
                 }`}
               >
                 <div className={`text-lg font-semibold mb-1 ${
-                  language.rtl ? 'text-blue-800 dark:text-blue-300' : 'text-gray-900 dark:text-white'
+                  language.rtl ? 'text-green-800 dark:text-green-300' : 'text-gray-900 dark:text-white'
                 }`}>
                   {language.native}
                 </div>
@@ -180,7 +180,7 @@ export default function EnterpriseLanguages() {
         </div>
 
         {/* Global Use Cases */}
-        <div className="bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl p-8 text-white mb-16">
+        <div className="bg-gradient-to-r from-cyan-600 to-green-600 rounded-2xl p-8 text-white mb-16">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
               Global Enterprise Success Stories

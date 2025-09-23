@@ -53,7 +53,7 @@ export default function DemoTestimonials() {
                 </blockquote>
 
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
                     {testimonial.avatar}
                   </div>
                   <div>
@@ -84,13 +84,13 @@ export default function DemoTestimonials() {
         </div>
 
         {/* Demo stats */}
-        <div className="mt-16 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 text-center">
+        <div className="mt-16 bg-gradient-to-r from-green-50 to-purple-50 dark:from-green-900/20 dark:to-purple-900/20 rounded-2xl p-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
             Demo Impact Statistics
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">95%</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">95%</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Demo to Trial Conversion</div>
             </div>
             <div>

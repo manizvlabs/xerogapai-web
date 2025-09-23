@@ -89,8 +89,8 @@ export default function WhatsAppSpecs() {
             return (
               <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
-                    <IconComponent className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                    <IconComponent className="w-6 h-6 text-green-600" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                     {spec.category}
@@ -103,7 +103,7 @@ export default function WhatsAppSpecs() {
                       <span className="text-gray-700 dark:text-gray-300 font-medium">
                         {item.label}
                       </span>
-                      <span className="text-blue-600 dark:text-blue-400 font-semibold">
+                      <span className="text-green-600 dark:text-green-400 font-semibold">
                         {item.value}
                       </span>
                     </div>
@@ -137,12 +137,12 @@ export default function WhatsAppSpecs() {
         </div>
 
         {/* Architecture Overview */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+        <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 text-white">
           <div className="text-center mb-12">
             <h3 className="text-2xl font-bold mb-4">
               Enterprise Architecture
             </h3>
-            <p className="text-blue-100 max-w-2xl mx-auto">
+            <p className="text-green-100 max-w-2xl mx-auto">
               Built on cloud-native architecture with microservices, auto-scaling, and enterprise-grade security
             </p>
           </div>
@@ -151,7 +151,7 @@ export default function WhatsAppSpecs() {
             <div className="text-center">
               <div className="text-4xl font-bold mb-4">☁️</div>
               <h4 className="text-xl font-semibold mb-2">Cloud Native</h4>
-              <p className="text-blue-100 text-sm">
+              <p className="text-green-100 text-sm">
                 Deployed on AWS/GCP with Kubernetes orchestration for maximum scalability and reliability
               </p>
             </div>
@@ -159,7 +159,7 @@ export default function WhatsAppSpecs() {
             <div className="text-center">
               <div className="text-4xl font-bold mb-4">🔒</div>
               <h4 className="text-xl font-semibold mb-2">Bank-Level Security</h4>
-              <p className="text-blue-100 text-sm">
+              <p className="text-green-100 text-sm">
                 End-to-end encryption, SOC 2 compliance, and regular security audits
               </p>
             </div>
@@ -167,7 +167,7 @@ export default function WhatsAppSpecs() {
             <div className="text-center">
               <div className="text-4xl font-bold mb-4">📊</div>
               <h4 className="text-xl font-semibold mb-2">Real-Time Analytics</h4>
-              <p className="text-blue-100 text-sm">
+              <p className="text-green-100 text-sm">
                 Advanced monitoring and analytics with custom dashboards and alerting
               </p>
             </div>
@@ -176,7 +176,7 @@ export default function WhatsAppSpecs() {
           <div className="text-center mt-12">
             <Link
               href="/demo"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+              className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               See It In Action
             </Link>

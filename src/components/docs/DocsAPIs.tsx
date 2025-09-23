@@ -139,7 +139,7 @@ export default function DocsAPIs() {
                       <div className="flex items-center mb-2">
                         <span className={`px-2 py-1 rounded text-xs font-mono font-bold mr-3 ${
                           endpoint.method === 'GET' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
-                          endpoint.method === 'POST' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300' :
+                          endpoint.method === 'POST' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
                           endpoint.method === 'PUT' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300' :
                           'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300'
                         }`}>
@@ -220,7 +220,7 @@ export default function DocsAPIs() {
         </div>
 
         {/* Interactive API Explorer */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-indigo-600 to-emerald-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">
             Interactive API Explorer
           </h3>

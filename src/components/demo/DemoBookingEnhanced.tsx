@@ -58,18 +58,18 @@ export default function DemoBookingEnhanced({ onComplete, onBack }: DemoBookingE
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-6 text-white">
+        <div className="bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-6 text-white">
           <div className="flex items-center mb-4">
             <button
               onClick={onBack}
-              className="flex items-center text-blue-100 hover:text-white transition-colors mr-4"
+              className="flex items-center text-green-100 hover:text-white transition-colors mr-4"
             >
               <ChevronLeftIcon className="w-5 h-5 mr-1" />
               Back
             </button>
             <h1 className="text-2xl font-bold">Schedule Your AI Demo</h1>
           </div>
-          <p className="text-blue-100">Choose your preferred booking method to get started.</p>
+          <p className="text-green-100">Choose your preferred booking method to get started.</p>
         </div>
 
         {/* Booking Method Selection */}
@@ -79,12 +79,12 @@ export default function DemoBookingEnhanced({ onComplete, onBack }: DemoBookingE
               onClick={() => setBookingMethod('calendly')}
               className={`flex-1 p-4 rounded-lg border-2 transition-all ${
                 bookingMethod === 'calendly'
-                  ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                  ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
                   : 'border-gray-200 dark:border-gray-600 hover:border-gray-300'
               }`}
             >
               <div className="flex items-center mb-2">
-                <CalendarIcon className="w-6 h-6 text-blue-600 mr-3" />
+                <CalendarIcon className="w-6 h-6 text-green-600 mr-3" />
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Quick Calendly Booking
                 </h3>
@@ -98,7 +98,7 @@ export default function DemoBookingEnhanced({ onComplete, onBack }: DemoBookingE
               onClick={() => setBookingMethod('form')}
               className={`flex-1 p-4 rounded-lg border-2 transition-all ${
                 bookingMethod === 'form'
-                  ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                  ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
                   : 'border-gray-200 dark:border-gray-600 hover:border-gray-300'
               }`}
             >

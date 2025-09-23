@@ -42,7 +42,7 @@ export default function CTALink({
   };
 
   const linkClasses = `
-    inline-flex items-center font-semibold transition-colors hover:text-blue-600
+    inline-flex items-center font-semibold transition-colors hover:text-green-600
     ${className}
   `.trim();
 

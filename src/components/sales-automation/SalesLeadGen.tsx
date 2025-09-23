@@ -198,7 +198,7 @@ export default function SalesLeadGen() {
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
               <div className="text-center">
-                <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-3">
+                <div className="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-3">
                   1
                 </div>
                 <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Discovery</div>
@@ -206,9 +206,9 @@ export default function SalesLeadGen() {
               </div>
 
               <div className="flex items-center justify-center">
-                <div className="w-8 h-0.5 bg-blue-600"></div>
-                <div className="text-blue-600 mx-2">→</div>
-                <div className="w-8 h-0.5 bg-blue-600"></div>
+                <div className="w-8 h-0.5 bg-green-600"></div>
+                <div className="text-green-600 mx-2">→</div>
+                <div className="w-8 h-0.5 bg-green-600"></div>
               </div>
 
               <div className="text-center">

@@ -5,7 +5,7 @@ import { ClockIcon, ChartBarIcon, PuzzlePieceIcon, SparklesIcon } from '@heroico
 
 export default function XeroGapHero() {
   return (
-    <div className="relative isolate bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="relative isolate bg-gradient-to-br from-purple-50 via-green-50 to-emerald-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
@@ -31,7 +31,7 @@ export default function XeroGapHero() {
           {/* Main Headline */}
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl mb-8">
             Transform Your Notion Workspace Into an
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-green-600 to-indigo-600">
               {" "}Intelligent Business Hub
             </span>
           </h1>
@@ -51,7 +51,7 @@ export default function XeroGapHero() {
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <ChartBarIcon className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+              <ChartBarIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">90%</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Reduction in Reporting Time</div>
             </div>

@@ -98,7 +98,7 @@ export default function XeroGapSpecs() {
           })}
         </div>
 
-        <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-purple-600 to-green-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">
             Ready for Enterprise Deployment?
           </h3>

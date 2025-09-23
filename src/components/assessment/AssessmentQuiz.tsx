@@ -226,7 +226,7 @@ export default function AssessmentQuiz({ onComplete }: AssessmentQuizProps) {
           </div>
           <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
             <div
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+              className="bg-green-600 h-2 rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -260,14 +260,14 @@ export default function AssessmentQuiz({ onComplete }: AssessmentQuizProps) {
                   }}
                   className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
                     isSelected
-                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-900 dark:text-blue-300'
+                      ? 'border-green-500 bg-green-50 dark:bg-green-900/20 text-green-900 dark:text-green-300'
                       : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 text-gray-700 dark:text-gray-300'
                   }`}
                 >
                   <div className="flex items-center">
                     <div className={`w-4 h-4 rounded-full border-2 mr-3 flex-shrink-0 ${
                       isSelected
-                        ? 'border-blue-500 bg-blue-500'
+                        ? 'border-green-500 bg-green-500'
                         : 'border-gray-300 dark:border-gray-500'
                     }`}>
                       {isSelected && (
@@ -316,7 +316,7 @@ export default function AssessmentQuiz({ onComplete }: AssessmentQuizProps) {
             className={`flex items-center px-4 py-2 rounded-lg font-medium transition-colors ${
               !currentAnswer || (Array.isArray(currentAnswer) && currentAnswer.length === 0)
                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                : 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-green-600 text-white hover:bg-green-700'
             }`}
           >
             {currentQuestion === questions.length - 1 ? (

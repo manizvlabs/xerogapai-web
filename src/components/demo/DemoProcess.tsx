@@ -55,18 +55,18 @@ export default function DemoProcess() {
                 <div key={index} className="relative">
                   {/* Connector line (hidden on first item) */}
                   {index > 0 && (
-                    <div className="hidden lg:block absolute top-8 left-0 w-full h-0.5 bg-blue-200 dark:bg-blue-800 -translate-x-full translate-y-4" />
+                    <div className="hidden lg:block absolute top-8 left-0 w-full h-0.5 bg-green-200 dark:bg-green-800 -translate-x-full translate-y-4" />
                   )}
 
                   <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 relative">
                     {/* Step number */}
-                    <div className="flex items-center justify-center w-8 h-8 bg-blue-600 text-white text-sm font-bold rounded-full mb-4 mx-auto">
+                    <div className="flex items-center justify-center w-8 h-8 bg-green-600 text-white text-sm font-bold rounded-full mb-4 mx-auto">
                       {step.step}
                     </div>
 
                     {/* Icon */}
-                    <div className="flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg mb-4 mx-auto">
-                      <IconComponent className="w-6 h-6 text-blue-600" />
+                    <div className="flex items-center justify-center w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg mb-4 mx-auto">
+                      <IconComponent className="w-6 h-6 text-green-600" />
                     </div>
 
                     {/* Content */}
@@ -76,7 +76,7 @@ export default function DemoProcess() {
                     <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 text-center">
                       {step.description}
                     </p>
-                    <p className="text-xs text-blue-600 dark:text-blue-400 font-medium text-center">
+                    <p className="text-xs text-green-600 dark:text-green-400 font-medium text-center">
                       {step.time}
                     </p>
                   </div>

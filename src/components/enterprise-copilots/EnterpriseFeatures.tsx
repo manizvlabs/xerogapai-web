@@ -120,8 +120,8 @@ export default function EnterpriseFeatures() {
             return (
               <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all hover:-translate-y-1">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
-                    <IconComponent className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-4">
+                    <IconComponent className="w-6 h-6 text-green-600" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                     {feature.title}
@@ -139,7 +139,7 @@ export default function EnterpriseFeatures() {
                   <ul className="space-y-2">
                     {feature.capabilities.map((capability, capabilityIndex) => (
                       <li key={capabilityIndex} className="flex items-start text-sm">
-                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
                         <span className="text-gray-600 dark:text-gray-300">{capability}</span>
                       </li>
                     ))}
@@ -188,11 +188,11 @@ export default function EnterpriseFeatures() {
         </div>
 
         {/* Architecture Overview */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-green-600 to-indigo-600 rounded-2xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-4">
             Enterprise Architecture
           </h3>
-          <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-green-100 mb-8 max-w-2xl mx-auto">
             Built for scale, security, and compliance with enterprise-grade infrastructure
           </p>
 
@@ -200,17 +200,17 @@ export default function EnterpriseFeatures() {
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-3xl mb-2">🏢</div>
               <div className="font-semibold mb-1">Multi-Tenant</div>
-              <div className="text-sm text-blue-100">Isolated knowledge bases</div>
+              <div className="text-sm text-green-100">Isolated knowledge bases</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-3xl mb-2">🔒</div>
               <div className="font-semibold mb-1">Zero Trust</div>
-              <div className="text-sm text-blue-100">End-to-end security</div>
+              <div className="text-sm text-green-100">End-to-end security</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
               <div className="text-3xl mb-2">📊</div>
               <div className="font-semibold mb-1">Enterprise Analytics</div>
-              <div className="text-sm text-blue-100">Advanced reporting</div>
+              <div className="text-sm text-green-100">Advanced reporting</div>
             </div>
           </div>
         </div>

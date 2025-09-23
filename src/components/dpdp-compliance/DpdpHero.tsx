@@ -51,7 +51,7 @@ export default function DpdpHero() {
             </div>
 
             <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <ScaleIcon className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+              <ScaleIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">₹250Cr</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Max Penalty Avoided</div>
             </div>
