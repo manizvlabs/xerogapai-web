@@ -672,9 +672,52 @@ export class SupabaseUserDatabase {
 
   // Update user
   static async updateUser(id: string, updates: Partial<Omit<UserSubmission, 'id' | 'created_at' | 'updated_at'>>): Promise<UserSubmission | null> {
-    const client = getSupabaseClient();
+    // Use service role client to bypass RLS policies
+    const client = getSupabaseServiceClient();
     if (!client) {
-      throw new Error('Supabase not configured');
+      const fallbackClient = getSupabaseClient();
+      if (!fallbackClient) {
+        throw new Error('Supabase not configured');
+      }
+      // Try with fallback client (may fail due to RLS)
+      try {
+        const { data: user, error } = await fallbackClient
+          .from('users')
+          .update({
+            username: updates.username,
+            email: updates.email,
+            password_hash: updates.password_hash,
+            role: updates.role,
+            is_active: updates.is_active,
+            last_login: updates.last_login
+          })
+          .eq('id', id)
+          .select()
+          .single();
+
+        if (error) {
+          throw error;
+        }
+
+        if (!user) {
+          return null;
+        }
+
+        return {
+          id: user.id.toString(),
+          username: user.username,
+          email: user.email,
+          password_hash: user.password_hash,
+          role: user.role,
+          is_active: user.is_active,
+          created_at: user.created_at,
+          updated_at: user.updated_at,
+          last_login: user.last_login
+        };
+      } catch (fallbackError) {
+        console.error('Supabase fallback error updating user:', fallbackError);
+        throw fallbackError;
+      }
     }
 
     try {
@@ -712,16 +755,36 @@ export class SupabaseUserDatabase {
         last_login: user.last_login
       };
     } catch (error) {
-      console.error('Supabase error updating user:', error);
+      console.error('Supabase service role error updating user:', error);
       throw error;
     }
   }
 
   // Delete user
   static async deleteUser(id: string): Promise<boolean> {
-    const client = getSupabaseClient();
+    // Use service role client to bypass RLS policies
+    const client = getSupabaseServiceClient();
     if (!client) {
-      throw new Error('Supabase not configured');
+      const fallbackClient = getSupabaseClient();
+      if (!fallbackClient) {
+        throw new Error('Supabase not configured');
+      }
+      // Try with fallback client (may fail due to RLS)
+      try {
+        const { error } = await fallbackClient
+          .from('users')
+          .delete()
+          .eq('id', id);
+
+        if (error) {
+          throw error;
+        }
+
+        return true;
+      } catch (fallbackError) {
+        console.error('Supabase fallback error deleting user:', fallbackError);
+        throw fallbackError;
+      }
     }
 
     try {
@@ -736,7 +799,7 @@ export class SupabaseUserDatabase {
 
       return true;
     } catch (error) {
-      console.error('Supabase error deleting user:', error);
+      console.error('Supabase service role error deleting user:', error);
       throw error;
     }
   }

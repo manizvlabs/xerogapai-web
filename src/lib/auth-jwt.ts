@@ -111,7 +111,8 @@ export interface JWTPayload {
 }
 
 // JWT Configuration
-const JWT_SECRET = process.env.JWT_SECRET || 'zerodigital-super-secret-jwt-key-2024-production';
+const JWT_SECRET = process.env.NEXT_PUBLIC_JWT_SECRET || process.env.JWT_SECRET || 'p4s028GCng2A52WfnWbBukY7xUmVlgtBGlEPtY+sWKi/LW39d2GU9+nX2fHEpPakzsTrq9M3IaMr/Mp7eIlDYw==';
+console.log('JWT_SECRET loaded:', JWT_SECRET ? '✅' : '❌');
 const JWT_EXPIRES_IN = '15m'; // 15 minutes
 const REFRESH_TOKEN_EXPIRES_IN = '7d'; // 7 days
 
@@ -143,13 +144,15 @@ export function generateRefreshToken(): string {
 // JWT Token Verification
 export function verifyAccessToken(token: string): JWTPayload | null {
   try {
+    console.log('verifyAccessToken: Verifying with JWT_SECRET:', JWT_SECRET.substring(0, 10) + '...');
     const decoded = jwt.verify(token, JWT_SECRET, {
       issuer: 'zerodigital.ai',
       audience: 'zerodigital-users'
     }) as JWTPayload;
-
+    console.log('verifyAccessToken: Successfully decoded token');
     return decoded;
-  } catch {
+  } catch (error) {
+    console.log('verifyAccessToken: Verification failed:', error.message);
     return null;
   }
 }
@@ -293,8 +296,14 @@ export async function revokeToken(refreshToken: string): Promise<boolean> {
 
 // Middleware Functions
 export function requireAuth(token: string | null): JWTPayload | null {
-  if (!token) return null;
-  return verifyAccessToken(token);
+  if (!token) {
+    console.log('requireAuth: No token provided');
+    return null;
+  }
+  console.log('requireAuth: Verifying token:', token.substring(0, 20) + '...');
+  const result = verifyAccessToken(token);
+  console.log('requireAuth: Verification result:', !!result);
+  return result;
 }
 
 export function isAdmin(payload: JWTPayload | null): boolean {

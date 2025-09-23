@@ -10,6 +10,7 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
 
   // Check if already logged in
@@ -18,14 +19,14 @@ export default function LoginForm() {
       try {
         const response = await fetch('/api/auth/verify');
         if (response.ok) {
-          router.push('/admin/content');
+          setIsAuthenticated(true);
         }
       } catch {
         // Not logged in, stay on login page
       }
     };
     checkAuth();
-  }, [router]);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,6 +57,31 @@ export default function LoginForm() {
       setIsLoading(false);
     }
   };
+
+  if (isAuthenticated) {
+    return (
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-md p-6">
+          <div className="text-center">
+            <h3 className="text-lg font-medium text-green-800 dark:text-green-200">
+              Already Logged In
+            </h3>
+            <p className="mt-2 text-sm text-green-700 dark:text-green-300">
+              You are already authenticated. Click below to access the admin panel.
+            </p>
+            <div className="mt-4">
+              <button
+                onClick={() => router.push('/admin/content')}
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+              >
+                Go to Admin Panel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
