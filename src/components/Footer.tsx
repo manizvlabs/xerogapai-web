@@ -12,17 +12,19 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Company Info */}
             <div className="lg:col-span-2">
-              <Link href="/" className="inline-flex items-center group mb-4">
-                <Logo
-                  variant="footer"
-                  size="md"
-                  className="mr-3 h-10 w-auto"
-                />
+              <Link href="/" className="inline-flex items-center group mb-6">
+                <div className="flex items-center mr-4">
+                  <Logo
+                    variant="footer"
+                    size="lg"
+                    className="h-16 w-auto"
+                  />
+                </div>
                 <div className="flex flex-col">
-                  <span className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                  <span className="text-3xl font-bold text-white group-hover:text-blue-400 transition-colors">
                     {siteConfig.name.split(' ')[0]}
                   </span>
-                  <span className="text-lg text-gray-300 group-hover:text-blue-300 transition-colors">
+                  <span className="text-xl text-gray-300 group-hover:text-blue-300 transition-colors">
                     {siteConfig.name.split(' ')[1]}
                   </span>
                 </div>

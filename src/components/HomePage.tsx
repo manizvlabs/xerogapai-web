@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRegion } from '@/contexts/RegionContext';
 import Logo from './Logo';
+import { CTASection } from './cta';
 import { globalHomepageContent } from '@/regions/global/homepage';
 import { indianHomepageContent } from '@/regions/indian/homepage';
 
@@ -24,15 +25,15 @@ export default function HomePage() {
         </div>
 
         {/* Logo Watermark Background */}
-        <div className="absolute inset-0 -z-5 opacity-[0.02] dark:opacity-[0.03]" aria-hidden="true">
+        <div className="absolute inset-0 -z-5 opacity-[0.08] dark:opacity-[0.12]" aria-hidden="true">
           <div className="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2">
-            <Logo variant="hero" size="xl" className="w-96 h-auto" />
+            <Logo variant="hero" size="xl" className="w-80 h-auto" />
           </div>
           <div className="absolute top-3/4 right-1/4 transform translate-x-1/2 -translate-y-1/2">
-            <Logo variant="hero" size="xl" className="w-96 h-auto" />
+            <Logo variant="hero" size="xl" className="w-80 h-auto" />
           </div>
           <div className="absolute top-1/2 left-3/4 transform -translate-x-1/2 -translate-y-1/2 rotate-12">
-            <Logo variant="hero" size="lg" className="w-72 h-auto" />
+            <Logo variant="hero" size="lg" className="w-64 h-auto" />
           </div>
         </div>
 
@@ -52,35 +53,26 @@ export default function HomePage() {
               </p>
             )}
 
-            {/* Value Props */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {content.hero.valueProps.map((prop) => (
-                <div key={`${prop.title}-${prop.icon}`} className="flex flex-col items-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <div className="text-3xl mb-3">{prop.icon}</div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{prop.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 text-center">{prop.description}</p>
-                </div>
-              ))}
+            {/* Quick Implementation CTA Section */}
+            <div className="mt-10">
+              <CTASection
+                title="Quick Implementation"
+                description="Deploy in days, not months with our expert team"
+                variant="blue"
+                primaryButton={{
+                  text: "Get Free AI Readiness Assessment",
+                  href: "/assessment",
+                  ctaType: "assessment"
+                }}
+                secondaryButton={{
+                  text: "Book Personalized Demo",
+                  href: "/demo",
+                  ctaType: "demo"
+                }}
+                section="hero"
+              />
             </div>
 
-            {/* CTAs */}
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-4">
-              <Link
-                href={content.hero.primaryCTA.href}
-                className="rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
-              >
-                {content.hero.primaryCTA.text}
-              </Link>
-              <span className="text-sm text-gray-500 dark:text-gray-400 hidden sm:block">
-                {content.hero.primaryCTA.subtext}
-              </span>
-              <Link
-                href={content.hero.secondaryCTA.href}
-                className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              >
-                {content.hero.secondaryCTA.text} <span aria-hidden="true">→</span>
-              </Link>
-            </div>
           </div>
         </div>
       </section>
@@ -88,12 +80,12 @@ export default function HomePage() {
       {/* Services Section */}
       <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-800">
         {/* Logo Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]" aria-hidden="true">
+        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" aria-hidden="true">
           <div className="absolute top-12 right-12 transform rotate-6">
-            <Logo variant="hero" size="md" className="w-24 h-auto" />
+            <Logo variant="hero" size="sm" className="w-20 h-auto" />
           </div>
           <div className="absolute bottom-12 left-12 transform -rotate-6">
-            <Logo variant="hero" size="md" className="w-24 h-auto" />
+            <Logo variant="hero" size="sm" className="w-20 h-auto" />
           </div>
         </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -181,7 +173,7 @@ export default function HomePage() {
       {/* Social Proof Section */}
       <section className="relative py-24 sm:py-32 bg-white dark:bg-gray-900">
         {/* Logo Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.01] dark:opacity-[0.02]" aria-hidden="true">
+        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04] pointer-events-none" aria-hidden="true">
           <div className="absolute top-16 left-1/4 transform -translate-x-1/2 -rotate-12">
             <Logo variant="hero" size="sm" className="w-16 h-auto" />
           </div>
@@ -250,9 +242,9 @@ export default function HomePage() {
       {/* Partners Section */}
       <section className="relative py-16 bg-gray-50 dark:bg-gray-800">
         {/* Logo Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]" aria-hidden="true">
+        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.04] pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
-            <Logo variant="hero" size="sm" className="w-20 h-auto" />
+            <Logo variant="hero" size="sm" className="w-16 h-auto" />
           </div>
         </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -276,7 +268,7 @@ export default function HomePage() {
       {/* Compliance Section */}
       <section className="relative py-16 bg-white dark:bg-gray-900">
         {/* Logo Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.015] dark:opacity-[0.025]" aria-hidden="true">
+        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03] pointer-events-none" aria-hidden="true">
           <div className="absolute top-8 right-8 transform rotate-6">
             <Logo variant="icon" size="sm" className="w-12 h-auto" />
           </div>
@@ -309,15 +301,15 @@ export default function HomePage() {
       {/* Final CTA Section */}
       <section className="relative py-24 sm:py-32 bg-blue-600 dark:bg-blue-700">
         {/* Logo Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.04]" aria-hidden="true">
+        <div className="absolute inset-0 opacity-[0.06] pointer-events-none" aria-hidden="true">
           <div className="absolute top-16 left-16 transform rotate-12">
-            <Logo variant="dark" size="md" className="w-32 h-auto" />
+            <Logo variant="dark" size="md" className="w-28 h-auto" />
           </div>
           <div className="absolute bottom-16 right-16 transform -rotate-12">
-            <Logo variant="dark" size="md" className="w-32 h-auto" />
+            <Logo variant="dark" size="md" className="w-28 h-auto" />
           </div>
           <div className="absolute top-1/2 right-1/3 transform translate-x-1/2 -translate-y-1/2 rotate-45">
-            <Logo variant="dark" size="sm" className="w-20 h-auto" />
+            <Logo variant="dark" size="sm" className="w-16 h-auto" />
           </div>
         </div>
         <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
