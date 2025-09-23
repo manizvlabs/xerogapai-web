@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useRegion } from '@/contexts/RegionContext';
 import Logo from './Logo';
-import { CTASection } from './cta';
 import { globalHomepageContent } from '@/regions/global/homepage';
 import { indianHomepageContent } from '@/regions/indian/homepage';
 
@@ -54,23 +53,25 @@ export default function HomePage() {
             )}
 
             {/* Quick Implementation CTA Section */}
-            <div className="mt-10">
-              <CTASection
-                title="Quick Implementation"
-                description="Deploy in days, not months with our expert team"
-                variant="blue"
-                primaryButton={{
-                  text: "Get Free AI Readiness Assessment",
-                  href: "/assessment",
-                  ctaType: "assessment"
-                }}
-                secondaryButton={{
-                  text: "Book Personalized Demo",
-                  href: "/demo",
-                  ctaType: "demo"
-                }}
-                section="hero"
-              />
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <Link
+                href="/assessment"
+                className="flex items-center justify-center rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+              >
+                Get Free AI Readiness Assessment
+              </Link>
+              <Link
+                href="/demo"
+                className="flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-blue-600 border border-blue-200 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
+              >
+                Book Personalized Demo
+              </Link>
+              <Link
+                href="/consultation"
+                className="flex items-center justify-center rounded-md bg-gray-100 px-6 py-3 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600 transition-colors"
+              >
+                Schedule Consultation <span aria-hidden="true">→</span>
+              </Link>
             </div>
 
           </div>
