@@ -77,7 +77,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const saved = localStorage.getItem('theme');
+                const defaultTheme = '${siteConfig.defaultTheme}';
+                const themeToUse = saved && (saved === 'light' || saved === 'dark') ? saved : defaultTheme;
+
+                if (themeToUse === 'dark') {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch (e) {
+                // Fallback to default theme if localStorage is not available
+                if ('${siteConfig.defaultTheme}' === 'dark') {
+                  document.documentElement.classList.add('dark');
+                }
+              }
+            `,
+          }}
+        />
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <ThemeProvider>
           <RegionProvider>
