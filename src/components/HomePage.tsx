@@ -271,6 +271,8 @@ export default function HomePage() {
                 let logoScaleClass = "";
                 if (partner.name === "Microsoft Teams") {
                   logoScaleClass = "scale-75";
+                } else if (partner.name === "Razorpay") {
+                  logoScaleClass = "scale-150"; // Increase size to match other logos
                 }
 
                 return (
