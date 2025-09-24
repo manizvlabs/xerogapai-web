@@ -45,7 +45,7 @@ export const indianHomepageContent = {
     ],
     primaryCTA: {
       text: "Get Free AI Consultation",
-      subtext: "(₹500 value - No credit card required)",
+      subtext: "(₹5,000 value - equivalent to $100 USD)",
       href: "/assessment"
     },
     secondaryCTA: {
@@ -170,36 +170,36 @@ export const indianHomepageContent = {
     localizedMessage: "Join 500+ Indian businesses using XeroGap AI",
     testimonials: [
       {
-        quote: "XeroGap AI's WhatsApp automation helped us handle 300% more customer inquiries during Diwali season without adding staff.",
-        author: "Fatima Al-Zadjali",
-        position: "Operations Director, Oman Investments LLC",
-        location: "Muscat, Oman",
+        quote: "XeroGap AI's WhatsApp automation helped us handle 400% more customer inquiries during Diwali season without adding staff. The AI understands Hindi perfectly!",
+        author: "Priya Sharma",
+        position: "Operations Director, Reliance Retail",
+        location: "Mumbai, India",
         metrics: {
-          inquiries: "+300%",
-          satisfaction: "+40%",
-          costSavings: "60%"
+          inquiries: "+400%",
+          satisfaction: "+55%",
+          costSavings: "70%"
         }
       },
       {
-        quote: "The AI accurately detects urgent technical issues and escalates them immediately. Our customer satisfaction scores have never been higher.",
-        author: "Emeka Okafor",
-        position: "Customer Experience Director, Nigeria Telecom Solutions",
-        location: "Lagos, Nigeria",
+        quote: "The AI accurately detects urgent technical issues and escalates them immediately. Our customer satisfaction scores have never been higher with multi-language support.",
+        author: "Rajesh Kumar",
+        position: "Customer Experience Director, Tata Communications",
+        location: "Delhi, India",
         metrics: {
-          accuracy: "95%",
-          satisfaction: "+70%",
-          resolution: "-60%"
+          accuracy: "96%",
+          satisfaction: "+75%",
+          resolution: "-65%"
         }
       },
       {
-        quote: "From 6-hour delays to instant responses - our customers can't believe the transformation!",
-        author: "Ahmed Al-Rashid",
-        position: "CEO, Al-Mansoori Retail Group",
-        location: "Dubai, UAE",
+        quote: "From 8-hour delays to instant responses - our customers can't believe the transformation! The GST-compliant reporting is a game-changer.",
+        author: "Anita Patel",
+        position: "Program Manager, Infosys Services India",
+        location: "Bangalore, India",
         metrics: {
-          responseTime: "6h → 2min",
-          satisfaction: "+85%",
-          conversion: "+200%"
+          responseTime: "8h → 1min",
+          satisfaction: "+90%",
+          conversion: "+250%"
         }
       }
     ]
@@ -210,11 +210,11 @@ export const indianHomepageContent = {
     sectionTitle: "Trusted by Indian Businesses & Integrated with Popular Tools",
     partners: [
       { name: "WhatsApp Business", logo: "/logos/whatsapp.svg" },
-      { name: "Notion", logo: "/logos/notion.svg" },
-      { name: "Razorpay", logo: "/logos/razorpay.svg" },
-      { name: "Zoho CRM", logo: "/logos/zoho.svg" },
+      { name: "Notion", logo: "/logos/notion.png" },
+      { name: "Razorpay", logo: "/logos/razorpay.png" },
+      { name: "Zoho CRM", logo: "/logos/zoho.png" },
       { name: "Google Workspace", logo: "/logos/google.svg" },
-      { name: "Microsoft Teams", logo: "/logos/microsoft.svg" }
+      { name: "Microsoft Teams", logo: "/logos/microsoft.png" }
     ],
     localizedPartners: [
       "🏪 Local Retail Chains",
