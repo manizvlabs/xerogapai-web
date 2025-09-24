@@ -55,7 +55,7 @@ export default function HomePage() {
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               {content.hero.headline}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
+            <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-white">
               {content.hero.subheadline}
             </p>
 
@@ -93,7 +93,7 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-800">
+      <section className="relative py-24 sm:py-32 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800">
         {/* Logo Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" aria-hidden="true">
           <div className="absolute top-12 right-12 transform rotate-6">
@@ -138,7 +138,7 @@ export default function HomePage() {
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                       {service.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-white">
+                    <p className="text-gray-700 dark:text-white">
                       {service.subtitle}
                     </p>
                   </div>
@@ -147,7 +147,7 @@ export default function HomePage() {
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-start">
                         <span className="text-green-500 mr-2 mt-0.5">✓</span>
-                        <span className="text-sm text-gray-600 dark:text-white">{feature}</span>
+                        <span className="text-sm text-gray-700 dark:text-white">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -185,7 +185,7 @@ export default function HomePage() {
       </section>
 
       {/* Social Proof Section */}
-      <section className="relative py-24 sm:py-32 bg-white dark:bg-gray-900">
+      <section className="relative py-24 sm:py-32 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800">
         {/* Logo Background Pattern */}
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04] pointer-events-none" aria-hidden="true">
           <div className="absolute top-16 left-1/4 transform -translate-x-1/2 -rotate-12">
@@ -210,9 +210,9 @@ export default function HomePage() {
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
               {content.socialProof.testimonials.map((testimonial) => (
-                <div key={`${testimonial.author}-${testimonial.company}`} className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg">
+                <div key={`${testimonial.author}-${testimonial.company}`} className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
                   <div className="text-4xl mb-4 text-gray-400">&quot;</div>
-                  <blockquote className="text-gray-700 dark:text-white mb-6 italic">
+                  <blockquote className="text-gray-900 dark:text-white mb-6 italic">
                     {testimonial.quote}
                   </blockquote>
 
@@ -224,10 +224,10 @@ export default function HomePage() {
                       <div className="font-semibold text-gray-900 dark:text-white">
                         {testimonial.author}
                       </div>
-                      <div className="text-sm text-gray-600 dark:text-white">
+                      <div className="text-sm text-gray-700 dark:text-white">
                         {testimonial.position}
                       </div>
-                      <div className="text-sm text-gray-500 dark:text-white">
+                      <div className="text-sm text-gray-600 dark:text-white">
                         {testimonial.location}
                       </div>
                     </div>
@@ -254,7 +254,7 @@ export default function HomePage() {
       </section>
 
       {/* Partners Section */}
-      <section className="relative py-16 bg-gray-50 dark:bg-gray-800">
+      <section className="relative py-16 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800">
         {/* Logo Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.04] pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
@@ -268,10 +268,30 @@ export default function HomePage() {
             </h2>
             <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
               {content.partners.partners.map((partner) => (
-                <div key={partner.name} className="flex items-center justify-center p-4 bg-white dark:bg-gray-900 rounded-lg">
-                  <span className="text-gray-700 dark:text-white font-medium">
-                    {partner.name}
-                  </span>
+                <div key={partner.name} className="group relative flex items-center justify-center p-6 bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:scale-105 min-h-[160px] min-w-[160px]">
+                  {partner.logo ? (
+                    <>
+                      <img
+                        src={partner.logo}
+                        alt={`${partner.name} logo`}
+                        className={`w-32 h-20 object-contain p-2 group-hover:opacity-75 transition-opacity duration-300 ${
+                          partner.name === "Microsoft Teams" || partner.name === "Razorpay" ? "scale-75" : ""
+                        }`}
+                      />
+                      {/* Hover overlay with company name */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
+                        <div className="bg-black bg-opacity-80 text-white px-3 py-2 rounded-md text-sm font-medium whitespace-nowrap shadow-lg border border-white border-opacity-20">
+                          {partner.name}
+                          {/* Animated underline */}
+                          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-green-400 to-emerald-400 group-hover:w-full transition-all duration-500 ease-out"></div>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <span className="text-gray-700 dark:text-white font-medium text-center">
+                      {partner.name}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
@@ -280,7 +300,7 @@ export default function HomePage() {
       </section>
 
       {/* Compliance Section */}
-      <section className="relative py-16 bg-white dark:bg-gray-900">
+      <section className="relative py-16 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800">
         {/* Logo Background Pattern */}
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03] pointer-events-none" aria-hidden="true">
           <div className="absolute top-8 right-8 transform rotate-6">
@@ -300,7 +320,7 @@ export default function HomePage() {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {content.compliance.badges.map((badge) => (
-                <div key={badge.name} className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <div key={badge.name} className="flex flex-col items-center p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
                   <div className="text-2xl mb-2">{badge.icon}</div>
                   <div className="text-sm font-medium text-gray-900 dark:text-white text-center">
                     {badge.name}
