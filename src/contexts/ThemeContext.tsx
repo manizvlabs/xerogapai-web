@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback, useMemo, useLayoutEffect } from 'react';
 import { themeConfig, siteConfig } from '@/config/site';
 
 type Theme = 'light' | 'dark';
@@ -14,15 +14,31 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { readonly children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(siteConfig.defaultTheme as Theme);
+  const [theme, setThemeState] = useState<Theme>(siteConfig.defaultTheme);
   const [mounted, setMounted] = useState(false);
 
-  // Initialize theme from localStorage after mount
-  useEffect(() => {
+  // Apply theme immediately on mount to prevent flash
+  useLayoutEffect(() => {
     const saved = localStorage.getItem('theme');
-    if (saved && (saved === 'light' || saved === 'dark')) {
-      setThemeState(saved);
+    const defaultTheme = siteConfig.defaultTheme as Theme;
+
+    // Use saved theme if exists and valid, otherwise use default
+    const themeToUse = saved && (saved === 'light' || saved === 'dark') ? saved : defaultTheme;
+
+    // Apply theme immediately to prevent flash (class should already be set by head script)
+    if (themeToUse === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
+
+    setThemeState(themeToUse);
+
+    // Only set localStorage if it wasn't already set
+    if (!saved) {
+      localStorage.setItem('theme', themeToUse);
+    }
+
     setMounted(true);
   }, []);
 
@@ -30,26 +46,26 @@ export function ThemeProvider({ children }: { readonly children: React.ReactNode
   useEffect(() => {
     if (mounted) {
       localStorage.setItem('theme', theme);
-      
-      // Apply theme class to document element for Tailwind dark mode
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-      
-      // Apply theme colors to CSS variables
-      const root = document.documentElement;
-      const colors = themeConfig[theme];
-      
-      root.style.setProperty('--color-primary', colors.primary);
-      root.style.setProperty('--color-secondary', colors.secondary);
-      root.style.setProperty('--color-accent', colors.accent);
-      root.style.setProperty('--color-background', colors.background);
-      root.style.setProperty('--color-surface', colors.surface);
-      root.style.setProperty('--color-text', colors.text);
-      root.style.setProperty('--color-text-secondary', colors.textSecondary);
     }
+
+    // Apply theme class to document element for Tailwind dark mode
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Apply theme colors to CSS variables
+    const root = document.documentElement;
+    const colors = themeConfig[theme];
+
+    root.style.setProperty('--color-primary', colors.primary);
+    root.style.setProperty('--color-secondary', colors.secondary);
+    root.style.setProperty('--color-accent', colors.accent);
+    root.style.setProperty('--color-background', colors.background);
+    root.style.setProperty('--color-surface', colors.surface);
+    root.style.setProperty('--color-text', colors.text);
+    root.style.setProperty('--color-text-secondary', colors.textSecondary);
   }, [theme, mounted]);
 
   const toggleTheme = useCallback(() => {

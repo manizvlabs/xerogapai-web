@@ -4,7 +4,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChevronDownIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useRegion } from '@/contexts/RegionContext';
 
 interface RegionSwitcherProps {
@@ -58,10 +58,10 @@ export default function RegionSwitcher({ currentRegion: propCurrentRegion, onReg
       {/* Region Switcher Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700"
+        className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700"
+        style={{ minWidth: '100px', width: '100px' }}
       >
-        <GlobeAltIcon className="w-4 h-4" />
-        <span className="hidden sm:inline">{currentRegionData?.flag}</span>
+        <span>{currentRegionData?.flag}</span>
         <span className="hidden md:inline">{currentRegionData?.name}</span>
         <span className="md:hidden">Region</span>
         <ChevronDownIcon className="w-4 h-4" />
@@ -77,7 +77,7 @@ export default function RegionSwitcher({ currentRegion: propCurrentRegion, onReg
           />
 
           {/* Dropdown */}
-          <div className="absolute right-0 z-20 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-600">
+          <div className="absolute right-0 z-20 mt-2 w-[320px] bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-600">
             <div className="p-3 border-b border-gray-200 dark:border-gray-600">
               <p className="text-xs text-gray-500 uppercase tracking-wide font-medium dark:text-white">
                 Choose Your Region
