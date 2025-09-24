@@ -77,11 +77,11 @@ GOOGLE_TAG_MANAGER_ID="your-gtm-id"
 # Social Media Configuration
 FACEBOOK_APP_ID="your-facebook-app-id"
 TWITTER_HANDLE="@zerodigital"
-LINKEDIN_URL="https://linkedin.com/company/zero-digital"
-INSTAGRAM_URL="https://instagram.com/zerodigital"
+LINKEDIN_URL="https://linkedin.com/company/xerogapai"
+INSTAGRAM_URL="https://instagram.com/xerogapai"
 
 # API Configuration
-API_BASE_URL="https://api.zerodigital.ai"
+API_BASE_URL="https://api.xerogap.ai"
 API_VERSION="v1"
 
 # Feature Flags
