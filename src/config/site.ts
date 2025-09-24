@@ -9,7 +9,7 @@ export const siteConfig = {
   email: process.env.NEXT_PUBLIC_EMAIL || 'info@zerodigital.ai',
   businessType: process.env.NEXT_PUBLIC_BUSINESS_TYPE || 'all',
   enableThemeSwitcher: process.env.NEXT_PUBLIC_ENABLE_THEME_SWITCHER !== 'false',
-  defaultTheme: process.env.NEXT_PUBLIC_DEFAULT_THEME || 'light',
+  defaultTheme: process.env.NEXT_PUBLIC_DEFAULT_THEME || 'dark',
   version: process.env.NEXT_PUBLIC_APP_VERSION || `1.0.0-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`,
   copyrightYear: process.env.NEXT_PUBLIC_COPYRIGHT_YEAR || new Date().getFullYear().toString(),
   social: {

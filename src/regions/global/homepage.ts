@@ -206,12 +206,11 @@ export const globalHomepageContent = {
   partners: {
     sectionTitle: "Integrated with Leading Business Tools",
     partners: [
-      { name: "WhatsApp Business API", logo: "/logos/whatsapp.svg" },
-      { name: "Notion", logo: "/logos/notion.svg" },
-      { name: "HubSpot CRM", logo: "/logos/hubspot.svg" },
-      { name: "Zoho Suite", logo: "/logos/zoho.svg" },
-      { name: "QuickBooks", logo: "/logos/quickbooks.svg" },
-      { name: "Xero Accounting", logo: "/logos/xero.svg" }
+      { name: "WhatsApp Business", logo: "/logos/whatsapp.svg" },
+      { name: "Notion", logo: "/logos/notion.png" },
+      { name: "Zoho CRM", logo: "/logos/zoho.png" },
+      { name: "Google Workspace", logo: "/logos/google.svg" },
+      { name: "Microsoft Teams", logo: "/logos/microsoft.png" }
     ]
   },
 
