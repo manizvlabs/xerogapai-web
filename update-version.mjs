@@ -22,7 +22,7 @@ try {
     
     // Update the NEXT_PUBLIC_APP_VERSION line
     envContent = envContent.replace(
-      /NEXT_PUBLIC_APP_VERSION=".*"/,
+      /NEXT_PUBLIC_APP_VERSION=.*/,
       `NEXT_PUBLIC_APP_VERSION="${version}"`
     );
     
