@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} - ${siteConfig.tagline}`,
     description: `${siteConfig.tagline}. Transform your business with AI-powered automation.`,
     images: [process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}/og-image.jpg` : '/og-image.jpg'],
-    creator: "@zerodigital",
+    creator: "@xerogapai",
   },
   robots: {
     index: true,

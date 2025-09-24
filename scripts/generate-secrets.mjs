@@ -60,28 +60,28 @@ const secrets = {
   // Admin Credentials (generate secure ones)
   ADMIN_USERNAME: 'admin',
   ADMIN_PASSWORD: generateSecurePassword(),
-  ADMIN_EMAIL: 'admin@zerodigital.ai',
+  ADMIN_EMAIL: 'support@xerogap.com',
 
   // Site Configuration
   NEXT_PUBLIC_SITE_NAME: 'XeroGap AI',
   NEXT_PUBLIC_SITE_TAGLINE: 'AI-Powered Digital Transformation',
-  NEXT_PUBLIC_SITE_DOMAIN: 'zerodigital.ai',
+  NEXT_PUBLIC_SITE_DOMAIN: 'xerogap.com',
   NEXT_PUBLIC_LOCATION: '',
   NEXT_PUBLIC_PHONE: '+917702661991',
-  NEXT_PUBLIC_EMAIL: 'info@zerodigital.ai',
+  NEXT_PUBLIC_EMAIL: 'support@xerogap.com',
   NEXT_PUBLIC_APP_VERSION: getCurrentVersion(),
   NEXT_PUBLIC_COPYRIGHT_YEAR: new Date().getFullYear().toString(),
 
   // Social Media
-  NEXT_PUBLIC_LINKEDIN_URL: 'https://linkedin.com/company/zerodigital',
-  NEXT_PUBLIC_TWITTER_URL: 'https://twitter.com/zerodigital',
-  NEXT_PUBLIC_INSTAGRAM_URL: 'https://instagram.com/zerodigital',
+  NEXT_PUBLIC_LINKEDIN_URL: 'https://linkedin.com/company/xerogapai',
+  NEXT_PUBLIC_TWITTER_URL: 'https://twitter.com/xerogapai',
+  NEXT_PUBLIC_INSTAGRAM_URL: 'https://instagram.com/xerogapai',
 
   // Analytics
   NEXT_PUBLIC_GA_MEASUREMENT_ID: 'G-XXXXXXXXXX',
 
   // Contact Form
-  CONTACT_EMAIL: 'info@zerodigital.ai',
+  CONTACT_EMAIL: 'support@xerogap.com',
 
   // Rate Limiting
   RATE_LIMIT_API_WINDOW_MS: '900000',

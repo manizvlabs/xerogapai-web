@@ -65,26 +65,26 @@ The website is automatically deployed to Vercel on every push to the `main` bran
    # Site Configuration
    NEXT_PUBLIC_SITE_NAME="XeroGap AI"
    NEXT_PUBLIC_SITE_TAGLINE="AI-Powered Digital Transformation"
-   NEXT_PUBLIC_DOMAIN="zerodigital.ai"
+   NEXT_PUBLIC_DOMAIN="xerogap.com"
    NEXT_PUBLIC_LOCATION=""
    NEXT_PUBLIC_PHONE="+919876543210"
-   NEXT_PUBLIC_EMAIL="info@zerodigital.ai"
+   NEXT_PUBLIC_EMAIL="support@xerogap.com"
 
    # Theme Configuration
    NEXT_PUBLIC_ENABLE_THEME_SWITCHER="true"
    NEXT_PUBLIC_DEFAULT_THEME="light"
 
    # Social Links
-   NEXT_PUBLIC_LINKEDIN_URL="https://linkedin.com/company/zerodigital"
-   NEXT_PUBLIC_TWITTER_URL="https://twitter.com/zerodigital"
-   NEXT_PUBLIC_INSTAGRAM_URL="https://instagram.com/zerodigital"
+   NEXT_PUBLIC_LINKEDIN_URL="https://linkedin.com/company/xerogapai"
+   NEXT_PUBLIC_TWITTER_URL="https://twitter.com/xerogapai"
+   NEXT_PUBLIC_INSTAGRAM_URL="https://instagram.com/xerogapai"
 
    # Analytics (Optional)
    NEXT_PUBLIC_GA_MEASUREMENT_ID="GA-XXXXXXXXXX"
 
    # Email Service (Optional - for production)
    EMAIL_SERVICE_API_KEY="your_email_service_api_key"
-   CONTACT_EMAIL="info@zerodigital.ai"
+   CONTACT_EMAIL="support@xerogap.com"
    ```
 
 4. **Run the development server**
@@ -319,7 +319,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 For support and questions:
-- **Email**: info@zerodigital.ai
+- **Email**: support@xerogap.com
 - **Phone**: 
 
 ## 🙏 Acknowledgments

@@ -782,8 +782,21 @@
       "ipAddress": "::ffff:127.0.0.1",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:141.0) Gecko/20100101 Firefox/141.0",
       "submittedAt": "2025-09-24T12:44:49.157Z"
+    },
+    {
+      "id": "63",
+      "firstName": "Suresh",
+      "lastName": "Sharma",
+      "email": "test@test.com",
+      "phone": "+97373311238",
+      "company": "Some company",
+      "service": "WhatsApp CX Copilot",
+      "message": "interested",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "submittedAt": "2025-09-24T15:10:39.660Z"
     }
   ],
-  "nextId": 63,
-  "lastUpdated": "2025-09-24T12:44:49.157Z"
+  "nextId": 64,
+  "lastUpdated": "2025-09-24T15:10:39.660Z"
 }

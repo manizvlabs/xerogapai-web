@@ -20,8 +20,8 @@ cp .env.example .env.local
 
 Update the following key variables in `.env.local`:
 ```env
-NEXT_PUBLIC_SITE_DOMAIN="zerodigital.ai"
-NEXT_PUBLIC_SITE_URL="https://zerodigital.ai"
+NEXT_PUBLIC_SITE_DOMAIN="xerogap.com"
+NEXT_PUBLIC_SITE_URL="https://xerogap.com"
 NEXT_PUBLIC_GA_MEASUREMENT_ID="G-XXXXXXXXXX"
 GITHUB_PAT="ghp_your_github_personal_access_token"
 ```
@@ -88,8 +88,8 @@ In Vercel dashboard, go to Project Settings → Environment Variables and add:
 
 #### Required Variables
 ```env
-NEXT_PUBLIC_SITE_DOMAIN=zerodigital.ai
-NEXT_PUBLIC_SITE_URL=https://zerodigital.ai
+NEXT_PUBLIC_SITE_DOMAIN=xerogap.com
+NEXT_PUBLIC_SITE_URL=https://xerogap.com
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your-verification-code
 ```
@@ -106,8 +106,8 @@ GITHUB_REPO_URL=https://github.com/manizvlabs/zero-digital-website
 ```env
 EMAIL_SERVICE=resend
 RESEND_API_KEY=re_your_resend_api_key
-EMAIL_FROM=noreply@zerodigital.ai
-EMAIL_TO=info@zerodigital.ai
+EMAIL_FROM=noreply@xerogap.com
+EMAIL_TO=support@xerogap.com
 ```
 
 #### Theme & Features
@@ -120,7 +120,7 @@ NEXT_PUBLIC_ENABLE_DEBUG=false
 
 #### Social Media
 ```env
-NEXT_PUBLIC_TWITTER_HANDLE=@zerodigital
+NEXT_PUBLIC_TWITTER_HANDLE=@xerogapai
 NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/zero-digital
 NEXT_PUBLIC_GITHUB_URL=https://github.com/manizvlabs/zero-digital-website
 ```
@@ -137,8 +137,8 @@ Configure deployment settings:
 ### 3.1 Add Custom Domain
 1. Go to Project Settings → Domains
 2. Click "Add Domain"
-3. Enter your domain: `zerodigital.ai`
-4. Add subdomain: `www.zerodigital.ai`
+3. Enter your domain: `xerogap.com`
+4. Add subdomain: `www.xerogap.com`
 
 ### 3.2 DNS Configuration
 Add these DNS records to your domain provider:
@@ -217,7 +217,7 @@ const nextConfig = {
     optimizePackageImports: ['@heroicons/react'],
   },
   images: {
-    domains: ['zerodigital.ai'],
+    domains: ['xerogap.com'],
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
   },
@@ -464,8 +464,8 @@ export async function GET() {
 
 ### Required for Production
 ```env
-NEXT_PUBLIC_SITE_DOMAIN=zerodigital.ai
-NEXT_PUBLIC_SITE_URL=https://zerodigital.ai
+NEXT_PUBLIC_SITE_DOMAIN=xerogap.com
+NEXT_PUBLIC_SITE_URL=https://xerogap.com
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 GITHUB_PAT=ghp_your_github_personal_access_token
 ```

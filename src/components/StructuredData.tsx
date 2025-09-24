@@ -15,8 +15,8 @@ export default function StructuredData({ type = 'website', pageData }: Structure
     url: process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}` : `http://localhost:4010`,
     logo: process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}/logo.png` : '/logo.png',
     sameAs: [
-      `https://linkedin.com/company/zerodigital`,
-      `https://twitter.com/zerodigital`,
+      `https://linkedin.com/company/xerogapai`,
+      `https://twitter.com/xerogapai`,
     ],
   };
 

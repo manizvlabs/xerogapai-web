@@ -60,7 +60,7 @@ JWT_EXPIRES_IN=24h
 # Admin Credentials
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=your-secure-admin-password
-ADMIN_EMAIL=admin@zerodigital.ai
+ADMIN_EMAIL=support@xerogap.com
 ```
 
 ## 🚨 **Security Monitoring**
@@ -190,8 +190,8 @@ const sensitiveExtensions = [
 4. **Long-term**: Implement additional measures
 
 ### **Contact Information**
-- **Security Team**: security@zerodigital.ai
-- **Admin Access**: admin@zerodigital.ai
+- **Security Team**: security@xerogap.com
+- **Admin Access**: support@xerogap.com
 - **Emergency**: +91-7702661991
 
 ## 📚 **Additional Resources**
