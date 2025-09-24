@@ -65,7 +65,7 @@ const Header = () => {
 
   return (
     <header
-      className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 border-b border-gray-200 dark:border-gray-700"
+      className="bg-gray-900 dark:bg-gray-950 shadow-sm sticky top-0 z-50 border-b border-gray-800 dark:border-gray-700"
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
@@ -85,7 +85,7 @@ const Header = () => {
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className="sr-only">Open main menu</span>
@@ -102,7 +102,7 @@ const Header = () => {
                 <div>
                   <button
                     onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
-                    className="flex items-center text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100 hover:text-green-600 dark:hover:text-green-400 transition-colors relative group"
+                    className="flex items-center text-sm font-semibold leading-6 text-white hover:text-green-600 dark:hover:text-green-400 transition-colors relative group"
                   >
                     {item.name}
                     <ChevronDownIcon className={`ml-1 h-4 w-4 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
@@ -144,7 +144,7 @@ const Header = () => {
               ) : (
                 <Link
                   href={item.href}
-                  className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100 hover:text-green-600 dark:hover:text-green-400 transition-colors relative group"
+                  className="text-sm font-semibold leading-6 text-white hover:text-green-600 dark:hover:text-green-400 transition-colors relative group"
                 >
                   {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 dark:bg-green-400 group-hover:w-full transition-all duration-300"></span>
@@ -169,7 +169,7 @@ const Header = () => {
       {mobileMenuOpen && (
         <div className="lg:hidden">
           <div className="fixed inset-0 z-50" />
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:ring-gray-700/10">
+          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 dark:bg-gray-950 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:ring-gray-700/10">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
                 <Logo
@@ -183,7 +183,7 @@ const Header = () => {
                 <RegionSwitcher />
                 <button
                   type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-white"
+                  className="-m-2.5 rounded-md p-2.5 text-white"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <span className="sr-only">Close menu</span>
@@ -200,7 +200,7 @@ const Header = () => {
                     >
                       {item.hasDropdown ? (
                         <div className="space-y-1">
-                          <div className="-mx-3 px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-100">
+                          <div className="-mx-3 px-3 py-2 text-base font-semibold leading-7 text-white">
                             {item.name}
                           </div>
                           {item.dropdownItems?.map((dropdownItem) => {
@@ -209,7 +209,7 @@ const Header = () => {
                               <Link
                                 key={dropdownItem.name}
                                 href={dropdownItem.href}
-                                className="-mx-3 flex items-center rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-600 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                                className="-mx-3 flex items-center rounded-lg px-3 py-2 text-base font-medium leading-7 text-white hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-100 dark:hover:text-gray-100 transition-colors"
                                 onClick={() => setMobileMenuOpen(false)}
                               >
                                 <IconComponent className="h-5 w-5 mr-3 text-gray-400" />
@@ -226,7 +226,7 @@ const Header = () => {
                       ) : (
                         <Link
                           href={item.href}
-                          className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                          className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {item.name}
