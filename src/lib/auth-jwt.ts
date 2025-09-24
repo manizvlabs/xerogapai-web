@@ -66,7 +66,7 @@ async function initializeAdminUser() {
     // Create admin user in database
     const adminUser = await UserDatabase.createUser({
       username: process.env.ADMIN_USERNAME || 'admin',
-      email: process.env.ADMIN_EMAIL || 'admin@zerodigital.ai',
+      email: process.env.ADMIN_EMAIL || 'support@xerogap.com',
       password_hash: hashedPassword,
       role: 'admin',
       is_active: true
@@ -128,16 +128,16 @@ export function generateAccessToken(user: User): string {
 
   return jwt.sign(payload, JWT_SECRET, {
     expiresIn: JWT_EXPIRES_IN,
-    issuer: 'zerodigital.ai',
-    audience: 'zerodigital-users'
+    issuer: 'xerogap.com',
+    audience: 'xerogapai-users'
   });
 }
 
 export function generateRefreshToken(): string {
   return jwt.sign({}, JWT_SECRET, {
     expiresIn: REFRESH_TOKEN_EXPIRES_IN,
-    issuer: 'zerodigital.ai',
-    audience: 'zerodigital-refresh'
+    issuer: 'xerogap.com',
+    audience: 'xerogapai-refresh'
   });
 }
 
@@ -146,8 +146,8 @@ export function verifyAccessToken(token: string): JWTPayload | null {
   try {
     console.log('verifyAccessToken: Verifying with JWT_SECRET:', JWT_SECRET.substring(0, 10) + '...');
     const decoded = jwt.verify(token, JWT_SECRET, {
-      issuer: 'zerodigital.ai',
-      audience: 'zerodigital-users'
+      issuer: 'xerogap.com',
+      audience: 'xerogapai-users'
     }) as JWTPayload;
     console.log('verifyAccessToken: Successfully decoded token');
     return decoded;
@@ -160,8 +160,8 @@ export function verifyAccessToken(token: string): JWTPayload | null {
 export function verifyRefreshToken(token: string): boolean {
   try {
     jwt.verify(token, JWT_SECRET, {
-      issuer: 'zerodigital.ai',
-      audience: 'zerodigital-refresh'
+      issuer: 'xerogap.com',
+      audience: 'xerogapai-refresh'
     });
     return true;
   } catch {

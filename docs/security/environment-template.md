@@ -8,10 +8,10 @@ Create a `.env.local` file in the root directory with these variables:
 # Site Configuration
 NEXT_PUBLIC_SITE_NAME="XeroGap AI"
 NEXT_PUBLIC_SITE_TAGLINE="AI-Powered Digital Transformation"
-NEXT_PUBLIC_SITE_DOMAIN="zerodigital.ai"
+NEXT_PUBLIC_SITE_DOMAIN="xerogap.com"
 NEXT_PUBLIC_LOCATION=""
 NEXT_PUBLIC_PHONE="+917702661991"
-NEXT_PUBLIC_EMAIL="info@zerodigital.ai"
+NEXT_PUBLIC_EMAIL="support@xerogap.com"
 NEXT_PUBLIC_APP_VERSION="1.0.1-20250918"
 NEXT_PUBLIC_COPYRIGHT_YEAR="2025"
 
@@ -20,7 +20,7 @@ JWT_SECRET="your-super-secret-jwt-key-change-in-production-12345"
 JWT_EXPIRES_IN="24h"
 ADMIN_USERNAME="admin"
 ADMIN_PASSWORD="admin123"
-ADMIN_EMAIL="admin@zerodigital.ai"
+ADMIN_EMAIL="support@xerogap.com"
 
 # Vercel Configuration
 VERCEL_TOKEN="your-vercel-token"
@@ -35,7 +35,7 @@ GITHUB_PAT="your-github-pat"
 NEXT_PUBLIC_GA_MEASUREMENT_ID="G-XXXXXXXXXX"
 
 # Contact Form
-CONTACT_EMAIL="info@zerodigital.ai"
+CONTACT_EMAIL="support@xerogap.com"
 
 # Development
 NODE_ENV="development"

@@ -53,7 +53,7 @@ Add these secrets to your GitHub repository settings:
 All environment variables are configured in `vercel.json`:
 
 ```env
-NEXT_PUBLIC_DOMAIN=zerodigital.ai
+NEXT_PUBLIC_DOMAIN=xerogap.com
 NEXT_PUBLIC_SITE_NAME=Zero Digital
 NEXT_PUBLIC_SITE_TAGLINE=AI-Powered Digital Transformation
 NEXT_PUBLIC_DEFAULT_THEME=light
@@ -61,10 +61,10 @@ NEXT_PUBLIC_ENABLE_THEME_SWITCHER=true
 NEXT_PUBLIC_BUSINESS_TYPE=all
 NEXT_PUBLIC_LOCATION=
 NEXT_PUBLIC_PHONE=+919876543210
-NEXT_PUBLIC_EMAIL=info@zerodigital.ai
-NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/zerodigital
-NEXT_PUBLIC_TWITTER_URL=https://twitter.com/zerodigital
-NEXT_PUBLIC_INSTAGRAM_URL=https://instagram.com/zerodigital
+NEXT_PUBLIC_EMAIL=support@xerogap.com
+NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/xerogapai
+NEXT_PUBLIC_TWITTER_URL=https://twitter.com/xerogapai
+NEXT_PUBLIC_INSTAGRAM_URL=https://instagram.com/xerogapai
 NEXT_PUBLIC_APP_VERSION=1.0.0-09172025
 NEXT_PUBLIC_COPYRIGHT_YEAR=2025
 ```
