@@ -106,7 +106,7 @@ GITHUB_REPO_URL=https://github.com/manizvlabs/zero-digital-website
 ```env
 EMAIL_SERVICE=resend
 RESEND_API_KEY=re_your_resend_api_key
-EMAIL_FROM=noreply@xerogap.com
+EMAIL_FROM=support@xerogap.com
 EMAIL_TO=support@xerogap.com
 ```
 
