@@ -87,11 +87,6 @@
       "source": "/index",
       "destination": "/",
       "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "destination": "https://xerogap.ai/$1",
-      "permanent": true
     }
   ],
   "rewrites": [
