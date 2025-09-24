@@ -79,7 +79,7 @@ NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your-verification-code
 NEXT_PUBLIC_DEFAULT_THEME=light
 NEXT_PUBLIC_ENABLE_THEME_SWITCHER=true
 NEXT_PUBLIC_TWITTER_HANDLE=@zerodigital
-NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/zero-digital
+NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/xerogapai
 ```
 
 #### GitHub Integration

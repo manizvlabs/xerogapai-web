@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // Get current date in YYYYMMDD format
 const date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-const version = `1.0.2-${date}`;
+const version = `1.0.4-${date}`;
 
 // Path to .env.local
 const envPath = path.join(__dirname, '..', '.env.local');
@@ -22,7 +22,7 @@ try {
     
     // Update the NEXT_PUBLIC_APP_VERSION line
     envContent = envContent.replace(
-      /NEXT_PUBLIC_APP_VERSION=".*"/,
+      /NEXT_PUBLIC_APP_VERSION=.*/,
       `NEXT_PUBLIC_APP_VERSION="${version}"`
     );
     
@@ -77,11 +77,11 @@ GOOGLE_TAG_MANAGER_ID="your-gtm-id"
 # Social Media Configuration
 FACEBOOK_APP_ID="your-facebook-app-id"
 TWITTER_HANDLE="@zerodigital"
-LINKEDIN_URL="https://linkedin.com/company/zero-digital"
-INSTAGRAM_URL="https://instagram.com/zerodigital"
+LINKEDIN_URL="https://linkedin.com/company/xerogapai"
+INSTAGRAM_URL="https://instagram.com/xerogapai"
 
 # API Configuration
-API_BASE_URL="https://api.zerodigital.ai"
+API_BASE_URL="https://api.xerogap.ai"
 API_VERSION="v1"
 
 # Feature Flags
@@ -110,10 +110,10 @@ NEXT_PUBLIC_VERCEL_ENV="production"
   const packageJsonPath = path.join(__dirname, '..', 'package.json');
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
   
-  if (packageJson.version !== '1.0.2') {
-    packageJson.version = '1.0.2';
+  if (packageJson.version !== '1.0.4') {
+    packageJson.version = '1.0.4';
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
-    console.log(`✅ Updated package.json version to: 1.0.2`);
+    console.log(`✅ Updated package.json version to: 1.0.4`);
   }
   
   console.log(`✅ Version update completed successfully: ${version}`);
@@ -122,7 +122,7 @@ NEXT_PUBLIC_VERCEL_ENV="production"
   // Don't exit with error in CI/CD environments, just log the error
   if (process.env.CI || process.env.VERCEL) {
     console.log('⚠️  Running in CI/CD environment, continuing build...');
-    console.log(`ℹ️  Version will be set via environment variables: 1.0.2-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`);
+    console.log(`ℹ️  Version will be set via environment variables: 1.0.4-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`);
   } else {
     process.exit(1);
   }
