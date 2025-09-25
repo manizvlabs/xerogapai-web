@@ -65,7 +65,7 @@ NEXT_PUBLIC_EMAIL=support@xerogap.com
 NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/xerogapai
 NEXT_PUBLIC_TWITTER_URL=https://twitter.com/xerogapai
 NEXT_PUBLIC_INSTAGRAM_URL=https://instagram.com/xerogapai
-NEXT_PUBLIC_APP_VERSION=1.0.0-09172025
+NEXT_PUBLIC_APP_VERSION=1.0.5-20250925
 NEXT_PUBLIC_COPYRIGHT_YEAR=2025
 ```
 
@@ -178,5 +178,5 @@ npm run clean
 ---
 
 **Last Updated:** January 9, 2025  
-**Version:** 1.0.0-09172025  
+**Version:** 1.0.5-20250925  
 **Status:** ✅ Production Ready

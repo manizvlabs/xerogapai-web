@@ -44,7 +44,7 @@ function getCurrentVersion() {
     return `${version}-${dateSuffix}`;
   } catch (error) {
     console.warn('Could not read package.json version, using default');
-    return `1.0.3-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`;
+    return `1.0.5-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`;
   }
 }
 
