@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // Get current date in YYYYMMDD format
 const date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-const version = `1.0.2-${date}`;
+const version = `1.0.5-${date}`;
 
 // Path to .env.local
 const envPath = path.join(__dirname, '..', '.env.local');
@@ -110,10 +110,10 @@ NEXT_PUBLIC_VERCEL_ENV="production"
   const packageJsonPath = path.join(__dirname, '..', 'package.json');
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
   
-  if (packageJson.version !== '1.0.2') {
-    packageJson.version = '1.0.2';
+  if (packageJson.version !== '1.0.5') {
+    packageJson.version = '1.0.5';
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
-    console.log(`✅ Updated package.json version to: 1.0.2`);
+    console.log(`✅ Updated package.json version to: 1.0.5`);
   }
   
   console.log(`✅ Version update completed successfully: ${version}`);
@@ -122,7 +122,7 @@ NEXT_PUBLIC_VERCEL_ENV="production"
   // Don't exit with error in CI/CD environments, just log the error
   if (process.env.CI || process.env.VERCEL) {
     console.log('⚠️  Running in CI/CD environment, continuing build...');
-    console.log(`ℹ️  Version will be set via environment variables: 1.0.2-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`);
+    console.log(`ℹ️  Version will be set via environment variables: 1.0.5-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`);
   } else {
     process.exit(1);
   }

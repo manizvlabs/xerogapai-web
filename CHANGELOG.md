@@ -2,6 +2,12 @@
 
 All notable changes to XeroGap AI Website will be documented in this file.
 
+## [1.0.5] - 2025-09-25
+
+### 🔧 Technical Improvements
+- **Version Update**: Bumped version to 1.0.5 across all scripts and configuration files
+- **Build Process**: Updated version management system for consistent versioning
+
 ## [1.0.4] - 2025-09-24
 
 ### 🔧 Technical Improvements

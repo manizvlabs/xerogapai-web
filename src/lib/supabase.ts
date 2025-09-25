@@ -29,7 +29,7 @@ export const getSupabaseClient = () => {
           ...options.headers,
           'apikey': supabaseAnonKey,
           'Authorization': `Bearer ${supabaseAnonKey}`,
-          'User-Agent': 'zero-website/1.0.1'
+          'User-Agent': 'zero-website/1.0.5'
         };
 
         // Ensure Content-Type is set for JSON requests
