@@ -1,13 +1,13 @@
 # Deployment Status
 
 ## 🚀 Live Website
-**Production URL:** [https://zero-digital.vercel.app/](https://zero-digital.vercel.app/)
+**Production URL:** [https://xerogapai-web.vercel.app/](https://xerogapai-web.vercel.app/)
 
 ## 📊 Deployment Badges
 
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/manizvlabs/zero-digital-website)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/manizvlabs/xerogapai-web)
 
-[![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://zero-digital.vercel.app/)
+[![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://xerogapai-web.vercel.app/)
 
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 
@@ -150,7 +150,7 @@ vercel --prod
 ## 📞 Support
 
 ### Issues & Support
-- **GitHub Issues:** [Create an issue](https://github.com/manizvlabs/zero-digital-website/issues)
+- **GitHub Issues:** [Create an issue](https://github.com/manizvlabs/xerogapai-web/issues)
 - **Vercel Support:** [Vercel Support](https://vercel.com/support)
 - **Documentation:** [Next.js Docs](https://nextjs.org/docs)
 

@@ -41,13 +41,13 @@ brew install gh
 gh auth login
 
 # Set secrets (replace with your actual values)
-gh secret set VERCEL_TOKEN --repo manizvlabs/zero-digital-website
-gh secret set VERCEL_PROJECT_ID --repo manizvlabs/zero-digital-website
-gh secret set VERCEL_ORG_ID --repo manizvlabs/zero-digital-website
+gh secret set VERCEL_TOKEN --repo manizvlabs/xerogapai-web
+gh secret set VERCEL_PROJECT_ID --repo manizvlabs/xerogapai-web
+gh secret set VERCEL_ORG_ID --repo manizvlabs/xerogapai-web
 ```
 
 ### Using GitHub Web Interface
-1. Go to your repository: `https://github.com/manizvlabs/zero-digital-website`
+1. Go to your repository: `https://github.com/manizvlabs/xerogapai-web`
 2. Click **Settings** tab
 3. Click **Secrets and variables** → **Actions**
 4. Click **New repository secret**

@@ -53,7 +53,7 @@ git push origin feature/v2
 ```
 
 ### 4. **Create Pull Request**
-- Go to GitHub: https://github.com/manizvlabs/zero-digital-website
+- Go to GitHub: https://github.com/manizvlabs/xerogapai-web
 - Click "Compare & pull request" for feature/v2
 - Add description of changes
 - Request review if needed
