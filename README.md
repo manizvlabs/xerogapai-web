@@ -1,13 +1,13 @@
 # XeroGap AI - AI-Powered Digital Transformation
 
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/manizvlabs/zero-digital-website)
-[![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://zero-digital.vercel.app/)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/manizvlabs/xerogapai-web)
+[![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://xerogapai-web.vercel.app/)
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.3-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-blue)](https://tailwindcss.com/)
-[![Version](https://img.shields.io/badge/version-1.0.5-blue)](https://github.com/manizvlabs/zero-digital-website/releases)
+[![Version](https://img.shields.io/badge/version-1.0.5-blue)](https://github.com/manizvlabs/xerogapai-web/releases)
 
-**🌐 Live Website:** [https://zero-digital.vercel.app/](https://zero-digital.vercel.app/)
+**🌐 Live Website:** [https://xerogapai-web.vercel.app/](https://xerogapai-web.vercel.app/)
 
 Transform your business with cutting-edge AI automation, custom mobile apps, and digital marketing solutions. Built for Hyderabad businesses and beyond.
 
@@ -39,7 +39,7 @@ For a complete list of changes, features, and bug fixes, see the [CHANGELOG.md](
 
 The website is automatically deployed to Vercel on every push to the `main` branch:
 
-- **Production URL:** [https://zero-digital.vercel.app/](https://zero-digital.vercel.app/)
+- **Production URL:** [https://xerogapai-web.vercel.app/](https://xerogapai-web.vercel.app/)
 - **CI/CD:** GitHub Actions with automated testing and deployment
 - **Performance:** Optimized with Vercel's CDN and edge functions
 - **Security:** HTTPS enabled with security headers
@@ -48,8 +48,8 @@ The website is automatically deployed to Vercel on every push to the `main` bran
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/manizvlabs/zero-digital-website.git
-   cd zero-digital-website
+   git clone https://github.com/manizvlabs/xerogapai-web.git
+   cd xerogapai-web
    ```
 
 2. **Install dependencies**
@@ -98,7 +98,7 @@ The website is automatically deployed to Vercel on every push to the `main` bran
 ## 📁 Project Structure
 
 ```
-zero-digital-website/
+xerogapai-web/
 ├── src/
 │   ├── app/
 │   │   ├── api/

@@ -57,7 +57,7 @@ Create `netlify.toml` in your project root:
 1. Go to [Netlify Dashboard](https://app.netlify.com)
 2. Click "New site from Git"
 3. Choose "GitHub" as your Git provider
-4. Select your repository: `manizvlabs/zero-digital-website`
+4. Select your repository: `manizvlabs/xerogapai-web`
 5. Configure build settings:
    - **Build command**: `npm run build`
    - **Publish directory**: `.next`
@@ -86,7 +86,7 @@ NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/xerogapai
 ```env
 GITHUB_PAT=ghp_your_github_personal_access_token
 GITHUB_REPO_OWNER=manizvlabs
-GITHUB_REPO_NAME=zero-digital-website
+GITHUB_REPO_NAME=xerogapai-web
 ```
 
 #### Email Configuration (if using contact form)
@@ -270,4 +270,4 @@ Add to `netlify.toml`:
 
 ---
 
-**Need help?** Contact the development team or check the [GitHub repository](https://github.com/manizvlabs/zero-digital-website) for support.
+**Need help?** Contact the development team or check the [GitHub repository](https://github.com/manizvlabs/xerogapai-web) for support.

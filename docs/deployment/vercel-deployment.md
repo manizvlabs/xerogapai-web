@@ -75,7 +75,7 @@ Create `vercel.json` in your project root:
 ### 2.1 Connect Repository
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
 2. Click "New Project"
-3. Import your GitHub repository: `manizvlabs/zero-digital-website`
+3. Import your GitHub repository: `manizvlabs/xerogapai-web`
 4. Configure project settings:
    - **Framework Preset**: Next.js
    - **Root Directory**: `./` (or leave empty)
@@ -98,8 +98,8 @@ NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your-verification-code
 ```env
 GITHUB_PAT=ghp_your_github_personal_access_token
 GITHUB_REPO_OWNER=manizvlabs
-GITHUB_REPO_NAME=zero-digital-website
-GITHUB_REPO_URL=https://github.com/manizvlabs/zero-digital-website
+GITHUB_REPO_NAME=xerogapai-web
+GITHUB_REPO_URL=https://github.com/manizvlabs/xerogapai-web
 ```
 
 #### Email Configuration
@@ -122,7 +122,7 @@ NEXT_PUBLIC_ENABLE_DEBUG=false
 ```env
 NEXT_PUBLIC_TWITTER_HANDLE=@xerogapai
 NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/zero-digital
-NEXT_PUBLIC_GITHUB_URL=https://github.com/manizvlabs/zero-digital-website
+NEXT_PUBLIC_GITHUB_URL=https://github.com/manizvlabs/xerogapai-web
 ```
 
 ### 2.3 Deploy Settings
@@ -479,4 +479,4 @@ SENTRY_DSN=https://your-sentry-dsn@sentry.io/project-id
 
 ---
 
-**Need help?** Contact the development team or check the [GitHub repository](https://github.com/manizvlabs/zero-digital-website) for support.
+**Need help?** Contact the development team or check the [GitHub repository](https://github.com/manizvlabs/xerogapai-web) for support.

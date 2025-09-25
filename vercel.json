@@ -64,7 +64,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://zero-digital.vercel.app"
+          "value": "https://xerogapai-web.vercel.app"
         },
         {
           "key": "Access-Control-Allow-Methods",
