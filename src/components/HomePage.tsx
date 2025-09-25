@@ -93,7 +93,7 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-900">
+      <section className="relative py-24 sm:py-32 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800">
         {/* Logo Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" aria-hidden="true">
           <div className="absolute top-12 right-12 transform rotate-6">
@@ -185,7 +185,7 @@ export default function HomePage() {
       </section>
 
       {/* Social Proof Section */}
-      <section className="relative py-24 sm:py-32 bg-white dark:bg-gray-900">
+      <section className="relative py-24 sm:py-32 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800">
         {/* Logo Background Pattern */}
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04] pointer-events-none" aria-hidden="true">
           <div className="absolute top-16 left-1/4 transform -translate-x-1/2 -rotate-12">
@@ -254,7 +254,7 @@ export default function HomePage() {
       </section>
 
       {/* Partners Section */}
-      <section className="relative py-16 bg-gray-50 dark:bg-gray-900">
+      <section className="relative py-16 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800">
         {/* Logo Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.04] pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
@@ -307,7 +307,7 @@ export default function HomePage() {
       </section>
 
       {/* Compliance Section */}
-      <section className="relative py-16 bg-white dark:bg-gray-900">
+      <section className="relative py-16 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800">
         {/* Logo Background Pattern */}
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03] pointer-events-none" aria-hidden="true">
           <div className="absolute top-8 right-8 transform rotate-6">
