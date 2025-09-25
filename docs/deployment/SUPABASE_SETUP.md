@@ -20,7 +20,7 @@ The XeroGap AI Website uses Supabase as the primary database for contact form su
 2. Click **"New Project"**
 3. Choose your organization
 4. Fill in project details:
-   - **Name**: `zero-digital-website`
+   - **Name**: `xerogapai-web`
    - **Database Password**: Generate a strong password (save this!)
    - **Region**: Choose closest to your users (e.g., `us-east-1` for US East)
 5. Click **"Create new project"**
@@ -38,7 +38,7 @@ The XeroGap AI Website uses Supabase as the primary database for contact form su
 ### In Vercel Dashboard
 
 1. Go to your [Vercel Dashboard](https://vercel.com/dashboard)
-2. Select your project: `zero-digital-website`
+2. Select your project: `xerogapai-web`
 3. Go to **Settings** → **Environment Variables**
 4. Add these variables:
 

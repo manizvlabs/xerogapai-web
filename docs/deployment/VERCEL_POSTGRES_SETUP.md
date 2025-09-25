@@ -17,7 +17,7 @@ The XeroGap AI Website currently uses file-based storage for contact form submis
 ### Option A: Using Vercel Dashboard (Recommended)
 
 1. Go to your [Vercel Dashboard](https://vercel.com/dashboard)
-2. Select your project: `zero-digital-website`
+2. Select your project: `xerogapai-web`
 3. Go to the **Storage** tab
 4. Click **Create Database**
 5. Select **Postgres**

@@ -36,7 +36,7 @@ console.log('================\n');
 
 console.log('1. 🌐 Create Vercel Postgres Database:');
 console.log('   • Go to https://vercel.com/dashboard');
-console.log('   • Select your project: zero-digital-website');
+console.log('   • Select your project: xerogapai-web');
 console.log('   • Go to Storage tab');
 console.log('   • Click "Create Database"');
 console.log('   • Select "Postgres"');

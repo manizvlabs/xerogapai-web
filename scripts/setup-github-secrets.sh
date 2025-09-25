@@ -23,7 +23,7 @@ fi
 echo "✅ GitHub CLI is installed and authenticated"
 
 # Get repository name
-REPO_NAME="manizvlabs/zero-digital-website"
+REPO_NAME="manizvlabs/xerogapai-web"
 echo "📦 Repository: $REPO_NAME"
 
 # Function to set secret
