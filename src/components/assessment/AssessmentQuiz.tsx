@@ -220,7 +220,7 @@ export default function AssessmentQuiz({ onComplete }: AssessmentQuizProps) {
             <span className="text-sm font-medium text-gray-900 dark:text-white">
               Question {currentQuestion + 1} of {questions.length}
             </span>
-            <span className="text-sm text-gray-600 dark:text-white">
+            <span className="text-sm text-gray-600 dark:text-gray-300">
               {Math.round(progress)}% Complete
             </span>
           </div>
@@ -282,7 +282,7 @@ export default function AssessmentQuiz({ onComplete }: AssessmentQuizProps) {
           </div>
 
           {question.type === 'multiple' && (
-            <p className="text-sm text-gray-600 dark:text-white mt-4">
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-4">
               Select all that apply
             </p>
           )}
@@ -303,7 +303,7 @@ export default function AssessmentQuiz({ onComplete }: AssessmentQuizProps) {
             Previous
           </button>
 
-          <div className="text-sm text-gray-600 dark:text-white">
+          <div className="text-sm text-gray-600 dark:text-gray-300">
             {currentQuestion + 1} / {questions.length}
           </div>
 
