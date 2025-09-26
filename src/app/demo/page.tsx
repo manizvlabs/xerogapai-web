@@ -51,9 +51,15 @@ export default function DemoPage() {
       {currentStep === 'hero' && (
         <>
           <DemoHero onStartBooking={handleStartBooking} />
-          <DemoProcess />
-          <DemoTestimonials />
-          <DemoFAQ />
+          <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-900">
+            <DemoProcess />
+          </section>
+          <section className="relative py-24 sm:py-32 bg-white dark:bg-gray-900">
+            <DemoTestimonials />
+          </section>
+          <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-900">
+            <DemoFAQ />
+          </section>
         </>
       )}
 
@@ -66,7 +72,7 @@ export default function DemoPage() {
 
       {currentStep === 'confirmation' && bookingData && (
         <div className="max-w-2xl mx-auto px-4 py-12">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-8 text-center">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-8 text-center">
             <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
               <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -110,7 +116,7 @@ export default function DemoPage() {
       <div className="fixed bottom-6 left-6 z-40">
         <Link
           href="/"
-          className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-white bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+          className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-white bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
         >
           ← Back to Home
         </Link>

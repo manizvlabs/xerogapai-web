@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
+import Logo from '@/components/Logo';
 import AssessmentQuiz from '@/components/assessment/AssessmentQuiz';
 import AssessmentResults from '@/components/assessment/AssessmentResults';
 import AssessmentHero from '@/components/assessment/AssessmentHero';
@@ -82,23 +83,53 @@ export default function AssessmentPage() {
         )}
 
         {currentStep === 'quiz' && (
-          <AssessmentQuiz onComplete={handleQuizComplete} />
+          <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-900">
+            {/* Logo Background Pattern */}
+            <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" aria-hidden="true">
+              <div className="absolute top-12 right-12 transform rotate-6">
+                <Logo variant="hero" size="sm" className="w-20 h-auto" />
+              </div>
+              <div className="absolute bottom-12 left-12 transform -rotate-6">
+                <Logo variant="hero" size="sm" className="w-20 h-auto" />
+              </div>
+            </div>
+            <AssessmentQuiz onComplete={handleQuizComplete} />
+          </section>
         )}
 
         {currentStep === 'results' && assessmentData && (
-          <AssessmentResults
-            data={assessmentData}
-            onComplete={handleResultsComplete}
-            onRestart={handleRestart}
-          />
+          <section className="relative py-24 sm:py-32 bg-white dark:bg-gray-900">
+            {/* Logo Background Pattern */}
+            <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04] pointer-events-none" aria-hidden="true">
+              <div className="absolute top-16 left-1/4 transform -translate-x-1/2 -rotate-12">
+                <Logo variant="hero" size="sm" className="w-16 h-auto" />
+              </div>
+              <div className="absolute bottom-16 right-1/4 transform translate-x-1/2 rotate-12">
+                <Logo variant="hero" size="sm" className="w-16 h-auto" />
+              </div>
+            </div>
+            <AssessmentResults
+              data={assessmentData}
+              onComplete={handleResultsComplete}
+              onRestart={handleRestart}
+            />
+          </section>
         )}
 
         {currentStep === 'consultation' && assessmentData && (
-          <AssessmentCTA
-            assessmentData={assessmentData}
-            userEmail={userEmail}
-            onRestart={handleRestart}
-          />
+          <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-900">
+            {/* Logo Background Pattern */}
+            <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.04] pointer-events-none" aria-hidden="true">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
+                <Logo variant="hero" size="sm" className="w-16 h-auto" />
+              </div>
+            </div>
+            <AssessmentCTA
+              assessmentData={assessmentData}
+              userEmail={userEmail}
+              onRestart={handleRestart}
+            />
+          </section>
         )}
       </div>
 
