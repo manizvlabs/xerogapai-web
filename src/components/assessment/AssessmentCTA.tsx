@@ -32,7 +32,7 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
         {/* Success Header */}
         <div className="bg-gradient-to-r from-green-600 to-green-600 px-6 py-8 text-white text-center">
           <div className="flex items-center justify-center mb-4">
@@ -48,39 +48,39 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Ready to Transform Your Business?
             </h2>
-            <p className="text-gray-600 dark:text-white mb-6">
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
               Book a free 30-minute consultation with our AI experts to discuss your results and create a custom implementation plan.
             </p>
           </div>
 
           {/* Consultation Benefits */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <div className="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-lg">
               <CalendarIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
                 Personalized Strategy
               </h3>
-              <p className="text-sm text-gray-600 dark:text-white">
+              <p className="text-sm text-gray-600 dark:text-gray-300">
                 Custom AI implementation roadmap based on your assessment results
               </p>
             </div>
 
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <div className="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-lg">
               <PhoneIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
                 Expert Guidance
               </h3>
-              <p className="text-sm text-gray-600 dark:text-white">
+              <p className="text-sm text-gray-600 dark:text-gray-300">
                 Direct consultation with AI specialists and industry experts
               </p>
             </div>
 
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <div className="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-lg">
               <EnvelopeIcon className="h-8 w-8 text-purple-600 mx-auto mb-3" />
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
                 Implementation Support
               </h3>
-              <p className="text-sm text-gray-600 dark:text-white">
+              <p className="text-sm text-gray-600 dark:text-gray-300">
                 Ongoing support and resources for successful AI adoption
               </p>
             </div>
@@ -101,7 +101,7 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
               ].map((item, index) => (
                 <div key={index} className="flex items-center">
                   <CheckCircleIcon className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                  <span className="text-gray-700 dark:text-white">{item}</span>
+                  <span className="text-gray-700 dark:text-gray-300">{item}</span>
                 </div>
               ))}
             </div>
@@ -134,7 +134,7 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
 
           {/* Alternative Actions */}
           <div className="mt-6 text-center">
-            <p className="text-gray-600 dark:text-white mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Prefer to explore on your own?
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -162,21 +162,21 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
           {/* Trust Signals */}
           <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
             <div className="text-center">
-              <p className="text-sm text-gray-500 dark:text-white mb-4">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
                 Join 500+ businesses who&apos;ve transformed their operations with AI
               </p>
               <div className="flex items-center justify-center space-x-8">
                 <div className="text-center">
                   <div className="text-xl font-bold text-gray-900 dark:text-white">30min</div>
-                  <div className="text-xs text-gray-500 dark:text-white">Consultation</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Consultation</div>
                 </div>
                 <div className="text-center">
                   <div className="text-xl font-bold text-gray-900 dark:text-white">Free</div>
-                  <div className="text-xs text-gray-500 dark:text-white">No Obligations</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">No Obligations</div>
                 </div>
                 <div className="text-center">
                   <div className="text-xl font-bold text-gray-900 dark:text-white">100%</div>
-                  <div className="text-xs text-gray-500 dark:text-white">Satisfaction</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">Satisfaction</div>
                 </div>
               </div>
             </div>

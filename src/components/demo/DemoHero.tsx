@@ -1,6 +1,6 @@
 'use client';
 
-import { PlayIcon, CalendarIcon, UsersIcon, ArrowTrendingUpIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 interface DemoHeroProps {
   onStartBooking: () => void;
@@ -8,8 +8,41 @@ interface DemoHeroProps {
 
 export default function DemoHero({ onStartBooking }: DemoHeroProps) {
   return (
-    <div className="bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="max-w-6xl mx-auto px-4 py-16 sm:py-24">
+    <div className="relative isolate px-6 pt-14 lg:px-8 bg-white dark:bg-gray-900">
+      {/* Background Image Layer */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10 dark:opacity-5"
+        style={{
+          backgroundImage: 'url(/logo-pattern.png)',
+          backgroundSize: '800px',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'repeat',
+          zIndex: -2
+        }}
+        aria-hidden="true"
+      ></div>
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+        <div
+          className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-green-600/20 to-emerald-400/20 dark:from-green-600/10 dark:to-emerald-400/10 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+          style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }}
+        />
+      </div>
+
+      {/* Logo Watermark Background */}
+      <div className="absolute inset-0 -z-5 opacity-[0.08] dark:opacity-[0.12]" aria-hidden="true">
+        <div className="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2">
+          <img src="/logo-hero.png" alt="" className="w-80 h-auto" />
+        </div>
+        <div className="absolute top-3/4 right-1/4 transform translate-x-1/2 -translate-y-1/2">
+          <img src="/logo-hero.png" alt="" className="w-80 h-auto" />
+        </div>
+        <div className="absolute top-1/2 left-3/4 transform -translate-x-1/2 -translate-y-1/2 rotate-12">
+          <img src="/logo-hero.png" alt="" className="w-64 h-auto" />
+        </div>
+      </div>
+
         <div className="text-center">
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm font-medium mb-8">
@@ -18,7 +51,7 @@ export default function DemoHero({ onStartBooking }: DemoHeroProps) {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
             See XeroGap AI in
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
               {" "}Action
@@ -26,97 +59,33 @@ export default function DemoHero({ onStartBooking }: DemoHeroProps) {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl text-gray-600 dark:text-white mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-white">
             Experience a personalized demonstration of our WhatsApp automation and AI workflow solutions.
             See real results in just 30 minutes.
           </p>
 
-          {/* Demo Highlights */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
-              <PlayIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
-              <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Live Demo</div>
-              <div className="text-xs text-gray-600 dark:text-white">30 minutes</div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
-              <CalendarIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
-              <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Your Schedule</div>
-              <div className="text-xs text-gray-600 dark:text-white">Pick your time</div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
-              <UsersIcon className="h-8 w-8 text-purple-600 mx-auto mb-3" />
-              <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">Expert Led</div>
-              <div className="text-xs text-gray-600 dark:text-white">AI specialists</div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
-              <ArrowTrendingUpIcon className="h-8 w-8 text-orange-600 mx-auto mb-3" />
-              <div className="text-sm font-medium text-gray-900 dark:text-white mb-1">ROI Focus</div>
-              <div className="text-xs text-gray-600 dark:text-white">Real results</div>
-            </div>
-          </div>
-
-          {/* Value Props */}
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 mb-12 max-w-4xl mx-auto">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6 text-center">
-              What You'll See in Your Demo:
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="text-2xl mb-3">📱</div>
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">WhatsApp Automation</h4>
-                <p className="text-sm text-gray-600 dark:text-white">See how AI handles customer conversations 24/7</p>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl mb-3">🤖</div>
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Workflow Intelligence</h4>
-                <p className="text-sm text-gray-600 dark:text-white">Watch AI automate complex business processes</p>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl mb-3">📊</div>
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Real-Time Analytics</h4>
-                <p className="text-sm text-gray-600 dark:text-white">View live dashboards and performance metrics</p>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Button */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* Quick Implementation CTA Section */}
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
             <button
               onClick={onStartBooking}
-              className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="flex items-center justify-center rounded-md bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
             >
               Schedule Your Free Demo
             </button>
-            <span className="text-sm text-gray-500 dark:text-white">
-              No commitment • 30 minutes • 100% free
-            </span>
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-sm text-gray-500 dark:text-white mb-4">
-              Join 200+ businesses who've seen XeroGap AI in action
-            </p>
-            <div className="flex items-center justify-center space-x-8 opacity-60">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">200+</div>
-                <div className="text-xs text-gray-500 dark:text-white">Demos Completed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">95%</div>
-                <div className="text-xs text-gray-500 dark:text-white">Book to Demo Rate</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">85%</div>
-                <div className="text-xs text-gray-500 dark:text-white">Demo to Trial Rate</div>
-              </div>
-            </div>
+            <Link
+              href="/assessment"
+              className="flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-green-600 border border-green-200 shadow-sm hover:bg-green-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
+            >
+              Take AI Assessment
+            </Link>
+            <Link
+              href="/consultation"
+              className="flex items-center justify-center rounded-md bg-gray-100 px-6 py-3 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600 transition-colors"
+            >
+              Book Consultation <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </div>
-      </div>
     </div>
   );
 }
