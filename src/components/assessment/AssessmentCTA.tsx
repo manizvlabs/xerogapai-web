@@ -20,6 +20,40 @@ interface AssessmentCTAProps {
 
 export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: AssessmentCTAProps) {
   const [isBooking, setIsBooking] = useState(false);
+  const [isSendingReport, setIsSendingReport] = useState(false);
+  const [reportSent, setReportSent] = useState(false);
+  const [reportError, setReportError] = useState<string | null>(null);
+
+  const handleSendReport = async () => {
+    setIsSendingReport(true);
+    setReportError(null);
+
+    try {
+      const response = await fetch('/api/assessment/send-report', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          assessmentData,
+          userEmail,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setReportSent(true);
+      } else {
+        setReportError(result.details || 'Failed to send report');
+      }
+    } catch (error) {
+      console.error('Error sending report:', error);
+      setReportError('Network error. Please try again.');
+    } finally {
+      setIsSendingReport(false);
+    }
+  };
 
   const handleBookConsultation = async () => {
     setIsBooking(true);
@@ -39,11 +73,59 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
             <CheckCircleIcon className="h-12 w-12 text-white" />
           </div>
           <h1 className="text-3xl font-bold mb-2">Assessment Complete!</h1>
-          <p className="text-green-100">Your detailed report has been sent to {userEmail}</p>
+          {reportSent ? (
+            <p className="text-green-100">Your detailed report has been sent to {userEmail}</p>
+          ) : (
+            <p className="text-green-100">Ready to send your detailed report to {userEmail}</p>
+          )}
         </div>
 
         {/* Next Steps */}
         <div className="px-6 py-8">
+          {/* Send Report Section */}
+          {!reportSent && (
+            <div className="text-center mb-8 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                Get Your Detailed Report
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Receive a comprehensive AI readiness report with personalized recommendations and implementation roadmap.
+              </p>
+              <button
+                onClick={handleSendReport}
+                disabled={isSendingReport}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSendingReport ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Sending Report...
+                  </div>
+                ) : (
+                  'Send Detailed Report to My Email'
+                )}
+              </button>
+              {reportError && (
+                <p className="text-red-600 dark:text-red-400 text-sm mt-2">
+                  {reportError}
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* Success Message */}
+          {reportSent && (
+            <div className="text-center mb-8 p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+              <CheckCircleIcon className="h-8 w-8 text-green-600 mx-auto mb-2" />
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                Report Sent Successfully! 🎉
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Check your email for your detailed AI readiness report with personalized recommendations.
+              </p>
+            </div>
+          )}
+
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Ready to Transform Your Business?

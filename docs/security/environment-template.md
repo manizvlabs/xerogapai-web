@@ -37,6 +37,24 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID="G-XXXXXXXXXX"
 # Contact Form
 CONTACT_EMAIL="support@xerogap.com"
 
+# Microsoft Office 365 SMTP Configuration
+# Get these from your Microsoft 365 admin portal or Azure AD app registration
+SMTP_HOST="smtp.office365.com"
+SMTP_PORT="587"
+SMTP_SECURE="false"
+SMTP_USER="your-email@yourdomain.com"
+SMTP_PASS="your-app-password-or-oauth-token"
+SMTP_FROM_NAME="XeroGap AI"
+SMTP_FROM_EMAIL="noreply@xerogap.com"
+
+# Alternative: Microsoft Graph API Configuration (for modern Office 365 accounts)
+# This is the RECOMMENDED approach if app passwords are not available
+MS_GRAPH_CLIENT_ID="your-azure-app-client-id"
+MS_GRAPH_CLIENT_SECRET="your-azure-app-client-secret"
+MS_GRAPH_TENANT_ID="your-azure-tenant-id"
+
+# See docs/security/microsoft-graph-setup.md for detailed setup instructions
+
 # Development
 NODE_ENV="development"
 ```
