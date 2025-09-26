@@ -1,3 +1,5 @@
+import { microsoft365EmailService, EmailData } from './microsoft365-email';
+
 export interface LeadData {
   email: string;
   firstName?: string;
@@ -110,6 +112,19 @@ class EmailService {
     });
   }
 
+  async sendAssessmentReport(assessmentData: any, userEmail: string): Promise<{ success: boolean; messageId?: string; error?: string }> {
+    try {
+      const emailData = microsoft365EmailService.generateAssessmentReportEmail(assessmentData, userEmail);
+      return await microsoft365EmailService.sendEmail(emailData);
+    } catch (error) {
+      console.error('Failed to send assessment report:', error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to send assessment report',
+      };
+    }
+  }
+
   async captureLead(leadData: LeadData): Promise<{ success: boolean; leadId?: string; error?: string }> {
     try {
       // Track lead capture with analytics
@@ -185,21 +200,48 @@ class EmailService {
   }
 
   private async sendEmail(emailTemplate: EmailTemplate, leadData: LeadData): Promise<void> {
-    // In a real implementation, this would integrate with email service providers
-    console.log('Sending email:', {
-      to: leadData.email,
-      subject: emailTemplate.subject,
-      leadData
-    });
+    try {
+      const emailData: EmailData = {
+        to: leadData.email,
+        subject: emailTemplate.subject,
+        html: emailTemplate.html,
+        text: emailTemplate.text,
+      };
 
-    // Track email send event
-    if (typeof window !== 'undefined' && window.trackCTA) {
-      window.trackCTA({
-        action: 'send',
-        category: 'email',
-        label: emailTemplate.subject,
-        cta_type: 'email'
-      });
+      const result = await microsoft365EmailService.sendEmail(emailData);
+
+      if (result.success) {
+        console.log('Email sent successfully:', {
+          messageId: result.messageId,
+          to: leadData.email,
+          subject: emailTemplate.subject,
+        });
+      } else {
+        console.error('Failed to send email:', result.error);
+      }
+
+      // Track email send event
+      if (typeof window !== 'undefined' && window.trackCTA) {
+        window.trackCTA({
+          action: result.success ? 'send' : 'error',
+          category: 'email',
+          label: emailTemplate.subject,
+          cta_type: 'email',
+          value: result.success ? 1 : 0
+        });
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+
+      // Track email error event
+      if (typeof window !== 'undefined' && window.trackCTA) {
+        window.trackCTA({
+          action: 'error',
+          category: 'email',
+          label: emailTemplate.subject,
+          cta_type: 'email'
+        });
+      }
     }
   }
 
