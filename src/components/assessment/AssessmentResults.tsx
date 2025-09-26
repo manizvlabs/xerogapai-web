@@ -141,7 +141,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
 
           {/* Score Display */}
         <div className="px-6 py-8">
-          <div className={`rounded-2xl p-8 text-center ${readinessInfo.bgColor} dark:bg-gray-800`}>
+          <div className={`rounded-2xl p-8 text-center ${readinessInfo.bgColor}`}>
             <div className="relative mb-6">
               {/* Circular Progress */}
               <div className="w-32 h-32 mx-auto relative">
@@ -235,7 +235,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
               </h3>
               <div className="grid gap-4 md:grid-cols-2">
                 {results.recommendedServices.map((service, index) => (
-                  <div key={index} className={`p-4 rounded-lg border-2 ${getPriorityColor(service.priority)} dark:bg-gray-800`}>
+                  <div key={index} className={`p-4 rounded-lg border-2 ${getPriorityColor(service.priority)}`}>
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-semibold text-gray-900 dark:text-white">{service.service}</h4>
                       <span className={`text-xs font-bold px-2 py-1 rounded-full ${
@@ -246,7 +246,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
                         {service.priority.toUpperCase()}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{service.reasoning}</p>
+                    <p className="text-sm text-gray-600 dark:text-white mb-3">{service.reasoning}</p>
                     <div className="grid grid-cols-2 gap-2 text-xs">
                       <div>
                         <span className="font-medium text-gray-900 dark:text-white">ROI: </span>
@@ -346,7 +346,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
           )}
 
           {/* Email Capture Form */}
-          <div className="mt-8 bg-green-50 dark:bg-gray-800 rounded-lg p-6 border border-green-200 dark:border-gray-700">
+          <div className="mt-8 bg-green-50 dark:bg-green-800 rounded-lg p-6 border border-green-200 dark:border-green-700">
             <div className="flex items-start mb-4">
               <EnvelopeIcon className="h-6 w-6 text-green-600 mr-3 mt-1" />
               <div>
