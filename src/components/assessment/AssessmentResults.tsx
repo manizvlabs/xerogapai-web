@@ -178,7 +178,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
             <h2 className={`text-2xl font-bold mb-2 ${readinessInfo.color}`}>
               {readinessInfo.title}
             </h2>
-            <p className="text-gray-700 dark:text-gray-200 mb-6">
+            <p className="text-gray-700 dark:text-gray-700 mb-6">
               {readinessInfo.description}
             </p>
 
@@ -186,19 +186,19 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="text-center">
                 <div className="text-lg font-bold text-green-600">{results.categoryScores.technicalReadiness}%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-200">Technical</div>
+                <div className="text-xs text-gray-600 dark:text-gray-700">Technical</div>
               </div>
               <div className="text-center">
                 <div className="text-lg font-bold text-green-600">{results.categoryScores.businessReadiness}%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-200">Business</div>
+                <div className="text-xs text-gray-600 dark:text-gray-700">Business</div>
               </div>
               <div className="text-center">
                 <div className="text-lg font-bold text-purple-600">{results.categoryScores.budgetReadiness}%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-200">Budget</div>
+                <div className="text-xs text-gray-600 dark:text-gray-700">Budget</div>
               </div>
               <div className="text-center">
                 <div className="text-lg font-bold text-orange-600">{results.categoryScores.timelineReadiness}%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-200">Timeline</div>
+                <div className="text-xs text-gray-600 dark:text-gray-700">Timeline</div>
               </div>
             </div>
           </div>
