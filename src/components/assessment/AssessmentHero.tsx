@@ -59,7 +59,7 @@ export default function AssessmentHero({ onStart }: AssessmentHeroProps) {
         </h1>
 
         {/* Subheadline */}
-        <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-white">
+        <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300">
           Get a comprehensive AI readiness assessment worth $500 completely free.
           Discover your automation potential, identify quick wins, and get a custom implementation roadmap in just 10 minutes.
         </p>

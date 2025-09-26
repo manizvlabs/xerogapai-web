@@ -271,7 +271,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
               </h3>
               <div className="space-y-6">
                 {results.actionPlan.map((phase, index) => (
-                  <div key={index} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                  <div key={index} className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6">
                     <div className="flex items-center mb-4">
                       <div className="flex items-center justify-center w-8 h-8 bg-green-600 text-white rounded-full text-sm font-bold mr-3">
                         {index + 1}
@@ -366,7 +366,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
                   value={email}
                   onChange={handleEmailChange}
                   placeholder="Enter your email address"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   required
                 />
               </div>
