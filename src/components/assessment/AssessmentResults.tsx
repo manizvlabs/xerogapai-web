@@ -167,7 +167,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
                     <div className={`text-4xl font-bold ${readinessInfo.color}`}>
                       {results.overallScore}%
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-white">
+                    <div className="text-sm text-gray-600 dark:text-gray-200">
                       {readinessInfo.status}
                     </div>
                   </div>
@@ -178,7 +178,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
             <h2 className={`text-2xl font-bold mb-2 ${readinessInfo.color}`}>
               {readinessInfo.title}
             </h2>
-            <p className="text-gray-700 dark:text-white mb-6">
+            <p className="text-gray-700 dark:text-gray-200 mb-6">
               {readinessInfo.description}
             </p>
 
@@ -186,19 +186,19 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="text-center">
                 <div className="text-lg font-bold text-green-600">{results.categoryScores.technicalReadiness}%</div>
-                <div className="text-xs text-gray-600 dark:text-white">Technical</div>
+                <div className="text-xs text-gray-600 dark:text-gray-200">Technical</div>
               </div>
               <div className="text-center">
                 <div className="text-lg font-bold text-green-600">{results.categoryScores.businessReadiness}%</div>
-                <div className="text-xs text-gray-600 dark:text-white">Business</div>
+                <div className="text-xs text-gray-600 dark:text-gray-200">Business</div>
               </div>
               <div className="text-center">
                 <div className="text-lg font-bold text-purple-600">{results.categoryScores.budgetReadiness}%</div>
-                <div className="text-xs text-gray-600 dark:text-white">Budget</div>
+                <div className="text-xs text-gray-600 dark:text-gray-200">Budget</div>
               </div>
               <div className="text-center">
                 <div className="text-lg font-bold text-orange-600">{results.categoryScores.timelineReadiness}%</div>
-                <div className="text-xs text-gray-600 dark:text-white">Timeline</div>
+                <div className="text-xs text-gray-600 dark:text-gray-200">Timeline</div>
               </div>
             </div>
           </div>
@@ -246,14 +246,14 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
                         {service.priority.toUpperCase()}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-white mb-3">{service.reasoning}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-200 mb-3">{service.reasoning}</p>
                     <div className="grid grid-cols-2 gap-2 text-xs">
                       <div>
-                        <span className="font-medium text-gray-900 dark:text-white">ROI: </span>
+                        <span className="font-medium text-gray-900 dark:text-gray-200">ROI: </span>
                         <span className="text-green-600">{service.estimatedROI}</span>
                       </div>
                       <div>
-                        <span className="font-medium text-gray-900 dark:text-white">Time: </span>
+                        <span className="font-medium text-gray-900 dark:text-gray-200">Time: </span>
                         <span className="text-green-600">{service.implementationTime}</span>
                       </div>
                     </div>
@@ -350,10 +350,10 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
             <div className="flex items-start mb-4">
               <EnvelopeIcon className="h-6 w-6 text-green-600 mr-3 mt-1" />
               <div>
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+                <h4 className="font-semibold text-gray-900 dark:text-gray-200 mb-1">
                   Get Your Detailed Report
                 </h4>
-                <p className="text-gray-600 dark:text-white text-sm">
+                <p className="text-gray-600 dark:text-gray-200 text-sm">
                   Receive a comprehensive PDF report with detailed analysis, implementation roadmap, and ROI projections.
                 </p>
               </div>
