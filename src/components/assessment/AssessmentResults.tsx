@@ -141,7 +141,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
 
           {/* Score Display */}
         <div className="px-6 py-8">
-          <div className={`rounded-2xl p-8 text-center ${readinessInfo.bgColor}`}>
+          <div className={`rounded-2xl p-8 text-center ${readinessInfo.bgColor} dark:bg-gray-800`}>
             <div className="relative mb-6">
               {/* Circular Progress */}
               <div className="w-32 h-32 mx-auto relative">
@@ -167,7 +167,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
                     <div className={`text-4xl font-bold ${readinessInfo.color}`}>
                       {results.overallScore}%
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">
+                    <div className="text-sm text-gray-600 dark:text-white">
                       {readinessInfo.status}
                     </div>
                   </div>
@@ -178,7 +178,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
             <h2 className={`text-2xl font-bold mb-2 ${readinessInfo.color}`}>
               {readinessInfo.title}
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 mb-6">
+            <p className="text-gray-700 dark:text-white mb-6">
               {readinessInfo.description}
             </p>
 
@@ -186,19 +186,19 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="text-center">
                 <div className="text-lg font-bold text-green-600">{results.categoryScores.technicalReadiness}%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300">Technical</div>
+                <div className="text-xs text-gray-600 dark:text-white">Technical</div>
               </div>
               <div className="text-center">
                 <div className="text-lg font-bold text-green-600">{results.categoryScores.businessReadiness}%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300">Business</div>
+                <div className="text-xs text-gray-600 dark:text-white">Business</div>
               </div>
               <div className="text-center">
                 <div className="text-lg font-bold text-purple-600">{results.categoryScores.budgetReadiness}%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300">Budget</div>
+                <div className="text-xs text-gray-600 dark:text-white">Budget</div>
               </div>
               <div className="text-center">
                 <div className="text-lg font-bold text-orange-600">{results.categoryScores.timelineReadiness}%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-300">Timeline</div>
+                <div className="text-xs text-gray-600 dark:text-white">Timeline</div>
               </div>
             </div>
           </div>
@@ -235,7 +235,7 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
               </h3>
               <div className="grid gap-4 md:grid-cols-2">
                 {results.recommendedServices.map((service, index) => (
-                  <div key={index} className={`p-4 rounded-lg border-2 ${getPriorityColor(service.priority)}`}>
+                  <div key={index} className={`p-4 rounded-lg border-2 ${getPriorityColor(service.priority)} dark:bg-gray-800`}>
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-semibold text-gray-900 dark:text-white">{service.service}</h4>
                       <span className={`text-xs font-bold px-2 py-1 rounded-full ${
@@ -346,14 +346,14 @@ export default function AssessmentResults({ data, onComplete, onRestart }: Asses
           )}
 
           {/* Email Capture Form */}
-          <div className="mt-8 bg-green-50 dark:bg-green-900/20 rounded-lg p-6 border border-green-200 dark:border-green-800">
+          <div className="mt-8 bg-green-50 dark:bg-gray-800 rounded-lg p-6 border border-green-200 dark:border-gray-700">
             <div className="flex items-start mb-4">
               <EnvelopeIcon className="h-6 w-6 text-green-600 mr-3 mt-1" />
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
                   Get Your Detailed Report
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-white text-sm">
                   Receive a comprehensive PDF report with detailed analysis, implementation roadmap, and ROI projections.
                 </p>
               </div>
