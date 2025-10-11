@@ -101,7 +101,7 @@ class SMTPEmailService {
 
   private initializeTransporter() {
     // Microsoft Office 365 SMTP configuration
-    this.transporter = nodemailer.createTransporter({
+    this.transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.office365.com',
       port: parseInt(process.env.SMTP_PORT || '587'),
       secure: process.env.SMTP_SECURE === 'true', // false for TLS

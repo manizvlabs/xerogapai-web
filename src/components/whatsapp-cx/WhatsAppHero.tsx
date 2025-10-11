@@ -6,6 +6,17 @@ import { PlayIcon, ChatBubbleLeftRightIcon, ClockIcon, ArrowTrendingUpIcon, Chec
 export default function WhatsAppHero() {
   return (
     <div className="relative isolate bg-gradient-to-br from-green-900 via-emerald-900 to-teal-900">
+      {/* Hero Banner Image Background */}
+      <div className="absolute inset-0 -z-20">
+        <img
+          src="/whatsapp_automation1.png"
+          alt="WhatsApp Automation Hero Background"
+          className="w-full h-full object-cover opacity-20"
+        />
+        {/* Dark overlay for better contrast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-900/80 via-emerald-900/80 to-teal-900/80"></div>
+      </div>
+
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">

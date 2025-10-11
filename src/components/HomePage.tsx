@@ -1,398 +1,177 @@
 'use client';
 
 import Link from 'next/link';
-import { useRegion } from '@/contexts/RegionContext';
-import Logo from './Logo';
-import { globalHomepageContent } from '@/regions/global/homepage';
-import { indianHomepageContent } from '@/regions/indian/homepage';
 
 export default function HomePage() {
-  const { currentRegion } = useRegion();
-
-  // Select content based on region
-  const content = currentRegion === 'india' ? indianHomepageContent : globalHomepageContent;
-
   return (
-    <div className="bg-white dark:bg-gray-900">
-      {/* Hero Section */}
-      <section className="relative isolate px-6 pt-14 lg:px-8">
-        {/* Background Image Layer */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10 dark:opacity-5" 
-          style={{ 
-            backgroundImage: 'url(/logo-pattern.png)',
-            backgroundSize: '800px',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'repeat',
-            zIndex: -2
-          }}
-          aria-hidden="true"
-        ></div>
+    <div className="bg-white dark:bg-gray-900 min-h-screen">
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-green-600/20 to-emerald-400/20 dark:from-green-600/10 dark:to-emerald-400/10 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }}
+      {/* Hero Banner Section */}
+      <section className="relative">
+        {/* Hero Banner Image */}
+        <div className="relative h-96 sm:h-[500px] lg:h-[600px] overflow-hidden">
+          <img
+            src="/homepage_banner1.png"
+            alt="XeroGap AI - WhatsApp Automation Hero Banner"
+            className="w-full h-full object-cover"
           />
-        </div>
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/40"></div>
 
-        {/* Logo Watermark Background */}
-        <div className="absolute inset-0 -z-5 opacity-[0.08] dark:opacity-[0.12]" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/4 transform -translate-x-1/2 -translate-y-1/2">
-            <Logo variant="hero" size="xl" className="w-80 h-auto" />
-          </div>
-          <div className="absolute top-3/4 right-1/4 transform translate-x-1/2 -translate-y-1/2">
-            <Logo variant="hero" size="xl" className="w-80 h-auto" />
-          </div>
-          <div className="absolute top-1/2 left-3/4 transform -translate-x-1/2 -translate-y-1/2 rotate-12">
-            <Logo variant="hero" size="lg" className="w-64 h-auto" />
-          </div>
-        </div>
-
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-              {content.hero.headline}
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-white">
-              {content.hero.subheadline}
-            </p>
-
-            {/* Region-specific messaging */}
-            {currentRegion === 'india' && content.hero.localizedMessage && (
-              <p className="mt-4 text-lg leading-8 text-green-600 dark:text-green-400 font-medium">
-                {content.hero.localizedMessage}
+          {/* Content overlay */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center text-white px-6 max-w-4xl">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 sm:mb-12 lg:mb-16 drop-shadow-lg">
+                Never Lose Another Customer
+              </h1>
+              <p className="text-lg sm:text-xl lg:text-2xl mb-12 sm:mb-16 lg:mb-20 leading-relaxed drop-shadow-md">
+                Your customers message you on WhatsApp at all hours.
+                <br className="hidden sm:block" />
+                <span className="block mt-2 sm:mt-4">
+                  What if someone could respond instantly - even when you're sleeping?
+                </span>
               </p>
-            )}
-
-            {/* Quick Implementation CTA Section */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <Link
-                href="/assessment"
-                className="flex items-center justify-center rounded-md bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
-              >
-                Get Free AI Readiness Assessment
-              </Link>
               <Link
                 href="/demo"
-                className="flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-green-600 border border-green-200 shadow-sm hover:bg-green-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
+                className="inline-block bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
               >
-                Book Personalized Demo
-              </Link>
-              <Link
-                href="/consultation"
-                className="flex items-center justify-center rounded-md bg-gray-100 px-6 py-3 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600 transition-colors"
-              >
-                Schedule Consultation <span aria-hidden="true">→</span>
+                See How It Works
               </Link>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-900">
-        {/* Logo Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" aria-hidden="true">
-          <div className="absolute top-12 right-12 transform rotate-6">
-            <Logo variant="hero" size="sm" className="w-20 h-auto" />
-          </div>
-          <div className="absolute bottom-12 left-12 transform -rotate-6">
-            <Logo variant="hero" size="sm" className="w-20 h-auto" />
+      {/* Secondary Banner Section */}
+      <section className="relative py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="relative">
+            <img
+              src="/homepage_banner2.png"
+              alt="XeroGap AI - WhatsApp Automation Solutions"
+              className="w-full h-auto rounded-2xl shadow-2xl"
+            />
           </div>
         </div>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              {content.services.sectionTitle}
+      </section>
+
+      {/* Main Content Section */}
+      <main className="relative">
+        {/* Massive empty space above */}
+        <div className="h-32 sm:h-48 lg:h-64"></div>
+
+        {/* Simple Process Explanation */}
+        <section className="px-6">
+          <div className="mx-auto max-w-4xl text-center">
+            {/* Empty space */}
+            <div className="h-8 sm:h-12 lg:h-16"></div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-12 sm:mb-16 lg:mb-20">
+              How It Works
             </h2>
-            {currentRegion === 'india' && content.services.localizedNote && (
-              <p className="mt-4 text-lg text-green-600 dark:text-green-400 font-medium">
-                {content.services.localizedNote}
-              </p>
-            )}
-          </div>
 
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
-              {content.services.services.map((service) => (
-                <div
-                  key={service.id}
-                  className={`relative bg-white dark:bg-gray-900 p-8 rounded-lg shadow-sm border-2 transition-all hover:shadow-md ${
-                    service.pricing.popular
-                      ? 'border-green-500 dark:border-green-400'
-                      : 'border-gray-200 dark:border-gray-700'
-                  }`}
-                >
-                  {service.pricing.popular && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-medium">
-                        Most Popular
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="mb-6">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-700 dark:text-white">
-                      {service.subtitle}
-                    </p>
-                  </div>
-
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start">
-                        <span className="text-green-500 mr-2 mt-0.5">✓</span>
-                        <span className="text-sm text-gray-700 dark:text-white">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mb-6">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-2xl font-bold text-gray-900 dark:text-white">
-                        {service.pricing.starting}
-                      </span>
-                    </div>
-                    {service.pricing.note && (
-                      <p className="text-xs text-gray-500 dark:text-white mt-1">
-                        {service.pricing.note}
-                      </p>
-                    )}
-                  </div>
-
-                  {service.href ? (
-                    <Link
-                      href={service.href}
-                      className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors text-center block"
-                    >
-                      {service.cta}
-                    </Link>
-                  ) : (
-                    <button className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors">
-                      {service.cta}
-                    </button>
-                  )}
+            {/* Three simple steps with icons */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 lg:gap-16 max-w-3xl mx-auto">
+              <div className="text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl">💬</span>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+                <p className="text-base sm:text-lg lg:text-xl text-gray-700 dark:text-white">
+                  Customer messages you on WhatsApp
+                </p>
+              </div>
 
-      {/* Social Proof Section */}
-      <section className="relative py-24 sm:py-32 bg-white dark:bg-gray-900">
-        {/* Logo Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04] pointer-events-none" aria-hidden="true">
-          <div className="absolute top-16 left-1/4 transform -translate-x-1/2 -rotate-12">
-            <Logo variant="hero" size="sm" className="w-16 h-auto" />
-          </div>
-          <div className="absolute bottom-16 right-1/4 transform translate-x-1/2 rotate-12">
-            <Logo variant="hero" size="sm" className="w-16 h-auto" />
-          </div>
-        </div>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              {content.socialProof.sectionTitle}
-            </h2>
-            {currentRegion === 'india' && content.socialProof.localizedMessage && (
-              <p className="mt-4 text-lg text-green-600 dark:text-green-400 font-medium">
-                {content.socialProof.localizedMessage}
-              </p>
-            )}
-          </div>
-
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-              {content.socialProof.testimonials.map((testimonial) => (
-                <div key={`${testimonial.author}-${testimonial.company}`} className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-                  <div className="text-4xl mb-4 text-gray-400">&quot;</div>
-                  <blockquote className="text-gray-900 dark:text-white mb-6 italic">
-                    {testimonial.quote}
-                  </blockquote>
-
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                      {testimonial.author.charAt(0)}
-                    </div>
-                    <div>
-                      <div className="font-semibold text-gray-900 dark:text-white">
-                        {testimonial.author}
-                      </div>
-                      <div className="text-sm text-gray-700 dark:text-white">
-                        {testimonial.position}
-                      </div>
-                      <div className="text-sm text-gray-600 dark:text-white">
-                        {testimonial.location}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Metrics */}
-                  <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                    {Object.entries(testimonial.metrics).map(([key, value]) => (
-                      <div key={key} className="text-center">
-                        <div className="text-2xl font-bold text-green-600 dark:text-green-400">
-                          {value}
-                        </div>
-                        <div className="text-xs text-gray-700 dark:text-white capitalize">
-                          {key.replace(/([A-Z])/g, ' $1').trim()}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+              <div className="text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl">🤖</span>
                 </div>
-              ))}
+                <p className="text-base sm:text-lg lg:text-xl text-gray-700 dark:text-white">
+                  AI responds instantly (24/7)
+                </p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <span className="text-2xl sm:text-3xl lg:text-4xl">📱</span>
+                </div>
+                <p className="text-base sm:text-lg lg:text-xl text-gray-700 dark:text-white">
+                  You get notified only for important messages
+                </p>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Partners Section */}
-      <section className="relative py-16 bg-gray-50 dark:bg-gray-900">
-        {/* Logo Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.04] pointer-events-none" aria-hidden="true">
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45">
-            <Logo variant="hero" size="sm" className="w-16 h-auto" />
-          </div>
-        </div>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-              {content.partners.sectionTitle}
-            </h2>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center">
-              {content.partners.partners.map((partner) => {
-                let logoScaleClass = "";
-                if (partner.name === "Microsoft Teams") {
-                  logoScaleClass = "scale-75";
-                } else if (partner.name === "Razorpay") {
-                  logoScaleClass = "scale-150"; // Increase size to match other logos
-                }
+            {/* Empty space */}
+            <div className="h-8 sm:h-12 lg:h-16"></div>
 
-                return (
-                  <div key={partner.name} className="group relative flex items-center justify-center p-6 bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:scale-105 min-h-[160px] min-w-[160px]">
-                    {partner.logo ? (
-                      <>
-                        <img
-                          src={partner.logo}
-                          alt={`${partner.name} logo`}
-                          className={`w-32 h-20 object-contain p-2 group-hover:opacity-75 transition-opacity duration-300 ${logoScaleClass}`}
-                        />
-                      {/* Hover overlay with company name */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
-                        <div className="bg-black bg-opacity-80 text-white px-3 py-2 rounded-md text-sm font-medium whitespace-nowrap shadow-lg border border-white border-opacity-20">
-                          {partner.name}
-                          {/* Animated underline */}
-                          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-green-400 to-emerald-400 group-hover:w-full transition-all duration-500 ease-out"></div>
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <span className="text-gray-700 dark:text-white font-medium text-center">
-                      {partner.name}
-                    </span>
-                  )}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Compliance Section */}
-      <section className="relative py-16 bg-white dark:bg-gray-900">
-        {/* Logo Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03] pointer-events-none" aria-hidden="true">
-          <div className="absolute top-8 right-8 transform rotate-6">
-            <Logo variant="icon" size="sm" className="w-12 h-auto" />
-          </div>
-          <div className="absolute bottom-8 left-8 transform -rotate-6">
-            <Logo variant="icon" size="sm" className="w-12 h-auto" />
-          </div>
-        </div>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
-              {content.compliance.sectionTitle}
-            </h2>
-            <p className="text-gray-600 dark:text-white mb-8 max-w-2xl mx-auto">
-              {content.compliance.message}
+            {/* Simple note */}
+            <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
+              No apps to install. No technical knowledge needed.
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-              {content.compliance.badges.map((badge) => (
-                <div key={badge.name} className="flex flex-col items-center p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-                  <div className="text-2xl mb-2">{badge.icon}</div>
-                  <div className="text-sm font-medium text-gray-900 dark:text-white text-center">
-                    {badge.name}
+          </div>
+        </section>
+
+        {/* Large empty space */}
+        <div className="h-24 sm:h-32 lg:h-40"></div>
+
+        {/* Single Success Story */}
+        <section className="px-6">
+          <div className="mx-auto max-w-4xl text-center">
+            {/* Empty space */}
+            <div className="h-8 sm:h-12 lg:h-16"></div>
+
+            <div className="max-w-2xl mx-auto">
+              <blockquote className="text-lg sm:text-xl lg:text-2xl text-gray-700 dark:text-white italic mb-6 sm:mb-8">
+                "Customers now get instant responses even at 3 AM. My business never sleeps."
+              </blockquote>
+
+              <div className="flex items-center justify-center space-x-4">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl">
+                  R
+                </div>
+                <div className="text-left">
+                  <div className="font-semibold text-gray-900 dark:text-white text-base sm:text-lg">
+                    Rajesh Kumar
+                  </div>
+                  <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                    VP, More Supermarkets
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Final CTA Section */}
-      <section className="relative py-24 sm:py-32 bg-green-600 dark:bg-green-700">
-        {/* Logo Background Pattern */}
-        <div className="absolute inset-0 opacity-[0.06] pointer-events-none" aria-hidden="true">
-          <div className="absolute top-16 left-16 transform rotate-12">
-            <Logo variant="dark" size="md" className="w-28 h-auto" />
-          </div>
-          <div className="absolute bottom-16 right-16 transform -rotate-12">
-            <Logo variant="dark" size="md" className="w-28 h-auto" />
-          </div>
-          <div className="absolute top-1/2 right-1/3 transform translate-x-1/2 -translate-y-1/2 rotate-45">
-            <Logo variant="dark" size="sm" className="w-16 h-auto" />
-          </div>
-        </div>
-        <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              {content.finalCTA.sectionTitle}
+        {/* Large empty space */}
+        <div className="h-32 sm:h-40 lg:h-48"></div>
+
+        {/* Final CTA Section */}
+        <section className="px-6">
+          <div className="mx-auto max-w-4xl text-center">
+            {/* Empty space */}
+            <div className="h-8 sm:h-12 lg:h-16"></div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-8 sm:mb-12 lg:mb-16">
+              Ready to never miss another customer?
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-green-100">
-              {content.finalCTA.content}
-            </p>
-            {currentRegion === 'india' && content.finalCTA.localizedContent && (
-              <p className="mt-4 text-lg text-green-200">
-                {content.finalCTA.localizedContent}
+
+            <div className="space-y-6 sm:space-y-8">
+              <Link
+                href="/demo"
+                className="inline-block bg-green-600 text-white px-8 py-4 sm:px-12 sm:py-6 rounded-lg font-semibold text-lg sm:text-xl hover:bg-green-700 transition-colors shadow-lg"
+              >
+                Start Free Trial
+              </Link>
+
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                No credit card required
               </p>
-            )}
-
-            <ul className="mt-8 space-y-2">
-              {content.finalCTA.offers.map((offer) => (
-                <li key={offer} className="flex items-center justify-center text-green-100">
-                  <span className="text-green-300 mr-2">✓</span>
-                  {offer}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-4">
-              <Link
-                href={content.finalCTA.primaryCTA.href}
-                className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-green-600 shadow-sm hover:bg-green-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
-              >
-                {content.finalCTA.primaryCTA.text}
-              </Link>
-              <Link
-                href={content.finalCTA.secondaryCTA.href}
-                className="rounded-md border-2 border-white px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-white hover:text-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors"
-              >
-                {content.finalCTA.secondaryCTA.text} <span aria-hidden="true">→</span>
-              </Link>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Large empty space */}
+        <div className="h-32 sm:h-40 lg:h-48"></div>
+      </main>
     </div>
   );
 }
