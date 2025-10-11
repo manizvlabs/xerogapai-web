@@ -1,9 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { ChevronLeftIcon, CalendarIcon, SparklesIcon } from '@heroicons/react/24/outline';
-import CalendlyWidget from '@/components/calendly/CalendlyWidget';
-import { CalendlyEventData } from '@/lib/calendly/calendly';
+import React, { useState } from 'react';
+import { ChevronLeftIcon, CalendarIcon, ClockIcon } from '@heroicons/react/24/outline';
 import DemoBookingForm from './DemoBookingForm';
 
 interface DemoBookingEnhancedProps {
@@ -11,35 +9,63 @@ interface DemoBookingEnhancedProps {
   onBack: () => void;
 }
 
-type BookingMethod = 'form' | 'calendly';
+type BookingMethod = 'form' | 'quick';
 
 export default function DemoBookingEnhanced({ onComplete, onBack }: DemoBookingEnhancedProps) {
-  const [bookingMethod, setBookingMethod] = useState<BookingMethod>('calendly');
+  const [bookingMethod, setBookingMethod] = useState<BookingMethod>('quick');
   const [userInfo, setUserInfo] = useState({
     firstName: '',
     lastName: '',
     email: '',
     companyName: '',
-    industry: '',
-    challenges: '',
+    preferredDate: '',
+    preferredTime: '',
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    consultationType: 'AI Demo',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Calendly URL - Replace with your actual Calendly URL
-  const calendlyUrl = 'https://calendly.com/xerogap-ai/demo';
+  const handleQuickBooking = async () => {
+    // Validate required fields
+    if (!userInfo.firstName || !userInfo.lastName || !userInfo.email || !userInfo.preferredDate || !userInfo.preferredTime) {
+      alert('Please fill in all required fields');
+      return;
+    }
 
-  const handleCalendlyBooking = (data: CalendlyEventData) => {
-    // Combine Calendly data with user info if available
-    const bookingData = {
-      ...userInfo,
-      calendlyData: data,
-      bookingMethod: 'calendly',
-      eventName: data.payload.event.name,
-      startTime: data.payload.event.start_time,
-      endTime: data.payload.event.end_time,
-      hostName: data.payload.host.name,
-    };
+    setIsSubmitting(true);
 
-    onComplete(bookingData);
+    try {
+      // Call the demo booking API
+      const response = await fetch('/api/demo-booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userInfo),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to book demo');
+      }
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Pass the booking data to the parent component
+        onComplete({
+          ...userInfo,
+          calendarEventId: result.calendarEventId,
+          joinUrl: result.joinUrl,
+        });
+      } else {
+        throw new Error(result.error || 'Failed to book demo');
+      }
+    } catch (error) {
+      console.error('Booking failed:', error);
+      alert('Failed to book demo. Please try again or contact support.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleFormBooking = (formData: any) => {
@@ -76,21 +102,21 @@ export default function DemoBookingEnhanced({ onComplete, onBack }: DemoBookingE
         <div className="px-6 py-6 border-b border-gray-200 dark:border-gray-700">
           <div className="flex flex-col sm:flex-row gap-4">
             <button
-              onClick={() => setBookingMethod('calendly')}
+              onClick={() => setBookingMethod('quick')}
               className={`flex-1 p-4 rounded-lg border-2 transition-all ${
-                bookingMethod === 'calendly'
-                  ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
-                  : 'border-gray-200 dark:border-gray-600 hover:border-gray-300'
+                bookingMethod === 'quick'
+                  ? 'border-green-500 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300'
+                  : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white'
               }`}
             >
               <div className="flex items-center mb-2">
-                <CalendarIcon className="w-6 h-6 text-green-600 mr-3" />
+                <ClockIcon className="w-6 h-6 text-green-600 mr-3" />
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                  Quick Calendly Booking
+                  Quick Outlook Booking
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-white text-left">
-                Fast, interactive calendar booking with instant confirmation
+                Schedule directly with Outlook Calendar integration
               </p>
             </button>
 
@@ -98,12 +124,12 @@ export default function DemoBookingEnhanced({ onComplete, onBack }: DemoBookingE
               onClick={() => setBookingMethod('form')}
               className={`flex-1 p-4 rounded-lg border-2 transition-all ${
                 bookingMethod === 'form'
-                  ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
-                  : 'border-gray-200 dark:border-gray-600 hover:border-gray-300'
+                  ? 'border-green-500 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300'
+                  : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white'
               }`}
             >
               <div className="flex items-center mb-2">
-                <SparklesIcon className="w-6 h-6 text-purple-600 mr-3" />
+                <CalendarIcon className="w-6 h-6 text-purple-600 mr-3" />
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Detailed Form Booking
                 </h3>
@@ -117,68 +143,127 @@ export default function DemoBookingEnhanced({ onComplete, onBack }: DemoBookingE
 
         {/* Booking Content */}
         <div className="p-6">
-          {bookingMethod === 'calendly' ? (
+          {bookingMethod === 'quick' ? (
             <div>
               <div className="mb-6">
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  Select Your Preferred Date & Time
+                  Schedule Your AI Demo
                 </h2>
                 <p className="text-gray-600 dark:text-white">
-                  Choose a convenient time for your personalized AI automation demo. The session will last about 45 minutes.
+                  Fill in your details below and we'll send you a calendar invite with a Teams meeting link.
                 </p>
               </div>
 
-              <CalendlyWidget
-                url={calendlyUrl}
-                prefill={{
-                  name: userInfo.firstName && userInfo.lastName ? `${userInfo.firstName} ${userInfo.lastName}` : undefined,
-                  email: userInfo.email || undefined,
-                  firstName: userInfo.firstName || undefined,
-                  lastName: userInfo.lastName || undefined,
-                  customAnswers: {
-                    'Company Name': userInfo.companyName || '',
-                    'Industry': userInfo.industry || '',
-                    'Current Challenges': userInfo.challenges || '',
-                  }
-                }}
-                onBookingComplete={handleCalendlyBooking}
-                height={600}
-              />
+              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600 p-6 mb-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+                      First Name *
+                    </label>
+                    <input
+                      id="firstName"
+                      type="text"
+                      value={userInfo.firstName}
+                      onChange={(e) => updateUserInfo({ firstName: e.target.value })}
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      placeholder="Enter your first name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+                      Last Name *
+                    </label>
+                    <input
+                      id="lastName"
+                      type="text"
+                      value={userInfo.lastName}
+                      onChange={(e) => updateUserInfo({ lastName: e.target.value })}
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      placeholder="Enter your last name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+                      Email *
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      value={userInfo.email}
+                      onChange={(e) => updateUserInfo({ email: e.target.value })}
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      placeholder="your.email@company.com"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="companyName" className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+                      Company Name
+                    </label>
+                    <input
+                      id="companyName"
+                      type="text"
+                      value={userInfo.companyName}
+                      onChange={(e) => updateUserInfo({ companyName: e.target.value })}
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      placeholder="Your company name"
+                    />
+                  </div>
+                </div>
 
-              {/* Optional Info Collection */}
-              <div className="mt-6 bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-                <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-3">
-                  Optional: Help us prepare better (Pre-fill below)
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    placeholder="First Name"
-                    value={userInfo.firstName}
-                    onChange={(e) => updateUserInfo({ firstName: e.target.value })}
-                    className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Last Name"
-                    value={userInfo.lastName}
-                    onChange={(e) => updateUserInfo({ lastName: e.target.value })}
-                    className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    value={userInfo.email}
-                    onChange={(e) => updateUserInfo({ email: e.target.value })}
-                    className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Company Name"
-                    value={userInfo.companyName}
-                    onChange={(e) => updateUserInfo({ companyName: e.target.value })}
-                    className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div>
+                    <label htmlFor="preferredDate" className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+                      Preferred Date *
+                    </label>
+                    <input
+                      id="preferredDate"
+                      type="date"
+                      value={userInfo.preferredDate}
+                      onChange={(e) => updateUserInfo({ preferredDate: e.target.value })}
+                      min={new Date().toISOString().split('T')[0]}
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="preferredTime" className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
+                      Preferred Time *
+                    </label>
+                    <select
+                      id="preferredTime"
+                      value={userInfo.preferredTime}
+                      onChange={(e) => updateUserInfo({ preferredTime: e.target.value })}
+                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    >
+                      <option value="">Select time</option>
+                      <option value="09:00">9:00 AM</option>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="11:00">11:00 AM</option>
+                      <option value="14:00">2:00 PM</option>
+                      <option value="15:00">3:00 PM</option>
+                      <option value="16:00">4:00 PM</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="flex justify-end">
+                  <button
+                    onClick={handleQuickBooking}
+                    disabled={isSubmitting}
+                    className={`px-6 py-3 rounded-lg font-semibold transition-colors ${
+                      isSubmitting
+                        ? 'bg-gray-400 cursor-not-allowed text-gray-600'
+                        : 'bg-green-600 hover:bg-green-700 text-white'
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center">
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                        Scheduling...
+                      </div>
+                    ) : (
+                      'Schedule Demo'
+                    )}
+                  </button>
                 </div>
               </div>
             </div>

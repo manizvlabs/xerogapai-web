@@ -180,52 +180,6 @@ export default function WhatsAppIndustries() {
           })}
         </div>
 
-        {/* Industry Comparison */}
-        <div className="mt-20 bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              WhatsApp Automation by Industry
-            </h3>
-            <p className="text-gray-600 dark:text-white">
-              See how different industries benefit from automated WhatsApp communication
-            </p>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <th className="text-left py-4 px-4 font-semibold text-gray-900 dark:text-white">Industry</th>
-                  <th className="text-center py-4 px-4 font-semibold text-gray-900 dark:text-white">Avg Automation Rate</th>
-                  <th className="text-center py-4 px-4 font-semibold text-gray-900 dark:text-white">Response Time</th>
-                  <th className="text-center py-4 px-4 font-semibold text-gray-900 dark:text-white">Cost Savings</th>
-                  <th className="text-center py-4 px-4 font-semibold text-gray-900 dark:text-white">Revenue Impact</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                {industries.map((industry, index) => (
-                  <tr key={index}>
-                    <td className="py-4 px-4 text-gray-900 dark:text-white font-medium">
-                      {industry.name}
-                    </td>
-                    <td className="py-4 px-4 text-center text-green-600 font-semibold">
-                      {industry.metrics.automation}
-                    </td>
-                    <td className="py-4 px-4 text-center text-green-600 font-semibold">
-                      2 min
-                    </td>
-                    <td className="py-4 px-4 text-center text-purple-600 font-semibold">
-                      95%
-                    </td>
-                    <td className="py-4 px-4 text-center text-orange-600 font-semibold">
-                      {industry.metrics.revenue}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
 
         {/* CTA Section */}
         <div className="mt-16 text-center">

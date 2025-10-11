@@ -19,8 +19,10 @@ export interface EmailAttachment {
 // Microsoft Graph API implementation
 class MicrosoftGraphEmailService {
   private graphClient: Client;
+  private userId: string;
 
   constructor() {
+    this.userId = '44dcba14-cfef-49e7-bfb9-fda4b477ed8e'; // User's Object ID
     this.initializeGraphClient();
   }
 
@@ -61,7 +63,7 @@ class MicrosoftGraphEmailService {
       };
 
       const result = await this.graphClient
-        .api('/me/sendMail')
+        .api(`/users/${this.userId}/sendMail`)
         .post({ message });
 
       return {
@@ -80,7 +82,7 @@ class MicrosoftGraphEmailService {
 
   async verifyConnection(): Promise<{ success: boolean; error?: string }> {
     try {
-      await this.graphClient.api('/me').get();
+      await this.graphClient.api(`/users/${this.userId}`).get();
       return { success: true };
     } catch (error) {
       return {
@@ -499,6 +501,151 @@ Recommended Next Steps:
 3. Start Small - Begin with one process automation
 
 Visit ${process.env.NEXT_PUBLIC_SITE_DOMAIN || 'https://xerogap.com'}/consultation to book your consultation.
+
+Questions? Contact us at support@xerogap.com
+      `,
+    };
+  }
+
+  // Generate demo booking confirmation email
+  generateDemoBookingEmail(bookingData: any, calendarResult?: { joinUrl?: string }): EmailData {
+    const { firstName, lastName, email, companyName, preferredDate, preferredTime, consultationType } = bookingData;
+
+    const startDateTime = new Date(`${preferredDate}T${preferredTime}`);
+    const endDateTime = new Date(startDateTime.getTime() + 60 * 60 * 1000); // 1 hour meeting
+
+    return {
+      to: email,
+      subject: `Demo Booked: ${consultationType} - ${startDateTime.toLocaleDateString()}`,
+      html: `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Demo Booking Confirmation</title>
+        </head>
+        <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f8fafc;">
+          <div style="max-width: 600px; margin: 0 auto; background-color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+
+            <!-- Header -->
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 30px; text-align: center;">
+              <h1 style="margin: 0; font-size: 28px; font-weight: 700;">Demo Booked Successfully!</h1>
+              <p style="margin: 10px 0 0 0; opacity: 0.9; font-size: 16px;">Your AI automation demo is confirmed</p>
+            </div>
+
+            <!-- Booking Details -->
+            <div style="padding: 40px 30px;">
+              <h2 style="color: #1e293b; margin-bottom: 20px;">Demo Details</h2>
+              <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                  <span style="color: #64748b;">Name:</span>
+                  <span style="color: #1e293b; font-weight: 500;">${firstName} ${lastName}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                  <span style="color: #64748b;">Email:</span>
+                  <span style="color: #1e293b; font-weight: 500;">${email}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                  <span style="color: #64748b;">Company:</span>
+                  <span style="color: #1e293b; font-weight: 500;">${companyName || 'Not provided'}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                  <span style="color: #64748b;">Date:</span>
+                  <span style="color: #1e293b; font-weight: 500;">${startDateTime.toLocaleDateString()}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                  <span style="color: #64748b;">Time:</span>
+                  <span style="color: #1e293b; font-weight: 500;">${startDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - ${endDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #64748b;">Duration:</span>
+                  <span style="color: #1e293b; font-weight: 500;">60 minutes</span>
+                </div>
+              </div>
+
+              ${calendarResult?.joinUrl ? `
+                <div style="background-color: #f0f9ff; border: 1px solid #3b82f6; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+                  <h3 style="color: #1e40af; margin: 0 0 10px 0;">📅 Calendar Invite Sent!</h3>
+                  <p style="margin: 0; color: #1e40af;">
+                    A calendar invite has been added to your Outlook calendar with a Teams meeting link.
+                    <a href="${calendarResult.joinUrl}" style="color: #3b82f6; text-decoration: underline;">Join Meeting</a>
+                  </p>
+                </div>
+              ` : ''}
+
+              <!-- What to Expect -->
+              <div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; margin-bottom: 20px;">
+                <h3 style="color: #92400e; margin: 0 0 10px 0;">What to Expect</h3>
+                <ul style="margin: 0; padding-left: 20px; color: #92400e;">
+                  <li>Personalized demo based on your business needs</li>
+                  <li>Live demonstration of AI automation features</li>
+                  <li>Q&A session to address your specific questions</li>
+                  <li>Next steps and implementation guidance</li>
+                </ul>
+              </div>
+
+              <!-- Preparation Tips -->
+              <div style="background-color: #f0fdf4; border-left: 4px solid #10b981; padding: 20px; margin-bottom: 20px;">
+                <h3 style="color: #059669; margin: 0 0 10px 0;">Preparation Tips</h3>
+                <ul style="margin: 0; padding-left: 20px; color: #059669;">
+                  <li>Have your current processes or challenges ready to discuss</li>
+                  <li>Prepare questions about AI automation for your industry</li>
+                  <li>Ensure you have a stable internet connection for the demo</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div style="padding: 30px; text-align: center; border-top: 1px solid #e2e8f0;">
+              <a href="${process.env.NEXT_PUBLIC_SITE_DOMAIN || 'https://xerogap.com'}/assessment"
+                 style="display: inline-block; background-color: #667eea; color: white; text-decoration: none; padding: 15px 30px; border-radius: 8px; font-weight: 600; margin-right: 15px;">
+                Take AI Assessment
+              </a>
+              <a href="${process.env.NEXT_PUBLIC_SITE_DOMAIN || 'https://xerogap.com'}/contact"
+                 style="display: inline-block; background-color: #10b981; color: white; text-decoration: none; padding: 15px 30px; border-radius: 8px; font-weight: 600;">
+                Contact Support
+              </a>
+            </div>
+
+            <!-- Footer -->
+            <div style="background-color: #f8fafc; padding: 30px; text-align: center; border-top: 1px solid #e2e8f0;">
+              <p style="margin: 0; color: #64748b; font-size: 14px;">
+                Questions about your demo? Reply to this email or contact us at
+                <a href="mailto:support@xerogap.com" style="color: #667eea;">support@xerogap.com</a>
+              </p>
+              <p style="margin: 10px 0 0 0; color: #94a3b8; font-size: 12px;">
+                © 2025 XeroGap AI. All rights reserved.
+              </p>
+            </div>
+
+          </div>
+        </body>
+        </html>
+      `,
+      text: `
+Demo Booking Confirmation
+
+Demo Details:
+- Name: ${firstName} ${lastName}
+- Email: ${email}
+- Company: ${companyName || 'Not provided'}
+- Date: ${startDateTime.toLocaleDateString()}
+- Time: ${startDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - ${endDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+- Duration: 60 minutes
+
+${calendarResult?.joinUrl ? `Calendar invite sent with Teams meeting link: ${calendarResult.joinUrl}` : ''}
+
+What to Expect:
+- Personalized demo based on your business needs
+- Live demonstration of AI automation features
+- Q&A session to address your specific questions
+- Next steps and implementation guidance
+
+Preparation Tips:
+- Have your current processes or challenges ready to discuss
+- Prepare questions about AI automation for your industry
+- Ensure you have a stable internet connection for the demo
 
 Questions? Contact us at support@xerogap.com
       `,

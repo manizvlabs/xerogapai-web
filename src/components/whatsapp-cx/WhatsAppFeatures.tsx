@@ -100,53 +100,6 @@ export default function WhatsAppFeatures() {
           </div>
         </div>
 
-        {/* Feature Comparison */}
-        <div className="mt-20 bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-          <div className="p-8">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-              WhatsApp CX Copilot vs Traditional Support
-            </h3>
-
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-gray-200 dark:border-gray-700">
-                    <th className="text-left py-4 px-4 font-semibold text-gray-900 dark:text-white">Feature</th>
-                    <th className="text-center py-4 px-4 font-semibold text-green-600">WhatsApp CX Copilot</th>
-                    <th className="text-center py-4 px-4 font-semibold text-gray-500">Traditional Support</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                  <tr>
-                    <td className="py-4 px-4 text-gray-900 dark:text-white font-medium">Response Time</td>
-                    <td className="py-4 px-4 text-center text-green-600 font-semibold">2 minutes</td>
-                    <td className="py-4 px-4 text-center text-gray-500">6+ hours</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-4 text-gray-900 dark:text-white font-medium">Availability</td>
-                    <td className="py-4 px-4 text-center text-green-600 font-semibold">24/7</td>
-                    <td className="py-4 px-4 text-center text-gray-500">9 AM - 6 PM</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-4 text-gray-900 dark:text-white font-medium">Languages</td>
-                    <td className="py-4 px-4 text-center text-green-600 font-semibold">20+</td>
-                    <td className="py-4 px-4 text-center text-gray-500">1-2</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-4 text-gray-900 dark:text-white font-medium">Cost per Conversation</td>
-                    <td className="py-4 px-4 text-center text-green-600 font-semibold">$0.10</td>
-                    <td className="py-4 px-4 text-center text-gray-500">$5.00+</td>
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-4 text-gray-900 dark:text-white font-medium">Customer Satisfaction</td>
-                    <td className="py-4 px-4 text-center text-green-600 font-semibold">95%</td>
-                    <td className="py-4 px-4 text-center text-gray-500">75%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -105,11 +105,34 @@ export default function DemoBookingForm({ onComplete, onBack }: DemoBookingFormP
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      onComplete(formData);
+      // Call the demo booking API
+      const response = await fetch('/api/demo-booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to book demo');
+      }
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Pass the booking data to the parent component
+        onComplete({
+          ...formData,
+          calendarEventId: result.calendarEventId,
+          joinUrl: result.joinUrl,
+        });
+      } else {
+        throw new Error(result.error || 'Failed to book demo');
+      }
     } catch (error) {
       console.error('Booking failed:', error);
+      alert('Failed to book demo. Please try again or contact support.');
     } finally {
       setIsSubmitting(false);
     }

@@ -69,60 +69,6 @@ export default function WhatsAppBenefits() {
   return (
     <section className="py-24 sm:py-32 bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-            Why Businesses Choose WhatsApp CX Copilot
-          </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-            Measurable results that drive business growth and customer satisfaction across industries.
-          </p>
-        </div>
-
-        {/* Benefits Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
-          {benefits.map((benefit, index) => {
-            const IconComponent = benefit.icon;
-            const colorClasses = {
-              green: 'text-green-600 bg-green-100 dark:bg-green-900/30',
-              blue: 'text-green-600 bg-green-100 dark:bg-green-900/30',
-              purple: 'text-purple-600 bg-purple-100 dark:bg-purple-900/30'
-            };
-
-            return (
-              <div
-                key={index}
-                className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700"
-              >
-                <div className="flex items-center mb-6">
-                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center mr-4 ${colorClasses[benefit.color as keyof typeof colorClasses]}`}>
-                    <IconComponent className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                    {benefit.title}
-                  </h3>
-                </div>
-
-                <p className="text-gray-600 dark:text-white mb-6">
-                  {benefit.description}
-                </p>
-
-                <div className="space-y-3">
-                  {benefit.metrics.map((metric, metricIndex) => (
-                    <div key={metricIndex} className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
-                      <span className="text-sm text-gray-600 dark:text-white">{metric.label}</span>
-                      <span className={`text-sm font-semibold ${
-                        benefit.color === 'green' ? 'text-green-600' :
-                        benefit.color === 'blue' ? 'text-green-600' : 'text-purple-600'
-                      }`}>
-                        {metric.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
 
         {/* Industry Use Cases */}
         <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 mb-20">
@@ -182,34 +128,6 @@ export default function WhatsAppBenefits() {
           </div>
         </div>
 
-        {/* ROI Calculator Preview */}
-        <div className="bg-gradient-to-r from-green-600 to-green-600 rounded-2xl p-8 text-white text-center">
-          <h3 className="text-2xl font-bold mb-4">
-            Calculate Your Potential ROI
-          </h3>
-          <p className="text-green-100 mb-8 max-w-2xl mx-auto">
-            See exactly how much WhatsApp automation can save your business with our interactive ROI calculator.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-              <div className="text-2xl font-bold mb-1">95%</div>
-              <div className="text-sm text-green-100">Cost Reduction</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-              <div className="text-2xl font-bold mb-1">3x</div>
-              <div className="text-sm text-green-100">Conversion Increase</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-              <div className="text-2xl font-bold mb-1">6-month</div>
-              <div className="text-sm text-green-100">ROI Payback</div>
-            </div>
-          </div>
-
-          <button className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-            Calculate Your ROI
-          </button>
-        </div>
       </div>
     </section>
   );

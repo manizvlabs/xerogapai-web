@@ -49,17 +49,19 @@ export class CalendlyIntegration {
       const existingScript = document.querySelector('script[src*="calendly.com/assets/external/widget.js"]');
       if (existingScript) {
         this.scriptLoaded = true;
-        resolve();
+        // Wait for Calendly to be available
+        this.waitForCalendly().then(resolve).catch(reject);
         return;
       }
 
       const script = document.createElement('script');
       script.src = 'https://assets.calendly.com/assets/external/widget.js';
       script.async = true;
+      script.defer = true; // Add defer for better loading
 
       script.onload = () => {
         this.scriptLoaded = true;
-        resolve();
+        this.waitForCalendly().then(resolve).catch(reject);
       };
 
       script.onerror = () => {
@@ -67,6 +69,27 @@ export class CalendlyIntegration {
       };
 
       document.head.appendChild(script);
+    });
+  }
+
+  private static async waitForCalendly(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const maxAttempts = 50;
+      let attempts = 0;
+
+      const checkCalendly = () => {
+        attempts++;
+
+        if (typeof window !== 'undefined' && window.Calendly) {
+          resolve();
+        } else if (attempts >= maxAttempts) {
+          reject(new Error('Calendly not available after loading script'));
+        } else {
+          setTimeout(checkCalendly, 100);
+        }
+      };
+
+      checkCalendly();
     });
   }
 

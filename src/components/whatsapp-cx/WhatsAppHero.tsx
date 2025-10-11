@@ -143,7 +143,7 @@ export default function WhatsAppHero() {
           {/* Trust Signals */}
           <div className="mt-12 pt-8 border-t border-slate-700">
             <p className="text-sm text-slate-400 mb-6">
-              Trusted by 200+ businesses across MEA, Europe, and Asia
+              Trusted by many businesses across MEA, Europe, and Asia
             </p>
             <div className="flex items-center justify-center space-x-8 opacity-70">
               <div className="text-center">

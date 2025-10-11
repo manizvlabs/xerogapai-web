@@ -77,7 +77,7 @@ export default function CalendlyWidget({
 
   if (error) {
     return (
-      <div className={`flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-lg ${className}`}>
+      <div className={`flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-600 ${className}`}>
         <div className="text-center p-8">
           <div className="text-red-500 mb-4">
             <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,12 +90,20 @@ export default function CalendlyWidget({
           <p className="text-gray-600 dark:text-white mb-4">
             {error}
           </p>
-          <button
-            onClick={() => window.location.reload()}
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium"
-          >
-            Try Again
-          </button>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <button
+              onClick={() => window.location.reload()}
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+            >
+              Try Again
+            </button>
+            <button
+              onClick={() => window.open('mailto:sales@xerogap.ai?subject=Demo Request&body=Hi, I would like to schedule an AI demo. Please let me know available times.', '_blank')}
+              className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+            >
+              Contact Us Directly
+            </button>
+          </div>
         </div>
       </div>
     );
