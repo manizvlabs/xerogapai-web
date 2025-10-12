@@ -359,10 +359,22 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
                       {/* Combine and sort all slots chronologically */}
                       {(() => {
-                        const allSlots = [
-                          ...available.map(slot => ({ ...slot, type: 'available' })),
-                          ...busy.map(slot => ({ ...slot, type: 'busy' }))
-                        ];
+                        // Create a map to deduplicate and prioritize slots
+                        const slotMap = new Map();
+
+                        // Add available slots first
+                        available.forEach(slot => {
+                          const key = `${slot.date}-${slot.time}`;
+                          slotMap.set(key, { ...slot, type: 'available' });
+                        });
+
+                        // Add busy slots (these override available slots at same time)
+                        busy.forEach(slot => {
+                          const key = `${slot.date}-${slot.time}`;
+                          slotMap.set(key, { ...slot, type: 'busy' });
+                        });
+
+                        const allSlots = Array.from(slotMap.values());
 
                         // Sort by time (convert time to minutes for proper sorting)
                         allSlots.sort((a, b) => {
@@ -374,7 +386,7 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
                         return allSlots.map((slot) => (
                           slot.type === 'available' ? (
                             <button
-                              key={`${slot.date}-${slot.time}`}
+                              key={`available-${slot.date}-${slot.time}`}
                               onClick={() => handleSlotClick(slot)}
                               className={`p-3 rounded-lg text-center transition-colors ${
                                 selectedSlot?.date === slot.date && selectedSlot?.time === slot.time
