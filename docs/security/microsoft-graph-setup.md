@@ -42,6 +42,10 @@ Since Microsoft deprecated app passwords for new Office 365 accounts, **Microsof
 5. Search for and add these permissions:
    - `Mail.Send` - Send mail as any user
    - `Mail.ReadWrite` - Read and write mail (optional, for advanced features)
+   - `Calendars.ReadWrite` - Create and manage calendar events
+   - `OnlineMeetings.ReadWrite.All` - Create online meetings with Teams links
+   - `User.Read.All` - Read user profiles (required for Teams API)
+   - `Directory.Read.All` - Read directory data (required for Teams API)
 6. Click **"Grant admin consent"** for your organization
 
 **Why "daemon without signed-in user"?**

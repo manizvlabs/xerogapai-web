@@ -52,6 +52,7 @@ SMTP_FROM_EMAIL="noreply@xerogap.com"
 MS_GRAPH_CLIENT_ID="your-azure-app-client-id"
 MS_GRAPH_CLIENT_SECRET="your-azure-app-client-secret"
 MS_GRAPH_TENANT_ID="your-azure-tenant-id"
+MS_GRAPH_OBJECT_ID="your-user-object-id"
 
 # See docs/security/microsoft-graph-setup.md for detailed setup instructions
 

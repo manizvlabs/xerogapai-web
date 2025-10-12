@@ -38,9 +38,14 @@ export interface CalendarResponse {
 
 // Microsoft Graph Calendar implementation
 class MicrosoftGraphCalendarService {
-  private graphClient: Client | null = null;
+  private _graphClient: Client | null = null;
   private readonly isConfigured: boolean;
   private readonly userId: string;
+  private _initializationPromise: Promise<void> | null = null;
+
+  get graphClient() {
+    return this._graphClient;
+  }
 
   constructor() {
     this.isConfigured = !!(process.env.MS_GRAPH_CLIENT_ID && process.env.MS_GRAPH_CLIENT_SECRET && process.env.MS_GRAPH_TENANT_ID);
@@ -49,10 +54,8 @@ class MicrosoftGraphCalendarService {
     this.userId = process.env.MS_GRAPH_OBJECT_ID || '44dcba14-cfef-49e7-bfb9-fda4b477ed8e';
 
     if (this.isConfigured) {
-      // Initialize Graph client asynchronously
-      this.initializeGraphClient().catch(error => {
-        console.error('Failed to initialize Graph client during construction:', error);
-      });
+      // Initialize Graph client asynchronously and store the promise
+      this._initializationPromise = this.initializeGraphClient();
     }
   }
 
@@ -79,7 +82,7 @@ class MicrosoftGraphCalendarService {
       console.log('✅ Access token acquired successfully');
 
       // Initialize the Graph client
-      this.graphClient = Client.initWithMiddleware({
+      this._graphClient = Client.initWithMiddleware({
         authProvider: {
           getAccessToken: async () => {
             const token = await credential.getToken('https://graph.microsoft.com/.default');
@@ -91,13 +94,29 @@ class MicrosoftGraphCalendarService {
     } catch (error) {
       console.error('❌ Failed to initialize Microsoft Graph client:', error);
       console.error('   Error details:', error.message || error);
-      this.graphClient = null;
+      this._graphClient = null;
       throw error; // Re-throw to prevent silent failures
     }
   }
 
+  private async ensureInitialized(): Promise<void> {
+    if (this._initializationPromise) {
+      await this._initializationPromise;
+    }
+  }
+
   async createCalendarEvent(event: CalendarEvent): Promise<CalendarResponse> {
-    if (!this.isConfigured || !this.graphClient) {
+    if (!this.isConfigured) {
+      return {
+        success: false,
+        error: 'Microsoft Graph API credentials not configured'
+      };
+    }
+
+    // Ensure Graph client is initialized before using it
+    await this.ensureInitialized();
+
+    if (!this._graphClient) {
       return {
         success: false,
         error: 'Microsoft Graph API credentials not configured'
@@ -105,29 +124,150 @@ class MicrosoftGraphCalendarService {
     }
 
     try {
-      const calendarEvent = {
-        subject: event.subject,
-        start: event.start,
-        end: event.end,
-        body: event.body || {
-          contentType: 'html',
-          content: `<p>Demo booking confirmation</p><p>Please join the meeting at the scheduled time.</p>`
-        },
-        location: event.location,
-        attendees: event.attendees || [],
-        isOnlineMeeting: event.isOnlineMeeting || true,
-        onlineMeetingProvider: event.onlineMeetingProvider || 'teamsForBusiness'
-      };
-
-      const result = await this.graphClient
-        .api(`/users/${this.userId}/events`)
-        .post(calendarEvent);
-
-      // Extract join URL if it's an online meeting
       let joinUrl = undefined;
-      if (result.onlineMeetingUrl) {
-        joinUrl = result.onlineMeetingUrl;
+      let result = null;
+
+      try {
+        // Method 1: Try to create Teams meeting using /me/onlineMeetings endpoint
+        console.log('📅 Creating Teams meeting using /me/onlineMeetings...');
+        let teamsMeeting;
+        try {
+          teamsMeeting = await this._graphClient
+            .api(`/users/${this.userId}/onlineMeetings`)
+            .post({
+              startDateTime: event.start.dateTime,
+              endDateTime: event.end.dateTime,
+              subject: event.subject,
+              participants: {
+                attendees: event.attendees?.map(attendee => ({
+                  emailAddress: {
+                    address: attendee.emailAddress.address,
+                    name: attendee.emailAddress.name || attendee.emailAddress.address
+                  }
+                })) || []
+              }
+            });
+          console.log('✅ Teams meeting created successfully:', teamsMeeting.joinWebUrl);
+        } catch (teamsError) {
+          console.warn('⚠️ Teams meeting creation failed:', teamsError.message);
+          teamsMeeting = null;
+        }
+
+        // Method 2: If Teams meeting creation failed, try creating calendar event with Teams
+        if (!teamsMeeting) {
+          console.log('📅 Falling back to calendar event with Teams meeting...');
+          const calendarEvent = {
+            subject: event.subject,
+            start: event.start,
+            end: event.end,
+            body: event.body || {
+              contentType: 'html',
+              content: `<p>Demo booking confirmation</p><p>Please join the meeting at the scheduled time.</p>`
+            },
+            location: event.location,
+            attendees: event.attendees || [],
+            isOnlineMeeting: true,
+            onlineMeetingProvider: 'teamsForBusiness'
+          };
+
+          result = await this._graphClient
+            .api(`/users/${this.userId}/events`)
+            .post(calendarEvent);
+
+          console.log('📥 Calendar event response - isOnlineMeeting:', result.isOnlineMeeting, 'has onlineMeetingUrl:', !!result.onlineMeetingUrl);
+        } else {
+          // Method 3: Create calendar event and link it to the Teams meeting
+          console.log('📅 Creating calendar event linked to Teams meeting...');
+          const calendarEvent = {
+            subject: event.subject,
+            start: event.start,
+            end: event.end,
+            body: event.body || {
+              contentType: 'html',
+              content: `<p>Demo booking confirmation</p><p>Please join the Teams meeting using the link below.</p><p><a href="${teamsMeeting.joinWebUrl}">Join Teams Meeting</a></p>`
+            },
+            location: {
+              displayName: 'Microsoft Teams Meeting',
+              locationUri: teamsMeeting.joinWebUrl
+            },
+            attendees: event.attendees || [],
+            isOnlineMeeting: true,
+            onlineMeetingUrl: teamsMeeting.joinWebUrl
+          };
+
+          result = await this._graphClient
+            .api(`/users/${this.userId}/events`)
+            .post(calendarEvent);
+
+          console.log('📥 Linked calendar event response - isOnlineMeeting:', result.isOnlineMeeting, 'has onlineMeetingUrl:', !!result.onlineMeetingUrl);
+        }
+
+        // Extract Teams meeting URL with comprehensive logic
+        console.log('🔍 Analyzing meeting response:', {
+          teamsMeeting: teamsMeeting ? 'created' : 'failed',
+          teamsUrl: teamsMeeting?.joinWebUrl,
+          calendarIsOnline: result.isOnlineMeeting,
+          calendarOnlineUrl: result.onlineMeetingUrl,
+          calendarWebLink: result.webLink
+        });
+
+        // Priority order for meeting URLs:
+        if (teamsMeeting && teamsMeeting.joinWebUrl) {
+          joinUrl = teamsMeeting.joinWebUrl;
+          console.log('✅ Using Teams meeting URL:', joinUrl);
+        } else if (result.onlineMeetingUrl) {
+          joinUrl = result.onlineMeetingUrl;
+          console.log('✅ Using calendar onlineMeetingUrl:', joinUrl);
+        } else if (result.onlineMeeting && result.onlineMeeting.joinWebUrl) {
+          joinUrl = result.onlineMeeting.joinWebUrl;
+          console.log('✅ Using calendar onlineMeeting.joinWebUrl:', joinUrl);
+        } else if (result.onlineMeeting && result.onlineMeeting.joinUrl) {
+          joinUrl = result.onlineMeeting.joinUrl;
+          console.log('✅ Using calendar onlineMeeting.joinUrl:', joinUrl);
+        } else if (result.webLink && result.isOnlineMeeting) {
+          // Fallback: Use webLink if marked as online meeting
+          joinUrl = result.webLink;
+          console.log('⚠️ Using webLink for online meeting:', joinUrl);
+        } else if (result.webLink) {
+          // Final fallback: Use calendar link
+          joinUrl = result.webLink;
+          console.log('ℹ️ Using calendar webLink:', joinUrl);
+        }
+
+      } catch (onlineMeetingError) {
+        console.error('❌ All Teams meeting creation methods failed:', onlineMeetingError.message);
+        console.error('Falling back to regular calendar event...');
+
+        // Fallback: Create regular calendar event without Teams meeting
+        const calendarEvent = {
+          subject: event.subject,
+          start: event.start,
+          end: event.end,
+          body: event.body || {
+            contentType: 'html',
+            content: `<p>Demo booking confirmation</p><p>You will receive a separate Teams meeting invitation.</p>`
+          },
+          location: event.location,
+          attendees: event.attendees || []
+        };
+
+        result = await this._graphClient
+          .api(`/users/${this.userId}/events`)
+          .post(calendarEvent);
+
+        joinUrl = result.webLink; // Use calendar link as fallback
+        console.log('✅ Regular calendar event created as fallback');
       }
+
+      console.log('📅 Calendar event created:', {
+        id: result.id,
+        subject: result.subject,
+        hasOnlineMeeting: !!result.isOnlineMeeting,
+        onlineMeetingUrl: result.onlineMeetingUrl,
+        webLink: result.webLink,
+        joinUrl: joinUrl,
+        resultKeys: Object.keys(result)
+      });
 
       return {
         success: true,
@@ -145,7 +285,17 @@ class MicrosoftGraphCalendarService {
   }
 
   async verifyConnection(): Promise<{ success: boolean; error?: string }> {
-    if (!this.isConfigured || !this.graphClient) {
+    if (!this.isConfigured) {
+      return {
+        success: false,
+        error: 'Microsoft Graph API credentials not configured'
+      };
+    }
+
+    // Ensure Graph client is initialized before using it
+    await this.ensureInitialized();
+
+    if (!this._graphClient) {
       return {
         success: false,
         error: 'Microsoft Graph API credentials not configured'
@@ -153,7 +303,7 @@ class MicrosoftGraphCalendarService {
     }
 
     try {
-      await this.graphClient.api(`/users/${this.userId}`).get();
+      await this._graphClient.api(`/users/${this.userId}`).get();
       return { success: true };
     } catch (error) {
       return {
@@ -169,28 +319,20 @@ class MicrosoftGraphCalendarService {
     busySlots: Array<{ date: string; time: string; subject: string; isDemoBooking?: boolean }>;
     workingHours: { start: string; end: string };
   }> {
-    console.log('🔍 Checking calendar configuration...');
-    console.log('   isConfigured:', this.isConfigured);
-    console.log('   graphClient exists:', !!this.graphClient);
-
-    // If configured but Graph client not initialized, try to initialize it
-    if (this.isConfigured && !this.graphClient) {
-      console.log('🔄 Graph client not initialized, attempting to initialize...');
-      try {
-        await this.initializeGraphClient();
-      } catch (error) {
-        console.log('❌ Failed to initialize Graph client, using mock data');
-        return this.getMockAvailability(startDate, endDate);
-      }
-    }
-
-    if (!this.isConfigured || !this.graphClient) {
-      console.log('❌ Graph API not configured or client not initialized, using mock data');
+    // Check if Graph API is properly configured
+    if (!this.isConfigured) {
       // Return mock data for development when not configured
       return this.getMockAvailability(startDate, endDate);
     }
 
-    console.log('✅ Graph API configured, making real API calls...');
+    // Ensure Graph client is initialized before using it
+    await this.ensureInitialized();
+
+    // Check if Graph API is properly initialized
+    if (!this._graphClient) {
+      // Return mock data for development when not configured
+      return this.getMockAvailability(startDate, endDate);
+    }
 
     try {
       // Use configurable timezone for proper calendar operations
@@ -211,14 +353,14 @@ class MicrosoftGraphCalendarService {
       };
 
       console.log('📅 Calling Microsoft Graph API for free/busy with IST timezone...');
-      const freeBusyResponse = await this.graphClient
+      const freeBusyResponse = await this._graphClient
         .api(`/users/${this.userId}/calendar/getSchedule`)
         .post(freeBusyQuery);
       console.log('✅ Free/busy response received');
 
       // Get existing events to show as busy slots - use IST timezone for filtering
       console.log('📅 Calling Microsoft Graph API for events with IST timezone...');
-      const eventsResponse = await this.graphClient
+      const eventsResponse = await this._graphClient
         .api(`/users/${this.userId}/events`)
         .filter(`start/dateTime ge '${startDate}T00:00:00' and end/dateTime le '${endDate}T23:59:59'`)
         .select('subject,start,end,isAllDay')
@@ -230,35 +372,18 @@ class MicrosoftGraphCalendarService {
       const freeSlots: Array<{ date: string; time: string; available: boolean }> = [];
       const busySlots: Array<{ date: string; time: string; subject: string; isDemoBooking?: boolean }> = [];
 
-      console.log('📊 Processing events response...');
-      console.log('   Events found:', eventsResponse.value?.length || 0);
-
       // Process events - handle IST timezone properly
       if (eventsResponse.value && eventsResponse.value.length > 0) {
-        console.log('✅ Found real calendar events!');
         eventsResponse.value.forEach((event: any) => {
           if (!event.isAllDay) {
-            // Debug the raw event data
-            console.log(`   📅 Raw event data:`, {
-              subject: event.subject,
-              startDateTime: event.start.dateTime,
-              startTimeZone: event.start.timeZone,
-              endDateTime: event.end.dateTime,
-              endTimeZone: event.end.timeZone
-            });
-
             // Microsoft Graph API returns datetime in UTC by default
-            // We need to convert from UTC to IST
-            const startDateTimeUTC = new Date(event.start.dateTime);
-
             // Convert UTC to IST (+5:30 hours)
+            const startDateTimeUTC = new Date(event.start.dateTime);
             const startDateTimeIST = new Date(startDateTimeUTC.getTime() + (5.5 * 60 * 60 * 1000));
 
-            // Format the date and time properly for IST display
+            // Format for IST display
             const date = startDateTimeIST.toISOString().split('T')[0];
             const time = startDateTimeIST.toTimeString().slice(0, 5); // HH:MM format
-
-            console.log(`   📅 Event: ${event.subject} at ${date} ${time} IST (converted from UTC)`);
 
             busySlots.push({
               date,
@@ -268,13 +393,6 @@ class MicrosoftGraphCalendarService {
             });
           }
         });
-        console.log(`✅ Processed ${busySlots.length} busy slots from real calendar`);
-      } else {
-        console.log('⚠️ No events found in calendar for this date range');
-        console.log('   This could mean:');
-        console.log('   - No events scheduled in the selected date range');
-        console.log('   - Events are in a different calendar');
-        console.log('   - Using working hours logic to generate available slots');
       }
 
       // Generate available time slots (9 AM - 5 PM, Monday-Friday)
@@ -387,6 +505,38 @@ class MicrosoftGraphCalendarService {
   }
 
   // Generate demo booking calendar event
+  async testTeamsMeetingCreation(): Promise<{ success: boolean; teamsUrl?: string; error?: string }> {
+    if (!this.isConfigured || !this._graphClient) {
+      return {
+        success: false,
+        error: 'Microsoft Graph API credentials not configured'
+      };
+    }
+
+    try {
+      console.log('🧪 Testing Teams meeting creation...');
+      const testMeeting = await this._graphClient
+        .api(`/users/${this.userId}/onlineMeetings`)
+        .post({
+          startDateTime: new Date().toISOString(),
+          endDateTime: new Date(Date.now() + 3600000).toISOString(), // 1 hour later
+          subject: 'Test Teams Meeting Creation'
+        });
+
+      console.log('✅ Test Teams meeting created:', testMeeting.joinWebUrl);
+      return {
+        success: true,
+        teamsUrl: testMeeting.joinWebUrl
+      };
+    } catch (error) {
+      console.error('❌ Test Teams meeting creation failed:', error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      };
+    }
+  }
+
   generateDemoBookingEvent(bookingData: {
     firstName: string;
     lastName: string;

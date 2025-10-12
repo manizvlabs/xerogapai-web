@@ -7,7 +7,7 @@ import DemoCalendarBooking from '@/components/demo/DemoCalendarBooking';
 import DemoProcess from '@/components/demo/DemoProcess';
 import DemoTestimonials from '@/components/demo/DemoTestimonials';
 import DemoFAQ from '@/components/demo/DemoFAQ';
-import { microsoft365CalendarService } from '@/lib/email/microsoft365-calendar';
+import { MicrosoftGraphCalendarService } from '@/lib/email/microsoft365-calendar';
 
 type DemoStep = 'hero' | 'form' | 'confirmation';
 
@@ -56,6 +56,9 @@ export default function DemoPage() {
     setCalendarEventResult(null);
 
     try {
+      // Create a fresh calendar service instance for this request
+      const calendarService = new MicrosoftGraphCalendarService();
+
       // Create the calendar event data from booking information
       const eventData = {
         firstName: bookingData.firstName,
@@ -68,8 +71,8 @@ export default function DemoPage() {
         consultationType: bookingData.consultationType,
       };
 
-      const event = microsoft365CalendarService.generateDemoBookingEvent(eventData);
-      const result = await microsoft365CalendarService.createCalendarEvent(event);
+      const event = calendarService.generateDemoBookingEvent(eventData);
+      const result = await calendarService.createCalendarEvent(event);
 
       setCalendarEventResult(result);
 
