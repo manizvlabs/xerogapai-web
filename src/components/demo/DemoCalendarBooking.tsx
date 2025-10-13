@@ -105,6 +105,51 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
     return date.toDateString() === selectedDate.toDateString();
   };
 
+  const isTimeSlotInPast = (date: string, time: string) => {
+    // Get current date in UTC format to match the mock data format
+    const now = new Date();
+    const todayString = now.toISOString().split('T')[0];
+
+    console.log('=== Time Slot Check ===');
+    console.log('Current date string:', todayString);
+    console.log('Slot date:', date);
+    console.log('Slot time:', time);
+    console.log('Are dates equal?', date === todayString);
+
+    // If it's not today, it's not past
+    if (date !== todayString) {
+      console.log('Date is not today, returning false');
+      return false;
+    }
+
+    console.log('Date is today, checking time');
+
+    // For today, check if the time has passed
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    const slotHour = parseInt(time.split(':')[0]);
+    const slotMinute = parseInt(time.split(':')[1]);
+
+    console.log(`Current time: ${currentHour}:${currentMinute}`);
+    console.log(`Slot time: ${slotHour}:${slotMinute}`);
+
+    // If the slot hour is less than current hour, it's past
+    if (slotHour < currentHour) {
+      console.log(`Slot hour ${slotHour} < current hour ${currentHour}, marking as past`);
+      return true;
+    }
+
+    // If the slot hour is the same as current hour, check minutes
+    if (slotHour === currentHour && slotMinute <= currentMinute) {
+      console.log(`Slot hour ${slotHour} == current hour ${currentHour} and slot minute ${slotMinute} <= current minute ${currentMinute}, marking as past`);
+      return true;
+    }
+
+    console.log(`Time slot ${time} is not past`);
+    // Otherwise, it's not past
+    return false;
+  };
+
   const navigateDate = (direction: 'prev' | 'next') => {
     const newDate = new Date(selectedDate);
     newDate.setDate(newDate.getDate() + (direction === 'next' ? 1 : -1));
@@ -115,10 +160,18 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
   const getSlotsForDate = (date: string) => {
     if (!availability) return { available: [], busy: [] };
 
-    return {
-      available: availability.freeSlots.filter(slot => slot.date === date),
-      busy: availability.busySlots.filter(slot => slot.date === date)
-    };
+    console.log('=== Getting Slots for Date ===');
+    console.log('Requested date:', date);
+    console.log('All available slots:', availability.freeSlots);
+    console.log('All busy slots:', availability.busySlots);
+
+    const available = availability.freeSlots.filter(slot => slot.date === date);
+    const busy = availability.busySlots.filter(slot => slot.date === date);
+
+    console.log('Filtered available slots for', date, ':', available);
+    console.log('Filtered busy slots for', date, ':', busy);
+
+    return { available, busy };
   };
 
   const handleSlotClick = (slot: TimeSlot) => {
@@ -177,9 +230,12 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
 
   const generateDateRange = () => {
     const dates = [];
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset time to start of day for comparison
+
     for (let i = 0; i < 7; i++) {
-      const date = new Date();
-      date.setDate(date.getDate() + i);
+      const date = new Date(today);
+      date.setDate(today.getDate() + i);
       dates.push(date);
     }
     return dates;
@@ -217,7 +273,7 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
             <h1 className="text-2xl font-bold">Schedule Your AI Demo</h1>
           </div>
           <p className="text-green-100">
-            Choose an available time slot from my calendar. All times are shown in your local timezone.
+            Choose an available time slot from my calendar. All times are shown in IST (Indian Standard Time) timezone.
           </p>
         </div>
 
@@ -339,9 +395,14 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
             {/* Time Slots */}
             <div className="lg:col-span-2">
               <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
-                  Available Times - {formatDate(selectedDate)}
-                </h3>
+                <div className="mb-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white">
+                    Available Times - {formatDate(selectedDate)}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    All times displayed in IST (Indian Standard Time)
+                  </p>
+                </div>
 
                 {(() => {
                   const { available, busy } = getSlotsForDate(selectedDate.toISOString().split('T')[0]);
@@ -383,41 +444,55 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
                           return timeA - timeB;
                         });
 
-                        return allSlots.map((slot) => (
-                          slot.type === 'available' ? (
-                            <button
-                              key={`available-${slot.date}-${slot.time}`}
-                              onClick={() => handleSlotClick(slot)}
-                              className={`p-3 rounded-lg text-center transition-colors ${
-                                selectedSlot?.date === slot.date && selectedSlot?.time === slot.time
-                                  ? 'bg-green-600 text-white'
-                                  : 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-900/50'
-                              }`}
-                            >
-                              <div className="font-medium">{slot.time}</div>
-                              <div className="text-xs opacity-75">Available</div>
-                            </button>
-                          ) : (
-                            <div
-                              key={`busy-${slot.date}-${slot.time}`}
-                              className={`p-3 rounded-lg text-center ${
-                                slot.isDemoBooking
-                                  ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300'
-                                  : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
-                              }`}
-                            >
-                              <div className="font-medium">{slot.time}</div>
-                              <div className="text-xs opacity-75">
-                                {slot.isDemoBooking ? 'Demo Booked' : 'Busy'}
-                              </div>
-                              {slot.subject !== 'Busy' && (
-                                <div className="text-xs mt-1 truncate" title={slot.subject}>
-                                  {slot.subject}
+                        return allSlots.map((slot) => {
+                          const isPastSlot = isTimeSlotInPast(slot.date, slot.time);
+
+                          if (slot.type === 'available') {
+                            const isSelected = selectedSlot?.date === slot.date && selectedSlot?.time === slot.time;
+                            let buttonClass = 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-900/50';
+
+                            if (isPastSlot) {
+                              buttonClass = 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed';
+                            } else if (isSelected) {
+                              buttonClass = 'bg-green-600 text-white';
+                            }
+
+                            return (
+                              <button
+                                key={`available-${slot.date}-${slot.time}`}
+                                onClick={() => !isPastSlot && handleSlotClick(slot)}
+                                disabled={isPastSlot}
+                                className={`p-3 rounded-lg text-center transition-colors ${buttonClass}`}
+                              >
+                                <div className="font-medium">{slot.time}</div>
+                                <div className="text-xs opacity-75">
+                                  {isPastSlot ? 'Past' : 'Available'}
                                 </div>
-                              )}
-                            </div>
-                          )
-                        ));
+                              </button>
+                            );
+                          } else {
+                            return (
+                              <div
+                                key={`busy-${slot.date}-${slot.time}`}
+                                className={`p-3 rounded-lg text-center ${
+                                  slot.isDemoBooking
+                                    ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300'
+                                    : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
+                                }`}
+                              >
+                                <div className="font-medium">{slot.time}</div>
+                                <div className="text-xs opacity-75">
+                                  {slot.isDemoBooking ? 'Demo Booked' : 'Busy'}
+                                </div>
+                                {slot.subject !== 'Busy' && (
+                                  <div className="text-xs mt-1 truncate" title={slot.subject}>
+                                    {slot.subject}
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          }
+                        });
                       })()}
                     </div>
                   );
