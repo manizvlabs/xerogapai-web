@@ -4,9 +4,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import DemoHero from '@/components/demo/DemoHero';
 import DemoCalendarBooking from '@/components/demo/DemoCalendarBooking';
-import DemoProcess from '@/components/demo/DemoProcess';
-import DemoTestimonials from '@/components/demo/DemoTestimonials';
-import DemoFAQ from '@/components/demo/DemoFAQ';
 import { MicrosoftGraphCalendarService } from '@/lib/email/microsoft365-calendar';
 
 type DemoStep = 'hero' | 'form' | 'confirmation';
@@ -92,18 +89,7 @@ export default function DemoPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {currentStep === 'hero' && (
-        <>
-          <DemoHero onStartBooking={handleStartBooking} />
-          <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-900">
-            <DemoProcess />
-          </section>
-          <section className="relative py-24 sm:py-32 bg-white dark:bg-gray-900">
-            <DemoTestimonials />
-          </section>
-          <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-900">
-            <DemoFAQ />
-          </section>
-        </>
+        <DemoHero onStartBooking={handleStartBooking} />
       )}
 
       {currentStep === 'form' && (
@@ -143,7 +129,7 @@ export default function DemoPage() {
                 <div className="mb-4 p-3 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-700">
                   <p className="font-medium">✅ Calendar invite sent!</p>
                   <p className="text-sm mt-1">
-                    A calendar invite has been added to your Outlook calendar with a Teams meeting link.
+                    A calendar invite has been added to your Outlook calendar with a Teams meeting link.{' '}
                     <a href={bookingData.joinUrl} target="_blank" rel="noopener noreferrer" className="underline hover:no-underline ml-1">
                       Join Meeting
                     </a>
