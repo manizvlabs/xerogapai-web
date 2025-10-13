@@ -143,12 +143,6 @@ class SMTPEmailService {
 
       const info = await this.transporter.sendMail(mailOptions);
 
-      console.log('Email sent successfully:', {
-        messageId: info.messageId,
-        to: emailData.to,
-        subject: emailData.subject,
-      });
-
       return {
         success: true,
         messageId: info.messageId,
@@ -329,7 +323,6 @@ class Microsoft365EmailService {
     if (this.useGraphApi) {
       try {
         this.graphService = new MicrosoftGraphEmailService();
-        console.log('Using Microsoft Graph API for email sending');
       } catch (error) {
         console.warn('Graph API initialization failed, falling back to SMTP:', error);
         this.useGraphApi = false;
@@ -338,7 +331,6 @@ class Microsoft365EmailService {
 
     if (!this.useGraphApi) {
       this.smtpService = new SMTPEmailService();
-      console.log('Using SMTP for email sending');
     }
   }
 

@@ -130,8 +130,6 @@ export interface ContactResponse {
 // Initialize database schema
 export async function initializeSupabaseDatabase() {
   if (!isSupabaseConfigured()) {
-    
-    console.log('🔄 Supabase not configured, using fallback storage');
     return false;
   }
 
@@ -139,8 +137,6 @@ export async function initializeSupabaseDatabase() {
     // Get the Supabase client
     const client = getSupabaseClient();
     if (!client) {
-      
-      console.log('🔄 Supabase client not available, using fallback storage');
       return false;
     }
 
@@ -152,18 +148,13 @@ export async function initializeSupabaseDatabase() {
     
     if (testError) {
       if (testError.code === 'PGRST116') {
-        
-        
-        console.log('⚠️  Contacts table does not exist. Please create it manually in Supabase dashboard.');
-        console.log('📖 See docs/deployment/SUPABASE_SETUP.md for SQL schema');
         return false;
       } else {
         throw testError;
       }
     }
 
-    
-    console.log('✅ Supabase database initialized successfully');
+
     return true;
   } catch (error) {
     console.error('❌ Supabase initialization failed:', error);

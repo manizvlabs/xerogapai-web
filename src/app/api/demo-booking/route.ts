@@ -130,12 +130,6 @@ export async function POST(request: NextRequest) {
     }
 
     // Store booking data in database (for now, just log it)
-    console.log('Demo booking stored:', {
-      ...bookingData,
-      calendarEventId: calendarResult.eventId,
-      calendarJoinUrl: calendarResult.joinUrl,
-      timestamp: new Date().toISOString(),
-    });
 
     return NextResponse.json({
       success: true,

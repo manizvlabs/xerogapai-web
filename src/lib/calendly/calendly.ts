@@ -164,15 +164,6 @@ export class CalendlyIntegration {
       });
     }
 
-    // Log the booking for internal tracking
-    console.log('Demo booked via Calendly:', {
-      eventUri: data.payload.event.uri,
-      inviteeName: data.payload.invitee.name,
-      inviteeEmail: data.payload.invitee.email,
-      eventName: data.payload.event.name,
-      startTime: data.payload.event.start_time,
-      endTime: data.payload.event.end_time,
-    });
   }
 }
 

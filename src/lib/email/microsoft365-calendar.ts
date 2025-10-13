@@ -66,8 +66,6 @@ class MicrosoftGraphCalendarService {
     }
 
     try {
-      console.log('🔧 Initializing Microsoft Graph client...');
-
       // First, test the credentials by getting a token
       const credential = new ClientSecretCredential(
         process.env.MS_GRAPH_TENANT_ID!,
@@ -75,12 +73,10 @@ class MicrosoftGraphCalendarService {
         process.env.MS_GRAPH_CLIENT_SECRET!
       );
 
-      console.log('🔑 Testing token acquisition...');
       const tokenResponse = await credential.getToken('https://graph.microsoft.com/.default');
       if (!tokenResponse || !tokenResponse.token) {
         throw new Error('Failed to acquire access token');
       }
-      console.log('✅ Access token acquired successfully');
 
       // Initialize the Graph client
       this._graphClient = Client.initWithMiddleware({
@@ -91,7 +87,6 @@ class MicrosoftGraphCalendarService {
           }
         }
       });
-      console.log('✅ Microsoft Graph client initialized successfully');
     } catch (error) {
       console.error('❌ Failed to initialize Microsoft Graph client:', error);
       console.error('   Error details:', error.message || error);
@@ -130,7 +125,6 @@ class MicrosoftGraphCalendarService {
 
       try {
         // Method 1: Try to create Teams meeting using /me/onlineMeetings endpoint
-        console.log('📅 Creating Teams meeting using /me/onlineMeetings...');
         let teamsMeeting;
         try {
           teamsMeeting = await this._graphClient
@@ -148,7 +142,6 @@ class MicrosoftGraphCalendarService {
                 })) || []
               }
             });
-          console.log('✅ Teams meeting created successfully:', teamsMeeting.joinWebUrl);
         } catch (teamsError) {
           console.warn('⚠️ Teams meeting creation failed:', teamsError.message);
           teamsMeeting = null;
@@ -156,7 +149,6 @@ class MicrosoftGraphCalendarService {
 
         // Method 2: If Teams meeting creation failed, try creating calendar event with Teams
         if (!teamsMeeting) {
-          console.log('📅 Falling back to calendar event with Teams meeting...');
           const calendarEvent = {
             subject: event.subject,
             start: event.start,
@@ -175,10 +167,8 @@ class MicrosoftGraphCalendarService {
             .api(`/users/${this.userId}/events`)
             .post(calendarEvent);
 
-          console.log('📥 Calendar event response - isOnlineMeeting:', result.isOnlineMeeting, 'has onlineMeetingUrl:', !!result.onlineMeetingUrl);
         } else {
           // Method 3: Create calendar event and link it to the Teams meeting
-          console.log('📅 Creating calendar event linked to Teams meeting...');
           const calendarEvent = {
             subject: event.subject,
             start: event.start,
@@ -200,39 +190,26 @@ class MicrosoftGraphCalendarService {
             .api(`/users/${this.userId}/events`)
             .post(calendarEvent);
 
-          console.log('📥 Linked calendar event response - isOnlineMeeting:', result.isOnlineMeeting, 'has onlineMeetingUrl:', !!result.onlineMeetingUrl);
         }
 
         // Extract Teams meeting URL with comprehensive logic
-        console.log('🔍 Analyzing meeting response:', {
-          teamsMeeting: teamsMeeting ? 'created' : 'failed',
-          teamsUrl: teamsMeeting?.joinWebUrl,
-          calendarIsOnline: result.isOnlineMeeting,
-          calendarOnlineUrl: result.onlineMeetingUrl,
-          calendarWebLink: result.webLink
-        });
+        let joinUrl = undefined;
 
         // Priority order for meeting URLs:
         if (teamsMeeting && teamsMeeting.joinWebUrl) {
           joinUrl = teamsMeeting.joinWebUrl;
-          console.log('✅ Using Teams meeting URL:', joinUrl);
         } else if (result.onlineMeetingUrl) {
           joinUrl = result.onlineMeetingUrl;
-          console.log('✅ Using calendar onlineMeetingUrl:', joinUrl);
         } else if (result.onlineMeeting && result.onlineMeeting.joinWebUrl) {
           joinUrl = result.onlineMeeting.joinWebUrl;
-          console.log('✅ Using calendar onlineMeeting.joinWebUrl:', joinUrl);
         } else if (result.onlineMeeting && result.onlineMeeting.joinUrl) {
           joinUrl = result.onlineMeeting.joinUrl;
-          console.log('✅ Using calendar onlineMeeting.joinUrl:', joinUrl);
         } else if (result.webLink && result.isOnlineMeeting) {
           // Fallback: Use webLink if marked as online meeting
           joinUrl = result.webLink;
-          console.log('⚠️ Using webLink for online meeting:', joinUrl);
         } else if (result.webLink) {
           // Final fallback: Use calendar link
           joinUrl = result.webLink;
-          console.log('ℹ️ Using calendar webLink:', joinUrl);
         }
 
       } catch (onlineMeetingError) {
@@ -257,10 +234,9 @@ class MicrosoftGraphCalendarService {
           .post(calendarEvent);
 
         joinUrl = result.webLink; // Use calendar link as fallback
-        console.log('✅ Regular calendar event created as fallback');
       }
 
-      console.log('📅 Calendar event created:', {
+      return {
         id: result.id,
         subject: result.subject,
         hasOnlineMeeting: !!result.isOnlineMeeting,
@@ -268,7 +244,7 @@ class MicrosoftGraphCalendarService {
         webLink: result.webLink,
         joinUrl: joinUrl,
         resultKeys: Object.keys(result)
-      });
+      };
 
       return {
         success: true,
@@ -353,21 +329,16 @@ class MicrosoftGraphCalendarService {
         availabilityViewInterval: 60 // 60-minute intervals
       };
 
-      console.log('📅 Calling Microsoft Graph API for free/busy with IST timezone...');
       const freeBusyResponse = await this._graphClient
         .api(`/users/${this.userId}/calendar/getSchedule`)
         .post(freeBusyQuery);
-      console.log('✅ Free/busy response received');
-
       // Get existing events to show as busy slots - use IST timezone for filtering
-      console.log('📅 Calling Microsoft Graph API for events with IST timezone...');
       const eventsResponse = await this._graphClient
         .api(`/users/${this.userId}/events`)
         .filter(`start/dateTime ge '${startDate}T00:00:00' and end/dateTime le '${endDate}T23:59:59'`)
         .select('subject,start,end,isAllDay')
         .top(100)
         .get();
-      console.log(`✅ Events response received: ${eventsResponse.value?.length || 0} events found`);
 
       // Process free/busy data
       const freeSlots: Array<{ date: string; time: string; available: boolean }> = [];
@@ -425,10 +396,6 @@ class MicrosoftGraphCalendarService {
         currentDate.setDate(currentDate.getDate() + 1);
       }
 
-      console.log('🎯 Final result summary:');
-      console.log(`   Free slots: ${freeSlots.length}`);
-      console.log(`   Busy slots: ${busySlots.length}`);
-      console.log(`   Working hours: ${workingHours.start} - ${workingHours.end}`);
 
       return {
         freeSlots,
@@ -514,7 +481,6 @@ class MicrosoftGraphCalendarService {
     }
 
     try {
-      console.log('🧪 Testing Teams meeting creation...');
       const testMeeting = await this._graphClient
         .api(`/users/${this.userId}/onlineMeetings`)
         .post({
@@ -523,7 +489,6 @@ class MicrosoftGraphCalendarService {
           subject: 'Test Teams Meeting Creation'
         });
 
-      console.log('✅ Test Teams meeting created:', testMeeting.joinWebUrl);
       return {
         success: true,
         teamsUrl: testMeeting.joinWebUrl
@@ -555,9 +520,6 @@ class MicrosoftGraphCalendarService {
     const startDateTime = new Date(startDateTimeString);
     const endDateTime = new Date(startDateTime.getTime() + 60 * 60 * 1000); // 1 hour meeting
 
-    console.log(`📅 Creating calendar event in IST timezone:`);
-    console.log(`   Start: ${startDateTime.toISOString()} (${userTimezone})`);
-    console.log(`   End: ${endDateTime.toISOString()} (${userTimezone})`);
 
     return {
       subject: `Demo: ${bookingData.firstName} ${bookingData.lastName} - ${bookingData.companyName}`,

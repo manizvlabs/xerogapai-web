@@ -78,7 +78,6 @@ export default function DemoPage() {
 
       if (result.success) {
         // Optionally, you could also send a confirmation email here
-        console.log('Calendar event created successfully:', result);
       }
     } catch (error) {
       setCalendarEventResult({

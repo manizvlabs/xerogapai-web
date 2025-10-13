@@ -38,9 +38,13 @@ interface DemoCalendarBookingProps {
 }
 
 export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoCalendarBookingProps) {
+  const formatDateString = (date: Date): string => {
+    // Use moment.js for consistent YYYY-MM-DD format across all browsers
+    return moment(date).format('YYYY-MM-DD');
+  };
+
   const [selectedDate, setSelectedDate] = useState<Date>(() => {
     const initialDate = new Date();
-    console.log('📅 Initial selectedDate:', formatDateString(initialDate));
     return initialDate;
   });
   const [availability, setAvailability] = useState<AvailabilityData | null>(null);
@@ -70,13 +74,11 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
       const endDate = new Date();
       endDate.setDate(endDate.getDate() + 7);
 
-      console.log('🔄 Fetching availability for date range:', formatDateString(startDate), 'to', formatDateString(endDate));
       const response = await fetch(`/api/demo-booking?startDate=${formatDateString(startDate)}&endDate=${formatDateString(endDate)}`);
 
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
-          console.log('✅ Availability data received:', data.availability);
           setAvailability(data.availability);
         }
       }
@@ -108,16 +110,10 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
     return date.toDateString() === today.toDateString();
   };
 
-  const formatDateString = (date: Date): string => {
-    // Use moment.js for consistent YYYY-MM-DD format across all browsers
-    return moment(date).format('YYYY-MM-DD');
-  };
-
   const isSelectedDate = (date: Date) => {
     const dateStr = formatDateString(date);
     const selectedStr = formatDateString(selectedDate);
     const isSelected = dateStr === selectedStr;
-    console.log('🔍 Checking if date is selected:', dateStr, 'vs', selectedStr, '->', isSelected);
     return isSelected;
   };
 
@@ -125,42 +121,28 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
     // Get current date using moment.js for consistent formatting
     const todayString = moment().format('YYYY-MM-DD');
 
-    console.log('=== Time Slot Check ===');
-    console.log('Current date string (local):', todayString);
-    console.log('Slot date:', date);
-    console.log('Slot time:', time);
-    console.log('Are dates equal?', date === todayString);
-
     // If it's not today, it's not past
     if (date !== todayString) {
-      console.log('Date is not today, returning false');
       return false;
     }
 
-    console.log('Date is today, checking time');
-
     // For today, check if the time has passed
+    const now = new Date();
     const currentHour = now.getHours();
     const currentMinute = now.getMinutes();
     const slotHour = parseInt(time.split(':')[0]);
     const slotMinute = parseInt(time.split(':')[1]);
 
-    console.log(`Current time: ${currentHour}:${currentMinute}`);
-    console.log(`Slot time: ${slotHour}:${slotMinute}`);
-
     // If the slot hour is less than current hour, it's past
     if (slotHour < currentHour) {
-      console.log(`Slot hour ${slotHour} < current hour ${currentHour}, marking as past`);
       return true;
     }
 
     // If the slot hour is the same as current hour, check minutes
     if (slotHour === currentHour && slotMinute <= currentMinute) {
-      console.log(`Slot hour ${slotHour} == current hour ${currentHour} and slot minute ${slotMinute} <= current minute ${currentMinute}, marking as past`);
       return true;
     }
 
-    console.log(`Time slot ${time} is not past`);
     // Otherwise, it's not past
     return false;
   };
@@ -168,7 +150,6 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
   const navigateDate = (direction: 'prev' | 'next') => {
     const newDate = new Date(selectedDate);
     newDate.setDate(newDate.getDate() + (direction === 'next' ? 1 : -1));
-    console.log('📅 Navigating to date:', formatDateString(newDate));
     setSelectedDate(newDate);
     setSelectedSlot(null);
   };
@@ -176,17 +157,8 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
   const getSlotsForDate = (date: string) => {
     if (!availability) return { available: [], busy: [] };
 
-    console.log('=== Getting Slots for Date ===');
-    console.log('Requested date:', date);
-    console.log('Current selectedDate:', formatDateString(selectedDate));
-    console.log('All available slots:', availability.freeSlots);
-    console.log('All busy slots:', availability.busySlots);
-
     const available = availability.freeSlots.filter(slot => slot.date === date);
     const busy = availability.busySlots.filter(slot => slot.date === date);
-
-    console.log('Filtered available slots for', date, ':', available);
-    console.log('Filtered busy slots for', date, ':', busy);
 
     return { available, busy };
   };
@@ -249,11 +221,8 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
     const dates = [];
     const today = new Date();
 
-    console.log('📅 Generating date range from:', formatDateString(today));
-
     for (let i = 0; i < 7; i++) {
       const date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i);
-      console.log(`📅 Date ${i}:`, formatDateString(date));
       dates.push(date);
     }
     return dates;
@@ -381,17 +350,14 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
                 <div className="space-y-2">
                   {dateRange.map((date, index) => {
                     const isSelected = isSelectedDate(date);
-                    const { available } = getSlotsForDate(date.toISOString().split('T')[0]);
+                    const { available } = getSlotsForDate(formatDateString(date));
                     const hasAvailability = available.length > 0;
 
                     return (
                       <button
                         key={date.toISOString()}
                         onClick={() => {
-                          console.log('🖱️ Clicking on date:', formatDateString(date));
-                          console.log('🖱️ Current selectedDate before click:', formatDateString(selectedDate));
                           setSelectedDate(date);
-                          console.log('🖱️ Date object being set:', formatDateString(date));
                         }}
                         className={`w-full p-3 rounded-lg text-left transition-colors ${
                           isSelected
@@ -428,7 +394,7 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
                 </div>
 
                 {(() => {
-                  const { available, busy } = getSlotsForDate(selectedDate.toISOString().split('T')[0]);
+                  const { available, busy } = getSlotsForDate(formatDateString(selectedDate));
 
                   if (available.length === 0 && busy.length === 0) {
                     return (

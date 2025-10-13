@@ -143,8 +143,6 @@ class EmailService {
       // - Email marketing platforms (Mailchimp, SendGrid, Klaviyo)
       // - Lead scoring systems
 
-      console.log('Lead captured:', leadData);
-
       // Simulate API call
       const response = await this.simulateLeadCapture(leadData);
 
@@ -185,11 +183,8 @@ class EmailService {
     const sequence = this.sequences.find(seq => seq.trigger === trigger);
 
     if (!sequence) {
-      console.log(`No email sequence found for trigger: ${trigger}`);
       return;
     }
-
-    console.log(`Triggering email sequence: ${sequence.name}`);
 
     // Schedule emails based on sequence
     sequence.emails.forEach((email, index) => {
@@ -211,11 +206,7 @@ class EmailService {
       const result = await microsoft365EmailService.sendEmail(emailData);
 
       if (result.success) {
-        console.log('Email sent successfully:', {
-          messageId: result.messageId,
-          to: leadData.email,
-          subject: emailTemplate.subject,
-        });
+        // Email sent successfully
       } else {
         console.error('Failed to send email:', result.error);
       }

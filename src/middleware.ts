@@ -13,9 +13,6 @@ const MIDDLEWARE_JWT_SECRET = 'p4s028GCng2A52WfnWbBukY7xUmVlgtBGlEPtY+sWKi/LW39d
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  console.log('Middleware executed for:', pathname);
-  console.log('Auth token cookie:', request.cookies.get('auth-token')?.value ? '✅' : '❌');
-
   // Allow admin routes and auth API routes without sensitive content blocking
   if (pathname.startsWith('/admin') || pathname.startsWith('/api/auth') || pathname.startsWith('/api/admin')) {
     // Admin routes and auth API routes are handled separately below
@@ -106,9 +103,7 @@ export function middleware(request: NextRequest) {
     }
 
     // Verify token using JWT auth
-    console.log('Middleware: Verifying token:', token?.substring(0, 20) + '...');
     const payload = requireAuth(token);
-    console.log('Middleware: Token verification result:', !!payload);
 
     if (!payload) {
       logSecurityEvent('admin_page_access_denied', {
