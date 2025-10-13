@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import DemoHero from '@/components/demo/DemoHero';
 import DemoCalendarBooking from '@/components/demo/DemoCalendarBooking';
+import DemoFAQ from '@/components/demo/DemoFAQ';
 import { MicrosoftGraphCalendarService } from '@/lib/email/microsoft365-calendar';
 
 type DemoStep = 'hero' | 'form' | 'confirmation';
@@ -89,7 +90,12 @@ export default function DemoPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {currentStep === 'hero' && (
-        <DemoHero onStartBooking={handleStartBooking} />
+        <>
+          <DemoHero onStartBooking={handleStartBooking} />
+          <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-900">
+            <DemoFAQ />
+          </section>
+        </>
       )}
 
       {currentStep === 'form' && (
