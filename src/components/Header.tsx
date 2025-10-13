@@ -32,12 +32,12 @@ const Header = () => {
       href: '#',
       hasDropdown: true,
       dropdownItems: [
-        { name: 'WhatsApp CX Copilot', href: '/whatsapp-cx', icon: ChatBubbleLeftRightIcon, description: 'AI-powered customer conversations' },
-        { name: 'XeroGap AI Workflow', href: '/xerogap-ai', icon: CogIcon, description: 'Workspace automation' },
-        { name: 'Enterprise Copilots', href: '/enterprise-copilots', icon: CpuChipIcon, description: 'Knowledge management' },
-        { name: 'Sales Automation', href: '/sales-automation', icon: UserGroupIcon, description: 'Lead intelligence' },
-        { name: 'Contact Center AI', href: '/contact-center-ai', icon: ShieldCheckIcon, description: 'Quality assurance' },
-        { name: 'DPDP Compliance', href: '/dpdp-compliance', icon: DocumentTextIcon, description: 'Data protection' }
+        { name: 'AI Multi-Channel Support Copilot', href: '/whatsapp-cx', icon: ChatBubbleLeftRightIcon, description: 'AI-powered customer conversations' },
+        { name: 'AI-Powered Workflow Automation', href: '/xerogap-ai', icon: CogIcon, description: 'Workspace automation' },
+        { name: 'AI Knowledge Management Assistant', href: '/enterprise-copilots', icon: CpuChipIcon, description: 'Knowledge management' },
+        { name: 'AI Sales Insights & Automation', href: '/sales-automation', icon: UserGroupIcon, description: 'Lead intelligence' },
+        { name: 'AI Contact Center QA & Coaching', href: '/contact-center-ai', icon: ShieldCheckIcon, description: 'Quality assurance' },
+        { name: 'AI Data Privacy & Compliance', href: '/dpdp-compliance', icon: DocumentTextIcon, description: 'Data protection' }
       ]
     },
     {

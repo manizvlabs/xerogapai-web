@@ -7,12 +7,12 @@ export const indianHomepageContent = {
     logo: "XeroGap AI",
     navigation: [
       { name: "Services", href: "/services" },
-      { name: "WhatsApp CX", href: "/whatsapp-cx" },
-      { name: "XeroGap AI", href: "/xerogap-ai" },
-      { name: "Enterprise Copilots", href: "/enterprise-copilots" },
-      { name: "Sales Automation", href: "/sales-automation" },
-      { name: "Contact Center AI", href: "/contact-center-ai" },
-      { name: "DPDP Compliance", href: "/dpdp-compliance" },
+      { name: "AI Multi-Channel Support Copilot", href: "/whatsapp-cx" },
+      { name: "AI-Powered Workflow Automation", href: "/xerogap-ai" },
+      { name: "AI Knowledge Management Assistant", href: "/enterprise-copilots" },
+      { name: "AI Sales Insights & Automation", href: "/sales-automation" },
+      { name: "AI Contact Center QA & Coaching", href: "/contact-center-ai" },
+      { name: "AI Data Privacy & Compliance", href: "/dpdp-compliance" },
       { name: "Case Studies", href: "/case-studies" },
       { name: "Docs", href: "/docs" },
       { name: "About", href: "/about" },
@@ -61,7 +61,7 @@ export const indianHomepageContent = {
     services: [
       {
         id: "whatsapp-cx",
-        title: "WhatsApp CX Copilot",
+        title: "AI Multi-Channel Support Copilot",
         subtitle: "Transform customer conversations into revenue opportunities",
         features: [
           "Unified WhatsApp inbox management",
@@ -78,7 +78,7 @@ export const indianHomepageContent = {
       },
       {
         id: "xerogap-ai",
-        title: "XeroGap AI Workflow Automation",
+        title: "AI-Powered Workflow Automation",
         subtitle: "Streamline operations with AI-powered workspace automation",
         features: [
           "Auto-summarize meeting transcripts",
@@ -95,7 +95,7 @@ export const indianHomepageContent = {
       },
       {
         id: "enterprise-copilots",
-        title: "Enterprise Knowledge Copilots",
+        title: "AI Knowledge Management Assistant",
         subtitle: "Multi-lingual Q&A over company documents",
         features: [
           "Private knowledge base with AI search",
@@ -112,7 +112,7 @@ export const indianHomepageContent = {
       },
       {
         id: "sales-automation",
-        title: "Sales Intelligence Automation",
+        title: "AI Sales Insights & Automation",
         subtitle: "AI-powered prospect research and outreach",
         features: [
           "Automated lead intelligence gathering",
@@ -129,7 +129,7 @@ export const indianHomepageContent = {
       },
       {
         id: "contact-center-ai",
-        title: "Contact Center QA & Coaching",
+        title: "AI Contact Center QA & Coaching",
         subtitle: "AI-driven call quality and agent development",
         features: [
           "Automated call scoring and analysis",
@@ -146,7 +146,7 @@ export const indianHomepageContent = {
       },
       {
         id: "dpdp-compliance",
-        title: "DPDP Compliance Solutions",
+        title: "AI Data Privacy & Compliance",
         subtitle: "Complete data protection and privacy compliance",
         features: [
           "GDPR & DPDP compliance assessment",
@@ -312,12 +312,12 @@ export const indianHomepageContent = {
     },
     links: {
       services: [
-        { name: "WhatsApp CX Copilot", href: "/whatsapp-cx" },
-        { name: "XeroGap AI", href: "/xerogap-ai" },
-        { name: "Enterprise Copilots", href: "/enterprise-copilots" },
-        { name: "Sales Automation", href: "/sales-automation" },
-        { name: "Contact Center AI", href: "/contact-center-ai" },
-        { name: "DPDP Compliance", href: "/dpdp-compliance" }
+        { name: "AI Multi-Channel Support Copilot", href: "/whatsapp-cx" },
+        { name: "AI-Powered Workflow Automation", href: "/xerogap-ai" },
+        { name: "AI Knowledge Management Assistant", href: "/enterprise-copilots" },
+        { name: "AI Sales Insights & Automation", href: "/sales-automation" },
+        { name: "AI Contact Center QA & Coaching", href: "/contact-center-ai" },
+        { name: "AI Data Privacy & Compliance", href: "/dpdp-compliance" }
       ],
       company: [
         { name: "About Us", href: "/about" },

@@ -41,13 +41,13 @@ export default function ServicesPage() {
     },
     services: [
       {
-        name: 'WhatsApp CX Copilot',
-        description: 'Transform customer conversations into revenue opportunities with AI-powered WhatsApp automation.',
+        name: 'AI Multi-Channel Support Copilot',
+        description: 'Transform customer conversations into revenue opportunities with AI-powered multi-channel automation across WhatsApp, email, and social media.',
         icon: 'ChatBubbleLeftRightIcon',
         price: '$500/month',
         href: '/whatsapp-cx',
         features: [
-          'Unified WhatsApp inbox management',
+          'Unified multi-channel inbox management',
           'AI-powered responses for common queries',
           'Automated tagging and escalation',
           'Real-time analytics dashboard',
@@ -63,8 +63,8 @@ export default function ServicesPage() {
         ]
       },
       {
-        name: 'XeroGap AI Workflow Automation',
-        description: 'Streamline operations with AI-powered workspace automation that connects Notion, Slack, and your business tools.',
+        name: 'AI-Powered Workflow Automation',
+        description: 'Streamline operations with intelligent AI automation that connects your workspace tools and eliminates repetitive tasks.',
         icon: 'CogIcon',
         price: '$300/month',
         href: '/xerogap-ai',
@@ -85,8 +85,8 @@ export default function ServicesPage() {
         ]
       },
       {
-        name: 'Enterprise Knowledge Copilots',
-        description: 'Multi-lingual Q&A over company documents with compliance-aware responses and audit trails.',
+        name: 'AI Knowledge Management Assistant',
+        description: 'Multi-lingual Q&A over company documents with compliance-aware responses and complete audit trails for enterprise knowledge management.',
         icon: 'DocumentTextIcon',
         price: '$800/month',
         href: '/enterprise-copilots',
@@ -107,8 +107,8 @@ export default function ServicesPage() {
         ]
       },
       {
-        name: 'Sales Intelligence Automation',
-        description: 'AI-powered prospect research and outreach that helps you close more deals faster.',
+        name: 'AI Sales Insights & Automation',
+        description: 'AI-powered prospect research and intelligent outreach that helps you close more deals faster with data-driven insights.',
         icon: 'ChartBarIcon',
         price: '$600/month',
         href: '/sales-automation',
@@ -129,8 +129,8 @@ export default function ServicesPage() {
         ]
       },
       {
-        name: 'Contact Center QA & Coaching',
-        description: 'AI-driven call quality analysis and agent development to improve customer service excellence.',
+        name: 'AI Contact Center QA & Coaching',
+        description: 'AI-driven call quality analysis and intelligent agent development to improve customer service excellence with automated coaching.',
         icon: 'UserGroupIcon',
         price: '$700/month',
         href: '/contact-center-ai',
@@ -151,8 +151,8 @@ export default function ServicesPage() {
         ]
       },
       {
-        name: 'DPDP Compliance Solutions',
-        description: 'Complete data protection and privacy compliance with automated assessment and reporting.',
+        name: 'AI Data Privacy & Compliance',
+        description: 'Complete data protection and privacy compliance with AI-powered automated assessment and intelligent reporting.',
         icon: 'ShieldCheckIcon',
         price: '$1,000/month',
         href: '/dpdp-compliance',

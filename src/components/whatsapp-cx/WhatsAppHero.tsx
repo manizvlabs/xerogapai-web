@@ -86,7 +86,7 @@ export default function WhatsAppHero() {
           {/* Value Proposition */}
           <div className="bg-slate-800/30 backdrop-blur-sm p-8 rounded-3xl border border-slate-700 mb-12 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-white mb-6 text-center">
-              Why Businesses Choose WhatsApp CX Copilot
+              Why Businesses Choose AI Multi-Channel Support Copilot
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">

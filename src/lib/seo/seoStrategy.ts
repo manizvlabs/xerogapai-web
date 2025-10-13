@@ -33,8 +33,8 @@ export class SEOService {
     const seoConfigs: Record<string, SEOConfig> = {
       '/': {
         title: 'XeroGap AI - Transform Your Business with Intelligent Automation',
-        description: 'Leading AI automation solutions for businesses. From WhatsApp CX to Enterprise Copilots - discover how AI can transform your operations and boost efficiency.',
-        keywords: ['AI automation', 'business automation', 'WhatsApp CX', 'enterprise AI', 'workflow automation', 'AI assessment'],
+        description: 'Leading AI automation solutions for businesses. From AI Multi-Channel Support Copilot to AI Knowledge Management Assistant - discover how AI can transform your operations and boost efficiency.',
+        keywords: ['AI automation', 'business automation', 'AI Multi-Channel Support Copilot', 'AI Knowledge Management Assistant', 'workflow automation', 'AI assessment'],
         canonical: `${baseUrl}/`,
         ogTitle: 'XeroGap AI - Intelligent Business Automation Solutions',
         ogDescription: 'Transform your business with cutting-edge AI automation. Get your free AI readiness assessment and discover the perfect solutions for your needs.',
@@ -59,8 +59,8 @@ export class SEOService {
 
       '/services': {
         title: 'AI Automation Services - WhatsApp CX, Enterprise Copilots & More',
-        description: 'Comprehensive AI automation services including WhatsApp CX, Enterprise Copilots, Sales Automation, Contact Center AI, and DPDP Compliance solutions.',
-        keywords: ['AI services', 'automation services', 'WhatsApp automation', 'enterprise AI', 'sales automation'],
+        description: 'Comprehensive AI automation services including AI Multi-Channel Support Copilot, AI Knowledge Management Assistant, AI Sales Insights & Automation, AI Contact Center QA & Coaching, and AI Data Privacy & Compliance solutions.',
+        keywords: ['AI services', 'automation services', 'AI Multi-Channel Support Copilot', 'AI Knowledge Management Assistant', 'AI Sales Insights & Automation'],
         canonical: `${baseUrl}/services`,
         ogTitle: 'AI Automation Services - Transform Your Business Operations',
         ogDescription: 'Explore our comprehensive suite of AI automation solutions designed to boost efficiency and drive growth.',
@@ -71,11 +71,11 @@ export class SEOService {
       },
 
       '/whatsapp-cx': {
-        title: 'WhatsApp CX Automation - Transform Customer Communication',
+        title: 'AI Multi-Channel Support Copilot - Transform Customer Communication',
         description: 'Automate WhatsApp customer service with AI. Handle 10,000+ inquiries monthly, reduce response time by 85%, and boost customer satisfaction.',
-        keywords: ['WhatsApp automation', 'customer service AI', 'WhatsApp CX', 'business messaging', 'AI chatbot'],
+        keywords: ['WhatsApp automation', 'customer service AI', 'AI Multi-Channel Support Copilot', 'business messaging', 'AI chatbot'],
         canonical: `${baseUrl}/whatsapp-cx`,
-        ogTitle: 'WhatsApp CX Automation - Revolutionize Customer Service',
+        ogTitle: 'AI Multi-Channel Support Copilot - Revolutionize Customer Service',
         ogDescription: 'Transform customer communication with AI-powered WhatsApp automation. 85% faster responses, 24/7 availability.',
         ogImage: `${baseUrl}/og-image-whatsapp.jpg`,
         ogType: 'product',
@@ -97,11 +97,11 @@ export class SEOService {
       },
 
       '/enterprise-copilots': {
-        title: 'Enterprise Knowledge Copilots - AI-Powered Internal Assistance',
+        title: 'AI Knowledge Management Assistant - AI-Powered Internal Assistance',
         description: 'Multi-lingual knowledge copilots for enterprises. Instant access to company documentation with compliance and security built-in.',
-        keywords: ['enterprise AI', 'knowledge management', 'AI assistant', 'enterprise copilot', 'internal AI'],
+        keywords: ['enterprise AI', 'knowledge management', 'AI assistant', 'AI Knowledge Management Assistant', 'internal AI'],
         canonical: `${baseUrl}/enterprise-copilots`,
-        ogTitle: 'Enterprise Knowledge Copilots - Smart Internal AI Assistance',
+        ogTitle: 'AI Knowledge Management Assistant - Smart Internal AI Assistance',
         ogDescription: 'Transform internal knowledge access with AI-powered copilots. Multi-lingual, compliant, and secure.',
         ogImage: `${baseUrl}/og-image-enterprise.jpg`,
         ogType: 'product',
@@ -223,7 +223,7 @@ export class SEOService {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'WhatsApp CX Automation',
+              name: 'AI Multi-Channel Support Copilot',
               description: 'AI-powered WhatsApp customer service automation'
             }
           },
@@ -231,7 +231,7 @@ export class SEOService {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'XeroGap AI Workflow Automation',
+              name: 'AI-Powered Workflow Automation',
               description: 'Intelligent workflow automation platform'
             }
           },
@@ -239,7 +239,7 @@ export class SEOService {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Enterprise Knowledge Copilots',
+              name: 'AI Knowledge Management Assistant',
               description: 'AI-powered internal knowledge assistance'
             }
           }
@@ -252,7 +252,7 @@ export class SEOService {
     return {
       '@context': 'https://schema.org',
       '@type': 'Product',
-      name: 'WhatsApp CX Automation',
+      name: 'AI Multi-Channel Support Copilot',
       description: 'AI-powered WhatsApp customer service automation',
       brand: {
         '@type': 'Brand',
@@ -298,7 +298,7 @@ export class SEOService {
     return {
       '@context': 'https://schema.org',
       '@type': 'Product',
-      name: 'Enterprise Knowledge Copilots',
+      name: 'AI Knowledge Management Assistant',
       description: 'AI-powered internal knowledge assistance for enterprises',
       brand: {
         '@type': 'Brand',
