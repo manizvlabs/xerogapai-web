@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { emailService, LeadData } from '@/lib/email/emailService';
+import { LeadData } from '@/lib/email/emailService';
 
 export function useEmailCapture() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,14 +14,23 @@ export function useEmailCapture() {
     setSuccess(false);
 
     try {
-      const result = await emailService.captureLead(leadData);
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(leadData),
+      });
 
-      if (result.success) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         setSuccess(true);
         return { success: true, leadId: result.leadId };
       } else {
-        setError(result.error || 'Failed to capture lead');
-        return { success: false, error: result.error };
+        const errorMessage = result.error || 'Failed to capture lead';
+        setError(errorMessage);
+        return { success: false, error: errorMessage };
       }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred';

@@ -329,34 +329,45 @@ class Microsoft365EmailService {
       }
     }
 
-    if (!this.useGraphApi) {
-      this.smtpService = new SMTPEmailService();
-    }
+    // Don't create SMTP service in constructor - use lazy initialization
+    // this.smtpService will be created only when needed in sendEmail()
   }
 
   async sendEmail(emailData: EmailData, attachments?: EmailAttachment[]): Promise<{ success: boolean; messageId?: string; error?: string }> {
     if (this.useGraphApi && this.graphService) {
       return this.graphService.sendEmail(emailData, attachments);
-    } else if (this.smtpService) {
-      return this.smtpService.sendEmail(emailData, attachments);
     } else {
-      return {
-        success: false,
-        error: 'No email service configured'
-      };
+      // Lazy initialization of SMTP service
+      if (!this.smtpService) {
+        try {
+          this.smtpService = new SMTPEmailService();
+        } catch (error) {
+          return {
+            success: false,
+            error: `SMTP service initialization failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+          };
+        }
+      }
+      return this.smtpService.sendEmail(emailData, attachments);
     }
   }
 
   async verifyConnection(): Promise<{ success: boolean; error?: string }> {
     if (this.useGraphApi && this.graphService) {
       return this.graphService.verifyConnection();
-    } else if (this.smtpService) {
-      return this.smtpService.verifyConnection();
     } else {
-      return {
-        success: false,
-        error: 'No email service configured'
-      };
+      // Lazy initialization of SMTP service
+      if (!this.smtpService) {
+        try {
+          this.smtpService = new SMTPEmailService();
+        } catch (error) {
+          return {
+            success: false,
+            error: `SMTP service initialization failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+          };
+        }
+      }
+      return this.smtpService.verifyConnection();
     }
   }
 

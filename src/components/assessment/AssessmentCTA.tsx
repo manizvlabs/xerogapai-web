@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { CheckCircleIcon, CalendarIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import CalendarBooking from '@/components/shared/CalendarBooking';
 
 interface AssessmentData {
   score?: number;
@@ -18,11 +19,12 @@ interface AssessmentCTAProps {
   onRestart: () => void;
 }
 
-export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: AssessmentCTAProps) {
-  const [isBooking, setIsBooking] = useState(false);
+export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: Readonly<AssessmentCTAProps>) {
   const [isSendingReport, setIsSendingReport] = useState(false);
   const [reportSent, setReportSent] = useState(false);
   const [reportError, setReportError] = useState<string | null>(null);
+  const [showCalendarBooking, setShowCalendarBooking] = useState(false);
+  const [consultationBooked, setConsultationBooked] = useState(false);
 
   const handleSendReport = async () => {
     setIsSendingReport(true);
@@ -55,14 +57,32 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
     }
   };
 
-  const handleBookConsultation = async () => {
-    setIsBooking(true);
-    // Simulate booking process
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setIsBooking(false);
-    // In a real app, this would redirect to Calendly or a booking system
-    window.location.href = '/consultation';
+  const handleBookConsultation = () => {
+    setShowCalendarBooking(true);
   };
+
+  const handleConsultationBookingComplete = (bookingData: any) => {
+    setConsultationBooked(true);
+    setShowCalendarBooking(false);
+  };
+
+  const handleBackFromCalendar = () => {
+    setShowCalendarBooking(false);
+  };
+
+  // Show calendar booking if requested
+  if (showCalendarBooking) {
+    return (
+      <CalendarBooking
+        bookingType="consultation"
+        onBookingComplete={handleConsultationBookingComplete}
+        onBack={handleBackFromCalendar}
+        initialData={{
+          email: userEmail,
+        }}
+      />
+    );
+  }
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
@@ -180,8 +200,8 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
                 "Custom AI implementation recommendations",
                 "ROI projections and timeline planning",
                 "Q&A session with our AI experts"
-              ].map((item, index) => (
-                <div key={index} className="flex items-center">
+              ].map((item) => (
+                <div key={item} className="flex items-center">
                   <CheckCircleIcon className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
                   <span className="text-gray-700 dark:text-gray-300">{item}</span>
                 </div>
@@ -191,20 +211,27 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <button
-              onClick={handleBookConsultation}
-              disabled={isBooking}
-              className="flex-1 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isBooking ? (
-                <div className="flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Booking Consultation...
-                </div>
-              ) : (
-                'Book Free Consultation Now'
-              )}
-            </button>
+            {consultationBooked ? (
+              <div className="flex-1 bg-green-100 border-2 border-green-500 text-green-800 px-8 py-4 rounded-lg font-semibold text-lg text-center">
+                <CheckCircleIcon className="h-6 w-6 inline mr-2" />
+                Consultation Booked Successfully!
+              </div>
+            ) : (
+              <button
+                onClick={handleBookConsultation}
+                disabled={isBooking}
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isBooking ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                    Booking Consultation...
+                  </div>
+                ) : (
+                  'Book Free Consultation Now'
+                )}
+              </button>
+            )}
 
             <Link
               href="/demo"
