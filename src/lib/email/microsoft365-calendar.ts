@@ -1,5 +1,6 @@
 import { Client } from '@microsoft/microsoft-graph-client';
 import { ClientSecretCredential } from '@azure/identity';
+import moment from 'moment';
 
 export interface CalendarEvent {
   subject: string;
@@ -382,7 +383,7 @@ class MicrosoftGraphCalendarService {
             const startDateTimeIST = new Date(startDateTimeUTC.getTime() + (5.5 * 60 * 60 * 1000));
 
             // Format for IST display
-            const date = startDateTimeIST.toISOString().split('T')[0];
+            const date = moment(startDateTimeIST).format('YYYY-MM-DD');
             const time = startDateTimeIST.toTimeString().slice(0, 5); // HH:MM format
 
             busySlots.push({
@@ -405,7 +406,7 @@ class MicrosoftGraphCalendarService {
         if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Monday to Friday
           for (let hour = 9; hour < 17; hour++) {
             const timeString = `${hour.toString().padStart(2, '0')}:00`;
-            const dateString = currentDate.toISOString().split('T')[0];
+            const dateString = moment(currentDate).format('YYYY-MM-DD');
 
             // Check if this slot is already booked
             const isBooked = busySlots.some(slot =>
@@ -472,9 +473,8 @@ class MicrosoftGraphCalendarService {
     // Generate available time slots for the next 7 days
     const currentDate = new Date();
     for (let i = 0; i < 7; i++) {
-      const date = new Date(currentDate);
-      date.setDate(currentDate.getDate() + i);
-      const dateString = date.toISOString().split('T')[0];
+      const date = moment(currentDate).add(i, 'days').toDate();
+      const dateString = moment(date).format('YYYY-MM-DD');
 
       // Skip weekends
       if (date.getDay() === 0 || date.getDay() === 6) continue;

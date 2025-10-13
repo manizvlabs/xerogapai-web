@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import moment from 'moment';
 
 import { useState } from 'react';
 import { ChevronLeftIcon, CalendarIcon, ClockIcon, UserIcon, BuildingOfficeIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
@@ -126,7 +127,7 @@ export default function ConsultationForm({ consultationType, onComplete, onBack 
       // Skip weekends (optional - you can remove this if you want weekend consultations)
       if (date.getDay() !== 0 && date.getDay() !== 6) {
         dates.push({
-          value: date.toISOString().split('T')[0],
+          value: moment(date).format('YYYY-MM-DD'),
           label: date.toLocaleDateString('en-US', {
             weekday: 'short',
             month: 'short',

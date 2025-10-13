@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import moment from 'moment';
 
 import React, { useState, useEffect } from 'react';
 import {
@@ -222,7 +223,7 @@ export default function AnalyticsDashboard({ className = '' }: AnalyticsDashboar
                   const url = URL.createObjectURL(blob);
                   const a = document.createElement('a');
                   a.href = url;
-                  a.download = `analytics-export-${new Date().toISOString().split('T')[0]}.json`;
+                  a.download = `analytics-export-${moment().format('YYYY-MM-DD')}.json`;
                   document.body.appendChild(a);
                   a.click();
                   document.body.removeChild(a);

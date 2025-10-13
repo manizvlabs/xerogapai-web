@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon, CalendarIcon, ClockIcon } from '@heroicons/react/24/outline';
+import moment from 'moment';
 
 interface TimeSlot {
   date: string;
@@ -37,7 +38,11 @@ interface DemoCalendarBookingProps {
 }
 
 export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoCalendarBookingProps) {
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date>(() => {
+    const initialDate = new Date();
+    console.log('📅 Initial selectedDate:', formatDateString(initialDate));
+    return initialDate;
+  });
   const [availability, setAvailability] = useState<AvailabilityData | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedSlot, setSelectedSlot] = useState<{ date: string; time: string } | null>(null);
@@ -65,11 +70,13 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
       const endDate = new Date();
       endDate.setDate(endDate.getDate() + 7);
 
-      const response = await fetch(`/api/demo-booking?startDate=${startDate.toISOString().split('T')[0]}&endDate=${endDate.toISOString().split('T')[0]}`);
+      console.log('🔄 Fetching availability for date range:', formatDateString(startDate), 'to', formatDateString(endDate));
+      const response = await fetch(`/api/demo-booking?startDate=${formatDateString(startDate)}&endDate=${formatDateString(endDate)}`);
 
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
+          console.log('✅ Availability data received:', data.availability);
           setAvailability(data.availability);
         }
       }
@@ -101,17 +108,25 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
     return date.toDateString() === today.toDateString();
   };
 
+  const formatDateString = (date: Date): string => {
+    // Use moment.js for consistent YYYY-MM-DD format across all browsers
+    return moment(date).format('YYYY-MM-DD');
+  };
+
   const isSelectedDate = (date: Date) => {
-    return date.toDateString() === selectedDate.toDateString();
+    const dateStr = formatDateString(date);
+    const selectedStr = formatDateString(selectedDate);
+    const isSelected = dateStr === selectedStr;
+    console.log('🔍 Checking if date is selected:', dateStr, 'vs', selectedStr, '->', isSelected);
+    return isSelected;
   };
 
   const isTimeSlotInPast = (date: string, time: string) => {
-    // Get current date in UTC format to match the mock data format
-    const now = new Date();
-    const todayString = now.toISOString().split('T')[0];
+    // Get current date using moment.js for consistent formatting
+    const todayString = moment().format('YYYY-MM-DD');
 
     console.log('=== Time Slot Check ===');
-    console.log('Current date string:', todayString);
+    console.log('Current date string (local):', todayString);
     console.log('Slot date:', date);
     console.log('Slot time:', time);
     console.log('Are dates equal?', date === todayString);
@@ -153,6 +168,7 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
   const navigateDate = (direction: 'prev' | 'next') => {
     const newDate = new Date(selectedDate);
     newDate.setDate(newDate.getDate() + (direction === 'next' ? 1 : -1));
+    console.log('📅 Navigating to date:', formatDateString(newDate));
     setSelectedDate(newDate);
     setSelectedSlot(null);
   };
@@ -162,6 +178,7 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
 
     console.log('=== Getting Slots for Date ===');
     console.log('Requested date:', date);
+    console.log('Current selectedDate:', formatDateString(selectedDate));
     console.log('All available slots:', availability.freeSlots);
     console.log('All busy slots:', availability.busySlots);
 
@@ -231,11 +248,12 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
   const generateDateRange = () => {
     const dates = [];
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // Reset time to start of day for comparison
+
+    console.log('📅 Generating date range from:', formatDateString(today));
 
     for (let i = 0; i < 7; i++) {
-      const date = new Date(today);
-      date.setDate(today.getDate() + i);
+      const date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i);
+      console.log(`📅 Date ${i}:`, formatDateString(date));
       dates.push(date);
     }
     return dates;
@@ -369,7 +387,12 @@ export default function DemoCalendarBooking({ onBookingComplete, onBack }: DemoC
                     return (
                       <button
                         key={date.toISOString()}
-                        onClick={() => setSelectedDate(date)}
+                        onClick={() => {
+                          console.log('🖱️ Clicking on date:', formatDateString(date));
+                          console.log('🖱️ Current selectedDate before click:', formatDateString(selectedDate));
+                          setSelectedDate(date);
+                          console.log('🖱️ Date object being set:', formatDateString(date));
+                        }}
                         className={`w-full p-3 rounded-lg text-left transition-colors ${
                           isSelected
                             ? 'bg-green-100 dark:bg-green-900/30 border-2 border-green-500 text-green-800 dark:text-green-300'
