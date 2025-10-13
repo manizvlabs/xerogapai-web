@@ -1,6 +1,4 @@
 'use client';
-import Link from 'next/link';
-
 import { useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
@@ -100,32 +98,6 @@ export default function DemoFAQ() {
               </div>
             );
           })}
-        </div>
-
-        {/* Still have questions */}
-        <div className="mt-12 text-center">
-          <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-8 border border-green-200 dark:border-green-800">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-              Still have questions?
-            </h3>
-            <p className="text-gray-600 dark:text-white mb-6">
-              Can't find the answer you're looking for? Our team is here to help.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="mailto:demo@xerogap.ai"
-                className="inline-flex items-center px-6 py-3 border border-green-600 text-green-600 rounded-lg hover:bg-green-600 hover:text-white transition-colors"
-              >
-                Email Our Demo Team
-              </Link>
-              <Link
-                href="tel:+1-555-123-4567"
-                className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-              >
-                Call Us Directly
-              </Link>
-            </div>
-          </div>
         </div>
     </div>
   );
