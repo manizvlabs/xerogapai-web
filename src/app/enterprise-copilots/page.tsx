@@ -3,12 +3,7 @@ import Link from 'next/link';
 
 import EnterpriseHero from '@/components/enterprise-copilots/EnterpriseHero';
 import EnterpriseFeatures from '@/components/enterprise-copilots/EnterpriseFeatures';
-import EnterpriseSecurity from '@/components/enterprise-copilots/EnterpriseSecurity';
-import EnterpriseLanguages from '@/components/enterprise-copilots/EnterpriseLanguages';
 import EnterprisePricing from '@/components/enterprise-copilots/EnterprisePricing';
-import EnterpriseTestimonials from '@/components/enterprise-copilots/EnterpriseTestimonials';
-import EnterpriseProcess from '@/components/enterprise-copilots/EnterpriseProcess';
-import EnterpriseSpecs from '@/components/enterprise-copilots/EnterpriseSpecs';
 import EnterpriseCTA from '@/components/enterprise-copilots/EnterpriseCTA';
 
 export default function EnterpriseCopilotsPage() {
@@ -16,12 +11,7 @@ export default function EnterpriseCopilotsPage() {
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <EnterpriseHero />
       <EnterpriseFeatures />
-      <EnterpriseSecurity />
-      <EnterpriseLanguages />
       <EnterprisePricing />
-      <EnterpriseTestimonials />
-      <EnterpriseProcess />
-      <EnterpriseSpecs />
       <EnterpriseCTA />
 
       {/* Back to Home Link */}

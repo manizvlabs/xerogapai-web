@@ -12,15 +12,8 @@ export default function WhatsAppIndustries() {
       useCases: [
         'Order tracking and updates',
         'Product recommendations',
-        'Return and exchange processing',
-        'Abandoned cart recovery',
-        'Customer loyalty programs'
-      ],
-      metrics: {
-        automation: '90%',
-        satisfaction: '+85%',
-        revenue: '+$250K'
-      }
+        'Return and exchange processing'
+      ]
     },
     {
       icon: HeartIcon,
@@ -29,15 +22,8 @@ export default function WhatsAppIndustries() {
       useCases: [
         'Appointment scheduling',
         'Prescription reminders',
-        'Test results communication',
-        'Insurance queries',
-        'Follow-up care coordination'
-      ],
-      metrics: {
-        automation: '75%',
-        satisfaction: '+90%',
-        revenue: '+$180K'
-      }
+        'Test results communication'
+      ]
     },
     {
       icon: HomeIcon,
@@ -46,15 +32,8 @@ export default function WhatsAppIndustries() {
       useCases: [
         'Property information requests',
         'Viewing appointment booking',
-        'Market updates and alerts',
-        'Document sharing',
-        'Client follow-ups'
-      ],
-      metrics: {
-        automation: '80%',
-        satisfaction: '+75%',
-        revenue: '+$320K'
-      }
+        'Market updates and alerts'
+      ]
     },
     {
       icon: TruckIcon,
@@ -63,15 +42,8 @@ export default function WhatsAppIndustries() {
       useCases: [
         'Shipment tracking updates',
         'Delivery rescheduling',
-        'Route optimization queries',
-        'Customs and documentation',
-        'Customer notifications'
-      ],
-      metrics: {
-        automation: '85%',
-        satisfaction: '+80%',
-        revenue: '+$150K'
-      }
+        'Route optimization queries'
+      ]
     },
     {
       icon: BriefcaseIcon,
@@ -80,15 +52,8 @@ export default function WhatsAppIndustries() {
       useCases: [
         'Project status updates',
         'Invoice and payment queries',
-        'Service appointment booking',
-        'Contract and document sharing',
-        'Client onboarding'
-      ],
-      metrics: {
-        automation: '70%',
-        satisfaction: '+85%',
-        revenue: '+$200K'
-      }
+        'Service appointment booking'
+      ]
     },
     {
       icon: AcademicCapIcon,
@@ -97,20 +62,13 @@ export default function WhatsAppIndustries() {
       useCases: [
         'Admission inquiries',
         'Course information',
-        'Exam results and certificates',
-        'Fee payment queries',
-        'Student support services'
-      ],
-      metrics: {
-        automation: '65%',
-        satisfaction: '+88%',
-        revenue: '+$120K'
-      }
+        'Exam results and certificates'
+      ]
     }
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-gray-50 dark:bg-gray-800">
+    <section className="py-32 sm:py-40 bg-gray-50 dark:bg-gray-800">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
@@ -121,7 +79,7 @@ export default function WhatsAppIndustries() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {industries.map((industry, index) => {
             const IconComponent = industry.icon;
             return (
@@ -142,7 +100,7 @@ export default function WhatsAppIndustries() {
                   {industry.description}
                 </p>
 
-                <div className="mb-6">
+                <div>
                   <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
                     Common Use Cases:
                   </h4>
@@ -154,26 +112,6 @@ export default function WhatsAppIndustries() {
                       </li>
                     ))}
                   </ul>
-                </div>
-
-                <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
-                  <h5 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-                    Typical Results:
-                  </h5>
-                  <div className="grid grid-cols-3 gap-2 text-center">
-                    <div>
-                      <div className="text-lg font-bold text-green-600">{industry.metrics.automation}</div>
-                      <div className="text-xs text-gray-600 dark:text-white">Automation</div>
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-green-600">{industry.metrics.satisfaction}</div>
-                      <div className="text-xs text-gray-600 dark:text-white">Satisfaction</div>
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold text-purple-600">{industry.metrics.revenue}</div>
-                      <div className="text-xs text-gray-600 dark:text-white">Revenue Impact</div>
-                    </div>
-                  </div>
                 </div>
               </div>
             );

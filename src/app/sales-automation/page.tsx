@@ -3,12 +3,7 @@ import Link from 'next/link';
 
 import SalesHero from '@/components/sales-automation/SalesHero';
 import SalesIntelligence from '@/components/sales-automation/SalesIntelligence';
-import SalesLeadGen from '@/components/sales-automation/SalesLeadGen';
-import SalesAutomation from '@/components/sales-automation/SalesAutomation';
 import SalesPricing from '@/components/sales-automation/SalesPricing';
-import SalesTestimonials from '@/components/sales-automation/SalesTestimonials';
-import SalesProcess from '@/components/sales-automation/SalesProcess';
-import SalesSpecs from '@/components/sales-automation/SalesSpecs';
 import SalesCTA from '@/components/sales-automation/SalesCTA';
 
 export default function SalesAutomationPage() {
@@ -16,12 +11,7 @@ export default function SalesAutomationPage() {
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <SalesHero />
       <SalesIntelligence />
-      <SalesLeadGen />
-      <SalesAutomation />
       <SalesPricing />
-      <SalesTestimonials />
-      <SalesProcess />
-      <SalesSpecs />
       <SalesCTA />
 
       {/* Back to Home Link */}

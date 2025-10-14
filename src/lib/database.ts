@@ -29,6 +29,20 @@ export interface ContactSubmission {
   submittedAt: string;
   ipAddress?: string;
   userAgent?: string;
+  // Consultation-specific fields
+  jobTitle?: string;
+  companySize?: string;
+  industry?: string;
+  website?: string;
+  preferredDate?: string;
+  preferredTime?: string;
+  timezone?: string;
+  consultationGoals?: string;
+  currentChallenges?: string;
+  budget?: string;
+  timeline?: string;
+  additionalNotes?: string;
+  consultationType?: string;
 }
 
 export interface ContactStats {
@@ -113,7 +127,21 @@ export class ContactDatabase {
         service: data.service,
         message: data.message,
         ip_address: data.ipAddress,
-        user_agent: data.userAgent
+        user_agent: data.userAgent,
+        // Consultation-specific fields
+        job_title: data.jobTitle,
+        company_size: data.companySize,
+        industry: data.industry,
+        website: data.website,
+        preferred_date: data.preferredDate,
+        preferred_time: data.preferredTime,
+        timezone: data.timezone,
+        consultation_goals: data.consultationGoals,
+        current_challenges: data.currentChallenges,
+        budget: data.budget,
+        timeline: data.timeline,
+        additional_notes: data.additionalNotes,
+        consultation_type: data.consultationType
       };
 
       const supabaseContact = await SupabaseContactDatabase.createContact(supabaseData);
@@ -131,7 +159,21 @@ export class ContactDatabase {
         message: supabaseContact.message,
         submittedAt: supabaseContact.submitted_at,
         ipAddress: supabaseContact.ip_address,
-        userAgent: supabaseContact.user_agent
+        userAgent: supabaseContact.user_agent,
+        // Consultation-specific fields
+        jobTitle: supabaseContact.job_title,
+        companySize: supabaseContact.company_size,
+        industry: supabaseContact.industry,
+        website: supabaseContact.website,
+        preferredDate: supabaseContact.preferred_date,
+        preferredTime: supabaseContact.preferred_time,
+        timezone: supabaseContact.timezone,
+        consultationGoals: supabaseContact.consultation_goals,
+        currentChallenges: supabaseContact.current_challenges,
+        budget: supabaseContact.budget,
+        timeline: supabaseContact.timeline,
+        additionalNotes: supabaseContact.additional_notes,
+        consultationType: supabaseContact.consultation_type
       };
     } catch (error) {
       console.error('❌ Supabase error, falling back to file storage:', error);
@@ -168,7 +210,21 @@ export class ContactDatabase {
         message: contact.message,
         submittedAt: contact.submitted_at,
         ipAddress: contact.ip_address,
-        userAgent: contact.user_agent
+        userAgent: contact.user_agent,
+        // Consultation-specific fields
+        jobTitle: contact.job_title,
+        companySize: contact.company_size,
+        industry: contact.industry,
+        website: contact.website,
+        preferredDate: contact.preferred_date,
+        preferredTime: contact.preferred_time,
+        timezone: contact.timezone,
+        consultationGoals: contact.consultation_goals,
+        currentChallenges: contact.current_challenges,
+        budget: contact.budget,
+        timeline: contact.timeline,
+        additionalNotes: contact.additional_notes,
+        consultationType: contact.consultation_type
       }));
 
       return {
@@ -210,7 +266,21 @@ export class ContactDatabase {
         message: supabaseContact.message,
         submittedAt: supabaseContact.submitted_at,
         ipAddress: supabaseContact.ip_address,
-        userAgent: supabaseContact.user_agent
+        userAgent: supabaseContact.user_agent,
+        // Consultation-specific fields
+        jobTitle: supabaseContact.job_title,
+        companySize: supabaseContact.company_size,
+        industry: supabaseContact.industry,
+        website: supabaseContact.website,
+        preferredDate: supabaseContact.preferred_date,
+        preferredTime: supabaseContact.preferred_time,
+        timezone: supabaseContact.timezone,
+        consultationGoals: supabaseContact.consultation_goals,
+        currentChallenges: supabaseContact.current_challenges,
+        budget: supabaseContact.budget,
+        timeline: supabaseContact.timeline,
+        additionalNotes: supabaseContact.additional_notes,
+        consultationType: supabaseContact.consultation_type
       };
     } catch (error) {
       console.error('Supabase error, falling back to file storage:', error);

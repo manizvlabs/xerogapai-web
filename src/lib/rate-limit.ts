@@ -9,8 +9,8 @@ const RATE_LIMITS = {
   },
   // Contact form
   contact: {
-    windowMs: parseInt(process.env.RATE_LIMIT_CONTACT_WINDOW_MS || '3600000'), // 1 hour default
-    maxRequests: parseInt(process.env.RATE_LIMIT_CONTACT_MAX_REQUESTS || '5'), // 5 submissions default
+    windowMs: parseInt(process.env.RATE_LIMIT_CONTACT_WINDOW_MS || '86400000'), // 24 hours default (1 day)
+    maxRequests: parseInt(process.env.RATE_LIMIT_CONTACT_MAX_REQUESTS || '1000'), // 1000 submissions default
   },
   // Admin routes
   admin: {

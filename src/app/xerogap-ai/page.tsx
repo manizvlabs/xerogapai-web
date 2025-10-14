@@ -2,26 +2,16 @@
 import Link from 'next/link';
 
 import XeroGapHero from '@/components/xerogap-ai/XeroGapHero';
-import XeroGapIntegrations from '@/components/xerogap-ai/XeroGapIntegrations';
-import XeroGapUseCases from '@/components/xerogap-ai/XeroGapUseCases';
 import XeroGapFeatures from '@/components/xerogap-ai/XeroGapFeatures';
 import XeroGapPricing from '@/components/xerogap-ai/XeroGapPricing';
-import XeroGapTestimonials from '@/components/xerogap-ai/XeroGapTestimonials';
-import XeroGapProcess from '@/components/xerogap-ai/XeroGapProcess';
-import XeroGapSpecs from '@/components/xerogap-ai/XeroGapSpecs';
 import XeroGapCTA from '@/components/xerogap-ai/XeroGapCTA';
 
 export default function XeroGapAIPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <XeroGapHero />
-      <XeroGapIntegrations />
-      <XeroGapUseCases />
       <XeroGapFeatures />
       <XeroGapPricing />
-      <XeroGapTestimonials />
-      <XeroGapProcess />
-      <XeroGapSpecs />
       <XeroGapCTA />
 
       {/* Back to Home Link */}

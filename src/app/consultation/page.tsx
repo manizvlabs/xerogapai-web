@@ -23,27 +23,12 @@ export default function ConsultationPage() {
     setCurrentStep('form');
   };
 
-  const handleBookingComplete = (data: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    companyName: string;
-    jobTitle: string;
-    companySize: string;
-    industry: string;
-    website: string;
-    preferredDate: string;
-    preferredTime: string;
-    timezone: string;
-    consultationGoals: string;
-    currentChallenges: string;
-    budget: string;
-    timeline: string;
-    additionalNotes: string;
-    consultationType: string;
-  }) => {
-    setBookingData(data);
+  const handleBookingComplete = (data: any) => {
+    setBookingData({
+      ...data,
+      calendarEventId: data.calendarEventId,
+      joinUrl: data.joinUrl
+    });
     setCurrentStep('confirmation');
   };
 
@@ -95,11 +80,36 @@ export default function ConsultationPage() {
                 <p><strong>Consultation Type:</strong> {bookingData.consultationType}</p>
                 <p><strong>Name:</strong> {bookingData.firstName} {bookingData.lastName}</p>
                 <p><strong>Email:</strong> {bookingData.email}</p>
-                <p><strong>Company:</strong> {bookingData.companyName}</p>
+                <p><strong>Phone:</strong> {bookingData.phone}</p>
+                <p><strong>Company:</strong> {bookingData.company}</p>
+                <p><strong>Job Title:</strong> {bookingData.jobTitle}</p>
+                <p><strong>Industry:</strong> {bookingData.industry}</p>
                 <p><strong>Date:</strong> {bookingData.preferredDate}</p>
                 <p><strong>Time:</strong> {bookingData.preferredTime}</p>
+                <p><strong>Timezone:</strong> {bookingData.timezone}</p>
+                {bookingData.consultationGoals && <p><strong>Goals:</strong> {bookingData.consultationGoals}</p>}
+                {bookingData.currentChallenges && <p><strong>Challenges:</strong> {bookingData.currentChallenges}</p>}
               </div>
             </div>
+
+            {/* Teams Meeting Info */}
+            {bookingData.joinUrl && (
+              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
+                <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-2">📅 Teams Meeting Scheduled</h4>
+                <p className="text-sm text-blue-700 dark:text-blue-300 mb-2">
+                  A calendar invite has been sent to your email with the Teams meeting link.
+                </p>
+                <a
+                  href={bookingData.joinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors"
+                >
+                  Join Teams Meeting
+                </a>
+              </div>
+            )}
+
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => setCurrentStep('types')}

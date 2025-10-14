@@ -51,12 +51,12 @@ async function postContactsHandler(request: NextRequest): Promise<Response> {
     
     const body = await request.json();
     
-    // Validate required fields
-    const { firstName, lastName, email, service, message } = body;
-    if (!firstName || !lastName || !email || !service || !message) {
+    // Validate required fields - consultation forms may have different required fields
+    const { firstName, lastName, email } = body;
+    if (!firstName || !lastName || !email) {
       return NextResponse.json({
         success: false,
-        error: 'Missing required fields'
+        error: 'Missing required fields: firstName, lastName, and email are required'
       }, { status: 400 });
     }
 
@@ -73,10 +73,24 @@ async function postContactsHandler(request: NextRequest): Promise<Response> {
       email: body.email.trim(),
       phone: body.phone?.trim(),
       company: body.company?.trim(),
-      service: body.service.trim(),
-      message: body.message.trim(),
+      service: body.service?.trim() || 'Consultation Request',
+      message: body.message?.trim() || 'Consultation booking request',
       ipAddress,
-      userAgent
+      userAgent,
+      // Consultation-specific fields
+      jobTitle: body.jobTitle?.trim(),
+      companySize: body.companySize?.trim(),
+      industry: body.industry?.trim(),
+      website: body.website?.trim(),
+      preferredDate: body.preferredDate?.trim(),
+      preferredTime: body.preferredTime?.trim(),
+      timezone: body.timezone?.trim(),
+      consultationGoals: body.consultationGoals?.trim(),
+      currentChallenges: body.currentChallenges?.trim(),
+      budget: body.budget?.trim(),
+      timeline: body.timeline?.trim(),
+      additionalNotes: body.additionalNotes?.trim(),
+      consultationType: body.consultationType?.trim()
     });
 
     // Log security event

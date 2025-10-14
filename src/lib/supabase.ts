@@ -93,6 +93,20 @@ export interface ContactSubmission {
   assessment_completed_at?: string;
   assessment_score?: number;
   assessment_readiness_level?: string;
+  // Consultation-specific fields
+  job_title?: string;
+  company_size?: string;
+  industry?: string;
+  website?: string;
+  preferred_date?: string;
+  preferred_time?: string;
+  timezone?: string;
+  consultation_goals?: string;
+  current_challenges?: string;
+  budget?: string;
+  timeline?: string;
+  additional_notes?: string;
+  consultation_type?: string;
 }
 
 // Assessment data interface
@@ -201,7 +215,21 @@ export class SupabaseContactDatabase {
           service: data.service,
           message: data.message,
           ip_address: data.ip_address || null,
-          user_agent: data.user_agent || null
+          user_agent: data.user_agent || null,
+          // Consultation-specific fields
+          job_title: data.job_title || null,
+          company_size: data.company_size || null,
+          industry: data.industry || null,
+          website: data.website || null,
+          preferred_date: data.preferred_date || null,
+          preferred_time: data.preferred_time || null,
+          timezone: data.timezone || null,
+          consultation_goals: data.consultation_goals || null,
+          current_challenges: data.current_challenges || null,
+          budget: data.budget || null,
+          timeline: data.timeline || null,
+          additional_notes: data.additional_notes || null,
+          consultation_type: data.consultation_type || null
         });
 
       if (insertError) {

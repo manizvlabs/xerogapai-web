@@ -3,13 +3,7 @@ import Link from 'next/link';
 
 import WhatsAppHero from '@/components/whatsapp-cx/WhatsAppHero';
 import WhatsAppFeatures from '@/components/whatsapp-cx/WhatsAppFeatures';
-import WhatsAppBenefits from '@/components/whatsapp-cx/WhatsAppBenefits';
-import WhatsAppIndustries from '@/components/whatsapp-cx/WhatsAppIndustries';
 import WhatsAppPricing from '@/components/whatsapp-cx/WhatsAppPricing';
-import WhatsAppTestimonials from '@/components/whatsapp-cx/WhatsAppTestimonials';
-import WhatsAppProcess from '@/components/whatsapp-cx/WhatsAppProcess';
-import WhatsAppSpecs from '@/components/whatsapp-cx/WhatsAppSpecs';
-import WhatsAppFAQ from '@/components/whatsapp-cx/WhatsAppFAQ';
 import WhatsAppCTA from '@/components/whatsapp-cx/WhatsAppCTA';
 
 export default function WhatsAppCXPage() {
@@ -17,13 +11,7 @@ export default function WhatsAppCXPage() {
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <WhatsAppHero />
       <WhatsAppFeatures />
-      <WhatsAppBenefits />
-      <WhatsAppIndustries />
       <WhatsAppPricing />
-      <WhatsAppTestimonials />
-      <WhatsAppProcess />
-      <WhatsAppSpecs />
-      <WhatsAppFAQ />
       <WhatsAppCTA />
 
       {/* Back to Home Link */}

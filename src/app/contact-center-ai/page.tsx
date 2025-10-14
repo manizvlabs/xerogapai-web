@@ -3,13 +3,7 @@ import Link from 'next/link';
 
 import ContactHero from '@/components/contact-center-ai/ContactHero';
 import ContactFeatures from '@/components/contact-center-ai/ContactFeatures';
-import ContactScoring from '@/components/contact-center-ai/ContactScoring';
-import ContactCoaching from '@/components/contact-center-ai/ContactCoaching';
-import ContactAnalytics from '@/components/contact-center-ai/ContactAnalytics';
 import ContactPricing from '@/components/contact-center-ai/ContactPricing';
-import ContactTestimonials from '@/components/contact-center-ai/ContactTestimonials';
-import ContactProcess from '@/components/contact-center-ai/ContactProcess';
-import ContactSpecs from '@/components/contact-center-ai/ContactSpecs';
 import ContactCTA from '@/components/contact-center-ai/ContactCTA';
 
 export default function ContactCenterAIPage() {
@@ -17,13 +11,7 @@ export default function ContactCenterAIPage() {
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <ContactHero />
       <ContactFeatures />
-      <ContactScoring />
-      <ContactCoaching />
-      <ContactAnalytics />
       <ContactPricing />
-      <ContactTestimonials />
-      <ContactProcess />
-      <ContactSpecs />
       <ContactCTA />
 
       {/* Back to Home Link */}

@@ -35,6 +35,25 @@ export async function GET(request: NextRequest) {
   }
 }
 
+// Function to convert 12-hour time format to 24-hour format
+function convertTo24Hour(time12h: string): string {
+  // Remove any existing seconds if present
+  const time = time12h.replace(/:\d{2}$/, '');
+
+  const [timePart, period] = time.split(' ');
+  const [hours, minutes] = timePart.split(':');
+
+  let hour24 = parseInt(hours, 10);
+
+  if (period === 'PM' && hour24 !== 12) {
+    hour24 += 12;
+  } else if (period === 'AM' && hour24 === 12) {
+    hour24 = 0;
+  }
+
+  return `${hour24.toString().padStart(2, '0')}:${minutes || '00'}:00`;
+}
+
 // POST endpoint for consultation booking
 export async function POST(request: NextRequest) {
   try {
@@ -77,8 +96,9 @@ export async function POST(request: NextRequest) {
     console.log('📅 Creating calendar event for consultation booking...');
     const calendarService = new MicrosoftGraphCalendarService();
 
-    // Generate consultation event (30 minutes instead of 60)
-    const startDateTime = new Date(`${bookingData.preferredDate}T${bookingData.preferredTime}:00`);
+    // Convert 12-hour time format to 24-hour format and create Date objects
+    const time24h = convertTo24Hour(bookingData.preferredTime);
+    const startDateTime = new Date(`${bookingData.preferredDate}T${time24h}`);
     const endDateTime = new Date(startDateTime.getTime() + 30 * 60 * 1000); // 30 minutes
 
     const calendarEvent = {

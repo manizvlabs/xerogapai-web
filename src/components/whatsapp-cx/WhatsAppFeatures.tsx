@@ -14,43 +14,37 @@ export default function WhatsAppFeatures() {
     {
       icon: CpuChipIcon,
       title: 'AI-Powered Responses',
-      description: 'Intelligent automation that understands context and provides human-like responses to customer queries.',
-      benefits: ['Natural language processing', 'Context-aware replies', 'Multi-language support', 'Continuous learning']
+      description: 'Get instant, human-like replies to customer questions automatically. Your AI assistant learns and improves with every conversation.'
     },
     {
       icon: ChatBubbleLeftRightIcon,
-      title: 'Smart Tagging & Routing',
-      description: 'Automatically categorize conversations and route them to the right team member or escalation path.',
-      benefits: ['Priority-based routing', 'Auto-categorization', 'Escalation workflows', 'Team assignment']
+      title: 'Smart Routing',
+      description: 'Conversations automatically go to the right person on your team. Important messages get priority attention.'
     },
     {
       icon: ChartBarIcon,
-      title: 'Real-Time Analytics',
-      description: 'Comprehensive dashboard with insights on response times, customer satisfaction, and conversion metrics.',
-      benefits: ['Performance monitoring', 'Customer sentiment analysis', 'Conversion tracking', 'Custom reports']
+      title: 'Easy-to-Read Reports',
+      description: 'See how fast you\'re responding to customers and how happy they are. Simple dashboards show what matters most.'
     },
     {
       icon: ArrowPathIcon,
       title: 'Seamless Handoff',
-      description: 'Smooth transition from AI to human agents when complex issues require personal attention.',
-      benefits: ['Context preservation', 'Instant handoff', 'Agent notification', 'Quality assurance']
+      description: 'When customers need personal help, the AI smoothly passes them to your team with all conversation details intact.'
     },
     {
       icon: GlobeAltIcon,
-      title: 'Multi-Language Support',
-      description: 'Serve customers in their preferred language with automatic translation and localized responses.',
-      benefits: ['20+ languages', 'Cultural adaptation', 'Local business hours', 'Regional compliance']
+      title: 'Multiple Languages',
+      description: 'Talk to customers in their own language. Support for 20+ languages helps you serve customers worldwide.'
     },
     {
       icon: ShieldCheckIcon,
-      title: 'Enterprise Security',
-      description: 'Bank-level security with end-to-end encryption, compliance certifications, and data protection.',
-      benefits: ['End-to-end encryption', 'GDPR compliant', 'Audit trails', 'Data residency options']
+      title: 'Secure & Private',
+      description: 'Your customer data is protected with bank-level security. Fully compliant with privacy regulations.'
     }
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-gray-50 dark:bg-gray-800">
+    <section className="py-32 sm:py-40 bg-gray-50 dark:bg-gray-800">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
@@ -62,7 +56,7 @@ export default function WhatsAppFeatures() {
         </div>
 
         <div className="mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {features.map((feature, index) => {
               const IconComponent = feature.icon;
               return (
@@ -79,21 +73,9 @@ export default function WhatsAppFeatures() {
                     </h3>
                   </div>
 
-                  <p className="text-gray-600 dark:text-white mb-6">
+                  <p className="text-gray-600 dark:text-white">
                     {feature.description}
                   </p>
-
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">
-                      Key Capabilities:
-                    </h4>
-                    {feature.benefits.map((benefit, benefitIndex) => (
-                      <div key={benefitIndex} className="flex items-center text-sm">
-                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-600 dark:text-white">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               );
             })}

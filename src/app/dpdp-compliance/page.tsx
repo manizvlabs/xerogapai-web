@@ -3,13 +3,7 @@ import Link from 'next/link';
 
 import DpdpHero from '@/components/dpdp-compliance/DpdpHero';
 import DpdpFeatures from '@/components/dpdp-compliance/DpdpFeatures';
-import DpdpAssessment from '@/components/dpdp-compliance/DpdpAssessment';
-import DpdpCompliance from '@/components/dpdp-compliance/DpdpCompliance';
-import DpdpImplementation from '@/components/dpdp-compliance/DpdpImplementation';
 import DpdpPricing from '@/components/dpdp-compliance/DpdpPricing';
-import DpdpTestimonials from '@/components/dpdp-compliance/DpdpTestimonials';
-import DpdpProcess from '@/components/dpdp-compliance/DpdpProcess';
-import DpdpSpecs from '@/components/dpdp-compliance/DpdpSpecs';
 import DpdpCTA from '@/components/dpdp-compliance/DpdpCTA';
 
 export default function DpdpCompliancePage() {
@@ -17,13 +11,7 @@ export default function DpdpCompliancePage() {
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <DpdpHero />
       <DpdpFeatures />
-      <DpdpAssessment />
-      <DpdpCompliance />
-      <DpdpImplementation />
       <DpdpPricing />
-      <DpdpTestimonials />
-      <DpdpProcess />
-      <DpdpSpecs />
       <DpdpCTA />
 
       {/* Back to Home Link */}

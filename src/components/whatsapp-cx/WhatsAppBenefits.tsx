@@ -1,44 +1,6 @@
 'use client';
 
-import { ScaleIcon, ArrowTrendingUpIcon, UsersIcon, ClockIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
-
 export default function WhatsAppBenefits() {
-  const benefits = [
-    {
-      icon: ScaleIcon,
-      title: 'Scale Customer Service',
-      description: 'Handle 10x more customer conversations without hiring additional staff or expanding your support team.',
-      metrics: [
-        { label: 'Conversations Handled', value: '10x increase' },
-        { label: 'Cost per Interaction', value: '95% reduction' },
-        { label: 'Support Team Size', value: 'No increase needed' }
-      ],
-      color: 'green'
-    },
-    {
-      icon: ArrowTrendingUpIcon,
-      title: 'Boost Revenue & Conversion',
-      description: 'Turn WhatsApp conversations into sales opportunities with intelligent lead qualification and follow-up.',
-      metrics: [
-        { label: 'Lead Conversion Rate', value: '3x improvement' },
-        { label: 'Sales Cycle Time', value: '40% reduction' },
-        { label: 'Revenue per Customer', value: '25% increase' }
-      ],
-      color: 'blue'
-    },
-    {
-      icon: UsersIcon,
-      title: 'Improve Customer Experience',
-      description: 'Provide instant, personalized responses that delight customers and build long-term loyalty.',
-      metrics: [
-        { label: 'Customer Satisfaction', value: '85% improvement' },
-        { label: 'Response Time', value: '2 minutes average' },
-        { label: 'Customer Retention', value: '30% increase' }
-      ],
-      color: 'purple'
-    }
-  ];
-
   const useCases = [
     {
       industry: 'E-commerce',
@@ -67,7 +29,7 @@ export default function WhatsAppBenefits() {
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-white dark:bg-gray-900">
+    <section className="py-32 sm:py-40 bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Industry Use Cases */}
