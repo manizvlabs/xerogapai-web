@@ -42,32 +42,6 @@ export default function ConsultationBenefits() {
     }
   ];
 
-  const testimonials = [
-    {
-      quote: "The consultation gave us crystal clear direction on our AI strategy. We saved 6 months of research and implementation time.",
-      author: "Sarah Mitchell",
-      position: "VP of Operations",
-      company: "TechCorp Solutions",
-      location: "San Francisco, CA",
-      result: "Implemented AI in 3 months vs 9 months projected"
-    },
-    {
-      quote: "The ROI analysis was incredibly detailed and accurate. We've already seen 250% ROI in the first 6 months.",
-      author: "Ahmed Al-Rashid",
-      position: "CEO",
-      company: "MENA Digital Group",
-      location: "Dubai, UAE",
-      result: "$500K cost savings identified"
-    },
-    {
-      quote: "The consultation team understood our compliance requirements perfectly. The implementation was seamless.",
-      author: "Dr. Maria Santos",
-      position: "Chief Digital Officer",
-      company: "MediCare International",
-      location: "Johannesburg, RSA",
-      result: "HIPAA compliant AI system"
-    }
-  ];
 
   return (
     <section className="py-24 sm:py-32 bg-gray-50 dark:bg-gray-800">
@@ -164,49 +138,6 @@ export default function ConsultationBenefits() {
           </div>
         </div>
 
-        {/* Testimonials */}
-        <div className="text-center mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            What Our Clients Say
-          </h3>
-          <p className="text-gray-600 dark:text-white">
-            Real results from businesses that booked consultations with us
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <div className="text-3xl mb-4 text-gray-400">"</div>
-              <blockquote className="text-gray-700 dark:text-white mb-6 italic">
-                {testimonial.quote}
-              </blockquote>
-
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
-                  {testimonial.author.charAt(0)}
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900 dark:text-white text-sm">
-                    {testimonial.author}
-                  </div>
-                  <div className="text-xs text-gray-600 dark:text-white">
-                    {testimonial.position}
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-white">
-                    {testimonial.company}, {testimonial.location}
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
-                <p className="text-xs font-medium text-green-800 dark:text-green-300">
-                  Result: {testimonial.result}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
 
         {/* Final CTA */}
         <div className="text-center mt-16">
