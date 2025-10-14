@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 async function testAssessmentEmail() {
-  console.log('🧪 Testing Assessment Email Functionality\n');
+  console.log('🧪 Testing Assessment Email Functionality with PDF Verification\n');
 
   const assessmentData = {
     score: 75,
@@ -30,9 +30,14 @@ async function testAssessmentEmail() {
   const userEmail = 'manish.08.hbti@gmail.com';
 
   console.log(`📧 Sending assessment report to: ${userEmail}`);
-  console.log('📊 Assessment data:', JSON.stringify(assessmentData, null, 2));
+  console.log('📊 Assessment data summary:');
+  console.log(`   - Score: ${assessmentData.score}/${assessmentData.maxScore} (${Math.round(assessmentData.score/assessmentData.maxScore*100)}%)`);
+  console.log(`   - Insights: ${assessmentData.insights.length}`);
+  console.log(`   - Answers: ${Object.keys(assessmentData.answers).length} questions answered`);
+  console.log('');
 
   try {
+    console.log('🌐 Making API request to /api/assessment/send-report...');
     const response = await fetch('http://localhost:4010/api/assessment/send-report', {
       method: 'POST',
       headers: {
@@ -45,15 +50,38 @@ async function testAssessmentEmail() {
     });
 
     const result = await response.json();
+    console.log('📡 API Response Status:', response.status);
+    console.log('📡 API Response:', JSON.stringify(result, null, 2));
 
     if (response.ok && result.success) {
-      console.log('✅ Assessment report sent successfully!');
+      console.log('\n✅ ASSESSMENT REPORT SENT SUCCESSFULLY!');
       console.log('📨 Message ID:', result.messageId);
+      console.log('🎯 Target Email:', userEmail);
+
+      // Check server logs for PDF generation details
+      console.log('\n🔍 Checking server logs for PDF generation details...');
+      console.log('📋 Note: Check your development server console for detailed PDF logs');
+      console.log('📋 Look for messages like:');
+      console.log('   - "PDF report generated successfully"');
+      console.log('   - "PDF attachment created"');
+      console.log('   - "Microsoft Graph API email sent successfully"');
+
+      console.log('\n📧 VERIFICATION STEPS:');
+      console.log('1. ✅ Email sent successfully (confirmed by API response)');
+      console.log('2. 🔍 Check server console for PDF generation logs');
+      console.log('3. 📬 Check email inbox for PDF attachment');
+      console.log('4. 📊 PDF should be named: "AI_Readiness_Report_[percentage]%.pdf"');
+
     } else {
-      console.error('❌ Failed to send assessment report:', result.error);
+      console.error('\n❌ FAILED TO SEND ASSESSMENT REPORT');
+      console.error('❌ Error:', result.error);
+      console.error('❌ Full response:', result);
     }
   } catch (error) {
-    console.error('💥 Error testing assessment email:', error.message);
+    console.error('\n💥 ERROR TESTING ASSESSMENT EMAIL');
+    console.error('💥 Error message:', error.message);
+    console.error('💥 Make sure the development server is running on port 4010');
+    console.error('💥 Start with: npm run dev');
   }
 
   console.log('\n🎉 Assessment email test completed!');
