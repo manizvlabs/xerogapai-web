@@ -1,4 +1,5 @@
 import { microsoft365EmailService, EmailData } from './microsoft365-email';
+import { templateService } from './templates/templateService';
 
 export interface LeadData {
   email: string;
@@ -114,7 +115,15 @@ class EmailService {
 
   async sendAssessmentReport(assessmentData: any, userEmail: string): Promise<{ success: boolean; messageId?: string; error?: string }> {
     try {
-      const emailData = await microsoft365EmailService.generateAssessmentReportEmail(assessmentData, userEmail);
+      // Get template service instance
+      const templateSvc = await templateService;
+
+      // Use template service to render email with PDF attachment
+      const emailData = await templateSvc.renderAssessmentReportEmail(assessmentData);
+
+      // Override the recipient email
+      emailData.to = userEmail;
+
       return await microsoft365EmailService.sendEmail(emailData);
     } catch (error) {
       console.error('Failed to send assessment report:', error);
