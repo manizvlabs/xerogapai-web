@@ -34,12 +34,17 @@ async function sendAssessmentReportHandler(request: NextRequest) {
 
     // Use template service to render email with PDF attachment
     const templateSvc = await import('@/lib/email/templates/templateService').then(m => m.templateService);
-    const emailData: EmailData = await templateSvc.renderAssessmentReportEmail(assessmentData);
+    const { subject, html, text, attachments } = await templateSvc.renderAssessmentReportEmail(assessmentData);
 
-    // Override the recipient email
-    emailData.to = sanitizedEmail;
+    // Create email data
+    const emailData: EmailData = {
+      to: sanitizedEmail,
+      subject,
+      html,
+      text
+    };
 
-    const result = await microsoft365EmailService.sendEmail(emailData);
+    const result = await microsoft365EmailService.sendEmail(emailData, attachments);
 
     console.log('Email service result:', result);
 

@@ -71,14 +71,15 @@ class MicrosoftGraphEmailService {
         message.attachments = attachments.map(attachment => ({
           "@odata.type": "#microsoft.graph.fileAttachment",
           name: attachment.filename,
-          contentBytes: attachment.content.toString('base64'),
+          contentBytes: Buffer.isBuffer(attachment.content) ? attachment.content.toString('base64') : Buffer.from(attachment.content).toString('base64'),
           contentType: attachment.contentType || 'application/octet-stream'
         }));
       }
 
       console.log('Sending email via Microsoft Graph API...', {
         hasAttachments: !!attachments?.length,
-        attachmentCount: attachments?.length || 0
+        attachmentCount: attachments?.length || 0,
+        attachmentNames: attachments?.map(a => a.filename) || []
       });
 
       // For application permissions, we need to use /users/{userId}/sendMail
@@ -166,14 +167,15 @@ class SMTPEmailService {
         message.attachments = attachments.map(attachment => ({
           "@odata.type": "#microsoft.graph.fileAttachment",
           name: attachment.filename,
-          contentBytes: attachment.content.toString('base64'),
+          contentBytes: Buffer.isBuffer(attachment.content) ? attachment.content.toString('base64') : Buffer.from(attachment.content).toString('base64'),
           contentType: attachment.contentType || 'application/octet-stream'
         }));
       }
 
       console.log('Sending email via Graph API...', {
         hasAttachments: !!attachments?.length,
-        attachmentCount: attachments?.length || 0
+        attachmentCount: attachments?.length || 0,
+        attachmentNames: attachments?.map(a => a.filename) || []
       });
 
       // For application permissions, we need to use /users/{userId}/sendMail
