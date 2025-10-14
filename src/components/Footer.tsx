@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-12 lg:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {/* Company Info */}
             <div className="lg:col-span-2">
               <Link href="/" className="inline-flex group mb-6 relative">
@@ -111,44 +111,6 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Resources */}
-            <div>
-              <h3 className="text-sm font-semibold leading-6 text-white mb-4">Resources</h3>
-              <ul className="space-y-3">
-                <li>
-                  <Link
-                    href="/case-studies"
-                    className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
-                  >
-                    Case Studies
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/docs"
-                    className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
-                  >
-                    Documentation
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/help"
-                    className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
-                  >
-                    Help Center
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/assessment"
-                    className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
-                  >
-                    AI Assessment
-                  </Link>
-                </li>
-              </ul>
-            </div>
 
             {/* Company */}
             <div>
