@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
-import { microsoft365EmailService } from '../src/lib/email/microsoft365-email.js';
+import { config } from 'dotenv';
+import { microsoft365EmailService } from '../src/lib/email/microsoft365-email.ts';
+
+// Load environment variables
+config({ path: '../.env.local' });
 
 async function testEmailSending() {
   console.log('🧪 Testing Microsoft Office 365 Email Integration\n');

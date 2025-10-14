@@ -599,9 +599,7 @@ export class TemplateService {
       </head>
       <body>
         <div class="header">
-          <div style="width: 150px; height: 50px; margin: 0 auto 20px auto; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-            🚀 XeroGap AI
-          </div>
+          <img src="https://xerogapai-web.vercel.app/logo.png" alt="XeroGap AI Logo" style="width: 150px; height: auto; margin: 0 auto 20px auto; display: block;">
           <h1>AI Readiness Assessment Report</h1>
           <p>Comprehensive Analysis & Strategic Recommendations</p>
         </div>
@@ -696,9 +694,7 @@ export class TemplateService {
         </div>
 
         <div class="footer">
-          <div style="width: 80px; height: 30px; margin: 0 auto 15px auto; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-            🚀 XeroGap AI
-          </div>
+          <img src="https://xerogapai-web.vercel.app/logo.png" alt="XeroGap AI Logo" style="width: 80px; height: auto; margin: 0 auto 15px auto; display: block;">
           <p class="company-name">XeroGap AI</p>
           <p>AI-Powered Digital Transformation</p>
           <p>Questions about your report? Contact us at support@xerogap.com</p>

@@ -14,7 +14,8 @@ const assessmentReportTemplate: EmailTemplate = {
     'insightsDisplay',
     'insightsText',
     'consultationUrl',
-    'demoUrl'
+    'demoUrl',
+    'answers'
   ],
   html: `
     <!DOCTYPE html>
@@ -29,9 +30,7 @@ const assessmentReportTemplate: EmailTemplate = {
 
         <!-- Header -->
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 30px; text-align: center;">
-          <div style="width: 120px; height: 40px; margin: 0 auto 20px auto; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px; color: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            🚀 XeroGap AI
-          </div>
+          <img src="https://xerogapai-web.vercel.app/logo.png" alt="XeroGap AI Logo" style="width: 120px; height: auto; margin: 0 auto 20px auto; display: block;">
           <h1 style="margin: 0; font-size: 28px; font-weight: 700;">Your AI Readiness Report</h1>
           <p style="margin: 10px 0 0 0; opacity: 0.9; font-size: 16px;">Comprehensive Analysis & Recommendations</p>
         </div>
@@ -52,6 +51,23 @@ const assessmentReportTemplate: EmailTemplate = {
             {{insightsDisplay}}
           </div>
         </div>
+
+        <!-- Assessment Responses -->
+        {{#if answers}}
+        <div style="padding: 0 30px 30px;">
+          <h3 style="color: #1e293b; margin-bottom: 20px;">Your Assessment Responses</h3>
+          <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+              {{#each answers}}
+              <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question {{@key}}</div>
+                <div style="color: #64748b; font-size: 14px;">{{this}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        {{/if}}
 
         <!-- Recommendations -->
         <div style="padding: 0 30px 30px;">
@@ -97,9 +113,7 @@ const assessmentReportTemplate: EmailTemplate = {
 
         <!-- Footer -->
         <div style="background-color: #f8fafc; padding: 30px; text-align: center; border-top: 1px solid #e2e8f0;">
-          <div style="width: 80px; height: 30px; margin: 0 auto 15px auto; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; color: white; box-shadow: 0 1px 4px rgba(0,0,0,0.1);">
-            🚀 XeroGap AI
-          </div>
+          <img src="https://xerogapai-web.vercel.app/logo.png" alt="XeroGap AI Logo" style="width: 80px; height: auto; margin: 0 auto 15px auto; display: block;">
           <p style="margin: 0; color: #64748b; font-size: 14px;">
             Questions about your report? Reply to this email or contact us at
             <a href="mailto:support@xerogap.com" style="color: #667eea;">support@xerogap.com</a>
@@ -122,6 +136,13 @@ Score: {{score}} out of {{maxScore}} points
 Key Insights:
 {{insightsText}}
 
+{{#if answers}}
+Your Assessment Responses:
+{{#each answers}}
+Question {{@key}}: {{this}}
+{{/each}}
+
+{{/if}}
 Recommended Next Steps:
 1. Book a Free Consultation - Discuss your results with our AI experts
 2. Explore Our Solutions - Check out our AI-powered solutions
