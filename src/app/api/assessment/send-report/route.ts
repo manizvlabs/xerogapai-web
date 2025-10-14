@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sanitizeInput, isValidEmail, logSecurityEvent } from '@/lib/security';
-import { emailService } from '@/lib/email/emailService';
+import { microsoft365EmailService, EmailData } from '@/lib/email/microsoft365-email';
 
 async function sendAssessmentReportHandler(request: NextRequest) {
   try {
@@ -24,16 +24,22 @@ async function sendAssessmentReportHandler(request: NextRequest) {
       );
     }
 
-    // Get client IP and user agent for tracking
+    // Get client IP for tracking
     const ipAddress = request.headers.get('x-forwarded-for') ||
                      request.headers.get('x-real-ip') ||
                      'unknown';
-    const userAgent = request.headers.get('user-agent') || 'unknown';
 
-    // Send the assessment report email
+    // Send the assessment report email directly (avoid duplicate email from lead sequence)
     console.log('Attempting to send assessment report to:', sanitizedEmail);
 
-    const result = await emailService.sendAssessmentReport(assessmentData, sanitizedEmail);
+    // Use template service to render email with PDF attachment
+    const templateSvc = await import('@/lib/email/templates/templateService').then(m => m.templateService);
+    const emailData: EmailData = await templateSvc.renderAssessmentReportEmail(assessmentData);
+
+    // Override the recipient email
+    emailData.to = sanitizedEmail;
+
+    const result = await microsoft365EmailService.sendEmail(emailData);
 
     console.log('Email service result:', result);
 

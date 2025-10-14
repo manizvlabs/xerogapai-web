@@ -19,7 +19,7 @@ export interface EmailAttachment {
 // Microsoft Graph API implementation
 class MicrosoftGraphEmailService {
   private graphClient: Client;
-  private userId: string;
+  private readonly userId: string;
 
   constructor() {
     this.userId = '44dcba14-cfef-49e7-bfb9-fda4b477ed8e'; // User's Object ID
@@ -53,7 +53,7 @@ class MicrosoftGraphEmailService {
     try {
       console.log('Microsoft Graph API sendEmail called for:', emailData.to);
 
-      const message = {
+      const message: any = {
         subject: emailData.subject,
         body: {
           contentType: 'html',
@@ -66,11 +66,24 @@ class MicrosoftGraphEmailService {
         }]
       };
 
-      console.log('Sending email via Microsoft Graph API...');
+      // Add attachments if provided
+      if (attachments && attachments.length > 0) {
+        message.attachments = attachments.map(attachment => ({
+          "@odata.type": "#microsoft.graph.fileAttachment",
+          name: attachment.filename,
+          contentBytes: attachment.content.toString('base64'),
+          contentType: attachment.contentType || 'application/octet-stream'
+        }));
+      }
+
+      console.log('Sending email via Microsoft Graph API...', {
+        hasAttachments: !!attachments?.length,
+        attachmentCount: attachments?.length || 0
+      });
 
       // For application permissions, we need to use /users/{userId}/sendMail
       // Make sure the user ID corresponds to a valid user in the organization
-      const result = await this.graphClient
+      await this.graphClient
         .api(`/users/${this.userId}/sendMail`)
         .post({ message });
 
@@ -135,7 +148,7 @@ class SMTPEmailService {
     try {
       console.log('Graph API sendEmail called for:', emailData.to);
 
-      const message = {
+      const message: any = {
         subject: emailData.subject,
         body: {
           contentType: 'html',
@@ -148,11 +161,24 @@ class SMTPEmailService {
         }]
       };
 
-      console.log('Sending email via Graph API...');
+      // Add attachments if provided
+      if (attachments && attachments.length > 0) {
+        message.attachments = attachments.map(attachment => ({
+          "@odata.type": "#microsoft.graph.fileAttachment",
+          name: attachment.filename,
+          contentBytes: attachment.content.toString('base64'),
+          contentType: attachment.contentType || 'application/octet-stream'
+        }));
+      }
+
+      console.log('Sending email via Graph API...', {
+        hasAttachments: !!attachments?.length,
+        attachmentCount: attachments?.length || 0
+      });
 
       // For application permissions, we need to use /users/{userId}/sendMail
       // Make sure the user ID corresponds to a valid user in the organization
-      const result = await this.graphClient
+      await this.graphClient
         .api(`/users/${this.userId}/sendMail`)
         .post({ message });
 
@@ -191,7 +217,7 @@ class SMTPEmailService {
 class Microsoft365EmailService {
   private graphService: MicrosoftGraphEmailService | null = null;
   private smtpService: SMTPEmailService | null = null;
-  private useGraphApi: boolean;
+  private readonly useGraphApi: boolean;
 
   constructor() {
     // Check if Graph API credentials are configured (primary method)
