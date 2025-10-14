@@ -88,24 +88,6 @@ export default function AboutPage() {
         }
       ]
     },
-    team: {
-      title: "Our AI Leadership Team",
-      subtitle: "Industry veterans with deep AI and enterprise expertise",
-      members: [
-        {
-          name: 'Manish Kumar',
-          title: 'Founder & Chief AI Architect',
-          description: 'AI/ML expert with 8+ years in enterprise automation, large language models, and scalable AI solutions. Former tech lead at major enterprises.',
-          initials: 'MK'
-        },
-        {
-          name: 'AI Development Team',
-          title: 'Senior AI Engineers & ML Specialists',
-          description: 'Our team includes PhD-level AI researchers, ML engineers, and full-stack developers specializing in production AI systems.',
-          initials: 'AI'
-        }
-      ]
-    },
     stats: {
       title: "AI Impact by Numbers",
       subtitle: "Transforming businesses through intelligent automation",
@@ -135,11 +117,6 @@ export default function AboutPage() {
       ...defaultContent.whyChooseUs,
       ...(content?.whyChooseUs || {}),
       features: ((content?.whyChooseUs as Record<string, unknown>)?.features || defaultContent.whyChooseUs.features) || []
-    },
-    team: {
-      ...defaultContent.team,
-      ...(content?.team || {}),
-      members: ((content?.team as Record<string, unknown>)?.members || defaultContent.team.members) || []
     },
     values: {
       ...defaultContent.values,
@@ -176,8 +153,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-2xl text-center">
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-purple-800/30 text-purple-200 text-sm font-medium mb-8">
-              <span className="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
-              Our Story
+              <span className="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>Our Story
             </div>
 
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
@@ -253,33 +229,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Team Section */}
-      <div className="py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              {(pageContent.team as Record<string, unknown>).title}
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-              {(pageContent.team as Record<string, unknown>).subtitle}
-            </p>
-          </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <div className="grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-1">
-              {(pageContent.team as Record<string, unknown>).members && Array.isArray((pageContent.team as Record<string, unknown>).members) && (pageContent.team as Record<string, unknown>).members.map((person: { initials: string; name: string; title: string; description: string }, index: number) => (
-                <div key={`member-${index}-${person.name}`} className="flex flex-col items-center text-center">
-                  <div className="h-32 w-32 rounded-full bg-gray-200 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-gray-600 dark:text-white">{person.initials}</span>
-                  </div>
-                  <h3 className="mt-6 text-lg font-semibold text-gray-900 dark:text-white">{person.name}</h3>
-                  <p className="mt-2 text-base text-purple-600">{person.title}</p>
-                  <p className="mt-4 text-base text-gray-600 dark:text-white max-w-md">{person.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Stats Section */}
       <div className="bg-gradient-to-r from-purple-600 to-indigo-600">
