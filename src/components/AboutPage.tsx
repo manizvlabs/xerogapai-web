@@ -40,7 +40,7 @@ export default function AboutPage() {
   const defaultContent = {
     hero: {
       title: "About XeroGap AI",
-      subtitle: "We're on a mission to democratize AI automation for businesses worldwide. From WhatsApp CX to Enterprise Copilots, we make cutting-edge AI accessible and practical for growing companies."
+      subtitle: "We're on a mission to democratize AI automation for businesses worldwide. From AI Multi-Channel Support Copilot to AI Knowledge Management Assistant, we make cutting-edge AI accessible and practical for growing companies."
     },
     mission: {
       title: "Our Mission",

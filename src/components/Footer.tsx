@@ -65,7 +65,7 @@ const Footer = () => {
                     href="/whatsapp-cx"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
-                    WhatsApp CX Copilot
+                    AI Multi-Channel Support Copilot
                   </Link>
                 </li>
                 <li>
@@ -73,7 +73,7 @@ const Footer = () => {
                     href="/xerogap-ai"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
-                    XeroGap AI Workflow
+                    AI-Powered Workflow Automation
                   </Link>
                 </li>
                 <li>
@@ -81,7 +81,7 @@ const Footer = () => {
                     href="/enterprise-copilots"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
-                    Enterprise Copilots
+                    AI Knowledge Management Assistant
                   </Link>
                 </li>
                 <li>
@@ -89,7 +89,7 @@ const Footer = () => {
                     href="/sales-automation"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
-                    Sales Intelligence
+                    AI Sales Insights & Automation
                   </Link>
                 </li>
                 <li>
@@ -97,7 +97,7 @@ const Footer = () => {
                     href="/contact-center-ai"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
-                    Contact Center AI
+                    AI Contact Center QA & Coaching
                   </Link>
                 </li>
                 <li>
@@ -105,7 +105,7 @@ const Footer = () => {
                     href="/dpdp-compliance"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
-                    DPDP Compliance
+                    AI Data Privacy & Compliance
                   </Link>
                 </li>
               </ul>

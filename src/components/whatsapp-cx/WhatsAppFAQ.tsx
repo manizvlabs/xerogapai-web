@@ -76,7 +76,7 @@ export default function WhatsAppFAQ() {
             Frequently Asked Questions
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-            Everything you need to know about WhatsApp CX Copilot
+            Everything you need to know about AI Multi-Channel Support Copilot
           </p>
         </div>
 

@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function WhatsAppTestimonials() {
   const testimonials = [
     {
-      quote: "WhatsApp CX Copilot transformed our customer service overnight. Response time went from 6 hours to 2 minutes, and our customer satisfaction scores jumped 85%. The AI handles 90% of routine inquiries, freeing our team for complex issues.",
+      quote: "AI Multi-Channel Support Copilot transformed our customer service overnight. Response time went from 6 hours to 2 minutes, and our customer satisfaction scores jumped 85%. The AI handles 90% of routine inquiries, freeing our team for complex issues.",
       author: "Ahmed Al-Rashid",
       position: "CEO",
       company: "Al-Mansoori Retail Group",
@@ -32,7 +32,7 @@ export default function WhatsAppTestimonials() {
       industry: "E-commerce"
     },
     {
-      quote: "In healthcare, trust and accuracy are everything. WhatsApp CX Copilot handles patient inquiries with HIPAA compliance while our staff focuses on critical medical cases. Patient satisfaction improved dramatically.",
+      quote: "In healthcare, trust and accuracy are everything. AI Multi-Channel Support Copilot handles patient inquiries with HIPAA compliance while our staff focuses on critical medical cases. Patient satisfaction improved dramatically.",
       author: "Dr. Maria Santos",
       position: "Chief Digital Officer",
       company: "MediCare Plus",
@@ -60,7 +60,7 @@ export default function WhatsAppTestimonials() {
       industry: "Logistics"
     },
     {
-      quote: "As a property developer, timely communication is crucial. WhatsApp CX Copilot manages property inquiries, booking requests, and client updates automatically, improving our conversion rates significantly.",
+      quote: "As a property developer, timely communication is crucial. AI Multi-Channel Support Copilot manages property inquiries, booking requests, and client updates automatically, improving our conversion rates significantly.",
       author: "Fatima Al-Zahra",
       position: "Sales & Marketing Director",
       company: "Desert Properties Development",
@@ -180,7 +180,7 @@ export default function WhatsAppTestimonials() {
               Ready to Join Our Success Stories?
             </h3>
             <p className="text-green-100 mb-8 max-w-2xl mx-auto">
-              See how WhatsApp CX Copilot can transform your business with a personalized demo and ROI analysis.
+              See how AI Multi-Channel Support Copilot can transform your business with a personalized demo and ROI analysis.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

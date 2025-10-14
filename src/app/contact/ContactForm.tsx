@@ -1017,12 +1017,12 @@ export default function ContactForm() {
               }`}
             >
               <option value="" disabled>Select a service...</option>
-              <option value="WhatsApp CX Copilot">WhatsApp CX Copilot - AI-powered customer conversations</option>
-              <option value="XeroGap AI Workflow">XeroGap AI Workflow - Workspace automation</option>
-              <option value="Enterprise Copilots">Enterprise Copilots - Knowledge management</option>
-              <option value="Sales Automation">Sales Automation - Lead intelligence</option>
-              <option value="Contact Center AI">Contact Center AI - Quality assurance</option>
-              <option value="DPDP Compliance">DPDP Compliance - Data protection</option>
+              <option value="AI Multi-Channel Support Copilot">AI Multi-Channel Support Copilot - AI-powered customer conversations</option>
+              <option value="AI-Powered Workflow Automation">AI-Powered Workflow Automation - Workspace automation</option>
+              <option value="AI Knowledge Management Assistant">AI Knowledge Management Assistant - Knowledge management</option>
+              <option value="AI Sales Insights & Automation">AI Sales Insights & Automation - Lead intelligence</option>
+              <option value="AI Contact Center QA & Coaching">AI Contact Center QA & Coaching - Quality assurance</option>
+              <option value="AI Data Privacy & Compliance">AI Data Privacy & Compliance - Data protection</option>
               <option value="Multiple Services">Multiple Services</option>
               <option value="Not sure yet">Not sure yet</option>
             </select>

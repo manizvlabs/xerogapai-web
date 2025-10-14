@@ -37,7 +37,7 @@ export default function ServicesPage() {
   const defaultContent = {
     hero: {
       title: "AI Solutions for Every Business Need",
-      subtitle: "Transform your business with intelligent AI automation. From WhatsApp CX to Enterprise Copilots, we have the perfect solution for your growth."
+      subtitle: "Transform your business with intelligent AI automation. From AI Multi-Channel Support Copilot to AI Knowledge Management Assistant, we have the perfect solution for your growth."
     },
     services: [
       {

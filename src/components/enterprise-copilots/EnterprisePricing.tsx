@@ -242,7 +242,7 @@ export default function EnterprisePricing() {
         <div className="bg-gradient-to-r from-indigo-600 to-blue-600 rounded-2xl p-8 text-white">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
-              Why Enterprise Copilots?
+              Why AI Knowledge Management Assistant?
             </h3>
             <p className="text-indigo-100 max-w-2xl mx-auto">
               More than just AI - a complete enterprise knowledge management solution

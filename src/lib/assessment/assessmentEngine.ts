@@ -194,7 +194,7 @@ export class AssessmentEngine {
     // WhatsApp CX - High priority for customer service focus
     if (Array.isArray(automationAreas) && automationAreas.includes('customer_service')) {
       recommendations.push({
-        service: 'WhatsApp CX Copilot',
+        service: 'AI Multi-Channel Support Copilot',
         priority: 'high',
         reasoning: 'Your focus on customer service makes WhatsApp automation a perfect fit',
         estimatedROI: '300-500% improvement in response times',
@@ -205,7 +205,7 @@ export class AssessmentEngine {
     // XeroGap AI - High priority for operations focus
     if (Array.isArray(automationAreas) && automationAreas.includes('operations')) {
       recommendations.push({
-        service: 'XeroGap AI Workflow Automation',
+        service: 'AI-Powered Workflow Automation',
         priority: 'high',
         reasoning: 'Operations automation will streamline your core business processes',
         estimatedROI: '40% reduction in manual tasks',
@@ -227,7 +227,7 @@ export class AssessmentEngine {
     // Sales Automation - Based on sales focus
     if (Array.isArray(automationAreas) && automationAreas.includes('sales')) {
       recommendations.push({
-        service: 'Sales Intelligence Automation',
+        service: 'AI Sales Insights & Automation',
         priority: 'medium',
         reasoning: 'Sales automation will enhance lead generation and conversion',
         estimatedROI: '150% increase in qualified leads',
@@ -250,7 +250,7 @@ export class AssessmentEngine {
     const complianceNeeds = answers[10] || [];
     if (Array.isArray(complianceNeeds) && (complianceNeeds.includes('gdpr') || complianceNeeds.includes('dpdp'))) {
       recommendations.push({
-        service: 'DPDP Compliance Solutions',
+        service: 'AI Data Privacy & Compliance',
         priority: 'high',
         reasoning: 'Your compliance requirements make automated compliance solutions essential',
         estimatedROI: '80% reduction in compliance overhead',

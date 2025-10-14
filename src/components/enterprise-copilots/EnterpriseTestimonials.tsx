@@ -3,7 +3,7 @@
 export default function EnterpriseTestimonials() {
   const testimonials = [
     {
-      quote: "Enterprise Copilots has transformed how our global team of 15,000 employees access knowledge. With 12 languages supported, our international offices can finally get instant answers in their native language. The ROI has been incredible - we've reduced support tickets by 85% while improving employee satisfaction scores to 95%.",
+      quote: "AI Knowledge Management Assistant has transformed how our global team of 15,000 employees access knowledge. With 12 languages supported, our international offices can finally get instant answers in their native language. The ROI has been incredible - we've reduced support tickets by 85% while improving employee satisfaction scores to 95%.",
       author: "Dr. Sarah Chen",
       position: "Chief Knowledge Officer",
       company: "Global Tech Solutions",
@@ -17,7 +17,7 @@ export default function EnterpriseTestimonials() {
       industry: "Technology"
     },
     {
-      quote: "In healthcare compliance, accuracy and speed are critical. Enterprise Copilots gives our medical staff instant access to treatment protocols, drug information, and regulatory guidelines in multiple languages. The system is HIPAA compliant and has reduced our compliance query response time from hours to seconds.",
+      quote: "In healthcare compliance, accuracy and speed are critical. AI Knowledge Management Assistant gives our medical staff instant access to treatment protocols, drug information, and regulatory guidelines in multiple languages. The system is HIPAA compliant and has reduced our compliance query response time from hours to seconds.",
       author: "Dr. Ahmed Hassan",
       position: "Chief Medical Officer",
       company: "International Health Network",
@@ -31,7 +31,7 @@ export default function EnterpriseTestimonials() {
       industry: "Healthcare"
     },
     {
-      quote: "Our manufacturing operations span 50 countries with complex regulatory requirements. Enterprise Copilots provides our global teams with instant access to safety protocols, compliance documents, and operational procedures in their local languages. This has improved our operational efficiency by 60% worldwide.",
+      quote: "Our manufacturing operations span 50 countries with complex regulatory requirements. AI Knowledge Management Assistant provides our global teams with instant access to safety protocols, compliance documents, and operational procedures in their local languages. This has improved our operational efficiency by 60% worldwide.",
       author: "Marcus van der Berg",
       position: "VP Global Operations",
       company: "Industrial Manufacturing Corp",
@@ -45,7 +45,7 @@ export default function EnterpriseTestimonials() {
       industry: "Manufacturing"
     },
     {
-      quote: "As a financial services provider, we must comply with regulations across multiple jurisdictions. Enterprise Copilots helps our compliance team instantly access regulatory information, risk assessments, and policy documents in the required languages. This has reduced our compliance costs by 70%.",
+      quote: "As a financial services provider, we must comply with regulations across multiple jurisdictions. AI Knowledge Management Assistant helps our compliance team instantly access regulatory information, risk assessments, and policy documents in the required languages. This has reduced our compliance costs by 70%.",
       author: "Fatima Al-Zahra",
       position: "Head of Compliance",
       company: "Global Financial Services",

@@ -10,7 +10,7 @@ export default function WhatsAppCTA() {
             Ready to Transform Your WhatsApp Customer Experience?
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-green-100 mb-12">
-            Join 200+ businesses already using WhatsApp CX Copilot to automate customer conversations,
+            Join 200+ businesses already using AI Multi-Channel Support Copilot to automate customer conversations,
             boost satisfaction, and drive revenue growth.
           </p>
 

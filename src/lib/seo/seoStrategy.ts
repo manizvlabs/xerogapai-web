@@ -58,7 +58,7 @@ export class SEOService {
       },
 
       '/services': {
-        title: 'AI Automation Services - WhatsApp CX, Enterprise Copilots & More',
+        title: 'AI Automation Services - AI Multi-Channel Support Copilot, AI Knowledge Management Assistant & More',
         description: 'Comprehensive AI automation services including AI Multi-Channel Support Copilot, AI Knowledge Management Assistant, AI Sales Insights & Automation, AI Contact Center QA & Coaching, and AI Data Privacy & Compliance solutions.',
         keywords: ['AI services', 'automation services', 'AI Multi-Channel Support Copilot', 'AI Knowledge Management Assistant', 'AI Sales Insights & Automation'],
         canonical: `${baseUrl}/services`,
@@ -144,7 +144,7 @@ export class SEOService {
 
     return {
       title: 'XeroGap AI - Intelligent Business Automation',
-      description: 'Transform your business with AI automation solutions. From WhatsApp CX to Enterprise Copilots - discover the power of intelligent automation.',
+      description: 'Transform your business with AI automation solutions. From AI Multi-Channel Support Copilot to AI Knowledge Management Assistant - discover the power of intelligent automation.',
       keywords: ['AI automation', 'business automation', 'artificial intelligence', 'workflow automation'],
       canonical: `${baseUrl}${pathname}`,
       ogTitle: 'XeroGap AI - Intelligent Business Automation',

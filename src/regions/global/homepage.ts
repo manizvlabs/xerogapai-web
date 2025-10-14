@@ -24,7 +24,7 @@ export const globalHomepageContent = {
   // Hero Section
   hero: {
     headline: "Accelerate Your Business with AI Automation",
-    subheadline: "From WhatsApp CX to Enterprise Copilots - discover which AI solutions will transform your operations",
+    subheadline: "From AI Multi-Channel Support Copilot to AI Knowledge Management Assistant - discover which AI solutions will transform your operations",
     valueProps: [
       {
         icon: "🎯",
