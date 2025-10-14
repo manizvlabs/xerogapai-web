@@ -101,15 +101,15 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
     <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
         {/* Success Header */}
-        <div className="bg-gradient-to-r from-green-600 to-green-600 px-6 py-8 text-white text-center">
+        <div className="bg-gradient-to-r from-cyan-600 to-cyan-600 px-6 py-8 text-white text-center">
           <div className="flex items-center justify-center mb-4">
             <CheckCircleIcon className="h-12 w-12 text-white" />
           </div>
           <h1 className="text-3xl font-bold mb-2">Assessment Complete!</h1>
           {(() => {
-            if (isSendingReport) return <p className="text-green-100">Sending your detailed report...</p>;
-            if (reportSent) return <p className="text-green-100">Your detailed report has been sent to {userEmail}</p>;
-            return <p className="text-green-100">Preparing your personalized AI readiness report...</p>;
+            if (isSendingReport) return <p className="text-cyan-100">Sending your detailed report...</p>;
+            if (reportSent) return <p className="text-cyan-100">Your detailed report has been sent to {userEmail}</p>;
+            return <p className="text-cyan-100">Preparing your personalized AI readiness report...</p>;
           })()}
         </div>
 
@@ -126,8 +126,8 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
 
           {/* Consultation Benefits */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-lg">
-              <CalendarIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
+            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <CalendarIcon className="h-8 w-8 text-cyan-600 mx-auto mb-3" />
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
                 Personalized Strategy
               </h3>
@@ -136,8 +136,8 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
               </p>
             </div>
 
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-lg">
-              <PhoneIcon className="h-8 w-8 text-green-600 mx-auto mb-3" />
+            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <PhoneIcon className="h-8 w-8 text-cyan-600 mx-auto mb-3" />
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
                 Expert Guidance
               </h3>
@@ -146,8 +146,8 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
               </p>
             </div>
 
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-900 rounded-lg">
-              <EnvelopeIcon className="h-8 w-8 text-purple-600 mx-auto mb-3" />
+            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <EnvelopeIcon className="h-8 w-8 text-cyan-600 mx-auto mb-3" />
               <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
                 Implementation Support
               </h3>
@@ -158,8 +158,8 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
           </div>
 
           {/* Consultation Details */}
-          <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-6 mb-8">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
+          <div className="bg-cyan-50 dark:bg-cyan-900/20 rounded-lg p-6 mb-8">
+            <h3 className="font-semibold text-black dark:text-black mb-4">
               What to Expect in Your Consultation:
             </h3>
             <div className="space-y-3">
@@ -171,8 +171,8 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
                 "Q&A session with our AI experts"
               ].map((item) => (
                 <div key={item} className="flex items-center">
-                  <CheckCircleIcon className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
-                  <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                  <CheckCircleIcon className="h-5 w-5 text-cyan-600 mr-3 flex-shrink-0" />
+                  <span className="text-black dark:text-black">{item}</span>
                 </div>
               ))}
             </div>
@@ -181,10 +181,10 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
           {/* Main CTA */}
           <div className="text-center">
             {consultationBooked ? (
-              <div className="bg-green-50 dark:bg-green-900/20 border-2 border-green-500 text-green-800 dark:text-green-300 px-8 py-8 rounded-lg">
-                <CheckCircleIcon className="h-10 w-10 inline mb-4 text-green-600" />
-                <h3 className="text-2xl font-bold mb-2">Consultation Booked Successfully!</h3>
-                <p className="text-lg font-medium">Check your email for confirmation details and join instructions.</p>
+              <div className="bg-cyan-50 dark:bg-cyan-900/20 border-2 border-cyan-500 text-cyan-800 dark:text-cyan-300 px-8 py-8 rounded-lg">
+                <CheckCircleIcon className="h-10 w-10 inline mb-4 text-cyan-600" />
+                <h3 className="text-2xl font-bold mb-2 text-black dark:text-black">Consultation Booked Successfully!</h3>
+                <p className="text-lg font-medium text-black dark:text-black">Check your email for confirmation details and join instructions.</p>
               </div>
             ) : (
               <button

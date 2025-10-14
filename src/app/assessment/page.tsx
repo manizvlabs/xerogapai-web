@@ -68,7 +68,7 @@ export default function AssessmentPage() {
           </div>
           <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
             <div
-              className="bg-green-600 h-2 rounded-full transition-all duration-500 ease-out"
+              className="bg-cyan-600 h-2 rounded-full transition-all duration-500 ease-out"
               style={{ width: `${getProgress()}%` }}
             />
           </div>
@@ -91,8 +91,8 @@ export default function AssessmentPage() {
 
             {/* Quick Intro Message */}
             <div className="max-w-2xl mx-auto text-center mb-8">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm font-medium mb-6">
-                <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300 text-sm font-medium mb-6">
+                <span className="w-2 h-2 bg-cyan-500 rounded-full mr-2"></span>
                 AI Readiness Assessment
               </div>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
