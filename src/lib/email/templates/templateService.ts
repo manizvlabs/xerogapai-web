@@ -4,15 +4,27 @@ import { SupabaseContactDatabase, AssessmentData } from '../../supabase';
 
 // Removed AssessmentCache - now using Supabase for persistence
 
-// Dynamic import for puppeteer-core to avoid build issues
+// Dynamic import for puppeteer to avoid build issues
 let puppeteer: any = null;
 let chromium: any = null;
+let isServerless = false;
+
 try {
-  // Load puppeteer-core and chromium for serverless environments
-  puppeteer = require('puppeteer-core');
-  chromium = require('@sparticuz/chromium');
+  // Check if we're in a serverless environment (Vercel/AWS Lambda)
+  isServerless = !!(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.LAMBDA_TASK_ROOT);
+
+  if (isServerless) {
+    // Use puppeteer-core with @sparticuz/chromium for serverless environments
+    puppeteer = require('puppeteer-core');
+    chromium = require('@sparticuz/chromium');
+    console.log('Using puppeteer-core with @sparticuz/chromium for serverless environment');
+  } else {
+    // Use regular puppeteer for local development
+    puppeteer = require('puppeteer');
+    console.log('Using regular puppeteer for local development');
+  }
 } catch (error) {
-  console.log('Puppeteer-core not available, PDF generation will be skipped');
+  console.log('Puppeteer not available, PDF generation will be skipped:', error.message);
 }
 
 // Template Service for handling email templates and PDF generation
@@ -280,21 +292,40 @@ export class TemplateService {
       // Generate PDF HTML using processed data
       const pdfHtml = this.generateDetailedPDFHTML(pdfData);
 
-      const browser = await puppeteer.launch({
-        headless: true,
-        executablePath: await chromium.executablePath(),
-        args: [
-          ...chromium.args,
-          '--no-sandbox',
-          '--disable-setuid-sandbox',
-          '--disable-dev-shm-usage',
-          '--disable-gpu',
-          '--disable-software-rasterizer',
-          '--disable-background-timer-throttling',
-          '--disable-backgrounding-occluded-windows',
-          '--disable-renderer-backgrounding'
-        ]
-      });
+      let browser;
+      if (isServerless) {
+        // Serverless environment (Vercel) - use @sparticuz/chromium
+        browser = await puppeteer.launch({
+          headless: true,
+          executablePath: await chromium.executablePath(),
+          args: [
+            ...chromium.args,
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--disable-software-rasterizer',
+            '--disable-background-timer-throttling',
+            '--disable-backgrounding-occluded-windows',
+            '--disable-renderer-backgrounding'
+          ]
+        });
+      } else {
+        // Local development - use regular puppeteer
+        browser = await puppeteer.launch({
+          headless: true,
+          args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--disable-software-rasterizer',
+            '--disable-background-timer-throttling',
+            '--disable-backgrounding-occluded-windows',
+            '--disable-renderer-backgrounding'
+          ]
+        });
+      }
 
       const page = await browser.newPage();
 
@@ -881,21 +912,40 @@ export class TemplateService {
       // Generate PDF HTML (can be different from email HTML)
       const pdfHtml = this.generatePDFHTML(data);
 
-      const browser = await puppeteer.launch({
-        headless: true,
-        executablePath: await chromium.executablePath(),
-        args: [
-          ...chromium.args,
-          '--no-sandbox',
-          '--disable-setuid-sandbox',
-          '--disable-dev-shm-usage',
-          '--disable-gpu',
-          '--disable-software-rasterizer',
-          '--disable-background-timer-throttling',
-          '--disable-backgrounding-occluded-windows',
-          '--disable-renderer-backgrounding'
-        ]
-      });
+      let browser;
+      if (isServerless) {
+        // Serverless environment (Vercel) - use @sparticuz/chromium
+        browser = await puppeteer.launch({
+          headless: true,
+          executablePath: await chromium.executablePath(),
+          args: [
+            ...chromium.args,
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--disable-software-rasterizer',
+            '--disable-background-timer-throttling',
+            '--disable-backgrounding-occluded-windows',
+            '--disable-renderer-backgrounding'
+          ]
+        });
+      } else {
+        // Local development - use regular puppeteer
+        browser = await puppeteer.launch({
+          headless: true,
+          args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--disable-software-rasterizer',
+            '--disable-background-timer-throttling',
+            '--disable-backgrounding-occluded-windows',
+            '--disable-renderer-backgrounding'
+          ]
+        });
+      }
 
       const page = await browser.newPage();
 
