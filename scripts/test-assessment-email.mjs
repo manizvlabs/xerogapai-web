@@ -8,14 +8,22 @@ async function testAssessmentEmail() {
     totalScore: 100,
     maxScore: 100,
     answers: {
-      'q1': 'option_a',
-      'q2': 'option_b',
-      'q3': 'option_c'
+      'q1': 'We have basic digital tools but limited automation',
+      'q2': 'Some team members have basic AI awareness',
+      'q3': 'Budget available for AI pilot projects',
+      'q4': '6-12 months timeline for implementation',
+      'q5': 'Customer service and data processing',
+      'q6': 'Medium priority for AI adoption',
+      'q7': 'Basic data infrastructure exists',
+      'q8': 'Some resistance to change from team',
+      'q9': 'Looking for measurable ROI within 6 months',
+      'q10': 'Need guidance on AI vendor selection'
     },
     insights: [
-      'Your business shows strong potential for AI automation',
-      'Consider starting with customer service automation',
-      'Focus on process optimization in the next quarter'
+      'Your business shows strong potential for AI automation in customer service',
+      'Consider starting with customer service automation to see quick wins',
+      'Focus on process optimization in the next quarter with pilot projects',
+      'Your team readiness is moderate - consider AI training programs'
     ]
   };
 

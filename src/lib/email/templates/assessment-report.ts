@@ -15,7 +15,16 @@ const assessmentReportTemplate: EmailTemplate = {
     'insightsText',
     'consultationUrl',
     'demoUrl',
-    'answers'
+    'q1',
+    'q2',
+    'q3',
+    'q4',
+    'q5',
+    'q6',
+    'q7',
+    'q8',
+    'q9',
+    'q10'
   ],
   html: `
     <!DOCTYPE html>
@@ -53,21 +62,53 @@ const assessmentReportTemplate: EmailTemplate = {
         </div>
 
         <!-- Assessment Responses -->
-        {{#if answers}}
         <div style="padding: 0 30px 30px;">
           <h3 style="color: #1e293b; margin-bottom: 20px;">Your Assessment Responses</h3>
           <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-              {{#each answers}}
               <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question {{@key}}</div>
-                <div style="color: #64748b; font-size: 14px;">{{this}}</div>
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 1</div>
+                <div style="color: #64748b; font-size: 14px;">{{q1}}</div>
               </div>
-              {{/each}}
+              <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 2</div>
+                <div style="color: #64748b; font-size: 14px;">{{q2}}</div>
+              </div>
+              <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 3</div>
+                <div style="color: #64748b; font-size: 14px;">{{q3}}</div>
+              </div>
+              <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 4</div>
+                <div style="color: #64748b; font-size: 14px;">{{q4}}</div>
+              </div>
+              <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 5</div>
+                <div style="color: #64748b; font-size: 14px;">{{q5}}</div>
+              </div>
+              <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 6</div>
+                <div style="color: #64748b; font-size: 14px;">{{q6}}</div>
+              </div>
+              <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 7</div>
+                <div style="color: #64748b; font-size: 14px;">{{q7}}</div>
+              </div>
+              <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 8</div>
+                <div style="color: #64748b; font-size: 14px;">{{q8}}</div>
+              </div>
+              <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 9</div>
+                <div style="color: #64748b; font-size: 14px;">{{q9}}</div>
+              </div>
+              <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 10</div>
+                <div style="color: #64748b; font-size: 14px;">{{q10}}</div>
+              </div>
             </div>
           </div>
         </div>
-        {{/if}}
 
         <!-- Recommendations -->
         <div style="padding: 0 30px 30px;">
@@ -136,13 +177,17 @@ Score: {{score}} out of {{maxScore}} points
 Key Insights:
 {{insightsText}}
 
-{{#if answers}}
 Your Assessment Responses:
-{{#each answers}}
-Question {{@key}}: {{this}}
-{{/each}}
-
-{{/if}}
+Question 1: {{q1}}
+Question 2: {{q2}}
+Question 3: {{q3}}
+Question 4: {{q4}}
+Question 5: {{q5}}
+Question 6: {{q6}}
+Question 7: {{q7}}
+Question 8: {{q8}}
+Question 9: {{q9}}
+Question 10: {{q10}}
 Recommended Next Steps:
 1. Book a Free Consultation - Discuss your results with our AI experts
 2. Explore Our Solutions - Check out our AI-powered solutions

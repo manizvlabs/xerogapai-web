@@ -90,7 +90,43 @@ export class TemplateService {
   }
 
   storeAssessmentData(email: string, data: any): void {
-    this.assessmentCache.store(email, data);
+    // Calculate readiness data
+    const { score, totalScore, maxScore, answers, insights } = data;
+    const readinessPercentage = Math.round((score / maxScore) * 100);
+
+    let readinessLevel = 'Beginner';
+    let readinessColor = '#ef4444'; // red
+
+    if (readinessPercentage >= 80) {
+      readinessLevel = 'Advanced';
+      readinessColor = '#10b981'; // green
+    } else if (readinessPercentage >= 60) {
+      readinessLevel = 'Intermediate';
+      readinessColor = '#f59e0b'; // yellow
+    }
+
+    // Generate insights display for HTML
+    const insightsDisplay = insights?.map((insight: string) => `
+      <div style="display: flex; align-items: flex-start; margin-bottom: 15px;">
+        <div style="width: 8px; height: 8px; border-radius: 50%; background-color: #667eea; margin-top: 6px; margin-right: 12px; flex-shrink: 0;"></div>
+        <p style="margin: 0; color: #374151; line-height: 1.5;">${insight}</p>
+      </div>
+    `).join('') || '<p style="margin: 0; color: #374151;">Your assessment has been analyzed and personalized recommendations are being prepared.</p>';
+
+    // Generate insights text for plain text version
+    const insightsText = insights?.map((insight: string) => `- ${insight}`).join('\n') || 'Your assessment has been analyzed and personalized recommendations are being prepared.';
+
+    // Store complete processed data
+    const processedData = {
+      ...data,
+      readinessPercentage,
+      readinessLevel,
+      readinessColor,
+      insightsDisplay,
+      insightsText
+    };
+
+    this.assessmentCache.store(email, processedData);
   }
 
   async renderAssessmentReportEmail(assessmentData: any, email?: string): Promise<{ subject: string; html: string; text?: string; attachments?: EmailAttachment[] }> {
@@ -137,7 +173,17 @@ export class TemplateService {
       insightsDisplay,
       insightsText,
       consultationUrl: 'https://xerogapai-web.vercel.app/consultation',
-      demoUrl: 'https://xerogapai-web.vercel.app/demo'
+      demoUrl: 'https://xerogapai-web.vercel.app/demo',
+      q1: answers?.q1 || '',
+      q2: answers?.q2 || '',
+      q3: answers?.q3 || '',
+      q4: answers?.q4 || '',
+      q5: answers?.q5 || '',
+      q6: answers?.q6 || '',
+      q7: answers?.q7 || '',
+      q8: answers?.q8 || '',
+      q9: answers?.q9 || '',
+      q10: answers?.q10 || ''
     };
 
     const rendered = renderTemplate(template, templateData);
@@ -227,7 +273,7 @@ export class TemplateService {
   }
 
   private generateDetailedPDFHTML(data: any): string {
-    const { score, maxScore, answers, insights, readinessPercentage, readinessLevel, readinessColor } = data;
+    const { score, maxScore, answers, insights, insightsDisplay, readinessPercentage, readinessLevel, readinessColor } = data;
 
     // Calculate category scores if available
     const categoryScores = this.calculateCategoryScores(answers);
@@ -641,14 +687,14 @@ export class TemplateService {
         <div class="insights-section">
           <h3>🔍 Key Insights from Your Assessment</h3>
           <div class="insights-list">
-            ${insights?.map((insight: string) => `
+            ${insights && insights.length > 0 ? insights.map((insight: string) => `
               <div class="insight-item">
                 <div class="insight-bullet"></div>
                 <div>
                   <p style="margin: 0; color: #166534; font-weight: 500; line-height: 1.6;">${insight}</p>
                 </div>
               </div>
-            `).join('') || '<p>Your assessment has been analyzed and personalized recommendations are being prepared.</p>'}
+            `).join('') : '<p>Your assessment has been analyzed and personalized recommendations are being prepared.</p>'}
           </div>
         </div>
 
