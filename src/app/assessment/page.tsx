@@ -57,7 +57,7 @@ export default function AssessmentPage() {
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Progress Bar */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-4xl mx-auto px-4 py-3">
+        <div className="max-w-4xl mx-auto px-4 py-2">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700 dark:text-white">
               AI Readiness Assessment
@@ -76,7 +76,7 @@ export default function AssessmentPage() {
       </div>
 
       {/* Main Content */}
-      <div className="pt-20">
+      <div className="pt-32">
         {currentStep === 'quiz' && (
           <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-900">
             {/* Logo Background Pattern */}
