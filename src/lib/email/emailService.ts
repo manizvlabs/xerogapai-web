@@ -114,7 +114,7 @@ class EmailService {
 
   async sendAssessmentReport(assessmentData: any, userEmail: string): Promise<{ success: boolean; messageId?: string; error?: string }> {
     try {
-      const emailData = microsoft365EmailService.generateAssessmentReportEmail(assessmentData, userEmail);
+      const emailData = await microsoft365EmailService.generateAssessmentReportEmail(assessmentData, userEmail);
       return await microsoft365EmailService.sendEmail(emailData);
     } catch (error) {
       console.error('Failed to send assessment report:', error);

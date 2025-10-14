@@ -8,26 +8,27 @@ import AssessmentResults from '@/components/assessment/AssessmentResults';
 import AssessmentHero from '@/components/assessment/AssessmentHero';
 import AssessmentCTA from '@/components/assessment/AssessmentCTA';
 
-type AssessmentStep = 'intro' | 'quiz' | 'results' | 'consultation';
+type AssessmentStep = 'quiz' | 'results' | 'consultation';
 
 export default function AssessmentPage() {
-  const [currentStep, setCurrentStep] = useState<AssessmentStep>('intro');
-  const [assessmentData, setAssessmentData] = useState<Linkny>(null);
+  const [currentStep, setCurrentStep] = useState<AssessmentStep>('quiz');
+  const [assessmentData, setAssessmentData] = useState<{
+    score: number;
+    totalScore: number;
+    maxScore: number;
+    answers: Record<number, unknown>;
+    insights: unknown[];
+  } | null>(null);
   const [userEmail, setUserEmail] = useState<string>('');
 
   // Progress calculation based on current step
   const getProgress = () => {
     switch (currentStep) {
-      case 'intro': return 0;
-      case 'quiz': return 25;
-      case 'results': return 75;
+      case 'quiz': return 33;
+      case 'results': return 66;
       case 'consultation': return 100;
-      default: return 0;
+      default: return 33;
     }
-  };
-
-  const handleStartAssessment = () => {
-    setCurrentStep('quiz');
   };
 
   const handleQuizComplete = (data: {
@@ -47,7 +48,7 @@ export default function AssessmentPage() {
   };
 
   const handleRestart = () => {
-    setCurrentStep('intro');
+    setCurrentStep('quiz');
     setAssessmentData(null);
     setUserEmail('');
   };
@@ -55,33 +56,27 @@ export default function AssessmentPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Progress Bar */}
-      {currentStep !== 'intro' && (
-        <div className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
-          <div className="max-w-4xl mx-auto px-4 py-3">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-700 dark:text-white">
-                AI Readiness Assessment
-              </span>
-              <span className="text-sm text-gray-500 dark:text-white">
-                Step {currentStep === 'quiz' ? '2' : currentStep === 'results' ? '3' : '4'} of 4
-              </span>
-            </div>
-            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-              <div
-                className="bg-green-600 h-2 rounded-full transition-all duration-500 ease-out"
-                style={{ width: `${getProgress()}%` }}
-              />
-            </div>
+      <div className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+        <div className="max-w-4xl mx-auto px-4 py-3">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-medium text-gray-700 dark:text-white">
+              AI Readiness Assessment
+            </span>
+            <span className="text-sm text-gray-500 dark:text-white">
+              Step {currentStep === 'quiz' ? '1' : currentStep === 'results' ? '2' : '3'} of 3
+            </span>
+          </div>
+          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+            <div
+              className="bg-green-600 h-2 rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${getProgress()}%` }}
+            />
           </div>
         </div>
-      )}
+      </div>
 
       {/* Main Content */}
-      <div className={`${currentStep !== 'intro' ? 'pt-20' : ''}`}>
-        {currentStep === 'intro' && (
-          <AssessmentHero onStart={handleStartAssessment} />
-        )}
-
+      <div className="pt-20">
         {currentStep === 'quiz' && (
           <section className="relative py-24 sm:py-32 bg-gray-50 dark:bg-gray-900">
             {/* Logo Background Pattern */}
@@ -93,6 +88,21 @@ export default function AssessmentPage() {
                 <Logo variant="hero" size="sm" className="w-20 h-auto" />
               </div>
             </div>
+
+            {/* Quick Intro Message */}
+            <div className="max-w-2xl mx-auto text-center mb-8">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm font-medium mb-6">
+                <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                AI Readiness Assessment
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                Discover Your AI Readiness Score
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                Answer a few quick questions to get your personalized AI readiness score and implementation roadmap. Takes just 2 minutes!
+              </p>
+            </div>
+
             <AssessmentQuiz onComplete={handleQuizComplete} />
           </section>
         )}

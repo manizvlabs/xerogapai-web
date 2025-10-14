@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { withRateLimit } from '@/lib/rate-limit';
 import { sanitizeInput, isValidEmail, logSecurityEvent } from '@/lib/security';
 import { emailService } from '@/lib/email/emailService';
 
@@ -32,7 +31,11 @@ async function sendAssessmentReportHandler(request: NextRequest) {
     const userAgent = request.headers.get('user-agent') || 'unknown';
 
     // Send the assessment report email
+    console.log('Attempting to send assessment report to:', sanitizedEmail);
+
     const result = await emailService.sendAssessmentReport(assessmentData, sanitizedEmail);
+
+    console.log('Email service result:', result);
 
     if (result.success) {
       // Log successful email send
@@ -79,4 +82,4 @@ async function sendAssessmentReportHandler(request: NextRequest) {
   }
 }
 
-export const POST = withRateLimit(sendAssessmentReportHandler, 'assessment_report');
+export const POST = sendAssessmentReportHandler;

@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState, useEffect } from 'react';
 import { CheckCircleIcon, CalendarIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 import CalendarBooking from '@/components/shared/CalendarBooking';
 
@@ -20,42 +19,42 @@ interface AssessmentCTAProps {
 }
 
 export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: Readonly<AssessmentCTAProps>) {
-  const [isSendingReport, setIsSendingReport] = useState(false);
-  const [reportSent, setReportSent] = useState(false);
-  const [reportError, setReportError] = useState<string | null>(null);
   const [showCalendarBooking, setShowCalendarBooking] = useState(false);
   const [consultationBooked, setConsultationBooked] = useState(false);
+  const [reportSent, setReportSent] = useState(false);
+  const [isSendingReport, setIsSendingReport] = useState(false);
 
-  const handleSendReport = async () => {
-    setIsSendingReport(true);
-    setReportError(null);
+  // Auto-send report when component mounts
+  useEffect(() => {
+    const sendReport = async () => {
+      setIsSendingReport(true);
+      try {
+        const response = await fetch('/api/assessment/send-report', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            assessmentData,
+            userEmail,
+          }),
+        });
 
-    try {
-      const response = await fetch('/api/assessment/send-report', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          assessmentData,
-          userEmail,
-        }),
-      });
+        const result = await response.json();
 
-      const result = await response.json();
-
-      if (result.success) {
-        setReportSent(true);
-      } else {
-        setReportError(result.details || 'Failed to send report');
+        if (result.success) {
+          setReportSent(true);
+        }
+      } catch (error) {
+        console.error('Error sending report:', error);
+        // Continue with the flow even if report sending fails
+      } finally {
+        setIsSendingReport(false);
       }
-    } catch (error) {
-      console.error('Error sending report:', error);
-      setReportError('Network error. Please try again.');
-    } finally {
-      setIsSendingReport(false);
-    }
-  };
+    };
+
+    sendReport();
+  }, [assessmentData, userEmail]);
 
   const handleBookConsultation = () => {
     setShowCalendarBooking(true);
@@ -93,65 +92,21 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
             <CheckCircleIcon className="h-12 w-12 text-white" />
           </div>
           <h1 className="text-3xl font-bold mb-2">Assessment Complete!</h1>
-          {reportSent ? (
-            <p className="text-green-100">Your detailed report has been sent to {userEmail}</p>
-          ) : (
-            <p className="text-green-100">Ready to send your detailed report to {userEmail}</p>
-          )}
+          {(() => {
+            if (isSendingReport) return <p className="text-green-100">Sending your detailed report...</p>;
+            if (reportSent) return <p className="text-green-100">Your detailed report has been sent to {userEmail}</p>;
+            return <p className="text-green-100">Preparing your personalized AI readiness report...</p>;
+          })()}
         </div>
 
         {/* Next Steps */}
         <div className="px-6 py-8">
-          {/* Send Report Section */}
-          {!reportSent && (
-            <div className="text-center mb-8 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                Get Your Detailed Report
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Receive a comprehensive AI readiness report with personalized recommendations and implementation roadmap.
-              </p>
-              <button
-                onClick={handleSendReport}
-                disabled={isSendingReport}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSendingReport ? (
-                  <div className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Sending Report...
-                  </div>
-                ) : (
-                  'Send Detailed Report to My Email'
-                )}
-              </button>
-              {reportError && (
-                <p className="text-red-600 dark:text-red-400 text-sm mt-2">
-                  {reportError}
-                </p>
-              )}
-            </div>
-          )}
-
-          {/* Success Message */}
-          {reportSent && (
-            <div className="text-center mb-8 p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-              <CheckCircleIcon className="h-8 w-8 text-green-600 mx-auto mb-2" />
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                Report Sent Successfully! 🎉
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300">
-                Check your email for your detailed AI readiness report with personalized recommendations.
-              </p>
-            </div>
-          )}
-
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Ready to Transform Your Business?
+              Book Your Free AI Consultation
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Book a free 30-minute consultation with our AI experts to discuss your results and create a custom implementation plan.
+            <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+              Schedule a 30-minute call with our AI experts to review your personalized results and get a custom implementation roadmap. Completely free, no obligation.
             </p>
           </div>
 
@@ -209,63 +164,32 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          {/* Main CTA */}
+          <div className="text-center">
             {consultationBooked ? (
-              <div className="flex-1 bg-green-100 border-2 border-green-500 text-green-800 px-8 py-4 rounded-lg font-semibold text-lg text-center">
-                <CheckCircleIcon className="h-6 w-6 inline mr-2" />
-                Consultation Booked Successfully!
+              <div className="bg-green-50 dark:bg-green-900/20 border-2 border-green-500 text-green-800 dark:text-green-300 px-8 py-8 rounded-lg">
+                <CheckCircleIcon className="h-10 w-10 inline mb-4 text-green-600" />
+                <h3 className="text-2xl font-bold mb-2">Consultation Booked Successfully!</h3>
+                <p className="text-lg font-medium">Check your email for confirmation details and join instructions.</p>
               </div>
             ) : (
               <button
                 onClick={handleBookConsultation}
-                disabled={isBooking}
-                className="flex-1 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-green-600 hover:bg-green-700 text-white px-16 py-5 rounded-lg font-bold text-xl transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
               >
-                {isBooking ? (
-                  <div className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                    Booking Consultation...
-                  </div>
-                ) : (
-                  'Book Free Consultation Now'
-                )}
+                📅 Book Your Free Consultation
               </button>
             )}
-
-            <Link
-              href="/demo"
-              className="flex-1 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg text-center transition-colors"
-            >
-              Schedule Product Demo
-            </Link>
           </div>
 
-          {/* Alternative Actions */}
-          <div className="mt-6 text-center">
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Prefer to explore on your own?
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link
-                href="/whatsapp-cx"
-                className="px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-              >
-                View WhatsApp CX Solution
-              </Link>
-              <Link
-                href="/xerogap-ai"
-                className="px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-              >
-                Explore XeroGap AI
-              </Link>
-              <button
-                onClick={onRestart}
-                className="px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-white rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-              >
-                Retake Assessment
-              </button>
-            </div>
+          {/* Retake Option - Small and subtle */}
+          <div className="mt-12 text-center border-t border-gray-200 dark:border-gray-700 pt-6">
+            <button
+              onClick={onRestart}
+              className="text-gray-500 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400 font-medium transition-colors text-sm"
+            >
+              ← Take Assessment Again
+            </button>
           </div>
 
           {/* Trust Signals */}
