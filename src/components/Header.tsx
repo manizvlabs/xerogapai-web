@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { Bars3Icon, XMarkIcon, ChevronDownIcon, ChatBubbleLeftRightIcon, CogIcon, CpuChipIcon, DocumentTextIcon, ShieldCheckIcon, UserGroupIcon, BriefcaseIcon, QuestionMarkCircleIcon, BookOpenIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, ChevronDownIcon, ChatBubbleLeftRightIcon, CogIcon, CpuChipIcon, DocumentTextIcon, ShieldCheckIcon, UserGroupIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
 import ThemeSwitcher from './ThemeSwitcher';
 import RegionSwitcher from './RegionSwitcher';
 import Logo from './Logo';
@@ -38,16 +38,6 @@ const Header = () => {
         { name: 'AI Sales Insights & Automation', href: '/sales-automation', icon: UserGroupIcon, description: 'Lead intelligence' },
         { name: 'AI Contact Center QA & Coaching', href: '/contact-center-ai', icon: ShieldCheckIcon, description: 'Quality assurance' },
         { name: 'AI Data Privacy & Compliance', href: '/dpdp-compliance', icon: DocumentTextIcon, description: 'Data protection' }
-      ]
-    },
-    {
-      name: 'Resources',
-      href: '#',
-      hasDropdown: true,
-      dropdownItems: [
-        { name: 'Case Studies', href: '/case-studies', icon: BriefcaseIcon, description: 'Success stories' },
-        { name: 'Documentation', href: '/docs', icon: BookOpenIcon, description: 'API docs & guides' },
-        { name: 'Help Center', href: '/help', icon: QuestionMarkCircleIcon, description: 'Support & FAQ' }
       ]
     },
     {
