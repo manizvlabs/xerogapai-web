@@ -120,131 +120,55 @@ class MicrosoftGraphCalendarService {
     }
 
     try {
-      let joinUrl = undefined;
-      let result = null;
+      // Create calendar event with automatic Teams meeting creation
+      const calendarEvent = {
+        subject: event.subject,
+        start: event.start,
+        end: event.end,
+        body: event.body || {
+          contentType: 'html',
+          content: `<p>Demo booking confirmation</p><p>Please join the meeting at the scheduled time.</p>`
+        },
+        location: event.location || {
+          displayName: 'Microsoft Teams Meeting'
+        },
+        attendees: event.attendees || [],
+        isOnlineMeeting: true,
+        onlineMeetingProvider: 'teamsForBusiness'
+      };
 
-      try {
-        // Method 1: Try to create Teams meeting using /me/onlineMeetings endpoint
-        let teamsMeeting;
-        try {
-          teamsMeeting = await this._graphClient
-            .api(`/users/${this.userId}/onlineMeetings`)
-            .post({
-              startDateTime: event.start.dateTime,
-              endDateTime: event.end.dateTime,
-              subject: event.subject,
-              participants: {
-                attendees: event.attendees?.map(attendee => ({
-                  emailAddress: {
-                    address: attendee.emailAddress.address,
-                    name: attendee.emailAddress.name || attendee.emailAddress.address
-                  }
-                })) || []
-              }
-            });
-        } catch (teamsError) {
-          console.warn('⚠️ Teams meeting creation failed:', teamsError.message);
-          teamsMeeting = null;
-        }
+      console.log('Creating calendar event with Teams meeting...');
+      const result = await this._graphClient
+        .api(`/users/${this.userId}/events`)
+        .post(calendarEvent);
 
-        // Method 2: If Teams meeting creation failed, try creating calendar event with Teams
-        if (!teamsMeeting) {
-          const calendarEvent = {
-            subject: event.subject,
-            start: event.start,
-            end: event.end,
-            body: event.body || {
-              contentType: 'html',
-              content: `<p>Demo booking confirmation</p><p>Please join the meeting at the scheduled time.</p>`
-            },
-            location: event.location,
-            attendees: event.attendees || [],
-            isOnlineMeeting: true,
-            onlineMeetingProvider: 'teamsForBusiness'
-          };
-
-          result = await this._graphClient
-            .api(`/users/${this.userId}/events`)
-            .post(calendarEvent);
-
-        } else {
-          // Method 3: Create calendar event and link it to the Teams meeting
-          const calendarEvent = {
-            subject: event.subject,
-            start: event.start,
-            end: event.end,
-            body: event.body || {
-              contentType: 'html',
-              content: `<p>Demo booking confirmation</p><p>Please join the Teams meeting using the link below.</p><p><a href="${teamsMeeting.joinWebUrl}">Join Teams Meeting</a></p>`
-            },
-            location: {
-              displayName: 'Microsoft Teams Meeting',
-              locationUri: teamsMeeting.joinWebUrl
-            },
-            attendees: event.attendees || [],
-            isOnlineMeeting: true,
-            onlineMeetingUrl: teamsMeeting.joinWebUrl
-          };
-
-          result = await this._graphClient
-            .api(`/users/${this.userId}/events`)
-            .post(calendarEvent);
-
-        }
-
-        // Extract Teams meeting URL with comprehensive logic
-        let joinUrl = undefined;
-
-        // Priority order for meeting URLs:
-        if (teamsMeeting && teamsMeeting.joinWebUrl) {
-          joinUrl = teamsMeeting.joinWebUrl;
-        } else if (result.onlineMeetingUrl) {
-          joinUrl = result.onlineMeetingUrl;
-        } else if (result.onlineMeeting && result.onlineMeeting.joinWebUrl) {
-          joinUrl = result.onlineMeeting.joinWebUrl;
-        } else if (result.onlineMeeting && result.onlineMeeting.joinUrl) {
-          joinUrl = result.onlineMeeting.joinUrl;
-        } else if (result.webLink && result.isOnlineMeeting) {
-          // Fallback: Use webLink if marked as online meeting
-          joinUrl = result.webLink;
-        } else if (result.webLink) {
-          // Final fallback: Use calendar link
-          joinUrl = result.webLink;
-        }
-
-      } catch (onlineMeetingError) {
-        console.error('❌ All Teams meeting creation methods failed:', onlineMeetingError.message);
-        console.error('Falling back to regular calendar event...');
-
-        // Fallback: Create regular calendar event without Teams meeting
-        const calendarEvent = {
-          subject: event.subject,
-          start: event.start,
-          end: event.end,
-          body: event.body || {
-            contentType: 'html',
-            content: `<p>Demo booking confirmation</p><p>You will receive a separate Teams meeting invitation.</p>`
-          },
-          location: event.location,
-          attendees: event.attendees || []
-        };
-
-        result = await this._graphClient
-          .api(`/users/${this.userId}/events`)
-          .post(calendarEvent);
-
-        joinUrl = result.webLink; // Use calendar link as fallback
-      }
-
-      return {
+      console.log('Calendar event created:', {
         id: result.id,
         subject: result.subject,
-        hasOnlineMeeting: !!result.isOnlineMeeting,
+        isOnlineMeeting: result.isOnlineMeeting,
         onlineMeetingUrl: result.onlineMeetingUrl,
-        webLink: result.webLink,
-        joinUrl: joinUrl,
-        resultKeys: Object.keys(result)
-      };
+        hasOnlineMeeting: !!result.onlineMeeting
+      });
+
+      // Extract Teams meeting URL
+      let joinUrl = undefined;
+
+      // Priority order for meeting URLs:
+      if (result.onlineMeetingUrl) {
+        joinUrl = result.onlineMeetingUrl;
+      } else if (result.onlineMeeting && result.onlineMeeting.joinWebUrl) {
+        joinUrl = result.onlineMeeting.joinWebUrl;
+      } else if (result.onlineMeeting && result.onlineMeeting.joinUrl) {
+        joinUrl = result.onlineMeeting.joinUrl;
+      } else if (result.webLink && result.isOnlineMeeting) {
+        // Fallback: Use webLink if marked as online meeting
+        joinUrl = result.webLink;
+      } else if (result.webLink) {
+        // Final fallback: Use calendar link
+        joinUrl = result.webLink;
+      }
+
+      console.log('Extracted join URL:', joinUrl);
 
       return {
         success: true,

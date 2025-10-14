@@ -147,55 +147,45 @@ class SMTPEmailService {
 
   async sendEmail(emailData: EmailData, attachments?: EmailAttachment[]): Promise<{ success: boolean; messageId?: string; error?: string }> {
     try {
-      console.log('Graph API sendEmail called for:', emailData.to);
+      console.log('SMTP sendEmail called for:', emailData.to);
 
-      const message: any = {
+      // Create mail options
+      const mailOptions = {
+        from: emailData.from || `"XeroGap AI" <${process.env.SMTP_USER}>`,
+        to: emailData.to,
         subject: emailData.subject,
-        body: {
-          contentType: 'html',
-          content: emailData.html
-        },
-        toRecipients: [{
-          emailAddress: {
-            address: emailData.to
-          }
-        }]
+        html: emailData.html,
+        text: emailData.text
       };
 
       // Add attachments if provided
       if (attachments && attachments.length > 0) {
-        message.attachments = attachments.map(attachment => ({
-          "@odata.type": "#microsoft.graph.fileAttachment",
-          name: attachment.filename,
-          contentBytes: Buffer.isBuffer(attachment.content) ? attachment.content.toString('base64') : Buffer.from(attachment.content).toString('base64'),
+        mailOptions.attachments = attachments.map(attachment => ({
+          filename: attachment.filename,
+          content: attachment.content,
           contentType: attachment.contentType || 'application/octet-stream'
         }));
       }
 
-      console.log('Sending email via Graph API...', {
+      console.log('Sending email via SMTP...', {
         hasAttachments: !!attachments?.length,
         attachmentCount: attachments?.length || 0,
         attachmentNames: attachments?.map(a => a.filename) || []
       });
 
-      // For application permissions, we need to use /users/{userId}/sendMail
-      // Make sure the user ID corresponds to a valid user in the organization
-      await this.graphClient
-        .api(`/users/${this.userId}/sendMail`)
-        .post({ message });
-
-      console.log('Graph API email sent successfully');
+      const info = await this.transporter.sendMail(mailOptions);
+      console.log('SMTP email sent successfully:', info.messageId);
 
       return {
         success: true,
-        messageId: `graph-${Date.now()}`
+        messageId: info.messageId
       };
 
     } catch (error) {
-      console.error('Graph API email error:', error);
+      console.error('SMTP email error:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Graph API email sending failed'
+        error: error instanceof Error ? error.message : 'SMTP email sending failed'
       };
     }
   }
