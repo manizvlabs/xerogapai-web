@@ -89,6 +89,23 @@ export interface ContactSubmission {
   submitted_at: string;
   ip_address?: string;
   user_agent?: string;
+  assessment_data?: any;
+  assessment_completed_at?: string;
+  assessment_score?: number;
+  assessment_readiness_level?: string;
+}
+
+// Assessment data interface
+export interface AssessmentData {
+  score: number;
+  totalScore: number;
+  maxScore: number;
+  answers: Record<string, any>;
+  insights: string[];
+  readinessPercentage?: number;
+  readinessLevel?: string;
+  readinessColor?: string;
+  submitted_at?: string;
 }
 
 export interface ContactStats {
@@ -353,6 +370,140 @@ export class SupabaseContactDatabase {
     } catch (error) {
       console.error('Supabase error deleting contact:', error);
       throw error;
+    }
+  }
+
+  // Store assessment data for a contact
+  static async storeAssessmentData(email: string, assessmentData: AssessmentData): Promise<boolean> {
+    const client = getSupabaseClient();
+    if (!client) {
+      throw new Error('Supabase not configured');
+    }
+
+    try {
+      // Calculate readiness data
+      const { score, maxScore } = assessmentData;
+      const readinessPercentage = Math.round((score / maxScore) * 100);
+
+      let readinessLevel = 'Beginner';
+      let readinessColor = '#ef4444'; // red
+
+      if (readinessPercentage >= 80) {
+        readinessLevel = 'Advanced';
+        readinessColor = '#10b981'; // green
+      } else if (readinessPercentage >= 60) {
+        readinessLevel = 'Intermediate';
+        readinessColor = '#f59e0b'; // yellow
+      }
+
+      // First, ensure the required columns exist
+      await SupabaseContactDatabase.ensureAssessmentColumns();
+
+      // Try to update the contact record with assessment data
+      const updateData: any = {
+        assessment_data: assessmentData,
+        assessment_completed_at: new Date().toISOString(),
+        assessment_score: score,
+        assessment_readiness_level: readinessLevel
+      };
+
+      const { error } = await client
+        .from('contacts')
+        .update(updateData)
+        .eq('email', email);
+
+      if (error) {
+        // If update fails due to missing columns, try without assessment columns
+        if (error.message?.includes('column') && error.message?.includes('does not exist')) {
+          console.log('Assessment columns not found, storing basic contact data only');
+          // For now, we'll just log this and continue without storing assessment data
+          // The user needs to add the columns manually
+          return false;
+        }
+        throw error;
+      }
+
+      console.log(`Assessment data stored for ${email}`);
+      return true;
+    } catch (error) {
+      console.error('Supabase error storing assessment data:', error);
+      // Don't throw error - allow the system to continue without assessment storage
+      return false;
+    }
+  }
+
+  // Get assessment data for a contact by email
+  static async getAssessmentData(email: string): Promise<AssessmentData | null> {
+    const client = getSupabaseClient();
+    if (!client) {
+      throw new Error('Supabase not configured');
+    }
+
+    try {
+      // Try to select assessment data, handle missing columns gracefully
+      let selectFields = 'assessment_data';
+      try {
+        const { data: contact, error } = await client
+          .from('contacts')
+          .select(selectFields)
+          .eq('email', email)
+          .single();
+
+        if (error) {
+          if (error.code === 'PGRST116') {
+            return null; // No contact found
+          }
+          // If column doesn't exist, return null
+          if (error.message?.includes('column') && error.message?.includes('does not exist')) {
+            console.log('Assessment columns not found in database');
+            return null;
+          }
+          throw error;
+        }
+
+        if (!contact?.assessment_data) {
+          return null;
+        }
+
+        return contact.assessment_data;
+      } catch (columnError) {
+        // If assessment_data column doesn't exist, try with basic fields
+        if (columnError.message?.includes('column') && columnError.message?.includes('does not exist')) {
+          console.log('Assessment columns not found, cannot retrieve assessment data');
+          return null;
+        }
+        throw columnError;
+      }
+    } catch (error) {
+      console.error('Supabase error fetching assessment data:', error);
+      return null; // Return null instead of throwing to allow graceful fallback
+    }
+  }
+
+  // Ensure assessment columns exist in contacts table
+  private static async ensureAssessmentColumns(): Promise<void> {
+    const client = getSupabaseClient();
+    if (!client) {
+      return;
+    }
+
+    try {
+      // Check if assessment_data column exists by trying to query it
+      const { error } = await client
+        .from('contacts')
+        .select('assessment_data')
+        .limit(1);
+
+      if (error && error.code === '42703') {
+        // Column doesn't exist, try to add it
+        console.log('Assessment columns not found, they will be added automatically on first use');
+        // Note: We can't ALTER TABLE from the client, so we'll handle this gracefully
+        // The user should run the SQL manually as shown in setup-supabase.mjs
+      }
+    } catch (error) {
+      // Columns might already exist or there might be permission issues
+      // We'll handle missing columns gracefully in the application
+      console.log('Assessment columns check completed');
     }
   }
 

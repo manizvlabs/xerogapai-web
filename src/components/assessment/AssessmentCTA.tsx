@@ -5,11 +5,11 @@ import { CheckCircleIcon, CalendarIcon, PhoneIcon, EnvelopeIcon } from '@heroico
 import CalendarBooking from '@/components/shared/CalendarBooking';
 
 interface AssessmentData {
-  score?: number;
-  recommendations?: string[];
-  category?: string;
-  priority?: string;
-  timeline?: string;
+  score: number;
+  totalScore: number;
+  maxScore: number;
+  answers: Record<number, unknown>;
+  insights: unknown[];
 }
 
 interface AssessmentCTAProps {
@@ -29,13 +29,27 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
     const sendReport = async () => {
       setIsSendingReport(true);
       try {
+        // Format answers from Record<number, unknown> to Record<string, any>
+        const formattedAnswers: Record<string, any> = {};
+        Object.entries(assessmentData.answers).forEach(([key, value]) => {
+          formattedAnswers[`q${key}`] = value;
+        });
+
+        const formattedAssessmentData = {
+          score: assessmentData.score,
+          totalScore: assessmentData.totalScore,
+          maxScore: assessmentData.maxScore,
+          answers: formattedAnswers,
+          insights: assessmentData.insights
+        };
+
         const response = await fetch('/api/assessment/send-report', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            assessmentData,
+            assessmentData: formattedAssessmentData,
             userEmail,
           }),
         });

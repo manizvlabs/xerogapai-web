@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createClient } from '@supabase/supabase-js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,9 +11,60 @@ const __dirname = path.dirname(__filename);
 console.log('🚀 Supabase Setup Helper');
 console.log('========================\n');
 
+// Check if we can connect to Supabase and add assessment columns
+async function addAssessmentColumns() {
+  try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      console.log('❌ Supabase environment variables not found - skipping column creation');
+      return;
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    // Try to add assessment columns
+    console.log('🔧 Adding assessment columns to contacts table...');
+
+    // Note: We can't ALTER TABLE from client-side, but we can test if columns exist
+    const { error } = await supabase
+      .from('contacts')
+      .select('assessment_data, assessment_completed_at, assessment_score, assessment_readiness_level')
+      .limit(1);
+
+    if (error) {
+      console.log('⚠️  Assessment columns may not exist. Please run this SQL in your Supabase SQL Editor:');
+      console.log('');
+      console.log('```sql');
+      console.log('-- Add assessment columns to contacts table');
+      console.log('ALTER TABLE contacts');
+      console.log('ADD COLUMN IF NOT EXISTS assessment_data JSONB,');
+      console.log('ADD COLUMN IF NOT EXISTS assessment_completed_at TIMESTAMP WITH TIME ZONE,');
+      console.log('ADD COLUMN IF NOT EXISTS assessment_score INTEGER,');
+      console.log('ADD COLUMN IF NOT EXISTS assessment_readiness_level VARCHAR(50);');
+      console.log('');
+      console.log('-- Create index for assessment queries');
+      console.log('CREATE INDEX IF NOT EXISTS idx_contacts_assessment_completed_at ON contacts(assessment_completed_at);');
+      console.log('CREATE INDEX IF NOT EXISTS idx_contacts_assessment_score ON contacts(assessment_score);');
+      console.log('```');
+      console.log('');
+    } else {
+      console.log('✅ Assessment columns already exist');
+    }
+  } catch (error) {
+    console.log('⚠️  Could not check assessment columns:', error.message);
+  }
+}
+
 // Check if Supabase is configured
 const hasSupabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const hasSupabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+// Add assessment columns if Supabase is configured
+if (hasSupabaseUrl && hasSupabaseKey) {
+  await addAssessmentColumns();
+}
 
 if (hasSupabaseUrl && hasSupabaseKey) {
   console.log('✅ Supabase environment variables are configured');
@@ -84,3 +136,27 @@ if (fs.existsSync(contactsPath)) {
 
 console.log('🎉 Setup complete! Your contact management will be persistent and scalable.');
 console.log('💰 Supabase offers 500MB free storage and 50,000 monthly active users!');
+console.log('\n📊 Assessment Data Setup:');
+console.log('   The system will automatically add assessment columns to the contacts table.');
+console.log('   Run the SQL below in your Supabase SQL Editor to add assessment columns manually:');
+console.log('');
+console.log('```sql');
+console.log('-- Add assessment columns to contacts table');
+console.log('ALTER TABLE contacts');
+console.log('ADD COLUMN IF NOT EXISTS assessment_data JSONB,');
+console.log('ADD COLUMN IF NOT EXISTS assessment_completed_at TIMESTAMP WITH TIME ZONE,');
+console.log('ADD COLUMN IF NOT EXISTS assessment_score INTEGER,');
+console.log('ADD COLUMN IF NOT EXISTS assessment_readiness_level VARCHAR(50);');
+console.log('');
+console.log('-- Create index for assessment queries');
+console.log('CREATE INDEX IF NOT EXISTS idx_contacts_assessment_completed_at ON contacts(assessment_completed_at);');
+console.log('CREATE INDEX IF NOT EXISTS idx_contacts_assessment_score ON contacts(assessment_score);');
+console.log('```');
+console.log('');
+console.log('📝 Assessment data will be stored as JSON in the assessment_data column with this structure:');
+console.log('   {');
+console.log('     "score": number,');
+console.log('     "maxScore": number,');
+console.log('     "answers": {"q1": "answer1", "q2": "answer2", ...},');
+console.log('     "insights": ["insight1", "insight2", ...]');
+console.log('   }');

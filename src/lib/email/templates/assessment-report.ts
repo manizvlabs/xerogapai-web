@@ -65,45 +65,45 @@ const assessmentReportTemplate: EmailTemplate = {
         <div style="padding: 0 30px 30px;">
           <h3 style="color: #1e293b; margin-bottom: 20px;">Your Assessment Responses</h3>
           <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
               <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 1</div>
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">What's your company size?</div>
                 <div style="color: #64748b; font-size: 14px;">{{q1}}</div>
               </div>
               <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 2</div>
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">What's your current level of digital transformation?</div>
                 <div style="color: #64748b; font-size: 14px;">{{q2}}</div>
               </div>
               <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 3</div>
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Which areas of your business could benefit most from AI automation?</div>
                 <div style="color: #64748b; font-size: 14px;">{{q3}}</div>
               </div>
               <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 4</div>
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">What's your monthly budget range for AI solutions?</div>
                 <div style="color: #64748b; font-size: 14px;">{{q4}}</div>
               </div>
               <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 5</div>
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">How familiar is your team with AI technologies?</div>
                 <div style="color: #64748b; font-size: 14px;">{{q5}}</div>
               </div>
               <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 6</div>
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">What's your biggest operational challenge?</div>
                 <div style="color: #64748b; font-size: 14px;">{{q6}}</div>
               </div>
               <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 7</div>
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Which tools/platforms do you currently use?</div>
                 <div style="color: #64748b; font-size: 14px;">{{q7}}</div>
               </div>
               <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 8</div>
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">What's your timeline for AI implementation?</div>
                 <div style="color: #64748b; font-size: 14px;">{{q8}}</div>
               </div>
               <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 9</div>
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Which AI use case interests you most?</div>
                 <div style="color: #64748b; font-size: 14px;">{{q9}}</div>
               </div>
               <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Question 10</div>
+                <div style="font-weight: 600; color: #374151; margin-bottom: 5px;">Do you have any specific compliance requirements?</div>
                 <div style="color: #64748b; font-size: 14px;">{{q10}}</div>
               </div>
             </div>
@@ -178,16 +178,16 @@ Key Insights:
 {{insightsText}}
 
 Your Assessment Responses:
-Question 1: {{q1}}
-Question 2: {{q2}}
-Question 3: {{q3}}
-Question 4: {{q4}}
-Question 5: {{q5}}
-Question 6: {{q6}}
-Question 7: {{q7}}
-Question 8: {{q8}}
-Question 9: {{q9}}
-Question 10: {{q10}}
+What's your company size?: {{q1}}
+What's your current level of digital transformation?: {{q2}}
+Which areas of your business could benefit most from AI automation?: {{q3}}
+What's your monthly budget range for AI solutions?: {{q4}}
+How familiar is your team with AI technologies?: {{q5}}
+What's your biggest operational challenge?: {{q6}}
+Which tools/platforms do you currently use?: {{q7}}
+What's your timeline for AI implementation?: {{q8}}
+Which AI use case interests you most?: {{q9}}
+Do you have any specific compliance requirements?: {{q10}}
 Recommended Next Steps:
 1. Book a Free Consultation - Discuss your results with our AI experts
 2. Explore Our Solutions - Check out our AI-powered solutions

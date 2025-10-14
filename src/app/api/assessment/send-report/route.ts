@@ -29,10 +29,10 @@ async function sendAssessmentReportHandler(request: NextRequest) {
                      request.headers.get('x-real-ip') ||
                      'unknown';
 
-    // Store assessment data in cache before sending email
+    // Store assessment data in Supabase before sending email
     const { templateService } = await import('@/lib/email/templates/templateService');
     const templateSvc = await templateService;
-    templateSvc.storeAssessmentData(sanitizedEmail, assessmentData);
+    await templateSvc.storeAssessmentData(sanitizedEmail, assessmentData);
 
     // Send the assessment report email directly (avoid duplicate email from lead sequence)
     console.log('Attempting to send assessment report to:', sanitizedEmail);

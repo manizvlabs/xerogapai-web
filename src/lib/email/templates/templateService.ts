@@ -1,61 +1,8 @@
 import { getTemplate, renderTemplate, AssessmentReportData, emailTemplates } from './index';
 import { EmailAttachment } from '../microsoft365-email';
+import { SupabaseContactDatabase, AssessmentData } from '../../supabase';
 
-// In-memory cache for assessment data
-interface CachedAssessmentData {
-  email: string;
-  data: any;
-  timestamp: number;
-}
-
-class AssessmentCache {
-  private static instance: AssessmentCache;
-  private cache: Map<string, CachedAssessmentData> = new Map();
-  private readonly TTL = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
-
-  static getInstance(): AssessmentCache {
-    if (!AssessmentCache.instance) {
-      AssessmentCache.instance = new AssessmentCache();
-    }
-    return AssessmentCache.instance;
-  }
-
-  store(email: string, data: any): void {
-    this.cache.set(email, {
-      email,
-      data,
-      timestamp: Date.now()
-    });
-    console.log(`Assessment data cached for ${email}`);
-  }
-
-  get(email: string): any | null {
-    const cached = this.cache.get(email);
-    if (!cached) return null;
-
-    // Check if expired
-    if (Date.now() - cached.timestamp > this.TTL) {
-      this.cache.delete(email);
-      return null;
-    }
-
-    return cached.data;
-  }
-
-  clear(email: string): void {
-    this.cache.delete(email);
-  }
-
-  // Clean up expired entries
-  cleanup(): void {
-    const now = Date.now();
-    for (const [email, cached] of this.cache.entries()) {
-      if (now - cached.timestamp > this.TTL) {
-        this.cache.delete(email);
-      }
-    }
-  }
-}
+// Removed AssessmentCache - now using Supabase for persistence
 
 // Dynamic import for puppeteer to avoid build issues
 let puppeteer: any = null;
@@ -70,7 +17,6 @@ try {
 export class TemplateService {
   private static instance: TemplateService | null = null;
   private initialized = false;
-  private assessmentCache = AssessmentCache.getInstance();
 
   private constructor() {
     // Will be initialized asynchronously
@@ -89,44 +35,15 @@ export class TemplateService {
     await import('./assessment-report');
   }
 
-  storeAssessmentData(email: string, data: any): void {
-    // Calculate readiness data
-    const { score, totalScore, maxScore, answers, insights } = data;
-    const readinessPercentage = Math.round((score / maxScore) * 100);
-
-    let readinessLevel = 'Beginner';
-    let readinessColor = '#ef4444'; // red
-
-    if (readinessPercentage >= 80) {
-      readinessLevel = 'Advanced';
-      readinessColor = '#10b981'; // green
-    } else if (readinessPercentage >= 60) {
-      readinessLevel = 'Intermediate';
-      readinessColor = '#f59e0b'; // yellow
+  async storeAssessmentData(email: string, data: any): Promise<void> {
+    // Store the assessment data in Supabase with customer email as key
+    try {
+      await SupabaseContactDatabase.storeAssessmentData(email, data);
+      console.log(`Assessment data stored in Supabase for ${email}`);
+    } catch (error) {
+      console.error('Failed to store assessment data in Supabase:', error);
+      throw error;
     }
-
-    // Generate insights display for HTML
-    const insightsDisplay = insights?.map((insight: string) => `
-      <div style="display: flex; align-items: flex-start; margin-bottom: 15px;">
-        <div style="width: 8px; height: 8px; border-radius: 50%; background-color: #667eea; margin-top: 6px; margin-right: 12px; flex-shrink: 0;"></div>
-        <p style="margin: 0; color: #374151; line-height: 1.5;">${insight}</p>
-      </div>
-    `).join('') || '<p style="margin: 0; color: #374151;">Your assessment has been analyzed and personalized recommendations are being prepared.</p>';
-
-    // Generate insights text for plain text version
-    const insightsText = insights?.map((insight: string) => `- ${insight}`).join('\n') || 'Your assessment has been analyzed and personalized recommendations are being prepared.';
-
-    // Store complete processed data
-    const processedData = {
-      ...data,
-      readinessPercentage,
-      readinessLevel,
-      readinessColor,
-      insightsDisplay,
-      insightsText
-    };
-
-    this.assessmentCache.store(email, processedData);
   }
 
   async renderAssessmentReportEmail(assessmentData: any, email?: string): Promise<{ subject: string; html: string; text?: string; attachments?: EmailAttachment[] }> {
@@ -135,7 +52,7 @@ export class TemplateService {
       throw new Error('Assessment report template not found');
     }
 
-    // Calculate readiness data
+    // Calculate readiness data for email template
     const { score, totalScore, maxScore, answers, insights } = assessmentData;
     const readinessPercentage = Math.round((score / maxScore) * 100);
 
@@ -188,8 +105,8 @@ export class TemplateService {
 
     const rendered = renderTemplate(template, templateData);
 
-    // Generate PDF attachment (will use cached data if available)
-    const attachments = await this.generateAssessmentReportPDF(email || '');
+    // Generate PDF attachment (pass assessment data as fallback)
+    const attachments = await this.generateAssessmentReportPDF(email || '', assessmentData);
 
     return {
       ...rendered,
@@ -197,7 +114,7 @@ export class TemplateService {
     };
   }
 
-  async generateAssessmentReportPDF(email: string): Promise<EmailAttachment[] | undefined> {
+  async generateAssessmentReportPDF(email: string, fallbackAssessmentData?: any): Promise<EmailAttachment[] | undefined> {
     try {
       // Check if puppeteer is available
       if (!puppeteer) {
@@ -205,17 +122,54 @@ export class TemplateService {
         return undefined;
       }
 
-      // Get cached assessment data
-      const cachedData = this.assessmentCache.get(email);
-      if (!cachedData) {
-        console.log(`No cached assessment data found for ${email}`);
+      // Get assessment data from Supabase, fallback to provided data if not available
+      let assessmentData = await SupabaseContactDatabase.getAssessmentData(email);
+      if (!assessmentData && fallbackAssessmentData) {
+        console.log(`Using fallback assessment data for ${email}`);
+        assessmentData = fallbackAssessmentData;
+      }
+
+      if (!assessmentData) {
+        console.log(`No assessment data found for ${email}`);
         return undefined;
       }
 
       console.log(`Generating PDF report for ${email}...`);
 
-      // Generate PDF HTML using cached data
-      const pdfHtml = this.generateDetailedPDFHTML(cachedData);
+      // Calculate readiness data from assessment data
+      const { score, maxScore, answers, insights } = assessmentData;
+      const readinessPercentage = Math.round((score / maxScore) * 100);
+
+      let readinessLevel = 'Beginner';
+      let readinessColor = '#ef4444'; // red
+
+      if (readinessPercentage >= 80) {
+        readinessLevel = 'Advanced';
+        readinessColor = '#10b981'; // green
+      } else if (readinessPercentage >= 60) {
+        readinessLevel = 'Intermediate';
+        readinessColor = '#f59e0b'; // yellow
+      }
+
+      // Generate insights display for HTML
+      const insightsDisplay = insights?.map((insight: string) => `
+        <div style="display: flex; align-items: flex-start; margin-bottom: 15px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background-color: #667eea; margin-top: 6px; margin-right: 12px; flex-shrink: 0;"></div>
+          <p style="margin: 0; color: #374151; line-height: 1.5;">${insight}</p>
+        </div>
+      `).join('') || '<p style="margin: 0; color: #374151;">Your assessment has been analyzed and personalized recommendations are being prepared.</p>';
+
+      // Prepare data for PDF generation
+      const pdfData = {
+        ...assessmentData,
+        readinessPercentage,
+        readinessLevel,
+        readinessColor,
+        insightsDisplay
+      };
+
+      // Generate PDF HTML using processed data
+      const pdfHtml = this.generateDetailedPDFHTML(pdfData);
 
       const browser = await puppeteer.launch({
         headless: true,
@@ -257,7 +211,7 @@ export class TemplateService {
       await browser.close();
 
       const attachments: EmailAttachment[] = [{
-        filename: `AI_Readiness_Report_${cachedData.readinessPercentage}%.pdf`,
+        filename: `AI_Readiness_Report_${readinessPercentage}%.pdf`,
         content: pdfBuffer,
         contentType: 'application/pdf'
       }];
@@ -277,6 +231,20 @@ export class TemplateService {
 
     // Calculate category scores if available
     const categoryScores = this.calculateCategoryScores(answers);
+
+    // Question mapping for PDF display
+    const questionMap: Record<string, string> = {
+      'q1': "What's your company size?",
+      'q2': "What's your current level of digital transformation?",
+      'q3': "Which areas of your business could benefit most from AI automation?",
+      'q4': "What's your monthly budget range for AI solutions?",
+      'q5': "How familiar is your team with AI technologies?",
+      'q6': "What's your biggest operational challenge?",
+      'q7': "Which tools/platforms do you currently use?",
+      'q8': "What's your timeline for AI implementation?",
+      'q9': "Which AI use case interests you most?",
+      'q10': "Do you have any specific compliance requirements?"
+    };
 
     return `
       <!DOCTYPE html>
@@ -704,7 +672,7 @@ export class TemplateService {
             <div class="answers-grid">
               ${Object.entries(answers).map(([question, answer]) => `
                 <div class="answer-item">
-                  <div class="answer-question">Question ${question.replace('q', '')}</div>
+                  <div class="answer-question">${questionMap[question] || `Question ${question.replace('q', '')}`}</div>
                   <div class="answer-value">${answer}</div>
                 </div>
               `).join('')}
@@ -788,7 +756,8 @@ export class TemplateService {
     return categories;
   }
 
-  private async generateAssessmentReportPDF(data: AssessmentReportData): Promise<EmailAttachment[] | undefined> {
+  private async generateAssessmentReportPDFFromData(data: AssessmentReportData): Promise<EmailAttachment[] | undefined> {
+    console.log(`🔴🔴🔴 PRIVATE PDF FUNCTION CALLED WITH DATA 🔴🔴🔴`);
     try {
       // Check if puppeteer is available
       if (!puppeteer) {
