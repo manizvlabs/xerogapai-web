@@ -29,6 +29,9 @@ const assessmentReportTemplate: EmailTemplate = {
 
         <!-- Header -->
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 30px; text-align: center;">
+          <div style="width: 120px; height: 40px; margin: 0 auto 20px auto; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px; color: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            🚀 XeroGap AI
+          </div>
           <h1 style="margin: 0; font-size: 28px; font-weight: 700;">Your AI Readiness Report</h1>
           <p style="margin: 10px 0 0 0; opacity: 0.9; font-size: 16px;">Comprehensive Analysis & Recommendations</p>
         </div>
@@ -94,6 +97,9 @@ const assessmentReportTemplate: EmailTemplate = {
 
         <!-- Footer -->
         <div style="background-color: #f8fafc; padding: 30px; text-align: center; border-top: 1px solid #e2e8f0;">
+          <div style="width: 80px; height: 30px; margin: 0 auto 15px auto; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; color: white; box-shadow: 0 1px 4px rgba(0,0,0,0.1);">
+            🚀 XeroGap AI
+          </div>
           <p style="margin: 0; color: #64748b; font-size: 14px;">
             Questions about your report? Reply to this email or contact us at
             <a href="mailto:support@xerogap.com" style="color: #667eea;">support@xerogap.com</a>
