@@ -200,7 +200,7 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
           <div className="mt-12 text-center border-t border-gray-200 dark:border-gray-700 pt-6">
             <button
               onClick={onRestart}
-              className="text-gray-500 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-400 font-medium transition-colors text-sm"
+              className="text-gray-500 hover:text-cyan-600 dark:text-white dark:hover:text-cyan-400 font-medium transition-colors text-sm"
             >
               ← Take Assessment Again
             </button>
@@ -209,21 +209,21 @@ export default function AssessmentCTA({ assessmentData, userEmail, onRestart }: 
           {/* Trust Signals */}
           <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
             <div className="text-center">
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+              <p className="text-sm text-gray-500 dark:text-white mb-4">
                 Join 500+ businesses who&apos;ve transformed their operations with AI
               </p>
               <div className="flex items-center justify-center space-x-8">
                 <div className="text-center">
                   <div className="text-xl font-bold text-gray-900 dark:text-white">30min</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Consultation</div>
+                  <div className="text-xs text-gray-500 dark:text-white">Consultation</div>
                 </div>
                 <div className="text-center">
                   <div className="text-xl font-bold text-gray-900 dark:text-white">Free</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">No Obligations</div>
+                  <div className="text-xs text-gray-500 dark:text-white">No Obligations</div>
                 </div>
                 <div className="text-center">
                   <div className="text-xl font-bold text-gray-900 dark:text-white">100%</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">Satisfaction</div>
+                  <div className="text-xs text-gray-500 dark:text-white">Satisfaction</div>
                 </div>
               </div>
             </div>
