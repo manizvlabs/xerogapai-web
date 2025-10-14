@@ -4,13 +4,15 @@ import { SupabaseContactDatabase, AssessmentData } from '../../supabase';
 
 // Removed AssessmentCache - now using Supabase for persistence
 
-// Dynamic import for puppeteer to avoid build issues
+// Dynamic import for puppeteer-core to avoid build issues
 let puppeteer: any = null;
+let chromium: any = null;
 try {
-  // Only load puppeteer if available
-  puppeteer = require('puppeteer');
+  // Load puppeteer-core and chromium for serverless environments
+  puppeteer = require('puppeteer-core');
+  chromium = require('@sparticuz/chromium');
 } catch (error) {
-  console.log('Puppeteer not available, PDF generation will be skipped');
+  console.log('Puppeteer-core not available, PDF generation will be skipped');
 }
 
 // Template Service for handling email templates and PDF generation
@@ -203,7 +205,13 @@ export class TemplateService {
     const rendered = renderTemplate(template, templateData);
 
     // Generate PDF attachment (pass assessment data as fallback)
-    const attachments = await this.generateAssessmentReportPDF(email || '', assessmentData);
+    let attachments: EmailAttachment[] | undefined;
+    try {
+      attachments = await this.generateAssessmentReportPDF(email || '', assessmentData);
+    } catch (pdfError) {
+      console.warn('PDF generation failed, sending email without attachment:', pdfError);
+      attachments = undefined;
+    }
 
     return {
       ...rendered,
@@ -274,7 +282,9 @@ export class TemplateService {
 
       const browser = await puppeteer.launch({
         headless: true,
+        executablePath: await chromium.executablePath(),
         args: [
+          ...chromium.args,
           '--no-sandbox',
           '--disable-setuid-sandbox',
           '--disable-dev-shm-usage',
@@ -873,7 +883,9 @@ export class TemplateService {
 
       const browser = await puppeteer.launch({
         headless: true,
+        executablePath: await chromium.executablePath(),
         args: [
+          ...chromium.args,
           '--no-sandbox',
           '--disable-setuid-sandbox',
           '--disable-dev-shm-usage',
