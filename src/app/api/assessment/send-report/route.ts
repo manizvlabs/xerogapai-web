@@ -29,12 +29,16 @@ async function sendAssessmentReportHandler(request: NextRequest) {
                      request.headers.get('x-real-ip') ||
                      'unknown';
 
+    // Store assessment data in cache before sending email
+    const { templateService } = await import('@/lib/email/templates/templateService');
+    const templateSvc = await templateService;
+    templateSvc.storeAssessmentData(sanitizedEmail, assessmentData);
+
     // Send the assessment report email directly (avoid duplicate email from lead sequence)
     console.log('Attempting to send assessment report to:', sanitizedEmail);
 
     // Use template service to render email with PDF attachment
-    const templateSvc = await import('@/lib/email/templates/templateService').then(m => m.templateService);
-    const { subject, html, text, attachments } = await templateSvc.renderAssessmentReportEmail(assessmentData);
+    const { subject, html, text, attachments } = await templateSvc.renderAssessmentReportEmail(assessmentData, sanitizedEmail);
 
     // Create email data
     const emailData: EmailData = {
