@@ -3,7 +3,6 @@ import Link from 'next/link';
 import React from 'react';
 import { EnvelopeIcon, PhoneIcon, MapPinIcon, DevicePhoneMobileIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 import { useContent } from '@/hooks/useContent';
-import { useRegion } from '@/contexts/RegionContext';
 import ContactForm from '../app/contact/ContactForm';
 
 interface ConsultationSection {
@@ -18,28 +17,10 @@ interface ResponseTimeSection {
   description: string;
 }
 
-interface RegionalSupportSection {
-  title: string;
-  india: {
-    title: string;
-    contact: string;
-    whatsapp: string;
-    timezone: string;
-    languages: string;
-  };
-  global: {
-    title: string;
-    contact: string;
-    whatsapp: string;
-    timezone: string;
-    languages: string;
-  };
-}
 
 interface ContactPageContent {
   consultation?: ConsultationSection;
   responseTime?: ResponseTimeSection;
-  regionalSupport?: RegionalSupportSection;
 }
 
 export default function ContactPage() {
@@ -65,23 +46,6 @@ export default function ContactPage() {
       description: "Schedule a personalized consultation to discuss your AI automation needs and explore how XeroGap AI can transform your business operations.",
       buttonText: "Book Consultation",
       buttonHref: "/consultation"
-    },
-    regionalSupport: {
-      title: "Regional Support Teams",
-      india: {
-        title: "India Support",
-        contact: "",
-        whatsapp: "https://wa.me/919876543210",
-        timezone: "IST (GMT+5:30)",
-        languages: "English, Hindi"
-      },
-      global: {
-        title: "Global Support",
-        contact: "+1 (555) 123-4567",
-        whatsapp: "https://wa.me/15551234567",
-        timezone: "EST (GMT-5)",
-        languages: "English, Arabic, French"
-      }
     }
   };
 
@@ -92,8 +56,7 @@ export default function ContactPage() {
       ...(content?.contactInfo || content?.info || {})
     },
     responseTime: (content?.responseTime as Record<string, unknown>) || defaultContent.responseTime,
-    consultation: (content?.consultation as Record<string, unknown>) || defaultContent.consultation,
-    regionalSupport: content?.regionalSupport || defaultContent.regionalSupport
+    consultation: (content?.consultation as Record<string, unknown>) || defaultContent.consultation
   };
 
   if (loading) {
@@ -156,8 +119,7 @@ export default function ContactPage() {
           <div className="mx-auto max-w-2xl text-center">
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-800/30 text-blue-200 text-sm font-medium mb-8">
-              <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-              Get in Touch
+              <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>Get in Touch
             </div>
 
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
@@ -246,119 +208,6 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* Regional Support Section */}
-      <div className="bg-gray-50 dark:bg-gray-800 py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              {pageContent.regionalSupport?.title}
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-              Dedicated support teams for your region with local language assistance and timezone alignment.
-            </p>
-          </div>
-
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-              {/* India Support */}
-              <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
-                    🇮🇳
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      {pageContent.regionalSupport?.india?.title || "India Support"}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-white">
-                      {pageContent.regionalSupport?.india?.timezone || "IST (GMT+5:30)"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <PhoneIcon className="w-5 h-5 text-blue-600" />
-                    <Link href={`tel:${pageContent.regionalSupport?.india?.contact || "+919876543210"}`}
-                       className="text-gray-600 dark:text-white hover:text-blue-600">
-                      {pageContent.regionalSupport?.india?.contact || "+91 98765 43210"}
-                    </Link>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <DevicePhoneMobileIcon className="w-5 h-5 text-blue-600" />
-                    <Link href={pageContent.regionalSupport?.india?.whatsapp || "https://wa.me/919876543210"}
-                       className="text-gray-600 dark:text-white hover:text-blue-600">
-                      WhatsApp Business
-                    </Link>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <GlobeAltIcon className="w-5 h-5 text-purple-600" />
-                    <span className="text-gray-600 dark:text-white">
-                      {pageContent.regionalSupport?.india?.languages || "English, Hindi, Telugu, Tamil"}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                  <p className="text-sm text-gray-500 dark:text-white">
-                    Available: 9 AM - 9 PM IST | Response: &lt; 2 hours
-                  </p>
-                </div>
-              </div>
-
-              {/* Global Support */}
-              <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
-                    🌍
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      {pageContent.regionalSupport?.global?.title || "Global Support"}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-white">
-                      {pageContent.regionalSupport?.global?.timezone || "EST (GMT-5)"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <PhoneIcon className="w-5 h-5 text-blue-600" />
-                    <Link href={`tel:${pageContent.regionalSupport?.global?.contact || "+15551234567"}`}
-                       className="text-gray-600 dark:text-white hover:text-blue-600">
-                      {pageContent.regionalSupport?.global?.contact || "+1 (555) 123-4567"}
-                    </Link>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <DevicePhoneMobileIcon className="w-5 h-5 text-blue-600" />
-                    <Link href={pageContent.regionalSupport?.global?.whatsapp || "https://wa.me/15551234567"}
-                       className="text-gray-600 dark:text-white hover:text-blue-600">
-                      WhatsApp Business
-                    </Link>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <GlobeAltIcon className="w-5 h-5 text-purple-600" />
-                    <span className="text-gray-600 dark:text-white">
-                      {pageContent.regionalSupport?.global?.languages || "English, Arabic, French"}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-                  <p className="text-sm text-gray-500 dark:text-white">
-                    Available: 9 AM - 6 PM EST | Response: &lt; 4 hours
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Back to Home Link */}
       <div className="fixed bottom-6 left-6 z-40">
