@@ -8,16 +8,16 @@ async function testAssessmentEmail() {
     totalScore: 100,
     maxScore: 100,
     answers: {
-      'q1': 'We have basic digital tools but limited automation',
-      'q2': 'Some team members have basic AI awareness',
-      'q3': 'Budget available for AI pilot projects',
-      'q4': '6-12 months timeline for implementation',
-      'q5': 'Customer service and data processing',
-      'q6': 'Medium priority for AI adoption',
-      'q7': 'Basic data infrastructure exists',
-      'q8': 'Some resistance to change from team',
-      'q9': 'Looking for measurable ROI within 6 months',
-      'q10': 'Need guidance on AI vendor selection'
+      'q1': '11-50 employees',  // Company size: small business
+      'q2': 'Partially digitized with some automation',  // Digital transformation level
+      'q3': ['customer_service', 'operations', 'sales'],  // Multiple areas: Customer Service & Support, Operations & Workflow, Sales & Lead Generation
+      'q4': '$500 - $2,000',  // Monthly budget: medium range
+      'q5': 'Basic understanding, limited experience',  // Team familiarity with AI
+      'q6': 'Operational efficiency and productivity',  // Biggest operational challenge
+      'q7': ['crm', 'communication', 'accounting'],  // Current tools: CRM, Communication, Accounting
+      'q8': 'Within 6 months',  // Timeline for AI implementation
+      'q9': 'Workflow automation',  // Preferred AI use case
+      'q10': ['gdpr', 'dpdp']  // Compliance requirements: GDPR and DPDP
     },
     insights: [
       'Your business shows strong potential for AI automation in customer service',

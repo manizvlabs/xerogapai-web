@@ -46,6 +46,100 @@ export class TemplateService {
     }
   }
 
+  private formatAssessmentAnswers(answers: Record<string, any>): Record<string, string> {
+    // Map option values to human-readable labels for display
+    const optionLabels: Record<string, Record<string, string>> = {
+      q1: {
+        startup: "1-10 employees",
+        small: "11-50 employees",
+        medium: "51-200 employees",
+        large: "200+ employees"
+      },
+      q2: {
+        advanced: "Fully digitized with modern tools",
+        moderate: "Partially digitized with some automation",
+        basic: "Basic digitization, mostly manual processes",
+        minimal: "Minimal digitization, paper-based processes"
+      },
+      q3: {
+        customer_service: "Customer Service & Support",
+        sales: "Sales & Lead Generation",
+        operations: "Operations & Workflow",
+        marketing: "Marketing & Content",
+        finance: "Finance & Reporting",
+        hr: "HR & Recruitment"
+      },
+      q4: {
+        high: "$2,000+",
+        medium: "$500 - $2,000",
+        low: "$100 - $500",
+        minimal: "Under $100"
+      },
+      q5: {
+        expert: "Very familiar, actively using AI tools",
+        intermediate: "Some experience with AI/ML",
+        basic: "Basic understanding, limited experience",
+        novice: "Limited understanding, new to AI"
+      },
+      q6: {
+        efficiency: "Operational efficiency and productivity",
+        customer: "Customer experience and satisfaction",
+        growth: "Business growth and scalability",
+        costs: "Cost reduction and optimization",
+        compliance: "Compliance and regulatory requirements"
+      },
+      q7: {
+        crm: "CRM (Salesforce, HubSpot, Zoho)",
+        communication: "Communication (Slack, Teams, WhatsApp)",
+        productivity: "Productivity (Notion, Google Workspace)",
+        accounting: "Accounting (QuickBooks, Xero)",
+        custom: "Custom/internal software",
+        none: "Mostly manual processes"
+      },
+      q8: {
+        immediate: "ASAP - within 1 month",
+        soon: "Within 3 months",
+        quarter: "Within 6 months",
+        year: "Within 1 year"
+      },
+      q9: {
+        chatbots: "Customer service chatbots",
+        automation: "Workflow automation",
+        analytics: "Data analytics and insights",
+        content: "Content generation and marketing",
+        sales: "Sales intelligence and prospecting"
+      },
+      q10: {
+        gdpr: "GDPR compliance",
+        dpdp: "DPDP compliance",
+        hipaa: "HIPAA compliance",
+        iso: "ISO standards",
+        none: "No specific compliance needs"
+      }
+    };
+
+    const formattedAnswers: Record<string, string> = {};
+
+    Object.entries(answers).forEach(([questionKey, answerValue]) => {
+      const questionLabels = optionLabels[questionKey];
+      if (!questionLabels) {
+        formattedAnswers[questionKey] = String(answerValue);
+        return;
+      }
+
+      if (Array.isArray(answerValue)) {
+        // Multiple choice answer - map each value to label
+        const labels = answerValue.map(val => questionLabels[val] || String(val));
+        formattedAnswers[questionKey] = labels.join(", ");
+      } else {
+        // Single choice answer
+        formattedAnswers[questionKey] = questionLabels[answerValue] || String(answerValue);
+      }
+    });
+
+    return formattedAnswers;
+  }
+
   async renderAssessmentReportEmail(assessmentData: any, email?: string): Promise<{ subject: string; html: string; text?: string; attachments?: EmailAttachment[] }> {
     const template = getTemplate('assessment-report');
     if (!template) {
@@ -78,11 +172,14 @@ export class TemplateService {
     // Generate insights text for plain text version
     const insightsText = insights?.map((insight: string) => `- ${insight}`).join('\n') || 'Your assessment has been analyzed and personalized recommendations are being prepared.';
 
+    // Format answers to display human-readable labels
+    const formattedAnswers = this.formatAssessmentAnswers(answers);
+
     const templateData = {
       score,
       totalScore,
       maxScore,
-      answers,
+      answers: formattedAnswers, // Use formatted answers for the template
       insights,
       readinessPercentage,
       readinessLevel,
@@ -91,16 +188,16 @@ export class TemplateService {
       insightsText,
       consultationUrl: 'https://xerogapai-web.vercel.app/consultation',
       demoUrl: 'https://xerogapai-web.vercel.app/demo',
-      q1: answers?.q1 || '',
-      q2: answers?.q2 || '',
-      q3: answers?.q3 || '',
-      q4: answers?.q4 || '',
-      q5: answers?.q5 || '',
-      q6: answers?.q6 || '',
-      q7: answers?.q7 || '',
-      q8: answers?.q8 || '',
-      q9: answers?.q9 || '',
-      q10: answers?.q10 || ''
+      q1: formattedAnswers?.q1 || '',
+      q2: formattedAnswers?.q2 || '',
+      q3: formattedAnswers?.q3 || '',
+      q4: formattedAnswers?.q4 || '',
+      q5: formattedAnswers?.q5 || '',
+      q6: formattedAnswers?.q6 || '',
+      q7: formattedAnswers?.q7 || '',
+      q8: formattedAnswers?.q8 || '',
+      q9: formattedAnswers?.q9 || '',
+      q10: formattedAnswers?.q10 || ''
     };
 
     const rendered = renderTemplate(template, templateData);
@@ -159,9 +256,13 @@ export class TemplateService {
         </div>
       `).join('') || '<p style="margin: 0; color: #374151;">Your assessment has been analyzed and personalized recommendations are being prepared.</p>';
 
+      // Format answers for PDF display
+      const formattedAnswers = this.formatAssessmentAnswers(answers);
+
       // Prepare data for PDF generation
       const pdfData = {
         ...assessmentData,
+        answers: formattedAnswers, // Use formatted answers for PDF
         readinessPercentage,
         readinessLevel,
         readinessColor,
