@@ -38,7 +38,7 @@ async function testAssessmentEmail() {
 
   try {
     console.log('🌐 Making API request to /api/assessment/send-report...');
-    const response = await fetch('http://localhost:4010/api/assessment/send-report', {
+    const response = await fetch('http://localhost:3000/api/assessment/send-report', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

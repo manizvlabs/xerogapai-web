@@ -24,7 +24,7 @@ export async function GET() {
     { url: '/enterprise-copilots', priority: '0.8', changefreq: 'monthly' },
     { url: '/sales-automation', priority: '0.8', changefreq: 'monthly' },
     { url: '/whatsapp-cx', priority: '0.8', changefreq: 'monthly' },
-    { url: '/xerogap-ai', priority: '0.9', changefreq: 'weekly' }
+    { url: '/VyaptIX-ai', priority: '0.9', changefreq: 'weekly' }
   ];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

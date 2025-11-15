@@ -70,7 +70,7 @@ export default function CareerHero() {
           {/* Why Join Us */}
           <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-700 mb-12 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-              Why Join XeroGap AI?
+              Why Join VyaptIX AI?
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">

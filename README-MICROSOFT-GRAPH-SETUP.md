@@ -37,7 +37,7 @@ Make sure your Azure app registration has these permissions:
 ### 4. Test the Integration
 
 1. Start the development server: `npm run dev`
-2. Navigate to `http://localhost:4010/demo`
+2. Navigate to `http://localhost:3000/demo`
 3. Book a demo appointment
 4. Click "Add Demo to Outlook Calendar" in the confirmation screen
 5. The event should be created in your Outlook calendar with a Teams meeting link

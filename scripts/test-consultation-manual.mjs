@@ -5,7 +5,7 @@
  * Run individual tests or submit custom data
  */
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:4010';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
 console.log('🔧 Manual Consultation Form Tester');
 console.log('===================================\n');

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { ClockIcon, ChartBarIcon, PuzzlePieceIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
-export default function XeroGapHero() {
+export default function VyaptIXHero() {
   return (
     <div className="relative isolate bg-gradient-to-br from-purple-900 via-indigo-900 to-green-900">
       {/* Background Pattern */}
@@ -11,11 +11,11 @@ export default function XeroGapHero() {
         <div className="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-gray-700 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]">
           <svg>
             <defs>
-              <pattern id="xerogap-pattern" width={200} height={200} x="50%" y={-1} patternUnits="userSpaceOnUse">
+              <pattern id="VyaptIX-pattern" width={200} height={200} x="50%" y={-1} patternUnits="userSpaceOnUse">
                 <path d="M.5 200V.5H200" fill="none" />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" strokeWidth={0} fill="url(#xerogap-pattern)" />
+            <rect width="100%" height="100%" strokeWidth={0} fill="url(#VyaptIX-pattern)" />
           </svg>
         </div>
       </div>
@@ -76,7 +76,7 @@ export default function XeroGapHero() {
           {/* Value Proposition */}
           <div className="bg-slate-800/30 backdrop-blur-sm p-8 rounded-3xl border border-slate-700 mb-12 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-white mb-6 text-center">
-              What XeroGap AI Can Do For You
+              What VyaptIX AI Can Do For You
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">

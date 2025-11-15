@@ -39,7 +39,7 @@ export default function AboutPage() {
   // Default content structure
   const defaultContent = {
     hero: {
-      title: "About XeroGap AI",
+      title: "About VyaptIX AI",
       subtitle: "We're on a mission to democratize AI automation for businesses worldwide. From AI Multi-Channel Support Copilot to AI Knowledge Management Assistant, we make cutting-edge AI accessible and practical for growing companies."
     },
     mission: {
@@ -48,7 +48,7 @@ export default function AboutPage() {
       additionalDescription: "Founded by AI experts with deep industry experience, we combine technical excellence with business pragmatism to deliver AI solutions that actually work and deliver measurable results."
     },
     whyChooseUs: {
-      title: "Why Choose XeroGap AI?",
+      title: "Why Choose VyaptIX AI?",
       features: [
         "AI-First Approach: Every solution built with AI at the core",
         "Proven Track Record: 200+ AI implementations across industries",

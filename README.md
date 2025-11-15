@@ -1,13 +1,13 @@
 # XeroGap AI - AI-Powered Digital Transformation
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/manizvlabs/xerogapai-web)
-[![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://xerogapai-web.vercel.app/)
+[![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://www.vyaptix.ai/)
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.3-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-blue)](https://tailwindcss.com/)
 [![Version](https://img.shields.io/badge/version-1.0.5-blue)](https://github.com/manizvlabs/xerogapai-web/releases)
 
-**🌐 Live Website:** [https://xerogapai-web.vercel.app/](https://xerogapai-web.vercel.app/)
+**🌐 Live Website:** [https://www.vyaptix.ai/](https://www.vyaptix.ai/)
 
 Transform your business with cutting-edge AI automation, custom mobile apps, and digital marketing solutions. Built for Hyderabad businesses and beyond.
 
@@ -39,7 +39,7 @@ For a complete list of changes, features, and bug fixes, see the [CHANGELOG.md](
 
 The website is automatically deployed to Vercel on every push to the `main` branch:
 
-- **Production URL:** [https://xerogapai-web.vercel.app/](https://xerogapai-web.vercel.app/)
+- **Production URL:** [https://www.vyaptix.ai/](https://www.vyaptix.ai/)
 - **CI/CD:** GitHub Actions with automated testing and deployment
 - **Performance:** Optimized with Vercel's CDN and edge functions
 - **Security:** HTTPS enabled with security headers
@@ -65,10 +65,10 @@ The website is automatically deployed to Vercel on every push to the `main` bran
    # Site Configuration
    NEXT_PUBLIC_SITE_NAME="XeroGap AI"
    NEXT_PUBLIC_SITE_TAGLINE="AI-Powered Digital Transformation"
-   NEXT_PUBLIC_DOMAIN="xerogap.com"
+   NEXT_PUBLIC_DOMAIN="www.vyaptix.ai"
    NEXT_PUBLIC_LOCATION=""
    NEXT_PUBLIC_PHONE="+919876543210"
-   NEXT_PUBLIC_EMAIL="support@xerogap.com"
+   NEXT_PUBLIC_EMAIL="support@www.vyaptix.ai"
 
    # Theme Configuration
    NEXT_PUBLIC_ENABLE_THEME_SWITCHER="true"
@@ -84,7 +84,7 @@ The website is automatically deployed to Vercel on every push to the `main` bran
 
    # Email Service (Optional - for production)
    EMAIL_SERVICE_API_KEY="your_email_service_api_key"
-   CONTACT_EMAIL="support@xerogap.com"
+   CONTACT_EMAIL="support@www.vyaptix.ai"
    ```
 
 4. **Run the development server**
@@ -93,7 +93,7 @@ The website is automatically deployed to Vercel on every push to the `main` bran
    ```
 
 5. **Open your browser**
-   Navigate to [http://localhost:4010](http://localhost:4010)
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 📁 Project Structure
 
@@ -319,7 +319,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 For support and questions:
-- **Email**: support@xerogap.com
+- **Email**: support@www.vyaptix.ai
 - **Phone**: 
 
 ## 🙏 Acknowledgments

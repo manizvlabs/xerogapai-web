@@ -19,8 +19,8 @@ This document provides a comprehensive reference for all environment variables u
 |----------|-------------|---------|----------|
 | `NEXT_PUBLIC_SITE_NAME` | Website name | `"XeroGap AI"` | ✅ |
 | `NEXT_PUBLIC_SITE_TAGLINE` | Website tagline | `"AI-Powered Digital Transformation"` | ✅ |
-| `NEXT_PUBLIC_SITE_DOMAIN` | Primary domain | `"xerogap.com"` | ✅ |
-| `NEXT_PUBLIC_SITE_URL` | Full website URL | `"https://xerogap.com"` | ✅ |
+| `NEXT_PUBLIC_SITE_DOMAIN` | Primary domain | `"www.vyaptix.ai"` | ✅ |
+| `NEXT_PUBLIC_SITE_URL` | Full website URL | `"https://www.vyaptix.ai"` | ✅ |
 
 ### 🎨 Theme Configuration
 | Variable | Description | Options | Default |
@@ -32,7 +32,7 @@ This document provides a comprehensive reference for all environment variables u
 | Variable | Description | Example |
 |----------|-------------|---------|
 | `NEXT_PUBLIC_COMPANY_NAME` | Company name | `"XeroGap AI"` |
-| `NEXT_PUBLIC_COMPANY_EMAIL` | Contact email | `"support@xerogap.com"` |
+| `NEXT_PUBLIC_COMPANY_EMAIL` | Contact email | `"support@www.vyaptix.ai"` |
 | `NEXT_PUBLIC_COMPANY_PHONE` | Phone number | `"+91 98765 43210"` |
 | `NEXT_PUBLIC_COMPANY_ADDRESS` | Business address | `""` |
 

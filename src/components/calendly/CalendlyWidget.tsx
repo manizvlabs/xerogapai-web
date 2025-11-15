@@ -98,7 +98,7 @@ export default function CalendlyWidget({
               Try Again
             </button>
             <button
-              onClick={() => window.open('mailto:sales@xerogap.ai?subject=Demo Request&body=Hi, I would like to schedule an AI demo. Please let me know available times.', '_blank')}
+              onClick={() => window.open('mailto:sales@VyaptIX.com?subject=Demo Request&body=Hi, I would like to schedule an AI demo. Please let me know available times.', '_blank')}
               className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
             >
               Contact Us Directly

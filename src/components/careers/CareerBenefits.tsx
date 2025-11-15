@@ -281,7 +281,7 @@ export default function CareerBenefits() {
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 text-white">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
-              Why Choose XeroGap AI Benefits?
+              Why Choose VyaptIX AI Benefits?
             </h3>
             <p className="text-purple-100 max-w-2xl mx-auto">
               We designed our benefits package to be comprehensive, flexible, and focused on what matters most to our team

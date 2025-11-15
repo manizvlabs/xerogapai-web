@@ -43,7 +43,7 @@ export default function ContactPage() {
     },
     consultation: {
       title: "Book a Consultation",
-      description: "Schedule a personalized consultation to discuss your AI automation needs and explore how XeroGap AI can transform your business operations.",
+      description: "Schedule a personalized consultation to discuss your AI automation needs and explore how VyaptIX AI can transform your business operations.",
       buttonText: "Book Consultation",
       buttonHref: "/consultation"
     }

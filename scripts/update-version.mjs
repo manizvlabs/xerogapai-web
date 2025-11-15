@@ -38,10 +38,10 @@ try {
 # Site Configuration
 NEXT_PUBLIC_SITE_NAME="XeroGap AI"
 NEXT_PUBLIC_SITE_TAGLINE="AI-Powered Digital Transformation"
-NEXT_PUBLIC_SITE_DOMAIN="xerogap.com"
+NEXT_PUBLIC_SITE_DOMAIN="vyaptix.ai"
 NEXT_PUBLIC_LOCATION=""
 NEXT_PUBLIC_PHONE="+917702661991"
-NEXT_PUBLIC_EMAIL="support@xerogap.com"
+NEXT_PUBLIC_EMAIL="support@vyaptix.com"
 NEXT_PUBLIC_APP_VERSION="${version}"
 NEXT_PUBLIC_COPYRIGHT_YEAR="2025"
 
@@ -50,7 +50,7 @@ JWT_SECRET="your-super-secret-jwt-key-change-in-production-12345"
 JWT_EXPIRES_IN="24h"
 ADMIN_USERNAME="admin"
 ADMIN_PASSWORD="admin123"
-ADMIN_EMAIL="support@xerogap.com"
+ADMIN_EMAIL="support@vyaptix.com"
 
 # Vercel Configuration
 VERCEL_TOKEN="your-vercel-token"

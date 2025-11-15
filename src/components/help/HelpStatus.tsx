@@ -116,7 +116,7 @@ export default function HelpStatus() {
             System Status & Updates
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-            Real-time status of all XeroGap AI services and upcoming maintenance windows.
+            Real-time status of all VyaptIX AI services and upcoming maintenance windows.
           </p>
         </div>
 

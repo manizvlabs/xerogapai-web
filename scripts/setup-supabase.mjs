@@ -82,7 +82,7 @@ console.log('================\n');
 console.log('1. 🌐 Create Supabase Project:');
 console.log('   • Go to https://supabase.com/dashboard');
 console.log('   • Click "New Project"');
-console.log('   • Name: xerogapai-web');
+console.log('   • Name: VyaptIX-web');
 console.log('   • Choose region closest to your users');
 console.log('   • Generate and save database password');
 console.log('   • Wait for project to be ready (2-3 minutes)\n');

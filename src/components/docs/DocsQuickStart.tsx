@@ -8,10 +8,10 @@ export default function DocsQuickStart() {
     {
       step: 1,
       title: 'Create Your Account',
-      description: 'Sign up for a XeroGap AI account and get your API keys',
+      description: 'Sign up for a VyaptIX AI account and get your API keys',
       icon: RocketLaunchIcon,
       time: '2 minutes',
-      code: `curl -X POST https://api.xerogap.ai/v1/auth/signup \\
+      code: `curl -X POST https://api.VyaptIX.ai/v1/auth/signup \\
   -H "Content-Type: application/json" \\
   -d '{
     "email": "your-email@example.com",
@@ -25,13 +25,13 @@ export default function DocsQuickStart() {
       icon: CodeBracketIcon,
       time: '1 minute',
       code: `# For Node.js
-npm install xerogap-ai
+npm install VyaptIX-ai
 
 # For Python
-pip install xerogap-ai
+pip install VyaptIX-ai
 
 # For PHP
-composer require xerogap/xerogap-ai`
+composer require VyaptIX/VyaptIX-ai`
     },
     {
       step: 3,
@@ -39,9 +39,9 @@ composer require xerogap/xerogap-ai`
       description: 'Send your first request to test the connection',
       icon: CloudIcon,
       time: '3 minutes',
-      code: `import { XeroGapAI } from 'xerogap-ai';
+      code: `import { VyaptIXAI } from 'VyaptIX-ai';
 
-const client = new XeroGapAI({
+const client = new VyaptIXAI({
   apiKey: 'your-api-key-here'
 });
 
@@ -89,7 +89,7 @@ console.log(response);`
     },
     {
       title: 'Integration Tutorials',
-      description: 'Connect XeroGap AI with your favorite tools',
+      description: 'Connect VyaptIX AI with your favorite tools',
       readTime: '25 min read',
       difficulty: 'Intermediate',
       href: '/docs/integrations'
@@ -112,7 +112,7 @@ console.log(response);`
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Follow our step-by-step guide to go from zero to building AI-powered applications
-            with XeroGap AI. No prior experience required.
+            with VyaptIX AI. No prior experience required.
           </p>
         </div>
 
@@ -209,7 +209,7 @@ console.log(response);`
               Developer Success Rates
             </h3>
             <p className="text-indigo-100 max-w-2xl mx-auto">
-              See how quickly developers are building and deploying with XeroGap AI
+              See how quickly developers are building and deploying with VyaptIX AI
             </p>
           </div>
 
@@ -238,7 +238,7 @@ console.log(response);`
 
           <div className="mt-8 text-center">
             <p className="text-indigo-100 text-sm mb-6">
-              Join thousands of developers building the future with XeroGap AI
+              Join thousands of developers building the future with VyaptIX AI
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

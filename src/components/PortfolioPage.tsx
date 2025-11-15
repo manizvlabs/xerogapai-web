@@ -84,11 +84,11 @@ export default function PortfolioPage() {
         duration: '5 months'
       },
       {
-        name: 'XeroGap AI Workflow Automation - Consulting Firm',
+        name: 'VyaptIX AI Workflow Automation - Consulting Firm',
         description: 'Created intelligent workflow automation connecting Notion, Slack, and business tools for a consulting firm, streamlining project management and client communication.',
         category: 'Workflow Automation',
         image: '/api/placeholder/400/300',
-        technologies: ['XeroGap AI', 'Notion API', 'Slack Integration', 'Workflow Engine'],
+        technologies: ['VyaptIX AI', 'Notion API', 'Slack Integration', 'Workflow Engine'],
         results: '20 hours/week saved, 90% reduction in manual data entry',
         client: 'Consulting Firm',
         industry: 'Professional Services',

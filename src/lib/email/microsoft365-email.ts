@@ -151,7 +151,7 @@ class SMTPEmailService {
 
       // Create mail options
       const mailOptions = {
-        from: emailData.from || `"XeroGap AI" <${process.env.SMTP_USER}>`,
+        from: emailData.from || `"VyaptIX AI" <${process.env.SMTP_USER}>`,
         to: emailData.to,
         subject: emailData.subject,
         html: emailData.html,
@@ -413,11 +413,11 @@ class Microsoft365EmailService {
 
             <!-- CTA Buttons -->
             <div style="padding: 30px; text-align: center; border-top: 1px solid #e2e8f0;">
-              <a href="https://xerogapai-web.vercel.app/assessment"
+              <a href="https://www.vyaptix.ai/assessment"
                  style="display: inline-block; background-color: #667eea; color: white; text-decoration: none; padding: 15px 30px; border-radius: 8px; font-weight: 600; margin-right: 15px;">
                 Take AI Assessment
               </a>
-              <a href="https://xerogapai-web.vercel.app/contact"
+              <a href="https://www.vyaptix.ai/contact"
                  style="display: inline-block; background-color: #10b981; color: white; text-decoration: none; padding: 15px 30px; border-radius: 8px; font-weight: 600;">
                 Contact Support
               </a>
@@ -427,10 +427,10 @@ class Microsoft365EmailService {
             <div style="background-color: #f8fafc; padding: 30px; text-align: center; border-top: 1px solid #e2e8f0;">
               <p style="margin: 0; color: #64748b; font-size: 14px;">
                 Questions about your demo? Reply to this email or contact us at
-                <a href="mailto:support@xerogap.com" style="color: #667eea;">support@xerogap.com</a>
+                <a href="mailto:support@vyaptix.com" style="color: #667eea;">support@vyaptix.com</a>
               </p>
               <p style="margin: 10px 0 0 0; color: #94a3b8; font-size: 12px;">
-                © 2025 XeroGap AI. All rights reserved.
+                © 2025 VyaptIX AI. All rights reserved.
               </p>
             </div>
 
@@ -462,7 +462,7 @@ Preparation Tips:
 - Prepare questions about AI automation for your industry
 - Ensure you have a stable internet connection for the demo
 
-Questions? Contact us at support@xerogap.com
+Questions? Contact us at support@vyaptix.com
       `,
     };
   }

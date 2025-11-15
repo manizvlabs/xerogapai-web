@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { CpuChipIcon, ShieldCheckIcon, GlobeAltIcon, ClockIcon } from '@heroicons/react/24/outline';
 
-export default function XeroGapSpecs() {
+export default function VyaptIXSpecs() {
   const specs = [
     {
       category: 'AI & Performance',
@@ -103,7 +103,7 @@ export default function XeroGapSpecs() {
             Ready for Enterprise Deployment?
           </h3>
           <p className="text-purple-100 mb-8 max-w-2xl mx-auto">
-            Our enterprise-grade specifications ensure XeroGap AI can handle your most demanding automation requirements.
+            Our enterprise-grade specifications ensure VyaptIX AI can handle your most demanding automation requirements.
           </p>
           <Link
             href="/demo"

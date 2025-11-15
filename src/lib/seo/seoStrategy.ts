@@ -28,15 +28,15 @@ export class SEOService {
   }
 
   getPageSEO(pathname: string): SEOConfig {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://xerogap.ai';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://VyaptIX.ai';
 
     const seoConfigs: Record<string, SEOConfig> = {
       '/': {
-        title: 'XeroGap AI - Transform Your Business with Intelligent Automation',
+        title: 'VyaptIX AI - Transform Your Business with Intelligent Automation',
         description: 'Leading AI automation solutions for businesses. From AI Multi-Channel Support Copilot to AI Knowledge Management Assistant - discover how AI can transform your operations and boost efficiency.',
         keywords: ['AI automation', 'business automation', 'AI Multi-Channel Support Copilot', 'AI Knowledge Management Assistant', 'workflow automation', 'AI assessment'],
         canonical: `${baseUrl}/`,
-        ogTitle: 'XeroGap AI - Intelligent Business Automation Solutions',
+        ogTitle: 'VyaptIX AI - Intelligent Business Automation Solutions',
         ogDescription: 'Transform your business with cutting-edge AI automation. Get your free AI readiness assessment and discover the perfect solutions for your needs.',
         ogImage: `${baseUrl}/og-image-home.jpg`,
         ogType: 'website',
@@ -45,7 +45,7 @@ export class SEOService {
       },
 
       '/assessment': {
-        title: 'Free AI Readiness Assessment - XeroGap AI',
+        title: 'Free AI Readiness Assessment - VyaptIX AI',
         description: 'Take our comprehensive AI readiness assessment ($500 value - FREE). Discover which automation solutions will drive the most impact for your business.',
         keywords: ['AI assessment', 'automation readiness', 'business AI', 'AI evaluation', 'automation assessment'],
         canonical: `${baseUrl}/assessment`,
@@ -83,17 +83,17 @@ export class SEOService {
         structuredData: this.getWhatsAppCXStructuredData()
       },
 
-      '/xerogap-ai': {
-        title: 'XeroGap AI - Intelligent Workflow Automation',
+      '/VyaptIX-ai': {
+        title: 'VyaptIX AI - Intelligent Workflow Automation',
         description: 'Connect Notion, Slack, and business tools with intelligent workflow automation. Auto-summarize meetings, generate reports, and streamline operations.',
         keywords: ['workflow automation', 'Notion automation', 'Slack automation', 'business automation', 'AI workflow'],
-        canonical: `${baseUrl}/xerogap-ai`,
-        ogTitle: 'XeroGap AI - Smart Workflow Automation for Modern Teams',
+        canonical: `${baseUrl}/VyaptIX-ai`,
+        ogTitle: 'VyaptIX AI - Smart Workflow Automation for Modern Teams',
         ogDescription: 'Automate repetitive tasks and boost productivity with AI-powered workflow solutions.',
-        ogImage: `${baseUrl}/og-image-xerogap.jpg`,
+        ogImage: `${baseUrl}/og-image-VyaptIX.jpg`,
         ogType: 'product',
         twitterCard: 'summary_large_image',
-        structuredData: this.getXeroGapStructuredData()
+        structuredData: this.getVyaptIXStructuredData()
       },
 
       '/enterprise-copilots': {
@@ -110,7 +110,7 @@ export class SEOService {
       },
 
       '/blog': {
-        title: 'AI Insights & Automation Strategies - XeroGap AI Blog',
+        title: 'AI Insights & Automation Strategies - VyaptIX AI Blog',
         description: 'Stay ahead of AI innovation with expert insights, implementation guides, and success stories from the world of intelligent automation.',
         keywords: ['AI blog', 'automation insights', 'AI trends', 'business automation', 'AI implementation'],
         canonical: `${baseUrl}/blog`,
@@ -140,14 +140,14 @@ export class SEOService {
   }
 
   private getDefaultSEO(pathname: string): SEOConfig {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://xerogap.ai';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://VyaptIX.ai';
 
     return {
-      title: 'XeroGap AI - Intelligent Business Automation',
+      title: 'VyaptIX AI - Intelligent Business Automation',
       description: 'Transform your business with AI automation solutions. From AI Multi-Channel Support Copilot to AI Knowledge Management Assistant - discover the power of intelligent automation.',
       keywords: ['AI automation', 'business automation', 'artificial intelligence', 'workflow automation'],
       canonical: `${baseUrl}${pathname}`,
-      ogTitle: 'XeroGap AI - Intelligent Business Automation',
+      ogTitle: 'VyaptIX AI - Intelligent Business Automation',
       ogDescription: 'Transform your business with AI automation solutions.',
       ogImage: `${baseUrl}/og-image-default.jpg`,
       ogType: 'website',
@@ -159,13 +159,13 @@ export class SEOService {
     return {
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'XeroGap AI',
-      url: 'https://xerogap.ai',
-      logo: 'https://xerogap.ai/logo.png',
+      name: 'VyaptIX AI',
+      url: 'https://VyaptIX.ai',
+      logo: 'https://VyaptIX.ai/logo.png',
       description: 'Leading AI automation solutions for businesses worldwide',
       sameAs: [
-        'https://linkedin.com/company/xerogap-ai',
-        'https://twitter.com/xerogap_ai'
+        'https://linkedin.com/company/VyaptIX-ai',
+        'https://twitter.com/VyaptIX_ai'
       ],
       contactPoint: {
         '@type': 'ContactPoint',
@@ -186,7 +186,7 @@ export class SEOService {
       '@type': 'WebApplication',
       name: 'AI Readiness Assessment',
       description: 'Comprehensive AI readiness assessment to identify automation opportunities',
-      url: 'https://xerogap.ai/assessment',
+      url: 'https://VyaptIX.ai/assessment',
       applicationCategory: 'BusinessApplication',
       offers: {
         '@type': 'Offer',
@@ -211,7 +211,7 @@ export class SEOService {
       description: 'Comprehensive AI automation solutions for businesses',
       provider: {
         '@type': 'Organization',
-        name: 'XeroGap AI'
+        name: 'VyaptIX AI'
       },
       serviceType: 'AI Automation',
       areaServed: 'Worldwide',
@@ -256,7 +256,7 @@ export class SEOService {
       description: 'AI-powered WhatsApp customer service automation',
       brand: {
         '@type': 'Brand',
-        name: 'XeroGap AI'
+        name: 'VyaptIX AI'
       },
       offers: {
         '@type': 'Offer',
@@ -278,11 +278,11 @@ export class SEOService {
     };
   }
 
-  private getXeroGapStructuredData() {
+  private getVyaptIXStructuredData() {
     return {
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',
-      name: 'XeroGap AI',
+      name: 'VyaptIX AI',
       description: 'Intelligent workflow automation platform',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web',
@@ -302,7 +302,7 @@ export class SEOService {
       description: 'AI-powered internal knowledge assistance for enterprises',
       brand: {
         '@type': 'Brand',
-        name: 'XeroGap AI'
+        name: 'VyaptIX AI'
       },
       offers: {
         '@type': 'Offer',
@@ -316,12 +316,12 @@ export class SEOService {
     return {
       '@context': 'https://schema.org',
       '@type': 'Blog',
-      name: 'XeroGap AI Blog',
+      name: 'VyaptIX AI Blog',
       description: 'AI insights and automation strategies',
-      url: 'https://xerogap.ai/blog',
+      url: 'https://VyaptIX.ai/blog',
       publisher: {
         '@type': 'Organization',
-        name: 'XeroGap AI'
+        name: 'VyaptIX AI'
       }
     };
   }
@@ -332,12 +332,12 @@ export class SEOService {
       '@type': 'CollectionPage',
       name: 'AI Success Stories',
       description: 'Case studies of successful AI implementations',
-      url: 'https://xerogap.ai/case-studies'
+      url: 'https://VyaptIX.ai/case-studies'
     };
   }
 
   generateSitemap(pages: string[]): string {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://xerogap.ai';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://VyaptIX.ai';
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -353,7 +353,7 @@ ${pages.map(page => `  <url>
   }
 
   generateRobotsTxt(): string {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://xerogap.ai';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://VyaptIX.ai';
 
     return `User-agent: *
 Allow: /

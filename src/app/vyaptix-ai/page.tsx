@@ -1,18 +1,18 @@
 'use client';
 import Link from 'next/link';
 
-import XeroGapHero from '@/components/xerogap-ai/XeroGapHero';
-import XeroGapFeatures from '@/components/xerogap-ai/XeroGapFeatures';
-import XeroGapPricing from '@/components/xerogap-ai/XeroGapPricing';
-import XeroGapCTA from '@/components/xerogap-ai/XeroGapCTA';
+import VyaptIXHero from '@/components/vyaptix-ai/VyaptIXHero';
+import VyaptIXFeatures from '@/components/vyaptix-ai/VyaptIXFeatures';
+import VyaptIXPricing from '@/components/vyaptix-ai/VyaptIXPricing';
+import VyaptIXCTA from '@/components/vyaptix-ai/VyaptIXCTA';
 
-export default function XeroGapAIPage() {
+export default function VyaptIXAIPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      <XeroGapHero />
-      <XeroGapFeatures />
-      <XeroGapPricing />
-      <XeroGapCTA />
+      <VyaptIXHero />
+      <VyaptIXFeatures />
+      <VyaptIXPricing />
+      <VyaptIXCTA />
 
       {/* Back to Home Link */}
       <div className="fixed bottom-6 left-6 z-40">

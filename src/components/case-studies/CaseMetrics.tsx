@@ -60,7 +60,7 @@ export default function CaseMetrics() {
   ];
 
   const solutionBreakdown = [
-    { solution: 'XeroGap AI', percentage: 40, implementations: 400 },
+    { solution: 'VyaptIX AI', percentage: 40, implementations: 400 },
     { solution: 'Sales Automation', percentage: 25, implementations: 250 },
     { solution: 'DPDP Compliance', percentage: 15, implementations: 150 },
     { solution: 'Contact Center QA', percentage: 12, implementations: 120 },
@@ -82,7 +82,7 @@ export default function CaseMetrics() {
             Proven Results Across Industries
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-            Our track record speaks for itself. Here's what our clients have achieved with XeroGap AI solutions.
+            Our track record speaks for itself. Here's what our clients have achieved with VyaptIX AI solutions.
           </p>
         </div>
 
@@ -217,7 +217,7 @@ export default function CaseMetrics() {
               Ready to Join Our Success Stories?
             </h3>
             <p className="text-gray-600 dark:text-white mb-8 max-w-2xl mx-auto">
-              See how XeroGap AI can transform your business with measurable results and ROI.
+              See how VyaptIX AI can transform your business with measurable results and ROI.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

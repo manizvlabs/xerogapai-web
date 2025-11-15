@@ -30,14 +30,14 @@ export default function DocsHero() {
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl mb-8">
             Build, Integrate, and
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-cyan-400">
-              {" "}Scale with XeroGap AI
+              {" "}Scale with VyaptIX AI
             </span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-xl leading-8 text-slate-300 mb-12 max-w-3xl mx-auto">
             Comprehensive documentation, API references, and integration guides to help you build
-            powerful AI-powered applications with XeroGap AI. From quick starts to advanced implementations.
+            powerful AI-powered applications with VyaptIX AI. From quick starts to advanced implementations.
           </p>
 
           {/* Key Features */}

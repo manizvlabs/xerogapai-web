@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { siteConfig } from '@/config/site';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface LogoProps {
   variant?: 'full' | 'icon' | 'text' | 'hero' | 'footer' | 'dark';
@@ -24,6 +25,8 @@ const Logo = ({
   onLoad,
   onError
 }: LogoProps) => {
+  const { theme } = useTheme();
+
   // Size configurations with responsive variants
   const sizeConfig = {
     sm: { height: 32, width: 'auto', responsiveHeight: { sm: 24, md: 28, lg: 32 } },
@@ -32,23 +35,25 @@ const Logo = ({
     xl: { height: 120, width: 'auto', responsiveHeight: { sm: 80, md: 96, lg: 120 } },
   };
 
-  // Logo variant mappings with consistent sizing across themes
+  // Logo variant mappings with theme-aware VyaptIX logos
   const getLogoSrc = () => {
+    const isDarkMode = theme === 'dark';
+
     switch (variant) {
       case 'full':
-        return '/logo-header.png'; // Use same logo for both themes to maintain consistent sizing
+        return isDarkMode ? '/vyaptIX-logo-dark.jpeg' : '/vyaptIX-logo-light.jpeg';
       case 'icon':
-        return '/logo-header-mobile.png'; // Use same logo for both themes to maintain consistent sizing
+        return isDarkMode ? '/vyaptIX-logo-dark.jpeg' : '/vyaptIX-logo-light.jpeg';
       case 'hero':
-        return '/logo-hero.png';
+        return isDarkMode ? '/vyaptIX-logo-dark.jpeg' : '/vyaptIX-logo-light.jpeg';
       case 'footer':
-        return '/logo-icononly.png'; // Use icon-only logo for footer
+        return isDarkMode ? '/vyaptIX-logo-dark.jpeg' : '/vyaptIX-logo-light.jpeg';
       case 'dark':
-        return '/logo-dark.png'; // Explicitly dark variant
+        return '/vyaptIX-logo-dark.jpeg'; // Explicitly dark variant
       case 'text':
-        return '/logo-header.png'; // Use same logo for both themes to maintain consistent sizing
+        return isDarkMode ? '/vyaptIX-logo-dark.jpeg' : '/vyaptIX-logo-light.jpeg';
       default:
-        return '/logo-fallback.png';
+        return '/vyaptIX-logo-light.jpeg'; // Fallback to light logo
     }
   };
 
@@ -72,7 +77,7 @@ const Logo = ({
       height={responsive ? undefined : config.height}
       className={`${config.width === 'auto' ? 'w-auto' : 'w-full'} ${responsive ? getResponsiveClasses() : ''} ${className}`}
       priority={priority}
-      style={responsive ? {} : { height: `${config.height}px`, width: config.width === 'auto' ? 'auto' : `${config.width}px` }}
+      style={responsive ? {} : { height: `${config.height}px`, width: config.width === 'auto' ? 'auto' : '100%' }}
       onLoad={onLoad}
       onError={(e) => {
         // Fallback to default logo on error

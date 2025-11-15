@@ -26,7 +26,7 @@ const { window } = new JSDOM(`
     </body>
   </html>
 `, {
-  url: 'http://localhost:4010',
+  url: 'http://localhost:3000',
   pretendToBeVisual: true,
   resources: 'usable'
 });
@@ -61,7 +61,7 @@ global.HeroiconsReact24Outline = {
 };
 
 // Mock environment variables
-process.env.NEXT_PUBLIC_BASE_URL = 'http://localhost:4010';
+process.env.NEXT_PUBLIC_BASE_URL = 'http://localhost:3000';
 
 async function testComponentImport() {
   console.log('📦 Testing component imports...');

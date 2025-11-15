@@ -51,7 +51,7 @@ class MicrosoftGraphCalendarService {
   constructor() {
     this.isConfigured = !!(process.env.MS_GRAPH_CLIENT_ID && process.env.MS_GRAPH_CLIENT_SECRET && process.env.MS_GRAPH_TENANT_ID);
 
-    // Use the provided Object ID for the user (manish@xerogap.com)
+    // Use the provided Object ID for the user (admin@vyaptix.com)
     this.userId = process.env.MS_GRAPH_OBJECT_ID || '44dcba14-cfef-49e7-bfb9-fda4b477ed8e';
 
     if (this.isConfigured) {
@@ -458,7 +458,7 @@ class MicrosoftGraphCalendarService {
       body: {
         contentType: 'html',
         content: `
-          <h3>XeroGap AI Demo Booking</h3>
+          <h3>VyaptIX AI Demo Booking</h3>
           <p><strong>Client:</strong> ${bookingData.firstName} ${bookingData.lastName}</p>
           <p><strong>Company:</strong> ${bookingData.companyName}</p>
           <p><strong>Email:</strong> ${bookingData.email}</p>

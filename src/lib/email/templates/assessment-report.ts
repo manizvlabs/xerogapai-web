@@ -39,7 +39,7 @@ const assessmentReportTemplate: EmailTemplate = {
 
         <!-- Header -->
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px 30px; text-align: center;">
-          <img src="https://xerogapai-web.vercel.app/logo.png" alt="XeroGap AI Logo" style="width: 120px; height: auto; margin: 0 auto 20px auto; display: block;">
+          <img src="https://www.vyaptix.ai/logo.png" alt="VyaptIX Logo" style="width: 120px; height: auto; margin: 0 auto 20px auto; display: block;">
           <h1 style="margin: 0; font-size: 28px; font-weight: 700;">Your AI Readiness Report</h1>
           <p style="margin: 10px 0 0 0; opacity: 0.9; font-size: 16px;">Comprehensive Analysis & Recommendations</p>
         </div>
@@ -154,13 +154,13 @@ const assessmentReportTemplate: EmailTemplate = {
 
         <!-- Footer -->
         <div style="background-color: #f8fafc; padding: 30px; text-align: center; border-top: 1px solid #e2e8f0;">
-          <img src="https://xerogapai-web.vercel.app/logo.png" alt="XeroGap AI Logo" style="width: 80px; height: auto; margin: 0 auto 15px auto; display: block;">
+          <img src="https://www.vyaptix.ai/logo.png" alt="VyaptIX Logo" style="width: 80px; height: auto; margin: 0 auto 15px auto; display: block;">
           <p style="margin: 0; color: #64748b; font-size: 14px;">
             Questions about your report? Reply to this email or contact us at
-            <a href="mailto:support@xerogap.com" style="color: #667eea;">support@xerogap.com</a>
+            <a href="mailto:support@vyaptix.com" style="color: #667eea;">support@vyaptix.com</a>
           </p>
           <p style="margin: 10px 0 0 0; color: #94a3b8; font-size: 12px;">
-            © 2025 XeroGap AI. All rights reserved.
+            © 2025 VyaptIX AI. All rights reserved.
           </p>
         </div>
 
@@ -195,7 +195,7 @@ Recommended Next Steps:
 
 Visit {{consultationUrl}} to book your consultation.
 
-Questions? Contact us at support@xerogap.com
+Questions? Contact us at support@vyaptix.com
   `
 };
 

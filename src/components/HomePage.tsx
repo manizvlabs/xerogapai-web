@@ -12,7 +12,7 @@ export default function HomePage() {
         <div className="relative h-96 sm:h-[500px] lg:h-[600px] overflow-hidden">
           <img
             src="/homepage_banner1.png"
-            alt="XeroGap AI - WhatsApp Automation Hero Banner"
+            alt="VyaptIX AI - WhatsApp Automation Hero Banner"
             className="w-full h-full object-cover"
           />
           {/* Dark overlay for better text readability */}
@@ -48,7 +48,7 @@ export default function HomePage() {
           <div className="relative">
             <img
               src="/homepage_banner2.png"
-              alt="XeroGap AI - WhatsApp Automation Solutions"
+              alt="VyaptIX AI - WhatsApp Automation Solutions"
               className="w-full h-auto rounded-2xl shadow-2xl"
             />
           </div>

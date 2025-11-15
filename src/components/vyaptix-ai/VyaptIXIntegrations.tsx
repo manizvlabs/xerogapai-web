@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { ArrowPathIcon, CloudIcon, CircleStackIcon } from '@heroicons/react/24/outline';
 
-export default function XeroGapIntegrations() {
+export default function VyaptIXIntegrations() {
   const integrations = [
     // Productivity & Collaboration
     {
@@ -138,7 +138,7 @@ export default function XeroGapIntegrations() {
             See Integrations in Action
           </h3>
           <p className="text-purple-100 mb-8 max-w-2xl mx-auto">
-            Watch how XeroGap AI connects your tools and automates your workflows with live examples from real businesses.
+            Watch how VyaptIX AI connects your tools and automates your workflows with live examples from real businesses.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

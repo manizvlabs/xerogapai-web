@@ -11,7 +11,7 @@ export default function DocsResources() {
       size: '2.3 MB',
       downloads: '45K+',
       features: ['Full API coverage', 'TypeScript support', 'Promise-based', 'Browser & Node.js'],
-      installCommand: 'npm install xerogap-ai'
+      installCommand: 'npm install VyaptIX-ai'
     },
     {
       language: 'Python',
@@ -19,7 +19,7 @@ export default function DocsResources() {
       size: '1.8 MB',
       downloads: '32K+',
       features: ['Async/await support', 'Auto-retry logic', 'Type hints', 'Python 3.7+'],
-      installCommand: 'pip install xerogap-ai'
+      installCommand: 'pip install VyaptIX-ai'
     },
     {
       language: 'PHP',
@@ -27,7 +27,7 @@ export default function DocsResources() {
       size: '1.5 MB',
       downloads: '18K+',
       features: ['Composer package', 'PSR-4 autoloading', 'Laravel integration', 'PHP 7.4+'],
-      installCommand: 'composer require xerogap/xerogap-ai'
+      installCommand: 'composer require VyaptIX/VyaptIX-ai'
     },
     {
       language: 'Java',
@@ -43,7 +43,7 @@ export default function DocsResources() {
       size: '2.1 MB',
       downloads: '12K+',
       features: ['Go modules support', 'Context-aware requests', 'Structured logging', 'Go 1.16+'],
-      installCommand: 'go get github.com/xerogap/xerogap-ai-go'
+      installCommand: 'go get github.com/VyaptIX/VyaptIX-ai-go'
     },
     {
       language: 'Ruby',
@@ -51,7 +51,7 @@ export default function DocsResources() {
       size: '1.9 MB',
       downloads: '8K+',
       features: ['RubyGems package', 'Rails integration', 'Thread-safe', 'Ruby 2.7+'],
-      installCommand: 'gem install xerogap-ai'
+      installCommand: 'gem install VyaptIX-ai'
     }
   ];
 
@@ -141,7 +141,7 @@ export default function DocsResources() {
             Developer Resources
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-            Everything you need to build, test, and deploy with XeroGap AI.
+            Everything you need to build, test, and deploy with VyaptIX AI.
             From SDKs to community support, we've got you covered.
           </p>
         </div>

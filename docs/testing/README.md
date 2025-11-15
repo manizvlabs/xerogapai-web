@@ -175,14 +175,14 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:4010',
+    baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
   webServer: {
     command: 'npm run dev',
-    url: 'http://localhost:4010',
+    url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
   },
   projects: [
@@ -199,7 +199,7 @@ Create a `.env.test` file for test-specific configuration:
 
 ```env
 # Test environment variables
-NEXT_PUBLIC_API_URL=http://localhost:4010
+NEXT_PUBLIC_API_URL=http://localhost:3000
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=admin123
 TEST_TIMEOUT=30000
@@ -246,7 +246,7 @@ npx playwright test tests/website.spec.ts
 npx playwright test --config playwright.config.ts --project=chromium
 
 # Generate code for new tests
-npx playwright codegen http://localhost:4010
+npx playwright codegen http://localhost:3000
 ```
 
 ## Test Results and Reporting

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import LoginForm from './LoginForm';
 
 export const metadata: Metadata = {
-  title: "Admin Login - XeroGap AI",
-  description: "Secure access to XeroGap AI admin panel for content management and website administration.",
+  title: "Admin Login - VyaptIX AI",
+  description: "Secure access to VyaptIX AI admin panel for content management and website administration.",
 };
 
 export default function AdminLoginPage() {
@@ -16,7 +16,7 @@ export default function AdminLoginPage() {
             Admin Login
           </h2>
           <p className="mt-2 text-sm text-gray-600 dark:text-white">
-            XeroGap AI Content Management
+            VyaptIX AI Content Management
           </p>
         </div>
       </div>

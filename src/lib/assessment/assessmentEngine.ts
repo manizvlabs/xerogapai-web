@@ -202,7 +202,7 @@ export class AssessmentEngine {
       });
     }
 
-    // XeroGap AI - High priority for operations focus
+    // VyaptIX AI - High priority for operations focus
     if (Array.isArray(automationAreas) && automationAreas.includes('operations')) {
       recommendations.push({
         service: 'AI-Powered Workflow Automation',

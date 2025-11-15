@@ -2,7 +2,7 @@
 
 import { CpuChipIcon, DocumentTextIcon, BellIcon, ArrowPathIcon, EyeIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/outline';
 
-export default function XeroGapFeatures() {
+export default function VyaptIXFeatures() {
   const features = [
     {
       icon: DocumentTextIcon,
@@ -197,7 +197,7 @@ export default function XeroGapFeatures() {
         <div className="bg-gradient-to-r from-purple-600 to-green-600 rounded-2xl p-8 text-white">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
-              XeroGap AI vs Traditional Automation
+              VyaptIX AI vs Traditional Automation
             </h3>
             <p className="text-purple-100 max-w-2xl mx-auto">
               See why AI-powered automation delivers superior results compared to traditional workflow tools
@@ -209,7 +209,7 @@ export default function XeroGapFeatures() {
               <thead>
                 <tr className="border-b border-purple-400">
                   <th className="text-left py-4 px-4 font-semibold">Capability</th>
-                  <th className="text-center py-4 px-4 font-semibold">XeroGap AI</th>
+                  <th className="text-center py-4 px-4 font-semibold">VyaptIX AI</th>
                   <th className="text-center py-4 px-4 font-semibold text-purple-200">Traditional Tools</th>
                 </tr>
               </thead>

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${siteConfig.name} - ${siteConfig.tagline}`,
     description: `${siteConfig.tagline}. Transform your business with AI-powered automation, custom mobile apps, and digital marketing solutions.`,
-    url: process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}` : `http://localhost:4010`,
+    url: process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}` : `http://localhost:3000`,
     siteName: siteConfig.name,
     locale: "en_IN",
     type: "website",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} - ${siteConfig.tagline}`,
     description: `${siteConfig.tagline}. Transform your business with AI-powered automation.`,
     images: [process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}/og-image.jpg` : '/og-image.jpg'],
-    creator: "@xerogapai",
+    creator: "@vyaptix",
   },
   robots: {
     index: true,
@@ -79,6 +79,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Favicon */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+        <link rel="apple-touch-icon" href="/favicon-32.png" />
+
         <script
           dangerouslySetInnerHTML={{
             __html: `

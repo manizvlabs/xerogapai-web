@@ -51,7 +51,7 @@ All editable content is centralized in `src/config/content.ts`. This file contai
 
 1. **Visit the admin page:**
    ```
-   http://localhost:4010/admin/content
+   http://localhost:3000/admin/content
    ```
 
 2. **Select a content section**

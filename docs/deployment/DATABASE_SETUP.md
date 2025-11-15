@@ -92,7 +92,7 @@ CREATE TABLE contacts (
 ### Local Development
 ```bash
 # Test contact form submission
-curl -X POST "http://localhost:4010/api/contacts" \
+curl -X POST "http://localhost:3000/api/contacts" \
   -H "Content-Type: application/json" \
   -d '{
     "firstName": "Test",
@@ -103,10 +103,10 @@ curl -X POST "http://localhost:4010/api/contacts" \
   }'
 
 # Test contact retrieval
-curl -X GET "http://localhost:4010/api/contacts"
+curl -X GET "http://localhost:3000/api/contacts"
 
 # Test statistics
-curl -X GET "http://localhost:4010/api/contacts/stats"
+curl -X GET "http://localhost:3000/api/contacts/stats"
 ```
 
 ### Production

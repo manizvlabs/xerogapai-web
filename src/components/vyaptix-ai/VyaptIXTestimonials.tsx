@@ -1,9 +1,9 @@
 'use client';
 
-export default function XeroGapTestimonials() {
+export default function VyaptIXTestimonials() {
   const testimonials = [
     {
-      quote: "XeroGap AI has transformed how our agency operates. We're saving 25 hours per week on reporting and client updates alone. The AI automatically generates client reports from our Notion workspace and syncs everything with HubSpot. Our clients love the timely, professional updates.",
+      quote: "VyaptIX AI has transformed how our agency operates. We're saving 25 hours per week on reporting and client updates alone. The AI automatically generates client reports from our Notion workspace and syncs everything with HubSpot. Our clients love the timely, professional updates.",
       author: "Sarah Mitchell",
       position: "CEO",
       company: "DigitalCraft Agency",
@@ -17,7 +17,7 @@ export default function XeroGapTestimonials() {
       industry: "Digital Marketing Agency"
     },
     {
-      quote: "As a growing startup, we couldn't afford complex automation solutions. XeroGap AI was perfect - easy to set up, powerful features, and affordable pricing. Our team went from manual reporting to automated insights overnight.",
+      quote: "As a growing startup, we couldn't afford complex automation solutions. VyaptIX AI was perfect - easy to set up, powerful features, and affordable pricing. Our team went from manual reporting to automated insights overnight.",
       author: "Marcus Chen",
       position: "Operations Director",
       company: "TechStart Solutions",
@@ -45,7 +45,7 @@ export default function XeroGapTestimonials() {
       industry: "Creative Agency"
     },
     {
-      quote: "We evaluated 5 automation platforms before choosing XeroGap AI. The AI-powered insights and seamless integrations won us over. Our consulting practice is now 3x more efficient, and our clients get better results.",
+      quote: "We evaluated 5 automation platforms before choosing VyaptIX AI. The AI-powered insights and seamless integrations won us over. Our consulting practice is now 3x more efficient, and our clients get better results.",
       author: "David Park",
       position: "Managing Partner",
       company: "StrategyPlus Consulting",
@@ -65,7 +65,7 @@ export default function XeroGapTestimonials() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-            Teams Love XeroGap AI
+            Teams Love VyaptIX AI
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             See how businesses across different industries are transforming their workflows with AI-powered automation.
@@ -121,7 +121,7 @@ export default function XeroGapTestimonials() {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">150+</div>
-            <div className="text-sm text-gray-600 dark:text-white">Teams Using XeroGap AI</div>
+            <div className="text-sm text-gray-600 dark:text-white">Teams Using VyaptIX AI</div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">500+</div>

@@ -60,7 +60,7 @@ JWT_EXPIRES_IN=24h
 # Admin Credentials
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=your-secure-admin-password
-ADMIN_EMAIL=support@xerogap.com
+ADMIN_EMAIL=support@www.vyaptix.ai
 ```
 
 ## 🚨 **Security Monitoring**
@@ -115,7 +115,7 @@ const sensitiveExtensions = [
 ## 🔍 **Security Testing**
 
 ### **Test Admin Access**
-1. Visit `http://localhost:4010/admin`
+1. Visit `http://localhost:3000/admin`
 2. Should redirect to login page
 3. Login with admin credentials
 4. Should access content management
@@ -126,9 +126,9 @@ const sensitiveExtensions = [
 3. Check response headers for rate limit info
 
 ### **Test Content Protection**
-1. Try accessing `http://localhost:4010/.env`
+1. Try accessing `http://localhost:3000/.env`
 2. Should return 403 Forbidden
-3. Try accessing `http://localhost:4010/src/config/site.ts`
+3. Try accessing `http://localhost:3000/src/config/site.ts`
 4. Should return 403 Forbidden
 
 ## 🚀 **Production Security Checklist**
@@ -190,8 +190,8 @@ const sensitiveExtensions = [
 4. **Long-term**: Implement additional measures
 
 ### **Contact Information**
-- **Security Team**: security@xerogap.com
-- **Admin Access**: support@xerogap.com
+- **Security Team**: security@www.vyaptix.ai
+- **Admin Access**: support@www.vyaptix.ai
 - **Emergency**: +91-7702661991
 
 ## 📚 **Additional Resources**

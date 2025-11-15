@@ -30,7 +30,7 @@ function loadEnv() {
 
 loadEnv();
 
-const BASE_URL = 'http://localhost:4010';
+const BASE_URL = 'http://localhost:3000';
 
 // First, let's login to get a token
 async function login() {

@@ -11,7 +11,7 @@ export default function EnterpriseCTA() {
             <span className="block">Knowledge Management?</span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-indigo-100 mb-12">
-            Join 500+ enterprise organizations already using XeroGap AI's AI Knowledge Management Assistant to empower their global workforce.
+            Join 500+ enterprise organizations already using VyaptIX AI's AI Knowledge Management Assistant to empower their global workforce.
           </p>
 
           {/* Key Benefits */}

@@ -52,7 +52,7 @@ export default function DemoHero({ onStartBooking }: DemoHeroProps) {
 
           {/* Main Headline */}
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-            See XeroGap AI in
+            See VyaptIX AI in
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
               {" "}Action
             </span>

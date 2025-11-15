@@ -7,7 +7,7 @@ export default function HelpGuides() {
   const guides = [
     {
       title: 'Complete API Integration Guide',
-      description: 'Step-by-step guide to integrate XeroGap AI with your application',
+      description: 'Step-by-step guide to integrate VyaptIX AI with your application',
       type: 'Tutorial',
       duration: '45 min',
       difficulty: 'Intermediate',
@@ -63,7 +63,7 @@ export default function HelpGuides() {
 
   const videoTutorials = [
     {
-      title: 'Getting Started with XeroGap AI',
+      title: 'Getting Started with VyaptIX AI',
       description: '5-minute overview of the platform',
       duration: '5:23',
       views: '12K',
@@ -95,7 +95,7 @@ export default function HelpGuides() {
   const learningPaths = [
     {
       title: 'Beginner\'s Path',
-      description: 'Start your journey with XeroGap AI fundamentals',
+      description: 'Start your journey with VyaptIX AI fundamentals',
       courses: 8,
       duration: '4 hours',
       skills: ['Basic Setup', 'Simple Workflows', 'Core Features'],
@@ -148,7 +148,7 @@ export default function HelpGuides() {
             Detailed Guides & Tutorials
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-            Comprehensive guides and tutorials to help you master XeroGap AI.
+            Comprehensive guides and tutorials to help you master VyaptIX AI.
           </p>
         </div>
 
@@ -295,7 +295,7 @@ export default function HelpGuides() {
         <div className="text-center">
           <div className="bg-gradient-to-r from-indigo-600 to-emerald-600 rounded-2xl p-8 text-white max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold mb-4">
-              Ready to Master XeroGap AI?
+              Ready to Master VyaptIX AI?
             </h3>
             <p className="text-indigo-100 mb-8 max-w-2xl mx-auto">
               Our comprehensive guides and tutorials will help you unlock the full potential of AI automation.

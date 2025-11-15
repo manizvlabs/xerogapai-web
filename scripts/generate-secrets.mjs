@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Environment Secrets Generator for XeroGap AI Website
+ * Environment Secrets Generator for VyaptIX AI Website
  *
  * This script generates secure environment variables and creates a .env.local template
  * for both local development and Vercel deployment.
@@ -48,7 +48,7 @@ function getCurrentVersion() {
   }
 }
 
-console.log('🔐 XeroGap AI Environment Secrets Generator');
+console.log('🔐 VyaptIX AI Environment Secrets Generator');
 console.log('===========================================\n');
 
 // Generate secrets
@@ -60,28 +60,28 @@ const secrets = {
   // Admin Credentials (generate secure ones)
   ADMIN_USERNAME: 'admin',
   ADMIN_PASSWORD: generateSecurePassword(),
-  ADMIN_EMAIL: 'support@xerogap.com',
+  ADMIN_EMAIL: 'support@vyaptix.com',
 
   // Site Configuration
-  NEXT_PUBLIC_SITE_NAME: 'XeroGap AI',
+  NEXT_PUBLIC_SITE_NAME: 'VyaptIX AI',
   NEXT_PUBLIC_SITE_TAGLINE: 'AI-Powered Digital Transformation',
-  NEXT_PUBLIC_SITE_DOMAIN: 'xerogap.com',
+  NEXT_PUBLIC_SITE_DOMAIN: 'vyaptix.ai',
   NEXT_PUBLIC_LOCATION: '',
   NEXT_PUBLIC_PHONE: '+917702661991',
-  NEXT_PUBLIC_EMAIL: 'support@xerogap.com',
+  NEXT_PUBLIC_EMAIL: 'support@vyaptix.com',
   NEXT_PUBLIC_APP_VERSION: getCurrentVersion(),
   NEXT_PUBLIC_COPYRIGHT_YEAR: new Date().getFullYear().toString(),
 
   // Social Media
-  NEXT_PUBLIC_LINKEDIN_URL: 'https://linkedin.com/company/xerogapai',
-  NEXT_PUBLIC_TWITTER_URL: 'https://twitter.com/xerogapai',
-  NEXT_PUBLIC_INSTAGRAM_URL: 'https://instagram.com/xerogapai',
+  NEXT_PUBLIC_LINKEDIN_URL: 'https://linkedin.com/company/VyaptIX',
+  NEXT_PUBLIC_TWITTER_URL: 'https://twitter.com/VyaptIX',
+  NEXT_PUBLIC_INSTAGRAM_URL: 'https://instagram.com/VyaptIX',
 
   // Analytics
   NEXT_PUBLIC_GA_MEASUREMENT_ID: 'G-XXXXXXXXXX',
 
   // Contact Form
-  CONTACT_EMAIL: 'support@xerogap.com',
+  CONTACT_EMAIL: 'support@vyaptix.com',
 
   // Rate Limiting
   RATE_LIMIT_API_WINDOW_MS: '900000',
@@ -133,7 +133,7 @@ if (existsSync(envPath)) {
 }
 
 // Create .env.local file
-let envContent = '# XeroGap AI Website Environment Variables\n';
+let envContent = '# VyaptIX AI Website Environment Variables\n';
 envContent += '# Generated on: ' + new Date().toISOString() + '\n';
 envContent += '# ⚠️  SECURITY: Change default credentials before production!\n\n';
 
@@ -185,7 +185,7 @@ console.log('   • Set up Google Analytics ID\n');
 
 console.log('4. 🧪 Test your setup:');
 console.log('   npm run dev');
-console.log('   Visit http://localhost:4010');
+console.log('   Visit http://localhost:3000');
 console.log('   Test admin login and other features\n');
 
 console.log('5. 📋 GitHub Actions Setup:');

@@ -21,7 +21,7 @@ export default function HelpCategories() {
       id: 'getting-started',
       title: 'Getting Started',
       icon: CogIcon,
-      description: 'New to XeroGap AI? Start here with setup guides and basics.',
+      description: 'New to VyaptIX AI? Start here with setup guides and basics.',
       articles: 25,
       popular: [
         'Quick Start Guide',
@@ -34,7 +34,7 @@ export default function HelpCategories() {
       id: 'integrations',
       title: 'Integrations',
       icon: CloudIcon,
-      description: 'Connect XeroGap AI with your favorite tools and platforms.',
+      description: 'Connect VyaptIX AI with your favorite tools and platforms.',
       articles: 35,
       popular: [
         'Notion Integration',

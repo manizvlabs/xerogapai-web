@@ -3,7 +3,7 @@
 export default function DemoTestimonials() {
   const testimonials = [
     {
-      quote: "The demo was incredibly detailed and showed exactly how XeroGap AI would work for our specific use case. The ROI projections were realistic and data-driven.",
+      quote: "The demo was incredibly detailed and showed exactly how VyaptIX AI would work for our specific use case. The ROI projections were realistic and data-driven.",
       author: "Sarah Chen",
       position: "Operations Director",
       company: "TechFlow Solutions",

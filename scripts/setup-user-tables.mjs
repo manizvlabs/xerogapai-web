@@ -182,7 +182,7 @@ async function runSetup() {
     console.log('👤 Creating admin user...');
 
     const adminUsername = process.env.ADMIN_USERNAME || 'admin';
-    const adminEmail = process.env.ADMIN_EMAIL || 'support@xerogap.com';
+    const adminEmail = process.env.ADMIN_EMAIL || 'support@vyaptix.com';
     const adminPassword = process.env.ADMIN_PASSWORD;
 
     if (!adminPassword) {
@@ -236,7 +236,7 @@ async function runSetup() {
     console.log(`• Admin credentials: ${adminUsername} / ${adminPassword.replace(/./g, '*')}\n`);
 
     console.log('🚀 You can now login to the admin panel!');
-    console.log('   Visit: http://localhost:4010/admin/login');
+    console.log('   Visit: http://localhost:3000/admin/login');
 
   } catch (error) {
     console.error('❌ Setup failed:', error);

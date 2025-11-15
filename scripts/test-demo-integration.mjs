@@ -140,7 +140,7 @@ async function runAllTests() {
     console.log('   - Microsoft Graph API is connected');
     console.log('   - Calendar events can be created');
     console.log('   - Email notifications are ready');
-    console.log('\n💡 You can now test the demo booking at: http://localhost:4010/demo');
+    console.log('\n💡 You can now test the demo booking at: http://localhost:3000/demo');
   } else {
     console.log('\n⚠️  Some issues need to be resolved before demo booking will work properly.');
   }

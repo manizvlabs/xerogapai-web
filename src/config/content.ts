@@ -54,7 +54,7 @@ export const contentConfig = {
   // About Page Content
   about: {
     hero: {
-      title: "About XeroGap AI",
+      title: "About VyaptIX AI",
       subtitle: "We're a team of passionate technologists dedicated to transforming businesses through AI-powered solutions."
     },
     values: [
@@ -380,9 +380,9 @@ export const contentConfig = {
         icon: '💡',
         items: [
           {
-            title: 'XeroGap AI Implementation',
-            description: 'Implement XeroGap AI in your workflow',
-            slug: 'solutions/xerogap-ai',
+            title: 'VyaptIX AI Implementation',
+            description: 'Implement VyaptIX AI in your workflow',
+            slug: 'solutions/VyaptIX-ai',
             readTime: '20 min'
           },
           {

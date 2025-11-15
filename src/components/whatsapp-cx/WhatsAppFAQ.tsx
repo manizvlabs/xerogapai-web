@@ -128,7 +128,7 @@ export default function WhatsAppFAQ() {
                 Book Consultation
               </Link>
               <Link
-                href="mailto:sales@xerogap.ai"
+                href="mailto:sales@vyaptix.com"
                 className="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
               >
                 Contact Sales Team

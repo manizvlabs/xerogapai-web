@@ -65,19 +65,19 @@ export default function HelpContact() {
     {
       type: 'System Outage',
       description: 'Report critical system outages or downtime',
-      contact: 'outage@xerogap.ai',
+      contact: 'outage@VyaptIX.com',
       priority: 'Critical'
     },
     {
       type: 'Security Incident',
       description: 'Report security vulnerabilities or breaches',
-      contact: 'security@xerogap.ai',
+      contact: 'security@VyaptIX.com',
       priority: 'Critical'
     },
     {
       type: 'Data Breach',
       description: 'Report potential data breaches or leaks',
-      contact: 'breach@xerogap.ai',
+      contact: 'breach@VyaptIX.com',
       priority: 'Critical'
     }
   ];

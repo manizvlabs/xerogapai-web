@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Comprehensive Regression Test Runner for XeroGap AI
+# Comprehensive Regression Test Runner for VyaptIX AI
 # Runs both Playwright UI tests and API tests
 
 set -e  # Exit on any error
@@ -14,7 +14,7 @@ NC='\033[0m' # No Color
 
 # Configuration
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-BASE_URL="http://localhost:4010"
+BASE_URL="http://localhost:3000"
 
 # Test results
 UI_PASSED=0
@@ -177,7 +177,7 @@ generate_report() {
     echo "           Test Report"
     echo "========================================"
     echo "Test Run Completed: $(date)"
-    echo "Project: XeroGap AI Website"
+    echo "Project: VyaptIX AI Website"
     echo "Environment: Development"
     echo
 
@@ -217,7 +217,7 @@ cleanup() {
 # Main execution
 main() {
     echo "=========================================="
-    echo "  XeroGap AI - Regression Test Suite"
+    echo "  VyaptIX AI - Regression Test Suite"
     echo "=========================================="
     echo
 

@@ -11,13 +11,13 @@ export default function CaseFeatured() {
       industry: 'Technology',
       logo: '🚀',
       challenge: 'Manual workflow inefficiencies costing 20+ hours weekly',
-      solution: 'XeroGap AI workflow automation with 25+ tool integrations',
+      solution: 'VyaptIX AI workflow automation with 25+ tool integrations',
       results: [
         { metric: 'Time Saved', value: '25 hrs/week', icon: ClockIcon },
         { metric: 'Efficiency Increase', value: '150%', icon: ArrowTrendingUpIcon },
         { metric: 'ROI', value: '350%', icon: ArrowTrendingUpIcon }
       ],
-      quote: 'XeroGap AI transformed our entire operation. We went from drowning in manual tasks to having intelligent automation that just works.',
+      quote: 'VyaptIX AI transformed our entire operation. We went from drowning in manual tasks to having intelligent automation that just works.',
       author: 'Sarah Mitchell',
       position: 'VP of Operations',
       readTime: '5 min read',
@@ -69,7 +69,7 @@ export default function CaseFeatured() {
             Featured Success Stories
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-            Discover how leading companies achieved extraordinary results with XeroGap AI solutions.
+            Discover how leading companies achieved extraordinary results with VyaptIX AI solutions.
           </p>
         </div>
 
@@ -177,7 +177,7 @@ export default function CaseFeatured() {
               Want Similar Results?
             </h3>
             <p className="text-green-100 mb-8 max-w-2xl mx-auto">
-              See how XeroGap AI can transform your business with a free consultation and custom solution assessment.
+              See how VyaptIX AI can transform your business with a free consultation and custom solution assessment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

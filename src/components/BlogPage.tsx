@@ -83,8 +83,8 @@ export default function BlogPage() {
         readTime: '9 min read'
       },
       {
-        title: 'XeroGap AI Workflow Automation: Beyond Basic Task Automation',
-        excerpt: 'Discover how XeroGap AI connects Notion, Slack, and business tools to create intelligent workflow automation that learns and adapts.',
+        title: 'VyaptIX AI Workflow Automation: Beyond Basic Task Automation',
+        excerpt: 'Discover how VyaptIX AI connects Notion, Slack, and business tools to create intelligent workflow automation that learns and adapts.',
         date: 'November 25, 2024',
         category: 'Workflow Automation',
         readTime: '7 min read'
@@ -206,7 +206,7 @@ export default function BlogPage() {
                         </div>
                         <div className="text-sm">
                           <p className="font-semibold text-gray-900 dark:text-white">Manish Kumar</p>
-                          <p className="text-gray-600 dark:text-white">Founder, XeroGap AI</p>
+                          <p className="text-gray-600 dark:text-white">Co-Founder, VyaptIX AI</p>
                         </div>
                       </div>
                     </div>

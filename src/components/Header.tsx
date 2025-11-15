@@ -33,7 +33,7 @@ const Header = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: 'AI Multi-Channel Support Copilot', href: '/whatsapp-cx', icon: ChatBubbleLeftRightIcon, description: 'AI-powered customer conversations' },
-        { name: 'AI-Powered Workflow Automation', href: '/xerogap-ai', icon: CogIcon, description: 'Workspace automation' },
+        { name: 'AI-Powered Workflow Automation', href: '/vyaptix-ai', icon: CogIcon, description: 'Workspace automation' },
         { name: 'AI Knowledge Management Assistant', href: '/enterprise-copilots', icon: CpuChipIcon, description: 'Knowledge management' },
         { name: 'AI Sales Insights & Automation', href: '/sales-automation', icon: UserGroupIcon, description: 'Lead intelligence' },
         { name: 'AI Contact Center QA & Coaching', href: '/contact-center-ai', icon: ShieldCheckIcon, description: 'Quality assurance' },

@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 
-export default function XeroGapCTA() {
+export default function VyaptIXCTA() {
   return (
     <section className="py-24 sm:py-32 bg-gradient-to-r from-purple-600 via-green-600 to-indigo-600">
       <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
@@ -11,7 +11,7 @@ export default function XeroGapCTA() {
             <span className="block">Workflow Intelligence?</span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-purple-100 mb-12">
-            Join 150+ teams already using XeroGap AI to transform their Notion workspaces into intelligent business hubs.
+            Join 150+ teams already using VyaptIX AI to transform their Notion workspaces into intelligent business hubs.
           </p>
 
           {/* Key Benefits */}

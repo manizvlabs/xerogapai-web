@@ -11,7 +11,7 @@ NC='\033[0m' # No Color
 
 # Test 1: Check if server is running
 echo -e "\n${YELLOW}1. Checking if development server is running...${NC}"
-if curl -s http://localhost:4010 > /dev/null; then
+if curl -s http://localhost:3000 > /dev/null; then
     echo -e "${GREEN}✅ Development server is running${NC}"
 else
     echo -e "${RED}❌ Development server is not running${NC}"
@@ -21,7 +21,7 @@ fi
 
 # Test 2: Test Microsoft Graph API connection
 echo -e "\n${YELLOW}2. Testing Microsoft Graph API connection...${NC}"
-API_RESPONSE=$(curl -s -X POST http://localhost:4010/api/demo-booking \
+API_RESPONSE=$(curl -s -X POST http://localhost:3000/api/demo-booking \
   -H "Content-Type: application/json" \
   -d '{
     "firstName": "Test",
@@ -44,7 +44,7 @@ fi
 
 # Test 3: Check if demo page loads
 echo -e "\n${YELLOW}3. Testing demo page accessibility...${NC}"
-DEMO_RESPONSE=$(curl -s -I http://localhost:4010/demo | head -1)
+DEMO_RESPONSE=$(curl -s -I http://localhost:3000/demo | head -1)
 if echo "$DEMO_RESPONSE" | grep -q "200"; then
     echo -e "${GREEN}✅ Demo page is accessible${NC}"
 else
@@ -67,14 +67,14 @@ fi
 
 echo -e "\n${YELLOW}📋 Integration Test Summary:${NC}"
 echo "================================"
-echo "• Development server: $(curl -s -I http://localhost:4010 | head -1 | grep -q "200" && echo "✅ Running" || echo "❌ Not running")"
+echo "• Development server: $(curl -s -I http://localhost:3000 | head -1 | grep -q "200" && echo "✅ Running" || echo "❌ Not running")"
 echo "• Demo booking API: $(echo "$API_RESPONSE" | grep -q '"success":true' && echo "✅ Working" || echo "❌ Failed")"
-echo "• Demo page: $(curl -s -I http://localhost:4010/demo | head -1 | grep -q "200" && echo "✅ Accessible" || echo "❌ Not accessible")"
+echo "• Demo page: $(curl -s -I http://localhost:3000/demo | head -1 | grep -q "200" && echo "✅ Accessible" || echo "❌ Not accessible")"
 echo "• MS Graph API: $(grep -q "MS_GRAPH_CLIENT_ID" /Users/manish/Documents/GitHub/zero/xerogapai-web/.env.local && ! grep -q "your-application-client-id-here" /Users/manish/Documents/GitHub/zero/xerogapai-web/.env.local && echo "✅ Configured" || echo "❌ Not configured")"
 
 echo -e "\n${YELLOW}💡 Next Steps:${NC}"
 echo "1. Make sure your Microsoft Graph API credentials are set in .env.local"
-echo "2. Test the demo booking at: http://localhost:4010/demo"
+echo "2. Test the demo booking at: http://localhost:3000/demo"
 echo "3. Check that calendar invites are being sent to your Outlook"
 
 echo -e "\n${GREEN}🎉 Integration testing complete!${NC}"

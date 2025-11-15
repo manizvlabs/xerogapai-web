@@ -88,7 +88,7 @@ export default function DocsSupport() {
 
   const faqs = [
     {
-      question: 'How do I get started with XeroGap AI?',
+      question: 'How do I get started with VyaptIX AI?',
       answer: 'Start with our Quick Start Guide in the documentation. It takes about 15 minutes to get your first API call working.',
       category: 'Getting Started'
     },
@@ -108,7 +108,7 @@ export default function DocsSupport() {
       category: 'Integrations'
     },
     {
-      question: 'How secure is XeroGap AI?',
+      question: 'How secure is VyaptIX AI?',
       answer: 'We use bank-level encryption, SOC 2 compliance, and follow industry security best practices. All data is encrypted at rest and in transit.',
       category: 'Security'
     },
@@ -152,7 +152,7 @@ export default function DocsSupport() {
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
             Get the help you need, when you need it. From instant chat support to comprehensive documentation,
-            we're here to ensure your success with XeroGap AI.
+            we're here to ensure your success with VyaptIX AI.
           </p>
         </div>
 
@@ -332,7 +332,7 @@ export default function DocsSupport() {
                 For critical production issues and outages, contact our emergency line.
               </p>
               <div className="text-sm font-mono bg-indigo-100 dark:bg-indigo-800 p-2 rounded text-indigo-900 dark:text-indigo-100">
-                +1-800-XEROGAP (Emergency Only)
+                +1-800-VyaptIX (Emergency Only)
               </div>
             </div>
           </div>

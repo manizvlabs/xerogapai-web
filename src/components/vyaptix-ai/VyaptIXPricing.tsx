@@ -2,7 +2,7 @@
 
 import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
-export default function XeroGapPricing() {
+export default function VyaptIXPricing() {
   const plans = [
     {
       name: 'Starter',

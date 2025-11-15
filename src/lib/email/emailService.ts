@@ -100,7 +100,7 @@ class EmailService {
       trigger: 'newsletter_signup',
       emails: [
         {
-          subject: 'Welcome to XeroGap AI Insights!',
+          subject: 'Welcome to VyaptIX AI Insights!',
           html: this.generateWelcomeEmail(),
           delay: 5,
         },
@@ -388,7 +388,7 @@ class EmailService {
   private generateWelcomeEmail(): string {
     return `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h1 style="color: #1f2937;">Welcome to XeroGap AI Insights! 🚀</h1>
+        <h1 style="color: #1f2937;">Welcome to VyaptIX AI Insights! 🚀</h1>
         <p>Thank you for subscribing to our AI automation insights. You're now part of a community of forward-thinking business leaders.</p>
 
         <h2>What you'll receive:</h2>

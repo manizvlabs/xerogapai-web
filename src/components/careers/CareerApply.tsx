@@ -8,7 +8,7 @@ export default function CareerApply() {
     {
       step: 1,
       title: 'Submit Application',
-      description: 'Send us your resume and tell us why you\'re interested in joining XeroGap AI',
+      description: 'Send us your resume and tell us why you\'re interested in joining VyaptIX AI',
       time: '5 minutes',
       icon: DocumentTextIcon
     },
@@ -52,7 +52,7 @@ export default function CareerApply() {
   const faqs = [
     {
       question: 'What should I include in my application?',
-      answer: 'Include your resume, a cover letter explaining why you\'re interested in XeroGap AI, and any relevant portfolio work or GitHub repositories. Be specific about your experience and achievements.'
+      answer: 'Include your resume, a cover letter explaining why you\'re interested in VyaptIX AI, and any relevant portfolio work or GitHub repositories. Be specific about your experience and achievements.'
     },
     {
       question: 'Do you accept remote applications?',
@@ -79,19 +79,19 @@ export default function CareerApply() {
   const contactMethods = [
     {
       method: 'Email Recruitment Team',
-      contact: 'careers@xerogap.ai',
+      contact: 'careers@VyaptIX.ai',
       description: 'General inquiries and application questions',
       response: '< 24 hours'
     },
     {
       method: 'LinkedIn',
-      contact: 'XeroGap AI Company Page',
+      contact: 'VyaptIX AI Company Page',
       description: 'Connect with our recruiters and team members',
       response: 'Within 2-3 days'
     },
     {
       method: 'Referral Program',
-      contact: 'referral@xerogap.ai',
+      contact: 'referral@VyaptIX.ai',
       description: 'Refer a friend and both get rewarded',
       response: 'Immediate confirmation'
     }
@@ -105,7 +105,7 @@ export default function CareerApply() {
             Join Our Team
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-            Ready to start your journey with XeroGap AI? Here&apos;s everything you need to know about our application process.
+            Ready to start your journey with VyaptIX AI? Here&apos;s everything you need to know about our application process.
           </p>
         </div>
 
@@ -154,7 +154,7 @@ export default function CareerApply() {
               Frequently Asked Questions
             </h3>
             <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
-              Everything you need to know about working at XeroGap AI
+              Everything you need to know about working at VyaptIX AI
             </p>
           </div>
 

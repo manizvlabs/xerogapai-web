@@ -20,7 +20,7 @@ export default function HelpSearch() {
   const quickActions = [
     {
       title: 'Get Started Guide',
-      description: 'Complete beginner\'s guide to XeroGap AI',
+      description: 'Complete beginner\'s guide to VyaptIX AI',
       icon: '🚀',
       href: '/docs/quick-start'
     },
@@ -53,7 +53,7 @@ export default function HelpSearch() {
         {
           title: 'How to set up API authentication',
           category: 'API',
-          snippet: 'Learn how to authenticate your API requests with XeroGap AI...',
+          snippet: 'Learn how to authenticate your API requests with VyaptIX AI...',
           href: '/docs/api/authentication'
         },
         {

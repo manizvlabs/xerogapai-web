@@ -70,7 +70,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="/xerogap-ai"
+                    href="/vyaptix-ai"
                     className="text-sm text-gray-300 hover:text-white transition-colors block py-1"
                   >
                     AI-Powered Workflow Automation

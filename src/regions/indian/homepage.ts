@@ -1,14 +1,14 @@
-// Indian Homepage Content - XeroGap AI
+// Indian Homepage Content - VyaptIX AI
 // INR Pricing - India Focus
 
 export const indianHomepageContent = {
   // Header
   header: {
-    logo: "XeroGap AI",
+    logo: "VyaptIX AI",
     navigation: [
       { name: "Services", href: "/services" },
       { name: "AI Multi-Channel Support Copilot", href: "/whatsapp-cx" },
-      { name: "AI-Powered Workflow Automation", href: "/xerogap-ai" },
+      { name: "AI-Powered Workflow Automation", href: "/VyaptIX-ai" },
       { name: "AI Knowledge Management Assistant", href: "/enterprise-copilots" },
       { name: "AI Sales Insights & Automation", href: "/sales-automation" },
       { name: "AI Contact Center QA & Coaching", href: "/contact-center-ai" },
@@ -77,7 +77,7 @@ export const indianHomepageContent = {
         href: "/whatsapp-cx"
       },
       {
-        id: "xerogap-ai",
+        id: "VyaptIX-ai",
         title: "AI-Powered Workflow Automation",
         subtitle: "Streamline operations with AI-powered workspace automation",
         features: [
@@ -91,7 +91,7 @@ export const indianHomepageContent = {
           popular: false
         },
         cta: "Learn More",
-        href: "/xerogap-ai"
+        href: "/VyaptIX-ai"
       },
       {
         id: "enterprise-copilots",
@@ -167,10 +167,10 @@ export const indianHomepageContent = {
   // Social Proof Section (Indian testimonials)
   socialProof: {
     sectionTitle: "Trusted by Indian Businesses",
-    localizedMessage: "Join 500+ Indian businesses using XeroGap AI",
+    localizedMessage: "Join 500+ Indian businesses using VyaptIX AI",
     testimonials: [
       {
-        quote: "XeroGap AI's WhatsApp automation helped us handle 400% more customer inquiries during Diwali season without adding staff. The AI understands Hindi perfectly!",
+        quote: "VyaptIX AI's WhatsApp automation helped us handle 400% more customer inquiries during Diwali season without adding staff. The AI understands Hindi perfectly!",
         author: "Priya Sharma",
         position: "Operations Director, Reliance Retail",
         location: "Mumbai, India",
@@ -280,7 +280,7 @@ export const indianHomepageContent = {
   // Final CTA Section (Localized)
   finalCTA: {
     sectionTitle: "Ready to Transform Your Indian Business with AI?",
-    content: "Join 500+ Indian businesses using XeroGap AI to automate operations and accelerate growth.",
+    content: "Join 500+ Indian businesses using VyaptIX AI to automate operations and accelerate growth.",
     localizedContent: "🇮🇳 Trusted by businesses in Mumbai, Delhi, Bangalore, Hyderabad, and across India",
     offers: [
       "Free AI Consultation (₹500 value)",
@@ -301,19 +301,19 @@ export const indianHomepageContent = {
   // Footer (Localized)
   footer: {
     company: {
-      name: "XeroGap AI",
+      name: "VyaptIX AI",
       tagline: "AI Solutions for Indian Businesses",
       subtitle: "Serving India with localized AI automation"
     },
     contact: {
-      email: "hello@xerogap.ai",
+      email: "hello@VyaptIX.ai",
       phone: "+91 XXXXX XXXXX", // Replace with actual number
       address: "India Operations"
     },
     links: {
       services: [
         { name: "AI Multi-Channel Support Copilot", href: "/whatsapp-cx" },
-        { name: "AI-Powered Workflow Automation", href: "/xerogap-ai" },
+        { name: "AI-Powered Workflow Automation", href: "/VyaptIX-ai" },
         { name: "AI Knowledge Management Assistant", href: "/enterprise-copilots" },
         { name: "AI Sales Insights & Automation", href: "/sales-automation" },
         { name: "AI Contact Center QA & Coaching", href: "/contact-center-ai" },
@@ -340,12 +340,12 @@ export const indianHomepageContent = {
       button: "Subscribe"
     },
     social: [
-      { name: "LinkedIn", href: "https://linkedin.com/company/xerogap-ai", icon: "linkedin" },
-      { name: "Twitter", href: "https://twitter.com/xerogap_ai", icon: "twitter" },
-      { name: "YouTube", href: "https://youtube.com/@xerogap-ai", icon: "youtube" },
-      { name: "Instagram", href: "https://instagram.com/xerogap_ai", icon: "instagram" }
+      { name: "LinkedIn", href: "https://linkedin.com/company/VyaptIX-ai", icon: "linkedin" },
+      { name: "Twitter", href: "https://twitter.com/VyaptIX_ai", icon: "twitter" },
+      { name: "YouTube", href: "https://youtube.com/@VyaptIX-ai", icon: "youtube" },
+      { name: "Instagram", href: "https://instagram.com/VyaptIX_ai", icon: "instagram" }
     ],
-    copyright: "© 2025 XeroGap AI. All rights reserved.",
+    copyright: "© 2025 VyaptIX AI. All rights reserved.",
     localizedFooter: {
       gst: "GST Number: [Your GST Number]",
       support: "Indian Customer Support: Available 9 AM - 9 PM IST",

@@ -19,7 +19,7 @@ The deployment pipeline has been configured to run **manually only** to help you
 #### Deployment Options:
 
 **Environment:**
-- **Production** - Deploys to `https://xerogapai-web.vercel.app/` (your live website)
+- **Production** - Deploys to `https://www.vyaptix.ai/` (your live website)
 - **Preview** - Creates a preview deployment (for testing changes)
 
 **Deploy Message (Optional):**
@@ -51,8 +51,8 @@ The deployment pipeline has been configured to run **manually only** to help you
 
 ## Current Status
 
-- ✅ **Local Development**: `http://localhost:4010` (always available)
-- ✅ **Production Website**: `https://xerogapai-web.vercel.app/` (manual deployment only)
+- ✅ **Local Development**: `http://localhost:3000` (always available)
+- ✅ **Production Website**: `https://www.vyaptix.ai/` (manual deployment only)
 - ✅ **GitHub Repository**: All changes are saved and versioned
 
 ## Quick Commands

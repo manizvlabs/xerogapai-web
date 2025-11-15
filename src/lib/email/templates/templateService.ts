@@ -200,8 +200,8 @@ export class TemplateService {
       readinessColor,
       insightsDisplay,
       insightsText,
-      consultationUrl: 'https://xerogapai-web.vercel.app/consultation',
-      demoUrl: 'https://xerogapai-web.vercel.app/demo',
+      consultationUrl: 'https://www.vyaptix.ai/consultation',
+      demoUrl: 'https://www.vyaptix.ai/demo',
       q1: formattedAnswers?.q1 || '',
       q2: formattedAnswers?.q2 || '',
       q3: formattedAnswers?.q3 || '',
@@ -755,7 +755,7 @@ export class TemplateService {
       </head>
       <body>
         <div class="header">
-          <img src="https://xerogapai-web.vercel.app/logo.png" alt="XeroGap AI Logo" style="width: 150px; height: auto; margin: 0 auto 20px auto; display: block;">
+          <img src="https://www.vyaptix.ai/logo.png" alt="VyaptIX Logo" style="width: 150px; height: auto; margin: 0 auto 20px auto; display: block;">
           <h1>AI Readiness Assessment Report</h1>
           <p>Comprehensive Analysis & Strategic Recommendations</p>
         </div>
@@ -850,11 +850,11 @@ export class TemplateService {
         </div>
 
         <div class="footer">
-          <img src="https://xerogapai-web.vercel.app/logo.png" alt="XeroGap AI Logo" style="width: 80px; height: auto; margin: 0 auto 15px auto; display: block;">
-          <p class="company-name">XeroGap AI</p>
-          <p>AI-Powered Digital Transformation</p>
-          <p>Questions about your report? Contact us at support@xerogap.com</p>
-          <p>© 2025 XeroGap AI. All rights reserved.</p>
+          <img src="https://www.vyaptix.ai/logo.png" alt="VyaptIX Logo" style="width: 80px; height: auto; margin: 0 auto 15px auto; display: block;">
+          <p class="company-name">VyaptIX</p>
+          <p>Pervasive Intelligence</p>
+          <p>Questions about your report? Contact us at support@vyaptix.com</p>
+          <p>© 2025 VyaptIX. All rights reserved.</p>
           <p>Report Generated: ${new Date().toLocaleDateString()}</p>
         </div>
       </body>
@@ -1251,9 +1251,9 @@ export class TemplateService {
         </div>
 
         <div class="footer">
-          <p><strong>XeroGap AI</strong> - AI-Powered Digital Transformation</p>
-          <p>Questions about your report? Contact us at support@xerogap.com</p>
-          <p>© 2025 XeroGap AI. All rights reserved.</p>
+          <p><strong>VyaptIX AI</strong> - AI-Powered Digital Transformation</p>
+          <p>Questions about your report? Contact us at support@vyaptix.com</p>
+          <p>© 2025 VyaptIX AI. All rights reserved.</p>
         </div>
       </body>
       </html>

@@ -17,7 +17,7 @@ export default function CaseFilters() {
       'Retail', 'Consulting', 'Education', 'Real Estate', 'Non-Profit'
     ],
     solution: [
-      'All Solutions', 'XeroGap AI', 'Enterprise Copilots', 'Sales Automation',
+      'All Solutions', 'VyaptIX AI', 'Enterprise Copilots', 'Sales Automation',
       'Contact Center QA', 'DPDP Compliance', 'Workflow Automation', 'AI Integration'
     ],
     companySize: [

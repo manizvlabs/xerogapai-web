@@ -129,13 +129,13 @@ After running tests, verify data was saved:
 
 ### 2. Check Admin Panel
 ```bash
-# Visit: http://localhost:4010/admin/contacts
+# Visit: http://localhost:3000/admin/contacts
 # Verify new consultation submissions appear
 ```
 
 ### 3. Test Actual Form
 ```bash
-# Visit: http://localhost:4010/consultation
+# Visit: http://localhost:3000/consultation
 # Complete the full form submission flow
 ```
 

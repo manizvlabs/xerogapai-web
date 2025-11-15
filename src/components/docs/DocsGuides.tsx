@@ -7,7 +7,7 @@ export default function DocsGuides() {
   const integrationGuides = [
     {
       title: 'Notion Integration Guide',
-      description: 'Connect XeroGap AI with your Notion workspace for seamless automation',
+      description: 'Connect VyaptIX AI with your Notion workspace for seamless automation',
       icon: '📝',
       difficulty: 'Beginner',
       readTime: '15 min',
@@ -63,11 +63,11 @@ export default function DocsGuides() {
 
   const solutionGuides = [
     {
-      title: 'XeroGap AI Implementation',
-      description: 'Complete guide to implementing workflow automation with XeroGap AI',
+      title: 'VyaptIX AI Implementation',
+      description: 'Complete guide to implementing workflow automation with VyaptIX AI',
       category: 'Workflow Automation',
       steps: ['Setup workspace', 'Configure integrations', 'Build workflows', 'Monitor performance'],
-      href: '/docs/solutions/xerogap-ai'
+      href: '/docs/solutions/VyaptIX-ai'
     },
     {
       title: 'Sales Automation Blueprint',
@@ -96,7 +96,7 @@ export default function DocsGuides() {
     {
       icon: LinkIcon,
       title: 'Integration Tutorials',
-      description: 'Step-by-step guides for connecting XeroGap AI with your tools',
+      description: 'Step-by-step guides for connecting VyaptIX AI with your tools',
       tutorials: 25,
       difficulty: 'Beginner to Advanced',
       href: '/docs/tutorials/integrations'
@@ -112,7 +112,7 @@ export default function DocsGuides() {
     {
       icon: CloudIcon,
       title: 'API Tutorials',
-      description: 'Master the XeroGap AI API with practical examples',
+      description: 'Master the VyaptIX AI API with practical examples',
       tutorials: 32,
       difficulty: 'All Levels',
       href: '/docs/tutorials/api'
@@ -120,7 +120,7 @@ export default function DocsGuides() {
     {
       icon: DevicePhoneMobileIcon,
       title: 'Mobile & Web Tutorials',
-      description: 'Build mobile apps and web applications with XeroGap AI',
+      description: 'Build mobile apps and web applications with VyaptIX AI',
       tutorials: 15,
       difficulty: 'Intermediate',
       href: '/docs/tutorials/mobile-web'
@@ -135,7 +135,7 @@ export default function DocsGuides() {
             Integration Guides & Tutorials
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-            Comprehensive guides to help you integrate XeroGap AI with your existing tools
+            Comprehensive guides to help you integrate VyaptIX AI with your existing tools
             and build powerful automation solutions.
           </p>
         </div>
@@ -206,7 +206,7 @@ export default function DocsGuides() {
               Solution Implementation Guides
             </h3>
             <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
-              End-to-end guides for implementing complete XeroGap AI solutions in your organization
+              End-to-end guides for implementing complete VyaptIX AI solutions in your organization
             </p>
           </div>
 

@@ -1,14 +1,14 @@
-// Global Homepage Content - XeroGap AI
+// Global Homepage Content - VyaptIX AI
 // USD Pricing - MEA/US Focus
 
 export const globalHomepageContent = {
   // Header
   header: {
-    logo: "XeroGap AI",
+    logo: "VyaptIX AI",
     navigation: [
       { name: "Services", href: "/services" },
       { name: "AI Multi-Channel Support Copilot", href: "/whatsapp-cx" },
-      { name: "AI-Powered Workflow Automation", href: "/xerogap-ai" },
+      { name: "AI-Powered Workflow Automation", href: "/VyaptIX-ai" },
       { name: "AI Knowledge Management Assistant", href: "/enterprise-copilots" },
       { name: "AI Sales Insights & Automation", href: "/sales-automation" },
       { name: "AI Contact Center QA & Coaching", href: "/contact-center-ai" },
@@ -75,7 +75,7 @@ export const globalHomepageContent = {
         href: "/whatsapp-cx"
       },
       {
-        id: "xerogap-ai",
+        id: "VyaptIX-ai",
         title: "AI-Powered Workflow Automation",
         subtitle: "Streamline operations with AI-powered workspace automation",
         features: [
@@ -89,7 +89,7 @@ export const globalHomepageContent = {
           popular: false
         },
         cta: "Learn More",
-        href: "/xerogap-ai"
+        href: "/VyaptIX-ai"
       },
       {
         id: "enterprise-copilots",
@@ -167,7 +167,7 @@ export const globalHomepageContent = {
     sectionTitle: "Trusted by Growing Businesses Worldwide",
     testimonials: [
       {
-        quote: "XeroGap AI's WhatsApp automation cut our response time from 6 hours to 2 minutes. Customer satisfaction jumped 85% in just 3 weeks.",
+        quote: "VyaptIX AI's WhatsApp automation cut our response time from 6 hours to 2 minutes. Customer satisfaction jumped 85% in just 3 weeks.",
         author: "Ahmed Al-Rashid",
         position: "CEO, Al-Mansoori Retail Group",
         location: "Dubai, UAE",
@@ -229,7 +229,7 @@ export const globalHomepageContent = {
   // Final CTA Section
   finalCTA: {
     sectionTitle: "Ready to Transform Your Business with AI?",
-    content: "Join hundreds of businesses worldwide using XeroGap AI to automate operations and accelerate growth.",
+    content: "Join hundreds of businesses worldwide using VyaptIX AI to automate operations and accelerate growth.",
     offers: [
       "Free AI Readiness Assessment ($500 value)",
       "No long-term commitments",
@@ -248,19 +248,19 @@ export const globalHomepageContent = {
   // Footer
   footer: {
     company: {
-      name: "XeroGap AI",
+      name: "VyaptIX AI",
       tagline: "Global AI Solutions for Growing Businesses",
       subtitle: "Specializing in Middle East, Africa, and US Markets"
     },
     contact: {
-      email: "hello@xerogap.ai",
+      email: "hello@VyaptIX.ai",
       phone: "+1 (555) 123-4567",
       address: "Global Headquarters"
     },
     links: {
       services: [
         { name: "AI Multi-Channel Support Copilot", href: "/whatsapp-cx" },
-        { name: "AI-Powered Workflow Automation", href: "/xerogap-ai" },
+        { name: "AI-Powered Workflow Automation", href: "/VyaptIX-ai" },
         { name: "AI Knowledge Management Assistant", href: "/enterprise-copilots" },
         { name: "AI Sales Insights & Automation", href: "/sales-automation" },
         { name: "AI Contact Center QA & Coaching", href: "/contact-center-ai" },
@@ -287,11 +287,11 @@ export const globalHomepageContent = {
       button: "Subscribe"
     },
     social: [
-      { name: "LinkedIn", href: "https://linkedin.com/company/xerogap-ai", icon: "linkedin" },
-      { name: "Twitter", href: "https://twitter.com/xerogap_ai", icon: "twitter" },
-      { name: "YouTube", href: "https://youtube.com/@xerogap-ai", icon: "youtube" }
+      { name: "LinkedIn", href: "https://linkedin.com/company/VyaptIX-ai", icon: "linkedin" },
+      { name: "Twitter", href: "https://twitter.com/VyaptIX_ai", icon: "twitter" },
+      { name: "YouTube", href: "https://youtube.com/@VyaptIX-ai", icon: "youtube" }
     ],
-    copyright: "© 2025 XeroGap AI. All rights reserved."
+    copyright: "© 2025 VyaptIX AI. All rights reserved."
   }
 };
 

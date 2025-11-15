@@ -1,13 +1,13 @@
 # Deployment Status
 
 ## 🚀 Live Website
-**Production URL:** [https://xerogapai-web.vercel.app/](https://xerogapai-web.vercel.app/)
+**Production URL:** [https://www.vyaptix.ai/](https://www.vyaptix.ai/)
 
 ## 📊 Deployment Badges
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/manizvlabs/xerogapai-web)
 
-[![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://xerogapai-web.vercel.app/)
+[![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://www.vyaptix.ai/)
 
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 
@@ -53,7 +53,7 @@ Add these secrets to your GitHub repository settings:
 All environment variables are configured in `vercel.json`:
 
 ```env
-NEXT_PUBLIC_DOMAIN=xerogap.com
+NEXT_PUBLIC_DOMAIN=www.vyaptix.ai
 NEXT_PUBLIC_SITE_NAME=Zero Digital
 NEXT_PUBLIC_SITE_TAGLINE=AI-Powered Digital Transformation
 NEXT_PUBLIC_DEFAULT_THEME=light
@@ -61,7 +61,7 @@ NEXT_PUBLIC_ENABLE_THEME_SWITCHER=true
 NEXT_PUBLIC_BUSINESS_TYPE=all
 NEXT_PUBLIC_LOCATION=
 NEXT_PUBLIC_PHONE=+919876543210
-NEXT_PUBLIC_EMAIL=support@xerogap.com
+NEXT_PUBLIC_EMAIL=support@www.vyaptix.ai
 NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/company/xerogapai
 NEXT_PUBLIC_TWITTER_URL=https://twitter.com/xerogapai
 NEXT_PUBLIC_INSTAGRAM_URL=https://instagram.com/xerogapai

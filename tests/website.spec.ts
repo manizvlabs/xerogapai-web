@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('XeroGap AI Website', () => {
+test.describe('VyaptIX AI Website', () => {
   test('Homepage loads correctly', async ({ page }) => {
     // Listen for console errors
     const errors: string[] = [];
@@ -15,7 +15,7 @@ test.describe('XeroGap AI Website', () => {
     await page.waitForLoadState('networkidle');
 
     // Check page title
-    await expect(page).toHaveTitle(/XeroGap AI/);
+    await expect(page).toHaveTitle(/VyaptIX AI/);
 
     // Log any JavaScript errors
     if (errors.length > 0) {
@@ -56,7 +56,7 @@ test.describe('XeroGap AI Website', () => {
     
     // Check footer - target the footer specifically
     const footer = page.getByRole('contentinfo');
-    await expect(footer.getByText('XeroGap AI')).toBeVisible();
+    await expect(footer.getByText('VyaptIX AI')).toBeVisible();
   });
 
   test('Services page loads correctly', async ({ page }) => {
@@ -305,7 +305,7 @@ test.describe('XeroGap AI Website', () => {
         await expect(page).toHaveURL(link.url);
 
         // Verify the page title contains expected text
-        const expectedTitle = link.name === 'Home' ? 'XeroGap AI' : `${link.name} - XeroGap AI`;
+        const expectedTitle = link.name === 'Home' ? 'VyaptIX AI' : `${link.name} - VyaptIX AI`;
         await expect(page).toHaveTitle(new RegExp(expectedTitle));
 
         // Go back to homepage for next test (using goto instead of goBack for reliability)
@@ -435,12 +435,12 @@ test.describe('XeroGap AI Website', () => {
   test.describe('SEO and Performance', () => {
     test('All pages have proper meta tags', async ({ page }) => {
       const pages = [
-        { url: '/', title: 'XeroGap AI' },
-        { url: '/about', title: 'About - XeroGap AI' },
-        { url: '/services', title: 'Services - XeroGap AI' },
-        { url: '/portfolio', title: 'Portfolio - XeroGap AI' },
-        { url: '/blog', title: 'Blog - XeroGap AI' },
-        { url: '/contact', title: 'Contact - XeroGap AI' }
+        { url: '/', title: 'VyaptIX AI' },
+        { url: '/about', title: 'About - VyaptIX AI' },
+        { url: '/services', title: 'Services - VyaptIX AI' },
+        { url: '/portfolio', title: 'Portfolio - VyaptIX AI' },
+        { url: '/blog', title: 'Blog - VyaptIX AI' },
+        { url: '/contact', title: 'Contact - VyaptIX AI' }
       ];
 
       for (const pageData of pages) {

@@ -1,6 +1,6 @@
 # Vercel Deployment Guide
 
-This comprehensive guide will walk you through deploying your XeroGap AI website to Vercel, including environment variable configuration, GitHub integration, and production optimizations.
+This comprehensive guide will walk you through deploying your VyaptIX website to Vercel, including environment variable configuration, GitHub integration, and production optimizations.
 
 ## Prerequisites
 
@@ -20,8 +20,8 @@ cp .env.example .env.local
 
 Update the following key variables in `.env.local`:
 ```env
-NEXT_PUBLIC_SITE_DOMAIN="xerogap.com"
-NEXT_PUBLIC_SITE_URL="https://xerogap.com"
+NEXT_PUBLIC_SITE_DOMAIN="www.vyaptix.ai"
+NEXT_PUBLIC_SITE_URL="https://www.vyaptix.ai"
 NEXT_PUBLIC_GA_MEASUREMENT_ID="G-XXXXXXXXXX"
 GITHUB_PAT="ghp_your_github_personal_access_token"
 ```
@@ -75,7 +75,7 @@ Create `vercel.json` in your project root:
 ### 2.1 Connect Repository
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
 2. Click "New Project"
-3. Import your GitHub repository: `manizvlabs/xerogapai-web`
+3. Import your GitHub repository: `manizvlabs/vyaptix-web`
 4. Configure project settings:
    - **Framework Preset**: Next.js
    - **Root Directory**: `./` (or leave empty)
@@ -88,8 +88,8 @@ In Vercel dashboard, go to Project Settings → Environment Variables and add:
 
 #### Required Variables
 ```env
-NEXT_PUBLIC_SITE_DOMAIN=xerogap.com
-NEXT_PUBLIC_SITE_URL=https://xerogap.com
+NEXT_PUBLIC_SITE_DOMAIN=www.vyaptix.ai
+NEXT_PUBLIC_SITE_URL=https://www.vyaptix.ai
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your-verification-code
 ```
@@ -106,8 +106,8 @@ GITHUB_REPO_URL=https://github.com/manizvlabs/xerogapai-web
 ```env
 EMAIL_SERVICE=resend
 RESEND_API_KEY=re_your_resend_api_key
-EMAIL_FROM=support@xerogap.com
-EMAIL_TO=support@xerogap.com
+EMAIL_FROM=support@www.vyaptix.ai
+EMAIL_TO=support@www.vyaptix.ai
 ```
 
 #### Theme & Features
@@ -137,8 +137,8 @@ Configure deployment settings:
 ### 3.1 Add Custom Domain
 1. Go to Project Settings → Domains
 2. Click "Add Domain"
-3. Enter your domain: `xerogap.com`
-4. Add subdomain: `www.xerogap.com`
+3. Enter your domain: `www.vyaptix.ai`
+4. Add subdomain: `www.www.vyaptix.ai`
 
 ### 3.2 DNS Configuration
 Add these DNS records to your domain provider:
@@ -217,7 +217,7 @@ const nextConfig = {
     optimizePackageImports: ['@heroicons/react'],
   },
   images: {
-    domains: ['xerogap.com'],
+    domains: ['www.vyaptix.ai'],
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
   },
@@ -464,8 +464,8 @@ export async function GET() {
 
 ### Required for Production
 ```env
-NEXT_PUBLIC_SITE_DOMAIN=xerogap.com
-NEXT_PUBLIC_SITE_URL=https://xerogap.com
+NEXT_PUBLIC_SITE_DOMAIN=www.vyaptix.ai
+NEXT_PUBLIC_SITE_URL=https://www.vyaptix.ai
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 GITHUB_PAT=ghp_your_github_personal_access_token
 ```

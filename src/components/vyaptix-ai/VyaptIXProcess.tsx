@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { CloudArrowUpIcon, CogIcon, PlayIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 
-export default function XeroGapProcess() {
+export default function VyaptIXProcess() {
   const steps = [
     {
       step: '01',
@@ -107,7 +107,7 @@ export default function XeroGapProcess() {
               Ready to Transform Your Workflow?
             </h3>
             <p className="text-purple-100 mb-8 max-w-2xl mx-auto">
-              Start your free trial and see how XeroGap AI can automate your team's most time-consuming tasks.
+              Start your free trial and see how VyaptIX AI can automate your team's most time-consuming tasks.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

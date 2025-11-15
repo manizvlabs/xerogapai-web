@@ -4,7 +4,7 @@
  * Check current rate limiting configuration
  */
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:4010';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
 // Rate limiting configuration from environment variables
 const RATE_LIMITS = {

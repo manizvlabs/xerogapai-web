@@ -38,7 +38,7 @@ export default function CaseHero() {
 
           {/* Subheadline */}
           <p className="text-xl leading-8 text-slate-300 mb-12 max-w-3xl mx-auto">
-            Discover how businesses across industries are transforming their operations with XeroGap AI solutions.
+            Discover how businesses across industries are transforming their operations with VyaptIX AI solutions.
             From startups to enterprises, see the measurable impact of AI-powered automation.
           </p>
 

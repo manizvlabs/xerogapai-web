@@ -159,7 +159,7 @@ export default function CareerCulture() {
         <div className="bg-white dark:bg-gray-900 rounded-2xl p-8 mb-16 border border-gray-200 dark:border-gray-700">
           <div className="text-center mb-12">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Life at XeroGap AI
+              Life at VyaptIX AI
             </h3>
             <p className="text-gray-600 dark:text-white max-w-2xl mx-auto">
               We foster a vibrant, inclusive culture that celebrates creativity, collaboration, and continuous learning

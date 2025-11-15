@@ -65,7 +65,7 @@ function verifyPassword(password: string, hashedPassword: string): boolean {
 const ADMIN_CREDENTIALS = {
   username: process.env.ADMIN_USERNAME || 'admin',
   password: process.env.ADMIN_PASSWORD || 'admin123', // Change this in production!
-  email: process.env.ADMIN_EMAIL || 'support@xerogap.com',
+  email: process.env.ADMIN_EMAIL || 'support@vyaptix.com',
   role: 'admin'
 };
 

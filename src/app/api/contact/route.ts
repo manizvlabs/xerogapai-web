@@ -80,7 +80,7 @@ async function contactHandler(request: NextRequest) {
     // Example with a hypothetical email service:
     /*
     const emailData = {
-      to: process.env.CONTACT_EMAIL || 'support@xerogap.com',
+      to: process.env.CONTACT_EMAIL || 'support@vyaptix.com',
       subject: `New Contact Form Submission from ${firstName} ${lastName}`,
       html: `
         <h2>New Contact Form Submission</h2>

@@ -252,11 +252,11 @@ export async function POST(request: NextRequest) {
 
             <!-- CTA Buttons -->
             <div style="padding: 30px; text-align: center; border-top: 1px solid #e2e8f0;">
-              <a href="${process.env.NEXT_PUBLIC_SITE_DOMAIN || 'https://xerogap.com'}/assessment"
+              <a href="${process.env.NEXT_PUBLIC_SITE_DOMAIN || 'https://vyaptix.com'}/assessment"
                  style="display: inline-block; background-color: #667eea; color: white; text-decoration: none; padding: 15px 30px; border-radius: 8px; font-weight: 600; margin-right: 15px;">
                 Take AI Assessment
               </a>
-              <a href="${process.env.NEXT_PUBLIC_SITE_DOMAIN || 'https://xerogap.com'}/contact"
+              <a href="${process.env.NEXT_PUBLIC_SITE_DOMAIN || 'https://vyaptix.com'}/contact"
                  style="display: inline-block; background-color: #10b981; color: white; text-decoration: none; padding: 15px 30px; border-radius: 8px; font-weight: 600;">
                 Contact Support
               </a>
@@ -266,10 +266,10 @@ export async function POST(request: NextRequest) {
             <div style="background-color: #f8fafc; padding: 30px; text-align: center; border-top: 1px solid #e2e8f0;">
               <p style="margin: 0; color: #64748b; font-size: 14px;">
                 Questions about your consultation? Reply to this email or contact us at
-                <a href="mailto:support@xerogap.com" style="color: #667eea;">support@xerogap.com</a>
+                <a href="mailto:support@vyaptix.com" style="color: #667eea;">support@vyaptix.com</a>
               </p>
               <p style="margin: 10px 0 0 0; color: #94a3b8; font-size: 12px;">
-                © 2025 XeroGap AI. All rights reserved.
+                © 2025 VyaptIX. All rights reserved.
               </p>
             </div>
 
@@ -303,7 +303,7 @@ Preparation Tips:
 - Ensure you have a stable internet connection
 - Be ready to discuss your current technology stack
 
-Questions? Contact us at support@xerogap.com
+Questions? Contact us at support@vyaptix.com
       `,
     };
 

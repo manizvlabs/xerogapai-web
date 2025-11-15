@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ServicesPage from '@/components/ServicesPage';
 
 export const metadata: Metadata = {
-  title: "Services - XeroGap AI",
+  title: "Services - VyaptIX AI",
   description: "Comprehensive digital transformation solutions including AI automation, mobile app development, digital marketing, and AI agent development.",
 };
 

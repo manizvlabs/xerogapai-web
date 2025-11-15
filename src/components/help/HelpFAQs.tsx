@@ -13,7 +13,7 @@ export default function HelpFAQs() {
       icon: '🚀',
       faqs: [
         {
-          question: 'How do I create my XeroGap AI account?',
+          question: 'How do I create my VyaptIX AI account?',
           answer: 'Creating an account is simple! Click the "Sign Up" button on our website, enter your email and password, and verify your email. You\'ll have access to our free tier immediately.'
         },
         {
@@ -57,7 +57,7 @@ export default function HelpFAQs() {
       icon: '🔗',
       faqs: [
         {
-          question: 'How do I connect XeroGap AI with Notion?',
+          question: 'How do I connect VyaptIX AI with Notion?',
           answer: 'Go to Integrations in your dashboard, select Notion, and follow the OAuth flow. Our integration guide has step-by-step instructions with screenshots.'
         },
         {
@@ -110,7 +110,7 @@ export default function HelpFAQs() {
             Frequently Asked Questions
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-            Quick answers to the most common questions about XeroGap AI.
+            Quick answers to the most common questions about VyaptIX AI.
           </p>
         </div>
 
@@ -173,7 +173,7 @@ export default function HelpFAQs() {
             </div>
 
             <p className="text-indigo-100 mb-8 max-w-2xl mx-auto">
-              Can't find the answer you're looking for? Our support team is here to help you succeed with XeroGap AI.
+              Can't find the answer you're looking for? Our support team is here to help you succeed with VyaptIX AI.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
