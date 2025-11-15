@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: process.env.NODE_ENV === 'production' ? new URL(`https://${siteConfig.domain}`) : undefined,
+  metadataBase: new URL(process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}` : 'http://localhost:3000'),
   alternates: {
     canonical: '/',
   },

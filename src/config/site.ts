@@ -2,7 +2,7 @@
 export const siteConfig = {
   name: process.env.NEXT_PUBLIC_SITE_NAME || 'VyaptIX',
   tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Pervasive Intelligence',
-  domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || process.env.NEXT_PUBLIC_DOMAIN || 'vyaptix.com',
+  domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || process.env.NEXT_PUBLIC_DOMAIN || 'www.vyaptix.ai',
   githubCliToken: process.env.GITHUB_CLI_OAUTH_TOKEN || process.env.GITHUB_PAT,
   location: process.env.NEXT_PUBLIC_LOCATION || '',
   phone: process.env.NEXT_PUBLIC_PHONE || '+917702661991',

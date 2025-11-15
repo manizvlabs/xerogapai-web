@@ -55,7 +55,7 @@ const Header = () => {
 
   return (
     <header
-      className="bg-gray-900 dark:bg-gray-950 shadow-sm sticky top-0 z-50 border-b border-gray-800 dark:border-gray-700"
+      className="bg-gray-900 dark:bg-black shadow-sm sticky top-0 z-50 border-b border-gray-800 dark:border-gray-900"
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
@@ -159,7 +159,7 @@ const Header = () => {
       {mobileMenuOpen && (
         <div className="lg:hidden">
           <div className="fixed inset-0 z-50" />
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 dark:bg-gray-950 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:ring-gray-700/10">
+          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 dark:bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
                 <Logo

@@ -5,7 +5,7 @@ import { siteConfig } from '@/config/site';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 dark:bg-gray-950 border-t border-gray-800 dark:border-gray-700">
+    <footer className="bg-gray-900 dark:bg-black border-t border-gray-800 dark:border-gray-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-12 lg:py-16">
@@ -154,7 +154,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Footer */}
-        <div className="border-t border-gray-800 dark:border-gray-700 py-6">
+        <div className="border-t border-gray-800 dark:border-gray-900 py-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
               <p className="text-xs text-gray-400">
