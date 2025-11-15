@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url: process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}/og-image.jpg` : '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} Logo`,
+        alt: `${siteConfig.name} Logo`, // Should be "VyaptIX AI Logo" - ensure NEXT_PUBLIC_SITE_NAME is set correctly on Vercel
       },
     ],
   },
