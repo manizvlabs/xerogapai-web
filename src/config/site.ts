@@ -1,7 +1,7 @@
 // Site Configuration
 export const siteConfig = {
-  name: process.env.NEXT_PUBLIC_SITE_NAME || 'VyaptIX',
-  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Pervasive Intelligence',
+  name: process.env.NEXT_PUBLIC_SITE_NAME || 'VyaptIX AI',
+  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'AI-Powered Digital Transformation',
   domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || process.env.NEXT_PUBLIC_DOMAIN || 'www.vyaptix.ai',
   githubCliToken: process.env.GITHUB_CLI_OAUTH_TOKEN || process.env.GITHUB_PAT,
   location: process.env.NEXT_PUBLIC_LOCATION || '',

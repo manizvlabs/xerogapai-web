@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url: process.env.NODE_ENV === 'production' ? `https://${siteConfig.domain}/og-image.jpg` : '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} - ${siteConfig.tagline}`,
+        alt: `${siteConfig.name} Logo`,
       },
     ],
   },
