@@ -378,7 +378,15 @@ export class UserDatabase {
     }
 
     try {
-      const supabaseUser = await SupabaseUserDatabase.getUserByUsername(username);
+      // Add timeout wrapper for fast failure
+      const timeoutPromise = new Promise<null>((_, reject) => {
+        setTimeout(() => reject(new Error('Database query timeout')), 5000);
+      });
+
+      const supabaseUser = await Promise.race([
+        SupabaseUserDatabase.getUserByUsername(username),
+        timeoutPromise
+      ]) as UserSubmission | null;
 
       if (!supabaseUser) {
         return null;
@@ -397,7 +405,8 @@ export class UserDatabase {
         last_login: supabaseUser.last_login
       };
     } catch (error) {
-      console.error('Supabase error, falling back to null:', error);
+      console.error('Supabase error fetching user by username:', error);
+      // Fast fail - set fallback immediately to prevent retries
       usingFallback = true;
       return null;
     }

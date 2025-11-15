@@ -7,15 +7,34 @@
  * Run this script after setting up Supabase environment variables.
  */
 
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Import Supabase utilities
-const supabasePath = join(__dirname, '..', 'src', 'lib', 'supabase.ts');
+// Load environment variables from .env.local
+function loadEnv() {
+  const envPath = join(__dirname, '..', '.env.local');
+  if (existsSync(envPath)) {
+    const envContent = readFileSync(envPath, 'utf8');
+    const envLines = envContent.split('\n');
+
+    envLines.forEach(line => {
+      const trimmed = line.trim();
+      if (trimmed && !trimmed.startsWith('#')) {
+        const [key, ...valueParts] = trimmed.split('=');
+        if (key && valueParts.length > 0) {
+          const value = valueParts.join('=').replace(/^["']|["']$/g, '');
+          process.env[key] = value;
+        }
+      }
+    });
+  }
+}
+
+loadEnv();
 
 // Dynamic import to avoid TypeScript issues
 async function runSetup() {

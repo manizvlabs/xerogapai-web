@@ -23,24 +23,42 @@ export const getSupabaseClient = () => {
       detectSessionInUrl: false
     },
     global: {
-      fetch: (url, options = {}) => {
-        // Preserve original headers and add required Supabase headers
-        const headers = {
-          ...options.headers,
-          'apikey': supabaseAnonKey,
-          'Authorization': `Bearer ${supabaseAnonKey}`,
-          'User-Agent': 'zero-website/1.0.5'
-        };
+      fetch: async (url, options = {}) => {
+        // Add timeout to prevent hanging requests (3 seconds for fast failure)
+        // Middleware needs to be fast, so use short timeout to prevent 300s hangs
+        const timeout = 3000;
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
 
-        // Ensure Content-Type is set for JSON requests
-        if (options.body && !headers['Content-Type']) {
-          headers['Content-Type'] = 'application/json';
+        try {
+          // Preserve original headers and add required Supabase headers
+          const headers = {
+            ...options.headers,
+            'apikey': supabaseAnonKey,
+            'Authorization': `Bearer ${supabaseAnonKey}`,
+            'User-Agent': 'zero-website/1.0.5'
+          };
+
+          // Ensure Content-Type is set for JSON requests
+          if (options.body && !headers['Content-Type']) {
+            headers['Content-Type'] = 'application/json';
+          }
+
+          const response = await fetch(url, {
+            ...options,
+            headers,
+            signal: controller.signal
+          });
+
+          clearTimeout(timeoutId);
+          return response;
+        } catch (error: any) {
+          clearTimeout(timeoutId);
+          if (error.name === 'AbortError') {
+            throw new Error(`Supabase request timeout after ${timeout}ms`);
+          }
+          throw error;
         }
-
-        return fetch(url, {
-          ...options,
-          headers
-        });
       }
     }
   });
@@ -65,6 +83,31 @@ export const getSupabaseServiceClient = () => {
       persistSession: false,
       autoRefreshToken: false,
       detectSessionInUrl: false
+    },
+    global: {
+      fetch: async (url, options = {}) => {
+        // Add timeout to prevent hanging requests (3 seconds for fast failure)
+        // Middleware needs to be fast, so use short timeout to prevent 300s hangs
+        const timeout = 3000;
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+        try {
+          const response = await fetch(url, {
+            ...options,
+            signal: controller.signal
+          });
+
+          clearTimeout(timeoutId);
+          return response;
+        } catch (error: any) {
+          clearTimeout(timeoutId);
+          if (error.name === 'AbortError') {
+            throw new Error(`Supabase request timeout after ${timeout}ms`);
+          }
+          throw error;
+        }
+      }
     }
   });
 };

@@ -418,5 +418,6 @@ export async function deleteUser(id: string): Promise<AuthResult> {
   }
 }
 
-// Initialize admin user on module load (disabled during build to prevent build failures)
+// Initialize admin user on module load (disabled during build and middleware to prevent build failures and timeouts)
+// This should only be called from API routes or server components, never from middleware
 // initializeAdminUser();
