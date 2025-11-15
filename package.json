@@ -43,6 +43,9 @@
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@vercel/postgres": "^0.10.0",
     "autoprefixer": "^10.4.21",
     "bcryptjs": "^3.0.2",
@@ -56,18 +59,15 @@
     "@sparticuz/chromium": "^141.0.0",
     "puppeteer-core": "^24.24.1",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "typescript": "^5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@playwright/test": "^1.55.0",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
     "tailwindcss": "^4",
-    "typescript": "^5",
     "vercel": "^48.1.1"
   }
 }
