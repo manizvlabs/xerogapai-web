@@ -15,22 +15,27 @@ const version = `1.0.5-${date}`;
 const envPath = path.join(__dirname, '.env.local');
 
 try {
-  // Check if .env.local exists
-  if (fs.existsSync(envPath)) {
-    // Read the .env.local file
-    let envContent = fs.readFileSync(envPath, 'utf8');
-    
-    // Update the NEXT_PUBLIC_APP_VERSION line
-    envContent = envContent.replace(
-      /NEXT_PUBLIC_APP_VERSION=.*/,
-      `NEXT_PUBLIC_APP_VERSION="${version}"`
-    );
-    
-    // Write the updated content back
-    fs.writeFileSync(envPath, envContent);
-    
-    console.log(`✅ Version updated in .env.local to: ${version}`);
+  // In Vercel/CI environments, skip file operations and just log
+  if (process.env.CI || process.env.VERCEL) {
+    console.log(`ℹ️  Running in CI/CD environment (Vercel), skipping .env.local update`);
+    console.log(`ℹ️  Version will be set via environment variables: ${version}`);
   } else {
+    // Check if .env.local exists
+    if (fs.existsSync(envPath)) {
+      // Read the .env.local file
+      let envContent = fs.readFileSync(envPath, 'utf8');
+      
+      // Update the NEXT_PUBLIC_APP_VERSION line
+      envContent = envContent.replace(
+        /NEXT_PUBLIC_APP_VERSION=.*/,
+        `NEXT_PUBLIC_APP_VERSION="${version}"`
+      );
+      
+      // Write the updated content back
+      fs.writeFileSync(envPath, envContent);
+      
+      console.log(`✅ Version updated in .env.local to: ${version}`);
+    } else {
     // .env.local doesn't exist, create it with the version
     const envContent = `# VyaptIX AI Website Environment Variables
 # Auto-generated version file
@@ -102,18 +107,21 @@ NODE_ENV="production"
 NEXT_PUBLIC_VERCEL_ENV="production"
 `;
 
-    fs.writeFileSync(envPath, envContent);
-    console.log(`✅ Created .env.local with version: ${version}`);
+      fs.writeFileSync(envPath, envContent);
+      console.log(`✅ Created .env.local with version: ${version}`);
+    }
   }
   
-  // Also update package.json version if needed
-  const packageJsonPath = path.join(__dirname, 'package.json');
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-  
-  if (packageJson.version !== '1.0.5') {
-    packageJson.version = '1.0.5';
-    fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
-    console.log(`✅ Updated package.json version to: 1.0.5`);
+  // Also update package.json version if needed (skip in CI/CD)
+  if (!process.env.CI && !process.env.VERCEL) {
+    const packageJsonPath = path.join(__dirname, 'package.json');
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+    
+    if (packageJson.version !== '1.0.5') {
+      packageJson.version = '1.0.5';
+      fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+      console.log(`✅ Updated package.json version to: 1.0.5`);
+    }
   }
   
   console.log(`✅ Version update completed successfully: ${version}`);
@@ -122,8 +130,9 @@ NEXT_PUBLIC_VERCEL_ENV="production"
   // Don't exit with error in CI/CD environments, just log the error
   if (process.env.CI || process.env.VERCEL) {
     console.log('⚠️  Running in CI/CD environment, continuing build...');
-    console.log(`ℹ️  Version will be set via environment variables: 1.0.5-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}`);
+    console.log(`ℹ️  Version will be set via environment variables: ${version}`);
   } else {
+    console.error('❌ Fatal error in non-CI environment, exiting...');
     process.exit(1);
   }
 }
