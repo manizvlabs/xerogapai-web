@@ -11,7 +11,7 @@ export default function CaseCTA() {
             <span className="block">Success Story?</span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-green-100 mb-12">
-            Join 1,000+ companies that have transformed their operations with XeroGap AI solutions.
+            Join 1,000+ companies that have transformed their operations with VyaptIX AI solutions.
             Start your journey towards automation excellence today.
           </p>
 

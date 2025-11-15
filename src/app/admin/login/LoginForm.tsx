@@ -162,7 +162,7 @@ export default function LoginForm() {
         <div className="mt-6">
           <div className="text-center">
             <p className="text-xs text-gray-500 dark:text-white">
-              Secure access to XeroGap AI admin panel
+              Secure access to VyaptIX AI admin panel
             </p>
           </div>
         </div>

@@ -113,7 +113,7 @@ export default function DocsAPIs() {
             Complete API Reference
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-            Everything you need to integrate XeroGap AI into your applications.
+            Everything you need to integrate VyaptIX AI into your applications.
             Comprehensive documentation with examples and interactive testing.
           </p>
         </div>

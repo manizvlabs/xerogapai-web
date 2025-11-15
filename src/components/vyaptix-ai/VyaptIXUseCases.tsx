@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { BuildingOfficeIcon, UserGroupIcon, AcademicCapIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/outline';
 
-export default function XeroGapUseCases() {
+export default function VyaptIXUseCases() {
   const useCases = [
     {
       icon: BuildingOfficeIcon,
@@ -248,7 +248,7 @@ export default function XeroGapUseCases() {
               Ready to Automate Your Workflows?
             </h3>
             <p className="text-purple-100 mb-8 max-w-2xl mx-auto">
-              Start with our free trial and see how XeroGap AI can transform your team's productivity in just 30 minutes.
+              Start with our free trial and see how VyaptIX AI can transform your team's productivity in just 30 minutes.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

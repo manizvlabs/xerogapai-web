@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
       body: {
         contentType: 'html',
         content: `
-          <h3>XeroGap AI Consultation Booking</h3>
+          <h3>VyaptIX AI Consultation Booking</h3>
           <p><strong>Client:</strong> ${bookingData.firstName} ${bookingData.lastName}</p>
           <p><strong>Company:</strong> ${bookingData.companyName}</p>
           <p><strong>Email:</strong> ${bookingData.email}</p>
