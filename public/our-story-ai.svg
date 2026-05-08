@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="640" viewBox="0 0 900 640" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="900" y2="640" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E6F0FA" />
+      <stop offset="1" stop-color="#CCEFF5" />
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0066CC" stop-opacity="0.2" />
+      <stop offset="0.5" stop-color="#00A8CC" stop-opacity="0.6" />
+      <stop offset="1" stop-color="#0066CC" stop-opacity="0.2" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(450 280) rotate(90) scale(220 320)">
+      <stop offset="0" stop-color="#0066CC" stop-opacity="0.25" />
+      <stop offset="1" stop-color="#0066CC" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="900" height="640" rx="36" fill="url(#bg)" />
+  <rect x="40" y="40" width="820" height="560" rx="28" fill="white" opacity="0.75" />
+  <circle cx="450" cy="280" r="220" fill="url(#glow)" />
+
+  <g stroke="url(#line)" stroke-width="2">
+    <path d="M110 160 H300 V240 H520" />
+    <path d="M140 420 H340 V340 H620" />
+    <path d="M610 150 H760 V260 H820" />
+    <path d="M560 470 H740 V520 H820" />
+    <path d="M200 520 H420 V460 H520" />
+    <path d="M100 300 H240 V360 H360" />
+  </g>
+
+  <g fill="#0066CC" opacity="0.35">
+    <circle cx="300" cy="160" r="6" />
+    <circle cx="520" cy="240" r="6" />
+    <circle cx="340" cy="420" r="6" />
+    <circle cx="620" cy="340" r="6" />
+    <circle cx="760" cy="150" r="6" />
+    <circle cx="740" cy="470" r="6" />
+    <circle cx="420" cy="520" r="6" />
+    <circle cx="240" cy="300" r="6" />
+  </g>
+
+  <g>
+    <text x="100" y="260" fill="#2C3E50" font-family="Arial, sans-serif" font-size="44" font-weight="700">
+      Our Story
+    </text>
+    <text x="100" y="310" fill="#6C757D" font-family="Arial, sans-serif" font-size="20">
+      Building practical AI automation for real business outcomes.
+    </text>
+  </g>
+
+  <g fill="#0066CC" opacity="0.5">
+    <rect x="100" y="360" width="260" height="12" rx="6" />
+    <rect x="100" y="385" width="320" height="12" rx="6" opacity="0.35" />
+    <rect x="100" y="410" width="210" height="12" rx="6" opacity="0.25" />
+  </g>
+</svg>

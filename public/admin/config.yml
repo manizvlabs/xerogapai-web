@@ -1,0 +1,30 @@
+backend:
+  name: github
+  repo: manizvlabs/vyaptix-website
+  branch: revamp/website-v2
+  base_url: https://vyaptix.com
+  auth_endpoint: /api/auth
+
+media_folder: public/blog
+public_folder: /blog
+
+collections:
+  - name: blog
+    label: Blog Posts
+    folder: content/blog
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: excerpt, label: Excerpt, widget: text }
+      - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD" }
+      - { name: readTime, label: Read Time, widget: string, default: "5 min read" }
+      - name: category
+        label: Category
+        widget: select
+        options: [Products, "Trending in AI", Business]
+      - { name: author, label: Author Name, widget: string }
+      - { name: authorRole, label: Author Role, widget: string }
+      - { name: image, label: Hero Image, widget: image }
+      - { name: published, label: Published, widget: boolean, default: false }
+      - { name: body, label: Body, widget: markdown }
