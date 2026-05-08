@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ChevronDown, Star } from 'lucide-react';
+import { Menu, X, ChevronDown, Star, MessageCircle, BarChart3 } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 function SolutionIconUsers({ className = '' }: { className?: string }) {
@@ -55,6 +55,18 @@ const navItems: NavItem[] = [
         href: '/agent-mitra',
         icon: <SolutionIconUsers className="w-5 h-5" />,
         description: 'AI agents for business automation',
+      },
+      {
+        label: 'Setu',
+        href: '/solutions/setu',
+        icon: <MessageCircle className="w-5 h-5" />,
+        description: 'WhatsApp marketing & automation',
+      },
+      {
+        label: 'BankLens',
+        href: '/solutions/banklens',
+        icon: <BarChart3 className="w-5 h-5" />,
+        description: 'AI credit decisioning for NBFCs',
       },
     ],
   },

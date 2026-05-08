@@ -15,6 +15,8 @@ import {
   TrendingUp,
   CheckCircle2,
   Quote,
+  MessageCircle,
+  BarChart3,
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { trackEvent } from '../lib/analytics';
@@ -671,7 +673,7 @@ export function Home() {
               className="font-playfair italic font-bold text-white mb-4"
               style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.1 }}
             >
-              Two products.{' '}
+              Four products.{' '}
               <em className="not-italic" style={{ color: '#06CEFF' }}>
                 One shared AI engine.
               </em>
@@ -853,6 +855,181 @@ export function Home() {
                 }
               >
                 Get on the Waitlist <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Setu */}
+            <div
+              className="flex flex-col rounded-2xl p-7 hover:shadow-[0_0_60px_rgba(37,211,102,0.12)]"
+              style={{
+                background: 'rgba(37,211,102,0.04)',
+                border: '1.5px solid rgba(37,211,102,0.22)',
+                boxShadow: '0 0 40px rgba(37,211,102,0.06)',
+                opacity: productsInView ? 1 : 0,
+                transform: productsInView ? 'translateX(0)' : 'translateX(-40px)',
+                transitionProperty: 'opacity, transform, box-shadow',
+                transitionDuration: '0.7s, 0.7s, 0.3s',
+                transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1), cubic-bezier(0.4,0,0.2,1), ease',
+                transitionDelay: '300ms',
+              }}
+            >
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: 'rgba(37,211,102,0.18)', border: '1px solid rgba(37,211,102,0.30)' }}
+                  >
+                    <MessageCircle className="w-5 h-5" style={{ color: '#4ADE80' }} />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-semibold tracking-[0.15em] uppercase" style={{ color: '#4ADE80' }}>
+                      Product 03
+                    </div>
+                  </div>
+                </div>
+                <span
+                  className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
+                  style={{ background: 'rgba(74,222,128,0.14)', color: '#4ADE80', border: '1px solid rgba(74,222,128,0.28)' }}
+                >
+                  LIVE
+                </span>
+              </div>
+
+              <h3
+                className="font-playfair italic font-bold text-white mb-3"
+                style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)' }}
+              >
+                Setu
+              </h3>
+              <p className="mb-6 leading-relaxed text-sm" style={{ color: '#CBD5E1' }}>
+                WhatsApp marketing that scales — broadcast campaigns, 24/7 AI chatbot, shared team
+                inbox, and a full lead pipeline in one platform. Built for Indian businesses.
+              </p>
+
+              <ul className="space-y-2.5 mb-8 flex-1">
+                {[
+                  'Segmented broadcast campaigns to thousands',
+                  '24/7 AI chatbot — no coding required',
+                  'Shared team inbox with lead pipeline',
+                ].map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-sm" style={{ color: '#CBD5E1' }}>
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#4ADE80' }} />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <div
+                className="grid grid-cols-2 gap-4 py-5 mb-6"
+                style={{ borderTop: '1px solid rgba(37,211,102,0.12)', borderBottom: '1px solid rgba(37,211,102,0.12)' }}
+              >
+                <div>
+                  <div className="font-mono font-bold text-white text-2xl">98%</div>
+                  <div className="text-xs mt-1" style={{ color: '#94A3B8' }}>WhatsApp open rate</div>
+                </div>
+                <div>
+                  <div className="font-mono font-bold text-white text-2xl">
+                    <CountUp value={3} suffix="×" />
+                  </div>
+                  <div className="text-xs mt-1" style={{ color: '#94A3B8' }}>higher reply vs email</div>
+                </div>
+              </div>
+
+              <Link
+                href="/solutions/setu"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_32px_rgba(37,211,102,0.25)]"
+                style={{ background: 'linear-gradient(135deg, #16A34A 0%, #25D366 100%)', color: '#fff' }}
+                onClick={() =>
+                  trackEvent('cta_clicked', { label: 'See How It Works — Setu', destination: '/solutions/setu', page: '/', section: 'products' })
+                }
+              >
+                See How It Works <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* BankLens */}
+            <div
+              className="flex flex-col rounded-2xl p-7 hover:shadow-[0_0_40px_rgba(245,158,11,0.10)]"
+              style={{
+                background: 'rgba(245,158,11,0.03)',
+                border: '1.5px solid rgba(245,158,11,0.20)',
+                opacity: productsInView ? 1 : 0,
+                transform: productsInView ? 'translateX(0)' : 'translateX(40px)',
+                transitionProperty: 'opacity, transform, box-shadow',
+                transitionDuration: '0.7s, 0.7s, 0.3s',
+                transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1), cubic-bezier(0.4,0,0.2,1), ease',
+                transitionDelay: '450ms',
+              }}
+            >
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: 'rgba(245,158,11,0.18)', border: '1px solid rgba(245,158,11,0.30)' }}
+                  >
+                    <BarChart3 className="w-5 h-5" style={{ color: '#FCD34D' }} />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-semibold tracking-[0.15em] uppercase" style={{ color: '#FCD34D' }}>
+                      Product 04
+                    </div>
+                  </div>
+                </div>
+                <span
+                  className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
+                  style={{ background: 'rgba(74,222,128,0.14)', color: '#4ADE80', border: '1px solid rgba(74,222,128,0.28)' }}
+                >
+                  LIVE
+                </span>
+              </div>
+
+              <h3
+                className="font-playfair italic font-bold text-white mb-3"
+                style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)' }}
+              >
+                BankLens
+              </h3>
+              <p className="mb-6 leading-relaxed text-sm" style={{ color: '#CBD5E1' }}>
+                AI bank statement analysis that computes 220+ financial signals, detects fraud, and
+                delivers a structured credit decision in under 5 minutes. Built for NBFCs and DSAs.
+              </p>
+
+              <ul className="space-y-2.5 mb-8 flex-1">
+                {[
+                  '220+ financial signals per statement',
+                  '14-signal fraud detection system',
+                  'APPROVE / REVIEW / REJECT with reason codes',
+                ].map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-sm" style={{ color: '#CBD5E1' }}>
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#FCD34D' }} />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <div
+                className="grid grid-cols-2 gap-4 py-5 mb-6"
+                style={{ borderTop: '1px solid rgba(245,158,11,0.12)', borderBottom: '1px solid rgba(245,158,11,0.12)' }}
+              >
+                <div>
+                  <div className="font-mono font-bold text-white text-2xl">&lt; 5min</div>
+                  <div className="text-xs mt-1" style={{ color: '#94A3B8' }}>full credit decision</div>
+                </div>
+                <div>
+                  <div className="font-mono font-bold text-white text-2xl">80%</div>
+                  <div className="text-xs mt-1" style={{ color: '#94A3B8' }}>ops cost reduction</div>
+                </div>
+              </div>
+
+              <Link
+                href="/solutions/banklens"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-[rgba(245,158,11,0.18)]"
+                style={{ border: '1px solid rgba(245,158,11,0.35)', color: '#FCD34D' }}
+                onClick={() =>
+                  trackEvent('cta_clicked', { label: 'See How It Works — BankLens', destination: '/solutions/banklens', page: '/', section: 'products' })
+                }
+              >
+                See How It Works <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
