@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import { Breadcrumb } from '@/src/components/ui/Breadcrumb';
 import { CategoryFilter } from '@/src/components/blog/CategoryFilter';
 import { getAllPosts } from '@/src/lib/blog';
@@ -69,35 +67,6 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      {/* ── Final CTA ── */}
-      <section className="py-24 md:py-32 bg-[#0A1628] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="animate-glow-pulse absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#06CEFF]/5 blur-3xl" />
-        </div>
-        <div className="container-main text-center relative max-w-2xl mx-auto">
-          <p className="label-mono-cyan mb-4">Ready to Automate?</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Turn reading into results.
-          </h2>
-          <p className="text-slate-200 mb-10 max-w-lg mx-auto">
-            See how VyaptIX AI tools work in real businesses — and get started in minutes.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/solutions/ai-review-generation"
-              className="inline-flex items-center justify-center gap-2 px-10 py-5 text-base font-semibold text-[#050D1A] bg-white rounded-xl hover:scale-[1.03] hover:shadow-[0_0_32px_rgba(6,206,255,0.3)] transition-all"
-            >
-              Try AI Review Generator <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/demo"
-              className="inline-flex items-center justify-center gap-2 px-10 py-5 text-base font-semibold text-white border border-white/20 rounded-xl hover:bg-white/10 transition-all"
-            >
-              Schedule Demo
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

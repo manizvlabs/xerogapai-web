@@ -4,7 +4,7 @@ import { Solutions } from '@/src/views/Solutions';
 export const metadata: Metadata = {
   title: 'Our Products',
   description:
-    'Two AI products built for real business outcomes: AI Review Generator and AgentMitra. See how they transform customer engagement and team operations.',
+    'Four AI products built for real business outcomes: AI Review Generator, AgentMitra, Setu, and BankLens. See how VyaptIX transforms business operations.',
   alternates: { canonical: 'https://vyaptix.com/solutions' },
 };
 

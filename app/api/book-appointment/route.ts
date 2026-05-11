@@ -42,11 +42,10 @@ const createTransporter = () => {
   });
 };
 
-const formatTimeForCalendar = (date: string, time: string): Date => {
-  const [hours, minutes] = time.split(':').map(Number);
-  const eventDate = new Date(date);
-  eventDate.setHours(hours, minutes, 0, 0);
-  return eventDate;
+// Returns a local datetime string (no Z suffix) so Google Calendar
+// interprets it in the timezone specified on the event, not UTC.
+const formatTimeForCalendar = (date: string, time: string): string => {
+  return `${date}T${time}:00`;
 };
 
 const getConsultationDuration = (consultationType?: string): number => {
@@ -80,9 +79,15 @@ export async function POST(request: NextRequest) {
 
     const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
 
-    const startTime = formatTimeForCalendar(bookingData.preferredDate, bookingData.preferredTime);
+    const startDateTimeStr = formatTimeForCalendar(bookingData.preferredDate, bookingData.preferredTime);
     const duration = getConsultationDuration(bookingData.consultationType);
-    const endTime = new Date(startTime.getTime() + duration * 60 * 1000);
+    // Compute end time by adding duration minutes to the start time string
+    const [startH, startM] = bookingData.preferredTime.split(':').map(Number);
+    const totalMinutes = startH * 60 + startM + duration;
+    const endH = Math.floor(totalMinutes / 60);
+    const endM = totalMinutes % 60;
+    const endTimeStr = `${String(endH).padStart(2, '0')}:${String(endM).padStart(2, '0')}`;
+    const endDateTimeStr = formatTimeForCalendar(bookingData.preferredDate, endTimeStr);
 
     const consultationTypeLabel = {
       discovery: 'Discovery Call (30 min)',
@@ -112,11 +117,11 @@ Message: ${bookingData.message || 'None'}
 Booked via VyaptIX Website Contact Form
       `.trim(),
       start: {
-        dateTime: startTime.toISOString(),
+        dateTime: startDateTimeStr,
         timeZone: bookingData.timezone,
       },
       end: {
-        dateTime: endTime.toISOString(),
+        dateTime: endDateTimeStr,
         timeZone: bookingData.timezone,
       },
       attendees: [
@@ -125,10 +130,16 @@ Booked via VyaptIX Website Contact Form
           displayName: `${bookingData.firstName} ${bookingData.lastName}`,
         },
         {
-          email: process.env.SMTP_USER,
-          displayName: 'VyaptIX AI',
+          email: 'ajeet@vyaptix.com',
+          displayName: 'Ajeet — VyaptIX',
         },
       ],
+      conferenceData: {
+        createRequest: {
+          requestId: `vyaptix-${Date.now()}`,
+          conferenceSolutionKey: { type: 'hangoutsMeet' },
+        },
+      },
       reminders: {
         useDefault: false,
         overrides: [
@@ -138,16 +149,12 @@ Booked via VyaptIX Website Contact Form
       },
     };
 
-    let calendarEvent;
-    try {
-      calendarEvent = await calendar.events.insert({
-        calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
-        requestBody: event,
-        sendUpdates: 'all',
-      });
-    } catch (calendarError) {
-      console.error('Error creating calendar event:', calendarError);
-    }
+    const calendarEvent = await calendar.events.insert({
+      calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
+      requestBody: event,
+      sendUpdates: 'all',
+      conferenceDataVersion: 1,
+    });
 
     const transporter = createTransporter();
 
@@ -243,21 +250,24 @@ Booked via VyaptIX Website Contact Form
       console.error('Error sending team email:', emailError);
     }
 
+    const meetLink = calendarEvent?.data?.conferenceData?.entryPoints
+      ?.find(ep => ep.entryPointType === 'video')?.uri ?? null;
+
     return NextResponse.json({
       success: true,
       message: 'Consultation booked successfully!',
       eventId: calendarEvent?.data?.id,
       eventLink: calendarEvent?.data?.htmlLink,
+      meetLink,
     });
 
   } catch (error) {
     console.error('Booking error:', error);
+    const message = error instanceof Error ? error.message : String(error);
     return NextResponse.json(
       {
-        error: 'Failed to book consultation. Please try again or contact us directly.',
-        details: process.env.NODE_ENV === 'development'
-          ? (error instanceof Error ? error.message : String(error))
-          : undefined,
+        error: 'Failed to create calendar event. Please try again or contact us directly.',
+        details: message,
       },
       { status: 500 }
     );

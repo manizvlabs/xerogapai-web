@@ -13,15 +13,12 @@ import {
   Shield,
   Clock,
   TrendingUp,
-  CheckCircle2,
-  Quote,
   MessageCircle,
   BarChart3,
 } from 'lucide-react';
-import { SEO } from '../components/SEO';
 import { trackEvent } from '../lib/analytics';
 import { Marquee } from '../components/ui/Marquee';
-import { CountUp } from '../components/ui/CountUp';
+import { TestimonialMarquee } from '../components/ui/testimonial-cards';
 
 /* ─── Static data ─────────────────────────────────────────────── */
 
@@ -38,6 +35,13 @@ const homeJsonLd = {
     'https://x.com/Vyaptix_ai',
     'https://www.instagram.com/vyaptixai/',
   ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '6',
+    bestRating: '5',
+    worstRating: '1',
+  },
 };
 
 const capabilities = [
@@ -50,6 +54,8 @@ const capabilities = [
     title: 'AI Automation',
     description:
       'Automate the repetitive work slowing your team down — customer follow-ups, data entry, reporting, and more.',
+    href: '/solutions',
+    badge: null,
   },
   {
     Icon: Code2,
@@ -60,6 +66,8 @@ const capabilities = [
     title: 'Custom Software',
     description:
       'Purpose-built SaaS tools and internal platforms tailored to your exact business processes — not generic software forced to fit.',
+    href: '/contact',
+    badge: null,
   },
   {
     Icon: GitMerge,
@@ -70,6 +78,8 @@ const capabilities = [
     title: 'AI Integrations',
     description:
       'Connect your existing stack to AI models — OpenAI, Claude, Gemini — without rebuilding from scratch.',
+    href: '/solutions',
+    badge: null,
   },
   {
     Icon: LayoutDashboard,
@@ -80,6 +90,8 @@ const capabilities = [
     title: 'Workflow Consulting',
     description:
       'Map your current workflows, identify automation opportunities, and build a practical AI roadmap grounded in ROI.',
+    href: '/contact',
+    badge: 'Advisory',
   },
 ];
 
@@ -90,7 +102,7 @@ const whyVyaptix = [
     iconBg: 'rgba(6,206,255,0.12)',
     iconBorder: 'rgba(6,206,255,0.25)',
     title: 'Outcome-first',
-    text: 'We measure success by business results, not features shipped.',
+    text: 'We measure success by business results — more reviews, faster follow-ups, fewer manual hours — not features shipped.',
   },
   {
     Icon: Clock,
@@ -98,7 +110,7 @@ const whyVyaptix = [
     iconBg: 'rgba(168,85,247,0.12)',
     iconBorder: 'rgba(168,85,247,0.25)',
     title: 'Fast to value',
-    text: 'Working automation in days, not months of discovery.',
+    text: 'Working automation in as few as 3–5 days. No endless discovery sprints, no 6-month delivery timelines.',
   },
   {
     Icon: Shield,
@@ -106,7 +118,7 @@ const whyVyaptix = [
     iconBg: 'rgba(16,185,129,0.12)',
     iconBorder: 'rgba(16,185,129,0.25)',
     title: 'Vendor-neutral',
-    text: 'We pick the right AI tools for your problem, not ours.',
+    text: 'We\'ve deployed OpenAI, Claude, Gemini, and n8n across diverse client stacks. We pick what\'s right for your problem, not what we\'re invested in.',
   },
   {
     Icon: Users,
@@ -114,7 +126,7 @@ const whyVyaptix = [
     iconBg: 'rgba(245,158,11,0.12)',
     iconBorder: 'rgba(245,158,11,0.25)',
     title: 'Right-sized',
-    text: 'Built for growing businesses — 5 to 500 people — not enterprise complexity.',
+    text: 'Built for growing businesses — 5 to 500 people — not enterprise complexity or startup-only scope.',
   },
 ];
 
@@ -122,6 +134,7 @@ const howItWorks = [
   {
     step: '01',
     title: 'Tell us your problem',
+    timeline: '30 min call',
     description:
       'A focused 30-minute discovery call. No pitch decks — just your business challenge and our honest assessment of what AI can actually fix.',
     accentColor: '#06CEFF',
@@ -129,6 +142,7 @@ const howItWorks = [
   {
     step: '02',
     title: 'We design the automation',
+    timeline: '2–3 days',
     description:
       'We map your workflow, select the right AI tools, and build a working prototype — not a slide deck. You see real output before committing.',
     accentColor: '#A855F7',
@@ -136,8 +150,9 @@ const howItWorks = [
   {
     step: '03',
     title: 'Go live in days',
+    timeline: '3–7 days to launch',
     description:
-      'Your automation deploys into your real business environment. Tested, documented, and ready to scale as your team grows.',
+      'Your automation deploys into your real business environment. Simple integrations in 3–5 days; complex multi-step workflows in 1–2 weeks. Tested, documented, and ready to scale.',
     accentColor: '#10B981',
   },
 ];
@@ -148,7 +163,7 @@ const aiToolsRow1 = [
   { src: '/tool-logos/gemini.png', alt: 'Gemini' },
   { src: '/tool-logos/copilot.png', alt: 'Copilot' },
   { src: '/tool-logos/genspark.png', alt: 'Genspark' },
-  { src: '/tool-logos/hugging%20face.png', alt: 'Hugging Face' },
+  { src: '/tool-logos/hugging-face.png', alt: 'Hugging Face' },
   { src: '/tool-logos/11ElevenLabs.png', alt: 'ElevenLabs' },
   { src: '/tool-logos/HeyGen.png', alt: 'HeyGen' },
   { src: '/tool-logos/perplexity.png', alt: 'Perplexity' },
@@ -160,57 +175,13 @@ const aiToolsRow2 = [
   { src: '/tool-logos/n8n.png', alt: 'n8n' },
   { src: '/tool-logos/manus.png', alt: 'Manus' },
   { src: '/tool-logos/langchain.png', alt: 'LangChain' },
-  { src: '/tool-logos/whatsApp%20Business%20API.png', alt: 'WhatsApp Business API' },
-  { src: '/tool-logos/google%20cloud.png', alt: 'Google Cloud' },
+  { src: '/tool-logos/whatsapp-business-api.png', alt: 'WhatsApp Business API' },
+  { src: '/tool-logos/google-cloud.png', alt: 'Google Cloud' },
   { src: '/tool-logos/postman.png', alt: 'Postman' },
   { src: '/tool-logos/zoho.png', alt: 'Zoho' },
   { src: '/tool-logos/notions.png', alt: 'Notion' },
 ];
 
-/* ─── Testimonials ────────────────────────────────────────────── */
-
-const testimonials = [
-  {
-    quote:
-      "We went from 23 to 91 Google reviews in 6 weeks. Every table has the QR card now and customers love how easy it is. Our rating climbed from 4.1 to 4.7 — that's real revenue.",
-    name: 'Jordan Lee',
-    title: 'Owner',
-    company: 'The Corner Café',
-    location: 'Melbourne, AU',
-    product: 'AI Review Generator',
-    accentColor: '#06CEFF',
-  },
-  {
-    quote:
-      "Asking patients for reviews always felt awkward. Now we send the link after appointments and the AI gets the tone exactly right — patients tell me the reviews 'sound just like them'. We have 3x more reviews than before.",
-    name: 'Sara Müller',
-    title: 'Practice Manager',
-    company: 'Bright Dental',
-    location: 'Zürich, CH',
-    product: 'AI Review Generator',
-    accentColor: '#A855F7',
-  },
-  {
-    quote:
-      "Our agents were spending half their day searching client records across spreadsheets and WhatsApp. AgentMitra gave us one place for everything. Onboarding took two days and the team was fully switched over in a week.",
-    name: 'David Okafor',
-    title: 'CEO',
-    company: 'Vertex Property Group',
-    location: 'Lagos, NG',
-    product: 'AgentMitra',
-    accentColor: '#10B981',
-  },
-  {
-    quote:
-      "VyaptIX automated our daily client status update workflow. What used to take our operations team 3 hours now runs in the background. Ajeet's team understood our processes faster than any agency we've worked with.",
-    name: 'Lena Strauss',
-    title: 'Operations Lead',
-    company: 'Novo Logistics',
-    location: 'Amsterdam, NL',
-    product: 'Custom AI Automation',
-    accentColor: '#F59E0B',
-  },
-];
 
 /* ─── Industry SVG Icons ──────────────────────────────────────── */
 
@@ -306,6 +277,26 @@ const industries = [
     ),
     useCase: 'Keep clients updated on shipment status without manual effort',
   },
+  {
+    label: 'FinTech & Lending',
+    icon: (
+      <svg viewBox="0 0 24 24" {...iconProps}>
+        <rect x="2" y="5" width="20" height="14" rx="2" />
+        <path d="M2 10h20" />
+        <path d="M6 15h4M14 15h4" />
+      </svg>
+    ),
+    useCase: 'AI-powered credit decisioning and bank statement analysis in minutes',
+  },
+  {
+    label: 'Healthcare',
+    icon: (
+      <svg viewBox="0 0 24 24" {...iconProps}>
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+      </svg>
+    ),
+    useCase: 'Automate appointment reminders, patient follow-ups, and review collection',
+  },
 ];
 
 /* ─── Section label pill ──────────────────────────────────────── */
@@ -363,13 +354,7 @@ export function Home() {
 
   return (
     <>
-      <SEO
-        title="VyaptIX — AI Automation & Custom Software for Business"
-        description="VyaptIX builds AI automation and custom software that removes manual work from your business. Real outcomes. No fluff."
-        canonical="/"
-        jsonLd={homeJsonLd}
-      />
-      <script
+<script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
       />
@@ -510,8 +495,8 @@ export function Home() {
             </Link>
             <Link
               href="/solutions"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-white transition-all duration-200 hover:bg-white/[0.08] hover:border-white/40"
-              style={{ border: '1px solid rgba(255,255,255,0.28)' }}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/[0.08] hover:border-white/40"
+              style={{ border: '1px solid rgba(255,255,255,0.22)', color: 'rgba(255,255,255,0.65)' }}
               onClick={() =>
                 trackEvent('cta_clicked', { label: 'See Our Products', destination: '/solutions', page: '/' })
               }
@@ -555,9 +540,10 @@ export function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {capabilities.map((cap, i) => (
-              <div
+              <Link
                 key={cap.title}
-                className="glass-luxury rounded-2xl p-6 group cursor-default transition-all duration-500"
+                href={cap.href}
+                className="glass-luxury rounded-2xl p-6 group transition-all duration-500 block"
                 style={{
                   opacity: capsInView ? 1 : 0,
                   transform: capsInView ? 'translateY(0)' : 'translateY(28px)',
@@ -567,31 +553,42 @@ export function Home() {
                   transitionDelay: `${i * 90}ms`,
                 }}
                 onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
+                  const el = e.currentTarget as HTMLAnchorElement;
                   el.style.boxShadow = `0 0 40px ${cap.hoverGlow}`;
                   el.style.borderColor = cap.iconBorder;
                 }}
                 onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
+                  const el = e.currentTarget as HTMLAnchorElement;
                   el.style.boxShadow = '0 0 0 transparent';
                   el.style.borderColor = '';
                 }}
               >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
-                  style={{
-                    background: cap.iconBg,
-                    border: `1px solid ${cap.iconBorder}`,
-                    color: cap.iconColor,
-                  }}
-                >
-                  <cap.Icon className="w-6 h-6" />
+                <div className="flex items-start justify-between mb-5">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                    style={{
+                      background: cap.iconBg,
+                      border: `1px solid ${cap.iconBorder}`,
+                      color: cap.iconColor,
+                    }}
+                  >
+                    <cap.Icon className="w-6 h-6" />
+                  </div>
+                  {cap.badge && (
+                    <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full"
+                      style={{ background: 'rgba(245,158,11,0.12)', color: '#F59E0B', border: '1px solid rgba(245,158,11,0.25)' }}>
+                      {cap.badge}
+                    </span>
+                  )}
                 </div>
                 <h3 className="text-white font-bold text-lg mb-3">{cap.title}</h3>
                 <p className="text-sm leading-relaxed" style={{ color: '#CBD5E1' }}>
                   {cap.description}
                 </p>
-              </div>
+                <span className="inline-flex items-center gap-1 text-xs font-semibold mt-4 transition-colors" style={{ color: cap.iconColor }}>
+                  Learn more <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>
@@ -618,8 +615,8 @@ export function Home() {
           <div ref={howRef as React.RefObject<HTMLDivElement>} className="relative">
             {/* Connector line — desktop only */}
             <div
-              className="hidden lg:block absolute top-[3.5rem] left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)] h-px pointer-events-none"
-              style={{ background: 'linear-gradient(to right, rgba(6,206,255,0.4), rgba(168,85,247,0.4), rgba(16,185,129,0.4))' }}
+              className="hidden lg:block absolute top-[3.5rem] left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)] h-0.5 pointer-events-none"
+              style={{ background: 'linear-gradient(to right, rgba(6,206,255,0.65), rgba(168,85,247,0.65), rgba(16,185,129,0.65))' }}
             />
 
             <div className="grid lg:grid-cols-3 gap-10 lg:gap-8">
@@ -651,7 +648,11 @@ export function Home() {
                     />
                   </div>
 
-                  <h3 className="text-white font-bold text-xl mb-3">{step.title}</h3>
+                  <h3 className="text-white font-bold text-xl mb-2">{step.title}</h3>
+                  <span className="inline-block text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full mb-3"
+                    style={{ background: `${step.accentColor}14`, color: step.accentColor, border: `1px solid ${step.accentColor}30` }}>
+                    {step.timeline}
+                  </span>
                   <p className="text-sm leading-relaxed" style={{ color: '#CBD5E1' }}>
                     {step.description}
                   </p>
@@ -683,355 +684,149 @@ export function Home() {
             </p>
           </div>
 
-          <div ref={productsRef as React.RefObject<HTMLDivElement>} className="grid md:grid-cols-2 gap-6">
-            {/* AI Review Generator — featured */}
-            <div
-              className="flex flex-col rounded-2xl p-7 hover:shadow-[0_0_60px_rgba(6,206,255,0.12)]"
-              style={{
-                background: 'rgba(6,206,255,0.04)',
-                border: '1.5px solid rgba(6,206,255,0.28)',
-                boxShadow: '0 0 40px rgba(6,206,255,0.07)',
-                opacity: productsInView ? 1 : 0,
-                transform: productsInView ? 'translateX(0)' : 'translateX(-40px)',
-                transitionProperty: 'opacity, transform, box-shadow',
-                transitionDuration: '0.7s, 0.7s, 0.3s',
-                transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1), cubic-bezier(0.4,0,0.2,1), ease',
-              }}
-            >
-              <div className="flex items-start justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'linear-gradient(135deg,rgba(6,206,255,0.35),rgba(26,82,224,0.35))', border: '1px solid rgba(6,206,255,0.35)' }}
-                  >
-                    <Star className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-semibold tracking-[0.15em] uppercase" style={{ color: '#06CEFF' }}>
-                      Product 01
-                    </div>
-                  </div>
-                </div>
-                <span
-                  className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
-                  style={{ background: 'rgba(74,222,128,0.14)', color: '#4ADE80', border: '1px solid rgba(74,222,128,0.28)' }}
-                >
-                  LIVE
-                </span>
-              </div>
-
-              <h3
-                className="font-playfair italic font-bold text-white mb-3"
-                style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)' }}
-              >
-                AI Review Generator
-              </h3>
-              <p className="mb-6 leading-relaxed text-sm" style={{ color: '#CBD5E1' }}>
-                Collect authentic Google reviews in under 20 seconds using QR codes and
-                AI-generated review text — zero effort for your customers.
-              </p>
-
-              <ul className="space-y-2.5 mb-8 flex-1">
-                {[
-                  'Instant QR code generation per location',
-                  'AI-crafted personalised review text',
-                  'Real-time review tracking dashboard',
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm" style={{ color: '#CBD5E1' }}>
-                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#06CEFF' }} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
+          <div
+            ref={productsRef as React.RefObject<HTMLDivElement>}
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {[
+              {
+                num: '01',
+                name: 'AI Review Generator',
+                hook: 'Collect Google reviews in under 20 seconds via QR code + AI.',
+                status: 'LIVE',
+                statusColor: '#4ADE80',
+                statusBg: 'rgba(74,222,128,0.14)',
+                statusBorder: 'rgba(74,222,128,0.28)',
+                accent: '#06CEFF',
+                iconBg: 'linear-gradient(135deg, rgba(6,206,255,0.30), rgba(26,82,224,0.30))',
+                iconBorder: 'rgba(6,206,255,0.35)',
+                cardBorder: 'rgba(6,206,255,0.22)',
+                cardBg: 'rgba(6,206,255,0.04)',
+                Icon: Star,
+                href: '/solutions/ai-review-generation',
+              },
+              {
+                num: '02',
+                name: 'AgentMitra',
+                hook: 'One hub for agents, clients, and workflows — built for service businesses.',
+                status: 'EARLY ACCESS',
+                statusColor: '#C084FC',
+                statusBg: 'rgba(168,85,247,0.14)',
+                statusBorder: 'rgba(168,85,247,0.28)',
+                accent: '#A855F7',
+                iconBg: 'rgba(168,85,247,0.18)',
+                iconBorder: 'rgba(168,85,247,0.30)',
+                cardBorder: 'rgba(168,85,247,0.18)',
+                cardBg: 'rgba(168,85,247,0.03)',
+                Icon: Users,
+                href: '/contact',
+              },
+              {
+                num: '03',
+                name: 'Setu',
+                hook: 'WhatsApp broadcasts, AI chatbot, and shared team inbox — turn WhatsApp into your revenue channel.',
+                status: 'LIVE',
+                statusColor: '#4ADE80',
+                statusBg: 'rgba(74,222,128,0.14)',
+                statusBorder: 'rgba(74,222,128,0.28)',
+                accent: '#25D366',
+                iconBg: 'rgba(37,211,102,0.18)',
+                iconBorder: 'rgba(37,211,102,0.30)',
+                cardBorder: 'rgba(37,211,102,0.20)',
+                cardBg: 'rgba(37,211,102,0.04)',
+                Icon: MessageCircle,
+                href: '/solutions/setu',
+              },
+              {
+                num: '04',
+                name: 'BankLens',
+                hook: '220+ financial signals and a credit decision in under 5 minutes.',
+                status: 'LIVE',
+                statusColor: '#4ADE80',
+                statusBg: 'rgba(74,222,128,0.14)',
+                statusBorder: 'rgba(74,222,128,0.28)',
+                accent: '#F59E0B',
+                iconBg: 'rgba(245,158,11,0.18)',
+                iconBorder: 'rgba(245,158,11,0.30)',
+                cardBorder: 'rgba(245,158,11,0.18)',
+                cardBg: 'rgba(245,158,11,0.03)',
+                Icon: BarChart3,
+                href: '/solutions/banklens',
+              },
+            ].map((p, i) => (
               <div
-                className="grid grid-cols-2 gap-4 py-5 mb-6"
-                style={{ borderTop: '1px solid rgba(6,206,255,0.12)', borderBottom: '1px solid rgba(6,206,255,0.12)' }}
+                key={p.num}
+                className="relative flex flex-col rounded-2xl p-6 group transition-all duration-300"
+                style={{
+                  background: p.cardBg,
+                  border: `1.5px solid ${p.cardBorder}`,
+                  opacity: productsInView ? 1 : 0,
+                  transform: productsInView ? 'translateY(0)' : 'translateY(24px)',
+                  transitionProperty: 'opacity, transform, box-shadow',
+                  transitionDuration: '0.6s, 0.6s, 0.3s',
+                  transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
+                  transitionDelay: `${i * 80}ms`,
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 40px ${p.accent}1A`; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.boxShadow = 'none'; }}
               >
-                <div>
-                  <div className="font-mono font-bold text-white text-2xl">&lt; 20s</div>
-                  <div className="text-xs mt-1" style={{ color: '#94A3B8' }}>to collect a review</div>
-                </div>
-                <div>
-                  <div className="font-mono font-bold text-white text-2xl">
-                    <CountUp value={3} suffix="x" />
-                  </div>
-                  <div className="text-xs mt-1" style={{ color: '#94A3B8' }}>more reviews vs manual</div>
-                </div>
-              </div>
+                {/* Accent top bar */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl"
+                  style={{ background: p.accent }}
+                />
 
-              <Link
-                href="/solutions/ai-review-generation"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 text-white hover:shadow-[0_0_32px_rgba(6,206,255,0.30)] hover:brightness-110"
-                style={{ background: 'linear-gradient(135deg, #1A52E0 0%, #06CEFF 100%)' }}
-                onClick={() =>
-                  trackEvent('cta_clicked', { label: 'See How It Works', destination: '/solutions/ai-review-generation', page: '/', section: 'products' })
-                }
-              >
-                See How It Works <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            {/* AgentMitra */}
-            <div
-              className="flex flex-col rounded-2xl p-7 hover:shadow-[0_0_40px_rgba(168,85,247,0.10)]"
-              style={{
-                background: 'rgba(168,85,247,0.03)',
-                border: '1.5px solid rgba(168,85,247,0.20)',
-                opacity: productsInView ? 1 : 0,
-                transform: productsInView ? 'translateX(0)' : 'translateX(40px)',
-                transitionProperty: 'opacity, transform, box-shadow',
-                transitionDuration: '0.7s, 0.7s, 0.3s',
-                transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1), cubic-bezier(0.4,0,0.2,1), ease',
-                transitionDelay: '150ms',
-              }}
-            >
-              <div className="flex items-start justify-between mb-6">
-                <div className="flex items-center gap-3">
+                {/* Icon + status */}
+                <div className="flex items-center justify-between mb-5 mt-1">
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(168,85,247,0.18)', border: '1px solid rgba(168,85,247,0.30)' }}
+                    className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: p.iconBg, border: `1px solid ${p.iconBorder}` }}
                   >
-                    <Users className="w-5 h-5" style={{ color: '#C084FC' }} />
+                    <p.Icon className="w-4.5 h-4.5" style={{ color: p.accent }} />
                   </div>
-                  <div>
-                    <div className="text-[10px] font-semibold tracking-[0.15em] uppercase" style={{ color: '#C084FC' }}>
-                      Product 02
-                    </div>
-                  </div>
+                  <span
+                    className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider"
+                    style={{ background: p.statusBg, color: p.statusColor, border: `1px solid ${p.statusBorder}` }}
+                  >
+                    {p.status}
+                  </span>
                 </div>
-                <span
-                  className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
-                  style={{ background: 'rgba(168,85,247,0.14)', color: '#C084FC', border: '1px solid rgba(168,85,247,0.28)' }}
+
+                {/* Product number + name */}
+                <div className="text-[9px] font-semibold tracking-[0.18em] uppercase mb-1" style={{ color: p.accent }}>
+                  Product {p.num}
+                </div>
+                <h3 className="font-bold text-white text-base mb-3 leading-snug">{p.name}</h3>
+
+                {/* Hook line */}
+                <p className="text-sm leading-relaxed flex-1" style={{ color: '#94A3B8' }}>{p.hook}</p>
+
+                {/* Learn more */}
+                <Link
+                  href={p.href}
+                  className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors group-hover:underline underline-offset-2"
+                  style={{ color: p.accent }}
+                  onClick={() =>
+                    trackEvent('cta_clicked', { label: `Learn more — ${p.name}`, destination: p.href, page: '/', section: 'products' })
+                  }
                 >
-                  EARLY ACCESS
-                </span>
+                  Learn more <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
+            ))}
+          </div>
 
-              <h3
-                className="font-playfair italic font-bold text-white mb-3"
-                style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)' }}
-              >
-                AgentMitra
-              </h3>
-              <p className="mb-6 leading-relaxed text-sm" style={{ color: '#CBD5E1' }}>
-                A role-based operations platform that consolidates agents, clients, and workflows
-                in one structured environment — built for service businesses and agencies.
-              </p>
-
-              <ul className="space-y-2.5 mb-8 flex-1">
-                {[
-                  'Role-based access for agents and clients',
-                  'Instant client lookup and status tracking',
-                  'Structured workflows — consistent execution',
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm" style={{ color: '#CBD5E1' }}>
-                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#C084FC' }} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <div
-                className="grid grid-cols-2 gap-4 py-5 mb-6"
-                style={{ borderTop: '1px solid rgba(168,85,247,0.12)', borderBottom: '1px solid rgba(168,85,247,0.12)' }}
-              >
-                <div>
-                  <div className="font-mono font-bold text-white text-2xl">24/7</div>
-                  <div className="text-xs mt-1" style={{ color: '#94A3B8' }}>always-on automation</div>
-                </div>
-                <div>
-                  <div className="font-mono font-bold text-white text-2xl">0</div>
-                  <div className="text-xs mt-1" style={{ color: '#94A3B8' }}>extra staff required</div>
-                </div>
-              </div>
-
-              <Link
-                href="/agent-mitra"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-[rgba(168,85,247,0.18)]"
-                style={{ border: '1px solid rgba(168,85,247,0.35)', color: '#C084FC' }}
-                onClick={() =>
-                  trackEvent('cta_clicked', { label: 'Get on the Waitlist', destination: '/agent-mitra', page: '/', section: 'products' })
-                }
-              >
-                Get on the Waitlist <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            {/* Setu */}
-            <div
-              className="flex flex-col rounded-2xl p-7 hover:shadow-[0_0_60px_rgba(37,211,102,0.12)]"
-              style={{
-                background: 'rgba(37,211,102,0.04)',
-                border: '1.5px solid rgba(37,211,102,0.22)',
-                boxShadow: '0 0 40px rgba(37,211,102,0.06)',
-                opacity: productsInView ? 1 : 0,
-                transform: productsInView ? 'translateX(0)' : 'translateX(-40px)',
-                transitionProperty: 'opacity, transform, box-shadow',
-                transitionDuration: '0.7s, 0.7s, 0.3s',
-                transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1), cubic-bezier(0.4,0,0.2,1), ease',
-                transitionDelay: '300ms',
-              }}
+          <div className="text-center mt-10">
+            <Link
+              href="/solutions"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-[0_0_32px_rgba(26,82,224,0.35)]"
+              style={{ background: 'linear-gradient(135deg, #1A52E0 0%, #06CEFF 100%)' }}
+              onClick={() =>
+                trackEvent('cta_clicked', { label: 'Explore all products', destination: '/solutions', page: '/', section: 'products' })
+              }
             >
-              <div className="flex items-start justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(37,211,102,0.18)', border: '1px solid rgba(37,211,102,0.30)' }}
-                  >
-                    <MessageCircle className="w-5 h-5" style={{ color: '#4ADE80' }} />
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-semibold tracking-[0.15em] uppercase" style={{ color: '#4ADE80' }}>
-                      Product 03
-                    </div>
-                  </div>
-                </div>
-                <span
-                  className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
-                  style={{ background: 'rgba(74,222,128,0.14)', color: '#4ADE80', border: '1px solid rgba(74,222,128,0.28)' }}
-                >
-                  LIVE
-                </span>
-              </div>
-
-              <h3
-                className="font-playfair italic font-bold text-white mb-3"
-                style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)' }}
-              >
-                Setu
-              </h3>
-              <p className="mb-6 leading-relaxed text-sm" style={{ color: '#CBD5E1' }}>
-                WhatsApp marketing that scales — broadcast campaigns, 24/7 AI chatbot, shared team
-                inbox, and a full lead pipeline in one platform. Built for Indian businesses.
-              </p>
-
-              <ul className="space-y-2.5 mb-8 flex-1">
-                {[
-                  'Segmented broadcast campaigns to thousands',
-                  '24/7 AI chatbot — no coding required',
-                  'Shared team inbox with lead pipeline',
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm" style={{ color: '#CBD5E1' }}>
-                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#4ADE80' }} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <div
-                className="grid grid-cols-2 gap-4 py-5 mb-6"
-                style={{ borderTop: '1px solid rgba(37,211,102,0.12)', borderBottom: '1px solid rgba(37,211,102,0.12)' }}
-              >
-                <div>
-                  <div className="font-mono font-bold text-white text-2xl">98%</div>
-                  <div className="text-xs mt-1" style={{ color: '#94A3B8' }}>WhatsApp open rate</div>
-                </div>
-                <div>
-                  <div className="font-mono font-bold text-white text-2xl">
-                    <CountUp value={3} suffix="×" />
-                  </div>
-                  <div className="text-xs mt-1" style={{ color: '#94A3B8' }}>higher reply vs email</div>
-                </div>
-              </div>
-
-              <Link
-                href="/solutions/setu"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_32px_rgba(37,211,102,0.25)]"
-                style={{ background: 'linear-gradient(135deg, #16A34A 0%, #25D366 100%)', color: '#fff' }}
-                onClick={() =>
-                  trackEvent('cta_clicked', { label: 'See How It Works — Setu', destination: '/solutions/setu', page: '/', section: 'products' })
-                }
-              >
-                See How It Works <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            {/* BankLens */}
-            <div
-              className="flex flex-col rounded-2xl p-7 hover:shadow-[0_0_40px_rgba(245,158,11,0.10)]"
-              style={{
-                background: 'rgba(245,158,11,0.03)',
-                border: '1.5px solid rgba(245,158,11,0.20)',
-                opacity: productsInView ? 1 : 0,
-                transform: productsInView ? 'translateX(0)' : 'translateX(40px)',
-                transitionProperty: 'opacity, transform, box-shadow',
-                transitionDuration: '0.7s, 0.7s, 0.3s',
-                transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1), cubic-bezier(0.4,0,0.2,1), ease',
-                transitionDelay: '450ms',
-              }}
-            >
-              <div className="flex items-start justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(245,158,11,0.18)', border: '1px solid rgba(245,158,11,0.30)' }}
-                  >
-                    <BarChart3 className="w-5 h-5" style={{ color: '#FCD34D' }} />
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-semibold tracking-[0.15em] uppercase" style={{ color: '#FCD34D' }}>
-                      Product 04
-                    </div>
-                  </div>
-                </div>
-                <span
-                  className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
-                  style={{ background: 'rgba(74,222,128,0.14)', color: '#4ADE80', border: '1px solid rgba(74,222,128,0.28)' }}
-                >
-                  LIVE
-                </span>
-              </div>
-
-              <h3
-                className="font-playfair italic font-bold text-white mb-3"
-                style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)' }}
-              >
-                BankLens
-              </h3>
-              <p className="mb-6 leading-relaxed text-sm" style={{ color: '#CBD5E1' }}>
-                AI bank statement analysis that computes 220+ financial signals, detects fraud, and
-                delivers a structured credit decision in under 5 minutes. Built for NBFCs and DSAs.
-              </p>
-
-              <ul className="space-y-2.5 mb-8 flex-1">
-                {[
-                  '220+ financial signals per statement',
-                  '14-signal fraud detection system',
-                  'APPROVE / REVIEW / REJECT with reason codes',
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm" style={{ color: '#CBD5E1' }}>
-                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#FCD34D' }} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <div
-                className="grid grid-cols-2 gap-4 py-5 mb-6"
-                style={{ borderTop: '1px solid rgba(245,158,11,0.12)', borderBottom: '1px solid rgba(245,158,11,0.12)' }}
-              >
-                <div>
-                  <div className="font-mono font-bold text-white text-2xl">&lt; 5min</div>
-                  <div className="text-xs mt-1" style={{ color: '#94A3B8' }}>full credit decision</div>
-                </div>
-                <div>
-                  <div className="font-mono font-bold text-white text-2xl">80%</div>
-                  <div className="text-xs mt-1" style={{ color: '#94A3B8' }}>ops cost reduction</div>
-                </div>
-              </div>
-
-              <Link
-                href="/solutions/banklens"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-[rgba(245,158,11,0.18)]"
-                style={{ border: '1px solid rgba(245,158,11,0.35)', color: '#FCD34D' }}
-                onClick={() =>
-                  trackEvent('cta_clicked', { label: 'See How It Works — BankLens', destination: '/solutions/banklens', page: '/', section: 'products' })
-                }
-              >
-                See How It Works <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+              Explore all four products <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -1056,42 +851,14 @@ export function Home() {
 
           <div
             ref={testimonialsRef as React.RefObject<HTMLDivElement>}
-            className="grid md:grid-cols-2 gap-6"
+            style={{
+              opacity: testimonialsInView ? 1 : 0,
+              transform: testimonialsInView ? 'translateY(0)' : 'translateY(28px)',
+              transition: 'opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1)',
+            }}
           >
-            {testimonials.map((t, i) => (
-              <div
-                key={t.name}
-                className="glass-luxury rounded-2xl p-7 flex flex-col gap-5 transition-all duration-300"
-                style={{
-                  opacity: testimonialsInView ? 1 : 0,
-                  transform: testimonialsInView ? 'translateY(0)' : 'translateY(28px)',
-                  transitionProperty: 'opacity, transform',
-                  transitionDuration: '0.6s',
-                  transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
-                  transitionDelay: `${i * 100}ms`,
-                  borderColor: `${t.accentColor}20`,
-                }}
-              >
-                <Quote className="w-5 h-5 flex-shrink-0" style={{ color: t.accentColor, opacity: 0.7 }} />
-                <p className="text-white/85 text-sm leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
-                <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-                  <div>
-                    <p className="text-white font-semibold text-sm">{t.name}</p>
-                    <p className="text-slate-300 text-xs">{t.title} · {t.company} · {t.location}</p>
-                  </div>
-                  <span
-                    className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wide"
-                    style={{
-                      background: `${t.accentColor}12`,
-                      color: t.accentColor,
-                      border: `1px solid ${t.accentColor}28`,
-                    }}
-                  >
-                    {t.product}
-                  </span>
-                </div>
-              </div>
-            ))}
+            {/* speed prop = seconds for one full loop. Higher = slower. Default 65. */}
+            <TestimonialMarquee speed={25} />
           </div>
         </div>
       </section>
@@ -1114,11 +881,12 @@ export function Home() {
             </h2>
           </div>
 
-          <div ref={industriesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div ref={industriesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {industries.map((industry, i) => (
-              <div
+              <Link
                 key={industry.label}
-                className="group rounded-2xl p-5 cursor-default transition-all duration-500 glass-luxury"
+                href="/solutions"
+                className="group rounded-2xl p-5 transition-all duration-500 glass-luxury block"
                 style={{
                   opacity: industriesInView ? 1 : 0,
                   transform: industriesInView ? 'translateY(0)' : 'translateY(24px)',
@@ -1128,13 +896,13 @@ export function Home() {
                   transitionDelay: `${i * 60}ms`,
                 }}
                 onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
+                  const el = e.currentTarget as HTMLAnchorElement;
                   el.style.borderColor = 'rgba(6,206,255,0.22)';
                   el.style.boxShadow = '0 0 30px rgba(6,206,255,0.08)';
                   el.style.transform = 'translateY(-4px)';
                 }}
                 onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
+                  const el = e.currentTarget as HTMLAnchorElement;
                   el.style.borderColor = '';
                   el.style.boxShadow = 'none';
                   el.style.transform = 'translateY(0)';
@@ -1148,7 +916,7 @@ export function Home() {
                 >
                   {industry.useCase}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -1316,10 +1084,10 @@ export function Home() {
             conversation about where AI can remove friction in your business.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/demo"
-              className="inline-flex items-center justify-center gap-2 px-10 py-5 font-semibold rounded-xl transition-all duration-200 text-white hover:shadow-[0_0_50px_rgba(6,206,255,0.38)] hover:brightness-110"
+              className="inline-flex items-center justify-center gap-2 px-10 py-5 font-semibold rounded-xl transition-all duration-200 text-white hover:shadow-[0_0_50px_rgba(6,206,255,0.38)] hover:brightness-110 text-base"
               style={{ background: 'linear-gradient(135deg, #1A52E0 0%, #06CEFF 100%)' }}
               onClick={() =>
                 trackEvent('cta_clicked', { label: 'Book Your Free Discovery Call', destination: '/demo', page: '/', section: 'final_cta' })
@@ -1329,19 +1097,19 @@ export function Home() {
             </Link>
             <Link
               href="/solutions"
-              className="inline-flex items-center justify-center gap-2 px-10 py-5 rounded-xl font-semibold text-white transition-all duration-200 hover:bg-white/[0.07] hover:border-white/35"
-              style={{ border: '1px solid rgba(255,255,255,0.25)' }}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/[0.07] hover:border-white/35"
+              style={{ border: '1px solid rgba(255,255,255,0.20)', color: 'rgba(255,255,255,0.65)' }}
               onClick={() =>
                 trackEvent('cta_clicked', { label: 'See Our Products', destination: '/solutions', page: '/', section: 'final_cta' })
               }
             >
-              See Our Products <ArrowRight className="w-5 h-5 opacity-60" />
+              See Our Products <ArrowRight className="w-4 h-4 opacity-60" />
             </Link>
           </div>
 
           <p
             className="text-sm mt-8"
-            style={{ color: '#94A3B8' }}
+            style={{ color: '#CBD5E1' }}
           >
             No commitment required. 30 minutes, real answers.
           </p>

@@ -23,7 +23,6 @@ import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '../components/ui/Accordion';
 import { ScrollRevealGroup } from '../components/ui/ScrollRevealGroup';
 import { HeroStatFloat } from '../components/ui/HeroStatFloat';
-import { SEO } from '../components/SEO';
 import { trackEvent } from '../lib/analytics';
 
 const features = [
@@ -151,6 +150,37 @@ function WordStagger({ text, startDelay = 0, visible, className = '' }: { text: 
   );
 }
 
+const softwareJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'AgentMitra — AI Workspace for Business Teams',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  url: 'https://vyaptix.com/agent-mitra',
+  description: 'Role-based platform that connects agents, clients, and workflows in one structured environment — for service teams, agencies, consultancies, and operations-heavy SMEs.',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/PreOrder',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'VyaptIX',
+    url: 'https://vyaptix.com',
+  },
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
 export function AgentMitra() {
   const [heroVisible, setHeroVisible] = useState(false);
   const [stepperVisible, setStepperVisible] = useState(false);
@@ -174,10 +204,13 @@ export function AgentMitra() {
 
   return (
     <>
-      <SEO
-        title="AgentMitra — AI Workspace for Business Teams"
-        description="Give your team instant client context, structured workflows, and live status tracking with an AI-powered unified workspace. Early access available."
-        canonical="/agent-mitra"
+<script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* ── Breadcrumb ── */}
@@ -320,9 +353,9 @@ export function AgentMitra() {
 
                   <div className="space-y-2">
                     {[
-                      { name: 'Rajesh Kumar', status: 'Active', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
-                      { name: 'Priya Sharma', status: 'Pending', color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
-                      { name: 'Amit Patel', status: 'Resolved', color: 'text-[#06CEFF] bg-[#06CEFF]/10 border-[#06CEFF]/20' },
+                      { name: 'Alex Chen', status: 'Active', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
+                      { name: 'Maria Santos', status: 'Pending', color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
+                      { name: 'Jordan Lee', status: 'Resolved', color: 'text-[#06CEFF] bg-[#06CEFF]/10 border-[#06CEFF]/20' },
                     ].map((client) => (
                       <div key={client.name} className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
                         <div className="flex items-center gap-3">

@@ -59,7 +59,6 @@ function renderScript(status: 'success' | 'error', content: string): string {
 <script>
   (function() {
     function receiveMessage(e) {
-      console.log("receiveMessage %o", e);
       window.opener.postMessage(
         'authorization:github:${status}:${JSON.stringify(message).replace(/'/g, "\\'")}',
         e.origin

@@ -30,8 +30,8 @@ import {
 import { ScrollRevealGroup } from '../components/ui/ScrollRevealGroup';
 import { CountUp } from '../components/ui/CountUp';
 import { HeroStatFloat } from '../components/ui/HeroStatFloat';
-import { SEO } from '../components/SEO';
 import { trackEvent } from '../lib/analytics';
+import { ScreenshotCarousel } from '../components/ui/ScreenshotCarousel';
 
 const AMBER = '#F59E0B';
 const AMBER_LIGHT = '#FCD34D';
@@ -270,12 +270,7 @@ export function BankLens() {
 
   return (
     <>
-      <SEO
-        title="BankLens — AI Bank Statement Analysis & Credit Decisioning for NBFCs"
-        description="220+ financial signals, 14-signal fraud detection, and a structured credit decision in under 5 minutes. Built for India's NBFCs, DSAs, and fintech lenders. From ₹12/report."
-        canonical="/solutions/banklens"
-      />
-      <script
+<script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
       />
@@ -522,8 +517,42 @@ export function BankLens() {
         </div>
       </section>
 
-      {/* ── How It Works ── */}
+      {/* ── Screenshots ── */}
       <section className="py-20 md:py-28 bg-[#0A1628]">
+        <div className="container-main">
+          <div className="text-center mb-12">
+            <p className="label-mono-cyan mb-3">Product Tour</p>
+            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
+              See BankLens In Action
+            </h2>
+            <p className="text-slate-200 max-w-xl mx-auto">
+              A live look at the platform your credit team will use — from statement upload to final decision.
+            </p>
+          </div>
+          <ScreenshotCarousel
+            accentColor={AMBER}
+            appUrl="banklens.vyaptix.ai"
+            screenshotBg="#eef2f7"
+            screenshots={[
+              {
+                src: '/screenshots/Banklens/banklens-screenshots1.png',
+                caption: 'Statement Processing Pipeline — 7-stage analysis tracking from upload through OCR, categorisation, and final decision',
+              },
+              {
+                src: '/screenshots/Banklens/banklens-screenshots2.png',
+                caption: 'Decision Dashboard — credit score, inflow/outflow trends, DTI ratio, and full audit trail in one view',
+              },
+              {
+                src: '/screenshots/Banklens/banklens-screenshots3.png',
+                caption: 'Rule Engine — configure credit scoring thresholds and weights without touching a line of code',
+              },
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* ── How It Works ── */}
+      <section className="py-20 md:py-28 bg-[#050D1A]">
         <div className="container-main">
           <div className="text-center mb-14">
             <p className="label-mono-cyan mb-3">The Process</p>

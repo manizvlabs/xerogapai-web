@@ -31,10 +31,14 @@ import {
 import { ScrollRevealGroup } from '../components/ui/ScrollRevealGroup';
 import { CountUp } from '../components/ui/CountUp';
 import { HeroStatFloat } from '../components/ui/HeroStatFloat';
-import { SEO } from '../components/SEO';
 import { trackEvent } from '../lib/analytics';
 
 const features = [
+  {
+    icon: <Shield className="w-6 h-6" />,
+    title: 'Google Compliant',
+    description: 'Fully compliant with Google review guidelines. Real customers, real reviews — no policy risk.',
+  },
   {
     icon: <Zap className="w-6 h-6" />,
     title: 'Lightning Fast',
@@ -54,11 +58,6 @@ const features = [
     icon: <BarChart3 className="w-6 h-6" />,
     title: 'Real-Time Analytics',
     description: 'Track reviews, ratings, and customer sentiment in your dashboard.',
-  },
-  {
-    icon: <Shield className="w-6 h-6" />,
-    title: 'Google Compliant',
-    description: 'Fully compliant with Google review guidelines. Real customers, real reviews.',
   },
   {
     icon: <Users className="w-6 h-6" />,
@@ -221,12 +220,7 @@ export function AIReviewGeneration() {
 
   return (
     <>
-      <SEO
-        title="AI Review Generator — Collect Google Reviews in 20 Seconds"
-        description="Turn customer feedback into authentic Google reviews instantly. AI-powered, QR code enabled. Try free at reviews.vyaptix.ai."
-        canonical="/solutions/ai-review-generation"
-      />
-      <script
+<script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationJsonLd) }}
       />
@@ -405,7 +399,7 @@ export function AIReviewGeneration() {
                   </button>
                   <div className="flex items-center justify-center gap-2 mt-3">
                     <Clock className="w-3.5 h-3.5 text-success-400" />
-                    <span className="text-xs text-slate-300">Total time: <span className="text-success-400 font-bold">17 seconds</span></span>
+                    <span className="text-xs text-slate-300">Total time: <span className="text-success-400 font-bold">about 20 seconds</span></span>
                   </div>
                 </div>
               </div>
@@ -535,7 +529,7 @@ export function AIReviewGeneration() {
                   'Full dashboard with analytics and insights',
                   'Manage multiple locations from one account',
                   'Export data and generate reports',
-                  'Priority support for all users',
+                  'Priority support on paid plans',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-success-400 flex-shrink-0 mt-0.5" />
@@ -593,7 +587,7 @@ export function AIReviewGeneration() {
                 <div className="p-4 rounded-xl bg-success-500/10 border border-success-500/20">
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4 text-success-400" />
-                    <p className="text-sm font-medium text-success-400">Average review time: 18 seconds</p>
+                    <p className="text-sm font-medium text-success-400">Average review time: about 20 seconds</p>
                   </div>
                 </div>
               </div>

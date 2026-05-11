@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { CheckCircle, ArrowRight, Zap, Users, Building2 } from 'lucide-react';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
-import { SEO } from '../components/SEO';
 import { trackEvent } from '../lib/analytics';
 
 const reviewPlans = [
@@ -80,13 +79,8 @@ const agentMitraFeatures = [
 export function Pricing() {
   return (
     <>
-      <SEO
-        title="Pricing — AI Review Generator & AgentMitra"
-        description="Simple, transparent pricing for VyaptIX products. Start free with the AI Review Generator or get early access to AgentMitra."
-        canonical="/pricing"
-      />
 
-      {/* Breadcrumb */}
+{/* Breadcrumb */}
       <div className="bg-[#050D1A] border-b border-white/10">
         <div className="container-main py-3">
           <Breadcrumb

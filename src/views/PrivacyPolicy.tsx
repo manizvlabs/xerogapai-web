@@ -1,5 +1,4 @@
 import { Section } from '../components/layout/Section';
-import { SEO } from '../components/SEO';
 
 const EFFECTIVE_DATE = 'April 21, 2026';
 const LAST_UPDATED = 'May 7, 2026';
@@ -10,12 +9,7 @@ const WEBSITE = 'vyaptix.com';
 export function PrivacyPolicy() {
   return (
     <>
-      <SEO
-        title="Privacy Policy | VyaptIX"
-        description="VyaptIX privacy policy — how we collect, use, and protect your personal data."
-        noIndex
-      />
-      <section className="hero-luxury-bg text-white py-14 md:py-20">
+<section className="hero-luxury-bg text-white py-14 md:py-20">
         <div className="container-main text-center">
           <h1 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)' }}>Privacy Policy</h1>
           <p className="text-white/85 text-lg">Effective date: {EFFECTIVE_DATE}</p>
