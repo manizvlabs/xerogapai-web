@@ -6,7 +6,6 @@ import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 const footerLinks = {
   company: [
     { label: 'About', href: '/about' },
-    { label: 'Pricing', href: '/pricing' },
     { label: 'Book a Demo', href: '/demo' },
     { label: 'Contact', href: '/contact' },
   ],
@@ -17,6 +16,8 @@ const footerLinks = {
   solutions: [
     { label: 'AI Review Generator', href: '/solutions/ai-review-generation' },
     { label: 'AgentMitra', href: '/agent-mitra' },
+    { label: 'Setu', href: '/solutions/setu' },
+    { label: 'BankLens', href: '/solutions/banklens' },
   ],
 };
 
@@ -150,7 +151,7 @@ export function Footer() {
         <div className="border-t border-white/[0.12] pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
             <div className="flex flex-col md:flex-row items-center gap-3">
-              <p>&copy; {new Date().getFullYear()} VyaptIX · India</p>
+              <p>&copy; {new Date().getFullYear()} VyaptIX</p>
             </div>
             <div className="flex gap-6">
               <Link href="/privacy-policy" className="hover:text-slate-100 transition-colors">Privacy Policy</Link>

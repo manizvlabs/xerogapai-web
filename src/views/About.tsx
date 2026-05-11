@@ -19,7 +19,6 @@ import {
 import { ScrollRevealGroup } from '../components/ui/ScrollRevealGroup';
 import { CountUp } from '../components/ui/CountUp';
 import { TimelineHorizontal } from '../components/ui/TimelineHorizontal';
-import { SEO } from '../components/SEO';
 import { trackEvent } from '../lib/analytics';
 
 const team = [
@@ -53,12 +52,17 @@ const milestones = [
   {
     date: 'Apr 2026',
     title: 'AgentMitra Early Access',
-    description: 'Second product enters early access — a role-based AI operations platform built for teams managing daily service workflows.',
+    description: 'Service operations platform enters early access — giving teams structured workflows, instant client lookup, and real-time case visibility.',
   },
   {
-    date: 'Coming',
-    title: 'Custom AI Automation Practice',
-    description: 'Opening a dedicated track for custom AI automation engagements — from workflow design to full deployment for businesses ready to go deeper.',
+    date: 'Apr 2026',
+    title: 'Setu Launches',
+    description: 'WhatsApp marketing and automation platform goes live — broadcast campaigns, AI chatbot, shared team inbox, and lead pipeline in one place.',
+  },
+  {
+    date: 'May 2026',
+    title: 'BankLens Launches',
+    description: 'AI credit decisioning platform for NBFCs and lenders goes live — automated bank statement analysis, 220+ financial signals, and audit-ready CAM reports.',
   },
 ];
 
@@ -80,7 +84,7 @@ const values = [
   },
   {
     icon: <Users className="w-6 h-6" />,
-    title: 'SMB-First Thinking',
+    title: 'Right-Sized Thinking',
     description: 'We build for businesses with 5–500 people. Not enterprise complexity, not toy-grade tools — the right level of power for growth-stage businesses.',
   },
 ];
@@ -115,13 +119,8 @@ export function About() {
 
   return (
     <>
-      <SEO
-        title="About VyaptIX — Building Practical AI for Business"
-        description="Learn about VyaptIX's mission to make AI automation accessible for every business owner. Meet the team building AI tools that actually work."
-        canonical="/about"
-      />
 
-      {/* ── Hero ── */}
+{/* ── Hero ── */}
       <section className="relative overflow-hidden hero-luxury-bg text-white min-h-[60vh] flex items-center">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-[#06CEFF]/7 blur-3xl" />
@@ -167,7 +166,7 @@ export function About() {
                 transitionDelay: '950ms',
               }}
             >
-              VyaptIX was built by people tired of AI tools that looked great in demos but never actually made it into the daily workflow. We build differently — outcome-first, SMB-first, practical-first.
+              VyaptIX was built by people tired of AI tools that looked great in demos but never actually made it into the daily workflow. We build differently — outcome-first, right-sized, practical-first.
             </p>
           </div>
         </div>
@@ -220,7 +219,7 @@ export function About() {
                 {[
                   { value: 500, suffix: '+', label: 'Businesses served', icon: <Users className="w-5 h-5" /> },
                   { value: 12, suffix: '+', label: 'Industries covered', icon: <TrendingUp className="w-5 h-5" /> },
-                  { value: 2, suffix: '', label: 'Live products', icon: <Zap className="w-5 h-5" /> },
+                  { value: 4, suffix: '', label: 'Products live & in market', icon: <Zap className="w-5 h-5" /> },
                   { value: 20, suffix: 's', label: 'Review collection time', icon: <Star className="w-5 h-5" /> },
                 ].map((stat) => (
                   <div key={stat.label} className="rounded-xl border border-white/10 bg-white/5 p-5">

@@ -8,7 +8,6 @@ import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '../components/ui/Accordion';
 import ContactService, { type ContactData } from '../services/contactService';
 import { trackEvent, identifyUser } from '../lib/analytics';
-import { SEO } from '../components/SEO';
 
 export function Contact() {
   const router = useRouter();
@@ -93,13 +92,8 @@ export function Contact() {
 
   return (
     <>
-      <SEO
-        title="Get in Touch"
-        description="Ready to automate your business with AI? Get in touch with the VyaptIX team — no generic presentations, just real answers."
-        canonical="/contact"
-      />
 
-      {/* Breadcrumb */}
+{/* Breadcrumb */}
       <div className="bg-[#050D1A] border-b border-white/10">
         <div className="container-main py-3">
           <Breadcrumb
@@ -222,7 +216,9 @@ export function Contact() {
                     <option value="" className="bg-[#0A1628]">Select a product...</option>
                     <option value="ai-review-generator" className="bg-[#0A1628]">AI Review Generator</option>
                     <option value="agent-mitra" className="bg-[#0A1628]">AgentMitra</option>
-                    <option value="custom-ai-automation" className="bg-[#0A1628]">Custom AI Automation</option>
+                    <option value="setu" className="bg-[#0A1628]">Setu — WhatsApp Marketing</option>
+                    <option value="banklens" className="bg-[#0A1628]">BankLens — Credit Decisioning</option>
+                    <option value="custom-software-ai-automation" className="bg-[#0A1628]">Custom Software Development & AI Automation</option>
                     <option value="not-sure" className="bg-[#0A1628]">Not sure yet</option>
                   </select>
                 </div>

@@ -39,11 +39,11 @@ export function CookieBanner() {
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 animate-slide-up">
       <div className="max-w-5xl mx-auto bg-white border border-border-light rounded-xl shadow-large px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <p className="flex-1 text-sm text-text-secondary leading-relaxed">
-          <span className="font-semibold text-text">We use cookies</span> to understand how visitors use our site and improve your experience.
-          By continuing, you agree to our{' '}
+          <span className="font-semibold text-text">We use cookies</span> to improve your experience and understand how visitors use our site.
+          You can accept or decline below. See our{' '}
           <Link href="/privacy-policy" className="text-primary-500 hover:text-primary-600 underline underline-offset-2">
             Privacy Policy
-          </Link>.
+          </Link>{' '}for details.
         </p>
         <div className="flex items-center gap-3 flex-shrink-0">
           <button

@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
-import { CalendlyWidget } from '../components/ui/CalendlyWidget';
+import { DemoBookingFlow } from '../components/ui/DemoBookingFlow';
 
 const PERKS = [
-  '15-minute no-pressure intro call',
-  'See live demos of both products',
+  '30-minute no-pressure discovery call',
+  'See live demos of our products',
   'Get answers from the founding team',
   'Walk away with a clear next step',
 ];
@@ -34,7 +34,7 @@ export function Demo() {
               className="font-playfair italic font-bold text-white mb-5 leading-tight"
               style={{ fontSize: 'clamp(2rem, 4.5vw, 3.6rem)', lineHeight: 1.1 }}
             >
-              See VyaptIX in action — in 15 minutes
+              See VyaptIX in action — in 30 minutes
             </h1>
             <p className="text-lg text-slate-200 mb-8 max-w-xl">
               No slides. No sales pitch. Just a real conversation about your business and how AI automation can help.
@@ -93,7 +93,7 @@ export function Demo() {
         </div>
       </section>
 
-      {/* ── Calendly embed ── */}
+      {/* ── Google Calendar booking ── */}
       <section className="py-16 md:py-24 bg-[#050D1A]">
         <div className="container-main max-w-3xl mx-auto">
           <div className="text-center mb-8">
@@ -105,10 +105,10 @@ export function Demo() {
               Choose a slot that works for you
             </h2>
             <p className="text-slate-300 text-sm mt-2">
-              You'll get a confirmation email immediately. Ajeet (founder) will be on the call.
+              Mon – Fri · 9 AM – 5:30 PM (India Standard Time) · 30 min · Ajeet (founder) on the call
             </p>
           </div>
-          <CalendlyWidget height={720} />
+          <DemoBookingFlow />
         </div>
       </section>
     </>

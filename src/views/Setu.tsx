@@ -35,8 +35,8 @@ import {
 import { ScrollRevealGroup } from '../components/ui/ScrollRevealGroup';
 import { CountUp } from '../components/ui/CountUp';
 import { HeroStatFloat } from '../components/ui/HeroStatFloat';
-import { SEO } from '../components/SEO';
 import { trackEvent } from '../lib/analytics';
+import { ScreenshotCarousel } from '../components/ui/ScreenshotCarousel';
 
 const SETU_GREEN = '#25D366';
 const SETU_GREEN_LIGHT = '#4ADE80';
@@ -234,12 +234,7 @@ export function Setu() {
 
   return (
     <>
-      <SEO
-        title="Setu — WhatsApp Marketing & Automation for Indian Businesses"
-        description="Send campaigns to thousands, automate replies 24/7, manage your team inbox, and close more leads — all on WhatsApp. Starts at ₹999/month."
-        canonical="/solutions/setu"
-      />
-      <script
+<script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
       />
@@ -412,9 +407,9 @@ export function Setu() {
                   <div className="px-4 pb-2 space-y-2">
                     <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#94A3B8' }}>Latest Conversations</p>
                     {[
-                      { name: 'Priya Sharma', msg: "I'd like to know more about your offer 🙌", time: '2m', hot: true },
-                      { name: 'Rahul Gupta', msg: 'Yes, please send me the brochure', time: '8m', hot: true },
-                      { name: 'Anita Nair', msg: 'What are your pricing plans?', time: '15m', hot: false },
+                      { name: 'Aisha Johnson', msg: "I'd like to know more about your offer 🙌", time: '2m', hot: true },
+                      { name: 'Carlos Rivera', msg: 'Yes, please send me the brochure', time: '8m', hot: true },
+                      { name: 'Sophie Chen', msg: 'What are your pricing plans?', time: '15m', hot: false },
                     ].map((c) => (
                       <div key={c.name} className="flex items-center gap-3 rounded-lg border border-white/8 bg-white/4 px-3 py-2.5">
                         <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white flex-shrink-0">
@@ -497,8 +492,42 @@ export function Setu() {
         </div>
       </section>
 
-      {/* ── How It Works ── */}
+      {/* ── Screenshots ── */}
       <section className="py-20 md:py-28 bg-[#0A1628]">
+        <div className="container-main">
+          <div className="text-center mb-12">
+            <p className="label-mono-cyan mb-3">Product Tour</p>
+            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
+              See Setu In Action
+            </h2>
+            <p className="text-slate-200 max-w-xl mx-auto">
+              A real look at the platform — from first setup to live campaigns and lead pipeline.
+            </p>
+          </div>
+          <ScreenshotCarousel
+            accentColor={SETU_GREEN}
+            appUrl="setu.vyaptix.ai"
+            screenshotBg="#f8fafc"
+            screenshots={[
+              {
+                src: '/screenshots/setu/setu-screenshot1.png',
+                caption: 'Guided Onboarding — 8-step checklist gets your team from zero to live in under 30 minutes',
+              },
+              {
+                src: '/screenshots/setu/setu-screenshot2.png',
+                caption: 'Live Dashboard — contacts, active campaigns, hot leads, and messages sent at a glance',
+              },
+              {
+                src: '/screenshots/setu/setu-screenshot3.png',
+                caption: 'Lead Pipeline — Kanban view to track, qualify, and convert WhatsApp leads across stages',
+              },
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* ── How It Works ── */}
+      <section className="py-20 md:py-28 bg-[#050D1A]">
         <div className="container-main">
           <div className="text-center mb-14">
             <p className="label-mono-cyan mb-3">The Process</p>
