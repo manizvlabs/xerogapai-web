@@ -346,7 +346,7 @@ function HeroProductCard({ heroVisible }: { heroVisible: boolean }) {
             }} />
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '5px' }}>
-            <span style={{ fontSize: '10px', color: '#475569' }}>Before: 12 reviews</span>
+            <span style={{ fontSize: '10px', color: '#64748B' }}>Before: 12 reviews</span>
             <span style={{ fontSize: '10px', color: '#22C55E', fontWeight: 600 }}>+3.2× growth</span>
           </div>
         </div>
@@ -1105,7 +1105,7 @@ export function Home() {
             <TestimonialMarquee speed={25} />
           </div>
 
-          <p className="text-center text-xs mt-8" style={{ color: '#475569' }}>
+          <p className="text-center text-xs mt-8" style={{ color: '#64748B' }}>
             *Results are from actual client deployments. Individual outcomes vary based on business size, foot traffic, and usage.
           </p>
         </div>
@@ -1374,7 +1374,7 @@ export function Home() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
-        className="fixed bottom-24 right-6 z-50 group flex items-center gap-3"
+        className="fixed bottom-28 right-6 z-50 group flex items-center gap-3"
       >
         <span
           className="hidden sm:block opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-sm font-semibold text-white px-3 py-1.5 rounded-lg pointer-events-none"

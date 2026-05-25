@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, Star, MessageCircle, BarChart3 } from 'lucide-react';
 import type { ReactNode } from 'react';
@@ -103,7 +104,7 @@ export function Header() {
       <div className="container-main">
         <div className="flex items-center justify-between h-22">
           <Link href="/" className="flex items-center gap-2">
-            <img src="/vyaptix-logo.png" alt="VyaptIX" className="h-10 md:h-12 w-auto" width="160" height="48" />
+            <Image src="/vyaptix-logo.webp" alt="VyaptIX" className="h-10 md:h-12 w-auto" width={160} height={48} priority />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">

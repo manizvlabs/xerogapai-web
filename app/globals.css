@@ -1,8 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --vyaptix-cyan:     #06CEFF;
+  --vyaptix-cyan-10:  rgba(6, 206, 255, 0.10);
+  --vyaptix-cyan-20:  rgba(6, 206, 255, 0.20);
+  --vyaptix-border:   rgba(255, 255, 255, 0.10);
+  --vyaptix-bg2:      rgba(255, 255, 255, 0.05);
+  --vyaptix-muted:    #94A3B8;
+}
 
 @layer base {
   html {
