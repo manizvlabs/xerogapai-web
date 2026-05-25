@@ -116,6 +116,8 @@ export default {
       },
       fontFamily: {
         display: ['Sora', 'sans-serif'],
+        heading: ['Space Grotesk', 'sans-serif'],
+        'space-grotesk': ['Space Grotesk', 'sans-serif'],
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         mono: ['IBM Plex Mono', 'monospace'],
       },
