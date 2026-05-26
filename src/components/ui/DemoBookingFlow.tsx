@@ -97,7 +97,7 @@ export function DemoBookingFlow() {
   };
 
   const handleSubmit = async () => {
-    if (!selectedDate || !selectedTime || !form.fullName || !form.email || !form.goals) return;
+    if (!selectedDate || !selectedTime || !form.fullName || !form.email || !form.phone || !form.goals) return;
     setSubmitting(true);
     setError(null);
     try {
@@ -195,10 +195,10 @@ export function DemoBookingFlow() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
-              { key: 'fullName', label: 'Full Name', placeholder: 'Jordan Williams', required: true },
-              { key: 'email',    label: 'Work Email', placeholder: 'you@company.com', required: true, type: 'email' },
-              { key: 'phone',    label: 'Phone',      placeholder: '+1 (555) 000-0000', required: false },
-              { key: 'company',  label: 'Company',    placeholder: 'Your business',    required: false },
+              { key: 'fullName', label: 'Full Name',     placeholder: 'Your full name',       required: true },
+              { key: 'email',    label: 'Email Address', placeholder: 'you@company.com',       required: true, type: 'email' },
+              { key: 'phone',    label: 'Contact Number', placeholder: '+91 98765 43210',      required: true, type: 'tel' },
+              { key: 'company',  label: 'Company',        placeholder: 'Your business name',  required: false },
             ].map(({ key, label, placeholder, required, type }) => (
               <div key={key}>
                 <label className="block text-white/65 text-xs mb-1.5">
@@ -217,12 +217,12 @@ export function DemoBookingFlow() {
 
           <div>
             <label className="block text-white/65 text-xs mb-1.5">
-              What are you hoping to get from the call? *
+              What would you like to demo? *
             </label>
             <textarea
               value={form.goals}
               onChange={e => setForm(p => ({ ...p, goals: e.target.value }))}
-              placeholder="e.g. I want to automate my Google review collection and understand if AI fits my restaurant chain..."
+              placeholder="e.g. I run a restaurant chain and want to see how the AI Review Generator works. Also curious about WhatsApp automation for follow-ups..."
               rows={3}
               className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2.5 text-white text-sm placeholder:text-white/20 focus:outline-none focus:border-[#06CEFF]/50 transition-colors resize-none"
             />
@@ -232,7 +232,7 @@ export function DemoBookingFlow() {
 
           <button
             onClick={handleSubmit}
-            disabled={submitting || !form.fullName || !form.email || !form.goals}
+            disabled={submitting || !form.fullName || !form.email || !form.phone || !form.goals}
             className="w-full py-3 rounded-xl bg-[#06CEFF] text-[#050D1A] font-semibold text-sm hover:bg-[#06CEFF]/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {submitting

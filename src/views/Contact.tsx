@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
+import { HeroSection } from '../components/blocks/hero-section';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '../components/ui/Accordion';
 import ContactService, { type ContactData } from '../services/contactService';
-import { trackEvent, identifyUser } from '../lib/analytics';
 
 export function Contact() {
   const router = useRouter();
@@ -73,12 +73,6 @@ export function Contact() {
         lead_source: 'Website',
       } as ContactData).catch((err) => console.warn('Supabase backup skipped:', err?.message));
 
-      identifyUser({
-        email: formData.email,
-        name: [formData.firstName, formData.lastName].filter(Boolean).join(' ') || undefined,
-        company: formData.company || undefined,
-      });
-      trackEvent('contact_form_submitted', { source: 'contact_page' });
       router.replace('/thank-you');
     } catch (error: unknown) {
       console.error('Form submission error:', error);
@@ -105,26 +99,10 @@ export function Contact() {
         </div>
       </div>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden hero-luxury-bg text-white min-h-[28vh] flex items-center">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-[#06CEFF]/6 blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-[#1A52E0]/10 blur-3xl" />
-        </div>
-        <div className="container-main py-14 md:py-18 relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1
-              className="font-playfair italic font-bold text-white mb-4"
-              style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)', lineHeight: 1.1 }}
-            >
-              Get in Touch
-            </h1>
-            <p className="text-lg text-white/55">
-              No pitch decks, no generic demos — just a real conversation about where AI can help your business.
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title="Get in Touch"
+        description="No pitch decks, no generic demos — just a real conversation about where AI can help your business."
+      />
 
       {/* Form section */}
       <section className="py-16 md:py-24 bg-[#050D1A]">
@@ -387,7 +365,6 @@ export function Contact() {
                 <Link
                   href="/demo"
                   className="inline-flex items-center gap-2 px-5 py-3 font-semibold text-sm rounded-lg bg-white text-[#050D1A] hover:shadow-[0_0_16px_rgba(6,206,255,0.3)] transition-all"
-                  onClick={() => trackEvent('cta_clicked', { label: 'Book a Call', destination: '/demo', page: '/contact' })}
                 >
                   Book a Call <ArrowRight className="w-4 h-4" />
                 </Link>

@@ -4,13 +4,9 @@ import { Demo } from '@/src/views/Demo';
 export const metadata: Metadata = {
   title: 'Book a Demo — VyaptIX',
   description:
-    'Schedule a 15-minute intro call with the VyaptIX team. See AI Review Generator and AgentMitra in action — no fluff, just real answers.',
+    'Schedule a 30-minute discovery call with the VyaptIX team. No pitch decks — real answers about where AI can remove friction in your business.',
   alternates: { canonical: 'https://vyaptix.com/demo' },
-  openGraph: {
-    title: 'Book a Demo — VyaptIX',
-    description: 'Schedule a 15-minute intro call with the VyaptIX team.',
-    url: 'https://vyaptix.com/demo',
-  },
+  robots: { index: false, follow: false },
 };
 
 export default function DemoPage() {

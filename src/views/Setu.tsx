@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
-  MessageCircle,
   Send,
   Inbox,
   Users,
@@ -34,8 +33,7 @@ import {
 } from '../components/ui/Accordion';
 import { ScrollRevealGroup } from '../components/ui/ScrollRevealGroup';
 import { CountUp } from '../components/ui/CountUp';
-import { HeroStatFloat } from '../components/ui/HeroStatFloat';
-import { trackEvent } from '../lib/analytics';
+import { HeroSection } from '../components/blocks/hero-section';
 import { ScreenshotCarousel } from '../components/ui/ScreenshotCarousel';
 
 const SETU_GREEN = '#25D366';
@@ -167,7 +165,7 @@ const softwareJsonLd = {
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web',
   url: 'https://setu.vyaptix.ai',
-  description: 'WhatsApp marketing platform for Indian businesses — broadcast campaigns, AI chatbot, shared team inbox, lead pipeline, and analytics in one place.',
+  description: 'WhatsApp marketing platform for business teams — broadcast campaigns, AI chatbot, shared team inbox, lead pipeline, and analytics. 98% open rate. Live in 2 minutes.',
   offers: {
     '@type': 'Offer',
     price: '999',
@@ -191,35 +189,9 @@ const faqJsonLd = {
   })),
 };
 
-function WordStagger({ text, startDelay = 0, visible }: { text: string; startDelay?: number; visible: boolean }) {
-  return (
-    <>
-      {text.split(' ').map((word, i) => (
-        <span
-          key={i}
-          className="inline-block mr-[0.25em] transition-all duration-500"
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(20px)',
-            transitionDelay: `${startDelay + i * 70}ms`,
-          }}
-        >
-          {word}
-        </span>
-      ))}
-    </>
-  );
-}
-
 export function Setu() {
-  const [heroVisible, setHeroVisible] = useState(false);
   const [stepperVisible, setStepperVisible] = useState(false);
   const stepperRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const t = setTimeout(() => setHeroVisible(true), 120);
-    return () => clearTimeout(t);
-  }, []);
 
   useEffect(() => {
     const el = stepperRef.current;
@@ -256,190 +228,15 @@ export function Setu() {
         </div>
       </div>
 
-      {/* ── Hero ── */}
-      <section className="relative overflow-hidden hero-luxury-bg text-white py-16 md:py-24">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full blur-3xl" style={{ background: 'rgba(37,211,102,0.07)' }} />
-          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: 'rgba(26,82,224,0.10)' }} />
-        </div>
-
-        <div className="hidden lg:block absolute top-12 right-8 z-10">
-          <HeroStatFloat icon="💬" primary="98% Open Rate" secondary="vs 22% email average" floatSpeed="8s" />
-        </div>
-        <div className="hidden lg:block absolute bottom-12 left-8 z-10">
-          <HeroStatFloat icon="⚡" primary="Under 2 minutes" secondary="to launch a campaign" floatSpeed="12s" animationDelay="3s" />
-        </div>
-
-        <div className="container-main relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Copy */}
-            <div>
-              <div
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-6"
-                style={{
-                  background: 'rgba(37,211,102,0.10)',
-                  border: '1px solid rgba(37,211,102,0.25)',
-                  color: SETU_GREEN_LIGHT,
-                  opacity: heroVisible ? 1 : 0,
-                  transition: 'opacity 0.5s',
-                  transitionDelay: '50ms',
-                }}
-              >
-                <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: SETU_GREEN_LIGHT }} />
-                Live Platform · VyaptIX Product 03
-              </div>
-              <h1
-                className="font-playfair italic font-bold text-white mb-6 leading-tight"
-                style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', lineHeight: 1.05 }}
-              >
-                <span className="block">
-                  <WordStagger text="WhatsApp Marketing" visible={heroVisible} startDelay={150} />
-                </span>
-                <span className="block" style={{ color: SETU_GREEN_LIGHT }}>
-                  <WordStagger text="That Scales With Your Business" visible={heroVisible} startDelay={450} />
-                </span>
-              </h1>
-              <p
-                className="text-lg text-slate-100 mb-6"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? 'translateY(0)' : 'translateY(16px)',
-                  transition: 'opacity 0.6s, transform 0.6s',
-                  transitionDelay: '750ms',
-                }}
-              >
-                Send campaigns to thousands, automate replies 24/7, manage your
-                entire team inbox, and close more leads — all on WhatsApp.
-                One platform. Every channel of your customer conversation.
-              </p>
-              <div
-                className="rounded-xl border border-white/10 bg-white/5 p-4 mb-8"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? 'translateY(0)' : 'translateY(16px)',
-                  transition: 'opacity 0.6s, transform 0.6s',
-                  transitionDelay: '900ms',
-                }}
-              >
-                <p className="text-white/85">
-                  <span className="font-semibold text-white">The Reality:</span> WhatsApp has a 98% open rate. Your email marketing gets 22%. Your customers are already on WhatsApp — Setu puts your business there too, at scale.
-                </p>
-              </div>
-              <div
-                className="flex flex-wrap gap-4 mb-8"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? 'translateY(0)' : 'translateY(16px)',
-                  transition: 'opacity 0.6s, transform 0.6s',
-                  transitionDelay: '1050ms',
-                }}
-              >
-                <a
-                  href="https://setu.vyaptix.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 font-semibold rounded-lg hover:scale-[1.03] transition-all"
-                  style={{ background: SETU_GREEN, color: '#050D1A' }}
-                  onClick={() => trackEvent('cta_clicked', { label: 'Start Free — Setu', destination: 'https://setu.vyaptix.ai', page: '/solutions/setu', section: 'hero' })}
-                >
-                  Start Free <ExternalLink className="w-5 h-5" />
-                </a>
-                <Link
-                  href="/demo"
-                  className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all"
-                  onClick={() => trackEvent('cta_clicked', { label: 'Schedule Demo — Setu', destination: '/demo', page: '/solutions/setu', section: 'hero' })}
-                >
-                  Schedule Demo
-                </Link>
-              </div>
-              <div className="flex flex-wrap gap-6 text-sm text-slate-200">
-                <span className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4" style={{ color: SETU_GREEN_LIGHT }} /> Starts at ₹999/month
-                </span>
-                <span className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4" style={{ color: SETU_GREEN_LIGHT }} /> Meta registered provider
-                </span>
-                <span className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4" style={{ color: SETU_GREEN_LIGHT }} /> DPDP Act 2023 compliant
-                </span>
-              </div>
-              <div className="lg:hidden flex gap-3 flex-wrap mt-6">
-                <HeroStatFloat icon="💬" primary="98% Open Rate" secondary="vs 22% email average" floatSpeed="10s" />
-                <HeroStatFloat icon="⚡" primary="Under 2 minutes" secondary="to launch a campaign" floatSpeed="14s" animationDelay="2s" />
-              </div>
-            </div>
-
-            {/* Mockup: WhatsApp-style campaign dashboard */}
-            <div
-              style={{
-                opacity: heroVisible ? 1 : 0,
-                transform: heroVisible ? 'translateX(0)' : 'translateX(32px)',
-                transition: 'opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1)',
-                transitionDelay: '400ms',
-              }}
-            >
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6">
-                <div className="bg-[#050D1A] rounded-xl overflow-hidden">
-                  {/* Mockup header */}
-                  <div className="px-4 py-3 flex items-center gap-3 border-b border-white/10" style={{ background: 'rgba(37,211,102,0.08)' }}>
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: SETU_GREEN }}>
-                      <MessageCircle className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-white text-sm font-semibold">Setu — Campaign Dashboard</p>
-                      <p className="text-xs" style={{ color: SETU_GREEN_LIGHT }}>● LIVE</p>
-                    </div>
-                  </div>
-                  {/* Stats row */}
-                  <div className="grid grid-cols-3 gap-3 p-4">
-                    {[
-                      { label: 'Delivered', value: '4,821', color: SETU_GREEN_LIGHT },
-                      { label: 'Read', value: '4,723', color: '#06CEFF' },
-                      { label: 'Replied', value: '1,094', color: '#FBBF24' },
-                    ].map((s) => (
-                      <div key={s.label} className="rounded-lg border border-white/10 bg-white/5 p-3 text-center">
-                        <p className="text-lg font-bold font-mono text-white">{s.value}</p>
-                        <p className="text-xs mt-0.5" style={{ color: s.color }}>{s.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                  {/* Chat preview */}
-                  <div className="px-4 pb-2 space-y-2">
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#94A3B8' }}>Latest Conversations</p>
-                    {[
-                      { name: 'Aisha Johnson', msg: "I'd like to know more about your offer 🙌", time: '2m', hot: true },
-                      { name: 'Carlos Rivera', msg: 'Yes, please send me the brochure', time: '8m', hot: true },
-                      { name: 'Sophie Chen', msg: 'What are your pricing plans?', time: '15m', hot: false },
-                    ].map((c) => (
-                      <div key={c.name} className="flex items-center gap-3 rounded-lg border border-white/8 bg-white/4 px-3 py-2.5">
-                        <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white flex-shrink-0">
-                          {c.name[0]}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-white truncate">{c.name}</p>
-                          <p className="text-xs text-slate-400 truncate">{c.msg}</p>
-                        </div>
-                        <div className="flex flex-col items-end gap-1">
-                          <p className="text-xs text-slate-500">{c.time} ago</p>
-                          {c.hot && (
-                            <span className="text-[10px] px-1.5 py-0.5 rounded font-bold" style={{ background: 'rgba(251,191,36,0.15)', color: '#FBBF24' }}>HOT</span>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="px-4 pb-4 mt-3">
-                    <div className="flex items-center gap-2 p-3 rounded-lg" style={{ background: 'rgba(37,211,102,0.08)', border: `1px solid rgba(37,211,102,0.2)` }}>
-                      <Clock className="w-4 h-4 flex-shrink-0" style={{ color: SETU_GREEN_LIGHT }} />
-                      <p className="text-xs" style={{ color: SETU_GREEN_LIGHT }}>Campaign launched in <strong>1 min 43 sec</strong></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        badge={{ text: 'Live Platform', dot: 'green' }}
+        title="WhatsApp Marketing That Scales With Your Business"
+        description="Send campaigns to thousands, automate replies 24/7, manage your entire team inbox, and close more leads — all on WhatsApp. One platform. Every channel of your customer conversation."
+        actions={[
+          { text: 'Start Free', href: 'https://setu.vyaptix.ai', variant: 'primary', external: true },
+          { text: 'Schedule Demo', href: '/demo', variant: 'secondary' },
+        ]}
+      />
 
       {/* ── Stat bar ── */}
       <section className="py-12 bg-[#0A1628] border-y border-white/8">
@@ -462,7 +259,7 @@ export function Setu() {
         <div className="container-main">
           <div className="text-center mb-14">
             <p className="label-mono-cyan mb-3">Platform Capabilities</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
               Everything Your Business Needs on WhatsApp
             </h2>
             <p className="text-slate-200 max-w-xl mx-auto">
@@ -497,7 +294,7 @@ export function Setu() {
         <div className="container-main">
           <div className="text-center mb-12">
             <p className="label-mono-cyan mb-3">Product Tour</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
               See Setu In Action
             </h2>
             <p className="text-slate-200 max-w-xl mx-auto">
@@ -531,7 +328,7 @@ export function Setu() {
         <div className="container-main">
           <div className="text-center mb-14">
             <p className="label-mono-cyan mb-3">The Process</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
               From Setup to First Campaign in 30 Minutes
             </h2>
             <p className="text-slate-200 max-w-xl mx-auto">
@@ -576,7 +373,7 @@ export function Setu() {
         <div className="container-main">
           <div className="text-center mb-14">
             <p className="label-mono-cyan mb-3">Industries</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
               18+ Industries. One Platform.
             </h2>
             <p className="text-slate-200 max-w-xl mx-auto">
@@ -613,7 +410,7 @@ export function Setu() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="label-mono-cyan mb-4">Access the Platform</p>
-              <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
+              <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
                 Start Reaching Customers on WhatsApp Today
               </h2>
               <p className="text-lg text-slate-100 mb-6">
@@ -642,7 +439,6 @@ export function Setu() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-lg hover:scale-[1.03] transition-all"
                   style={{ background: SETU_GREEN, color: '#050D1A' }}
-                  onClick={() => trackEvent('cta_clicked', { label: 'Go to Setu Platform', destination: 'https://setu.vyaptix.ai', page: '/solutions/setu', section: 'platform_access' })}
                 >
                   Go to Platform <ExternalLink className="w-4 h-4" />
                 </a>
@@ -650,7 +446,6 @@ export function Setu() {
                   href="/contact"
                   className="inline-flex items-center gap-2 px-6 py-3 font-semibold border border-white/20 rounded-lg hover:bg-white/10 transition-all"
                   style={{ color: SETU_GREEN_LIGHT }}
-                  onClick={() => trackEvent('cta_clicked', { label: 'Talk to Sales — Setu', destination: '/contact', page: '/solutions/setu', section: 'platform_access' })}
                 >
                   Talk to Sales <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -703,7 +498,7 @@ export function Setu() {
         <div className="container-main">
           <div className="text-center mb-12">
             <p className="label-mono-cyan mb-3">FAQ</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
               Frequently Asked Questions
             </h2>
             <p className="text-slate-200">Everything you need to know before getting started.</p>
@@ -733,7 +528,7 @@ export function Setu() {
           <div className="w-[600px] h-[600px] rounded-full blur-3xl animate-glow-pulse" style={{ background: 'rgba(37,211,102,0.08)' }} />
         </div>
         <div className="container-main relative text-center max-w-3xl mx-auto">
-          <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.6rem)', lineHeight: 1.1 }}>
+          <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.6rem)', lineHeight: 1.1 }}>
             Ready to Turn WhatsApp Into Your{' '}
             <span style={{ color: SETU_GREEN_LIGHT }}>Growth Engine?</span>
           </h2>
@@ -748,14 +543,12 @@ export function Setu() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-lg hover:scale-[1.03] transition-all"
               style={{ background: SETU_GREEN, color: '#050D1A' }}
-              onClick={() => trackEvent('cta_clicked', { label: 'Get Started — Setu Final CTA', destination: 'https://setu.vyaptix.ai', page: '/solutions/setu', section: 'final_cta' })}
             >
               Get Started — ₹999/month <ExternalLink className="w-5 h-5" />
             </a>
             <Link
               href="/demo"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all"
-              onClick={() => trackEvent('cta_clicked', { label: 'Schedule Demo — Setu Final CTA', destination: '/demo', page: '/solutions/setu', section: 'final_cta' })}
             >
               Schedule Demo
             </Link>

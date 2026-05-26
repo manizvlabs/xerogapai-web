@@ -1,8 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ── launchui hero animations ─────────────────────────────────── */
+@keyframes appear {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes appear-zoom {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-appear {
+  animation: appear 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-appear-zoom {
+  animation: appear-zoom 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* stagger delay utilities used by hero */
+.delay-100  { animation-delay: 100ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-700  { animation-delay: 700ms; }
+.delay-1000 { animation-delay: 1000ms; }
+
+/* hero fade-out at bottom edge */
+.fade-bottom {
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+/* max-w-container — consistent hero content width */
+.max-w-container {
+  max-width: var(--max-w-container, 80rem);
+}
 
 :root {
   --vyaptix-cyan:     #06CEFF;
@@ -11,6 +47,11 @@
   --vyaptix-border:   rgba(255, 255, 255, 0.10);
   --vyaptix-bg2:      rgba(255, 255, 255, 0.05);
   --vyaptix-muted:    #94A3B8;
+  /* launchui hero glow tokens — mapped to VyaptIX brand */
+  --brand:            6 206 255;   /* #06CEFF as RGB for hsla() */
+  --brand-foreground: 26 82 224;   /* #1A52E0 as RGB for hsla() */
+  /* hero utilities */
+  --max-w-container:  80rem;
 }
 
 @layer base {
@@ -24,9 +65,8 @@
     color: #ffffff;
   }
 
-  /* Sora for all headings (Playfair applied via .font-playfair utility) */
-  h1, h2, h3 {
-    font-family: 'Sora', sans-serif;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
 }
 
@@ -149,7 +189,7 @@
 
   /* ── Mono label — IBM Plex Mono section tags ── */
   .label-mono {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
@@ -355,7 +395,7 @@
   /* ── Animated pulse badge (for AgentMitra early access) ── */
   .pulse-badge {
     @apply relative flex items-center gap-2;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     font-weight: 500;
     text-transform: uppercase;
@@ -412,7 +452,7 @@
 
   /* ── Hero display type ── */
   .hero-headline {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 800;
     font-size: clamp(2.75rem, 6.5vw, 5.5rem);
     line-height: 0.92;
@@ -421,7 +461,7 @@
   }
 
   .hero-headline-lg {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 800;
     font-size: clamp(3rem, 7vw, 6rem);
     line-height: 0.92;
@@ -466,7 +506,7 @@
 
   /* Stat display — IBM Plex Mono oversized numbers */
   .stat-number {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
     font-size: clamp(2.5rem, 5vw, 4rem);
     line-height: 1;
@@ -489,7 +529,7 @@
 
   /* ── Stat figure — IBM Plex Mono oversized numbers for light sections ── */
   .stat-figure {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 700;
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     line-height: 1;
@@ -543,12 +583,12 @@
 /* ── Luxury Dark AI design system ── */
 
 .font-playfair {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
   letter-spacing: -0.02em;
 }
 
 .font-space-grotesk {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   letter-spacing: -0.02em;
 }
 
@@ -615,7 +655,7 @@
 
 /* ── Hero typography — cinematic scale ── */
 .hero-display {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 800;
   line-height: 1.05;
@@ -624,7 +664,7 @@
 
 /* ── Section headline ── */
 .section-headline {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(1.8rem, 3.5vw, 2.75rem);
   font-weight: 700;
   line-height: 1.15;

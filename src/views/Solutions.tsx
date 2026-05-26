@@ -1,79 +1,71 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
   Star, Users, MessageCircle, BarChart3,
-  ArrowRight, ExternalLink, CheckCircle,
+  ArrowRight, ExternalLink,
 } from 'lucide-react';
-import { trackEvent } from '../lib/analytics';
+import { Breadcrumb } from '../components/ui/Breadcrumb';
 
-/* ─── Product data ─────────────────────────────────────────────── */
+/* ─── Product directory data ────────────────────────────────────── */
 
 const PRODUCTS = [
   {
     id: 'ai-review',
     name: 'AI Review Generator',
     tagline: 'Authentic Google reviews in under 20 seconds.',
-    description:
-      'Customers rate their experience, AI writes the review, they post it in one tap. No chasing, no awkward asks — just a steady stream of real reviews.',
     accentColor: '#06CEFF',
     Icon: Star,
-    statusLabel: 'Live — Free to try',
-    statusClass: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
-    dotClass: 'bg-emerald-400',
-    stat: { value: '4.7★', label: 'average rating lift' },
-    features: ['QR code + shareable link', 'AI-written review text', 'Real-time analytics dashboard', 'Google Maps ranking boost'],
-    primaryCta: { label: 'Try Free', href: 'https://reviews.vyaptix.ai', external: true },
-    secondaryCta: { label: 'Learn More', href: '/solutions/ai-review-generation', external: false },
-  },
-  {
-    id: 'agent-mitra',
-    name: 'AgentMitra',
-    tagline: 'One workspace for your entire service team.',
-    description:
-      'Replace scattered spreadsheets and WhatsApp threads with a role-based platform that keeps every agent, client, and workflow in sync.',
-    accentColor: '#A855F7',
-    Icon: Users,
-    statusLabel: 'Early Access',
-    statusClass: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
-    dotClass: 'bg-amber-400',
-    stat: { value: '2 days', label: 'average onboarding time' },
-    features: ['Role-based access control', 'Instant client search', 'Unified agent workspace', 'Live status tracking'],
-    primaryCta: { label: 'Learn More', href: '/agent-mitra', external: false },
-    secondaryCta: { label: 'Request Access', href: '/contact', external: false },
+    statusLabel: 'Live',
+    statusColor: '#4ADE80',
+    statusBg: 'rgba(74,222,128,0.10)',
+    statusBorder: 'rgba(74,222,128,0.22)',
+    href: '/solutions/ai-review-generation',
+    externalHref: 'https://reviews.vyaptix.ai',
+    externalLabel: 'Try Free',
   },
   {
     id: 'setu',
     name: 'Setu',
     tagline: 'WhatsApp marketing that scales with your business.',
-    description:
-      'Send campaigns to thousands, automate replies 24/7, manage your team inbox, and close more leads — all without leaving WhatsApp.',
     accentColor: '#25D366',
     Icon: MessageCircle,
-    statusLabel: 'Live — From ₹999/mo',
-    statusClass: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
-    dotClass: 'bg-emerald-400',
-    stat: { value: '98%', label: 'WhatsApp message open rate' },
-    features: ['Segmented broadcast campaigns', '24/7 AI chatbot', 'Shared team inbox', 'Lead pipeline & Kanban'],
-    primaryCta: { label: 'Start Free', href: 'https://setu.vyaptix.ai', external: true },
-    secondaryCta: { label: 'Learn More', href: '/solutions/setu', external: false },
+    statusLabel: 'Live',
+    statusColor: '#4ADE80',
+    statusBg: 'rgba(74,222,128,0.10)',
+    statusBorder: 'rgba(74,222,128,0.22)',
+    href: '/solutions/setu',
+    externalHref: 'https://setu.vyaptix.ai',
+    externalLabel: 'Start Free',
+  },
+  {
+    id: 'agent-mitra',
+    name: 'AgentMitra',
+    tagline: 'One workspace for your entire service team.',
+    accentColor: '#A855F7',
+    Icon: Users,
+    statusLabel: 'Early Access',
+    statusColor: '#FFB800',
+    statusBg: 'rgba(255,184,0,0.10)',
+    statusBorder: 'rgba(255,184,0,0.22)',
+    href: '/contact',
+    externalHref: null,
+    externalLabel: null,
   },
   {
     id: 'banklens',
     name: 'BankLens',
     tagline: 'AI credit decisioning for NBFCs in under 5 minutes.',
-    description:
-      '220+ financial signals, 14-signal fraud detection, and a structured APPROVE / REVIEW / REJECT decision — in under 5 minutes. Built for India\'s lenders.',
     accentColor: '#F59E0B',
     Icon: BarChart3,
-    statusLabel: 'Live — From ₹12/report',
-    statusClass: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
-    dotClass: 'bg-emerald-400',
-    stat: { value: '220+', label: 'financial signals per statement' },
-    features: ['40+ Indian banks supported', 'ML-powered credit scoring', '14-signal fraud detection', 'Audit-ready CAM reports'],
-    primaryCta: { label: 'Open Platform', href: 'https://banklens.vyaptix.ai', external: true },
-    secondaryCta: { label: 'Learn More', href: '/solutions/banklens', external: false },
+    statusLabel: 'Live',
+    statusColor: '#4ADE80',
+    statusBg: 'rgba(74,222,128,0.10)',
+    statusBorder: 'rgba(74,222,128,0.22)',
+    href: '/solutions/banklens',
+    externalHref: 'https://banklens.vyaptix.ai',
+    externalLabel: 'Open Platform',
   },
 ];
 
@@ -92,7 +84,7 @@ const FITS = [
     persona: 'Service team manager',
     problem: 'Operations scattered across WhatsApp & spreadsheets',
     product: 'AgentMitra',
-    href: '/agent-mitra',
+    href: '/contact',
     accentColor: '#A855F7',
     Icon: Users,
   },
@@ -132,268 +124,156 @@ function useInView(threshold = 0.12) {
   return [ref, visible] as const;
 }
 
-/* ─── Product card ──────────────────────────────────────────────── */
-
-function ProductCard({ product, index, visible }: {
-  product: typeof PRODUCTS[0];
-  index: number;
-  visible: boolean;
-}) {
-  const [hovered, setHovered] = useState(false);
-  const { name, tagline, description, accentColor, Icon, statusLabel, statusClass, dotClass, stat, features, primaryCta, secondaryCta } = product;
-
-  return (
-    <div
-      className="group relative rounded-2xl border overflow-hidden transition-all duration-500"
-      style={{
-        borderColor: hovered ? `${accentColor}40` : 'rgba(255,255,255,0.07)',
-        background: hovered ? `rgba(10,22,40,0.95)` : 'rgba(10,22,40,0.7)',
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(32px)',
-        transition: `opacity 0.6s cubic-bezier(0.4,0,0.2,1) ${index * 100}ms, transform 0.6s cubic-bezier(0.4,0,0.2,1) ${index * 100}ms, border-color 0.3s, background 0.3s`,
-        boxShadow: hovered ? `0 0 48px ${accentColor}14` : undefined,
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Accent top bar */}
-      <div
-        className="h-0.5 w-full transition-opacity duration-300"
-        style={{ background: `linear-gradient(90deg, ${accentColor}, transparent)`, opacity: hovered ? 1 : 0.4 }}
-      />
-
-      {/* Corner squares on hover — 21st.dev Dark Grid pattern */}
-      {hovered && (
-        <>
-          <div className="absolute -left-1 -top-1 h-2.5 w-2.5 z-10" style={{ background: accentColor }} />
-          <div className="absolute -right-1 -top-1 h-2.5 w-2.5 z-10" style={{ background: accentColor }} />
-          <div className="absolute -left-1 -bottom-1 h-2.5 w-2.5 z-10" style={{ background: accentColor }} />
-          <div className="absolute -right-1 -bottom-1 h-2.5 w-2.5 z-10" style={{ background: accentColor }} />
-        </>
-      )}
-
-      <div className="p-7 flex flex-col gap-5 h-full">
-        {/* Header row */}
-        <div className="flex items-start justify-between gap-4">
-          <div
-            className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-300"
-            style={{ background: `${accentColor}14`, border: `1px solid ${accentColor}30` }}
-          >
-            <Icon className="w-5 h-5" style={{ color: accentColor }} />
-          </div>
-          <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-semibold ${statusClass}`}>
-            <span className={`w-1.5 h-1.5 rounded-full animate-pulse ${dotClass}`} />
-            {statusLabel}
-          </span>
-        </div>
-
-        {/* Name + tagline */}
-        <div>
-          <h2 className="font-playfair italic font-bold text-white text-xl mb-1">{name}</h2>
-          <p className="text-sm font-medium" style={{ color: accentColor }}>{tagline}</p>
-        </div>
-
-        {/* Description */}
-        <p className="text-sm text-slate-300 leading-relaxed">{description}</p>
-
-        {/* Key stat */}
-        <div
-          className="flex items-center gap-3 px-4 py-3 rounded-xl"
-          style={{ background: `${accentColor}08`, border: `1px solid ${accentColor}18` }}
-        >
-          <span className="text-2xl font-bold" style={{ color: accentColor }}>{stat.value}</span>
-          <span className="text-xs text-slate-400">{stat.label}</span>
-        </div>
-
-        {/* Features */}
-        <ul className="grid grid-cols-1 gap-2">
-          {features.map((f) => (
-            <li key={f} className="flex items-center gap-2 text-sm text-slate-300">
-              <CheckCircle className="w-3.5 h-3.5 flex-shrink-0" style={{ color: accentColor }} />
-              {f}
-            </li>
-          ))}
-        </ul>
-
-        {/* CTAs */}
-        <div className="flex flex-wrap gap-3 mt-auto pt-2">
-          {primaryCta.external ? (
-            <a
-              href={primaryCta.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:scale-[1.02]"
-              style={{ background: accentColor, color: '#050D1A' }}
-              onClick={() => trackEvent('cta_clicked', { label: `${primaryCta.label} — ${name}`, page: '/solutions' })}
-            >
-              {primaryCta.label} <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          ) : (
-            <Link
-              href={primaryCta.href}
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:scale-[1.02]"
-              style={{ background: accentColor, color: '#050D1A' }}
-              onClick={() => trackEvent('cta_clicked', { label: `${primaryCta.label} — ${name}`, page: '/solutions' })}
-            >
-              {primaryCta.label} <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          )}
-          {secondaryCta.external ? (
-            <a
-              href={secondaryCta.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-semibold rounded-xl border transition-all duration-200 hover:bg-white/5"
-              style={{ color: accentColor, borderColor: `${accentColor}30` }}
-              onClick={() => trackEvent('cta_clicked', { label: `${secondaryCta.label} — ${name}`, page: '/solutions' })}
-            >
-              {secondaryCta.label} <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          ) : (
-            <Link
-              href={secondaryCta.href}
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-semibold rounded-xl border transition-all duration-200 hover:bg-white/5"
-              style={{ color: accentColor, borderColor: `${accentColor}30` }}
-              onClick={() => trackEvent('cta_clicked', { label: `${secondaryCta.label} — ${name}`, page: '/solutions' })}
-            >
-              {secondaryCta.label} <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
+const sgHeading: React.CSSProperties = {
+  fontFamily: "'Space Grotesk', sans-serif",
+  letterSpacing: '-0.025em',
+};
 
 /* ─── Main view ─────────────────────────────────────────────────── */
 
 export function Solutions() {
-  const [heroVisible, setHeroVisible] = useState(false);
-  const [cardsRef, cardsVisible] = useInView();
+  const [listRef, listVisible] = useInView();
   const [fitsRef, fitsVisible] = useInView();
-
-  useEffect(() => {
-    const t = setTimeout(() => setHeroVisible(true), 120);
-    return () => clearTimeout(t);
-  }, []);
 
   return (
     <>
-
-{/* ── Hero ── */}
-      <section className="relative overflow-hidden hero-luxury-bg text-white py-28 md:py-36">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-60 -right-60 w-[700px] h-[700px] rounded-full bg-[#06CEFF]/6 blur-3xl" />
-          <div className="absolute -bottom-60 -left-60 w-[600px] h-[600px] rounded-full bg-[#1A52E0]/10 blur-3xl" />
+      {/* Breadcrumb */}
+      <div className="bg-[#050D1A] border-b border-white/10">
+        <div className="container-main py-3">
+          <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Products' }]} />
         </div>
-        <div className="container-main relative text-center max-w-3xl mx-auto">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#06CEFF]/25 bg-[#06CEFF]/8 text-[#06CEFF] text-xs font-mono uppercase tracking-widest mb-8"
-            style={{ opacity: heroVisible ? 1 : 0, transition: 'opacity 0.5s', transitionDelay: '50ms' }}
+      </div>
+
+      {/* ── Page header ── */}
+      <section className="py-16 md:py-20 bg-[#050D1A]">
+        <div className="container-main max-w-2xl">
+          <span
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-[0.15em] uppercase mb-5 border"
+            style={{ color: '#06CEFF', background: 'rgba(6,206,255,0.08)', borderColor: 'rgba(6,206,255,0.28)' }}
           >
             VyaptIX Products
-          </div>
+          </span>
           <h1
-            className="font-playfair italic font-bold text-white mb-6 leading-tight"
-            style={{
-              fontSize: 'clamp(2.6rem, 6vw, 5rem)',
-              lineHeight: 1.05,
-              opacity: heroVisible ? 1 : 0,
-              transform: heroVisible ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'opacity 0.7s cubic-bezier(0.4,0,0.2,1) 200ms, transform 0.7s cubic-bezier(0.4,0,0.2,1) 200ms',
-            }}
+            className="font-bold text-white mb-4"
+            style={{ ...sgHeading, fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.1 }}
           >
-            Four Products.{' '}
-            <span style={{ color: '#06CEFF' }}>One Goal.</span>
+            Four products.{' '}
+            <span style={{ color: '#06CEFF' }}>Each solves one specific problem.</span>
           </h1>
-          <p
-            className="text-lg text-white/55 max-w-2xl mx-auto mb-10"
-            style={{
-              opacity: heroVisible ? 1 : 0,
-              transform: heroVisible ? 'translateY(0)' : 'translateY(16px)',
-              transition: 'opacity 0.6s cubic-bezier(0.4,0,0.2,1) 500ms, transform 0.6s cubic-bezier(0.4,0,0.2,1) 500ms',
-            }}
-          >
-            Remove real friction from your business. Every VyaptIX product tackles a specific, painful problem — no hype, no bloat, just tools that work.
+          <p className="text-base text-slate-400 leading-relaxed max-w-xl">
+            Pick the one that fits your situation, or scroll down to find it by use case.
           </p>
-
-          {/* Product name strip */}
-          <div
-            className="flex flex-wrap justify-center gap-3"
-            style={{
-              opacity: heroVisible ? 1 : 0,
-              transition: 'opacity 0.6s 700ms',
-            }}
-          >
-            {PRODUCTS.map((p) => (
-              <span
-                key={p.id}
-                className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border"
-                style={{ color: p.accentColor, borderColor: `${p.accentColor}30`, background: `${p.accentColor}0A` }}
-              >
-                <p.Icon className="w-3 h-3" />
-                {p.name}
-              </span>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* ── 4-product grid ── */}
-      <section className="py-20 md:py-28 bg-[#0A1628]">
+      {/* ── Thin product directory ── */}
+      <section className="pb-16 bg-[#050D1A]">
         <div className="container-main">
-          <div className="text-center mb-14">
-            <p className="label-mono-cyan mb-3">The Full Suite</p>
-            <h2
-              className="font-playfair italic font-bold text-white"
-              style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', lineHeight: 1.1 }}
-            >
-              Pick the product that fits your problem
-            </h2>
-          </div>
-
           <div
-            ref={cardsRef}
-            className="grid md:grid-cols-2 gap-6"
+            ref={listRef as React.RefObject<HTMLDivElement>}
+            className="flex flex-col divide-y"
+            style={{ borderColor: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '1rem', overflow: 'hidden' }}
           >
-            {PRODUCTS.map((product, i) => (
-              <ProductCard key={product.id} product={product} index={i} visible={cardsVisible} />
+            {PRODUCTS.map((p, i) => (
+              <div
+                key={p.id}
+                className="flex flex-col sm:flex-row sm:items-center gap-4 px-6 py-5 bg-[#0A1628] first:rounded-t-2xl last:rounded-b-2xl"
+                style={{
+                  opacity: listVisible ? 1 : 0,
+                  transform: listVisible ? 'translateY(0)' : 'translateY(16px)',
+                  transition: `opacity 0.5s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms, transform 0.5s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms`,
+                  borderBottom: i < PRODUCTS.length - 1 ? '1px solid rgba(255,255,255,0.07)' : undefined,
+                }}
+              >
+                {/* Icon */}
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: `${p.accentColor}14`, border: `1px solid ${p.accentColor}28` }}
+                >
+                  <p.Icon className="w-5 h-5" style={{ color: p.accentColor }} />
+                </div>
+
+                {/* Name + tagline */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2.5 mb-0.5 flex-wrap">
+                    <span
+                      className="font-semibold text-white text-sm"
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                    >
+                      {p.name}
+                    </span>
+                    <span
+                      className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider"
+                      style={{ color: p.statusColor, background: p.statusBg, border: `1px solid ${p.statusBorder}` }}
+                    >
+                      {p.statusLabel}
+                    </span>
+                  </div>
+                  <p className="text-sm text-slate-400">{p.tagline}</p>
+                </div>
+
+                {/* Actions */}
+                <div className="flex items-center gap-2.5 flex-shrink-0">
+                  {p.externalHref && (
+                    <a
+                      href={p.externalHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 hover:opacity-80"
+                      style={{ background: `${p.accentColor}18`, border: `1px solid ${p.accentColor}30`, color: p.accentColor }}
+                    >
+                      {p.externalLabel} <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
+                  <Link
+                    href={p.href}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 border border-white/10 transition-all duration-200 hover:text-white hover:border-white/25"
+                  >
+                    Explore <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── Pick your fit ── */}
-      <section className="py-20 md:py-28 bg-[#050D1A] border-y border-white/6">
+      <section className="py-20 md:py-28 bg-[#0A1628] border-t border-white/6">
         <div className="container-main">
-          <div className="text-center mb-12">
-            <p className="label-mono-cyan mb-3">Not sure where to start?</p>
-            <h2
-              className="font-playfair italic font-bold text-white mb-4"
-              style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', lineHeight: 1.15 }}
+          <div className="text-center mb-12 flex flex-col items-center">
+            <span
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-[0.15em] uppercase mb-5 border"
+              style={{ color: '#06CEFF', background: 'rgba(6,206,255,0.08)', borderColor: 'rgba(6,206,255,0.28)' }}
             >
-              Find the right product for you
+              Not sure where to start?
+            </span>
+            <h2
+              className="font-bold text-white mb-4"
+              style={{ ...sgHeading, fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', lineHeight: 1.15 }}
+            >
+              Find the right product for your situation
             </h2>
             <p className="text-slate-400 text-sm max-w-xl mx-auto">
-              Each product solves a different problem. Match your situation below.
+              Each product solves a different problem. Match your role below.
             </p>
           </div>
 
           <div
-            ref={fitsRef}
+            ref={fitsRef as React.RefObject<HTMLDivElement>}
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
           >
             {FITS.map((fit, i) => (
               <Link
                 key={fit.persona}
                 href={fit.href}
-                className="group flex flex-col gap-4 p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02]"
+                className="group flex flex-col gap-4 p-6 rounded-2xl border transition-all duration-300"
                 style={{
                   borderColor: 'rgba(255,255,255,0.07)',
                   background: 'rgba(10,22,40,0.6)',
                   opacity: fitsVisible ? 1 : 0,
                   transform: fitsVisible ? 'translateY(0)' : 'translateY(24px)',
-                  transition: `opacity 0.55s cubic-bezier(0.4,0,0.2,1) ${i * 80}ms, transform 0.55s cubic-bezier(0.4,0,0.2,1) ${i * 80}ms, border-color 0.2s, scale 0.2s`,
+                  transition: `opacity 0.55s cubic-bezier(0.4,0,0.2,1) ${i * 80}ms, transform 0.55s cubic-bezier(0.4,0,0.2,1) ${i * 80}ms, border-color 0.2s`,
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.borderColor = `${fit.accentColor}35`;
@@ -403,7 +283,6 @@ export function Solutions() {
                   (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.07)';
                   (e.currentTarget as HTMLElement).style.boxShadow = '';
                 }}
-                onClick={() => trackEvent('cta_clicked', { label: `Pick Your Fit — ${fit.product}`, page: '/solutions' })}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center"
@@ -427,11 +306,7 @@ export function Solutions() {
 
           <p className="text-center text-sm text-slate-400 mt-10">
             Still not sure?{' '}
-            <Link
-              href="/contact"
-              className="text-[#06CEFF] font-semibold hover:underline"
-              onClick={() => trackEvent('cta_clicked', { label: 'Book a call — solutions', page: '/solutions' })}
-            >
+            <Link href="/contact" className="text-[#06CEFF] font-semibold hover:underline">
               Book a 30-minute call
             </Link>{' '}
             and we'll tell you exactly where to start.
@@ -440,38 +315,35 @@ export function Solutions() {
       </section>
 
       {/* ── Final CTA ── */}
-      <section className="relative py-24 md:py-32 bg-[#0A1628] overflow-hidden">
+      <section className="relative py-24 md:py-32 bg-[#050D1A] overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[700px] h-[700px] rounded-full bg-[#06CEFF]/5 blur-3xl animate-glow-pulse" />
+          <div className="w-[600px] h-[600px] rounded-full bg-[#06CEFF]/5 blur-3xl" />
         </div>
-        <div className="container-main relative text-center max-w-3xl mx-auto">
-          <p className="label-mono-cyan mb-5">Ready to See These in Action?</p>
+        <div className="container-main relative text-center max-w-2xl mx-auto">
           <h2
-            className="font-playfair italic font-bold text-white mb-5"
-            style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)', lineHeight: 1.1 }}
+            className="font-bold text-white mb-4"
+            style={{ ...sgHeading, fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.1 }}
           >
             Start with one.{' '}
             <span style={{ color: '#06CEFF' }}>Scale with all four.</span>
           </h2>
-          <p className="text-slate-300 mb-10 max-w-xl mx-auto">
-            Every product is live and built for real business teams. Try one free, or book a demo and we'll walk you through the full suite.
+          <p className="text-slate-400 mb-10 max-w-lg mx-auto text-sm leading-relaxed">
+            Every product is live and built for real business teams. Try one free, or book a call and we'll walk you through exactly what fits your workflow.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="https://reviews.vyaptix.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold text-[#050D1A] bg-white rounded-xl hover:scale-[1.03] hover:shadow-[0_0_28px_rgba(6,206,255,0.3)] transition-all"
-              onClick={() => trackEvent('cta_clicked', { label: 'Try AI Review Generator Free — CTA', page: '/solutions' })}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 font-semibold text-[#050D1A] bg-white rounded-xl hover:shadow-[0_0_28px_rgba(6,206,255,0.3)] transition-all text-sm"
             >
               Try AI Review Generator Free <ExternalLink className="w-4 h-4" />
             </a>
             <Link
-              href="/demo"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold text-white border border-white/20 rounded-xl hover:bg-white/8 transition-all"
-              onClick={() => trackEvent('cta_clicked', { label: 'Book a Demo — CTA', page: '/solutions' })}
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 font-semibold text-white border border-white/20 rounded-xl hover:bg-white/5 transition-all text-sm"
             >
-              Book a Demo <ArrowRight className="w-4 h-4" />
+              Book a Discovery Call <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

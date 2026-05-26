@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Target,
@@ -19,14 +18,15 @@ import {
 import { ScrollRevealGroup } from '../components/ui/ScrollRevealGroup';
 import { CountUp } from '../components/ui/CountUp';
 import { TimelineHorizontal } from '../components/ui/TimelineHorizontal';
-import { trackEvent } from '../lib/analytics';
+import { Breadcrumb } from '../components/ui/Breadcrumb';
+import { HeroSection } from '../components/blocks/hero-section';
 
 const team = [
   {
     name: 'Ajeet Singh',
     title: 'Co-Founder & CEO',
     bio: 'Drives product vision and customer success. Passionate about making AI automation practical and accessible for every business owner.',
-    linkedin: 'https://www.linkedin.com/in/ajeetsinghvyaptix/',
+    linkedin: 'https://www.linkedin.com/in/ajeet-singh-vyaptix/',
     initials: 'AS',
   },
   {
@@ -89,88 +89,22 @@ const values = [
   },
 ];
 
-function WordStagger({ text, startDelay = 0, visible, className = '' }: { text: string; startDelay?: number; visible: boolean; className?: string }) {
-  return (
-    <span className={className}>
-      {text.split(' ').map((word, i) => (
-        <span
-          key={i}
-          className="inline-block mr-[0.25em] transition-all duration-500"
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(20px)',
-            transitionDelay: `${startDelay + i * 70}ms`,
-          }}
-        >
-          {word}
-        </span>
-      ))}
-    </span>
-  );
-}
-
 export function About() {
-  const [heroVisible, setHeroVisible] = useState(false);
-
-  useEffect(() => {
-    const t = setTimeout(() => setHeroVisible(true), 120);
-    return () => clearTimeout(t);
-  }, []);
 
   return (
     <>
-
-{/* ── Hero ── */}
-      <section className="relative overflow-hidden hero-luxury-bg text-white min-h-[60vh] flex items-center">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-[#06CEFF]/7 blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-[#1A52E0]/12 blur-3xl" />
+      {/* Breadcrumb */}
+      <div className="bg-[#050D1A] border-b border-white/10">
+        <div className="container-main py-3">
+          <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
         </div>
+      </div>
 
-        <div className="container-main py-20 md:py-28 relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/85 text-xs font-semibold uppercase tracking-[0.3em] mb-6"
-              style={{ opacity: heroVisible ? 1 : 0, transition: 'opacity 0.5s', transitionDelay: '50ms' }}
-            >
-              About VyaptIX
-            </div>
-
-            <h1
-              className="font-playfair italic font-bold text-white mb-5"
-              style={{ fontSize: 'clamp(2.4rem, 6vw, 4.8rem)', lineHeight: 1.05 }}
-            >
-              <span className="block">
-                <WordStagger text="We believe AI should" visible={heroVisible} startDelay={150} />
-              </span>
-              <span
-                className="block mt-1"
-                style={{
-                  color: '#06CEFF',
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? 'translateY(0)' : 'translateY(20px)',
-                  transition: 'opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1)',
-                  transitionDelay: '550ms',
-                }}
-              >
-                remove work, not add it.
-              </span>
-            </h1>
-
-            <p
-              className="text-lg text-slate-100 max-w-2xl mx-auto"
-              style={{
-                opacity: heroVisible ? 1 : 0,
-                transform: heroVisible ? 'translateY(0)' : 'translateY(16px)',
-                transition: 'opacity 0.6s, transform 0.6s',
-                transitionDelay: '950ms',
-              }}
-            >
-              VyaptIX was built by people tired of AI tools that looked great in demos but never actually made it into the daily workflow. We build differently — outcome-first, right-sized, practical-first.
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        badge={{ text: 'About VyaptIX' }}
+        title={"We believe AI should\nremove work, not add it."}
+        description="VyaptIX was built by people tired of AI tools that looked great in demos but never made it into the daily workflow. We build differently — outcome-first, right-sized, practical-first."
+      />
 
       {/* ── Our Story ── */}
       <section className="py-20 md:py-28 bg-[#0A1628]">
@@ -178,7 +112,7 @@ export function About() {
           <div className="grid lg:grid-cols-2 gap-14 items-start">
             <div>
               <p className="label-mono-cyan mb-5">Our Story</p>
-              <h2 className="font-playfair italic font-bold text-white mb-6 leading-tight" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+              <h2 className="font-heading font-bold text-white mb-6 leading-tight" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
                 Started with one frustrating observation.
               </h2>
               <div className="space-y-5 text-slate-100 leading-relaxed text-[15px]">
@@ -241,7 +175,7 @@ export function About() {
         <div className="container-main">
           <div className="text-center mb-12">
             <p className="label-mono-cyan mb-3">Why We Exist</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>Mission, Vision &amp; Values</h2>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>Mission, Vision &amp; Values</h2>
           </div>
           <ScrollRevealGroup className="grid md:grid-cols-3 gap-6" staggerMs={100}>
             {[
@@ -293,7 +227,7 @@ export function About() {
         <div className="container-main">
           <div className="text-center mb-12">
             <p className="label-mono-cyan mb-3">The Team</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               Built by people who've felt the pain
             </h2>
             <p className="text-slate-200 max-w-2xl mx-auto">
@@ -322,7 +256,6 @@ export function About() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-[#06CEFF] hover:text-white transition-colors"
-                  onClick={() => trackEvent('cta_clicked', { label: 'LinkedIn Profile', page: '/about', section: 'team' })}
                 >
                   <Linkedin className="w-4 h-4" />
                   Connect on LinkedIn
@@ -339,7 +272,7 @@ export function About() {
         <div className="container-main">
           <div className="text-center mb-12">
             <p className="label-mono-cyan mb-3">How We Got Here</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               Building in public, shipping fast
             </h2>
             <p className="text-slate-200 max-w-xl mx-auto">
@@ -355,7 +288,7 @@ export function About() {
         <div className="container-main">
           <div className="text-center mb-12">
             <p className="label-mono-cyan mb-3">Principles</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>What We Stand For</h2>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>What We Stand For</h2>
             <p className="text-slate-200 max-w-xl mx-auto">
               These are the principles that shape every product decision and every customer conversation.
             </p>
@@ -382,7 +315,7 @@ export function About() {
         <div className="container-main">
           <div className="text-center mb-10">
             <p className="label-mono-cyan mb-3">Why VyaptIX</p>
-            <h2 className="font-playfair italic font-bold text-white" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}>What makes us different</h2>
+            <h2 className="font-heading font-bold text-white" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}>What makes us different</h2>
           </div>
           <ScrollRevealGroup className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto" staggerMs={60}>
             {[
@@ -409,7 +342,7 @@ export function About() {
         </div>
         <div className="container-main text-center relative max-w-2xl mx-auto">
           <p className="label-mono-cyan mb-4">Let's Talk</p>
-          <h2 className="font-playfair italic font-bold text-white mb-4 leading-tight" style={{ fontSize: "clamp(2rem, 4.5vw, 3.8rem)" }}>
+          <h2 className="font-heading font-bold text-white mb-4 leading-tight" style={{ fontSize: "clamp(2rem, 4.5vw, 3.8rem)" }}>
             Want to work with us?
           </h2>
           <p className="text-lg text-slate-200 mb-10 max-w-xl mx-auto">
@@ -419,14 +352,12 @@ export function About() {
             <Link
               href="/contact"
               className="inline-flex items-center justify-center gap-2 px-10 py-5 text-base font-semibold text-[#050D1A] bg-white rounded-xl hover:scale-[1.03] hover:shadow-[0_0_32px_rgba(6,206,255,0.3)] transition-all"
-              onClick={() => trackEvent('cta_clicked', { label: 'Get in Touch', destination: '/contact', page: '/about', section: 'final_cta' })}
             >
               Get in Touch <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="/solutions"
               className="inline-flex items-center justify-center gap-2 px-10 py-5 text-base font-semibold text-white border border-white/20 rounded-xl hover:bg-white/10 transition-all"
-              onClick={() => trackEvent('cta_clicked', { label: 'See Our Products', destination: '/solutions', page: '/about', section: 'final_cta' })}
             >
               See Our Products
             </Link>

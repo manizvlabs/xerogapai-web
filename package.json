@@ -1,5 +1,5 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "vyaptix-website",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -23,6 +23,7 @@
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.18",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "country-telephone-data": "^0.6.3",
     "formidable": "^3.5.4",
@@ -35,7 +36,6 @@
     "next-sitemap": "^4.2.3",
     "nodemailer": "^8.0.7",
     "postcss": "^8.4.35",
-    "posthog-js": "^1.371.2",
     "prisma": "^6.19.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -3,11 +3,11 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'VyaptIX — AI Automation for Business Growth',
+    default: 'VyaptIX — AI Automation Tools for Business',
     template: '%s | VyaptIX',
   },
   description:
-    'AI-powered tools that turn every customer interaction into a Google review, a qualified lead, or a closed deal — without adding headcount.',
+    'VyaptIX builds focused AI tools that remove real friction from business operations — Google review automation, WhatsApp marketing, credit decisioning, and service ops. Live in 3–7 days.',
   metadataBase: new URL('https://vyaptix.com'),
   icons: {
     icon: '/icon.png',
@@ -16,7 +16,10 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: 'VyaptIX',
     type: 'website',
-    images: [{ url: '/vyaptix-logo.png', width: 400, alt: 'VyaptIX — AI Automation for Business Growth' }],
+    title: 'VyaptIX — AI Automation Tools for Business',
+    description:
+      'Focused AI tools that go live in days, not months. Used by restaurants, clinics, CA firms, lenders, and service teams worldwide.',
+    images: [{ url: '/vyaptix-logo.png', width: 400, alt: 'VyaptIX — AI Automation Tools for Business' }],
   },
   twitter: {
     card: 'summary_large_image',
