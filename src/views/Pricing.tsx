@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { CheckCircle, ArrowRight, Zap, Users, Building2 } from 'lucide-react';
+import { CheckCircle, ArrowRight, Users, Building2 } from 'lucide-react';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
-import { trackEvent } from '../lib/analytics';
+import { HeroSection } from '../components/blocks/hero-section';
 
 const reviewPlans = [
   {
@@ -92,24 +92,11 @@ export function Pricing() {
         </div>
       </div>
 
-      {/* Hero */}
-      <section className="hero-luxury-bg text-white py-16 md:py-20">
-        <div className="container-main text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1A52E0]/10 border border-[#1A52E0]/20 text-[#06CEFF] text-sm font-medium mb-6">
-            <Zap className="w-3.5 h-3.5" />
-            Transparent pricing, no surprises
-          </div>
-          <h1
-            className="font-playfair italic font-bold text-white mb-4"
-            style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', lineHeight: 1.1 }}
-          >
-            Simple Pricing for Real Results
-          </h1>
-          <p className="text-lg text-white/55 max-w-2xl mx-auto">
-            Start free. Scale when you're ready. No long-term contracts, no hidden fees.
-          </p>
-        </div>
-      </section>
+      <HeroSection
+        badge={{ text: 'Transparent pricing, no surprises' }}
+        title="Simple Pricing for Real Results"
+        description="Start free. Scale when you're ready. No long-term contracts, no hidden fees."
+      />
 
       {/* AI Review Generator Pricing */}
       <section className="py-16 md:py-24 bg-[#050D1A]">
@@ -169,7 +156,6 @@ export function Pricing() {
                         ? 'bg-white text-[#050D1A] hover:shadow-[0_0_20px_rgba(6,206,255,0.3)] hover:scale-[1.02]'
                         : 'border border-white/20 text-white hover:bg-white/10'
                     }`}
-                    onClick={() => trackEvent('cta_clicked', { label: plan.cta, plan: plan.name, page: '/pricing', product: 'ai-review-generator' })}
                   >
                     {plan.cta} <ArrowRight className="w-4 h-4" />
                   </a>
@@ -177,7 +163,6 @@ export function Pricing() {
                   <Link
                     href={plan.ctaHref}
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm border border-white/20 text-white hover:bg-white/10 transition-all"
-                    onClick={() => trackEvent('cta_clicked', { label: plan.cta, plan: plan.name, page: '/pricing', product: 'ai-review-generator' })}
                   >
                     {plan.cta} <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -206,7 +191,6 @@ export function Pricing() {
                   <Link
                     href="/agent-mitra"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm bg-white text-[#050D1A] hover:shadow-[0_0_20px_rgba(6,206,255,0.3)] hover:scale-[1.02] transition-all"
-                    onClick={() => trackEvent('cta_clicked', { label: 'Join Waitlist', page: '/pricing', product: 'agent-mitra' })}
                   >
                     Join the Waitlist <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -242,7 +226,6 @@ export function Pricing() {
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-white rounded-lg gradient-primary hover:opacity-90 hover:shadow-[0_0_20px_rgba(26,82,224,0.4)] transition-all"
-              onClick={() => trackEvent('cta_clicked', { label: 'Discuss Your Project', page: '/pricing', product: 'custom' })}
             >
               Discuss Your Project <ArrowRight className="w-5 h-5" />
             </Link>

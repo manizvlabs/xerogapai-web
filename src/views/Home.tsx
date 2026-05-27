@@ -6,129 +6,188 @@ import {
   ArrowRight,
   Star,
   Users,
-  Zap,
-  Code2,
-  GitMerge,
-  LayoutDashboard,
-  Shield,
-  Clock,
-  TrendingUp,
   MessageCircle,
   BarChart3,
+  CheckCircle,
+  TrendingUp,
+  Clock,
+  Shield,
+  Zap,
 } from 'lucide-react';
-import { trackEvent } from '../lib/analytics';
-import { Marquee } from '../components/ui/Marquee';
 import { TestimonialMarquee } from '../components/ui/testimonial-cards';
+import FoundersSection from '../components/sections/FoundersSection';
+import { HeroSection } from '../components/blocks/hero-section';
 
-/* ─── Static data ─────────────────────────────────────────────── */
+/* ─── JSON-LD ─────────────────────────────────────────────────── */
 
-const homeJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'VyaptIX',
-  url: 'https://vyaptix.com',
-  logo: 'https://vyaptix.com/vyaptix-logo.png',
-  description:
-    'AI automation and custom software development for businesses that want real results — not demos.',
-  sameAs: [
-    'https://www.linkedin.com/company/vyaptix-ai',
-    'https://x.com/Vyaptix_ai',
-    'https://www.instagram.com/vyaptixai/',
-  ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '6',
-    bestRating: '5',
-    worstRating: '1',
-  },
-};
-
-const capabilities = [
+const homeJsonLd = [
   {
-    Icon: Zap,
-    iconColor: '#06CEFF',
-    iconBg: 'rgba(6,206,255,0.13)',
-    iconBorder: 'rgba(6,206,255,0.28)',
-    hoverGlow: 'rgba(6,206,255,0.16)',
-    title: 'AI Automation',
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'VyaptIX',
+    url: 'https://vyaptix.com',
+    logo: 'https://vyaptix.com/vyaptix-logo.png',
     description:
-      'Automate the repetitive work slowing your team down — customer follow-ups, data entry, reporting, and more.',
-    href: '/solutions',
-    badge: null,
+      'AI automation tools for businesses that want real results — not demos. Products go live in 3–7 days.',
+    foundingDate: '2025-12',
+    founders: [
+      { '@type': 'Person', name: 'Ajeet Singh' },
+      { '@type': 'Person', name: 'Manish Singh' },
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      url: 'https://vyaptix.com/contact',
+    },
+    sameAs: [
+      'https://www.linkedin.com/company/vyaptix-ai',
+      'https://x.com/Vyaptix_ai',
+      'https://www.instagram.com/vyaptixai/',
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '6',
+      bestRating: '5',
+      worstRating: '1',
+    },
   },
   {
-    Icon: Code2,
-    iconColor: '#A855F7',
-    iconBg: 'rgba(168,85,247,0.13)',
-    iconBorder: 'rgba(168,85,247,0.28)',
-    hoverGlow: 'rgba(168,85,247,0.14)',
-    title: 'Custom Software',
-    description:
-      'Purpose-built SaaS tools and internal platforms tailored to your exact business processes — not generic software forced to fit.',
-    href: '/contact',
-    badge: null,
-  },
-  {
-    Icon: GitMerge,
-    iconColor: '#10B981',
-    iconBg: 'rgba(16,185,129,0.13)',
-    iconBorder: 'rgba(16,185,129,0.28)',
-    hoverGlow: 'rgba(16,185,129,0.14)',
-    title: 'AI Integrations',
-    description:
-      'Connect your existing stack to AI models — OpenAI, Claude, Gemini — without rebuilding from scratch.',
-    href: '/solutions',
-    badge: null,
-  },
-  {
-    Icon: LayoutDashboard,
-    iconColor: '#F59E0B',
-    iconBg: 'rgba(245,158,11,0.13)',
-    iconBorder: 'rgba(245,158,11,0.28)',
-    hoverGlow: 'rgba(245,158,11,0.14)',
-    title: 'Workflow Consulting',
-    description:
-      'Map your current workflows, identify automation opportunities, and build a practical AI roadmap grounded in ROI.',
-    href: '/contact',
-    badge: 'Advisory',
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'VyaptIX',
+    url: 'https://vyaptix.com',
+    description: 'AI automation tools for business — Google reviews, WhatsApp marketing, credit decisioning, and service operations.',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://vyaptix.com/blog?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
   },
 ];
 
-const whyVyaptix = [
+/* ─── Products ────────────────────────────────────────────────── */
+
+const products = [
+  {
+    num: '01',
+    name: 'AI Review Generator',
+    tagline: 'More Google reviews, zero manual effort.',
+    hook: 'Customers scan a QR code, AI drafts the review, and it\'s published in under 20 seconds — no staff involvement.',
+    status: 'LIVE',
+    statusColor: '#4ADE80',
+    statusBg: 'rgba(74,222,128,0.12)',
+    statusBorder: 'rgba(74,222,128,0.25)',
+    accent: '#06CEFF',
+    accentBg: 'rgba(6,206,255,0.08)',
+    accentBorder: 'rgba(6,206,255,0.20)',
+    cardBorder: 'rgba(6,206,255,0.15)',
+    cardBg: 'rgba(6,206,255,0.03)',
+    Icon: Star,
+    href: '/solutions/ai-review-generation',
+    platform: 'reviews.vyaptix.ai',
+    stats: [
+      { value: '20s', label: 'to collect a review' },
+      { value: '3×', label: 'avg review growth' },
+    ],
+  },
+  {
+    num: '02',
+    name: 'Setu',
+    tagline: 'Turn WhatsApp into your revenue channel.',
+    hook: 'Campaigns, 24/7 AI chatbot, shared team inbox, and a lead pipeline — all inside WhatsApp. Live in 2 minutes.',
+    status: 'LIVE',
+    statusColor: '#4ADE80',
+    statusBg: 'rgba(74,222,128,0.12)',
+    statusBorder: 'rgba(74,222,128,0.25)',
+    accent: '#25D366',
+    accentBg: 'rgba(37,211,102,0.08)',
+    accentBorder: 'rgba(37,211,102,0.20)',
+    cardBorder: 'rgba(37,211,102,0.15)',
+    cardBg: 'rgba(37,211,102,0.03)',
+    Icon: MessageCircle,
+    href: '/solutions/setu',
+    platform: 'setu.vyaptix.ai',
+    stats: [
+      { value: '98%', label: 'open rate' },
+      { value: '3×', label: 'reply rate vs email' },
+    ],
+  },
+  {
+    num: '03',
+    name: 'AgentMitra',
+    tagline: 'One hub for agents, clients, and workflows.',
+    hook: 'Instant client search, live status tracking, and structured workflows — built for agencies, consultancies, and support teams.',
+    status: 'EARLY ACCESS',
+    statusColor: '#FFB800',
+    statusBg: 'rgba(255,184,0,0.12)',
+    statusBorder: 'rgba(255,184,0,0.25)',
+    accent: '#A5B4FC',
+    accentBg: 'rgba(165,180,252,0.08)',
+    accentBorder: 'rgba(165,180,252,0.20)',
+    cardBorder: 'rgba(165,180,252,0.15)',
+    cardBg: 'rgba(165,180,252,0.03)',
+    Icon: Users,
+    href: '/contact',
+    platform: null,
+    stats: [
+      { value: 'Unified', label: 'workspace' },
+      { value: 'Live', label: 'status tracking' },
+    ],
+  },
+  {
+    num: '04',
+    name: 'BankLens',
+    tagline: 'Credit decisions in minutes, not days.',
+    hook: '220+ financial signals, ML scoring, 14-signal fraud detection, and audit-ready CAM reports for lenders.',
+    status: 'LIVE',
+    statusColor: '#4ADE80',
+    statusBg: 'rgba(74,222,128,0.12)',
+    statusBorder: 'rgba(74,222,128,0.25)',
+    accent: '#F59E0B',
+    accentBg: 'rgba(245,158,11,0.08)',
+    accentBorder: 'rgba(245,158,11,0.20)',
+    cardBorder: 'rgba(245,158,11,0.15)',
+    cardBg: 'rgba(245,158,11,0.03)',
+    Icon: BarChart3,
+    href: '/solutions/banklens',
+    platform: 'banklens.vyaptix.ai',
+    stats: [
+      { value: '220+', label: 'financial signals' },
+      { value: '80%', label: 'cost reduction' },
+    ],
+  },
+];
+
+/* ─── Why VyaptIX ────────────────────────────────────────────── */
+
+const whyPoints = [
   {
     Icon: TrendingUp,
-    iconColor: '#06CEFF',
-    iconBg: 'rgba(6,206,255,0.12)',
-    iconBorder: 'rgba(6,206,255,0.25)',
-    title: 'Outcome-first',
-    text: 'We measure success by business results — more reviews, faster follow-ups, fewer manual hours — not features shipped.',
+    title: 'We measure in results, not features shipped',
+    text: "More reviews. Hours saved per week. Leads followed up. That's what we track — not a feature checklist. If the number isn't moving, we fix it.",
   },
   {
     Icon: Clock,
-    iconColor: '#A855F7',
-    iconBg: 'rgba(168,85,247,0.12)',
-    iconBorder: 'rgba(168,85,247,0.25)',
-    title: 'Fast to value',
-    text: 'Working automation in as few as 3–5 days. No endless discovery sprints, no 6-month delivery timelines.',
+    title: 'Your first automation goes live in 3–7 days',
+    text: "Our founder spent 7 years architecting enterprise systems. We skip the part where we rediscover your problem for three months.",
   },
   {
     Icon: Shield,
-    iconColor: '#10B981',
-    iconBg: 'rgba(16,185,129,0.12)',
-    iconBorder: 'rgba(16,185,129,0.25)',
-    title: 'Vendor-neutral',
-    text: 'We\'ve deployed OpenAI, Claude, Gemini, and n8n across diverse client stacks. We pick what\'s right for your problem, not what we\'re invested in.',
+    title: "We pick the right AI — not the one we're paid to push",
+    text: "No reseller agreements with any AI platform. When we recommend OpenAI, Claude, or Gemini, it's because it's the best fit.",
   },
   {
-    Icon: Users,
-    iconColor: '#F59E0B',
-    iconBg: 'rgba(245,158,11,0.12)',
-    iconBorder: 'rgba(245,158,11,0.25)',
-    title: 'Right-sized',
-    text: 'Built for growing businesses — 5 to 500 people — not enterprise complexity or startup-only scope.',
+    Icon: Zap,
+    title: 'Built for 5 to 500 people',
+    text: "We've automated a jewellery store counter and a 200-person sales team's follow-up workflow. The difference is the workflow, not the price tag.",
   },
 ];
+
+/* ─── How it works ───────────────────────────────────────────── */
 
 const howItWorks = [
   {
@@ -136,7 +195,7 @@ const howItWorks = [
     title: 'Tell us your problem',
     timeline: '30 min call',
     description:
-      'A focused 30-minute discovery call. No pitch decks — just your business challenge and our honest assessment of what AI can actually fix.',
+      'No pitch decks. No discovery theatre. A focused conversation about your business challenge and an honest assessment of what AI can actually fix.',
     accentColor: '#06CEFF',
   },
   {
@@ -144,7 +203,7 @@ const howItWorks = [
     title: 'We design the automation',
     timeline: '2–3 days',
     description:
-      'We map your workflow, select the right AI tools, and build a working prototype — not a slide deck. You see real output before committing.',
+      'We map your workflow, select the right AI tools, and build a working prototype. You see real output before committing — not slides.',
     accentColor: '#A855F7',
   },
   {
@@ -152,77 +211,25 @@ const howItWorks = [
     title: 'Go live in days',
     timeline: '3–7 days to launch',
     description:
-      'Your automation deploys into your real business environment. Simple integrations in 3–5 days; complex multi-step workflows in 1–2 weeks. Tested, documented, and ready to scale.',
+      'Your automation deploys into your real environment. Tested, documented, and ready to scale.',
     accentColor: '#10B981',
   },
 ];
 
-const aiToolsRow1 = [
-  { src: '/tool-logos/chatGPT.png', alt: 'ChatGPT' },
-  { src: '/tool-logos/claude.png', alt: 'Claude' },
-  { src: '/tool-logos/gemini.png', alt: 'Gemini' },
-  { src: '/tool-logos/copilot.png', alt: 'Copilot' },
-  { src: '/tool-logos/genspark.png', alt: 'Genspark' },
-  { src: '/tool-logos/hugging-face.png', alt: 'Hugging Face' },
-  { src: '/tool-logos/11ElevenLabs.png', alt: 'ElevenLabs' },
-  { src: '/tool-logos/HeyGen.png', alt: 'HeyGen' },
-  { src: '/tool-logos/perplexity.png', alt: 'Perplexity' },
-  { src: '/tool-logos/notebookLM.png', alt: 'NotebookLM' },
-];
+/* ─── Industries ─────────────────────────────────────────────── */
 
-const aiToolsRow2 = [
-  { src: '/tool-logos/make.png', alt: 'Make' },
-  { src: '/tool-logos/n8n.png', alt: 'n8n' },
-  { src: '/tool-logos/manus.png', alt: 'Manus' },
-  { src: '/tool-logos/langchain.png', alt: 'LangChain' },
-  { src: '/tool-logos/whatsapp-business-api.png', alt: 'WhatsApp Business API' },
-  { src: '/tool-logos/google-cloud.png', alt: 'Google Cloud' },
-  { src: '/tool-logos/postman.png', alt: 'Postman' },
-  { src: '/tool-logos/zoho.png', alt: 'Zoho' },
-  { src: '/tool-logos/notions.png', alt: 'Notion' },
-];
-
-
-/* ─── Industry SVG Icons ──────────────────────────────────────── */
-
-const iconProps = { fill: 'none', stroke: '#06CEFF', strokeWidth: 1.5, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, className: 'w-8 h-8' };
+const iconProps = {
+  fill: 'none',
+  stroke: '#06CEFF',
+  strokeWidth: 1.5,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+  className: 'w-8 h-8',
+};
 
 const industries = [
   {
-    label: 'Insurance',
-    icon: (
-      <svg viewBox="0 0 24 24" {...iconProps}>
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="M9 12l2 2 4-4" />
-      </svg>
-    ),
-    useCase: 'Automate policy reminders and claim follow-up workflows',
-  },
-  {
-    label: 'Hospitality',
-    icon: (
-      <svg viewBox="0 0 24 24" {...iconProps}>
-        <path d="M2 17h20M2 12h20M6 8h.01M6 8a4 4 0 018 0" />
-        <rect x="2" y="17" width="20" height="5" rx="1" />
-        <path d="M22 12v5M2 12v5" />
-        <path d="M12 8v4" />
-      </svg>
-    ),
-    useCase: 'Collect guest feedback and automate review requests post-stay',
-  },
-  {
-    label: 'Retail',
-    icon: (
-      <svg viewBox="0 0 24 24" {...iconProps}>
-        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-        <line x1="3" y1="6" x2="21" y2="6" />
-        <path d="M16 10a4 4 0 01-8 0" />
-      </svg>
-    ),
-    useCase: 'Send restock alerts and loyalty messages on WhatsApp',
-  },
-  {
-    label: 'Restaurants',
+    label: 'Restaurants & Cafes',
     icon: (
       <svg viewBox="0 0 24 24" {...iconProps}>
         <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2" />
@@ -230,10 +237,10 @@ const industries = [
         <path d="M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7" />
       </svg>
     ),
-    useCase: 'Turn every diner into a Google reviewer with a QR scan',
+    useCase: 'Turn every diner into a Google reviewer with a QR scan at the table.',
   },
   {
-    label: 'Legal Services',
+    label: 'Legal & CA Firms',
     icon: (
       <svg viewBox="0 0 24 24" {...iconProps}>
         <path d="M12 3v18M3 6l9-3 9 3" />
@@ -242,64 +249,41 @@ const industries = [
         <path d="M5 21h14" />
       </svg>
     ),
-    useCase: 'Track client cases and automate appointment follow-ups',
+    useCase: 'Automate client document collection, deadline reminders, and follow-ups on WhatsApp.',
   },
   {
-    label: 'Education',
-    icon: (
-      <svg viewBox="0 0 24 24" {...iconProps}>
-        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-        <path d="M6 12v5c3 3 9 3 12 0v-5" />
-      </svg>
-    ),
-    useCase: 'Send fee reminders and session updates to parents automatically',
-  },
-  {
-    label: 'Real Estate',
-    icon: (
-      <svg viewBox="0 0 24 24" {...iconProps}>
-        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-        <path d="M9 22V12h6v10" />
-        <path d="M12 7h.01" />
-      </svg>
-    ),
-    useCase: 'Automate lead follow-up and property inquiry responses',
-  },
-  {
-    label: 'Logistics',
-    icon: (
-      <svg viewBox="0 0 24 24" {...iconProps}>
-        <rect x="1" y="3" width="15" height="13" rx="1" />
-        <path d="M16 8h4l3 5v4h-7V8z" />
-        <circle cx="5.5" cy="18.5" r="2.5" />
-        <circle cx="18.5" cy="18.5" r="2.5" />
-      </svg>
-    ),
-    useCase: 'Keep clients updated on shipment status without manual effort',
-  },
-  {
-    label: 'FinTech & Lending',
-    icon: (
-      <svg viewBox="0 0 24 24" {...iconProps}>
-        <rect x="2" y="5" width="20" height="14" rx="2" />
-        <path d="M2 10h20" />
-        <path d="M6 15h4M14 15h4" />
-      </svg>
-    ),
-    useCase: 'AI-powered credit decisioning and bank statement analysis in minutes',
-  },
-  {
-    label: 'Healthcare',
+    label: 'Healthcare & Clinics',
     icon: (
       <svg viewBox="0 0 24 24" {...iconProps}>
         <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
       </svg>
     ),
-    useCase: 'Automate appointment reminders, patient follow-ups, and review collection',
+    useCase: 'Collect patient reviews post-appointment and automate recall reminders without staff effort.',
+  },
+  {
+    label: 'Real Estate & Property',
+    icon: (
+      <svg viewBox="0 0 24 24" {...iconProps}>
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+        <path d="M9 22V12h6v10" />
+      </svg>
+    ),
+    useCase: 'Stop losing leads. Automate inquiry responses and agent follow-up workflows.',
+  },
+  {
+    label: 'Retail & Jewellery',
+    icon: (
+      <svg viewBox="0 0 24 24" {...iconProps}>
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <path d="M16 10a4 4 0 01-8 0" />
+      </svg>
+    ),
+    useCase: 'Build your Google rating and drive repeat customers with WhatsApp loyalty campaigns.',
   },
 ];
 
-/* ─── Section label pill ──────────────────────────────────────── */
+/* ─── Helpers ────────────────────────────────────────────────── */
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -315,8 +299,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     </span>
   );
 }
-
-/* ─── Intersection observer hook ─────────────────────────────── */
 
 function useInView(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null);
@@ -336,289 +318,193 @@ function useInView(threshold = 0.12) {
   return [ref, inView] as const;
 }
 
+
 /* ─── Component ───────────────────────────────────────────────── */
 
 export function Home() {
-  const [heroVisible, setHeroVisible] = useState(false);
-  const [capsRef, capsInView] = useInView();
   const [howRef, howInView] = useInView();
   const [productsRef, productsInView] = useInView();
   const [testimonialsRef, testimonialsInView] = useInView();
   const [industriesRef, industriesInView] = useInView();
   const [whyRef, whyInView] = useInView();
 
-  useEffect(() => {
-    const t = setTimeout(() => setHeroVisible(true), 120);
-    return () => clearTimeout(t);
-  }, []);
+  const sgHeading: React.CSSProperties = {
+    fontFamily: "'Space Grotesk', sans-serif",
+    letterSpacing: '-0.025em',
+  };
 
   return (
     <>
-<script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
+      {homeJsonLd.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+
+      <HeroSection
+        badge={{ text: 'AI Automation for Business' }}
+        title={"Grow your business\nwithout growing\nyour team."}
+        description="VyaptIX builds focused AI tools that remove real friction from your operations — practical, fast to deploy, and built for how modern businesses actually work."
+        actions={[
+          { text: 'See Our Products', href: '/#products', variant: 'primary' },
+          { text: 'Book a Free Call', href: '/contact', variant: 'secondary' },
+        ]}
       />
 
       {/* ════════════════════════════════════════════
-          HERO
+          PRODUCTS — alternating layout
+          (Social Proof Bar + Capabilities removed;
+           products presented with depth)
       ════════════════════════════════════════════ */}
-      <section
-        className="relative min-h-screen bg-dot-grid flex flex-col items-center justify-center text-white overflow-hidden"
-        style={{ backgroundColor: '#050D1A', paddingTop: '80px' }}
-      >
-        {/* Corner glow blobs */}
-        <div
-          className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
-          style={{
-            background: 'radial-gradient(circle, rgba(26,82,224,0.28) 0%, transparent 65%)',
-            transform: 'translate(-35%, -30%)',
-          }}
-        />
-        <div
-          className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full pointer-events-none"
-          style={{
-            background: 'radial-gradient(circle, rgba(168,85,247,0.20) 0%, transparent 65%)',
-            transform: 'translate(25%, 25%)',
-          }}
-        />
-
-        {/* Central ambient glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse 70% 55% at 50% 45%, rgba(6,206,255,0.13) 0%, rgba(26,82,224,0.07) 45%, transparent 70%)',
-          }}
-        />
-
-        {/* Edge vignette */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse 100% 100% at 50% 50%, transparent 40%, rgba(0,0,0,0.65) 100%)',
-          }}
-        />
-
-        {/* SaaSFly-style colorful vertical accent marks */}
-        <div className="absolute left-10 top-1/3 pointer-events-none hidden lg:block"
-          style={{ width: 3, height: 64, background: 'linear-gradient(to bottom, #06CEFF 0%, transparent 100%)', borderRadius: 99, opacity: 0.55 }} />
-        <div className="absolute left-[60px] top-[calc(33%+28px)] pointer-events-none hidden lg:block"
-          style={{ width: 3, height: 42, background: 'linear-gradient(to bottom, #A855F7 0%, transparent 100%)', borderRadius: 99, opacity: 0.45 }} />
-        <div className="absolute right-10 top-[38%] pointer-events-none hidden lg:block"
-          style={{ width: 3, height: 56, background: 'linear-gradient(to bottom, #10B981 0%, transparent 100%)', borderRadius: 99, opacity: 0.50 }} />
-        <div className="absolute right-[60px] top-[calc(38%+24px)] pointer-events-none hidden lg:block"
-          style={{ width: 3, height: 36, background: 'linear-gradient(to bottom, #F59E0B 0%, transparent 100%)', borderRadius: 99, opacity: 0.40 }} />
-
-        {/* ── Text content ── */}
-        <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
-          {/* Badge */}
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8 border transition-all duration-700"
-            style={{
-              opacity: heroVisible ? 1 : 0,
-              transform: heroVisible ? 'translateY(0)' : 'translateY(-10px)',
-              background: 'rgba(6,206,255,0.09)',
-              borderColor: 'rgba(6,206,255,0.35)',
-              boxShadow: '0 0 24px rgba(6,206,255,0.14)',
-            }}
-          >
-            <span
-              className="w-1.5 h-1.5 rounded-full animate-pulse"
-              style={{ backgroundColor: '#06CEFF' }}
-            />
-            <span
-              className="text-xs font-semibold tracking-[0.14em] uppercase"
-              style={{ color: '#06CEFF' }}
-            >
-              AI-Powered Business Automation
-            </span>
-          </div>
-
-          {/* Headline */}
-          <h1
-            className="font-playfair italic font-bold mb-5 leading-[1.08]"
-            style={{
-              fontSize: 'clamp(2.6rem, 6.5vw, 5.8rem)',
-              opacity: heroVisible ? 1 : 0,
-              transform: heroVisible ? 'translateY(0)' : 'translateY(28px)',
-              transitionProperty: 'opacity, transform',
-              transitionDuration: '0.8s',
-              transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
-              transitionDelay: '180ms',
-            }}
-          >
-            <span className="text-white">Real AI automation.</span>
-            <br />
-            <span style={{ color: '#06CEFF' }}>Working in days,</span>
-            <span className="text-white"> not months.</span>
-          </h1>
-
-          {/* Subheadline */}
-          <p
-            className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10"
-            style={{
-              color: '#CBD5E1',
-              opacity: heroVisible ? 1 : 0,
-              transform: heroVisible ? 'translateY(0)' : 'translateY(18px)',
-              transitionProperty: 'opacity, transform',
-              transitionDuration: '0.7s',
-              transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
-              transitionDelay: '380ms',
-            }}
-          >
-            From collecting Google reviews to automating customer workflows — we build AI
-            systems that fit how your business actually works.
-          </p>
-
-          {/* CTAs */}
-          <div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            style={{
-              opacity: heroVisible ? 1 : 0,
-              transform: heroVisible ? 'translateY(0)' : 'translateY(16px)',
-              transitionProperty: 'opacity, transform',
-              transitionDuration: '0.7s',
-              transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
-              transitionDelay: '560ms',
-            }}
-          >
-            <Link
-              href="/demo"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-xl transition-all duration-200 text-white hover:shadow-[0_0_40px_rgba(6,206,255,0.35)] hover:brightness-110"
-              style={{ background: 'linear-gradient(135deg, #1A52E0 0%, #06CEFF 100%)' }}
-              onClick={() =>
-                trackEvent('cta_clicked', { label: 'Book Your Free Discovery Call', destination: '/demo', page: '/' })
-              }
-            >
-              Book Your Free Discovery Call <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/solutions"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/[0.08] hover:border-white/40"
-              style={{ border: '1px solid rgba(255,255,255,0.22)', color: 'rgba(255,255,255,0.65)' }}
-              onClick={() =>
-                trackEvent('cta_clicked', { label: 'See Our Products', destination: '/solutions', page: '/' })
-              }
-            >
-              See Our Products <ArrowRight className="w-4 h-4 opacity-60" />
-            </Link>
-          </div>
-        </div>
-
-        {/* Bottom fade */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
-          style={{ background: 'linear-gradient(to bottom, transparent, #050D1A)' }}
-        />
-      </section>
-
-      {/* ════════════════════════════════════════════
-          CAPABILITIES — glassmorphic feature grid
-      ════════════════════════════════════════════ */}
-      <section
-        className="py-24 md:py-32 bg-dot-grid"
-        style={{ backgroundColor: '#050D1A' }}
-      >
+      <section id="products" className="py-20 md:py-28" style={{ backgroundColor: '#0A1628' }}>
         <div className="container-main">
-          <div className="text-center mb-16 flex flex-col items-center" ref={capsRef as React.RefObject<HTMLDivElement>}>
-            <SectionLabel>What We Do</SectionLabel>
+          <div className="text-center mb-12 flex flex-col items-center">
+            <SectionLabel>Our Products</SectionLabel>
             <h2
-              className="font-playfair italic font-bold text-white mb-4"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.1 }}
+              className="font-bold text-white mb-4"
+              style={{
+                ...sgHeading,
+                fontSize: 'clamp(2rem, 4vw, 3.25rem)',
+                lineHeight: 1.1,
+              }}
             >
-              We turn business problems into{' '}
-              <em className="not-italic" style={{ color: '#06CEFF' }}>
-                working AI solutions.
-              </em>
+              Four products.{' '}
+              <span style={{ color: '#06CEFF' }}>Built for real workflows.</span>
             </h2>
-            <p className="text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: '#CBD5E1' }}>
-              Purpose-built for your specific business workflow. Everything we build is designed
-              around how your business actually operates.
+            <p className="text-lg max-w-xl mx-auto" style={{ color: '#CBD5E1' }}>
+              Each one tackles a specific, painful problem. No hype, no bloat.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {capabilities.map((cap, i) => (
-              <Link
-                key={cap.title}
-                href={cap.href}
-                className="glass-luxury rounded-2xl p-6 group transition-all duration-500 block"
+          {/* 2×2 product card grid */}
+          <div
+            ref={productsRef as React.RefObject<HTMLDivElement>}
+            className="grid grid-cols-1 md:grid-cols-2 gap-5"
+          >
+            {products.map((p, i) => (
+              <div
+                key={p.num}
+                className="rounded-2xl p-6 flex flex-col"
                 style={{
-                  opacity: capsInView ? 1 : 0,
-                  transform: capsInView ? 'translateY(0)' : 'translateY(28px)',
-                  transitionProperty: 'opacity, transform, border-color, box-shadow',
-                  transitionDuration: '0.6s, 0.6s, 0.3s, 0.3s',
-                  transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1), cubic-bezier(0.4,0,0.2,1), ease, ease',
-                  transitionDelay: `${i * 90}ms`,
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.boxShadow = `0 0 40px ${cap.hoverGlow}`;
-                  el.style.borderColor = cap.iconBorder;
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLAnchorElement;
-                  el.style.boxShadow = '0 0 0 transparent';
-                  el.style.borderColor = '';
+                  background: p.cardBg,
+                  border: `1.5px solid ${p.cardBorder}`,
+                  opacity: productsInView ? 1 : 0,
+                  transform: productsInView ? 'translateY(0)' : 'translateY(28px)',
+                  transition: `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 90}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 90}ms`,
                 }}
               >
-                <div className="flex items-start justify-between mb-5">
+                {/* Top row: icon + status badge */}
+                <div className="flex items-start justify-between mb-4">
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                    style={{
-                      background: cap.iconBg,
-                      border: `1px solid ${cap.iconBorder}`,
-                      color: cap.iconColor,
-                    }}
+                    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: p.accentBg, border: `1.5px solid ${p.accentBorder}` }}
                   >
-                    <cap.Icon className="w-6 h-6" />
+                    <p.Icon className="w-5 h-5" style={{ color: p.accent }} />
                   </div>
-                  {cap.badge && (
-                    <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full"
-                      style={{ background: 'rgba(245,158,11,0.12)', color: '#F59E0B', border: '1px solid rgba(245,158,11,0.25)' }}>
-                      {cap.badge}
-                    </span>
-                  )}
+                  <span
+                    className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider"
+                    style={{ background: p.statusBg, color: p.statusColor, border: `1px solid ${p.statusBorder}` }}
+                  >
+                    {p.status}
+                  </span>
                 </div>
-                <h3 className="text-white font-bold text-lg mb-3">{cap.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#CBD5E1' }}>
-                  {cap.description}
-                </p>
-                <span className="inline-flex items-center gap-1 text-xs font-semibold mt-4 transition-colors" style={{ color: cap.iconColor }}>
-                  Learn more <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+
+                {/* Product label */}
+                <span
+                  className="text-[10px] font-semibold tracking-[0.18em] uppercase mb-1"
+                  style={{ color: p.accent }}
+                >
+                  Product {p.num}
                 </span>
-              </Link>
+
+                {/* Name */}
+                <h3
+                  className="font-bold text-white text-lg leading-snug mb-1"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-0.02em' }}
+                >
+                  {p.name}
+                </h3>
+
+                {/* Tagline */}
+                <p className="text-sm font-medium mb-3" style={{ color: p.accent }}>
+                  {p.tagline}
+                </p>
+
+                {/* Hook */}
+                <p className="text-sm leading-relaxed flex-1" style={{ color: '#94A3B8' }}>
+                  {p.hook}
+                </p>
+
+                {/* Divider */}
+                <div className="my-4" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }} />
+
+                {/* Bottom row: stats + CTA */}
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex gap-5">
+                    {p.stats.map((s) => (
+                      <div key={s.label}>
+                        <div
+                          className="font-bold text-lg leading-none mb-0.5"
+                          style={{ color: p.accent, fontFamily: "'JetBrains Mono', monospace" }}
+                        >
+                          {s.value}
+                        </div>
+                        <div className="text-[11px]" style={{ color: '#64748B' }}>{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <Link
+                    href={p.href}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 flex-shrink-0"
+                    style={{
+                      background: p.accentBg,
+                      border: `1px solid ${p.accentBorder}`,
+                      color: p.accent,
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.background = p.accentBorder;
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.background = p.accentBg;
+                    }}
+                    data-event={`cta-product-${p.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    Learn more <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════
-          HOW IT WORKS — 3-step horizontal flow
+          HOW IT WORKS
       ════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: '#0A1628' }}>
+      <section id="how-it-works" className="py-24 md:py-32 bg-dot-grid" style={{ backgroundColor: '#050D1A' }}>
         <div className="container-main">
           <div className="text-center mb-16 flex flex-col items-center">
-            <SectionLabel>How It Works</SectionLabel>
+            <SectionLabel>The Process</SectionLabel>
             <h2
-              className="font-playfair italic font-bold text-white"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.1 }}
+              className="font-bold text-white"
+              style={{
+                ...sgHeading,
+                fontSize: 'clamp(2rem, 4vw, 3.25rem)',
+                lineHeight: 1.1,
+              }}
             >
               From first call to{' '}
-              <em className="not-italic" style={{ color: '#06CEFF' }}>
-                live automation.
-              </em>
+              <span style={{ color: '#06CEFF' }}>live automation.</span>
             </h2>
           </div>
 
           <div ref={howRef as React.RefObject<HTMLDivElement>} className="relative">
-            {/* Connector line — desktop only */}
             <div
               className="hidden lg:block absolute top-[3.5rem] left-[calc(16.67%+2rem)] right-[calc(16.67%+2rem)] h-0.5 pointer-events-none"
               style={{ background: 'linear-gradient(to right, rgba(6,206,255,0.65), rgba(168,85,247,0.65), rgba(16,185,129,0.65))' }}
             />
-
             <div className="grid lg:grid-cols-3 gap-10 lg:gap-8">
               {howItWorks.map((step, i) => (
                 <div
@@ -627,10 +513,7 @@ export function Home() {
                   style={{
                     opacity: howInView ? 1 : 0,
                     transform: howInView ? 'translateY(0)' : 'translateY(32px)',
-                    transitionProperty: 'opacity, transform',
-                    transitionDuration: '0.65s',
-                    transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
-                    transitionDelay: `${i * 140}ms`,
+                    transition: `opacity 0.65s cubic-bezier(0.16,1,0.3,1) ${i * 140}ms, transform 0.65s cubic-bezier(0.16,1,0.3,1) ${i * 140}ms`,
                   }}
                 >
                   <div
@@ -647,10 +530,16 @@ export function Home() {
                       style={{ border: `1px solid ${step.accentColor}30` }}
                     />
                   </div>
-
-                  <h3 className="text-white font-bold text-xl mb-2">{step.title}</h3>
-                  <span className="inline-block text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full mb-3"
-                    style={{ background: `${step.accentColor}14`, color: step.accentColor, border: `1px solid ${step.accentColor}30` }}>
+                  <h3
+                    className="text-white font-bold text-xl mb-2"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-0.01em' }}
+                  >
+                    {step.title}
+                  </h3>
+                  <span
+                    className="inline-block text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full mb-3"
+                    style={{ background: `${step.accentColor}14`, color: step.accentColor, border: `1px solid ${step.accentColor}30` }}
+                  >
                     {step.timeline}
                   </span>
                   <p className="text-sm leading-relaxed" style={{ color: '#CBD5E1' }}>
@@ -664,174 +553,6 @@ export function Home() {
       </section>
 
       {/* ════════════════════════════════════════════
-          PRODUCTS — two glassmorphic cards
-      ════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 bg-dot-grid" style={{ backgroundColor: '#050D1A' }}>
-        <div className="container-main">
-          <div className="text-center mb-16 flex flex-col items-center">
-            <SectionLabel>Our Products</SectionLabel>
-            <h2
-              className="font-playfair italic font-bold text-white mb-4"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.1 }}
-            >
-              Four products.{' '}
-              <em className="not-italic" style={{ color: '#06CEFF' }}>
-                One shared AI engine.
-              </em>
-            </h2>
-            <p className="text-lg max-w-xl mx-auto" style={{ color: '#CBD5E1' }}>
-              Live tools used by real businesses — not demos, not pilots.
-            </p>
-          </div>
-
-          <div
-            ref={productsRef as React.RefObject<HTMLDivElement>}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
-          >
-            {[
-              {
-                num: '01',
-                name: 'AI Review Generator',
-                hook: 'Collect Google reviews in under 20 seconds via QR code + AI.',
-                status: 'LIVE',
-                statusColor: '#4ADE80',
-                statusBg: 'rgba(74,222,128,0.14)',
-                statusBorder: 'rgba(74,222,128,0.28)',
-                accent: '#06CEFF',
-                iconBg: 'linear-gradient(135deg, rgba(6,206,255,0.30), rgba(26,82,224,0.30))',
-                iconBorder: 'rgba(6,206,255,0.35)',
-                cardBorder: 'rgba(6,206,255,0.22)',
-                cardBg: 'rgba(6,206,255,0.04)',
-                Icon: Star,
-                href: '/solutions/ai-review-generation',
-              },
-              {
-                num: '02',
-                name: 'AgentMitra',
-                hook: 'One hub for agents, clients, and workflows — built for service businesses.',
-                status: 'EARLY ACCESS',
-                statusColor: '#C084FC',
-                statusBg: 'rgba(168,85,247,0.14)',
-                statusBorder: 'rgba(168,85,247,0.28)',
-                accent: '#A855F7',
-                iconBg: 'rgba(168,85,247,0.18)',
-                iconBorder: 'rgba(168,85,247,0.30)',
-                cardBorder: 'rgba(168,85,247,0.18)',
-                cardBg: 'rgba(168,85,247,0.03)',
-                Icon: Users,
-                href: '/contact',
-              },
-              {
-                num: '03',
-                name: 'Setu',
-                hook: 'WhatsApp broadcasts, AI chatbot, and shared team inbox — turn WhatsApp into your revenue channel.',
-                status: 'LIVE',
-                statusColor: '#4ADE80',
-                statusBg: 'rgba(74,222,128,0.14)',
-                statusBorder: 'rgba(74,222,128,0.28)',
-                accent: '#25D366',
-                iconBg: 'rgba(37,211,102,0.18)',
-                iconBorder: 'rgba(37,211,102,0.30)',
-                cardBorder: 'rgba(37,211,102,0.20)',
-                cardBg: 'rgba(37,211,102,0.04)',
-                Icon: MessageCircle,
-                href: '/solutions/setu',
-              },
-              {
-                num: '04',
-                name: 'BankLens',
-                hook: '220+ financial signals and a credit decision in under 5 minutes.',
-                status: 'LIVE',
-                statusColor: '#4ADE80',
-                statusBg: 'rgba(74,222,128,0.14)',
-                statusBorder: 'rgba(74,222,128,0.28)',
-                accent: '#F59E0B',
-                iconBg: 'rgba(245,158,11,0.18)',
-                iconBorder: 'rgba(245,158,11,0.30)',
-                cardBorder: 'rgba(245,158,11,0.18)',
-                cardBg: 'rgba(245,158,11,0.03)',
-                Icon: BarChart3,
-                href: '/solutions/banklens',
-              },
-            ].map((p, i) => (
-              <div
-                key={p.num}
-                className="relative flex flex-col rounded-2xl p-6 group transition-all duration-300"
-                style={{
-                  background: p.cardBg,
-                  border: `1.5px solid ${p.cardBorder}`,
-                  opacity: productsInView ? 1 : 0,
-                  transform: productsInView ? 'translateY(0)' : 'translateY(24px)',
-                  transitionProperty: 'opacity, transform, box-shadow',
-                  transitionDuration: '0.6s, 0.6s, 0.3s',
-                  transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1)',
-                  transitionDelay: `${i * 80}ms`,
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 40px ${p.accent}1A`; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.boxShadow = 'none'; }}
-              >
-                {/* Accent top bar */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl"
-                  style={{ background: p.accent }}
-                />
-
-                {/* Icon + status */}
-                <div className="flex items-center justify-between mb-5 mt-1">
-                  <div
-                    className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: p.iconBg, border: `1px solid ${p.iconBorder}` }}
-                  >
-                    <p.Icon className="w-4.5 h-4.5" style={{ color: p.accent }} />
-                  </div>
-                  <span
-                    className="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider"
-                    style={{ background: p.statusBg, color: p.statusColor, border: `1px solid ${p.statusBorder}` }}
-                  >
-                    {p.status}
-                  </span>
-                </div>
-
-                {/* Product number + name */}
-                <div className="text-[9px] font-semibold tracking-[0.18em] uppercase mb-1" style={{ color: p.accent }}>
-                  Product {p.num}
-                </div>
-                <h3 className="font-bold text-white text-base mb-3 leading-snug">{p.name}</h3>
-
-                {/* Hook line */}
-                <p className="text-sm leading-relaxed flex-1" style={{ color: '#94A3B8' }}>{p.hook}</p>
-
-                {/* Learn more */}
-                <Link
-                  href={p.href}
-                  className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors group-hover:underline underline-offset-2"
-                  style={{ color: p.accent }}
-                  onClick={() =>
-                    trackEvent('cta_clicked', { label: `Learn more — ${p.name}`, destination: p.href, page: '/', section: 'products' })
-                  }
-                >
-                  Learn more <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link
-              href="/solutions"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-[0_0_32px_rgba(26,82,224,0.35)]"
-              style={{ background: 'linear-gradient(135deg, #1A52E0 0%, #06CEFF 100%)' }}
-              onClick={() =>
-                trackEvent('cta_clicked', { label: 'Explore all products', destination: '/solutions', page: '/', section: 'products' })
-              }
-            >
-              Explore all four products <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
           TESTIMONIALS
       ════════════════════════════════════════════ */}
       <section className="py-24 md:py-32" style={{ backgroundColor: '#0A1628' }}>
@@ -839,49 +560,128 @@ export function Home() {
           <div className="text-center mb-16 flex flex-col items-center">
             <SectionLabel>What Our Customers Say</SectionLabel>
             <h2
-              className="font-playfair italic font-bold text-white"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.1 }}
+              className="font-bold text-white"
+              style={{
+                ...sgHeading,
+                fontSize: 'clamp(2rem, 4vw, 3.25rem)',
+                lineHeight: 1.1,
+              }}
             >
               Real results from{' '}
-              <em className="not-italic" style={{ color: '#06CEFF' }}>
-                real businesses.
-              </em>
+              <span style={{ color: '#06CEFF' }}>real businesses.</span>
             </h2>
           </div>
-
           <div
             ref={testimonialsRef as React.RefObject<HTMLDivElement>}
             style={{
               opacity: testimonialsInView ? 1 : 0,
               transform: testimonialsInView ? 'translateY(0)' : 'translateY(28px)',
-              transition: 'opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1)',
+              transition: 'opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1)',
             }}
           >
-            {/* speed prop = seconds for one full loop. Higher = slower. Default 65. */}
             <TestimonialMarquee speed={25} />
+          </div>
+          <p className="text-center text-xs mt-8" style={{ color: '#64748B' }}>
+            *Results are from actual client deployments. Individual outcomes vary based on business size, foot traffic, and usage.
+          </p>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
+          WHY VYAPTIX — 2-column list layout
+          (different from the card grid pattern)
+      ════════════════════════════════════════════ */}
+      <section className="py-24 md:py-32" style={{ backgroundColor: '#050D1A' }}>
+        <div className="container-main">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-12 lg:gap-20 items-start">
+
+            {/* Left: sticky label + intro */}
+            <div className="lg:sticky lg:top-32">
+              <SectionLabel>Why VyaptIX</SectionLabel>
+              <h2
+                className="font-bold text-white mb-6"
+                style={{
+                  ...sgHeading,
+                  fontSize: 'clamp(1.8rem, 3.5vw, 2.75rem)',
+                  lineHeight: 1.12,
+                }}
+              >
+                We don&apos;t do pilots.{' '}
+                <span style={{ color: '#06CEFF' }}>We don&apos;t do 6-month timelines.</span>
+              </h2>
+              <p className="text-base leading-relaxed" style={{ color: '#94A3B8' }}>
+                Most AI implementations fail because they optimize for demos, not deployment.
+                We skip the theatre.
+              </p>
+            </div>
+
+            {/* Right: list of points */}
+            <div
+              ref={whyRef as React.RefObject<HTMLDivElement>}
+              className="flex flex-col divide-y"
+              style={{ borderColor: 'rgba(255,255,255,0.07)' }}
+            >
+              {whyPoints.map((point, i) => (
+                <div
+                  key={point.title}
+                  className="flex gap-5 py-7 first:pt-0 last:pb-0"
+                  style={{
+                    opacity: whyInView ? 1 : 0,
+                    transform: whyInView ? 'translateY(0)' : 'translateY(20px)',
+                    transition: `opacity 0.55s cubic-bezier(0.16,1,0.3,1) ${i * 90}ms, transform 0.55s cubic-bezier(0.16,1,0.3,1) ${i * 90}ms`,
+                    borderColor: 'rgba(255,255,255,0.07)',
+                  }}
+                >
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
+                    style={{
+                      background: 'rgba(6,206,255,0.08)',
+                      border: '1px solid rgba(6,206,255,0.20)',
+                    }}
+                  >
+                    <point.Icon className="w-5 h-5" style={{ color: '#06CEFF' }} />
+                  </div>
+                  <div>
+                    <h4
+                      className="font-semibold text-white text-base mb-2 leading-snug"
+                      style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-0.01em' }}
+                    >
+                      {point.title}
+                    </h4>
+                    <p className="text-sm leading-relaxed" style={{ color: '#94A3B8' }}>
+                      {point.text}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ════════════════════════════════════════════
-          INDUSTRIES — bento dark grid
+          INDUSTRIES
       ════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: '#050D1A' }}>
+      <section className="py-24 md:py-32 bg-dot-grid" style={{ backgroundColor: '#0A1628' }}>
         <div className="container-main">
           <div className="text-center mb-14 flex flex-col items-center">
             <SectionLabel>Built for These Industries</SectionLabel>
             <h2
-              className="font-playfair italic font-bold text-white"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)', lineHeight: 1.1 }}
+              className="font-bold text-white"
+              style={{
+                ...sgHeading,
+                fontSize: 'clamp(2rem, 4vw, 3.25rem)',
+                lineHeight: 1.1,
+              }}
             >
-              AI that scales with{' '}
-              <em className="not-italic" style={{ color: '#06CEFF' }}>
-                any business.
-              </em>
+              Automation that fits your business —{' '}
+              <span style={{ color: '#06CEFF' }}>not the other way around.</span>
             </h2>
           </div>
-
-          <div ref={industriesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          <div
+            ref={industriesRef as React.RefObject<HTMLDivElement>}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4"
+          >
             {industries.map((industry, i) => (
               <Link
                 key={industry.label}
@@ -890,10 +690,7 @@ export function Home() {
                 style={{
                   opacity: industriesInView ? 1 : 0,
                   transform: industriesInView ? 'translateY(0)' : 'translateY(24px)',
-                  transitionProperty: 'opacity, transform, border-color, box-shadow',
-                  transitionDuration: '0.55s, 0.55s, 0.3s, 0.3s',
-                  transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1), cubic-bezier(0.4,0,0.2,1), ease, ease',
-                  transitionDelay: `${i * 60}ms`,
+                  transition: `opacity 0.55s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms, transform 0.55s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms`,
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLAnchorElement;
@@ -909,7 +706,12 @@ export function Home() {
                 }}
               >
                 <div className="mb-3">{industry.icon}</div>
-                <div className="text-white font-semibold text-sm mb-2">{industry.label}</div>
+                <div
+                  className="text-white font-semibold text-sm mb-2"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                >
+                  {industry.label}
+                </div>
                 <p
                   className="text-xs leading-snug md:opacity-0 md:max-h-0 md:group-hover:opacity-100 md:group-hover:max-h-16 opacity-60 max-h-16 transition-all duration-300 overflow-hidden"
                   style={{ color: '#CBD5E1' }}
@@ -923,108 +725,9 @@ export function Home() {
       </section>
 
       {/* ════════════════════════════════════════════
-          WHY VYAPTIX — left text + right glass cards
+          FOUNDERS
       ════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 bg-dot-grid" style={{ backgroundColor: '#050D1A' }}>
-        <div className="container-main">
-          <div ref={whyRef as React.RefObject<HTMLDivElement>} className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Left */}
-            <div
-              style={{
-                opacity: whyInView ? 1 : 0,
-                transform: whyInView ? 'translateX(0)' : 'translateX(-36px)',
-                transition: 'opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1)',
-              }}
-            >
-              <div className="flex flex-col items-start">
-                <SectionLabel>Why VyaptIX</SectionLabel>
-              </div>
-              <h2
-                className="font-playfair italic font-bold text-white mb-5"
-                style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.1 }}
-              >
-                Practical AI for businesses that want{' '}
-                <em className="not-italic" style={{ color: '#06CEFF' }}>
-                  results, not pilots.
-                </em>
-              </h2>
-              <p className="text-lg leading-relaxed" style={{ color: '#CBD5E1' }}>
-                Most AI projects stall at proof-of-concept. We skip the exploration phase
-                and build automations that go live fast — because your business can&apos;t
-                wait 6 months for a return on investment.
-              </p>
-            </div>
-
-            {/* Right — 2×2 glass cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {whyVyaptix.map((point, i) => (
-                <div
-                  key={point.title}
-                  className="glass-luxury rounded-2xl p-5 group cursor-default"
-                  style={{
-                    opacity: whyInView ? 1 : 0,
-                    transform: whyInView ? 'scale(1) translateY(0)' : 'scale(0.9) translateY(16px)',
-                    transitionProperty: 'opacity, transform, box-shadow, border-color',
-                    transitionDuration: '0.55s, 0.55s, 0.3s, 0.3s',
-                    transitionTimingFunction: 'cubic-bezier(0.4,0,0.2,1), cubic-bezier(0.4,0,0.2,1), ease, ease',
-                    transitionDelay: `${i * 90 + 180}ms`,
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLDivElement;
-                    el.style.boxShadow = `0 0 32px ${point.iconBg.replace('0.12', '0.20')}`;
-                    el.style.borderColor = point.iconBorder;
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLDivElement;
-                    el.style.boxShadow = 'none';
-                    el.style.borderColor = '';
-                  }}
-                >
-                  <div
-                    className="w-9 h-9 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110"
-                    style={{
-                      background: point.iconBg,
-                      border: `1px solid ${point.iconBorder}`,
-                      color: point.iconColor,
-                    }}
-                  >
-                    <point.Icon className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-white font-bold text-sm mb-1.5">{point.title}</h4>
-                  <p className="text-xs leading-relaxed" style={{ color: '#CBD5E1' }}>
-                    {point.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          AI STACK — marquee
-      ════════════════════════════════════════════ */}
-      <section
-        className="py-10 overflow-hidden"
-        style={{
-          backgroundColor: '#0A1628',
-          borderTop: '1px solid rgba(255,255,255,0.06)',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
-        }}
-      >
-        <div className="text-center mb-8">
-          <span
-            className="inline-block text-xs font-medium tracking-[0.18em] uppercase"
-            style={{ color: '#94A3B8' }}
-          >
-            19+ AI tools. Vendor-neutral. Always expanding.
-          </span>
-        </div>
-        <Marquee items={aiToolsRow1} speed={28} />
-        <div className="mt-4">
-          <Marquee items={aiToolsRow2} speed={35} reverse />
-        </div>
-      </section>
+      <FoundersSection />
 
       {/* ════════════════════════════════════════════
           FINAL CTA
@@ -1033,12 +736,10 @@ export function Home() {
         className="py-32 md:py-40 relative overflow-hidden"
         style={{ backgroundColor: '#050D1A' }}
       >
-        {/* Multi-color glow blobs */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background:
-              'radial-gradient(ellipse 55% 65% at 50% 100%, rgba(6,206,255,0.13) 0%, transparent 65%)',
+            background: 'radial-gradient(ellipse 55% 65% at 50% 100%, rgba(6,206,255,0.12) 0%, transparent 65%)',
           }}
         />
         <div
@@ -1049,25 +750,25 @@ export function Home() {
           className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full pointer-events-none opacity-15"
           style={{ background: 'radial-gradient(circle, rgba(26,82,224,0.6) 0%, transparent 70%)' }}
         />
-        <div
-          className="absolute bottom-0 left-0 right-0 h-px pointer-events-none"
-          style={{ background: 'linear-gradient(90deg, transparent, rgba(6,206,255,0.4), transparent)' }}
-        />
 
         <div className="container-main text-center relative z-10 max-w-3xl mx-auto">
           <div className="flex justify-center mb-8">
             <SectionLabel>Let&apos;s build something</SectionLabel>
           </div>
-
           <h2
-            className="font-playfair italic font-bold text-white mb-4"
-            style={{ fontSize: 'clamp(2.4rem, 6vw, 5rem)', lineHeight: 1.08 }}
+            className="font-bold text-white mb-4"
+            style={{
+              ...sgHeading,
+              fontSize: 'clamp(2.4rem, 6vw, 5rem)',
+              lineHeight: 1.08,
+            }}
           >
             Have a business problem?
           </h2>
           <h2
-            className="font-playfair italic font-bold mb-10"
+            className="font-bold mb-10"
             style={{
+              ...sgHeading,
               fontSize: 'clamp(2.4rem, 6vw, 5rem)',
               lineHeight: 1.08,
               color: '#06CEFF',
@@ -1075,23 +776,20 @@ export function Home() {
           >
             Let&apos;s solve it with AI.
           </h2>
-
           <p
             className="text-lg mb-12 leading-relaxed max-w-xl mx-auto"
             style={{ color: '#CBD5E1' }}
           >
-            Book a 30-minute discovery call. No pitch decks, no generic demos — just a real
-            conversation about where AI can remove friction in your business.
+            Book a 30-minute discovery call. No pitch decks, no generic demos — just an honest
+            conversation about where AI can remove friction in your business. If we can&apos;t
+            help, we&apos;ll tell you that too.
           </p>
-
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/demo"
-              className="inline-flex items-center justify-center gap-2 px-10 py-5 font-semibold rounded-xl transition-all duration-200 text-white hover:shadow-[0_0_50px_rgba(6,206,255,0.38)] hover:brightness-110 text-base"
+              className="inline-flex items-center justify-center gap-2 px-10 py-5 font-semibold rounded-xl transition-all duration-200 text-white hover:shadow-[0_0_50px_rgba(6,206,255,0.36)] hover:brightness-110 text-base"
               style={{ background: 'linear-gradient(135deg, #1A52E0 0%, #06CEFF 100%)' }}
-              onClick={() =>
-                trackEvent('cta_clicked', { label: 'Book Your Free Discovery Call', destination: '/demo', page: '/', section: 'final_cta' })
-              }
+              data-event="cta-final-primary"
             >
               Book Your Free Discovery Call <ArrowRight className="w-5 h-5" />
             </Link>
@@ -1099,20 +797,30 @@ export function Home() {
               href="/solutions"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-medium text-sm transition-all duration-200 hover:bg-white/[0.07] hover:border-white/35"
               style={{ border: '1px solid rgba(255,255,255,0.20)', color: 'rgba(255,255,255,0.65)' }}
-              onClick={() =>
-                trackEvent('cta_clicked', { label: 'See Our Products', destination: '/solutions', page: '/', section: 'final_cta' })
-              }
+              data-event="cta-final-secondary"
             >
-              See Our Products <ArrowRight className="w-4 h-4 opacity-60" />
+              See Our Products First <ArrowRight className="w-4 h-4 opacity-60" />
             </Link>
           </div>
-
-          <p
-            className="text-sm mt-8"
-            style={{ color: '#CBD5E1' }}
-          >
-            No commitment required. 30 minutes, real answers.
-          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-6 mt-8 text-sm" style={{ color: '#CBD5E1' }}>
+            <span className="inline-flex items-center gap-1.5">
+              <CheckCircle className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#22C55E' }} />
+              No commitment required
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <CheckCircle className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#22C55E' }} />
+              30 minutes, real answers
+            </span>
+            <a
+              href="https://wa.me/919717156466?text=Hi%20VyaptIX!%20I%20want%20to%20know%20more%20about%20your%20AI%20automation%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <CheckCircle className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#22C55E' }} />
+              WhatsApp us anytime
+            </a>
+          </div>
         </div>
       </section>
 
@@ -1124,8 +832,7 @@ export function Home() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
-        className="fixed bottom-24 right-6 z-50 group flex items-center gap-3"
-        onClick={() => trackEvent('whatsapp_clicked', { page: '/', source: 'floating_button' })}
+        className="fixed bottom-28 right-6 z-50 group flex items-center gap-3"
       >
         <span
           className="hidden sm:block opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-200 text-sm font-semibold text-white px-3 py-1.5 rounded-lg pointer-events-none"
@@ -1146,6 +853,7 @@ export function Home() {
           style={{ backgroundColor: '#25D366' }}
         />
       </a>
+
     </>
   );
 }

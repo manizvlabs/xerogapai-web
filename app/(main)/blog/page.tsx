@@ -39,8 +39,8 @@ export default async function BlogPage() {
           <div className="max-w-3xl mx-auto text-center">
             <p className="label-mono-cyan mb-4">The VyaptIX Blog</p>
             <h1
-              className="font-playfair italic font-bold text-white mb-5"
-              style={{ fontSize: 'clamp(2.4rem, 6vw, 4.8rem)', lineHeight: 1.05 }}
+              className="font-bold text-white mb-5"
+              style={{ fontFamily: '"Plus Jakarta Sans", sans-serif', fontSize: 'clamp(2.4rem, 6vw, 4.8rem)', lineHeight: 1.05 }}
             >
               AI Automation Insights
             </h1>

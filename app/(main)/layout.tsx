@@ -3,7 +3,7 @@ import { Header } from '@/src/components/layout/Header';
 import { Footer } from '@/src/components/layout/Footer';
 import { ScrollToTop } from '@/src/components/ui/ScrollToTop';
 import { CookieBanner } from '@/src/components/ui/CookieBanner';
-import { PostHogProvider } from '@/src/components/PostHogProvider';
+import { ClarityProvider } from '@/src/components/ClarityProvider';
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,7 +13,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       <main id="main-content" className="flex-1 pt-22">{children}</main>
       <Footer />
       <Suspense fallback={null}>
-        <PostHogProvider />
+        <ClarityProvider />
       </Suspense>
       <ScrollToTop />
       <CookieBanner />

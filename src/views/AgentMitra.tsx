@@ -22,8 +22,7 @@ import {
 import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '../components/ui/Accordion';
 import { ScrollRevealGroup } from '../components/ui/ScrollRevealGroup';
-import { HeroStatFloat } from '../components/ui/HeroStatFloat';
-import { trackEvent } from '../lib/analytics';
+import { HeroSection } from '../components/blocks/hero-section';
 
 const features = [
   {
@@ -130,26 +129,6 @@ const faqs = [
   },
 ];
 
-function WordStagger({ text, startDelay = 0, visible, className = '' }: { text: string; startDelay?: number; visible: boolean; className?: string }) {
-  return (
-    <span className={className}>
-      {text.split(' ').map((word, i) => (
-        <span
-          key={i}
-          className="inline-block mr-[0.25em] transition-all duration-500"
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? 'translateY(0)' : 'translateY(20px)',
-            transitionDelay: `${startDelay + i * 70}ms`,
-          }}
-        >
-          {word}
-        </span>
-      ))}
-    </span>
-  );
-}
-
 const softwareJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -182,14 +161,8 @@ const faqJsonLd = {
 };
 
 export function AgentMitra() {
-  const [heroVisible, setHeroVisible] = useState(false);
   const [stepperVisible, setStepperVisible] = useState(false);
   const stepperRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const t = setTimeout(() => setHeroVisible(true), 120);
-    return () => clearTimeout(t);
-  }, []);
 
   useEffect(() => {
     const el = stepperRef.current;
@@ -226,176 +199,22 @@ export function AgentMitra() {
         </div>
       </div>
 
-      {/* ── Hero ── */}
-      <section className="relative overflow-hidden hero-luxury-bg text-white py-16 md:py-24">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-[#06CEFF]/7 blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-[#1A52E0]/12 blur-3xl" />
-        </div>
-
-        <div className="hidden lg:block absolute top-12 right-8 z-10">
-          <HeroStatFloat icon="👥" primary="Join early access" secondary="Limited spots available" floatSpeed="8s" />
-        </div>
-        <div className="hidden lg:block absolute bottom-12 left-8 z-10">
-          <HeroStatFloat icon="⚡" primary="5 min setup" secondary="Structured from day one" floatSpeed="12s" animationDelay="3s" />
-        </div>
-
-        <div className="container-main relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Copy */}
-            <div>
-              <div
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-warning-500/10 border border-warning-500/20 text-warning-400 text-sm font-medium mb-6"
-                style={{ opacity: heroVisible ? 1 : 0, transition: 'opacity 0.5s', transitionDelay: '50ms' }}
-              >
-                <span className="w-2 h-2 rounded-full bg-warning-400 animate-pulse" />
-                Early Access
-              </div>
-
-              <h1
-                className="font-playfair italic font-bold text-white mb-6 leading-tight"
-                style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', lineHeight: 1.05 }}
-              >
-                <span className="block">
-                  <WordStagger text="AgentMitra —" visible={heroVisible} startDelay={150} />
-                </span>
-                <span className="block" style={{ color: '#06CEFF' }}>
-                  <WordStagger text="Smarter Service Operations" visible={heroVisible} startDelay={500} />
-                </span>
-              </h1>
-
-              <p
-                className="text-lg text-slate-100 mb-6"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? 'translateY(0)' : 'translateY(16px)',
-                  transition: 'opacity 0.6s, transform 0.6s',
-                  transitionDelay: '750ms',
-                }}
-              >
-                A role-based platform that connects agents, clients, and workflows in one structured environment — so your team moves faster, works smarter, and delivers consistently.
-              </p>
-
-              <div
-                className="rounded-xl border border-white/10 bg-white/5 p-4 mb-8"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? 'translateY(0)' : 'translateY(16px)',
-                  transition: 'opacity 0.6s, transform 0.6s',
-                  transitionDelay: '900ms',
-                }}
-              >
-                <p className="text-white/85">
-                  <span className="font-semibold text-white">The Problem:</span> Most service teams manage clients across scattered tools, manual follow-ups, and inconsistent processes. AgentMitra replaces the chaos with one structured operating layer.
-                </p>
-              </div>
-
-              <div
-                className="flex flex-wrap gap-4 mb-8"
-                style={{
-                  opacity: heroVisible ? 1 : 0,
-                  transform: heroVisible ? 'translateY(0)' : 'translateY(16px)',
-                  transition: 'opacity 0.6s, transform 0.6s',
-                  transitionDelay: '1050ms',
-                }}
-              >
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-[#050D1A] bg-white rounded-lg hover:scale-[1.03] hover:shadow-[0_0_24px_rgba(6,206,255,0.25)] transition-all"
-                  onClick={() => trackEvent('cta_clicked', { label: 'Request Early Access', destination: '/contact', page: '/agent-mitra', section: 'hero' })}
-                >
-                  Request Early Access <ArrowRight className="w-5 h-5" />
-                </Link>
-                <Link
-                  href="/demo"
-                  className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all"
-                  onClick={() => trackEvent('cta_clicked', { label: 'Book Demo', destination: '/demo', page: '/agent-mitra', section: 'hero' })}
-                >
-                  Book a Demo
-                </Link>
-              </div>
-
-              <div className="flex flex-wrap gap-6 text-sm text-slate-200">
-                <span className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#06CEFF]" /> Role-based access
-                </span>
-                <span className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#06CEFF]" /> Built for SMEs &amp; agencies
-                </span>
-              </div>
-            </div>
-
-            {/* Dashboard mockup */}
-            <div
-              style={{
-                opacity: heroVisible ? 1 : 0,
-                transform: heroVisible ? 'translateX(0)' : 'translateX(32px)',
-                transition: 'opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1)',
-                transitionDelay: '400ms',
-              }}
-            >
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 animate-border-glow">
-                <div className="bg-[#050D1A] rounded-xl p-6 space-y-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 rounded-lg bg-[#06CEFF]/20 border border-[#06CEFF]/30 flex items-center justify-center">
-                      <Users className="w-5 h-5 text-[#06CEFF]" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white text-sm">Agent Dashboard</p>
-                      <p className="text-xs text-slate-300">All clients, one view</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2 p-3 bg-white/5 rounded-lg border border-white/10">
-                    <Search className="w-4 h-4 text-slate-400" />
-                    <span className="text-sm text-slate-400">Search clients by name or mobile...</span>
-                  </div>
-
-                  <div className="space-y-2">
-                    {[
-                      { name: 'Alex Chen', status: 'Active', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
-                      { name: 'Maria Santos', status: 'Pending', color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
-                      { name: 'Jordan Lee', status: 'Resolved', color: 'text-[#06CEFF] bg-[#06CEFF]/10 border-[#06CEFF]/20' },
-                    ].map((client) => (
-                      <div key={client.name} className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
-                        <div className="flex items-center gap-3">
-                          <div className="w-7 h-7 rounded-full bg-[#06CEFF]/20 flex items-center justify-center text-[#06CEFF] font-bold text-xs">
-                            {client.name[0]}
-                          </div>
-                          <span className="text-sm font-medium text-white/80">{client.name}</span>
-                        </div>
-                        <span className={`text-xs font-semibold px-2 py-1 rounded-full border ${client.color}`}>
-                          {client.status}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-2 pt-1">
-                    {[
-                      { value: '24', label: 'Active' },
-                      { value: '8', label: 'Pending' },
-                      { value: '97%', label: 'On Time' },
-                    ].map((s) => (
-                      <div key={s.label} className="p-3 bg-white/5 rounded-lg border border-white/10 text-center">
-                        <p className="text-base font-bold text-white">{s.value}</p>
-                        <p className="text-[10px] text-slate-300 mt-0.5">{s.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        badge={{ text: 'Early Access', dot: 'amber' }}
+        title="AgentMitra — Smarter Service Operations"
+        description="A role-based platform that connects agents, clients, and workflows in one structured environment — so your team moves faster, works smarter, and delivers consistently."
+        actions={[
+          { text: 'Request Early Access', href: '/contact', variant: 'primary' },
+          { text: 'Book a Demo', href: '/demo', variant: 'secondary' },
+        ]}
+      />
 
       {/* ── Features ── */}
       <section className="py-20 md:py-28 bg-[#0A1628]">
         <div className="container-main">
           <div className="text-center mb-14">
             <p className="label-mono-cyan mb-3">Platform</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               Everything Your Team Needs to Operate at Scale
             </h2>
             <p className="text-slate-200 max-w-2xl mx-auto">
@@ -424,7 +243,7 @@ export function AgentMitra() {
         <div className="container-main">
           <div className="text-center mb-14">
             <p className="label-mono-cyan mb-3">Workflow</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               How AgentMitra Works
             </h2>
             <p className="text-slate-200 max-w-xl mx-auto">
@@ -467,7 +286,7 @@ export function AgentMitra() {
         <div className="container-main">
           <div className="text-center mb-14">
             <p className="label-mono-cyan mb-3">Use Cases</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               Built for Teams That Handle Clients Every Day
             </h2>
             <p className="text-slate-200 max-w-xl mx-auto">
@@ -499,7 +318,7 @@ export function AgentMitra() {
         <div className="container-main">
           <div className="text-center mb-14">
             <p className="label-mono-cyan mb-3">Before &amp; After</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               What Changes When You Use AgentMitra
             </h2>
             <p className="text-slate-200 max-w-xl mx-auto">
@@ -572,7 +391,7 @@ export function AgentMitra() {
         <div className="container-main">
           <div className="text-center mb-12">
             <p className="label-mono-cyan mb-3">FAQ</p>
-            <h2 className="font-playfair italic font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
+            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
               Frequently Asked Questions
             </h2>
             <p className="text-slate-200">Everything you need to know about AgentMitra.</p>
@@ -605,7 +424,7 @@ export function AgentMitra() {
         </div>
         <div className="container-main text-center relative max-w-2xl mx-auto">
           <p className="label-mono-cyan mb-4">Early Access</p>
-          <h2 className="font-playfair italic font-bold text-white mb-4 leading-tight" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.8rem)', lineHeight: 1.1 }}>
+          <h2 className="font-heading font-bold text-white mb-4 leading-tight" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.8rem)', lineHeight: 1.1 }}>
             Ready to Bring Structure to Your Operations?
           </h2>
           <p className="text-lg text-slate-200 mb-10 max-w-xl mx-auto">
@@ -615,14 +434,12 @@ export function AgentMitra() {
             <Link
               href="/contact"
               className="inline-flex items-center justify-center gap-2 px-10 py-5 text-base font-semibold text-[#050D1A] bg-white rounded-xl hover:scale-[1.03] hover:shadow-[0_0_32px_rgba(6,206,255,0.3)] transition-all"
-              onClick={() => trackEvent('cta_clicked', { label: 'Request Early Access', destination: '/contact', page: '/agent-mitra', section: 'final_cta' })}
             >
               Request Early Access <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="/demo"
               className="inline-flex items-center justify-center gap-2 px-10 py-5 text-base font-semibold text-white border border-white/20 rounded-xl hover:bg-white/10 transition-all"
-              onClick={() => trackEvent('cta_clicked', { label: 'Book Demo', destination: '/demo', page: '/agent-mitra', section: 'final_cta' })}
             >
               Book a Demo
             </Link>

@@ -1,7 +1,9 @@
 'use client';
 
+import type { ReactNode } from 'react';
+
 interface Props {
-  icon: string;
+  icon: ReactNode;
   primary: string;
   secondary: string;
   className?: string;
@@ -18,7 +20,9 @@ export function HeroStatFloat({ icon, primary, secondary, className = '', animat
         animationDelay,
       }}
     >
-      <span className="text-2xl">{icon}</span>
+      <span className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/10 flex-shrink-0">
+        {icon}
+      </span>
       <div>
         <div className="text-white font-bold text-sm leading-tight">{primary}</div>
         <div className="text-slate-200 text-xs">{secondary}</div>

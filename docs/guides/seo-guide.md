@@ -1,453 +1,544 @@
 # SEO Implementation Guide — VyaptIX Website
 
-**Who this is for:** Ajeet — so you can understand, update, and maintain every SEO element without asking for help.
+**Last updated:** 2026-05-27  
+**Architecture:** Next.js 14+ App Router — native metadata API  
+**Who this is for:** Ajeet — so you can understand, maintain, and extend every SEO element without help.
 
-**Covers:** react-helmet-async, the SEO component, page titles & descriptions, Open Graph, Twitter Cards, JSON-LD, sitemap.xml, robots.txt.
-
----
-
-## The Big Picture: Why SEO Matters Here
-
-Before the revamp, the VyaptIX website had **zero SEO** — no per-page titles, no meta descriptions, no structured data, no sitemap. Google couldn't understand what each page was about, couldn't build rich search results, and had no authoritative index of the site.
-
-This implementation adds a baseline that covers every page in one consistent pattern. It won't get you to #1 on Google overnight — that takes content + backlinks — but it ensures Google can **find, understand, and display** your pages correctly.
+> **Note:** The previous version of this guide documented `react-helmet-async` and the `src/components/SEO.tsx` component. That architecture was part of the old Vite/React Router setup. Both are gone. This guide documents what is actually live.
 
 ---
 
-## Part 1 — react-helmet-async
+## The Big Picture
 
-### What it is
+Before the revamp, the website had zero SEO — no per-page titles, no meta descriptions, no structured data, no sitemap. Google couldn't understand the content, couldn't display rich results, and had no reliable index.
 
-A React library that lets you set HTML `<head>` content (title, meta tags, scripts) from inside any React component, no matter how deep in the component tree.
+The current implementation uses **Next.js native metadata exports** — no third-party library, no runtime overhead, no SEO component. Everything is declared directly in each page file as a standard JavaScript export. Next.js renders it into `<head>` at build time (static) or request time (dynamic).
 
-Without it, every page would show the same generic `<title>` from `index.html`, and you'd have no way to add page-specific meta tags from inside React.
-
-### Why "async"?
-
-The `async` version is safe for server-side rendering (SSR) and concurrent React features. Even though the site is currently client-side only (Vite), using the async version future-proofs the setup.
-
-### Where it lives in the code
-
-**Installation:** `package.json` → `react-helmet-async` in `dependencies`.
-
-**Provider (root wrap):** [`src/main.tsx`](../../src/main.tsx)
-```tsx
-import { HelmetProvider } from 'react-helmet-async';
-
-root.render(
-  <StrictMode>
-    <HelmetProvider>   ← wraps the whole app
-      <App />
-    </HelmetProvider>
-  </StrictMode>
-);
-```
-
-**Why at root level?** `HelmetProvider` maintains a single shared context for all `<Helmet>` instances across every page. It must wrap the entire app exactly once.
-
-### How to update
-
-You never touch `HelmetProvider` again. It's set-and-forget.
+**Current SEO quality: 7.5/10** — solid foundation with a few gaps noted at the end of this guide.
 
 ---
 
-## Part 2 — The SEO Component
+## Part 1 — How Metadata Works in Next.js 14+
 
-**File:** [`src/components/SEO.tsx`](../../src/components/SEO.tsx)
+### The pattern
 
-### What it is
+Every `app/**/page.tsx` file can export a `metadata` object. Next.js reads it and injects the correct `<head>` tags automatically — no imports, no components, no providers.
 
-A thin wrapper around `<Helmet>` that turns per-page SEO into a single clean component call instead of a block of raw meta tags scattered across every page.
-
-### What it outputs
-
-One `<SEO>` call in your page writes **all of the following** into the `<head>`:
-
-| Tag | Purpose |
-|-----|---------|
-| `<title>` | Tab title + Google search result headline |
-| `<meta name="description">` | Google search result snippet (150–160 chars ideal) |
-| `<meta name="robots">` | Tells Google whether to index the page |
-| `<link rel="canonical">` | Prevents duplicate content issues |
-| `<meta property="og:*">` | Controls how the page looks when shared on LinkedIn/WhatsApp/Facebook |
-| `<meta name="twitter:*">` | Controls how the page looks when shared on Twitter/X |
-| `<script type="application/ld+json">` | Structured data for rich search results |
-
-### Props reference
-
+**Static metadata (most pages):**
 ```tsx
-<SEO
-  title="string"            // REQUIRED — page title (VyaptIX appended automatically if missing)
-  description="string"      // REQUIRED — 150–160 characters, what Google shows in search
-  image="string"            // optional — full URL to OG image (defaults to og-default.jpg)
-  noIndex={boolean}         // optional — true = tell Google NOT to index this page
-  canonical="string"        // optional — path like "/contact" (https://vyaptix.com prepended)
-  jsonLd={object}           // optional — structured data object (see Part 5)
-/>
+// app/(main)/contact/page.tsx
+export const metadata: Metadata = {
+  title: 'Contact VyaptIX — Get in Touch or Book a Demo',
+  description: 'Ready to automate your business with AI? ...',
+  alternates: { canonical: 'https://vyaptix.com/contact' },
+  openGraph: { ... },
+};
 ```
 
-### Title auto-formatting
-
-The component automatically appends " | VyaptIX" if "VyaptIX" isn't already in the title:
-
-```
-"Book a Demo"  →  "Book a Demo | VyaptIX"
-"VyaptIX — AI Automation for Business Growth"  →  unchanged (already has VyaptIX)
-```
-
-### Where it's used
-
-Every page imports and uses it:
-
+**Dynamic metadata (blog posts):**
 ```tsx
-import { SEO } from '../components/SEO';
-
-export function MyPage() {
-  return (
-    <>
-      <SEO title="..." description="..." />
-      {/* rest of page */}
-    </>
-  );
+// app/(main)/blog/[slug]/page.tsx
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const post = getPostBySlug(params.slug);
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `https://vyaptix.com/blog/${post.slug}` },
+    openGraph: { type: 'article', ... },
+  };
 }
 ```
 
----
+### Root layout metadata (`app/layout.tsx`)
 
-## Part 3 — Per-Page SEO Settings
+This is the default — every page inherits these values unless it overrides them:
 
-### Where each page's SEO is defined
-
-The SEO tag lives at the top of each page's return statement. Find it by opening the page file and looking for `<SEO` right after the opening `<>`.
-
-| Page | File | Title | noIndex |
-|------|------|-------|---------|
-| Home | [`src/pages/Home.tsx`](../../src/pages/Home.tsx) | VyaptIX — AI Automation for Business Growth | — |
-| AI Review Generator | [`src/pages/AIReviewGeneration.tsx`](../../src/pages/AIReviewGeneration.tsx) | AI Review Generator — Collect Google Reviews in 20 Seconds | — |
-| AgentMitra | [`src/pages/AgentMitra.tsx`](../../src/pages/AgentMitra.tsx) | AgentMitra — AI Workspace for Business Teams | — |
-| Solutions | [`src/pages/Solutions.tsx`](../../src/pages/Solutions.tsx) | Our Products | — |
-| About | [`src/pages/About.tsx`](../../src/pages/About.tsx) | About VyaptIX — Building Practical AI for Business | — |
-| Blog | [`src/pages/Blog.tsx`](../../src/pages/Blog.tsx) | Blog — AI Automation Insights | — |
-| Blog Post | [`src/pages/BlogPost.tsx`](../../src/pages/BlogPost.tsx) | Dynamic — uses `post.title` | — |
-| Contact | [`src/pages/Contact.tsx`](../../src/pages/Contact.tsx) | Book a Demo | — |
-| Thank You | [`src/pages/ThankYou.tsx`](../../src/pages/ThankYou.tsx) | Thank You | ✅ noIndex |
-| Privacy Policy | [`src/pages/PrivacyPolicy.tsx`](../../src/pages/PrivacyPolicy.tsx) | Privacy Policy | ✅ noIndex |
-| Terms of Service | [`src/pages/TermsOfService.tsx`](../../src/pages/TermsOfService.tsx) | Terms of Service | ✅ noIndex |
-| 404 Not Found | [`src/pages/NotFound.tsx`](../../src/pages/NotFound.tsx) | Page Not Found | ✅ noIndex |
-
-### Why some pages have noIndex
-
-Pages marked `noIndex` tell Google: "Do not index this page, do not show it in search results."
-
-- **Thank You** — Confirmation page after form submit. Has no value in search results.
-- **Privacy Policy / Terms** — Legal pages. Indexing them wastes crawl budget and dilutes your content relevance.
-- **404** — Obvious.
-
-### How to update a page's title or description
-
-1. Open the page file (e.g., [`src/pages/Contact.tsx`](../../src/pages/Contact.tsx))
-2. Find `<SEO` near the top of the return
-3. Edit the `title` or `description` prop directly
-4. Save — the change is live on next deploy
-
-**Example:**
-```tsx
-// Before:
-<SEO
-  title="Book a Demo"
-  description="Ready to automate your business with AI? Book a 30-minute demo with the VyaptIX team."
-/>
-
-// After (you changed the description):
-<SEO
-  title="Book a Demo"
-  description="Get a personalised AI demo for your business. 30 minutes. No pitch decks."
-/>
-```
-
-### How to add SEO to a new page
-
-1. At the top of the new page file, add: `import { SEO } from '../components/SEO';`
-2. As the first element inside the return fragment, add: `<SEO title="..." description="..." canonical="/your-path" />`
-3. Add the page's URL to [`public/sitemap.xml`](../../public/sitemap.xml)
+| Field | Value |
+|-------|-------|
+| `metadataBase` | `https://vyaptix.com` |
+| `title.default` | `VyaptIX — AI Automation Tools for Business` |
+| `title.template` | `%s \| VyaptIX` |
+| `description` | `VyaptIX builds focused AI tools that remove real friction from business operations — Google review automation, WhatsApp marketing, credit decisioning, and service ops. Live in 3–7 days.` |
+| `openGraph.siteName` | `VyaptIX` |
+| `openGraph.images` | `/vyaptix-logo.png` (400px) |
+| `twitter.card` | `summary_large_image` |
+| `twitter.site` | `@Vyaptix_ai` |
 
 ---
 
-## Part 4 — Open Graph & Twitter Cards
+## Part 2 — Per-Page Metadata: Complete Inventory
 
-### What they are
+### Homepage (`/`)
+**File:** `app/(main)/page.tsx`
 
-When someone pastes your URL into LinkedIn, WhatsApp, Slack, or Twitter/X, those platforms fetch your page and read the OG/Twitter meta tags to build a preview card with title, description, and image.
-
-Without these tags: the preview looks broken or generic.  
-With these tags: you control exactly what the preview shows.
-
-### Where the tags come from
-
-The SEO component writes them automatically from your `title`, `description`, and `image` props:
-
-```html
-<!-- Generated by <SEO title="..." description="..." /> -->
-<meta property="og:title" content="Book a Demo | VyaptIX" />
-<meta property="og:description" content="..." />
-<meta property="og:image" content="https://vyaptix.com/og-default.jpg" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="VyaptIX" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@Vyaptix_ai" />
-<meta name="twitter:title" content="Book a Demo | VyaptIX" />
-<meta name="twitter:description" content="..." />
-<meta name="twitter:image" content="https://vyaptix.com/og-default.jpg" />
-```
-
-### The OG image
-
-Currently defaults to `https://vyaptix.com/og-default.jpg`.
-
-**This file does not exist yet.** Until you create it, shared links will show a broken image.
-
-**What to create:** A 1200×630px branded image (PNG or JPG) — typically has the VyaptIX logo, a headline, and a dark/gradient background. Save it as `public/og-default.jpg` and deploy.
-
-**To use a page-specific image** (e.g., for a blog post):
-```tsx
-<SEO
-  title={post.title}
-  description={post.excerpt}
-  image={`https://vyaptix.com/blog/${post.slug}/og.jpg`}
-/>
-```
-
-### How to test OG tags
-
-- **LinkedIn:** https://www.linkedin.com/post-inspector/
-- **Facebook:** https://developers.facebook.com/tools/debug/
-- **Twitter/X:** https://cards-dev.twitter.com/validator
-- **General:** https://metatags.io/ — paste your URL and see previews for all platforms
+| Field | Value |
+|-------|-------|
+| Title | `VyaptIX — AI Automation Tools for Business \| Live in 3–7 Days` |
+| Description | `VyaptIX builds focused AI tools that remove real friction from business operations — Google review automation, WhatsApp marketing, credit decisioning, and service ops. Live in 3–7 days.` |
+| Canonical | `https://vyaptix.com` |
+| OG type | `website` |
+| JSON-LD | `Organization` + `WebSite` (see Part 3) |
 
 ---
 
-## Part 5 — JSON-LD Structured Data
+### About (`/about`)
+**File:** `app/(main)/about/page.tsx`
 
-### What it is
+| Field | Value |
+|-------|-------|
+| Title | `About VyaptIX — AI Automation Built for Real Businesses` |
+| Description | `Meet the team behind VyaptIX — an AI automation startup building practical tools for business owners to grow faster without adding headcount.` |
+| Canonical | `https://vyaptix.com/about` |
+| OG type | `website` |
+| JSON-LD | None |
 
-JSON-LD (JavaScript Object Notation for Linked Data) is a block of JSON embedded in your page's `<head>` that tells Google exactly what your content represents — not just text on a screen, but structured facts: "this is an Organization called VyaptIX with this logo and these social profiles."
+---
 
-Google uses structured data to generate **rich results** in search: star ratings, breadcrumbs, FAQ dropdowns, site links, logo in knowledge panel, etc.
+### Contact (`/contact`)
+**File:** `app/(main)/contact/page.tsx`
 
-### Where it lives
+| Field | Value |
+|-------|-------|
+| Title | `Contact VyaptIX — Get in Touch or Book a Demo` |
+| Description | `Ready to automate your business with AI? Get in touch with the VyaptIX team — no generic presentations, just real answers about what works for your business.` |
+| Canonical | `https://vyaptix.com/contact` |
+| OG type | `website` |
+| JSON-LD | None |
 
-Only the homepage has JSON-LD currently. It's defined in [`src/pages/Home.tsx`](../../src/pages/Home.tsx) as `homeJsonLd` and passed via the SEO component:
+---
 
-```tsx
-const homeJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'VyaptIX',
-  url: 'https://vyaptix.com',
-  logo: 'https://vyaptix.com/vyaptix-logo.webp',
-  description: 'AI automation startup building practical AI tools for business owners.',
-  sameAs: [
-    'https://www.linkedin.com/company/vyaptix-ai',
-    'https://x.com/Vyaptix_ai',
-    'https://www.instagram.com/vyaptixai/',
-  ],
-};
+### Pricing (`/pricing`)
+**File:** `app/(main)/pricing/page.tsx`
 
-// In the return:
-<SEO ... jsonLd={homeJsonLd} />
+| Field | Value |
+|-------|-------|
+| Title | `Pricing — AI Review Generator & AgentMitra` |
+| Description | `Simple, transparent pricing for VyaptIX products. Start free with the AI Review Generator or get early access to AgentMitra.` |
+| Canonical | `https://vyaptix.com/pricing` |
+| OG | Inherits from root layout |
+| JSON-LD | None |
+
+---
+
+### Solutions Hub (`/solutions`)
+**File:** `app/(main)/solutions/page.tsx`
+
+| Field | Value |
+|-------|-------|
+| Title | `VyaptIX Products — AI Review Generator, AgentMitra, Setu & BankLens` |
+| Description | `Four AI products built for real business outcomes: AI Review Generator, AgentMitra, Setu, and BankLens. See how VyaptIX transforms business operations.` |
+| Canonical | `https://vyaptix.com/solutions` |
+| OG type | `website` |
+| JSON-LD | None |
+
+---
+
+### Setu (`/solutions/setu`)
+**File:** `app/(main)/solutions/setu/page.tsx`
+
+| Field | Value |
+|-------|-------|
+| Title | `Setu — WhatsApp Marketing & Automation Platform \| VyaptIX` |
+| Description | `Send campaigns to thousands, automate replies 24/7, manage your team inbox, and close more leads — all on WhatsApp. 98% open rate. Starts at ₹999/month.` |
+| Canonical | `https://vyaptix.com/solutions/setu` |
+| OG | Inherits from root layout |
+| JSON-LD | `SoftwareApplication` + `FAQPage` (see Part 3) |
+
+---
+
+### AI Review Generator (`/solutions/ai-review-generation`)
+**File:** `app/(main)/solutions/ai-review-generation/page.tsx`
+
+| Field | Value |
+|-------|-------|
+| Title | `AI Review Generator — Collect Google Reviews in Under 20 Seconds` |
+| Description | `VyaptIX AI Review Generator lets customers scan a QR code and post a real Google review in under 20 seconds. Zero friction, authentic reviews.` |
+| Canonical | `https://vyaptix.com/solutions/ai-review-generation` |
+| OG | Inherits from root layout |
+| JSON-LD | `SoftwareApplication` + `FAQPage` (see Part 3) |
+
+---
+
+### BankLens (`/solutions/banklens`)
+**File:** `app/(main)/solutions/banklens/page.tsx`
+
+| Field | Value |
+|-------|-------|
+| Title | `BankLens — AI Bank Statement Analysis & Credit Decisioning for NBFCs` |
+| Description | `220+ financial signals, 14-signal fraud detection, and a structured APPROVE/REVIEW/REJECT decision in under 5 minutes. Built for NBFCs, DSAs, and fintech lenders. From ₹12/report.` |
+| Canonical | `https://vyaptix.com/solutions/banklens` |
+| OG | Inherits from root layout |
+| JSON-LD | `SoftwareApplication` + `FAQPage` (see Part 3) |
+
+---
+
+### AgentMitra (`/agent-mitra`)
+**File:** `app/(main)/agent-mitra/page.tsx`
+
+| Field | Value |
+|-------|-------|
+| Title | `AgentMitra — AI Workspace for Business Teams` |
+| Description | `Give your team instant client context, structured workflows, and live status tracking with an AI-powered unified workspace. Early access available.` |
+| Canonical | `https://vyaptix.com/agent-mitra` |
+| OG | Inherits from root layout |
+| JSON-LD | `SoftwareApplication` + `FAQPage` (see Part 3) |
+
+---
+
+### Blog Index (`/blog`)
+**File:** `app/(main)/blog/page.tsx`
+
+| Field | Value |
+|-------|-------|
+| Title | `Blog — AI Automation Insights \| VyaptIX` |
+| Description | `AI automation insights, product updates, and business growth strategies from the VyaptIX team.` |
+| Canonical | `https://vyaptix.com/blog` |
+| OG type | `website` |
+| JSON-LD | None |
+
+---
+
+### Blog Posts (`/blog/[slug]`)
+**File:** `app/(main)/blog/[slug]/page.tsx`
+
+| Field | Value |
+|-------|-------|
+| Title | `post.title` (dynamic) |
+| Description | `post.excerpt` (dynamic) |
+| Canonical | `https://vyaptix.com/blog/{slug}` (dynamic) |
+| OG type | `article` |
+| OG extra | `publishedTime`, `authors`, `images` (all dynamic) |
+| Twitter | `summary_large_image`, dynamic title/description/image |
+| JSON-LD | `BlogPosting` schema (see Part 3) |
+
+---
+
+### Legal / Utility Pages
+
+| Page | noIndex | Notes |
+|------|---------|-------|
+| `/privacy-policy` | Yes | Not shown in search results |
+| `/terms-of-service` | Yes | Not shown in search results |
+| `/thank-you` | Yes | Post-form confirmation |
+| `/demo` | Yes (de-facto) | Not in sitemap |
+| `/admin` | Disallowed in robots.txt | CMS login |
+
+---
+
+## Part 3 — JSON-LD Structured Data
+
+JSON-LD tells Google what your content *is*, not just what it says. It enables rich results — star ratings in SERP, FAQ dropdowns, software panels, article schema, and organization knowledge cards.
+
+All JSON-LD is injected as `<script type="application/ld+json">` directly inside each view's JSX.
+
+### Schemas implemented
+
+#### Homepage — `Organization` schema
+**File:** `src/views/Home.tsx`
+
+Tells Google that VyaptIX is a real organization. Enables the brand knowledge panel.
+
+```json
+{
+  "@type": "Organization",
+  "name": "VyaptIX",
+  "url": "https://vyaptix.com",
+  "logo": "https://vyaptix.com/vyaptix-logo.png",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "6"
+  }
+}
 ```
 
-### What this unlocks
+#### Homepage — `WebSite` schema
+**File:** `src/views/Home.tsx`
 
-The `Organization` schema tells Google:
-- VyaptIX is a real organization at vyaptix.com
-- The logo to show in the knowledge panel
-- The official social profiles (helps Google attribute brand mentions)
+Enables the sitelinks search box in Google results.
 
-### How to update it
-
-Open [`src/pages/Home.tsx`](../../src/pages/Home.tsx), find `const homeJsonLd`, and edit the object directly.
-
-**Common update:** If you get a proper `.svg` logo file:
-```tsx
-logo: 'https://vyaptix.com/vyaptix-logo.svg',  // change from .webp to .svg
+```json
+{
+  "@type": "WebSite",
+  "name": "VyaptIX",
+  "url": "https://vyaptix.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://vyaptix.com/blog?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
 ```
 
-### Adding JSON-LD to other pages
+#### Product pages — `SoftwareApplication` + `FAQPage`
+**Files:** `src/views/AIReviewGeneration.tsx`, `src/views/Setu.tsx`, `src/views/BankLens.tsx`, `src/views/AgentMitra.tsx`
 
-**Blog post (Article schema):**
-```tsx
-// In BlogPost.tsx
-const postJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: post.title,
-  description: post.excerpt,
-  url: `https://vyaptix.com/blog/${post.slug}`,
-  publisher: {
-    '@type': 'Organization',
-    name: 'VyaptIX',
-    logo: 'https://vyaptix.com/vyaptix-logo.webp',
+| Product | applicationCategory | Price | Currency | Availability |
+|---------|-------------------|-------|----------|-------------|
+| AI Review Generator | `BusinessApplication` | `0` | USD | Available |
+| Setu | `BusinessApplication` | `999` | INR | Available |
+| BankLens | `FinancialApplication` | `12` | INR | Available |
+| AgentMitra | `BusinessApplication` | `0` | USD | PreOrder |
+
+Each product page also includes a `FAQPage` schema linking the FAQ section, which can produce FAQ dropdown rich results in Google.
+
+#### Blog posts — `BlogPosting`
+**File:** `app/(main)/blog/[slug]/page.tsx`
+
+Dynamic schema generated per post:
+
+```json
+{
+  "@type": "BlogPosting",
+  "headline": "post.title",
+  "description": "post.excerpt",
+  "image": "https://vyaptix.com{post.image}",
+  "datePublished": "post.date",
+  "dateModified": "post.date",
+  "author": {
+    "@type": "Person",
+    "name": "post.author.name",
+    "jobTitle": "post.author.role"
   },
-};
-
-<SEO ... jsonLd={postJsonLd} />
-```
-
-**AI Review Generator (SoftwareApplication schema):**
-```tsx
-const appJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'AI Review Generator',
-  applicationCategory: 'BusinessApplication',
-  description: 'AI-powered tool to collect authentic Google reviews in under 20 seconds.',
-  url: 'https://reviews.vyaptix.ai',
-  offers: { '@type': 'Offer', price: '0', priceCurrency': 'USD' },
-};
+  "publisher": {
+    "@type": "Organization",
+    "name": "VyaptIX",
+    "logo": "https://vyaptix.com/vyaptix-logo.png"
+  }
+}
 ```
 
 ### How to test JSON-LD
 
-Use Google's Rich Results Test: https://search.google.com/test/rich-results  
-Paste your URL (after deploy) or paste the JSON-LD code directly. Google will tell you if it's valid and what rich results it qualifies for.
+Google Rich Results Test: https://search.google.com/test/rich-results  
+Paste a URL (after deploy) or paste JSON-LD code directly. Google will validate it and show which rich result types it qualifies for.
 
 ---
 
-## Part 6 — sitemap.xml
+## Part 4 — Target Keywords by Page
 
-**File:** [`public/sitemap.xml`](../../public/sitemap.xml)
+These are the primary keyword phrases embedded in titles and descriptions across the site.
 
-### What it is
+### Brand / Homepage keywords
+- `AI automation tools for business`
+- `AI tools for business operations`
+- `live in 3–7 days`
+- `VyaptIX`
 
-A plain XML file that lists every public URL on your website. You submit it to Google Search Console so Google knows exactly what pages exist and how often they change.
+### AI Review Generator keywords
+- `AI review generator`
+- `collect Google reviews`
+- `Google reviews in 20 seconds`
+- `QR code review collection`
+- `authentic Google reviews`
+- `zero friction reviews`
+- `Google compliant reviews`
+- `review automation`
 
-Without a sitemap, Google discovers your pages by crawling links. With a sitemap, you tell Google directly — faster indexing, no pages missed.
+### Setu keywords
+- `WhatsApp marketing platform`
+- `WhatsApp automation`
+- `WhatsApp broadcast campaigns`
+- `24/7 WhatsApp AI chatbot`
+- `WhatsApp team inbox`
+- `98% open rate WhatsApp`
+- `Meta Tech Provider`
+- `WhatsApp CRM`
 
-### Current contents
+### BankLens keywords
+- `AI bank statement analysis`
+- `credit decisioning for NBFCs`
+- `bank statement analysis NBFCs`
+- `220+ financial signals`
+- `fraud detection bank statements`
+- `NBFC credit scoring`
+- `DSA fintech lenders`
+- `DPDP 2023 RBI compliant`
+- `₹12 per report`
+- `40 banks supported`
 
-The sitemap includes:
-- `/` — Home (weekly, priority 1.0)
-- `/solutions` — Solutions hub (monthly, 0.8)
-- `/solutions/ai-review-generation` — Product page (monthly, 0.9)
-- `/agent-mitra` — Product page (monthly, 0.8)
-- `/about` — About (monthly, 0.6)
-- `/contact` — Contact (monthly, 0.7)
-- `/blog` — Blog index (weekly, 0.7)
-- 3 blog post URLs (monthly, 0.6)
+### AgentMitra keywords
+- `AI workspace for business teams`
+- `service operations platform`
+- `unified client workspace`
+- `structured workflows`
+- `live status tracking`
+- `early access AI workspace`
 
-**Not included** (intentionally): `/thank-you`, `/privacy-policy`, `/terms-of-service`, `/404`
-
-### How to update it
-
-**When you publish a new blog post**, add a new `<url>` block:
-```xml
-<url>
-  <loc>https://vyaptix.com/blog/your-new-post-slug</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.6</priority>
-</url>
-```
-
-**When a page's importance changes** (e.g., AgentMitra goes live as a major product), bump its `<priority>` from `0.8` to `0.9`.
-
-### Priority values explained
-
-| Priority | Meaning |
-|----------|---------|
-| 1.0 | Homepage — most important |
-| 0.9 | Primary product page |
-| 0.8 | Secondary product/hub pages |
-| 0.7 | Blog index, Contact |
-| 0.6 | Individual blog posts, About |
-| 0.5 and below | Low-value pages (don't list these) |
-
-### Where robots.txt references it
-
-The last line of `robots.txt` points to the sitemap:
-```
-Sitemap: https://vyaptix.com/sitemap.xml
-```
-This means any crawler that reads `robots.txt` automatically knows where the sitemap is.
-
-### Submitting to Google Search Console
-
-1. Go to https://search.google.com/search-console
-2. Add `vyaptix.com` as a property (if not already)
-3. Go to **Sitemaps** in the left nav
-4. Enter `sitemap.xml` and click Submit
-5. Done — Google will crawl it within hours to days
+### Blog keywords
+- `AI automation insights`
+- `business automation blog`
+- `AI tools for business growth`
 
 ---
 
-## Part 7 — robots.txt
+## Part 5 — Technical SEO
 
-**File:** [`public/robots.txt`](../../public/robots.txt)
+### Sitemap
 
-### What it is
+**File:** `app/sitemap.ts`  
+**Generated at:** `https://vyaptix.com/sitemap.xml`
 
-A plain text file at the root of your website that tells search engine crawlers which pages they're allowed or not allowed to index. Crawlers check this file before crawling anything else.
+The sitemap is dynamically generated by Next.js at build time — no manual XML to maintain. Blog posts are included automatically as you publish them.
 
-### Current contents
+**Static routes in the sitemap:**
+
+| Route | Priority | Change Frequency |
+|-------|----------|-----------------|
+| `/` | 1.0 | weekly |
+| `/solutions` | 0.9 | weekly |
+| `/solutions/ai-review-generation` | 0.9 | weekly |
+| `/solutions/setu` | 0.9 | weekly |
+| `/solutions/banklens` | 0.9 | weekly |
+| `/agent-mitra` | 0.8 | weekly |
+| `/blog` | 0.8 | daily |
+| `/about` | 0.7 | monthly |
+| `/pricing` | 0.7 | weekly |
+| `/contact` | 0.6 | monthly |
+| `/privacy-policy` | 0.3 | yearly |
+| `/terms-of-service` | 0.3 | yearly |
+
+**Blog posts:** All published posts are added dynamically with priority `0.7`, `monthly` change frequency.
+
+**Excluded from sitemap:** `/admin`, `/api/*`, `/thank-you`, `/demo`
+
+**To add a new static route to the sitemap:**  
+Open `app/sitemap.ts` and add an entry to the `staticRoutes` array.
+
+---
+
+### robots.txt
+
+**File:** `public/robots.txt`  
+Served at: `https://vyaptix.com/robots.txt`
 
 ```
 User-agent: *
 Allow: /
-Disallow: /thank-you
+Disallow: /admin
+Disallow: /api
+
+Host: https://vyaptix.com
 
 Sitemap: https://vyaptix.com/sitemap.xml
 ```
 
-### What each line means
-
-| Line | Meaning |
-|------|---------|
-| `User-agent: *` | These rules apply to ALL crawlers (Googlebot, Bingbot, etc.) |
-| `Allow: /` | Crawlers may index all pages by default |
-| `Disallow: /thank-you` | Crawlers must NOT index `/thank-you` |
-| `Sitemap: ...` | Here's where to find the sitemap |
-
-### robots.txt vs noIndex — which wins?
-
-**robots.txt** `Disallow` prevents Google from even **visiting** the page.  
-**noIndex meta tag** lets Google visit but tells it not to **show** the page in results.
-
-For most pages, `noIndex` on the SEO component is enough. `robots.txt` is for pages where you don't even want Google fetching the content (saves crawl budget, protects private pages).
-
-The current setup: `Disallow /thank-you` in robots.txt AND `noIndex` on the ThankYou SEO component. This is belt-and-suspenders — either alone would work.
-
-### How to update it
-
-**To block a new page from crawlers:**
-```
-Disallow: /internal-page
-```
-
-**To block an entire directory:**
-```
-Disallow: /admin/
-```
-
-**To allow a page that was blocked:**
-Simply remove or comment out the `Disallow` line.
+The `/admin` block protects the Decap CMS interface. The `/api` block prevents crawlers from hitting API routes.
 
 ---
 
-## Quick Checklist: Before Every New Page Goes Live
+### Open Graph image
 
-- [ ] `<SEO title="..." description="..." canonical="/path" />` added at top of return
-- [ ] Description is 140–160 characters (test at https://metatags.io)
-- [ ] Page is added to `public/sitemap.xml`
-- [ ] If the page should NOT be indexed: `noIndex` prop added AND (optionally) `Disallow` in robots.txt
-- [ ] After deploy: test with https://search.google.com/test/rich-results
+**Current status:** The OG image is set to `/vyaptix-logo.png` (400×400px, square). This works but is suboptimal — social platforms prefer 1200×630px landscape images.
+
+**What to create:** `public/og-default.jpg` — 1200×630px, VyaptIX branding, dark background.  
+Once created, update `app/layout.tsx` → `openGraph.images` to point to it.
+
+**Impact:** Every page shared on LinkedIn, WhatsApp, Twitter shows the OG image as a preview card. A proper landscape image significantly improves click-through on shared links.
 
 ---
 
-## Pending Action: OG Default Image
+## Part 6 — What Is and Isn't Indexed
 
-**Status:** BLOCKED — needs design.
+| Page | Indexed | How controlled |
+|------|---------|---------------|
+| `/` | ✅ Yes | Default (allow) |
+| `/about` | ✅ Yes | Default |
+| `/contact` | ✅ Yes | Default |
+| `/pricing` | ✅ Yes | Default |
+| `/solutions` | ✅ Yes | Default |
+| `/solutions/setu` | ✅ Yes | Default |
+| `/solutions/ai-review-generation` | ✅ Yes | Default |
+| `/solutions/banklens` | ✅ Yes | Default |
+| `/agent-mitra` | ✅ Yes | Default |
+| `/blog` | ✅ Yes | Default |
+| `/blog/[slug]` | ✅ Yes | Default |
+| `/privacy-policy` | ❌ No | `robots: noindex` in metadata |
+| `/terms-of-service` | ❌ No | `robots: noindex` in metadata |
+| `/thank-you` | ❌ No | Not in sitemap + no index |
+| `/admin` | ❌ No | `Disallow` in robots.txt |
+| `/api/*` | ❌ No | `Disallow` in robots.txt |
 
-**What to create:** `public/og-default.jpg` — 1200×630px, VyaptIX branding.
+---
 
-Until this exists, every page share on social media will show a broken/missing image. This is the single highest-impact outstanding SEO/social task.
+## Part 7 — Overall SEO Assessment
+
+**Score: 7.5 / 10**
+
+### What's solid ✅
+
+- Every public page has a unique, keyword-rich title and description
+- Canonical URLs on all pages — no duplicate content risk
+- Dynamic sitemap keeps itself current as blog grows
+- JSON-LD structured data on all product pages and blog posts
+- `Organization` + rating schema on homepage (enables knowledge panel)
+- `BlogPosting` schema with author + images on every blog post
+- `FAQPage` schema on product pages (enables FAQ dropdown in SERP)
+- `robots.txt` correctly protects admin and API routes
+- Next.js native metadata = no runtime JS overhead for SEO
+- Twitter card configured globally with `@Vyaptix_ai` handle
+
+### Gaps to fix 🔧
+
+| Gap | Impact | Effort |
+|-----|--------|--------|
+| **No dedicated OG image** (`og-default.jpg`) | Medium — shared links show square logo instead of wide card | Low — design + add 1 file |
+| **Product pages missing explicit OpenGraph block** (Setu, BankLens, AI Review Gen, AgentMitra) | Low — inherits root OG but can't set product-specific OG image | Low — add `openGraph` object to each page's metadata |
+| **No JSON-LD on About / Contact / Solutions hub** | Low — these pages don't need rich results | Optional |
+| **Pricing page missing OpenGraph** | Low | Low |
+| **No BreadcrumbList JSON-LD** on product/blog pages | Low — breadcrumb UI exists but no structured data | Medium |
+
+---
+
+## Part 8 — How to Add SEO to a New Page
+
+1. Open the new page file at `app/(main)/your-page/page.tsx`
+2. Import the `Metadata` type: `import type { Metadata } from 'next';`
+3. Add the export above the component:
+
+```tsx
+export const metadata: Metadata = {
+  title: 'Your Page Title — Be Specific and Keyword-Rich',
+  description: 'Describe this page in 140–160 characters. What will someone find here?',
+  alternates: {
+    canonical: 'https://vyaptix.com/your-page',
+  },
+  openGraph: {
+    title: 'Your Page Title',
+    description: 'Same or slightly different description for social sharing.',
+    url: 'https://vyaptix.com/your-page',
+    type: 'website',
+  },
+};
+```
+
+4. If the page should NOT be indexed:
+```tsx
+robots: { index: false, follow: false },
+```
+
+5. Add the route to `app/sitemap.ts` static routes array.
+
+6. After deploy, test at: https://search.google.com/test/rich-results
+
+---
+
+## Part 9 — Submitting to Google Search Console
+
+1. Go to https://search.google.com/search-console
+2. Add `vyaptix.com` as a property (if not already done)
+3. Go to **Sitemaps** in the left nav → enter `sitemap.xml` → Submit
+4. Use **URL Inspection** to manually request indexing of important new pages immediately after deploy
+
+---
+
+## Quick Checklist: Before Any New Page Goes Live
+
+- [ ] `export const metadata` with `title`, `description`, `alternates.canonical`
+- [ ] Title is 50–70 characters, includes primary keyword
+- [ ] Description is 140–160 characters, compelling and accurate
+- [ ] `openGraph` block added (title, description, url, type)
+- [ ] If should NOT be indexed: `robots: { index: false }` added
+- [ ] Route added to `app/sitemap.ts` (if public page)
+- [ ] JSON-LD added for product/article pages
+- [ ] Test at https://metatags.io after deploy

@@ -1,0 +1,59 @@
+# VyaptIX — AI Automation Tools for Business
+> VyaptIX builds focused AI tools that remove real friction from business operations. Products go live in 3–7 days. No long implementations, no generic demos.
+
+## Company
+- Name: VyaptIX
+- Website: https://vyaptix.com
+- Founded: December 2025
+- Founders: Ajeet Singh (CEO), Manish Singh (CTO)
+- LinkedIn: https://www.linkedin.com/company/vyaptix-ai
+- Twitter/X: https://x.com/Vyaptix_ai
+
+## Products
+
+### AI Review Generator
+- Platform: https://reviews.vyaptix.ai
+- Page: https://vyaptix.com/solutions/ai-review-generation
+- Status: Live
+- What it does: Collects authentic Google reviews in under 20 seconds via QR code and AI-generated review text. Customers scan, rate, and the AI drafts a personalized review they post with one tap.
+- Key stats: 20 seconds per review, 3× average review growth, Google-policy compliant
+- Use cases: Restaurants, retail, clinics, legal firms, real estate agencies
+- Pricing: Free tier available
+
+### Setu — WhatsApp Marketing & Automation
+- Platform: https://setu.vyaptix.ai
+- Page: https://vyaptix.com/solutions/setu
+- Status: Live
+- What it does: WhatsApp broadcast campaigns, 24/7 AI chatbot, shared team inbox, contact CRM, lead pipeline (Kanban board), campaign analytics, role-based access. VyaptIX is a registered Meta Tech Provider.
+- Key stats: 98% message open rate, 3× higher reply rate vs email, live in 2 minutes
+- Pricing: From ₹999/month
+
+### AgentMitra — Service Operations Platform
+- Page: https://vyaptix.com/agent-mitra
+- Status: Early Access
+- What it does: Role-based platform for service teams — instant client search, unified workspace, live status tracking, structured workflows. Built for agencies, consultancies, and support-driven businesses.
+
+### BankLens — AI Credit Decisioning
+- Platform: https://banklens.vyaptix.ai
+- Page: https://vyaptix.com/solutions/banklens
+- Status: Live
+- What it does: AI bank statement analysis and credit decisioning for NBFCs, DSAs, and fintech lenders. Ingests PDFs and images, computes 220+ financial signals, ML-powered credit scoring (0–100, A/B/C/D tiers), 14-signal fraud detection, audit-ready CAM reports.
+- Compliance: DPDP 2023, RBI NBFC guidelines
+- Supports: 40+ Indian banks
+- Pricing: From ₹12/report
+
+## Key Differentiators
+- Products go live in 3–7 days (not months)
+- No reseller agreements with any AI platform — recommendations are vendor-neutral
+- Built for businesses of 5–500 people
+- Results-focused: measures reviews, hours saved, leads converted — not features shipped
+
+## Contact
+- Contact form: https://vyaptix.com/contact
+- Book a call: https://vyaptix.com/demo
+- WhatsApp: https://wa.me/919717156466
+- Email: ajeet@vyaptix.com
+
+## Content
+- Blog: https://vyaptix.com/blog
+- Topics: AI automation, business productivity, WhatsApp marketing, Google reviews, credit technology

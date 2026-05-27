@@ -115,9 +115,11 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Sora', 'sans-serif'],
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['IBM Plex Mono', 'monospace'],
+        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+        heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+        'space-grotesk': ['"Plus Jakarta Sans"', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       fontSize: {
         'display': ['3.5rem', { lineHeight: '1.1', fontWeight: '700' }],

@@ -1,102 +1,44 @@
 # Analytics Setup Spec
 
-See `REVAMP-MASTER-PLAN.md` Phase 5 for full code.
+## Tool: Microsoft Clarity
 
-## Tool: PostHog
+**Project ID:** `wwofub2i9i`
+**Dashboard:** https://clarity.microsoft.com
 
-**Why PostHog:**
-- Open-source (can self-host for data sovereignty)
-- Free tier: 1M events/month
-- Session recording + heatmaps built-in
-- Feature flags (useful for A/B testing future homepage variants)
-- Privacy-friendly (can configure to not capture PII)
-- Better than GA4 for product analytics
+**Why Clarity:**
+- Free, no event limits
+- Session recordings and heatmaps built-in — zero manual instrumentation needed
+- Rage click, dead click, and scroll depth detection automatic
+- Simple setup — one script, no SDK required
+- GDPR-compliant when consent-gated
 
-**Alternative:** Google Analytics 4 (GA4) — more widely used, free, good for SEO correlation in Search Console, simpler setup. Choose if team is more familiar with Google ecosystem.
+## What Was Implemented
 
-## Setup Steps
+- `src/components/ClarityProvider.tsx` — consent-gated component mounted in `app/(main)/layout.tsx`
+- Clarity only loads after the user accepts cookies via the cookie banner
+- Listens to `vyaptix:consent-accepted` event to initialize mid-session if consent is given
 
-1. Create account at `https://posthog.com`
-2. Create new project for `vyaptix.com`
-3. Get project API key
-4. Add `VITE_POSTHOG_KEY` and `VITE_POSTHOG_HOST` to `.env` and Vercel env vars
-5. Install package: `npm install posthog-js`
-6. Create `src/lib/analytics.ts` (see master plan)
-7. Create `src/components/RouteTracker.tsx` (see master plan)
-8. Add `<RouteTracker />` in App.tsx
-9. Add event tracking to CTA buttons
+## Environment Variable
 
-## Key Events to Track
+Add to `.env.local` and Vercel environment variables:
 
-### Automatic (via RouteTracker)
-- `$pageview` — every route change with path
-
-### Manual Events to Add
-
-**Homepage CTAs:**
-```typescript
-// Book Demo button
-trackEvent('cta_clicked', { label: 'Book Free Demo', page: 'homepage', position: 'hero' });
-
-// Watch Video button
-trackEvent('video_modal_opened', { page: 'homepage' });
-
-// Product card CTAs
-trackEvent('cta_clicked', { label: 'Learn More', product: 'ai-review-generator', page: 'homepage' });
+```
+NEXT_PUBLIC_CLARITY_PROJECT_ID=wwofub2i9i
 ```
 
-**Contact Form:**
-```typescript
-// Form field first touch
-trackEvent('contact_form_started', { page: 'contact' });
+## What Clarity Tracks Automatically
 
-// Successful submission
-trackEvent('contact_form_submitted', {
-  product_interest: formData.serviceInterested,
-  company_size: formData.companySize,
-});
+- Page views and navigation paths
+- Session recordings (full replay)
+- Heatmaps (click, scroll, area)
+- Rage clicks, dead clicks, excessive scrolling
+- Device, browser, OS, and location
 
-// Error
-trackEvent('contact_form_error', { error: errorMessage });
-```
+No manual event tracking calls are needed — Clarity handles everything automatically.
 
-**Product Pages:**
-```typescript
-trackEvent('product_page_viewed', { product: 'ai-review-generator' });
-trackEvent('cta_clicked', { label: 'Try Platform', destination: 'reviews.vyaptix.ai' });
-```
+## Dashboard Setup
 
-## Dashboard Setup (PostHog)
-
-After events start flowing, create these dashboards:
-
-1. **Traffic Overview** — pageviews by page, by date
-2. **Conversion Funnel** — Homepage → Product page → Contact → Thank You
-3. **CTA Performance** — Which CTAs get clicked most
-4. **Form Analytics** — Form start vs. submit rate
-
-## Respecting Cookie Consent
-
-Connect analytics initialization to cookie consent:
-
-```typescript
-// In analytics.ts
-export function initAnalytics() {
-  const consent = localStorage.getItem('cookie-consent');
-  if (consent !== 'accepted') return; // don't initialize if declined
-  
-  posthog.init(import.meta.env.VITE_POSTHOG_KEY, {
-    // ...config
-  });
-}
-```
-
-Re-initialize when consent is given:
-```typescript
-// In CookieBanner.tsx accept handler:
-const accept = () => {
-  localStorage.setItem('cookie-consent', 'accepted');
-  setVisible(false);
-  initAnalytics(); // initialize now that we have consent
-};
-```
+Log in at https://clarity.microsoft.com to view:
+1. **Recordings** — watch real user sessions
+2. **Heatmaps** — see where users click and scroll on each page
+3. **Insights** — automatic rage click and dead click alerts
