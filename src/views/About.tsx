@@ -2,14 +2,13 @@
 
 import Link from 'next/link';
 import {
-  Target,
-  Eye,
-  Heart,
+  Compass,
+  Telescope,
+  Handshake,
   Users,
   Lightbulb,
   Zap,
   Shield,
-  Linkedin,
   ArrowRight,
   CheckCircle,
   TrendingUp,
@@ -20,23 +19,7 @@ import { CountUp } from '../components/ui/CountUp';
 import { TimelineHorizontal } from '../components/ui/TimelineHorizontal';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { HeroSection } from '../components/blocks/hero-section';
-
-const team = [
-  {
-    name: 'Ajeet Singh',
-    title: 'Co-Founder & CEO',
-    bio: 'Drives product vision and customer success. Passionate about making AI automation practical and accessible for every business owner.',
-    linkedin: 'https://www.linkedin.com/in/ajeet-singh-vyaptix/',
-    initials: 'AS',
-  },
-  {
-    name: 'Manish Singh',
-    title: 'Co-founder & CTO',
-    bio: 'Leads engineering and product architecture. Turns complex AI capabilities into reliable, fast-to-deploy systems that businesses can actually use.',
-    linkedin: 'https://www.linkedin.com/in/vyaptix-manish/',
-    initials: 'MS',
-  },
-];
+import FoundersSection from '../components/sections/FoundersSection';
 
 const milestones = [
   {
@@ -86,6 +69,42 @@ const values = [
     icon: <Users className="w-6 h-6" />,
     title: 'Right-Sized Thinking',
     description: 'We build for businesses with 5–500 people. Not enterprise complexity, not toy-grade tools — the right level of power for growth-stage businesses.',
+  },
+];
+
+const missionCards = [
+  {
+    icon: <Compass className="w-8 h-8" strokeWidth={1.8} />,
+    label: 'Our Mission',
+    content: 'Deliver practical AI automation that removes friction from customer engagement and makes results visible fast - for businesses that can\'t wait 6 months for ROI.',
+    tags: [],
+    accent: '#06CEFF',
+    accentSoft: 'rgba(6,206,255,0.12)',
+    accentBorder: 'rgba(6,206,255,0.28)',
+    gradient: 'linear-gradient(135deg, rgba(6,206,255,0.20), rgba(26,82,224,0.10))',
+    shadow: 'rgba(6,206,255,0.22)',
+  },
+  {
+    icon: <Telescope className="w-8 h-8" strokeWidth={1.8} />,
+    label: 'Our Vision',
+    content: 'A world where every growing business runs with trusted AI co-pilots - not as a competitive advantage for the few, but as standard infrastructure for every team.',
+    tags: [],
+    accent: '#A78BFA',
+    accentSoft: 'rgba(167,139,250,0.12)',
+    accentBorder: 'rgba(167,139,250,0.28)',
+    gradient: 'linear-gradient(135deg, rgba(167,139,250,0.20), rgba(26,82,224,0.10))',
+    shadow: 'rgba(167,139,250,0.20)',
+  },
+  {
+    icon: <Handshake className="w-8 h-8" strokeWidth={1.8} />,
+    label: 'Our Values',
+    content: 'We lead with integrity, craft, and accountability - and we hold ourselves to the results we deliver, not just the work we ship.',
+    tags: ['Customer-first', 'Radical clarity', 'Outcome-driven', 'No fluff'],
+    accent: '#34D399',
+    accentSoft: 'rgba(52,211,153,0.12)',
+    accentBorder: 'rgba(52,211,153,0.28)',
+    gradient: 'linear-gradient(135deg, rgba(52,211,153,0.18), rgba(6,206,255,0.09))',
+    shadow: 'rgba(52,211,153,0.18)',
   },
 ];
 
@@ -178,39 +197,54 @@ export function About() {
             <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>Mission, Vision &amp; Values</h2>
           </div>
           <ScrollRevealGroup className="grid md:grid-cols-3 gap-6" staggerMs={100}>
-            {[
-              {
-                icon: <Target className="w-6 h-6" />,
-                label: 'Our Mission',
-                content: 'Deliver practical AI automation that removes friction from customer engagement and makes results visible fast — for businesses that can\'t wait 6 months for ROI.',
-                tags: [],
-              },
-              {
-                icon: <Eye className="w-6 h-6" />,
-                label: 'Our Vision',
-                content: 'A world where every growing business runs with trusted AI co-pilots — not as a competitive advantage for the few, but as standard infrastructure for every team.',
-                tags: [],
-              },
-              {
-                icon: <Heart className="w-6 h-6" />,
-                label: 'Our Values',
-                content: 'We lead with integrity, craft, and accountability — and we hold ourselves to the results we deliver, not just the work we ship.',
-                tags: ['Customer-first', 'Radical clarity', 'Outcome-driven', 'No fluff'],
-              },
-            ].map((card) => (
+            {missionCards.map((card) => (
               <div
                 key={card.label}
-                className="rounded-2xl border border-white/10 bg-white/5 p-7 hover:border-[#06CEFF]/20 hover:-translate-y-1 transition-all duration-300"
+                className="group relative overflow-hidden rounded-2xl border bg-white/[0.045] p-7 transition-all duration-300 hover:-translate-y-1"
+                style={{ borderColor: card.accentBorder }}
               >
-                <div className="w-12 h-12 rounded-xl bg-[#06CEFF]/10 border border-[#06CEFF]/20 flex items-center justify-center text-[#06CEFF] mb-5">
-                  {card.icon}
+                <div
+                  className="absolute inset-x-0 top-0 h-px opacity-80"
+                  style={{ background: `linear-gradient(90deg, transparent, ${card.accent}, transparent)` }}
+                />
+                <div
+                  className="relative mb-6 flex h-28 items-center justify-center overflow-hidden rounded-2xl border"
+                  style={{ background: card.gradient, borderColor: card.accentBorder }}
+                >
+                  <div
+                    className="absolute -right-6 -top-8 h-28 w-28 rounded-full blur-2xl"
+                    style={{ backgroundColor: card.shadow }}
+                  />
+                  <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between gap-2 opacity-45" aria-hidden="true">
+                    {[28, 44, 34, 58, 40].map((height, index) => (
+                      <span
+                        key={`${card.label}-${height}-${index}`}
+                        className="w-full rounded-full"
+                        style={{ height, backgroundColor: card.accent }}
+                      />
+                    ))}
+                  </div>
+                  <div
+                    className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl border text-white shadow-2xl transition-transform duration-300 group-hover:scale-105"
+                    style={{
+                      background: `linear-gradient(135deg, ${card.accent}, rgba(255,255,255,0.10))`,
+                      borderColor: 'rgba(255,255,255,0.28)',
+                      boxShadow: `0 18px 50px ${card.shadow}`,
+                    }}
+                  >
+                    {card.icon}
+                  </div>
                 </div>
                 <h3 className="text-base font-bold text-white mb-3">{card.label}</h3>
                 <p className="text-slate-200 text-sm leading-relaxed mb-4">{card.content}</p>
                 {card.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2">
                     {card.tags.map((t) => (
-                      <span key={t} className="text-xs px-2.5 py-1 rounded-full bg-[#06CEFF]/10 border border-[#06CEFF]/20 text-[#06CEFF] font-medium">
+                      <span
+                        key={t}
+                        className="text-xs px-2.5 py-1 rounded-full border font-medium"
+                        style={{ backgroundColor: card.accentSoft, borderColor: card.accentBorder, color: card.accent }}
+                      >
                         {t}
                       </span>
                     ))}
@@ -222,50 +256,7 @@ export function About() {
         </div>
       </section>
 
-      {/* ── Team ── */}
-      <section className="py-20 md:py-28 bg-[#0A1628]">
-        <div className="container-main">
-          <div className="text-center mb-12">
-            <p className="label-mono-cyan mb-3">The Team</p>
-            <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
-              Built by people who've felt the pain
-            </h2>
-            <p className="text-slate-200 max-w-2xl mx-auto">
-              We're not a research lab — we're builders who've sat across from business owners and watched manual work slow them down.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-6">
-            {team.map((member) => (
-              <div
-                key={member.name}
-                className="rounded-2xl border border-white/10 bg-white/5 p-7 w-full max-w-sm hover:border-[#06CEFF]/20 hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="w-16 h-16 rounded-2xl bg-[#06CEFF]/10 border border-[#06CEFF]/20 flex items-center justify-center text-xl font-bold text-[#06CEFF] flex-shrink-0">
-                    {member.initials}
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-white">{member.name}</h3>
-                    <p className="text-sm text-[#06CEFF] font-medium">{member.title}</p>
-                  </div>
-                </div>
-                <p className="text-slate-200 text-sm leading-relaxed mb-5">{member.bio}</p>
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#06CEFF] hover:text-white transition-colors"
-                >
-                  <Linkedin className="w-4 h-4" />
-                  Connect on LinkedIn
-                </a>
-              </div>
-            ))}
-
-          </div>
-        </div>
-      </section>
+      <FoundersSection />
 
       {/* ── Milestones Timeline ── */}
       <section className="py-20 md:py-28 bg-[#050D1A]">

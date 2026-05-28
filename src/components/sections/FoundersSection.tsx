@@ -124,7 +124,7 @@ export default function FoundersSection() {
                 marginBottom: '14px',
               }}
             >
-              Founder &amp; CEO
+              Co-Founder &amp; CEO
             </p>
             <p
               style={{
