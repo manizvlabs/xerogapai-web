@@ -11,15 +11,11 @@ import {
   Shield,
   ArrowRight,
   CheckCircle,
-  TrendingUp,
-  Star,
 } from 'lucide-react';
 import { ScrollRevealGroup } from '../components/ui/ScrollRevealGroup';
-import { CountUp } from '../components/ui/CountUp';
 import { TimelineHorizontal } from '../components/ui/TimelineHorizontal';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { HeroSection } from '../components/blocks/hero-section';
-import FoundersSection from '../components/sections/FoundersSection';
 
 const milestones = [
   {
@@ -128,7 +124,7 @@ export function About() {
       {/* ── Our Story ── */}
       <section className="py-20 md:py-28 bg-[#0A1628]">
         <div className="container-main">
-          <div className="grid lg:grid-cols-2 gap-14 items-start">
+          <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
               <p className="label-mono-cyan mb-5">Our Story</p>
               <h2 className="font-heading font-bold text-white mb-6 leading-tight" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}>
@@ -150,40 +146,28 @@ export function About() {
               </div>
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-5 lg:self-center">
               {/* Quote card */}
-              <div className="rounded-2xl border border-[#06CEFF]/20 bg-[#06CEFF]/5 p-8">
+              <div className="relative overflow-hidden rounded-2xl border border-[#06CEFF]/20 bg-[#06CEFF]/5 p-8 md:p-10">
+                <div className="absolute -right-12 -top-16 h-40 w-40 rounded-full bg-[#06CEFF]/10 blur-3xl" aria-hidden="true" />
                 <p className="text-lg font-medium text-white/80 leading-relaxed mb-5">
                   "Most AI projects fail not because of bad technology — they fail because nobody built the bridge between the AI model and the actual daily workflow. That's the only bridge we build."
                 </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#06CEFF]/20 border border-[#06CEFF]/30 flex items-center justify-center text-[#06CEFF] font-bold text-sm">
-                    AS
+                <div className="relative mt-8 flex items-center justify-center gap-4" aria-hidden="true">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#06CEFF]/25 bg-[#06CEFF]/10 text-[#06CEFF]">
+                    <Lightbulb className="h-6 w-6" strokeWidth={1.8} />
                   </div>
-                  <div>
-                    <p className="font-semibold text-white text-sm">Ajeet Singh</p>
-                    <p className="text-slate-300 text-xs">Co-Founder, VyaptIX</p>
+                  <div className="relative h-px flex-1 max-w-32 bg-[#06CEFF]/30">
+                    <span className="absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#06CEFF]/25 bg-[#0A1628] text-[#06CEFF]">
+                      <ArrowRight className="h-4 w-4" strokeWidth={2} />
+                    </span>
+                  </div>
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#34D399]/25 bg-[#34D399]/10 text-[#34D399]">
+                    <CheckCircle className="h-6 w-6" strokeWidth={1.8} />
                   </div>
                 </div>
               </div>
 
-              {/* Stats grid */}
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { value: 500, suffix: '+', label: 'Businesses served', icon: <Users className="w-5 h-5" /> },
-                  { value: 12, suffix: '+', label: 'Industries covered', icon: <TrendingUp className="w-5 h-5" /> },
-                  { value: 4, suffix: '', label: 'Products live & in market', icon: <Zap className="w-5 h-5" /> },
-                  { value: 20, suffix: 's', label: 'Review collection time', icon: <Star className="w-5 h-5" /> },
-                ].map((stat) => (
-                  <div key={stat.label} className="rounded-xl border border-white/10 bg-white/5 p-5">
-                    <div className="text-[#06CEFF] mb-2">{stat.icon}</div>
-                    <p className="text-2xl font-bold text-white">
-                      <CountUp value={stat.value} suffix={stat.suffix} />
-                    </p>
-                    <p className="text-xs text-slate-300 mt-0.5">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
@@ -255,8 +239,6 @@ export function About() {
           </ScrollRevealGroup>
         </div>
       </section>
-
-      <FoundersSection />
 
       {/* ── Milestones Timeline ── */}
       <section className="py-20 md:py-28 bg-[#050D1A]">
