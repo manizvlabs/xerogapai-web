@@ -15,7 +15,6 @@ import {
   Zap,
 } from 'lucide-react';
 import { TestimonialMarquee } from '../components/ui/testimonial-cards';
-import FoundersSection from '../components/sections/FoundersSection';
 import { HeroSection } from '../components/blocks/hero-section';
 
 /* ─── JSON-LD ─────────────────────────────────────────────────── */
@@ -723,11 +722,6 @@ export function Home() {
           </div>
         </div>
       </section>
-
-      {/* ════════════════════════════════════════════
-          FOUNDERS
-      ════════════════════════════════════════════ */}
-      <FoundersSection />
 
       {/* ════════════════════════════════════════════
           FINAL CTA
