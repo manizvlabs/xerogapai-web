@@ -66,29 +66,25 @@ OPENAI_API_KEY=your-openai-key
 
 ## Adding a Blog Post
 
-Blog content lives in `src/data/blogs.ts`. Add a new entry to the `blogPosts` array:
+Blog content is managed only in the embedded Sanity Studio.
 
-```typescript
-{
-  slug: 'your-post-slug',           // URL: /blog/your-post-slug
-  title: 'Post Title',
-  excerpt: 'Short description...',
-  image: '/blog/your-image.jpg',    // Place in public/blog/
-  category: 'Trending in AI',       // 'Products' | 'Trending in AI' | 'Business'
-  date: '2026-04-21',
-  readTime: '5 min read',
-  author: 'Author Name',
-  published: true,
-  content: [
-    'Paragraph text as a string...',
-    { type: 'callout', text: 'Key insight here' },
-    { type: 'steps', items: ['Step 1', 'Step 2', 'Step 3'] },
-    { type: 'image', src: '/blog/image.jpg', caption: 'Caption' },
-    { type: 'table', headers: ['Col 1', 'Col 2'], rows: [['A', 'B']] },
-    { type: 'highlights', items: ['Feature 1', 'Feature 2'] },
-  ]
-}
-```
+1. Run `npm run dev`.
+2. Open `http://localhost:3000/studio`.
+3. Log in with an account invited to the `VyaptIX Blog` Sanity project.
+4. Create or select an Author and Category.
+5. Create the Blog Post and complete all required fields.
+6. Turn the custom `Published` switch on.
+7. Use Sanity's Publish action.
+8. Review the post at `/blog/[slug]`.
+
+Relevant implementation files:
+
+- `sanity/schemaTypes/`: blog authoring schemas
+- `src/lib/blog.ts`: Sanity queries and public-view mapping
+- `app/(main)/blog/`: public blog routes
+- `app/api/revalidate/sanity/route.ts`: signed publishing webhook
+
+Do not add blog posts as repository files.
 
 ---
 

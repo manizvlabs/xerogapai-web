@@ -12,6 +12,10 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+function absoluteImageUrl(image: string) {
+  return image.startsWith('http') ? image : `https://vyaptix.com${image}`;
+}
+
 export async function generateStaticParams() {
   const slugs = await getAllSlugs();
   return slugs.map((slug) => ({ slug }));
@@ -22,25 +26,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = await getPostBySlug(slug);
   if (!post) return { title: 'Post Not Found' };
 
-  const ogImage = `https://vyaptix.com${post.image}`;
+  const ogImage = absoluteImageUrl(post.image);
 
   return {
     title: post.title,
-    description: post.excerpt,
+    description: post.seoDescription ?? post.excerpt,
     alternates: { canonical: `https://vyaptix.com/blog/${post.slug}` },
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description: post.seoDescription ?? post.excerpt,
       url: `https://vyaptix.com/blog/${post.slug}`,
       type: 'article',
       publishedTime: post.date,
       authors: [post.author.name],
-      images: [{ url: ogImage, alt: post.title }],
+      images: [{ url: ogImage, alt: post.imageAlt }],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.excerpt,
+      description: post.seoDescription ?? post.excerpt,
       images: [ogImage],
     },
   };
@@ -62,7 +66,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.excerpt,
-    image: `https://vyaptix.com${post.image}`,
+    image: absoluteImageUrl(post.image),
     datePublished: post.date,
     dateModified: post.date,
     author: {
@@ -171,7 +175,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <div className="aspect-[16/9] rounded-2xl overflow-hidden border border-white/10">
                 <img
                   src={post.image}
-                  alt={post.title}
+                  alt={post.imageAlt}
                   className="w-full h-full object-cover"
                 />
               </div>

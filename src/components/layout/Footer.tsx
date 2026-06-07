@@ -49,7 +49,15 @@ export function Footer() {
             style={{ transitionDelay: '0ms' }}
           >
             <Link href="/" className="inline-block mb-5">
-              <Image src="/vyaptix-logo.webp" alt="VyaptIX" className="h-10 md:h-12 w-auto" width={160} height={48} priority />
+              <Image
+                src="/vyaptix-logo.webp"
+                alt="VyaptIX"
+                className="h-10 md:h-12 w-auto"
+                width={160}
+                height={48}
+                style={{ width: 'auto' }}
+                priority
+              />
             </Link>
             <p className="text-slate-300 text-sm max-w-sm mb-3 leading-relaxed">
               AI automation and custom software for businesses that want real results — not slide-deck promises.

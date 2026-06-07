@@ -65,7 +65,7 @@ export function BlogContent({ blocks }: Props) {
         if (block.type === 'h2') {
           return (
             <h2 key={i} className="text-2xl font-bold text-white mt-12 mb-4">
-              {block.text}
+              {renderText(block.text)}
             </h2>
           );
         }
@@ -73,7 +73,7 @@ export function BlogContent({ blocks }: Props) {
         if (block.type === 'h3') {
           return (
             <h3 key={i} className="text-xl font-bold text-white mt-9 mb-3">
-              {block.text}
+              {renderText(block.text)}
             </h3>
           );
         }

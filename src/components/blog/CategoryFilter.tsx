@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import type { BlogPost, BlogCategory } from '@/src/lib/blog';
+import type { BlogPostSummary, BlogCategory } from '@/src/lib/blog';
 
 const CATEGORIES: Array<'All' | BlogCategory> = ['All', 'Products', 'Trending in AI', 'Business'];
 
@@ -14,7 +14,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 interface CategoryFilterProps {
-  posts: BlogPost[];
+  posts: BlogPostSummary[];
 }
 
 export function CategoryFilter({ posts }: CategoryFilterProps) {
@@ -39,7 +39,7 @@ export function CategoryFilter({ posts }: CategoryFilterProps) {
               <div className="aspect-[16/10] lg:aspect-auto overflow-hidden">
                 <img
                   src={featured.image}
-                  alt={featured.title}
+                  alt={featured.imageAlt}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -117,7 +117,7 @@ export function CategoryFilter({ posts }: CategoryFilterProps) {
               <div className="aspect-[16/10] overflow-hidden">
                 <img
                   src={post.image}
-                  alt={post.title}
+                  alt={post.imageAlt}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
