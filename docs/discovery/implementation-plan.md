@@ -155,10 +155,10 @@ These are production bugs. Every day they stay live, conversions are being lost.
 ### Sprint 3.5 — Add Author Profiles to Blog
 - **Issue:** 5 of 7 blog posts have no author. Google E-E-A-T signals are weak.
 - **Fix:**
-  - Add author name to all 7 posts in the markdown frontmatter
-  - Create author profile component: small photo, 2-line bio, LinkedIn link
+  - Complete the Author records in Sanity Studio
+  - Assign an Author to every Blog Post document
   - Add Ajeet's author profile to all posts he authored
-- **Files:** `content/blog/*.md` (frontmatter), `src/views/BlogPost.tsx`, `src/components/ui/AuthorCard.tsx` (new)
+- **Files:** Sanity Author and Blog Post documents, public blog article route
 - **Skill:** `vyaptix-frontend-developer-agent`
 
 ---
@@ -212,7 +212,7 @@ These are production bugs. Every day they stay live, conversions are being lost.
   - Add original analysis layer: "What this means for Indian SMBs using AI tools"
   - Move to a "News" category with a clear visual distinction
 - **Ajeet decision needed:** Remove or repurpose?
-- **Affected posts:** Check `content/blog/` for the news-style posts
+- **Affected posts:** Review the published Blog Post documents in Sanity Studio
 
 ### Sprint 5.2 — Create Author Profile Pages
 - **Fix:** Build a `/authors/ajeet-singh` page (and any other authors) with:
@@ -228,8 +228,8 @@ These are production bugs. Every day they stay live, conversions are being lost.
 - **Fix:** Add relevant CTAs within blog post content:
   - Automation posts → link to `/solutions/ai-review-generation`
   - Restaurant posts → link to AI Review Generator
-  - Update `content/blog/*.md` files with inline links
-- **Files:** `content/blog/*.md` (content edits)
+  - Update Blog Post documents in Sanity Studio with inline links
+- **Files:** Sanity Blog Post documents
 
 ### Sprint 5.4 — Create 3 Industry Landing Pages
 - **Issue:** Industries section is decorative. No specific landing pages exist.
@@ -251,8 +251,8 @@ These are production bugs. Every day they stay live, conversions are being lost.
     - "WhatsApp automation vs hiring a receptionist — real cost comparison"
     - "Why Indian SMBs fail at AI: the 5 implementation mistakes"
     - "How to get more Google reviews without asking awkwardly"
-- **Tool:** Decap CMS is already configured — Ajeet can write and publish without code
-- **Ajeet action needed:** Calendly (blocker) + GitHub OAuth (for CMS) must be done first
+- **Tool:** Sanity Studio is configured at `/studio`; Ajeet can write and publish without code
+- **Ajeet action needed:** Maintain the publishing cadence in Sanity Studio
 
 ---
 
@@ -299,10 +299,10 @@ These are production bugs. Every day they stay live, conversions are being lost.
 - **Blocker:** Ajeet must rotate the Zoho token first, then update env vars in Vercel
 - **Files:** `api/submit-to-zoho.ts`, `src/services/contactService.ts`
 
-### Sprint 7.2 — Decap CMS GitHub OAuth Setup
-- **Issue:** CMS is 90% wired but needs a GitHub OAuth App for authentication.
-- **Fix:** Ajeet creates a GitHub OAuth App (5-minute task), adds credentials to Vercel env vars.
-- **Ajeet action needed:** Follow `public/admin/config.yml` instructions to create OAuth App
+### Sprint 7.2 — Sanity Studio Access
+- **Issue:** Team members need project access before they can manage blog content.
+- **Fix:** Invite approved team members to the VyaptIX Blog project in Sanity Manage.
+- **Ajeet action needed:** Assign the appropriate Sanity role to each content editor.
 
 ---
 

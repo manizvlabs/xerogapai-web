@@ -28,7 +28,7 @@ Type checking via `npm run typecheck` acts as a first-pass correctness check. Th
 **Priority targets:**
 - `src/services/zohoService.ts` — token refresh logic, retry handling
 - `src/services/contactService.ts` — data mapping
-- `src/data/blogs.ts` — slug uniqueness, required fields present
+- `src/lib/blog.ts` — Sanity response mapping and required-field handling
 - URL validation utilities (if added)
 
 ```bash

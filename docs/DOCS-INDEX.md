@@ -36,7 +36,6 @@ docs/
 ├── content-docs/                    ← Copy, SEO, brand
 │   ├── brand-guidelines.md
 │   ├── seo-strategy.md
-│   └── blog-content-guide.md
 │
 └── revamp/                          ← Full website revamp plan
     ├── REVAMP-MASTER-PLAN.md        ← PRIMARY INPUT FOR DEVELOPMENT

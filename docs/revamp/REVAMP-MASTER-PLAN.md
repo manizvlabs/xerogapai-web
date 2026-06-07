@@ -914,7 +914,7 @@ Add sections:
 
 | Order | Phase | Priority | Effort | Blocked? | Impact | Status |
 |---|---|---|---|---|---|---|
-| — | **Next.js migration + Blog system** | P0 | **Done** | — | Full SSG, SSR-SEO, Markdown blog, Decap CMS admin | ✅ Done |
+| — | **Next.js migration + Blog system** | P0 | **Done** | — | Full SSG, SSR-SEO, Sanity Studio | ✅ Done |
 | 1 | 7.1 Zoho credentials security | P0 | 2 hours | No | Closes critical security hole — do this before anything else | ✅ Done |
 | 2 | 1.1 Remove orphaned routes | P0 | 30 min | No | Removes broken 404s | ✅ Done |
 | 3 | 1.2 Fix header nav | P0 | 1 hour | No | Critical UX fix | ✅ Done |
@@ -943,12 +943,12 @@ Add sections:
 | Step | Phase | Task | Effort | Blocked? | Status |
 |---|---|---|---|---|---|
 | — | **Next.js migration** | Migrate full website from Vite/React SPA to Next.js 14 App Router | Done | No | ✅ Done |
-| — | **Blog system** | Markdown blog with SSG, SEO, Decap CMS admin, 3 posts migrated | Done | No | ✅ Done |
+| — | **Blog system** | Sanity Studio with SSG, SEO, and migrated posts | Done | No | ✅ Done |
 | 1 | 1.1 | Remove orphaned routes from `App.tsx` | 30 min | No | ✅ Done |
 | 2 | 1.2 | Fix header nav (remove Setu, fix AgentMitra link, add Book Demo btn) | 1 hour | No | ✅ Done |
 | 3 | 1.3 | Fix footer (links, add AgentMitra, fix Privacy/Terms) | 30 min | No | ✅ Done |
 | 4 | 2.4 | Create 404 Not Found page | 30 min | No | ✅ Done |
-| 5 | 6.1–6.6 | SEO basics (Next.js Metadata API, next-sitemap, robots.txt, JSON-LD on all pages) | 3 hours | No | ✅ Done |
+| 5 | 6.1–6.6 | SEO basics (Next.js Metadata API, native sitemap/robots routes, JSON-LD on all pages) | 3 hours | No | ✅ Done |
 | 6 | 1.4 | Logo optimization (759KB PNG → WebP) | 1 hour | No | ✅ Done — WebP at /vyaptix-logo.webp |
 | 7 | 2.2 | Privacy Policy page | 2 hours | Yes — needs legal text from team | ✅ Done — page live, legal text still needed |
 | 8 | 2.3 | Terms of Service page | 2 hours | Yes — needs legal text from team | ✅ Done — page live, legal text still needed |

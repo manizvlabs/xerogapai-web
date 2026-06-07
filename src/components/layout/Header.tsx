@@ -104,7 +104,15 @@ export function Header() {
       <div className="container-main">
         <div className="flex items-center justify-between h-22">
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/vyaptix-logo.webp" alt="VyaptIX" className="h-10 md:h-12 w-auto" width={160} height={48} priority />
+            <Image
+              src="/vyaptix-logo.webp"
+              alt="VyaptIX"
+              className="h-10 md:h-12 w-auto"
+              width={160}
+              height={48}
+              style={{ width: 'auto' }}
+              priority
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
