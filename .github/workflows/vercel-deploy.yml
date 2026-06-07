@@ -15,7 +15,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         
     - name: Install dependencies
       run: npm ci
@@ -23,8 +23,8 @@ jobs:
     - name: Run linting
       run: npm run lint
       
-    - name: Run type check (disabled)
-      run: npm run type-check
+    - name: Run type check
+      run: npm run typecheck
       
     - name: Build application
       run: npm run build
