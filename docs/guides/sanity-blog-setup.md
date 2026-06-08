@@ -216,5 +216,7 @@ because published posts display referenced author and category data.
   - `http://localhost:3333`
   - `https://vyaptix.com`
   - `https://www.vyaptix.com`
+  - `https://vyaptix.ai`
+  - `https://www.vyaptix.ai`
 - Webhook: not configured as of June 6, 2026; create it before relying on
   immediate production updates after publishing
