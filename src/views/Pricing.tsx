@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { CheckCircle, ArrowRight, Users, Building2 } from 'lucide-react';
+import { CheckCircle, ArrowRight, Building2 } from 'lucide-react';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { HeroSection } from '../components/blocks/hero-section';
 
@@ -65,15 +65,6 @@ const reviewPlans = [
       'Quarterly business reviews',
     ],
   },
-];
-
-const agentMitraFeatures = [
-  'Role-based agent + client workspace',
-  'Instant client search by name or mobile',
-  'Live case status tracking',
-  'Structured workflow automation',
-  'Team coordination & task assignment',
-  'Audit logs & compliance reporting',
 ];
 
 export function Pricing() {
@@ -169,44 +160,6 @@ export function Pricing() {
                 )}
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AgentMitra — Early Access */}
-      <section className="py-16 md:py-24 bg-[#0A1628]">
-        <div className="container-main">
-          <div className="max-w-4xl mx-auto">
-            <div className="rounded-2xl border border-[#1A52E0]/30 bg-[#050D1A] p-8 md:p-12">
-              <div className="grid md:grid-cols-2 gap-10 items-center">
-                <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1A52E0]/10 border border-[#1A52E0]/20 text-[#06CEFF] text-sm font-medium mb-5">
-                    <Users className="w-3.5 h-3.5" />
-                    Early Access
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">AgentMitra</h2>
-                  <p className="text-white/55 mb-6 leading-relaxed">
-                    AI-powered agent workspace for service businesses. Built for teams that manage clients, cases, and workflows. Pricing is being finalized — join the waitlist to lock in early-access rates.
-                  </p>
-                  <Link
-                    href="/agent-mitra"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm bg-white text-[#050D1A] hover:shadow-[0_0_20px_rgba(6,206,255,0.3)] hover:scale-[1.02] transition-all"
-                  >
-                    Join the Waitlist <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-                <div>
-                  <ul className="space-y-3">
-                    {agentMitraFeatures.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3 text-sm text-white/85">
-                        <CheckCircle className="w-4 h-4 text-[#06CEFF] flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

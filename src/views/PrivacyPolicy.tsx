@@ -29,7 +29,7 @@ export function PrivacyPolicy() {
           <div className="max-w-3xl mx-auto">
             <PolicySection title="1. Who We Are">
               <p>
-                {COMPANY} ("we", "our", or "us") operates {WEBSITE} and the products available through it, including the AI Review Generator platform (reviews.vyaptix.ai) and AgentMitra. We are incorporated in India. This Privacy Policy explains how we collect, use, store, and protect personal information when you use our website or products.
+                {COMPANY} ("we", "our", or "us") operates {WEBSITE} and the products available through it, including the AI Review Generator platform (reviews.vyaptix.ai). We are incorporated in India. This Privacy Policy explains how we collect, use, store, and protect personal information when you use our website or products.
               </p>
             </PolicySection>
 
@@ -50,7 +50,6 @@ export function PrivacyPolicy() {
               <h4 className="font-semibold text-white mt-4 mb-2">Information from product usage</h4>
               <ul className="list-disc pl-5 space-y-1 text-slate-200">
                 <li>For the AI Review Generator: customer feedback text submitted through your business's review flow</li>
-                <li>For AgentMitra: client records, workflow data, and interaction logs entered by authorised users</li>
               </ul>
             </PolicySection>
 

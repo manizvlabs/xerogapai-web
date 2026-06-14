@@ -23,7 +23,6 @@ Complete all sections in the order listed. Each section has a `STATUS` field to 
 
 | Decision | Detail |
 |---|---|
-| Products on website | **2 only:** AI Review Generator + AgentMitra |
 | Orphaned pages | Remove routes; keep files in repo for now (don't delete) |
 | Primary ICP | Founders and marketers at SMB and growth-stage companies (10–500 employees) |
 | Secondary ICP | Technologists evaluating AI platforms |
@@ -59,10 +58,8 @@ import { DPDPCompliance } from './pages/DPDPCompliance';
 <Route path="/dpdp-compliance" element={<DPDPCompliance />} />
 
 // ADD this new Route:
-<Route path="/agent-mitra" element={<AgentMitra />} />
 
 // ADD this import:
-import { AgentMitra } from './pages/AgentMitra';
 ```
 
 Do NOT delete the page files — just remove routes so they are unreachable.
@@ -87,12 +84,6 @@ const navItems: NavItem[] = [
         href: '/solutions/ai-review-generation',
         icon: <Star className="w-5 h-5" />,
         description: 'Collect Google reviews in under 20 seconds'
-      },
-      {
-        label: 'AgentMitra',
-        href: '/agent-mitra',
-        icon: <SolutionIconUsers className="w-5 h-5" />,
-        description: 'AI agents for business automation'
       },
     ],
   },
@@ -142,11 +133,9 @@ Also add a "Book a Demo" button to the header right side (replace the empty `<di
 **File:** `src/components/layout/Footer.tsx`  
 **STATUS:** TODO
 
-1. Update `footerLinks.solutions` to include both products:
 ```tsx
 solutions: [
   { label: 'AI Review Generator', href: '/solutions/ai-review-generation' },
-  { label: 'AgentMitra', href: '/agent-mitra' },
 ],
 ```
 
@@ -192,16 +181,10 @@ src="/vyaptix-logo.webp"
 
 ## PHASE 2 — NEW PAGES
 
-### 2.1 — Create AgentMitra Product Page
 
-**File to create:** `src/pages/AgentMitra.tsx`  
-**Route:** `/agent-mitra`  
-**STATUS:** TODO — REQUIRES PRODUCT TEAM INPUT (see `product-docs/agent-mitra.md`)
 
-**BLOCKER:** Product details for AgentMitra must be confirmed before this page can be built. Once confirmed, the page should follow this exact structure:
 
 ```tsx
-export function AgentMitra() {
   return (
     <>
       {/* 1. HERO SECTION */}
@@ -394,12 +377,10 @@ Add immediately after hero:
   <div className="container-main">
     <div className="text-center mb-16">
       <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
-        Two products. One goal: <span className="gradient-text">make AI work for your business.</span>
       </h2>
     </div>
     <div className="grid md:grid-cols-2 gap-8">
       {/* Product Card 1: AI Review Generator */}
-      {/* Product Card 2: AgentMitra */}
     </div>
   </div>
 </section>
@@ -428,7 +409,6 @@ Each product card:
 
 ### 3.4 — How It Works Section (Keep, but refocus on journey)
 
-Keep the 4-step flow for AI Review Generator. Add a toggle or tabs to show AgentMitra flow as well.
 
 ---
 
@@ -528,11 +508,9 @@ Replace or enhance the existing bottom CTA section:
 The current Solutions.tsx is effectively just an AI Review Generation page. Revamp to:
 
 1. Hero: "Our Products" heading, 2-sentence overview
-2. Side-by-side or stacked sections for each product (use the same 2-column layout already on the page, but add AgentMitra as a second product section)
 3. Comparison table: Which product is right for you?
 
 ```tsx
-// Add AgentMitra section (mirror of existing AI Review Generation section)
 <section className="py-20 md:py-28 bg-background">
   <div className="container-main">
     <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -693,9 +671,7 @@ Add to each page component:
   description="Turn customer feedback into authentic Google reviews instantly. AI-powered, QR code enabled. Try free today."
 />
 
-// AgentMitra.tsx
 <SEO
-  title="AgentMitra — AI Agent for Business Automation"
   description="[Add once product is defined]"
 />
 
@@ -882,7 +858,6 @@ The current form has 30+ fields. For most visitors, this is a conversion killer.
 - Last Name (required)
 - Work Email (required)
 - Company (required)
-- Product Interested In (dropdown: AI Review Generator / AgentMitra / Not sure yet)
 - Message (textarea, optional)
 - Submit button: "Get in Touch"
 
@@ -893,7 +868,6 @@ The full 30+ field form can remain accessible but should be labelled "Enterprise
 
 Alternatively, for users who select a product, route them:
 - AI Review Generator → link to `https://reviews.vyaptix.ai` with a "Try it free" message
-- AgentMitra → Calendly booking embed
 
 ---
 
@@ -927,8 +901,6 @@ Add sections:
 | 10 | 1.4 Logo optimization | P1 | 1 hour | Yes — needs SVG from design | Core Web Vitals | ✅ Done — WebP at /vyaptix-logo.webp |
 | 11 | 8 Contact form simplification | P1 | 4 hours | No | Conversion rate fix | ❌ Pending |
 | 12 | 3 Homepage revamp | P2 | 1–2 days | Partial — needs metrics & testimonials | Highest conversion impact | ✅ Done — repositioned as company capability page |
-| 13 | 4 Solutions page | P2 | 4 hours | Partial — needs AgentMitra defined | Two-product clarity | ✅ Done — side-by-side layout, comparison section |
-| 14 | 2.1 AgentMitra page | P2 | 1 day | Yes — needs product definition | Completes the product lineup | ✅ Done — page live, real content still needed |
 | 15 | 2.2 Privacy Policy | P2 | 2 hours | Yes — needs legal text | Legal compliance | ✅ Done — page live, legal text still needed |
 | 16 | 2.3 Terms of Service | P2 | 2 hours | Yes — needs legal text | Legal compliance | ✅ Done — page live, legal text still needed |
 | 17 | 9 About page | P3 | 1 day | Yes — needs team content | Trust building | ✅ Done — team, origin story, milestones, values, CTA |
@@ -945,21 +917,17 @@ Add sections:
 | — | **Next.js migration** | Migrate full website from Vite/React SPA to Next.js 14 App Router | Done | No | ✅ Done |
 | — | **Blog system** | Sanity Studio with SSG, SEO, and migrated posts | Done | No | ✅ Done |
 | 1 | 1.1 | Remove orphaned routes from `App.tsx` | 30 min | No | ✅ Done |
-| 2 | 1.2 | Fix header nav (remove Setu, fix AgentMitra link, add Book Demo btn) | 1 hour | No | ✅ Done |
-| 3 | 1.3 | Fix footer (links, add AgentMitra, fix Privacy/Terms) | 30 min | No | ✅ Done |
 | 4 | 2.4 | Create 404 Not Found page | 30 min | No | ✅ Done |
 | 5 | 6.1–6.6 | SEO basics (Next.js Metadata API, native sitemap/robots routes, JSON-LD on all pages) | 3 hours | No | ✅ Done |
 | 6 | 1.4 | Logo optimization (759KB PNG → WebP) | 1 hour | No | ✅ Done — WebP at /vyaptix-logo.webp |
 | 7 | 2.2 | Privacy Policy page | 2 hours | Yes — needs legal text from team | ✅ Done — page live, legal text still needed |
 | 8 | 2.3 | Terms of Service page | 2 hours | Yes — needs legal text from team | ✅ Done — page live, legal text still needed |
 | 9 | 7.1 | Zoho credentials moved server-side (no VITE_ prefix) | 1 hour | No | ✅ Done |
-| 10 | 2.1 | AgentMitra product page | 1 day | Yes — needs product definition | ✅ Done — page live, real product content still needed |
 | 11 | 5 | Analytics setup (PostHog) | 2 hours | Yes — needs PostHog key | ❌ Blocked — needs PostHog key from Ajeet |
 | 12 | 8 | Contact form simplification (6-field Stage 1 form) | 4 hours | No | ❌ Pending |
 | 13 | 7.2 | Cookie consent banner | 1 hour | No | ✅ Done — fixed bottom banner, localStorage consent, getCookieConsent() exported |
 | 14 | 7.3 | Security headers in vercel.json | 30 min | No | ✅ Done — X-Frame-Options, CSP, Referrer-Policy, Permissions-Policy |
 | 15 | 3 | Homepage revamp (hero, products section, testimonials, CTA) | 1–2 days | Yes — needs real metrics & testimonials from team | ✅ Done — repositioned as company capability page |
-| 16 | 4 | Solutions page revamp (add AgentMitra section) | 4 hours | Yes — needs AgentMitra product definition | ✅ Done — side-by-side layout, comparison section |
 | 17 | 9 | About page enhancement (team, story, milestones) | 1 day | Yes — needs team content & photos | ✅ Done — origin story, team, milestones, values, CTA |
 | 18 | 10 | Complete design system overhaul (superdesign.dev + 21st.dev) | 3–5 days | No | ❌ Pending |
 
@@ -971,7 +939,6 @@ Add sections:
 |---|---|---|
 | Verified customer metrics (reviews collected, businesses served) | Homepage hero stats | Founders |
 | 3 customer testimonials (name, quote, company, photo permission) | Homepage + product pages | Sales/CS team |
-| AgentMitra product definition (see agent-mitra.md for questions) | AgentMitra page | Product team |
 | Team photos and bios | About page | All team members |
 | Real Facebook page URL | Footer | Marketing |
 | Privacy Policy legal text | Privacy Policy page | Legal / Founders |
@@ -1057,7 +1024,6 @@ Apply the new design system and components to every page in this order:
 1. Layout shell (Header + Footer) — affects all pages instantly
 2. `Home.tsx` — highest traffic, highest impact
 3. `AIReviewGeneration.tsx` — live product page
-4. `AgentMitra.tsx` — new product page
 5. `Solutions.tsx`
 6. `Blog.tsx` + blog post pages
 7. `Contact.tsx`
@@ -1093,7 +1059,6 @@ The revamp is complete when:
 - [ ] Analytics events fire correctly for CTAs and form submissions
 - [ ] Cookie banner appears on first visit
 - [ ] No Zoho credentials visible in browser DevTools
-- [ ] AgentMitra page is live with real product content
 - [ ] Privacy Policy and Terms pages are live with real legal content
 - [ ] All testimonials on the site are real and permissioned
 - [ ] Logo is < 20KB

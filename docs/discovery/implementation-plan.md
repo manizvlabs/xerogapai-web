@@ -52,10 +52,6 @@ These are production bugs. Every day they stay live, conversions are being lost.
 - **Files:** `src/views/Contact.tsx` (or wherever the form lives)
 - **Skill:** `vyaptix-frontend-developer-agent`
 
-### Sprint 1.4 — Hide AgentMitra Waitlist Count
-- **Issue:** "47 users on waitlist" is displayed prominently. This creates a "ghost town" impression.
-- **Fix:** Remove the count entirely. Replace with something non-quantitative like "Join the Early Access List" or "Limited early access spots."
-- **Files:** `src/views/AgentMitra.tsx`
 - **Condition:** Show a real number only when it reaches 500+
 
 ---
@@ -89,11 +85,6 @@ These are production bugs. Every day they stay live, conversions are being lost.
   7. Final CTA
 - **Files:** `src/views/Home.tsx`
 
-### Sprint 2.3 — Fix AgentMitra Positioning Consistency
-- **Issue:** AgentMitra has two incompatible descriptions across pages:
-  - Homepage: "AI-powered business assistant for Indian SMBs — handles WhatsApp + web queries"
-  - Solutions/AgentMitra page: "Role-based service operations platform consolidating agents, clients, and workflows"
-- **Fix:** Pick one consistent positioning and apply it across all 4 locations: homepage product card, solutions page, AgentMitra hero, AgentMitra meta description.
 - **Ajeet action needed:** Confirm which description is correct (or define the right one)
 - **Skill:** `vyaptix-pm-agent` → then implement
 
@@ -138,13 +129,9 @@ These are production bugs. Every day they stay live, conversions are being lost.
 - **Files:** `src/views/Home.tsx` (new Testimonials section), optionally also on product pages
 
 ### Sprint 3.3 — Add Product Screenshots/Mockups
-- **Issue:** Both products described in text bullets only. Looks like vaporware without any visual evidence.
 - **Fix:** One UI screenshot or annotated mockup per product.
   - AI Review Generator: a screenshot of the review flow (QR scan → review text → submit)
-  - AgentMitra: a screenshot or wireframe-style mockup of the agent interface
   - Can use browser mockup frames (CSS only, no library needed) for polish
-- **Ajeet action needed:** Supply screenshots from `reviews.vyaptix.ai` dashboard + AgentMitra interface
-- **Files:** `src/views/Solutions.tsx`, `src/views/AIReviewGeneration.tsx`, `src/views/AgentMitra.tsx`
 
 ### Sprint 3.4 — Add Team Photos to About Page
 - **Issue:** Founders named but not shown. In Indian B2B 2026, founder-led companies without founder faces lose trust.
@@ -314,7 +301,6 @@ These cannot be implemented until Ajeet provides the inputs. All have been flagg
 |---|---|---|
 | Real WhatsApp number | Sprint 1.1 | 🔴 Provide number |
 | Calendly booking link | Sprint 1.2 | 🔴 Create event + set env var |
-| Confirmed AgentMitra positioning | Sprint 2.3 | 🔴 Pick one description |
 | Client logos (3+ minimum) | Sprint 3.1 | 🔴 Supply logo files |
 | 3 customer testimonials | Sprint 3.2 | 🔴 Collect from customers |
 | AI Review Generator screenshot | Sprint 3.3 | 🔴 From reviews.vyaptix.ai |
@@ -346,7 +332,6 @@ The review identified several things that are genuinely good. Do not touch:
 | Dimension | Current | Target | Key Changes |
 |---|---|---|---|
 | Visual Design | 6.5 | 8.5 | Fix bounce, add screenshots, theme consistency |
-| Messaging & Positioning | 5.0 | 8.5 | New hero, Why VyaptIX to top, AgentMitra fix |
 | Homepage Structure | 5.5 | 8.5 | Reorder, add proof, add testimonials |
 | Animation & Motion | 7.0 | 8.5 | Page transitions, fix bounce, counter rollout |
 | Dark/Light Theme Balance | 5.0 | 8.0 | Blog article contrast, contact page fix |

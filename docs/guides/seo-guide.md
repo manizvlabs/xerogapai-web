@@ -180,7 +180,6 @@ Routes that should be included:
 - `/solutions/ai-review-generation`
 - `/solutions/setu`
 - `/solutions/banklens`
-- `/agent-mitra`
 - `/about`
 - `/blog`
 - `/pricing`
@@ -342,7 +341,6 @@ Implementation files:
 - `app/(main)/solutions/ai-review-generation/page.tsx`
 - `app/(main)/solutions/setu/page.tsx`
 - `app/(main)/solutions/banklens/page.tsx`
-- `app/(main)/agent-mitra/page.tsx`
 - `app/(main)/blog/page.tsx`
 - `app/(main)/blog/[slug]/page.tsx`
 
@@ -370,7 +368,6 @@ Create branded 1200 x 630 images:
 - `public/og/og-ai-review-generator.jpg`
 - `public/og/og-setu.jpg`
 - `public/og/og-banklens.jpg`
-- `public/og/og-agent-mitra.jpg`
 - `public/og/og-ai-automation.jpg`
 - `public/og/og-whatsapp-marketing-platform.jpg`
 - `public/og/og-google-review-software.jpg`
@@ -552,7 +549,6 @@ Internal links:
 - `/solutions/ai-review-generation`
 - `/solutions/setu`
 - `/solutions/banklens`
-- `/agent-mitra`
 - `/ai-automation-agency`
 - relevant blog posts
 
@@ -973,26 +969,6 @@ What to add:
 - Section: `CAM Report Automation`
 - Section: `Fraud Signals Detected From Bank Statements`
 - Internal links to `/bank-statement-analysis-software`, `/credit-decisioning-software`, and `/nbfc-credit-decisioning-software`
-
-### 7.4 AgentMitra page
-
-Files:
-
-- `src/views/AgentMitra.tsx`
-- `app/(main)/agent-mitra/page.tsx`
-
-Why this needs improvement:
-
-AgentMitra's category is less obvious. The page needs clearer search positioning.
-
-What to add:
-
-- Section: `Service Operations Platform for Business Teams`
-- Section: `Agent Workspace vs CRM`
-- Section: `Client Workflow Automation`
-- Stronger examples for agencies, consultancies, and support teams
-
----
 
 ## 8. Phase 5: Add Proof And Trust
 

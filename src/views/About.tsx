@@ -30,11 +30,6 @@ const milestones = [
   },
   {
     date: 'Apr 2026',
-    title: 'AgentMitra Early Access',
-    description: 'Service operations platform enters early access — giving teams structured workflows, instant client lookup, and real-time case visibility.',
-  },
-  {
-    date: 'Apr 2026',
     title: 'Setu Launches',
     description: 'WhatsApp marketing and automation platform goes live — broadcast campaigns, AI chatbot, shared team inbox, and lead pipeline in one place.',
   },

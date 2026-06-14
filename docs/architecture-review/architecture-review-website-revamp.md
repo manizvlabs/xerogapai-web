@@ -89,7 +89,7 @@ EXTERNAL LINKS ONLY (no API):
 │  CookieBanner (first-visit only, localStorage gated)             │
 │                                                                  │
 │  Pages:                                                          │
-│  Home │ Solutions │ AIReview │ AgentMitra │ About │ Blog         │
+│  Home │ Solutions │ AIReview │ About │ Blog                      │
 │  Contact │ PrivacyPolicy │ TermsOfService │ 404                  │
 │                                                                  │
 │  contactService.ts ──────────────────────────────────────────┐  │
@@ -564,7 +564,6 @@ src/
 │   ├── Home.tsx                   ← REVAMP (Phase 3)
 │   ├── Solutions.tsx              ← UPDATE (Phase 4)
 │   ├── AIReviewGeneration.tsx     ← ADD SEO component
-│   ├── AgentMitra.tsx             ← CREATE (Phase 2.1 — blocked)
 │   ├── About.tsx                  ← ADD SEO, later enhance (Phase 9)
 │   ├── Contact.tsx                ← REVAMP to 6-field form (Phase 8)
 │   ├── ThankYou.tsx               ← ADD SEO noIndex

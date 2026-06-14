@@ -35,9 +35,7 @@ After deploying: add `vyaptix.com` property to Google Search Console, submit sit
 | Page | Title (< 60 chars) | Description (120–160 chars) |
 |---|---|---|
 | `/` | VyaptIX — AI Automation for Business Growth | Deploy AI agents that automate customer engagement, collect Google reviews, and drive growth. Trusted by 500+ businesses. |
-| `/solutions` | AI Products — VyaptIX | AI Review Generator and AgentMitra — VyaptIX's AI tools for review collection and business automation. |
 | `/solutions/ai-review-generation` | AI Review Generator — Google Reviews in 20s | Turn customer feedback into authentic Google reviews instantly. AI-powered, QR code enabled. Try free today. |
-| `/agent-mitra` | AgentMitra — AI Agent Platform — VyaptIX | [Define once product details are confirmed] |
 | `/about` | About VyaptIX — Mission & Team | VyaptIX builds practical AI tools that remove friction from customer engagement. Learn about our mission and team. |
 | `/blog` | Blog — AI Automation Insights — VyaptIX | Expert insights on AI automation, Google reviews, and business growth from the VyaptIX team. |
 | `/contact` | Contact VyaptIX — Book a Demo | Ready to automate your business? Book a 30-minute demo with the VyaptIX team. No generic presentations. |

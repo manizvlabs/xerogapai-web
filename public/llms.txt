@@ -28,11 +28,6 @@
 - Key stats: 98% message open rate, 3× higher reply rate vs email, live in 2 minutes
 - Pricing: From ₹999/month
 
-### AgentMitra — Service Operations Platform
-- Page: https://vyaptix.com/agent-mitra
-- Status: Early Access
-- What it does: Role-based platform for service teams — instant client search, unified workspace, live status tracking, structured workflows. Built for agencies, consultancies, and support-driven businesses.
-
 ### BankLens — AI Credit Decisioning
 - Platform: https://banklens.vyaptix.ai
 - Page: https://vyaptix.com/solutions/banklens

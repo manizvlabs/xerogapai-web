@@ -116,7 +116,7 @@ Deployment is via Vercel — push to `main` triggers automatic deployment. Featu
   {/* content */}
 </Section>
 ```
-`background`: `default` | `alt` | `gradient` | `dark`  
+`background`: `default` | `alt` | `gradient` | `dark`
 `padding`: `sm` | `md` | `lg`
 
 ### Button

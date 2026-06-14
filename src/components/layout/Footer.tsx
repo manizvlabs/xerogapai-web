@@ -16,7 +16,6 @@ const footerLinks = {
   ],
   solutions: [
     { label: 'AI Review Generator', href: '/solutions/ai-review-generation' },
-    { label: 'AgentMitra', href: '/agent-mitra' },
     { label: 'Setu', href: '/solutions/setu' },
     { label: 'BankLens', href: '/solutions/banklens' },
   ],
@@ -52,10 +51,10 @@ export function Footer() {
               <Image
                 src="/vyaptix-logo.webp"
                 alt="VyaptIX"
-                className="h-10 md:h-12 w-auto"
+                className="w-[133px] md:w-40 h-auto"
                 width={160}
                 height={48}
-                style={{ width: 'auto' }}
+                style={{ height: 'auto' }}
                 priority
               />
             </Link>

@@ -26,7 +26,6 @@ Use this checklist before every significant deployment to production. Check on b
 
 ## Solutions Page
 
-- [ ] Both products (AI Review Generator + AgentMitra) displayed
 - [ ] "Learn More" links navigate to correct product pages
 - [ ] "Try Platform" external link opens `https://reviews.vyaptix.ai` in new tab
 
@@ -36,11 +35,9 @@ Use this checklist before every significant deployment to production. Check on b
 - [ ] CTA links work
 - [ ] Breadcrumb: Home > Solutions > AI Review Generation
 
-## AgentMitra Page (new — to be built)
 
 - [ ] All sections render correctly
 - [ ] CTA links work
-- [ ] Breadcrumb: Home > Solutions > AgentMitra
 
 ## Contact Page
 

@@ -34,9 +34,7 @@ Per-page meta targets:
 | Page | Title | Description |
 |---|---|---|
 | `/` | VyaptIX — AI Automation for Business Growth | Deploy AI agents that automate customer engagement, collect Google reviews, and drive growth. Trusted by businesses globally. |
-| `/solutions` | AI Solutions — VyaptIX | Explore AI Review Generator and AgentMitra — VyaptIX's AI products for review collection and business automation. |
 | `/solutions/ai-review-generation` | AI Review Generator — Collect Google Reviews in 20 Seconds | Turn customer feedback into authentic Google reviews instantly. AI-powered, QR code enabled. Try it free. |
-| `/agent-mitra` | AgentMitra — AI Agent for Business Automation — VyaptIX | [To be defined once product details are confirmed] |
 | `/about` | About VyaptIX — Our Mission, Vision & Team | Learn about VyaptIX's mission to make AI automation accessible for every business. Meet the team. |
 | `/blog` | Blog — AI Automation Insights — VyaptIX | Expert insights on AI automation, customer engagement, and business growth. |
 | `/contact` | Contact VyaptIX — Book a Demo or Get in Touch | Ready to automate your business with AI? Contact our team to book a demo or ask a question. |
@@ -53,7 +51,6 @@ Create `public/sitemap.xml` listing all public routes:
   <url><loc>https://vyaptix.com/</loc><priority>1.0</priority></url>
   <url><loc>https://vyaptix.com/solutions</loc><priority>0.9</priority></url>
   <url><loc>https://vyaptix.com/solutions/ai-review-generation</loc><priority>0.9</priority></url>
-  <url><loc>https://vyaptix.com/agent-mitra</loc><priority>0.9</priority></url>
   <url><loc>https://vyaptix.com/about</loc><priority>0.7</priority></url>
   <url><loc>https://vyaptix.com/blog</loc><priority>0.8</priority></url>
   <url><loc>https://vyaptix.com/blog/collect-real-customer-reviews</loc><priority>0.7</priority></url>
@@ -123,7 +120,6 @@ Add `Article` structured data to blog posts.
 - Secondary: "Google review generator", "automated review collection", "get more Google reviews"
 - Long-tail: "how to get more Google reviews for restaurant", "review collection software for small business"
 
-### AgentMitra (to be refined once product is defined)
 - Primary: "AI business automation", "AI agent for business", "enterprise AI assistant"
 - Secondary: "workflow automation AI", "AI copilot for business"
 

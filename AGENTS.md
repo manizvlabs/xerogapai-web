@@ -19,12 +19,11 @@ Discover current behavior from this repository and its tracked documentation.
 
 ## Product And Content Rules
 
-VyaptIX targets a global market and currently presents four products:
+VyaptIX targets a global market and currently presents three products:
 
 1. AI Review Generator
 2. Setu
-3. AgentMitra
-4. BankLens
+3. BankLens
 
 Verify product claims against the current source files in `src/views/` before
 using them in website copy or blogs. Do not invent customer stories, metrics,

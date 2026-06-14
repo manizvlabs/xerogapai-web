@@ -5,7 +5,6 @@ import Link from 'next/link';
 import {
   ArrowRight,
   Star,
-  Users,
   MessageCircle,
   BarChart3,
   CheckCircle,
@@ -56,7 +55,7 @@ const homeJsonLd = [
     '@type': 'WebSite',
     name: 'VyaptIX',
     url: 'https://vyaptix.com',
-    description: 'AI automation tools for business — Google reviews, WhatsApp marketing, credit decisioning, and service operations.',
+    description: 'AI automation tools for business — Google reviews, WhatsApp marketing, and credit decisioning.',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
@@ -117,28 +116,6 @@ const products = [
   },
   {
     num: '03',
-    name: 'AgentMitra',
-    tagline: 'One hub for agents, clients, and workflows.',
-    hook: 'Instant client search, live status tracking, and structured workflows — built for agencies, consultancies, and support teams.',
-    status: 'EARLY ACCESS',
-    statusColor: '#FFB800',
-    statusBg: 'rgba(255,184,0,0.12)',
-    statusBorder: 'rgba(255,184,0,0.25)',
-    accent: '#A5B4FC',
-    accentBg: 'rgba(165,180,252,0.08)',
-    accentBorder: 'rgba(165,180,252,0.20)',
-    cardBorder: 'rgba(165,180,252,0.15)',
-    cardBg: 'rgba(165,180,252,0.03)',
-    Icon: Users,
-    href: '/contact',
-    platform: null,
-    stats: [
-      { value: 'Unified', label: 'workspace' },
-      { value: 'Live', label: 'status tracking' },
-    ],
-  },
-  {
-    num: '04',
     name: 'BankLens',
     tagline: 'Credit decisions in minutes, not days.',
     hook: '220+ financial signals, ML scoring, 14-signal fraud detection, and audit-ready CAM reports for lenders.',
@@ -369,7 +346,7 @@ export function Home() {
                 lineHeight: 1.1,
               }}
             >
-              Four products.{' '}
+              Three products.{' '}
               <span style={{ color: '#06CEFF' }}>Built for real workflows.</span>
             </h2>
             <p className="text-lg max-w-xl mx-auto" style={{ color: '#CBD5E1' }}>
@@ -377,7 +354,7 @@ export function Home() {
             </p>
           </div>
 
-          {/* 2×2 product card grid */}
+          {/* Product card grid */}
           <div
             ref={productsRef as React.RefObject<HTMLDivElement>}
             className="grid grid-cols-1 md:grid-cols-2 gap-5"

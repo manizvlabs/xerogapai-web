@@ -118,7 +118,6 @@ Placed once in `App.tsx` inside `<BrowserRouter>`.
 
 Two inline SVG icon components used in nav dropdown:
 - `SolutionIconSun` — sun/brightness icon
-- `SolutionIconUsers` — people/group icon
 
 These are defined inline in `Header.tsx`. If reuse is needed, extract to `src/components/ui/icons/`.
 

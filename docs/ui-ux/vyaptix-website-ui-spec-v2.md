@@ -33,7 +33,6 @@ The current website scores ~7.5/10. The gap to 8.5+ is not content — it's **vi
 | Object | Type | Surface | Description |
 |--------|------|---------|-------------|
 | **Page** | Primary | Full page | Each route is a page object with its own content model |
-| **Product** | Primary | Product detail page | AI Review Generator, AgentMitra — each has features, how-it-works, CTAs |
 | **Blog Post** | Primary | /blog/[slug] | Article with content, author, metadata, related posts |
 | **Contact Enquiry** | Primary | /contact form | Lead capture — name, email, company, interest, message |
 | **Navigation** | Secondary | Global header | Top-level nav with product dropdown |
@@ -58,11 +57,8 @@ Navigation    1:m → NavItem (Products dropdown has 2 children)
 | Home | Get in Touch | /contact | cta_clicked |
 | Home | See Our Products | /solutions | cta_clicked |
 | Home | See How It Works | /solutions/ai-review-generation | cta_clicked |
-| Home | Join Early Access | /agent-mitra | cta_clicked |
 | AI Review | Try Platform Free | reviews.vyaptix.ai | cta_clicked |
 | AI Review | Schedule Demo | /contact | cta_clicked |
-| AgentMitra | Get in Touch | /contact | cta_clicked |
-| AgentMitra | Request Early Access | /contact | cta_clicked |
 | Solutions | View Product | product page | cta_clicked |
 | Contact | Submit Form | /thank-you | form_submitted |
 
@@ -75,16 +71,13 @@ vyaptix.com
 ├── / (Home)
 │   ├── Hero — headline, subline, 2 CTAs, trust bar
 │   ├── Capabilities — 4 service cards
-│   ├── Products — AI Review Generator + AgentMitra bento cards
 │   ├── Why VyaptIX — 4 differentiator cards
 │   ├── AI Stack — 19-logo ticker grid
 │   ├── Industries — 8 industry tiles
 │   └── Final CTA — blue banner
 │
 ├── /solutions (Solutions Overview)
-│   ├── Hero — "Two products. Real outcomes."
 │   ├── AI Review Generator section (expanded card)
-│   ├── AgentMitra section (expanded card)
 │   └── CTA banner
 │
 ├── /solutions/ai-review-generation (Product Detail)
@@ -96,7 +89,6 @@ vyaptix.com
 │   ├── FAQ — accordion
 │   └── CTA banner
 │
-├── /agent-mitra (Product Detail)
 │   ├── Hero — headline, sub, problem statement, dashboard mockup
 │   ├── Features — 6 cards
 │   ├── How It Works — 5-step vertical stepper
@@ -146,7 +138,6 @@ vyaptix.com
 | S-01 | Home | Page | Full-scroll marketing page | MVP |
 | S-02 | Solutions Overview | Page | Product listing | MVP |
 | S-03 | AI Review Generation | Product | Product detail | MVP |
-| S-04 | AgentMitra | Product | Product detail | MVP |
 | S-05 | About | Page | Company page | MVP |
 | S-06 | Blog Index | Blog Post (list) | List | MVP |
 | S-07 | Blog Post | Blog Post | Detail | MVP |
@@ -279,7 +270,6 @@ Increase visual contrast between headline sizes. These CSS classes go in `global
 │                                                              │
 │  [VyaptIX Logo]        Products    Company    Legal         │
 │  AI automation for     AI Review   About      Privacy       │
-│  Indian businesses.    AgentMitra  Blog       Terms         │
 │                                    Contact                  │
 │  [LinkedIn] [X] [IG]                                        │
 │                                                              │
@@ -397,49 +387,6 @@ Appear when scrolled > 400px. Fade-in/out. Position: `bottom-6 left-6` (opposite
 1. **Card hover:** On hover → card lifts `translate-y(-4px)`, border changes to `border-primary-300`, icon container gets cyan glow `box-shadow: 0 0 16px rgba(6,206,255,0.3)`.
 2. **Scroll reveal:** Cards stagger in from bottom on scroll-into-view. Card 1: delay 0ms, Card 2: delay 100ms, Card 3: delay 200ms, Card 4: delay 300ms. Use `IntersectionObserver` with `animate-scroll-reveal`.
 3. **Icon animation:** On card hover, icon bounces with `animate-bounce` for 600ms (one-shot, not looping).
-
----
-
-#### Section 3: Products ("Our Products")
-
-**Layout:**
-
-```
-┌──────────────────────────────────────────────────────────────┐
-│ [BG: #F8F9FA]                                                │
-│                                                              │
-│         ── OUR PRODUCTS ──   [label-mono-blue]               │
-│   Two products. Built on our own platform.  [.section-headline]│
-│                                                              │
-│  ┌───────────────────────────┐ ┌───────────────────────────┐ │
-│  │ [Gradient icon: blue→cyan]│ │ [Gradient icon: cyan→blue]│ │
-│  │ Product 01  [LIVE badge]  │ │ Product 02  [EARLY ACCESS]│ │
-│  │                           │ │                           │ │
-│  │ AI Review Generator       │ │ AgentMitra                │ │
-│  │                           │ │                           │ │
-│  │ [Description]             │ │ [Description]             │ │
-│  │                           │ │                           │ │
-│  │ • Feature 1               │ │ • Feature 1               │ │
-│  │ • Feature 2               │ │ • Feature 2               │ │
-│  │ • Feature 3               │ │ • Feature 3               │ │
-│  │                           │ │                           │ │
-│  │ ──────────────────────── │ │ ──────────────────────── │ │
-│  │ < 20s          3x         │ │ 24/7            0         │ │
-│  │ [stat-figure] [stat-fig]  │ │ [stat-figure-cyan] ...    │ │
-│  │                           │ │                           │ │
-│  │ [See How It Works →]      │ │ [Join Early Access →]     │ │
-│  └───────────────────────────┘ └───────────────────────────┘ │
-└──────────────────────────────────────────────────────────────┘
-```
-
-**v2 Changes:**
-1. **Stat counter animation:** The `< 20s` and `3x` stats count up when card enters viewport. Use a `useCountUp` hook: 0 → final value over 1.2s with ease-out. Numbers animate on first scroll-in only.
-2. **Card border glow:** The AI Review Generator card (live product) gets subtle cycling border glow: `animate-border-glow` on the card border. Period: 3s.
-3. **Product 1 card:** Left-side card slides in from left (`animate-slide-in-left`) on scroll reveal.
-4. **Product 2 card:** Right-side card slides in from right (`animate-slide-in-right`) on scroll reveal.
-5. **"LIVE" badge:** Pulsing green dot before the text (existing `animate-pulse`).
-6. **"EARLY ACCESS" badge:** Amber/warning color, no pulse dot.
-7. **Hover state for both cards:** `border-color` transitions to `border-primary-300` for Product 1, `border-secondary-400` for Product 2. Box shadow lifts.
 
 ---
 
@@ -590,59 +537,6 @@ Fade edges: Apply `mask-image: linear-gradient(to right, transparent 0%, black 8
 
 ---
 
-### S-02: Solutions Overview (/solutions)
-
-```
-┌──────────────────────────────────────────────────────────────┐
-│ [BG: #060E20 → space-navy gradient]                          │
-│                                                              │
-│         ── OUR PRODUCTS ──                                   │
-│    Two products. Built to solve real business problems.      │
-│                   [.hero-display, centered]                  │
-│                                                              │
-│   Live tools used by real businesses across India.           │
-│                                                              │
-├──────────────────────────────────────────────────────────────┤
-│ [BG: white]                                                  │
-│                                                              │
-│  PRODUCT 1 SECTION (full-width expanded card):               │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │ [★ Most Popular chip] [LIVE badge]                     │  │
-│  │                                                        │  │
-│  │ AI Review Generator           │ [Hero mockup panel]    │  │
-│  │                               │                        │  │
-│  │ [Description]                 │ [Screenshot of reviews │  │
-│  │                               │  dashboard card]        │  │
-│  │ [Feature bullets × 3]         │                        │  │
-│  │                               │                        │  │
-│  │ [See How It Works →]          │                        │  │
-│  └────────────────────────────────────────────────────────┘  │
-│                                                              │
-│  PRODUCT 2 SECTION (full-width expanded card):               │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │ [EARLY ACCESS badge]                                   │  │
-│  │ [Waitlist strip: 47 businesses waiting]                │  │
-│  │                                                        │  │
-│  │ [AgentMitra dashboard mockup]  │  AgentMitra           │  │
-│  │                                │                       │  │
-│  │                                │  [Description]        │  │
-│  │                                │                       │  │
-│  │                                │  [Feature bullets × 3]│  │
-│  │                                │                       │  │
-│  │                                │  [Request Early Access]│  │
-│  └────────────────────────────────────────────────────────┘  │
-│                                                              │
-│  [CTA Banner: "Want a custom solution? Let's talk."]         │
-└──────────────────────────────────────────────────────────────┘
-```
-
-**Animation:**
-- Hero headline uses `animate-scroll-reveal` on scroll-in
-- Both product section cards use `animate-slide-in-left` / `animate-slide-in-right` for the text/mockup split
-- Stagger: 150ms between elements within each card
-
----
-
 ### S-03: AI Review Generation (/solutions/ai-review-generation)
 
 #### Hero Section
@@ -775,18 +669,6 @@ Already has good structure. **v2 changes:**
 
 ---
 
-### S-04: AgentMitra (/agent-mitra)
-
-Follows same template as AI Review Generation (S-03) with these differences:
-
-1. **Hero accent color:** Cyan → primary (reversed from AI Review which is primary → cyan)
-2. **Demo panel:** Shows the agent dashboard mockup (search bar, client list, stats) with animated state:
-   - Search bar: shows cursor blinking, then "Raj" types in, client "Rajesh Kumar" appears with slide-down animation
-   - Stats (24 Active / 8 Pending / 97% On Time) count up when panel enters viewport
-3. **Before/After section:** Left "Before" list items reveal with red-tint slide-in, Right "After" list items reveal with green-tint slide-in. Stagger 80ms per item.
-4. **Waitlist strip:** "47 businesses on early access waitlist" gets a subtle pulse border (`animate-border-glow`, cyan).
-
----
 
 ### S-05: About (/about)
 
@@ -1023,7 +905,6 @@ Current form has 15+ fields. This spec implements the Phase 8 decision: 6-field 
 │ │                                        │ │ Within 24hrs │ │
 │ │ [Product Interest ▼ dropdown]          │ │              │ │
 │ │  Options: AI Review Generator          │ │ Social:      │ │
-│ │           AgentMitra                   │ │ [LinkedIn]   │ │
 │ │           Custom AI Solution           │ │ [Twitter/X]  │ │
 │ │           Not sure yet                 │ │ [Instagram]  │ │
 │ │                                        │ │              │ │
@@ -1420,7 +1301,6 @@ useEffect(() => {
 | S-01 Home | Single column, hero full-viewport | Floating stat cards hidden on xs, trust bar wraps |
 | S-02 Solutions | Single column, cards stacked | Product mockup panels below text |
 | S-03 AI Review | Single column, demo panel below hero text | Demo panel animation simplified (no loop) |
-| S-04 AgentMitra | Single column | Same as AI Review |
 | S-05 About | Single column, timeline vertical | Horizontal timeline → vertical stacked |
 | S-06 Blog | 1-col featured + 2-col grid | Grid goes 1 column on mobile |
 | S-07 Blog Post | Single column, TOC hidden | TOC hidden on mobile — add "Contents" accordion at top |
@@ -1549,7 +1429,6 @@ These components need to be created (they don't exist yet):
 | `AnimatedDemoPanel` | `src/components/product/AnimatedDemoPanel.tsx` | The looping review generation demo |
 | `HeroStatFloat` | `src/components/ui/HeroStatFloat.tsx` | Floating stat card for hero section |
 | `TimelineHorizontal` | `src/components/ui/TimelineHorizontal.tsx` | Horizontal scrollable timeline for About |
-| `BeforeAfterGrid` | `src/components/product/BeforeAfterGrid.tsx` | Red/green comparison grid for AgentMitra |
 
 ---
 
