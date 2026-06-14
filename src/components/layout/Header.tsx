@@ -81,10 +81,9 @@ export function Header() {
             <Image
               src="/vyaptix-logo.webp"
               alt="VyaptIX"
-              className="w-[133px] md:w-40 h-auto"
-              width={160}
-              height={48}
-              style={{ height: 'auto' }}
+              className="h-16 w-16 object-contain"
+              width={64}
+              height={64}
               priority
             />
           </Link>
