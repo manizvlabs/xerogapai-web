@@ -266,11 +266,11 @@ No `.env.example` file exists. Create one with all required keys and blank/dummy
 - `src/components/` — all except `Layout.tsx` ✅
 - `src/services/` — both files ✅
 - `src/lib/analytics.ts`, `src/lib/blog.ts` ✅
-- `src/data/blogs.ts` ✅
+- `sanity/`, `sanity.config.ts`, `sanity.cli.ts` — Studio schemas and configuration ✅
 - `api/submit-to-zoho.ts` ✅ (keep .ts, delete .js)
-- `content/` — blog markdown files ✅
+- `app/studio/`, `app/api/revalidate/sanity/` — Studio and publish revalidation routes ✅
 - `docs/` — all documentation ✅
 - `scripts/` — keep for dev testing ✅
 - `public/` — all except logo.png and admin/ ✅
-- `next.config.js`, `next-sitemap.config.js`, `tailwind.config.js`, `postcss.config.js`, `vercel.json`, `tsconfig.json` ✅
+- `next.config.js`, `tailwind.config.js`, `postcss.config.js`, `vercel.json`, `tsconfig.json` ✅
 - `prisma/schema.prisma` ✅

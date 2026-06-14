@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create VyaptIX Blog"
+  short_description: "Create publication-ready VyaptIX Sanity blogs"
+  default_prompt: "Use $create-vyaptix-blog to turn my topic into a structured unpublished Sanity blog draft with image prompts and review checks."

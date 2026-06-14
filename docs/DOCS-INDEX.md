@@ -30,13 +30,11 @@ docs/
 │   └── performance-benchmarks.md
 │
 ├── product-docs/                    ← Per-product specs
-│   ├── ai-review-generator.md
-│   └── agent-mitra.md
+│   └── ai-review-generator.md
 │
 ├── content-docs/                    ← Copy, SEO, brand
 │   ├── brand-guidelines.md
 │   ├── seo-strategy.md
-│   └── blog-content-guide.md
 │
 └── revamp/                          ← Full website revamp plan
     ├── REVAMP-MASTER-PLAN.md        ← PRIMARY INPUT FOR DEVELOPMENT
@@ -62,6 +60,5 @@ docs/
 | [integrations.md](website-docs/integrations.md) | Zoho, Supabase, API details | High |
 | [security-review.md](qa-docs/security-review.md) | Known security gaps | High |
 | [ai-review-generator.md](product-docs/ai-review-generator.md) | Product spec | Medium |
-| [agent-mitra.md](product-docs/agent-mitra.md) | Product spec | Medium |
 | [seo-strategy.md](content-docs/seo-strategy.md) | SEO plan | Medium |
 | [qa-checklist.md](qa-docs/qa-checklist.md) | Pre-launch QA | Medium |

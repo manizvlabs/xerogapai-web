@@ -89,7 +89,7 @@ EXTERNAL LINKS ONLY (no API):
 │  CookieBanner (first-visit only, localStorage gated)             │
 │                                                                  │
 │  Pages:                                                          │
-│  Home │ Solutions │ AIReview │ AgentMitra │ About │ Blog         │
+│  Home │ Solutions │ AIReview │ About │ Blog                      │
 │  Contact │ PrivacyPolicy │ TermsOfService │ 404                  │
 │                                                                  │
 │  contactService.ts ──────────────────────────────────────────┐  │
@@ -480,12 +480,10 @@ import { NotFound } from './pages/NotFound';
 
 ### Risk 3: Blog Content Architecture Won't Scale (LOW — flag for V2)
 
-Blog content is hardcoded in `src/data/blogs.ts` as a TypeScript file. Every new blog post requires:
-1. A code change
-2. A deployment
-3. A developer
-
-This is acceptable for 5–10 posts. At 20+ posts, VyaptIX will need a headless CMS (Contentful, Sanity, Notion as CMS via API). Flag this as [⏸ V2] — do not address during this revamp.
+Blog content is managed in the `VyaptIX Blog` Sanity project through the
+embedded Studio at `/studio`. Public blog routes query published Sanity
+documents, so creating or editing a post no longer requires a repository code
+change.
 
 ### Risk 4: Prisma Is Configured but Unused (LOW)
 
@@ -566,7 +564,6 @@ src/
 │   ├── Home.tsx                   ← REVAMP (Phase 3)
 │   ├── Solutions.tsx              ← UPDATE (Phase 4)
 │   ├── AIReviewGeneration.tsx     ← ADD SEO component
-│   ├── AgentMitra.tsx             ← CREATE (Phase 2.1 — blocked)
 │   ├── About.tsx                  ← ADD SEO, later enhance (Phase 9)
 │   ├── Contact.tsx                ← REVAMP to 6-field form (Phase 8)
 │   ├── ThankYou.tsx               ← ADD SEO noIndex

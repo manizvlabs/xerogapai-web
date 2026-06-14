@@ -7,15 +7,6 @@ const nextConfig = {
       { protocol: 'https', hostname: 'www.launchuicomponents.com' },
     ],
   },
-  async redirects() {
-    return [
-      {
-        source: '/studio/:path*',
-        destination: '/admin',
-        permanent: false,
-      },
-    ];
-  },
 };
 
 export default nextConfig;
