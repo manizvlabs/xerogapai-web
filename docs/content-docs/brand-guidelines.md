@@ -96,6 +96,5 @@ For the revamped website, imagery should follow these principles:
 | Product | Official Name | Short Form |
 |---|---|---|
 | AI Review Generator | AI Review Generator | Review Gen / AiRev |
-| AgentMitra | AgentMitra | Mitra |
 
 Products should always be capitalized as above. Do not abbreviate in customer-facing copy unless the short form is explicitly approved.

@@ -35,7 +35,7 @@ export function TermsOfService() {
 
             <TermsSection title="1. Acceptance of Terms">
               <p>
-                By accessing {WEBSITE} or using any {COMPANY} product (including the AI Review Generator at reviews.vyaptix.ai and AgentMitra), you agree to these Terms of Service and our Privacy Policy. If you are using our services on behalf of an organisation, you represent that you have the authority to bind that organisation to these terms.
+                By accessing {WEBSITE} or using any {COMPANY} product (including the AI Review Generator at reviews.vyaptix.ai), you agree to these Terms of Service and our Privacy Policy. If you are using our services on behalf of an organisation, you represent that you have the authority to bind that organisation to these terms.
               </p>
               <p>
                 If you do not agree to these terms, you must not use our services.
@@ -46,7 +46,6 @@ export function TermsOfService() {
               <p>{COMPANY} provides AI-powered business software products, currently including:</p>
               <ul className="list-disc pl-5 space-y-1 text-slate-200 mt-2">
                 <li><strong className="text-white">AI Review Generator</strong> — a platform that helps businesses collect customer feedback and generate Google review text using artificial intelligence</li>
-                <li><strong className="text-white">AgentMitra</strong> — a role-based service operations platform for managing agent workflows and client interactions</li>
               </ul>
               <p className="mt-3">
                 We reserve the right to modify, suspend, or discontinue any part of our services at any time with reasonable notice. We are not liable to you or any third party for any such modification, suspension, or discontinuation.

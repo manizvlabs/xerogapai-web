@@ -43,7 +43,6 @@ Priority content requests (in order):
 | Homepage (below hero) | Customer logo wall |
 | Homepage (mid-page) | 3 testimonial cards |
 | AI Review Generator page | 1 mini case study + 2 testimonials specific to product |
-| AgentMitra page | 1 mini case study + 2 testimonials specific to product |
 | Contact page | 1 testimonial + 1 metric (reduces form anxiety) |
 
 ## What NOT to Do

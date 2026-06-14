@@ -24,11 +24,8 @@ We are NOT enterprise software. We are NOT a generic AI platform. We are **pract
 
 ---
 
-### For AgentMitra
 
-**Primary buyer:** [TO BE DEFINED by product team — see product-docs/agent-mitra.md]
 
-Until defined, do not write homepage copy claiming capabilities for AgentMitra that haven't been verified.
 
 ---
 

@@ -11,7 +11,6 @@ See `REVAMP-MASTER-PLAN.md` Phase 1.2 for implementation.
 | "Solutions" dropdown | "Products" dropdown |
 | AI Review Generation | AI Review Generator (+ description) |
 | Setu - WhatsApp Assistant (BROKEN link) | Removed |
-| Agent Mitra (BROKEN link — no page) | AgentMitra (+ description, real link) |
 | No CTA in header | "Book a Demo" button |
 
 ### Dropdown Enhancement
@@ -23,7 +22,6 @@ New dropdown shows icon + label + one-line description for each product, helping
 
 | Before | After |
 |---|---|
-| Solutions: AI Review Generator only | Solutions: AI Review Generator + AgentMitra |
 | Privacy Policy → # (broken) | Privacy Policy → /privacy-policy |
 | Terms of Service → # (broken) | Terms of Service → /terms-of-service |
 | Facebook → facebook.com (placeholder) | Facebook → actual brand page URL |
@@ -39,9 +37,7 @@ Final URL structure after revamp:
 
 ```
 /                                 Home
-/solutions                        Products overview (both products)
 /solutions/ai-review-generation   AI Review Generator detail
-/agent-mitra                      AgentMitra detail
 /blog                             Blog listing
 /blog/:slug                       Individual blog post
 /about                            About

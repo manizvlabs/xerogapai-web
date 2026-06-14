@@ -162,7 +162,6 @@ colors: {
 | `primary-400` (#818CF8) | Hover state for primary CTA, icon accent on dark bg |
 | `primary-300` (#A5B4FC) | Body text accent on dark backgrounds |
 | `secondary-500` (#14B8A6) | Success states, checkmarks, "live" indicators, AI Review Generator accent |
-| `secondary-400` (#2DD4BF) | AgentMitra accent, hover on secondary elements |
 | `amber-400` (#FBBF24) | Star ratings, metric highlights ("< 20 seconds"), key numbers |
 | `neutral-400` (#94A3B8) | Body text on dark backgrounds |
 | `neutral-700` (#334155) | Body text on light backgrounds |
@@ -409,12 +408,10 @@ The primary hero CTA button has a subtle pulsing glow — `box-shadow` oscillate
 | Individual product deep-dives | Alternating dark/light |
 | CTA | Dark |
 
-### Product detail pages (AI Review Generator, AgentMitra)
 
 ```
 Hero: dark + product gradient (each product owns one gradient color pair)
   - AI Review Generator: primary-500 (indigo) + secondary-500 (teal)
-  - AgentMitra: primary-500 (indigo) + amber-400 (gold) — "intelligent ally"
 Steps section: dark
 Feature list: light
 Pricing/CTA: dark
@@ -537,7 +534,6 @@ Adapt: Match surface-900 background, neutral-400 link colors
 ### Step 3: Assemble and QA (Day 6)
 
 1. Run `npm run build` — verify no TypeScript errors introduced during token rename
-2. Check all pages: Home, Solutions, AIReviewGeneration, AgentMitra, About, Blog, Contact
 3. Run Lighthouse — target: Performance ≥ 90, Accessibility ≥ 90, Best Practices ≥ 95
 4. Check dark sections on mobile (Safari iOS + Chrome Android) — gradient blobs occasionally render badly on older devices; if so, reduce opacity
 5. Verify Sora font load — confirm no FOUT (flash of unstyled text) on hero headline; add `font-display: swap` and preload link
@@ -577,6 +573,5 @@ Adapt: Match surface-900 background, neutral-400 link colors
 | `src/views/Home.tsx` | Full redesign per section layout plan |
 | `src/views/Solutions.tsx` | Updated card styles, dark sections |
 | `src/pages/AIReviewGeneration.tsx` | Indigo + teal gradient treatment |
-| `src/pages/AgentMitra.tsx` | Indigo + amber gradient treatment |
 | `src/views/About.tsx` | Updated stat counters, team cards |
 | All page components | Swap color classes from `primary-500` (old blue) → `primary-500` (new indigo) — tokens align so only `tailwind.config.js` change propagates |

@@ -10,7 +10,7 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/admin',
+        source: '/studio/:path*',
         destination: '/admin',
         permanent: false,
       },

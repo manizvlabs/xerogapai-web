@@ -55,7 +55,6 @@ Fields:
 - Last Name *
 - Work Email *
 - Company Name *
-- Product of Interest: [AI Review Generator / AgentMitra / Both / Not sure]
 - Message (optional)
 - Submit: "Send Message"
 

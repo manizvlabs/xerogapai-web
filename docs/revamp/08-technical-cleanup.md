@@ -14,9 +14,6 @@ Files to deregister from routing (keep files, remove routes):
 - `src/pages/ContactCenterAI.tsx`
 - `src/pages/DPDPCompliance.tsx`
 
-If any of these pages had content useful for AgentMitra or AI Review Generator pages, extract it before deregistering. Especially check:
-- `EnterpriseCopilots.tsx` — likely has UI patterns useful for AgentMitra
-- `VyaptixAI.tsx` — likely has automation workflow copy useful for AgentMitra
 
 ---
 
@@ -106,7 +103,6 @@ Add useful scripts for development workflow:
   "lighthouse": "lhci autorun"         // Lighthouse CI
 }
 ```
-
 ---
 
 ## 8. Environment Variable Audit
@@ -171,5 +167,3 @@ export function NotFound() {
   );
 }
 ```
-
-This also catches the broken `/agent-mitra` link until the page is built, and the broken `/whatsapp-automation` link from any cached nav.

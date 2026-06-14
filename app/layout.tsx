@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: '%s | VyaptIX',
   },
   description:
-    'VyaptIX builds focused AI tools that remove real friction from business operations — Google review automation, WhatsApp marketing, credit decisioning, and service ops. Live in 3–7 days.',
+    'VyaptIX builds focused AI tools that remove real friction from business operations — Google review automation, WhatsApp marketing, and credit decisioning. Live in 3–7 days.',
   metadataBase: new URL('https://vyaptix.com'),
   icons: {
     icon: '/icon.png',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     type: 'website',
     title: 'VyaptIX — AI Automation Tools for Business',
     description:
-      'Focused AI tools that go live in days, not months. Used by restaurants, clinics, CA firms, lenders, and service teams worldwide.',
+      'Focused AI tools that go live in days, not months. Used by restaurants, clinics, CA firms, lenders, and businesses worldwide.',
     images: [{ url: '/vyaptix-logo.png', width: 400, alt: 'VyaptIX — AI Automation Tools for Business' }],
   },
   twitter: {
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body>{children}</body>
     </html>
   );

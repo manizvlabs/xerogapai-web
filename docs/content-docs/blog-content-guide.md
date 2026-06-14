@@ -66,7 +66,6 @@ Blog posts support rich content blocks. Each content item in the `content` array
 ### Content Pillars
 
 **Pillar 1 — Product (How-To & Use Cases)**
-- How-to guides for AI Review Generator and AgentMitra
 - Customer success stories / case studies
 - Feature spotlights
 
@@ -87,7 +86,6 @@ Blog posts support rich content blocks. Each content item in the `content` array
 | 1 | Case study: [Customer name] grew from X to Y reviews | Products | [customer type] review collection |
 | 2 | How to respond to negative Google reviews with AI | Trending in AI | respond to negative reviews |
 | 3 | 5 automation mistakes killing your business growth | Business | business automation mistakes |
-| 4 | AgentMitra vs. [alternative]: honest comparison | Products | [alternative] alternative |
 
 ---
 

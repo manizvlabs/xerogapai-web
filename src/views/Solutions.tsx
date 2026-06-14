@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
-  Star, Users, MessageCircle, BarChart3,
+  Star, MessageCircle, BarChart3,
   ArrowRight, ExternalLink,
 } from 'lucide-react';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
@@ -40,20 +40,6 @@ const PRODUCTS = [
     externalLabel: 'Start Free',
   },
   {
-    id: 'agent-mitra',
-    name: 'AgentMitra',
-    tagline: 'One workspace for your entire service team.',
-    accentColor: '#A855F7',
-    Icon: Users,
-    statusLabel: 'Early Access',
-    statusColor: '#FFB800',
-    statusBg: 'rgba(255,184,0,0.10)',
-    statusBorder: 'rgba(255,184,0,0.22)',
-    href: '/contact',
-    externalHref: null,
-    externalLabel: null,
-  },
-  {
     id: 'banklens',
     name: 'BankLens',
     tagline: 'AI credit decisioning for NBFCs in under 5 minutes.',
@@ -79,14 +65,6 @@ const FITS = [
     href: '/solutions/ai-review-generation',
     accentColor: '#06CEFF',
     Icon: Star,
-  },
-  {
-    persona: 'Service team manager',
-    problem: 'Operations scattered across WhatsApp & spreadsheets',
-    product: 'AgentMitra',
-    href: '/contact',
-    accentColor: '#A855F7',
-    Icon: Users,
   },
   {
     persona: 'WhatsApp marketer',
@@ -157,7 +135,7 @@ export function Solutions() {
             className="font-bold text-white mb-4"
             style={{ ...sgHeading, fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.1 }}
           >
-            Four products.{' '}
+            Three products.{' '}
             <span style={{ color: '#06CEFF' }}>Each solves one specific problem.</span>
           </h1>
           <p className="text-base text-slate-400 leading-relaxed max-w-xl">
@@ -261,7 +239,7 @@ export function Solutions() {
 
           <div
             ref={fitsRef as React.RefObject<HTMLDivElement>}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
           >
             {FITS.map((fit, i) => (
               <Link
@@ -325,7 +303,7 @@ export function Solutions() {
             style={{ ...sgHeading, fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.1 }}
           >
             Start with one.{' '}
-            <span style={{ color: '#06CEFF' }}>Scale with all four.</span>
+            <span style={{ color: '#06CEFF' }}>Scale with the right fit.</span>
           </h2>
           <p className="text-slate-400 mb-10 max-w-lg mx-auto text-sm leading-relaxed">
             Every product is live and built for real business teams. Try one free, or book a call and we'll walk you through exactly what fits your workflow.

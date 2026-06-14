@@ -11,7 +11,6 @@ See `REVAMP-MASTER-PLAN.md` Phase 3 for the full implementation spec.
 | Hero CTAs | "Get Started" + "Learn More" | "Book a Free Demo" + "Watch 2-min Overview" |
 | Social proof under hero | None | 4 verified metrics (reviews, time, businesses, rating) |
 | Customer logos | None | 5–8 customer/industry logos |
-| Products section | Not present (only "AI Stack") | 2 product cards (AI Review Gen + AgentMitra) |
 | Testimonials | None | 3 customer testimonials with photos |
 | AI Stack position | Primary feature section | Secondary "integrations" section, moved lower |
 | CTA section | Generic | Specific: "30-minute demo, no generic presentations" |
@@ -34,9 +33,7 @@ See `REVAMP-MASTER-PLAN.md` Phase 3 for the full implementation spec.
 ─────────────────────────────────────────────
 [Customer logos bar: "Trusted by..."]
 ─────────────────────────────────────────────
-[H2: Two products, one goal]
 [Product Card: AI Review Generator]
-[Product Card: AgentMitra]
 ─────────────────────────────────────────────
 [H2: How it works - 4 steps]
 ─────────────────────────────────────────────
