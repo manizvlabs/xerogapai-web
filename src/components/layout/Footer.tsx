@@ -51,10 +51,9 @@ export function Footer() {
               <Image
                 src="/vyaptix-logo.webp"
                 alt="VyaptIX"
-                className="w-[133px] md:w-40 h-auto"
-                width={160}
-                height={48}
-                style={{ height: 'auto' }}
+                className="h-24 w-24 object-contain"
+                width={96}
+                height={96}
                 priority
               />
             </Link>
