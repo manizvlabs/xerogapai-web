@@ -14,7 +14,7 @@ const PRODUCTS = [
   {
     id: 'ai-review',
     name: 'AI Review Generator',
-    tagline: 'Authentic Google reviews in under 20 seconds.',
+    tagline: 'More Google reviews — on autopilot, in about 20 seconds.',
     accentColor: '#06CEFF',
     Icon: Star,
     statusLabel: 'Live',
@@ -23,12 +23,12 @@ const PRODUCTS = [
     statusBorder: 'rgba(74,222,128,0.22)',
     href: '/solutions/ai-review-generation',
     externalHref: 'https://reviews.vyaptix.ai',
-    externalLabel: 'Try Free',
+    externalLabel: 'Get Started',
   },
   {
     id: 'setu',
     name: 'Setu',
-    tagline: 'WhatsApp marketing that scales with your business.',
+    tagline: 'WhatsApp growth platform — campaigns, chatbot, inbox & commerce.',
     accentColor: '#25D366',
     Icon: MessageCircle,
     statusLabel: 'Live',
@@ -37,7 +37,7 @@ const PRODUCTS = [
     statusBorder: 'rgba(74,222,128,0.22)',
     href: '/solutions/setu',
     externalHref: 'https://setu.vyaptix.ai',
-    externalLabel: 'Start Free',
+    externalLabel: 'Get Started',
   },
   {
     id: 'banklens',
@@ -306,7 +306,7 @@ export function Solutions() {
             <span style={{ color: '#06CEFF' }}>Scale with the right fit.</span>
           </h2>
           <p className="text-slate-400 mb-10 max-w-lg mx-auto text-sm leading-relaxed">
-            Every product is live and built for real business teams. Try one free, or book a call and we'll walk you through exactly what fits your workflow.
+            Every product is live and built for real business teams. Get started in minutes, or book a call and we'll walk you through exactly what fits your workflow.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -315,7 +315,7 @@ export function Solutions() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 font-semibold text-[#050D1A] bg-white rounded-xl hover:shadow-[0_0_28px_rgba(6,206,255,0.3)] transition-all text-sm"
             >
-              Try AI Review Generator Free <ExternalLink className="w-4 h-4" />
+              Try AI Review Generator <ExternalLink className="w-4 h-4" />
             </a>
             <Link
               href="/contact"

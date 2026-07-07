@@ -73,8 +73,8 @@ const products = [
   {
     num: '01',
     name: 'AI Review Generator',
-    tagline: 'More Google reviews, zero manual effort.',
-    hook: 'Customers scan a QR code, AI drafts the review, and it\'s published in under 20 seconds — no staff involvement.',
+    tagline: 'More Google reviews — on autopilot.',
+    hook: 'Customers scan a QR code, AI drafts the review, and it\'s posted to Google in about 20 seconds. Plus AI-drafted replies to every review you get.',
     status: 'LIVE',
     statusColor: '#4ADE80',
     statusBg: 'rgba(74,222,128,0.12)',
@@ -96,7 +96,7 @@ const products = [
     num: '02',
     name: 'Setu',
     tagline: 'Turn WhatsApp into your revenue channel.',
-    hook: 'Campaigns, 24/7 AI chatbot, shared team inbox, and a lead pipeline — all inside WhatsApp. Live in 2 minutes.',
+    hook: 'Campaigns, 24/7 AI chatbot, shared team inbox, lead pipeline, and WhatsApp commerce — all inside WhatsApp. Live in 2 minutes.',
     status: 'LIVE',
     statusColor: '#4ADE80',
     statusBg: 'rgba(74,222,128,0.12)',
@@ -110,7 +110,7 @@ const products = [
     href: '/solutions/setu',
     platform: 'setu.vyaptix.ai',
     stats: [
-      { value: '98%', label: 'open rate' },
+      { value: '90%+', label: 'open rate' },
       { value: '3×', label: 'reply rate vs email' },
     ],
   },

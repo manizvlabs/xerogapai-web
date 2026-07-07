@@ -15,18 +15,18 @@
 - Platform: https://reviews.vyaptix.ai
 - Page: https://vyaptix.com/solutions/ai-review-generation
 - Status: Live
-- What it does: Collects authentic Google reviews in under 20 seconds via QR code and AI-generated review text. Customers scan, rate, and the AI drafts a personalized review they post with one tap.
-- Key stats: 20 seconds per review, 3× average review growth, Google-policy compliant
+- What it does: Gets businesses more Google reviews on autopilot. Customers scan a branded QR code, answer a quick conversation, and the AI drafts a personalized review they post to Google with one tap — in about 20 seconds. Also includes a Google Review Inbox that drafts AI replies to reviews (owner approves each one), multi-store teams (up to 5 stores), analytics with CSV exports.
+- Key stats: about 20 seconds per review, 84% completion rate, 3× average review growth, Google-policy compliant, 50+ growing businesses
 - Use cases: Restaurants, retail, clinics, legal firms, real estate agencies
-- Pricing: Free tier available
+- Pricing: ₹1,299/month launch price (incl. 18% GST, down from ₹1,999), cancel anytime
 
-### Setu — WhatsApp Marketing & Automation
+### Setu — WhatsApp Growth Platform
 - Platform: https://setu.vyaptix.ai
 - Page: https://vyaptix.com/solutions/setu
 - Status: Live
-- What it does: WhatsApp broadcast campaigns, 24/7 AI chatbot, shared team inbox, contact CRM, lead pipeline (Kanban board), campaign analytics, role-based access. VyaptIX is a registered Meta Tech Provider.
-- Key stats: 98% message open rate, 3× higher reply rate vs email, live in 2 minutes
-- Pricing: From ₹999/month
+- What it does: WhatsApp broadcast campaigns, 24/7 AI chatbot with visual flow builder, shared team inbox, contact CRM, lead pipeline (Kanban board), WhatsApp commerce (catalogue, share-to-chat, order capture), media content library, campaign analytics, role-based access. VyaptIX is a registered Meta Tech Provider.
+- Key stats: 90%+ message open rate, 3× higher reply rate vs email, live in under 2 minutes, 18+ industries
+- Pricing: Growth ₹30,000/year (₹2,500/month), Pro ₹50,000/year (₹4,167/month), Enterprise ₹1,00,000/year (₹8,333/month) — all incl. 18% GST; Meta conversation fees billed separately at 0% markup
 
 ### BankLens — AI Credit Decisioning
 - Platform: https://banklens.vyaptix.ai

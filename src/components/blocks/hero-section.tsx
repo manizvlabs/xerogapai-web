@@ -25,8 +25,9 @@ interface HeroProps {
   badge?: {
     text: string;
     dot?: 'green' | 'amber' | 'blue';
+    icon?: React.ReactNode;
   };
-  title: string;
+  title: React.ReactNode;
   description: string;
   actions?: HeroAction[];
   image?: HeroImage;
@@ -49,6 +50,7 @@ export function HeroSection({ badge, title, description, actions, image, classNa
           {/* Badge */}
           {badge && (
             <div className="animate-appear inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm font-medium text-white/70">
+              {badge.icon}
               {badge.dot && (
                 <span
                   className={cn('h-2 w-2 rounded-full', {

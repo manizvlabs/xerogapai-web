@@ -12,9 +12,9 @@ import {
   ExternalLink,
   Sparkles,
   TrendingUp,
-  Shield,
   Clock,
   Users,
+  MessageSquare,
   ShoppingBag,
   UtensilsCrossed,
   Stethoscope,
@@ -29,37 +29,38 @@ import {
 import { ScrollRevealGroup } from '../components/ui/ScrollRevealGroup';
 import { CountUp } from '../components/ui/CountUp';
 import { HeroSection } from '../components/blocks/hero-section';
+import { GoogleG } from '../components/ui/GoogleG';
 
 const features = [
   {
-    icon: <Shield className="w-6 h-6" />,
-    title: 'Google Compliant',
-    description: 'Fully compliant with Google review guidelines. Real customers, real reviews — no policy risk.',
-  },
-  {
-    icon: <Zap className="w-6 h-6" />,
-    title: 'Lightning Fast',
-    description: 'Customers complete the entire review process in under 20 seconds.',
-  },
-  {
     icon: <Sparkles className="w-6 h-6" />,
-    title: 'AI-Powered',
-    description: 'Advanced AI transforms simple feedback into detailed, authentic reviews.',
+    title: 'AI-Written Review Drafts',
+    description: 'Your customer answers a few quick questions and AI writes a natural, detailed review draft they can post as-is or edit.',
+  },
+  {
+    icon: <MessageSquare className="w-6 h-6" />,
+    title: 'Google Review Inbox',
+    description: "Reply to Google reviews with AI — on-brand drafts in your customer's language, and you approve every one before it goes out.",
   },
   {
     icon: <QrCode className="w-6 h-6" />,
-    title: 'Easy Sharing',
-    description: 'Generate QR codes and shareable links for seamless customer access.',
+    title: 'Branded QR Codes',
+    description: 'Custom branded QR codes and shareable links you can place wherever happy moments happen — counters, tables, receipts.',
+  },
+  {
+    icon: <Zap className="w-6 h-6" />,
+    title: 'Finished in 20 Seconds',
+    description: 'From QR scan to posted Google review in about 20 seconds — with an 84% completion rate.',
   },
   {
     icon: <BarChart3 className="w-6 h-6" />,
-    title: 'Real-Time Analytics',
-    description: 'Track reviews, ratings, and customer sentiment in your dashboard.',
+    title: 'Actionable Analytics',
+    description: 'Track scans, completions, ratings, and review growth in your dashboard, with CSV exports for reporting.',
   },
   {
     icon: <Users className="w-6 h-6" />,
-    title: 'Multi-Location',
-    description: 'Manage reviews across all your business locations from one dashboard.',
+    title: 'Multi-Store Teams',
+    description: 'Manage up to 5 stores from one account with owner and manager access levels for your team.',
   },
 ];
 
@@ -67,27 +68,22 @@ const howItWorks = [
   {
     step: '01',
     title: 'Create Your Store',
-    description: 'Set up your business profile in minutes. Add your Google Business link and customize your feedback form.',
+    description: 'Add your brand and Google Business Profile, and let AI prepare the questions your customers will answer.',
   },
   {
     step: '02',
-    title: 'Share With Customers',
-    description: 'Display your unique QR code at your location or send the link via email, SMS, or receipts.',
+    title: 'Share the QR',
+    description: 'Place your branded QR code wherever happy moments happen — counters, tables, receipts, or follow-up messages.',
   },
   {
     step: '03',
-    title: 'Customer Gives Feedback',
-    description: 'Customers rate their experience and add a few comments. Takes under 20 seconds.',
+    title: 'Customer Answers',
+    description: 'A quick, branded conversation captures the details of their experience. Takes about 20 seconds.',
   },
   {
     step: '04',
-    title: 'AI Generates Review',
-    description: 'Our AI instantly creates a personalized, detailed review based on their feedback.',
-  },
-  {
-    step: '05',
-    title: 'One-Click Post',
-    description: 'Customer copies the review and posts directly to Google. Done in seconds.',
+    title: 'AI Writes, Customer Posts',
+    description: 'The AI-drafted review is copied and Google opens instantly — your customer posts it in one tap.',
   },
 ];
 
@@ -122,20 +118,20 @@ const faqs = [
     answer: 'Yes, 100%. Our system encourages genuine customers to share authentic experiences. The AI helps articulate their feedback, but customers always have final control over what they post. We never create fake reviews or incentivize with discounts for reviews.',
   },
   {
-    question: 'What languages are supported?',
-    answer: 'Currently, we support English. Support for additional languages is on our roadmap — reach out to let us know your requirements.',
+    question: 'Can it reply to my existing Google reviews too?',
+    answer: "Yes. The Google Review Inbox drafts on-brand replies to your Google reviews — in your customer's language — and you approve every reply before it's posted. More reviews and faster replies lift how your business shows up on Google.",
   },
   {
-    question: 'Can I white-label this for my customers?',
-    answer: 'Yes! Our Pro and Enterprise plans include white-label options. You can customize the entire experience with your brand colors, logo, and domain. Perfect for agencies and multi-location businesses.',
+    question: 'Can I customize the experience with my branding?',
+    answer: 'Yes. Custom branding, custom questions, and branded QR codes are included in the plan. Each store gets its own branded experience, so the review flow feels like part of your brand — not another form.',
   },
   {
     question: "What's the average feedback-to-review time?",
-    answer: 'Most customers complete the entire flow in under 20 seconds. From scanning the QR code to posting on Google, the process is designed to be frictionless.',
+    answer: 'Most customers complete the entire flow in about 20 seconds, with an 84% completion rate. From scanning the QR code to posting on Google, the process is designed to be frictionless.',
   },
   {
-    question: 'Can I integrate with my CRM or POS system?',
-    answer: 'Yes, our Pro and Enterprise plans include API access for custom integrations. We also offer pre-built integrations with popular CRMs like Salesforce, HubSpot, and POS systems like Square and Toast.',
+    question: 'How much does it cost?',
+    answer: 'Launch pricing is ₹1,299/month (incl. 18% GST), down from ₹1,999 — cancel anytime. It includes self-serve setup, up to 5 stores, unlimited review drafts, custom branding and QR codes, analytics with CSV exports, team access, and email support with guided onboarding.',
   },
 ];
 
@@ -147,11 +143,11 @@ const softwareApplicationJsonLd = {
   operatingSystem: 'Web',
   url: 'https://reviews.vyaptix.ai',
   description:
-    'Collect authentic Google reviews in under 20 seconds using QR codes and AI-generated review text.',
+    'Get more Google reviews on autopilot. Customers answer a quick branded conversation, AI writes the review draft, and they post it straight to Google in about 20 seconds. Includes an AI-powered Google Review Inbox for replies.',
   offers: {
     '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD',
+    price: '1299',
+    priceCurrency: 'INR',
     availability: 'https://schema.org/InStock',
   },
   provider: {
@@ -214,25 +210,49 @@ export function AIReviewGeneration() {
       </div>
 
       <HeroSection
-        badge={{ text: 'Live Platform', dot: 'green' }}
-        title="Collect Google Reviews in Under 20 Seconds"
-        description="Transform customer feedback into authentic Google reviews in seconds. Our AI understands sentiment and creates natural, personalized review text that customers are happy to post."
+        badge={{ text: 'Google Reviews, Made Effortless', icon: <GoogleG className="w-4 h-4" /> }}
+        title={
+          <>
+            Get More <span style={{ color: '#4285F4' }}>Google Reviews</span> — On Autopilot
+          </>
+        }
+        description="Turn great experiences into five-star stories. Every happy customer gets a fast, branded way to share their experience — they answer a quick conversation, AI writes the draft, and they post it straight to Google in about 20 seconds."
         actions={[
-          { text: 'Try Platform Free', href: 'https://reviews.vyaptix.ai', variant: 'primary', external: true },
+          { text: 'Create Your Account', href: 'https://reviews.vyaptix.ai', variant: 'primary', external: true },
           { text: 'Schedule Demo', href: '/demo', variant: 'secondary' },
         ]}
       />
+
+      {/* ── Google trust row ── */}
+      <section className="pb-12 bg-transparent">
+        <div className="container-main">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-300">
+            <span className="flex items-center gap-1" aria-label="5 star rating">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 text-warning-400" fill="currentColor" />
+              ))}
+            </span>
+            <span className="flex items-center gap-2">
+              <GoogleG className="w-4 h-4" />
+              Reviews synced straight from Google
+            </span>
+            <span className="text-slate-400">50+ growing businesses collecting better reviews</span>
+          </div>
+        </div>
+      </section>
 
       {/* ── Features ── */}
       <section className="py-20 md:py-28 bg-[#0A1628] section-grid-light">
         <div className="container-main">
           <div className="text-center mb-14">
-            <p className="label-mono-cyan mb-3">Why Businesses Love It</p>
+            <p className="label-mono-cyan mb-3 flex items-center justify-center gap-2">
+              <GoogleG className="w-4 h-4" /> Everything for Your Google Reviews
+            </p>
             <h2 className="font-heading font-bold text-white mb-4" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}>
-              Everything You Need to Collect More Reviews
+              Collect Reviews, Reply with AI, Grow Your Rating
             </h2>
             <p className="text-slate-200 max-w-xl mx-auto">
-              A complete platform to grow your online presence and build trust.
+              A complete platform to collect Google reviews, reply to them with AI, and lift how your business shows up on Google.
             </p>
           </div>
           <ScrollRevealGroup className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" staggerMs={80}>
@@ -252,6 +272,35 @@ export function AIReviewGeneration() {
         </div>
       </section>
 
+      {/* ── Google Business Profile banner ── */}
+      <section className="py-10 bg-[#0A1628] border-y border-white/10">
+        <div className="container-main">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                <GoogleG className="w-6 h-6" />
+              </div>
+              <div>
+                <p className="font-semibold text-white">Works directly with your Google Business Profile</p>
+                <p className="text-sm text-slate-300">
+                  Reviews sync from Google and your replies post straight back — no copy-paste.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-slate-200">
+                <span className="w-1.5 h-1.5 rounded-full bg-success-400 animate-pulse" />
+                Live Google review sync
+              </span>
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-slate-200">
+                <CheckCircle className="w-3.5 h-3.5 text-success-400" />
+                You approve every reply
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── How It Works — animated stepper ── */}
       <section className="py-20 md:py-28 bg-[#050D1A]">
         <div className="container-main">
@@ -261,7 +310,7 @@ export function AIReviewGeneration() {
               How It Works
             </h2>
             <p className="text-slate-200 max-w-xl mx-auto">
-              A simple five-step process that turns customer interactions into valuable reviews.
+              A simple four-step process that turns happy customers into five-star Google reviews.
             </p>
           </div>
           <div ref={stepperRef} className="max-w-3xl mx-auto">
@@ -334,17 +383,18 @@ export function AIReviewGeneration() {
                 Start Growing Your Reviews Today
               </h2>
               <p className="text-lg text-slate-100 mb-6">
-                Our AI Review Generation platform is available as a standalone web application
-                at <strong className="text-white">reviews.vyaptix.ai</strong>. Create your free
-                account and start collecting reviews today.
+                Our AI Review Generator is available as a standalone web application
+                at <strong className="text-white">reviews.vyaptix.ai</strong>. Join 50+ growing
+                businesses collecting better reviews — launch pricing at ₹1,299/month
+                (incl. GST), down from ₹1,999. Cancel anytime.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
-                  'Separate login for dedicated review management',
-                  'Full dashboard with analytics and insights',
-                  'Manage multiple locations from one account',
-                  'Export data and generate reports',
-                  'Priority support on paid plans',
+                  'Self-serve setup with guided onboarding',
+                  'Up to 5 stores and unlimited review drafts',
+                  'Custom branding, questions and QR codes',
+                  'Analytics, CSV exports and team access',
+                  'Google Review Inbox with AI-drafted replies',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-success-400 flex-shrink-0 mt-0.5" />
@@ -378,11 +428,11 @@ export function AIReviewGeneration() {
               <div className="p-6 space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 rounded-xl border border-white/10 bg-white/5">
-                    <BarChart3 className="w-5 h-5 text-primary-400 mb-2" />
+                    <TrendingUp className="w-5 h-5 text-primary-400 mb-2" />
                     <p className="text-2xl font-bold text-white">
-                      <CountUp value={847} duration={1500} />
+                      +<CountUp value={38} duration={1500} />
                     </p>
-                    <p className="text-xs text-slate-300 mt-0.5">Total Reviews</p>
+                    <p className="text-xs text-slate-300 mt-0.5">Reviews This Month</p>
                   </div>
                   <div className="p-4 rounded-xl border border-white/10 bg-white/5">
                     <Star className="w-5 h-5 text-warning-400 mb-2" />
@@ -391,11 +441,11 @@ export function AIReviewGeneration() {
                   </div>
                 </div>
                 <div className="p-4 rounded-xl border border-white/10 bg-white/5">
-                  <TrendingUp className="w-5 h-5 text-success-400 mb-2" />
+                  <BarChart3 className="w-5 h-5 text-success-400 mb-2" />
                   <p className="text-2xl font-bold text-white">
-                    +<CountUp value={127} suffix="%" duration={1800} />
+                    <CountUp value={84} suffix="%" duration={1800} />
                   </p>
-                  <p className="text-xs text-slate-300 mt-0.5">Growth This Month</p>
+                  <p className="text-xs text-slate-300 mt-0.5">Completion Rate</p>
                 </div>
                 <div className="p-4 rounded-xl bg-success-500/10 border border-success-500/20">
                   <div className="flex items-center gap-2">
@@ -450,8 +500,8 @@ export function AIReviewGeneration() {
             Ready to Grow Your Online Presence?
           </h2>
           <p className="text-lg text-slate-100 mb-8">
-            Start collecting reviews today with our AI-powered platform.
-            Free tier available, no credit card required.
+            Join 50+ growing businesses collecting better reviews.
+            Launch pricing at ₹1,299/month (incl. GST), down from ₹1,999 — cancel anytime.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -460,7 +510,7 @@ export function AIReviewGeneration() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold text-[#050D1A] bg-white rounded-lg hover:scale-[1.03] hover:shadow-[0_0_24px_rgba(6,206,255,0.3)] transition-all"
             >
-              Get Started Free <ExternalLink className="w-5 h-5" />
+              Create Your Account <ExternalLink className="w-5 h-5" />
             </a>
             <Link
               href="/demo"
@@ -469,6 +519,10 @@ export function AIReviewGeneration() {
               Schedule Demo
             </Link>
           </div>
+          <p className="text-xs text-slate-500 mt-10 max-w-2xl mx-auto">
+            Google, Google Business Profile, and the Google logo are trademarks of Google LLC.
+            VyaptIX is not affiliated with, endorsed by, or sponsored by Google.
+          </p>
         </div>
       </section>
     </>

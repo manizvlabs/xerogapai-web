@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { AIReviewGeneration } from '@/src/views/AIReviewGeneration';
 
 export const metadata: Metadata = {
-  title: 'AI Review Generator — Collect Google Reviews in Under 20 Seconds',
+  title: 'AI Review Generator — Get More Google Reviews on Autopilot',
   description:
-    'VyaptIX AI Review Generator lets customers scan a QR code and post a real Google review in under 20 seconds. Zero friction, authentic reviews.',
+    'VyaptIX AI Review Generator lets customers scan a QR code, answer a quick branded conversation, and post a real Google review in about 20 seconds. Plus AI-drafted replies to every review.',
   alternates: { canonical: 'https://vyaptix.com/solutions/ai-review-generation' },
 };
 

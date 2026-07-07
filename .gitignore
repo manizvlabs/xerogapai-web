@@ -34,3 +34,7 @@ public/robots.txt
 
 # Claude Code internal files
 .claude/
+
+# Playwright MCP scratch artifacts (screenshots, snapshots, console logs)
+.playwright-mcp/
+reviews-full.jpeg
