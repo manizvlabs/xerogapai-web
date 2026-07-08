@@ -47,8 +47,8 @@ const features = [
   },
   {
     icon: <Bot className="w-6 h-6" />,
-    title: '24/7 AI Chatbot',
-    description: 'Deploy welcome flows, business-hours menus, keyword triggers, and service trees — no coding required. Your chatbot qualifies and captures leads while you sleep.',
+    title: '24/7 AI Chatbot & Flow Builder',
+    description: 'Deploy welcome flows, business-hours menus, and keyword triggers — no coding required. Design rich WhatsApp journeys visually with drag-and-drop nodes and ready-made templates.',
   },
   {
     icon: <Inbox className="w-6 h-6" />,
@@ -82,8 +82,8 @@ const features = [
   },
   {
     icon: <Zap className="w-6 h-6" />,
-    title: 'Consent-First Messaging',
-    description: 'Built-in STOP/opt-out handling, DPDP Act 2023 compliance, and Meta-approved flows — market confidently without regulatory risk.',
+    title: 'WhatsApp Commerce',
+    description: 'Publish a product catalogue, share products in a tap, and take orders right inside the chat your customers already use — turn conversations into sales.',
   },
 ];
 
@@ -117,7 +117,7 @@ const howItWorks = [
 
 const industries = [
   { icon: <ShoppingBag className="w-6 h-6" />, name: 'Retail & eCommerce', stat: '3× higher reply rate vs email' },
-  { icon: <Stethoscope className="w-6 h-6" />, name: 'Healthcare & Clinics', stat: 'Appointment reminders at 98% open rate' },
+  { icon: <Stethoscope className="w-6 h-6" />, name: 'Healthcare & Clinics', stat: 'Appointment reminders at 90%+ open rate' },
   { icon: <GraduationCap className="w-6 h-6" />, name: 'Education & EdTech', stat: 'Enrolment drip campaigns that convert' },
   { icon: <Home className="w-6 h-6" />, name: 'Real Estate', stat: 'Lead pipeline from inquiry to site visit' },
   { icon: <Building2 className="w-6 h-6" />, name: 'Finance & Insurance', stat: 'Policy renewal reminders that get read' },
@@ -125,7 +125,7 @@ const industries = [
 ];
 
 const stats = [
-  { value: 98, suffix: '%', label: 'WhatsApp message open rate' },
+  { value: 90, suffix: '%+', label: 'WhatsApp message open rate' },
   { value: 3, suffix: '×', label: 'Higher reply rate vs email' },
   { value: 2, suffix: ' min', label: 'To launch a campaign' },
   { value: 18, suffix: '+', label: 'Industries served' },
@@ -150,7 +150,11 @@ const faqs = [
   },
   {
     question: 'What is the pricing?',
-    answer: 'Setu starts at ₹999/month. The price includes your workspace, contacts, campaigns, AI chatbot, team inbox, and analytics. WhatsApp conversation charges (Meta fees) are billed separately based on usage. Contact us for custom pricing on high-volume plans.',
+    answer: 'Setu has three plans: Growth at ₹30,000/year (₹2,500/month), Pro at ₹50,000/year (₹4,167/month), and Enterprise at ₹1,00,000/year (₹8,333/month). All prices include 18% GST, and annual billing saves two months versus monthly. WhatsApp conversation charges (Meta fees) are billed separately at cost with 0% markup — marketing conversations at ₹0.88, utility/authentication at ₹0.115, and service replies free within the 24-hour window.',
+  },
+  {
+    question: 'Is there a free trial?',
+    answer: 'After a product demo, you get a 14-day read-only demo account to explore the platform with real data. Once the trial period ends, we send an invoice to begin your subscription. You can upgrade or downgrade your plan anytime.',
   },
   {
     question: 'Can I add multiple team members?',
@@ -165,10 +169,10 @@ const softwareJsonLd = {
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web',
   url: 'https://setu.vyaptix.ai',
-  description: 'WhatsApp marketing platform for business teams — broadcast campaigns, AI chatbot, shared team inbox, lead pipeline, and analytics. 98% open rate. Live in 2 minutes.',
+  description: 'WhatsApp growth platform for business teams — broadcast campaigns, AI chatbot, visual flow builder, shared team inbox, lead pipeline, WhatsApp commerce, and analytics. 90%+ open rate. Live in 2 minutes.',
   offers: {
     '@type': 'Offer',
-    price: '999',
+    price: '2500',
     priceCurrency: 'INR',
     availability: 'https://schema.org/InStock',
   },
@@ -230,10 +234,10 @@ export function Setu() {
 
       <HeroSection
         badge={{ text: 'Live Platform', dot: 'green' }}
-        title="WhatsApp Marketing That Scales With Your Business"
-        description="Send campaigns to thousands, automate replies 24/7, manage your entire team inbox, and close more leads — all on WhatsApp. One platform. Every channel of your customer conversation."
+        title="Grow Your Business on WhatsApp"
+        description="One platform to broadcast campaigns, automate replies 24/7, run a shared team inbox, capture leads, and sell on WhatsApp — built for every business. VyaptIX is an official Meta Tech Provider."
         actions={[
-          { text: 'Start Free', href: 'https://setu.vyaptix.ai', variant: 'primary', external: true },
+          { text: 'Get Started', href: 'https://setu.vyaptix.ai', variant: 'primary', external: true },
           { text: 'Schedule Demo', href: '/demo', variant: 'secondary' },
         ]}
       />
@@ -544,7 +548,7 @@ export function Setu() {
               className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-lg hover:scale-[1.03] transition-all"
               style={{ background: SETU_GREEN, color: '#050D1A' }}
             >
-              Get Started — ₹999/month <ExternalLink className="w-5 h-5" />
+              Get Started — from ₹2,500/month <ExternalLink className="w-5 h-5" />
             </a>
             <Link
               href="/demo"

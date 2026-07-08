@@ -29,13 +29,13 @@ const navItems: NavItem[] = [
         label: 'AI Review Generator',
         href: '/solutions/ai-review-generation',
         icon: <Star className="w-5 h-5" />,
-        description: 'Collect Google reviews in under 20 seconds',
+        description: 'Google reviews on autopilot — collect & reply with AI',
       },
       {
         label: 'Setu',
         href: '/solutions/setu',
         icon: <MessageCircle className="w-5 h-5" />,
-        description: 'WhatsApp marketing & automation',
+        description: 'WhatsApp campaigns, chatbot, inbox & commerce',
       },
       {
         label: 'BankLens',
